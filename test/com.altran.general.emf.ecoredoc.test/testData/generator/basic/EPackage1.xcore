@@ -1,0 +1,11 @@
+package EPackage1
+
+type SpecialDataType wraps java.lang.Number
+
+enum Enum1 {
+	
+}
+
+abstract class EClass1 {
+	
+}

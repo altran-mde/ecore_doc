@@ -1,0 +1,341 @@
+// White Up-Pointing Triangle
+:wupt: &#9651;
+
+:inherited: {wupt}{nbsp}
+
+:table-caption!:
+
+= Ecore Documentation
+:toc:
+:toclevels: 4
+
+[[EPackage1]]
+== Contents of EPackage1
+
+=== Data Types
+
+TODO: Create template for EDataType
+
+[[EPackage1-SpecialDataType]]
+==== SpecialDataType
+
+.Used at
+* <<EPackage1-MyEClass-attr, EPackage1.MyEClass.attr>>
+
+=== Enumerations
+
+[[EPackage1-Enum1]]
+==== Enum1
+
+Enum 1 Description
+
+.Literals
+[cols="<20m,>10m,<70a",options="header"]
+|===
+|Symbol
+|Value
+|Description
+
+|Literal1[[EPackage1-Enum1-Literal1]]
+|0
+|Literal1 Description
+
+Second sentence of Literal1 Description.
+
+|Literal2[[EPackage1-Enum1-Literal2]]
+|1
+|Literal2 Description
+
+|===
+
+.Used at
+* <<EPackage1-MyEClass-eeeenum, EPackage1.MyEClass.eeeenum>>
+* <<EPackage1-Class3-something, EPackage1.Class3.something>>
+
+=== Classes
+
+[[EPackage1-EClass1]]
+==== Abstract Class EClass1
+
+TODO: Find a good way to show class attributes like abstract.
+
+Description of EClass1
+
+.Sub-concepts
+* <<EPackage1-MyEClass, EPackage1.MyEClass>>
+* <<EPackage2-SomeClass, EPackage2.SomeClass>>
+
+.Attributes
+[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+|===
+|Name
+|Type
+|Multiplicity{nbsp}/ Order
+|Default Value
+|Description
+
+|id[[EPackage1-EClass1-id]]
+|EInt
+|1
+|
+|Description of id.
+
+|name[[EPackage1-EClass1-name]]
+|EString
+|3..5
+|
+|Name desc.
+|===
+
+.References
+[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+|===
+|Name
+|Type
+|Multiplicity{nbsp}/ Order
+|Opposite
+|Description
+
+|myRelation[[EPackage1-EClass1-myRelation]]
+|<<EPackage1-MyEClass, EPackage1.MyEClass>>
+|0..*{nbsp}/ unordered
+|<<EPackage1-MyEClass-backwards, backwards>>
+|Description.
+|===
+
+.Used at
+* <<EPackage1-MyEClass-ref, EPackage1.MyEClass.ref>>
+* <<EPackage1-MyEClass-backwards, EPackage1.MyEClass.backwards>>
+
+[[EPackage1-MyEClass]]
+==== Class MyEClass
+
+Description
+
+.Supertypes
+* <<EPackage1-EClass1, EPackage1.EClass1>>
+
+.Attributes
+[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+|===
+|Name
+|Type
+|Multiplicity{nbsp}/ Order
+|Default Value
+|Description
+
+|attr[[EPackage1-MyEClass-attr]]
+|<<EPackage1-SpecialDataType, EPackage1.SpecialDataType>>
+|0..1
+|
+|Description.
+
+Second sentence.
+
+|eeeenum[[EPackage1-MyEClass-eeeenum]]
+|<<EPackage1-Enum1, EPackage1.Enum1>>
+|0..6
+|<<EPackage1-Enum-Literal1, Literal1>>
+|Deschkriptschion.
+
+|id[[EPackage1-MyEClass-id]] +
+(<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
+|EInt
+|1
+|
+|Description of id.
+
+|name[[EPackage1-MyEClass-name]] +
+(<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
+|EString
+|3..5
+|
+|Name desc.
+
+|===
+
+.Containments
+[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+|===
+|Name
+|Type
+|Multiplicity{nbsp}/ Order
+|Opposite
+|Description
+
+|clazzes[[EPackage1-MyEClass-clazzes]]
+|<<EPackage1-Class3, EPackage1.Class3>>
+|1..*{nbsp}/ unordered
+|<<EPackage1-Class3-specialParent, specialParent>>
+|Desc.
+
+|otherClasses[[EPackage1-MyEClass-otherClasses]]
+|<<EPackage1-Class3, EPackage1.Class3>>
+|0..*{nbsp}/ ordered
+|
+|Desc.
+
+Containments could also be inherited.
+|===
+
+.References
+[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+|===
+|Name
+|Type
+|Multiplicity{nbsp}/ Order
+|Opposite
+|Description
+
+|ref[[EPackage1-MyEClass-ref]]
+|<<EPackage1-EClass1, EPackage1.EClass1>>
+|0..1
+|
+|Whatever.
+
+|backwards[[EPackage1-MyEClass-backwards]]
+|<<EPackage1-EClass1, EPackage1.EClass1>>
+|1
+|<<EPackage1-EClass1-myRelation, myRelation>>
+|
+
+|myRelation[[EPackage1-MyEClass-myRelation]] +
+(<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
+|<<EPackage1-MyEClass, EPackage1.MyEClass>>
+|0..*{nbsp}/ unordered
+|<<EPackage1-MyEClass-backwards, backwards>>
+|Description.
+|===
+
+.Used at
+* <<EPackage1-MyEClass-myRelation, EPackage1.MyEClass.myRelation>>
+* <<EPackage1-Class3-specialParent, EPackage1.Class3.ref>>
+* <<EPackage1-Class3-myRelation, EPackage1.Class3.myRelation>>
+* <<EPackage1-EClass1-myRelation, EPackage1.EClass1.myRelation>>
+
+
+[[EPackage1-Class3]]
+==== Class Class3
+
+Description
+
+.Supertypes
+* <<EPackage1-EClass1, EPackage1.EClass1>>
+
+.Attributes
+[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+|===
+|Name
+|Type
+|Multiplicity{nbsp}/ Order
+|Default Value
+|Description
+
+|something[[EPackage1-Class3-something]]
+|<<EPackage1-Enum1, EPackage1.Enum1>>
+|0..6
+|
+|Something.
+
+|id[[EPackage1-Class3-id]] +
+(<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
+|EInt
+|1
+|
+|Description of id.
+
+|name[[EPackage1-Class3-name]] +
+(<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
+|EString
+|3..5
+|
+|Name desc.
+
+|===
+
+.References
+[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+|===
+|Name
+|Type
+|Multiplicity{nbsp}/ Order
+|Opposite
+|Description
+
+|specialParent[[EPackage1-Class3-specialParent]]
+|<<EPackage1-MyEClass, EPackage1.MyEClass>>
+|5
+|<<EPackage1-MyEClass-clazzes, clazzes>>
+|Bla
+
+|myRelation[[EPackage1-Class3-myRelation]] +
+(<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
+|<<EPackage1-MyEClass, EPackage1.MyEClass>>
+|0..*{nbsp}/ unordered
+|<<EPackage1-MyEClass-backwards, backwards>>
+|Description.
+|===
+
+
+
+[[EPackage1-Iface]]
+==== Interface Iface
+
+Description
+
+.Known Implementations
+* <<EPackage2-SomeClass, EPackage2.SomeClass>>
+
+Attributes, Containments, References
+
+[[EPackage2]]
+== Contents of EPackage2
+
+[[EPackage2-SomeClass]]
+=== Class SomeClass
+
+.Supertypes
+* <<EPackage1-EClass1, EPackage1.EClass1>>
+* <<EPackage1-Iface, EPackage1.Iface>>
+
+.Attributes
+[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+|===
+|Name
+|Type
+|Multiplicity{nbsp}/ Order
+|Default Value
+|Description
+
+|id[[EPackage1-Class3-id]] +
+(<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
+|EInt
+|1
+|
+|Description of id.
+
+|name[[EPackage1-Class3-name]] +
+(<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
+|EString
+|3..5
+|
+|Name desc.
+
+|===
+
+.References
+[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+|===
+|Name
+|Type
+|Multiplicity{nbsp}/ Order
+|Opposite
+|Description
+
+|myRelation[[EPackage1-Class3-myRelation]] +
+(<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
+|<<EPackage1-MyEClass, EPackage1.MyEClass>>
+|0..*{nbsp}/ unordered
+|<<EPackage1-MyEClass-backwards, backwards>>
+|Description.
+|===

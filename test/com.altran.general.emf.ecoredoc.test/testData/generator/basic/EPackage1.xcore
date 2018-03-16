@@ -3,9 +3,29 @@ package EPackage1
 type SpecialDataType wraps java.lang.Number
 
 enum Enum1 {
-	
+	Literal1 = 0
+	Literal2 = 1
 }
 
 abstract class EClass1 {
+ @GenModel(propertyDescription="Name desc.", propertyCategory="")
+	String [1] name 
+ @GenModel(propertyDescription="Description of id.")
+	int[3..5] ^id 
+ @GenModel(propertyDescription="Description.")
+	refers MyEClass [0..*] myRelation opposite backwards
+}
+
+class MyEClass extends EClass1{
+	refers EClass1[1] backwards opposite myRelation
+}
+
+class Class3 extends EClass1{
 	
 }
+
+interface Iface{
+	
+}
+
+

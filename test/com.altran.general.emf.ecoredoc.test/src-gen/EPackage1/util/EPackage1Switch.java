@@ -72,6 +72,26 @@ public class EPackage1Switch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EPackage1Package.MY_ECLASS: {
+				MyEClass myEClass = (MyEClass)theEObject;
+				T result = caseMyEClass(myEClass);
+				if (result == null) result = caseEClass1(myEClass);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EPackage1Package.CLASS3: {
+				Class3 class3 = (Class3)theEObject;
+				T result = caseClass3(class3);
+				if (result == null) result = caseEClass1(class3);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EPackage1Package.IFACE: {
+				Iface iface = (Iface)theEObject;
+				T result = caseIface(iface);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -88,6 +108,51 @@ public class EPackage1Switch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEClass1(EClass1 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>My EClass</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>My EClass</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMyEClass(MyEClass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Class3</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Class3</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClass3(Class3 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Iface</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Iface</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIface(Iface object) {
 		return null;
 	}
 

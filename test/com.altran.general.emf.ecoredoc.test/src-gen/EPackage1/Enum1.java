@@ -18,7 +18,55 @@ import org.eclipse.emf.common.util.Enumerator;
  * @generated
  */
 public enum Enum1 implements Enumerator {
-	;
+	/**
+	 * The '<em><b>Literal1</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #LITERAL1_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	LITERAL1(0, "Literal1", "Literal1"),
+
+	/**
+	 * The '<em><b>Literal2</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #LITERAL2_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	LITERAL2(1, "Literal2", "Literal2");
+
+	/**
+	 * The '<em><b>Literal1</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Literal1</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #LITERAL1
+	 * @model name="Literal1"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int LITERAL1_VALUE = 0;
+
+	/**
+	 * The '<em><b>Literal2</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Literal2</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #LITERAL2
+	 * @model name="Literal2"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int LITERAL2_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>Enum1</b></em>' enumerators.
@@ -28,6 +76,8 @@ public enum Enum1 implements Enumerator {
 	 */
 	private static final Enum1[] VALUES_ARRAY =
 		new Enum1[] {
+			LITERAL1,
+			LITERAL2,
 		};
 
 	/**
@@ -84,6 +134,8 @@ public enum Enum1 implements Enumerator {
 	 */
 	public static Enum1 get(int value) {
 		switch (value) {
+			case LITERAL1_VALUE: return LITERAL1;
+			case LITERAL2_VALUE: return LITERAL2;
 		}
 		return null;
 	}

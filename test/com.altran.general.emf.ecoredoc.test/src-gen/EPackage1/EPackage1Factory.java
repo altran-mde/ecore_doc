@@ -22,6 +22,24 @@ public interface EPackage1Factory extends EFactory {
 	EPackage1Factory eINSTANCE = EPackage1.impl.EPackage1FactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>My EClass</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>My EClass</em>'.
+	 * @generated
+	 */
+	MyEClass createMyEClass();
+
+	/**
+	 * Returns a new object of class '<em>Class3</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Class3</em>'.
+	 * @generated
+	 */
+	Class3 createClass3();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -72,6 +72,18 @@ public class EPackage1AdapterFactory extends AdapterFactoryImpl {
 				return createEClass1Adapter();
 			}
 			@Override
+			public Adapter caseMyEClass(MyEClass object) {
+				return createMyEClassAdapter();
+			}
+			@Override
+			public Adapter caseClass3(Class3 object) {
+				return createClass3Adapter();
+			}
+			@Override
+			public Adapter caseIface(Iface object) {
+				return createIfaceAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -102,6 +114,48 @@ public class EPackage1AdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEClass1Adapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link EPackage1.MyEClass <em>My EClass</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see EPackage1.MyEClass
+	 * @generated
+	 */
+	public Adapter createMyEClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link EPackage1.Class3 <em>Class3</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see EPackage1.Class3
+	 * @generated
+	 */
+	public Adapter createClass3Adapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link EPackage1.Iface <em>Iface</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see EPackage1.Iface
+	 * @generated
+	 */
+	public Adapter createIfaceAdapter() {
 		return null;
 	}
 

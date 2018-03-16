@@ -57,6 +57,8 @@ public class EPackage1FactoryImpl extends EFactoryImpl implements EPackage1Facto
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case EPackage1Package.MY_ECLASS: return createMyEClass();
+			case EPackage1Package.CLASS3: return createClass3();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -94,6 +96,26 @@ public class EPackage1FactoryImpl extends EFactoryImpl implements EPackage1Facto
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MyEClass createMyEClass() {
+		MyEClassImpl myEClass = new MyEClassImpl();
+		return myEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Class3 createClass3() {
+		Class3Impl class3 = new Class3Impl();
+		return class3;
 	}
 
 	/**

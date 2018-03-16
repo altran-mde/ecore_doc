@@ -183,8 +183,53 @@ public class EPackage1PackageImpl extends EPackageImpl implements EPackage1Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMyEClass_Attr() {
+		return (EAttribute)myEClassEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMyEClass_Ref() {
+		return (EReference)myEClassEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMyEClass_Clazzes() {
+		return (EReference)myEClassEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMyEClass_Eeeenum() {
+		return (EAttribute)myEClassEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMyEClass_OtherClasses() {
+		return (EReference)myEClassEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getMyEClass_Backwards() {
-		return (EReference)myEClassEClass.getEStructuralFeatures().get(0);
+		return (EReference)myEClassEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -194,6 +239,24 @@ public class EPackage1PackageImpl extends EPackageImpl implements EPackage1Packa
 	 */
 	public EClass getClass3() {
 		return class3EClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClass3_Something() {
+		return (EAttribute)class3EClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getClass3_SpecialParent() {
+		return (EReference)class3EClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -257,9 +320,16 @@ public class EPackage1PackageImpl extends EPackageImpl implements EPackage1Packa
 		createEReference(eClass1EClass, ECLASS1__MY_RELATION);
 
 		myEClassEClass = createEClass(MY_ECLASS);
+		createEAttribute(myEClassEClass, MY_ECLASS__ATTR);
+		createEReference(myEClassEClass, MY_ECLASS__REF);
+		createEReference(myEClassEClass, MY_ECLASS__CLAZZES);
+		createEAttribute(myEClassEClass, MY_ECLASS__EEEENUM);
+		createEReference(myEClassEClass, MY_ECLASS__OTHER_CLASSES);
 		createEReference(myEClassEClass, MY_ECLASS__BACKWARDS);
 
 		class3EClass = createEClass(CLASS3);
+		createEAttribute(class3EClass, CLASS3__SOMETHING);
+		createEReference(class3EClass, CLASS3__SPECIAL_PARENT);
 
 		ifaceEClass = createEClass(IFACE);
 
@@ -306,14 +376,21 @@ public class EPackage1PackageImpl extends EPackageImpl implements EPackage1Packa
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(eClass1EClass, EClass1.class, "EClass1", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEClass1_Name(), theEcorePackage.getEString(), "name", null, 1, 1, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEClass1_Name(), theEcorePackage.getEString(), "name", null, 0, 1, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEClass1_Id(), theEcorePackage.getEInt(), "id", null, 3, 5, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEClass1_MyRelation(), this.getMyEClass(), this.getMyEClass_Backwards(), "myRelation", null, 0, -1, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(myEClassEClass, MyEClass.class, "MyEClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMyEClass_Attr(), this.getSpecialDataType(), "attr", null, 0, 1, MyEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMyEClass_Ref(), this.getEClass1(), null, "ref", null, 0, 1, MyEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMyEClass_Clazzes(), this.getClass3(), this.getClass3_SpecialParent(), "clazzes", null, 1, -1, MyEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMyEClass_Eeeenum(), this.getEnum1(), "eeeenum", "Literal1", 0, 6, MyEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMyEClass_OtherClasses(), this.getClass3(), null, "otherClasses", null, 0, -1, MyEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMyEClass_Backwards(), this.getEClass1(), this.getEClass1_MyRelation(), "backwards", null, 1, 1, MyEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(class3EClass, Class3.class, "Class3", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getClass3_Something(), this.getEnum1(), "something", null, 0, 6, Class3.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClass3_SpecialParent(), this.getMyEClass(), this.getMyEClass_Clazzes(), "specialParent", null, 0, 1, Class3.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ifaceEClass, Iface.class, "Iface", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

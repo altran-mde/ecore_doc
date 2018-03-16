@@ -8,23 +8,38 @@ enum Enum1 {
 }
 
 abstract class EClass1 {
- @GenModel(propertyDescription="Name desc.", propertyCategory="")
-	String [1] name 
- @GenModel(propertyDescription="Description of id.")
-	int[3..5] ^id 
- @GenModel(propertyDescription="Description.")
-	refers MyEClass [0..*] myRelation opposite backwards
+	@GenModel(propertyDescription="Name desc.", propertyCategory="")
+	String name
+	 
+	@GenModel(propertyDescription="Description of id.")
+	int[3..5] ^id
+	 
+	@GenModel(propertyDescription="Description.")
+	refers MyEClass[] myRelation opposite backwards
 }
 
-class MyEClass extends EClass1{
+class MyEClass extends EClass1 {
+	SpecialDataType[?] attr
+	
+	refers EClass1[0..1] ref
+	
+	contains Class3[1..*] clazzes opposite specialParent
+	
+	Enum1[0..6] eeeenum = "Literal1"
+	
+	contains Class3[0..*] otherClasses
+	
+	//multiplicity is wrong in output
 	refers EClass1[1] backwards opposite myRelation
 }
 
-class Class3 extends EClass1{
+class Class3 extends EClass1 {
+	Enum1[0..6] something
 	
+	container MyEClass specialParent opposite clazzes
 }
 
-interface Iface{
+interface Iface {
 	
 }
 

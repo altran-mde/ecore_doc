@@ -36,7 +36,7 @@ public interface EClass1 extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see EPackage1.EPackage1Package#getEClass1_Name()
-	 * @model unique="false" required="true"
+	 * @model unique="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyDescription='Name desc.' propertyCategory=''"
 	 * @generated
 	 */

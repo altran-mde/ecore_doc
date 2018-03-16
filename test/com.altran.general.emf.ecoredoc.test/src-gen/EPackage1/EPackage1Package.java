@@ -151,13 +151,58 @@ public interface EPackage1Package extends EPackage {
 	int MY_ECLASS__MY_RELATION = ECLASS1__MY_RELATION;
 
 	/**
+	 * The feature id for the '<em><b>Attr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_ECLASS__ATTR = ECLASS1_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Ref</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_ECLASS__REF = ECLASS1_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Clazzes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_ECLASS__CLAZZES = ECLASS1_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Eeeenum</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_ECLASS__EEEENUM = ECLASS1_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Other Classes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_ECLASS__OTHER_CLASSES = ECLASS1_FEATURE_COUNT + 4;
+
+	/**
 	 * The feature id for the '<em><b>Backwards</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MY_ECLASS__BACKWARDS = ECLASS1_FEATURE_COUNT + 0;
+	int MY_ECLASS__BACKWARDS = ECLASS1_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>My EClass</em>' class.
@@ -166,7 +211,7 @@ public interface EPackage1Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MY_ECLASS_FEATURE_COUNT = ECLASS1_FEATURE_COUNT + 1;
+	int MY_ECLASS_FEATURE_COUNT = ECLASS1_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>My EClass</em>' class.
@@ -215,13 +260,31 @@ public interface EPackage1Package extends EPackage {
 	int CLASS3__MY_RELATION = ECLASS1__MY_RELATION;
 
 	/**
+	 * The feature id for the '<em><b>Something</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS3__SOMETHING = ECLASS1_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Special Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS3__SPECIAL_PARENT = ECLASS1_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Class3</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS3_FEATURE_COUNT = ECLASS1_FEATURE_COUNT + 0;
+	int CLASS3_FEATURE_COUNT = ECLASS1_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Class3</em>' class.
@@ -335,6 +398,61 @@ public interface EPackage1Package extends EPackage {
 	EClass getMyEClass();
 
 	/**
+	 * Returns the meta object for the attribute '{@link EPackage1.MyEClass#getAttr <em>Attr</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Attr</em>'.
+	 * @see EPackage1.MyEClass#getAttr()
+	 * @see #getMyEClass()
+	 * @generated
+	 */
+	EAttribute getMyEClass_Attr();
+
+	/**
+	 * Returns the meta object for the reference '{@link EPackage1.MyEClass#getRef <em>Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Ref</em>'.
+	 * @see EPackage1.MyEClass#getRef()
+	 * @see #getMyEClass()
+	 * @generated
+	 */
+	EReference getMyEClass_Ref();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link EPackage1.MyEClass#getClazzes <em>Clazzes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Clazzes</em>'.
+	 * @see EPackage1.MyEClass#getClazzes()
+	 * @see #getMyEClass()
+	 * @generated
+	 */
+	EReference getMyEClass_Clazzes();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link EPackage1.MyEClass#getEeeenum <em>Eeeenum</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Eeeenum</em>'.
+	 * @see EPackage1.MyEClass#getEeeenum()
+	 * @see #getMyEClass()
+	 * @generated
+	 */
+	EAttribute getMyEClass_Eeeenum();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link EPackage1.MyEClass#getOtherClasses <em>Other Classes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Other Classes</em>'.
+	 * @see EPackage1.MyEClass#getOtherClasses()
+	 * @see #getMyEClass()
+	 * @generated
+	 */
+	EReference getMyEClass_OtherClasses();
+
+	/**
 	 * Returns the meta object for the reference '{@link EPackage1.MyEClass#getBackwards <em>Backwards</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -354,6 +472,28 @@ public interface EPackage1Package extends EPackage {
 	 * @generated
 	 */
 	EClass getClass3();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link EPackage1.Class3#getSomething <em>Something</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Something</em>'.
+	 * @see EPackage1.Class3#getSomething()
+	 * @see #getClass3()
+	 * @generated
+	 */
+	EAttribute getClass3_Something();
+
+	/**
+	 * Returns the meta object for the container reference '{@link EPackage1.Class3#getSpecialParent <em>Special Parent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Special Parent</em>'.
+	 * @see EPackage1.Class3#getSpecialParent()
+	 * @see #getClass3()
+	 * @generated
+	 */
+	EReference getClass3_SpecialParent();
 
 	/**
 	 * Returns the meta object for class '{@link EPackage1.Iface <em>Iface</em>}'.
@@ -454,6 +594,46 @@ public interface EPackage1Package extends EPackage {
 		EClass MY_ECLASS = eINSTANCE.getMyEClass();
 
 		/**
+		 * The meta object literal for the '<em><b>Attr</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MY_ECLASS__ATTR = eINSTANCE.getMyEClass_Attr();
+
+		/**
+		 * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MY_ECLASS__REF = eINSTANCE.getMyEClass_Ref();
+
+		/**
+		 * The meta object literal for the '<em><b>Clazzes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MY_ECLASS__CLAZZES = eINSTANCE.getMyEClass_Clazzes();
+
+		/**
+		 * The meta object literal for the '<em><b>Eeeenum</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MY_ECLASS__EEEENUM = eINSTANCE.getMyEClass_Eeeenum();
+
+		/**
+		 * The meta object literal for the '<em><b>Other Classes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MY_ECLASS__OTHER_CLASSES = eINSTANCE.getMyEClass_OtherClasses();
+
+		/**
 		 * The meta object literal for the '<em><b>Backwards</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -470,6 +650,22 @@ public interface EPackage1Package extends EPackage {
 		 * @generated
 		 */
 		EClass CLASS3 = eINSTANCE.getClass3();
+
+		/**
+		 * The meta object literal for the '<em><b>Something</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS3__SOMETHING = eINSTANCE.getClass3_Something();
+
+		/**
+		 * The meta object literal for the '<em><b>Special Parent</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS3__SPECIAL_PARENT = eINSTANCE.getClass3_SpecialParent();
 
 		/**
 		 * The meta object literal for the '{@link EPackage1.Iface <em>Iface</em>}' class.

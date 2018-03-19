@@ -14,4 +14,12 @@
             genModel="testData/generator/basic/EPackage1.xcore"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated EPackage2 -->
+      <package
+            uri="http://altran.com/general/emf/ecoredoc/test/epackage2/1.0.0"
+            class="EPackage2.EPackage2Package"
+            genModel="testData/generator/basic/EPackage2.genmodel"/>
+   </extension>
+
 </plugin>

@@ -69,7 +69,7 @@ public interface EPackage1Package extends EPackage {
 	int ECLASS1 = 0;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -78,7 +78,7 @@ public interface EPackage1Package extends EPackage {
 	int ECLASS1__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute list.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -124,7 +124,7 @@ public interface EPackage1Package extends EPackage {
 	int MY_ECLASS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -133,7 +133,7 @@ public interface EPackage1Package extends EPackage {
 	int MY_ECLASS__NAME = ECLASS1__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute list.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -233,7 +233,7 @@ public interface EPackage1Package extends EPackage {
 	int CLASS3 = 2;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -242,7 +242,7 @@ public interface EPackage1Package extends EPackage {
 	int CLASS3__NAME = ECLASS1__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute list.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -355,10 +355,10 @@ public interface EPackage1Package extends EPackage {
 	EClass getEClass1();
 
 	/**
-	 * Returns the meta object for the attribute '{@link EPackage1.EClass1#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute list '{@link EPackage1.EClass1#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @return the meta object for the attribute list '<em>Name</em>'.
 	 * @see EPackage1.EClass1#getName()
 	 * @see #getEClass1()
 	 * @generated
@@ -366,10 +366,10 @@ public interface EPackage1Package extends EPackage {
 	EAttribute getEClass1_Name();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link EPackage1.EClass1#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link EPackage1.EClass1#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Id</em>'.
+	 * @return the meta object for the attribute '<em>Id</em>'.
 	 * @see EPackage1.EClass1#getId()
 	 * @see #getEClass1()
 	 * @generated
@@ -560,7 +560,7 @@ public interface EPackage1Package extends EPackage {
 		EClass ECLASS1 = eINSTANCE.getEClass1();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -568,7 +568,7 @@ public interface EPackage1Package extends EPackage {
 		EAttribute ECLASS1__NAME = eINSTANCE.getEClass1_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Id</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

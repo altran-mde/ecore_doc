@@ -26,48 +26,48 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface EClass1 extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Name</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Name</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
+	 * @return the value of the '<em>Name</em>' attribute list.
 	 * @see EPackage1.EPackage1Package#getEClass1_Name()
-	 * @model unique="false"
+	 * @model unique="false" lower="3" upper="5"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyDescription='Name desc.' propertyCategory=''"
 	 * @generated
 	 */
-	String getName();
+	EList<String> getName();
 
 	/**
-	 * Sets the value of the '{@link EPackage1.EClass1#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.Integer}.
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Id</em>' attribute list.
+	 * @return the value of the '<em>Id</em>' attribute.
+	 * @see #setId(int)
 	 * @see EPackage1.EPackage1Package#getEClass1_Id()
-	 * @model unique="false" lower="3" upper="5"
+	 * @model unique="false" required="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyDescription='Description of id.'"
 	 * @generated
 	 */
-	EList<Integer> getId();
+	int getId();
+
+	/**
+	 * Sets the value of the '{@link EPackage1.EClass1#getId <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Id</em>' attribute.
+	 * @see #getId()
+	 * @generated
+	 */
+	void setId(int value);
 
 	/**
 	 * Returns the value of the '<em><b>My Relation</b></em>' reference list.

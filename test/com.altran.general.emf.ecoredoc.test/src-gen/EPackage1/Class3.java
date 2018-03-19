@@ -36,6 +36,7 @@ public interface Class3 extends EClass1 {
 	 * @see EPackage1.Enum1
 	 * @see EPackage1.EPackage1Package#getClass3_Something()
 	 * @model unique="false" upper="6"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyDescription='Something.'"
 	 * @generated
 	 */
 	EList<Enum1> getSomething();
@@ -54,6 +55,7 @@ public interface Class3 extends EClass1 {
 	 * @see EPackage1.EPackage1Package#getClass3_SpecialParent()
 	 * @see EPackage1.MyEClass#getClazzes
 	 * @model opposite="clazzes" transient="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyDescription='Bla'"
 	 * @generated
 	 */
 	MyEClass getSpecialParent();

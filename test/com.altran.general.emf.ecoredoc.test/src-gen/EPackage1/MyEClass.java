@@ -38,6 +38,7 @@ public interface MyEClass extends EClass1 {
 	 * @see #setAttr(Number)
 	 * @see EPackage1.EPackage1Package#getMyEClass_Attr()
 	 * @model unique="false" dataType="EPackage1.SpecialDataType"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyDescription='Description. Second sentence.'"
 	 * @generated
 	 */
 	Number getAttr();
@@ -63,7 +64,7 @@ public interface MyEClass extends EClass1 {
 	 * @return the value of the '<em>Ref</em>' reference.
 	 * @see #setRef(EClass1)
 	 * @see EPackage1.EPackage1Package#getMyEClass_Ref()
-	 * @model
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel propertyDescription='Whatever.'"
 	 * @generated
 	 */
 	EClass1 getRef();
@@ -110,6 +111,7 @@ public interface MyEClass extends EClass1 {
 	 * @see EPackage1.Enum1
 	 * @see EPackage1.EPackage1Package#getMyEClass_Eeeenum()
 	 * @model default="Literal1" unique="false" upper="6"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyDescription='Deschkriptschion'"
 	 * @generated
 	 */
 	EList<Enum1> getEeeenum();

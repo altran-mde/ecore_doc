@@ -40,34 +40,34 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public abstract class EClass1Impl extends MinimalEObjectImpl.Container implements EClass1 {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected EList<String> name;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute list.
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Integer> id;
+	protected static final int ID_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected int id = ID_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getMyRelation() <em>My Relation</em>}' reference list.
@@ -103,7 +103,10 @@ public abstract class EClass1Impl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
+	public EList<String> getName() {
+		if (name == null) {
+			name = new EDataTypeEList<String>(String.class, this, EPackage1Package.ECLASS1__NAME);
+		}
 		return name;
 	}
 
@@ -112,11 +115,8 @@ public abstract class EClass1Impl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EPackage1Package.ECLASS1__NAME, oldName, name));
+	public int getId() {
+		return id;
 	}
 
 	/**
@@ -124,11 +124,11 @@ public abstract class EClass1Impl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Integer> getId() {
-		if (id == null) {
-			id = new EDataTypeEList<Integer>(Integer.class, this, EPackage1Package.ECLASS1__ID);
-		}
-		return id;
+	public void setId(int newId) {
+		int oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EPackage1Package.ECLASS1__ID, oldId, id));
 	}
 
 	/**
@@ -200,11 +200,11 @@ public abstract class EClass1Impl extends MinimalEObjectImpl.Container implement
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EPackage1Package.ECLASS1__NAME:
-				setName((String)newValue);
+				getName().clear();
+				getName().addAll((Collection<? extends String>)newValue);
 				return;
 			case EPackage1Package.ECLASS1__ID:
-				getId().clear();
-				getId().addAll((Collection<? extends Integer>)newValue);
+				setId((Integer)newValue);
 				return;
 			case EPackage1Package.ECLASS1__MY_RELATION:
 				getMyRelation().clear();
@@ -223,10 +223,10 @@ public abstract class EClass1Impl extends MinimalEObjectImpl.Container implement
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case EPackage1Package.ECLASS1__NAME:
-				setName(NAME_EDEFAULT);
+				getName().clear();
 				return;
 			case EPackage1Package.ECLASS1__ID:
-				getId().clear();
+				setId(ID_EDEFAULT);
 				return;
 			case EPackage1Package.ECLASS1__MY_RELATION:
 				getMyRelation().clear();
@@ -244,9 +244,9 @@ public abstract class EClass1Impl extends MinimalEObjectImpl.Container implement
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EPackage1Package.ECLASS1__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+				return name != null && !name.isEmpty();
 			case EPackage1Package.ECLASS1__ID:
-				return id != null && !id.isEmpty();
+				return id != ID_EDEFAULT;
 			case EPackage1Package.ECLASS1__MY_RELATION:
 				return myRelation != null && !myRelation.isEmpty();
 		}

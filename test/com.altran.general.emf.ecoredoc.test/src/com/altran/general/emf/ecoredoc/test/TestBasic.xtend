@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup
 import org.junit.Test
 
 import static org.junit.Assert.assertEquals
+import org.eclipse.emf.ecore.EPackage
 
 class TestBasic {
 	@Test
@@ -18,10 +19,13 @@ class TestBasic {
 		
 		val resourceSet = injector.getInstance(ResourceSet)
 		
-		resourceSet.getResource(URI.createURI("testData/generator/basic/EPackage1.xcore"), true)
-		resourceSet.getResource(URI.createURI("testData/generator/basic/EPackage2.ecore"), true)
+		val package1 = resourceSet.getResource(URI.createURI("testData/generator/basic/EPackage1.xcore"), true).contents.filter(EPackage).head
+		val package2 = resourceSet.getResource(URI.createURI("testData/generator/basic/EPackage2.ecore"), true).contents.filter(EPackage).head
 		
-		val input = resourceSet.allContents.filter(EClassifier).toSet
+		val input = newLinkedHashSet()
+		
+		input.addAll(package1.EClassifiers)
+		input.addAll(package2.EClassifiers)
 		
 		val generator = new EcoreDocGenerator(input)
 		

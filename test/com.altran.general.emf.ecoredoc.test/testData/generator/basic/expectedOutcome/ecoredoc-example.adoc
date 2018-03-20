@@ -27,7 +27,7 @@ TODO: Create template for EDataType
 [[EPackage1-Enum1]]
 ==== Enum1
 
-Enum 1 Description
+Enum1 Description
 
 .Literals
 [cols="<20m,>10m,<70a",options="header"]
@@ -44,15 +44,81 @@ Second sentence of Literal1 Description.
 
 |Literal2[[EPackage1-Enum1-Literal2]]
 |1
-|Literal2 Description
+|
+
+|Literal3[[EPackage1-Enum1-Literal3]]
+|5
+|Literal3 Description
 
 |===
 
 .Used at
-* <<EPackage1-MyEClass-eeeenum, EPackage1.MyEClass.eeeenum>>
 * <<EPackage1-Class3-something, EPackage1.Class3.something>>
+* <<EPackage1-MyEClass-eeeenum, EPackage1.MyEClass.eeeenum>>
 
 === Classes
+
+[[EPackage1-Class3]]
+==== Class Class3
+
+Description
+
+.Supertypes
+* <<EPackage1-EClass1, EPackage1.EClass1>>
+
+.Attributes
+[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+|===
+|Name
+|Type
+|Multiplicity{nbsp}/ Order
+|Default Value
+|Description
+
+|something[[EPackage1-Class3-something]]
+|<<EPackage1-Enum1, EPackage1.Enum1>>
+|0..6
+|
+|Something.
+
+|id[[EPackage1-Class3-id]] +
+(<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
+|EInt
+|1
+|
+|Description of id.
+
+|name[[EPackage1-Class3-name]] +
+(<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
+|EString
+|3..5
+|
+|Name desc.
+
+|===
+
+.References
+[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+|===
+|Name
+|Type
+|Multiplicity{nbsp}/ Order
+|Opposite
+|Description
+
+|specialParent[[EPackage1-Class3-specialParent]]
+|<<EPackage1-MyEClass, EPackage1.MyEClass>>
+|5
+|<<EPackage1-MyEClass-clazzes, clazzes>>
+|Bla
+
+|myRelation[[EPackage1-Class3-myRelation]] +
+(<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
+|<<EPackage1-MyEClass, EPackage1.MyEClass>>
+|0..*{nbsp}/ unordered
+|<<EPackage1-MyEClass-backwards, backwards>>
+|Description.
+|===
 
 [[EPackage1-EClass1]]
 ==== Abstract Class EClass1
@@ -214,67 +280,6 @@ Containments could also be inherited.
 * <<EPackage1-EClass1-myRelation, EPackage1.EClass1.myRelation>>
 
 
-[[EPackage1-Class3]]
-==== Class Class3
-
-Description
-
-.Supertypes
-* <<EPackage1-EClass1, EPackage1.EClass1>>
-
-.Attributes
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
-|===
-|Name
-|Type
-|Multiplicity{nbsp}/ Order
-|Default Value
-|Description
-
-|something[[EPackage1-Class3-something]]
-|<<EPackage1-Enum1, EPackage1.Enum1>>
-|0..6
-|
-|Something.
-
-|id[[EPackage1-Class3-id]] +
-(<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
-|EInt
-|1
-|
-|Description of id.
-
-|name[[EPackage1-Class3-name]] +
-(<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
-|EString
-|3..5
-|
-|Name desc.
-
-|===
-
-.References
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
-|===
-|Name
-|Type
-|Multiplicity{nbsp}/ Order
-|Opposite
-|Description
-
-|specialParent[[EPackage1-Class3-specialParent]]
-|<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|5
-|<<EPackage1-MyEClass-clazzes, clazzes>>
-|Bla
-
-|myRelation[[EPackage1-Class3-myRelation]] +
-(<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
-|<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|0..*{nbsp}/ unordered
-|<<EPackage1-MyEClass-backwards, backwards>>
-|Description.
-|===
 
 
 

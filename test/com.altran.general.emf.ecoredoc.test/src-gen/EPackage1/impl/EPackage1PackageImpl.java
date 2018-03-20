@@ -398,6 +398,7 @@ public class EPackage1PackageImpl extends EPackageImpl implements EPackage1Packa
 		initEEnum(enum1EEnum, Enum1.class, "Enum1");
 		addEEnumLiteral(enum1EEnum, Enum1.LITERAL1);
 		addEEnumLiteral(enum1EEnum, Enum1.LITERAL2);
+		addEEnumLiteral(enum1EEnum, Enum1.LITERAL3);
 
 		// Initialize data types
 		initEDataType(specialDataTypeEDataType, Number.class, "SpecialDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

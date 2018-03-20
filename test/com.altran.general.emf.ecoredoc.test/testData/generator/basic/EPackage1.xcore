@@ -2,33 +2,38 @@ package EPackage1
 
 type SpecialDataType wraps java.lang.Number
 
+@GenModel(documentation="Enum1 Description")
 enum Enum1 {
+	@GenModel(documentation="Literal1 Description\n\nSecond sentence of Literal1 Description.")
 	Literal1 = 0
 	Literal2 = 1
+	@GenModel(documentation="Literal3 Description")
+	Literal3 = 5
 }
 
+@GenModel(documentation="Description of EClass1")
 abstract class EClass1 {
-	@GenModel(propertyDescription="Name desc.", propertyCategory="")
+	@GenModel(documentation="Veary speial")
 	String[3..5] name
 	 
-	@GenModel(propertyDescription="Description of id.")
+	@GenModel(documentation="Description of id.")
 	int[1] ^id
 	 
-	@GenModel(propertyDescription="Description.")
+	@GenModel(documentation="Description.")
 	refers MyEClass[] myRelation opposite backwards
 	
 }
 
 class MyEClass extends EClass1 {
- @GenModel(propertyDescription="Description. Second sentence.")
+	@GenModel(documentation="Description. Second sentence.")
 	SpecialDataType[?] attr
 	
- @GenModel(propertyDescription="Whatever.")
+ @GenModel(documentation="Whatever.")
 	refers EClass1[0..1] ref
 	
 	contains Class3[1..*] clazzes opposite specialParent
 	
- @GenModel(propertyDescription="Deschkriptschion")
+ @GenModel(documentation="Deschkriptschion")
 	Enum1[0..6] eeeenum = "Literal1"
 	
 	contains Class3[0..*] otherClasses
@@ -37,12 +42,12 @@ class MyEClass extends EClass1 {
 	refers EClass1[1] backwards opposite myRelation
 
 }
-
+@GenModel(documentation="Description")
 class Class3 extends EClass1 {
- @GenModel(propertyDescription="Something.")
+ @GenModel(documentation="Something.")
 	Enum1[0..6] something
 	//refers EClass1[1] backwards opposite myRelation
- @GenModel(propertyDescription="Bla")
+ @GenModel(documentation="Bla")
 	container MyEClass specialParent opposite clazzes
 	
 }

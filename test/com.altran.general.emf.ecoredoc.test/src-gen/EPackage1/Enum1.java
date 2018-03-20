@@ -13,6 +13,9 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Enum1</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * <!-- begin-model-doc -->
+ * Enum1 Description
+ * <!-- end-model-doc -->
  * @see EPackage1.EPackage1Package#getEnum1()
  * @model
  * @generated
@@ -36,16 +39,27 @@ public enum Enum1 implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	LITERAL2(1, "Literal2", "Literal2");
+	LITERAL2(1, "Literal2", "Literal2"),
+
+	/**
+	 * The '<em><b>Literal3</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #LITERAL3_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	LITERAL3(5, "Literal3", "Literal3");
 
 	/**
 	 * The '<em><b>Literal1</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Literal1</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Literal1 Description
+	 * 
+	 * Second sentence of Literal1 Description.
+	 * <!-- end-model-doc -->
 	 * @see #LITERAL1
 	 * @model name="Literal1"
 	 * @generated
@@ -69,6 +83,20 @@ public enum Enum1 implements Enumerator {
 	public static final int LITERAL2_VALUE = 1;
 
 	/**
+	 * The '<em><b>Literal3</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Literal3 Description
+	 * <!-- end-model-doc -->
+	 * @see #LITERAL3
+	 * @model name="Literal3"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int LITERAL3_VALUE = 5;
+
+	/**
 	 * An array of all the '<em><b>Enum1</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,6 +106,7 @@ public enum Enum1 implements Enumerator {
 		new Enum1[] {
 			LITERAL1,
 			LITERAL2,
+			LITERAL3,
 		};
 
 	/**
@@ -136,6 +165,7 @@ public enum Enum1 implements Enumerator {
 		switch (value) {
 			case LITERAL1_VALUE: return LITERAL1;
 			case LITERAL2_VALUE: return LITERAL2;
+			case LITERAL3_VALUE: return LITERAL3;
 		}
 		return null;
 	}

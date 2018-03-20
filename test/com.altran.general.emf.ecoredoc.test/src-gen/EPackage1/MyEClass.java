@@ -29,16 +29,14 @@ public interface MyEClass extends EClass1 {
 	/**
 	 * Returns the value of the '<em><b>Attr</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Attr</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Description. Second sentence.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Attr</em>' attribute.
 	 * @see #setAttr(Number)
 	 * @see EPackage1.EPackage1Package#getMyEClass_Attr()
 	 * @model unique="false" dataType="EPackage1.SpecialDataType"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyDescription='Description. Second sentence.'"
 	 * @generated
 	 */
 	Number getAttr();
@@ -56,15 +54,14 @@ public interface MyEClass extends EClass1 {
 	/**
 	 * Returns the value of the '<em><b>Ref</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Ref</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Whatever.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Ref</em>' reference.
 	 * @see #setRef(EClass1)
 	 * @see EPackage1.EPackage1Package#getMyEClass_Ref()
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel propertyDescription='Whatever.'"
+	 * @model
 	 * @generated
 	 */
 	EClass1 getRef();
@@ -102,16 +99,14 @@ public interface MyEClass extends EClass1 {
 	 * The list contents are of type {@link EPackage1.Enum1}.
 	 * The literals are from the enumeration {@link EPackage1.Enum1}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Eeeenum</em>' attribute list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Deschkriptschion
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Eeeenum</em>' attribute list.
 	 * @see EPackage1.Enum1
 	 * @see EPackage1.EPackage1Package#getMyEClass_Eeeenum()
 	 * @model default="Literal1" unique="false" upper="6"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyDescription='Deschkriptschion'"
 	 * @generated
 	 */
 	EList<Enum1> getEeeenum();

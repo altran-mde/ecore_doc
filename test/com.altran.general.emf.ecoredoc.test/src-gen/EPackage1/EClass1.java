@@ -11,6 +11,10 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>EClass1</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * Description of EClass1
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -29,15 +33,13 @@ public interface EClass1 extends EObject {
 	 * Returns the value of the '<em><b>Name</b></em>' attribute list.
 	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Veary speial
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Name</em>' attribute list.
 	 * @see EPackage1.EPackage1Package#getEClass1_Name()
 	 * @model unique="false" lower="3" upper="5"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyDescription='Name desc.' propertyCategory=''"
 	 * @generated
 	 */
 	EList<String> getName();
@@ -45,16 +47,14 @@ public interface EClass1 extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Description of id.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(int)
 	 * @see EPackage1.EPackage1Package#getEClass1_Id()
 	 * @model unique="false" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyDescription='Description of id.'"
 	 * @generated
 	 */
 	int getId();
@@ -74,16 +74,14 @@ public interface EClass1 extends EObject {
 	 * The list contents are of type {@link EPackage1.MyEClass}.
 	 * It is bidirectional and its opposite is '{@link EPackage1.MyEClass#getBackwards <em>Backwards</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>My Relation</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Description.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>My Relation</em>' reference list.
 	 * @see EPackage1.EPackage1Package#getEClass1_MyRelation()
 	 * @see EPackage1.MyEClass#getBackwards
 	 * @model opposite="backwards"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyDescription='Description.'"
 	 * @generated
 	 */
 	EList<MyEClass> getMyRelation();

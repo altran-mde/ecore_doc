@@ -14,44 +14,44 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
-public class DataTypeGeneratorPart extends AEcoreDocGeneratorPart {
-  public DataTypeGeneratorPart(final Multimap<EPackage, EClassifier> packages) {
-    super(packages);
+public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
+  public EDataTypeGeneratorPart(final Multimap<EPackage, EClassifier> ePackages) {
+    super(ePackages);
   }
   
   @Override
-  public StringBuilder write(final EPackage pack) {
-    final Collection<EDataType> dataTypes = this.collectDataTypes(pack);
-    this.writeDataTypes(dataTypes);
+  public StringBuilder write(final EPackage ePackage) {
+    final Collection<EDataType> eDataTypes = this.collectEDataTypes(ePackage);
+    this.writeEDataTypes(eDataTypes);
     return this.getOutput();
   }
   
-  protected Collection<EDataType> collectDataTypes(final EPackage pack) {
+  protected Collection<EDataType> collectEDataTypes(final EPackage ePackage) {
     final Function1<EDataType, Boolean> _function = (EDataType it) -> {
       return Boolean.valueOf((!(it instanceof EEnum)));
     };
-    return IterableExtensions.<EDataType>toSet(IterableExtensions.<EDataType>filter(Iterables.<EDataType>filter(this.getPackages().get(pack), EDataType.class), _function));
+    return IterableExtensions.<EDataType>toSet(IterableExtensions.<EDataType>filter(Iterables.<EDataType>filter(this.getEPackages().get(ePackage), EDataType.class), _function));
   }
   
   /**
    * Writes the dataTypes of the EPackage and where they are used in.
    */
-  protected void writeDataTypes(final Collection<EDataType> dataTypes) {
-    boolean _isEmpty = dataTypes.isEmpty();
+  protected void writeEDataTypes(final Collection<EDataType> eDataTypes) {
+    boolean _isEmpty = eDataTypes.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      this.writeDataTypesHeader();
-      final EPackage pack = this.getPackage(((EClassifier[])Conversions.unwrapArray(dataTypes, EClassifier.class))[0]);
-      for (final EDataType dataType : dataTypes) {
+      this.writeEDataTypesHeader();
+      final EPackage ePackage = this.getEPackage(((EClassifier[])Conversions.unwrapArray(eDataTypes, EClassifier.class))[0]);
+      for (final EDataType eDataType : eDataTypes) {
         {
-          this.writeDataType(pack.getName(), dataType.getName());
-          this.writeUseCases(dataType);
+          this.writeEDataType(ePackage.getName(), eDataType.getName());
+          this.writeUseCases(eDataType);
         }
       }
     }
   }
   
-  protected StringBuilder writeDataTypesHeader() {
+  protected StringBuilder writeEDataTypesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("=== Data Types");
@@ -63,17 +63,17 @@ public class DataTypeGeneratorPart extends AEcoreDocGeneratorPart {
     return _output.append(_builder);
   }
   
-  protected StringBuilder writeDataType(final String packageName, final String dataTypeName) {
+  protected StringBuilder writeEDataType(final String ePackageName, final String eDataTypeName) {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("[[");
-    _builder.append(packageName);
+    _builder.append(ePackageName);
     _builder.append("-");
-    _builder.append(dataTypeName);
+    _builder.append(eDataTypeName);
     _builder.append("]]");
     _builder.newLineIfNotEmpty();
     _builder.append("==== ");
-    _builder.append(dataTypeName);
+    _builder.append(eDataTypeName);
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     return _output.append(_builder);

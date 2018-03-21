@@ -9,6 +9,7 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -20,26 +21,26 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public abstract class AEcoreDocGeneratorPart {
-  private final Multimap<EPackage, EClassifier> packages;
+  private final Multimap<EPackage, EClassifier> ePackages;
   
   private final StringBuilder output = new StringBuilder();
   
-  public AEcoreDocGeneratorPart(final Multimap<EPackage, EClassifier> packages) {
-    this.packages = packages;
+  public AEcoreDocGeneratorPart(final Multimap<EPackage, EClassifier> ePackages) {
+    this.ePackages = ePackages;
   }
   
-  public abstract StringBuilder write(final EPackage pack);
+  public abstract StringBuilder write(final EPackage ePackage);
   
-  protected Multimap<EPackage, EClassifier> getPackages() {
-    return this.packages;
+  protected Multimap<EPackage, EClassifier> getEPackages() {
+    return this.ePackages;
   }
   
   protected StringBuilder getOutput() {
     return this.output;
   }
   
-  protected EPackage getPackage(final EClassifier eclassifier) {
-    EObject _eContainer = eclassifier.eContainer();
+  protected EPackage getEPackage(final EClassifier eClassifier) {
+    EObject _eContainer = eClassifier.eContainer();
     return ((EPackage) _eContainer);
   }
   
@@ -52,30 +53,30 @@ public abstract class AEcoreDocGeneratorPart {
     final Function1<EClass, Boolean> _function = (EClass it) -> {
       return Boolean.valueOf(Objects.equal(it, target));
     };
-    final Iterable<EClass> eclasses = IterableExtensions.<EClass>reject(this.collectAllEClasses(), _function);
+    final Iterable<EClass> eClasses = IterableExtensions.<EClass>reject(this.collectAllEClasses(), _function);
     final ArrayList<String> useCaseStrings = CollectionLiterals.<String>newArrayList();
-    for (final EClass eclass : eclasses) {
-      EList<EStructuralFeature> _eAllStructuralFeatures = eclass.getEAllStructuralFeatures();
+    for (final EClass eClass : eClasses) {
+      EList<EStructuralFeature> _eAllStructuralFeatures = eClass.getEAllStructuralFeatures();
       for (final EStructuralFeature feature : _eAllStructuralFeatures) {
         EClassifier _eType = feature.getEType();
         boolean _equals = Objects.equal(_eType, target);
         if (_equals) {
           anyMatch = true;
-          EObject _eContainer = eclass.eContainer();
-          final String packageName = ((EPackage) _eContainer).getName();
+          EObject _eContainer = eClass.eContainer();
+          final String ePackageName = ((EPackage) _eContainer).getName();
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("* <<");
-          _builder.append(packageName);
+          _builder.append(ePackageName);
           _builder.append("-");
-          String _name = eclass.getName();
+          String _name = eClass.getName();
           _builder.append(_name);
           _builder.append("-");
           String _name_1 = feature.getName();
           _builder.append(_name_1);
           _builder.append(", ");
-          _builder.append(packageName);
+          _builder.append(ePackageName);
           _builder.append(".");
-          String _name_2 = eclass.getName();
+          String _name_2 = eClass.getName();
           _builder.append(_name_2);
           _builder.append(".");
           String _name_3 = feature.getName();
@@ -99,7 +100,30 @@ public abstract class AEcoreDocGeneratorPart {
     }
   }
   
-  protected StringBuilder writeBlockClosure() {
+  protected StringBuilder writeEClassifierHeader(final EClassifier eClassifier) {
+    StringBuilder _xblockexpression = null;
+    {
+      final EPackage pack = this.getEPackage(eClassifier);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("[[");
+      String _name = pack.getName();
+      _builder.append(_name);
+      _builder.append("-");
+      String _name_1 = eClassifier.getName();
+      _builder.append(_name_1);
+      _builder.append("]]");
+      _builder.newLineIfNotEmpty();
+      _builder.append("==== ");
+      String _name_2 = eClassifier.getName();
+      _builder.append(_name_2);
+      _builder.newLineIfNotEmpty();
+      _builder.newLine();
+      _xblockexpression = this.output.append(_builder);
+    }
+    return _xblockexpression;
+  }
+  
+  protected StringBuilder writeFooter() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("|===");
     _builder.newLine();
@@ -107,8 +131,12 @@ public abstract class AEcoreDocGeneratorPart {
     return this.output.append(_builder);
   }
   
-  protected String getDocumentation(final EClassifier eclassifier) {
-    return EcoreUtil.getDocumentation(eclassifier);
+  protected StringBuilder getDocumentation(final EModelElement modelElement) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _documentation = EcoreUtil.getDocumentation(modelElement);
+    _builder.append(_documentation);
+    _builder.newLineIfNotEmpty();
+    return this.output.append(_builder);
   }
   
   protected String newline() {
@@ -116,6 +144,6 @@ public abstract class AEcoreDocGeneratorPart {
   }
   
   protected Collection<EClass> collectAllEClasses() {
-    return IterableExtensions.<EClass>toSet(Iterables.<EClass>filter(this.packages.values(), EClass.class));
+    return IterableExtensions.<EClass>toSet(Iterables.<EClass>filter(this.ePackages.values(), EClass.class));
   }
 }

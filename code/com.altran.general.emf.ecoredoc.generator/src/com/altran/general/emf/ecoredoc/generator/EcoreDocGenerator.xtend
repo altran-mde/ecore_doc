@@ -8,6 +8,8 @@ import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EModelElement
+import org.eclipse.emf.ecore.util.EcoreUtil
 
 // FIXME: Decide for all places: Either include the leading "E" in names or omit it, do not mix -->
 // EcoreDocGenerator.packages vs. EcoreDocGenerator.epackages
@@ -20,7 +22,7 @@ class EcoreDocGenerator {
 
 	val output = new StringBuilder
 
-	val Multimap<EPackage, EClassifier> packages = TreeMultimap.create(
+	val Multimap<EPackage, EClassifier> ePackages = TreeMultimap.create(
 		[o1, o2|o1.name.compareTo(o2.name)],
 		[o1, o2|o1.name.compareTo(o2.name)]
 	);
@@ -32,19 +34,19 @@ class EcoreDocGenerator {
 	def CharSequence generate() {
 		writeIntro()
 
-		collectPackages()
+		collectEPackages()
 
-		val dataTypeGeneratorPart = new DataTypeGeneratorPart(packages)
-		val enumGeneratorPart = new EnumGeneratorPart(packages)
-		val classGeneratorPart = new ClassGeneratorPart(packages)
+		val eDataTypeGeneratorPart = new EDataTypeGeneratorPart(ePackages)
+		val eEnumGeneratorPart = new EEnumGeneratorPart(ePackages)
+		val eClassGeneratorPart = new EClassGeneratorPart(ePackages)
 
-		for (pack : packages.keySet) {
+		for (ePackage : ePackages.keySet) {
 
-			writePackageIntro(pack.name)
+			writeEPackageIntro(ePackage.name)
 
-			output.append(dataTypeGeneratorPart.write(pack))
-			output.append(enumGeneratorPart.write(pack))
-			output.append(classGeneratorPart.write(pack))
+			output.append(eDataTypeGeneratorPart.write(ePackage))
+			output.append(eEnumGeneratorPart.write(ePackage))
+			output.append(eClassGeneratorPart.write(ePackage))
 
 		}
 
@@ -67,31 +69,17 @@ class EcoreDocGenerator {
 		''')
 	}
 
-	protected def writePackageIntro(String packageName) {
+	protected def writeEPackageIntro(String ePackageName) {
 		output.append('''
-			[[«packageName»]]
-			== Contents of «packageName»
+			[[«ePackageName»]]
+			== Contents of «ePackageName»
 			
 		''')
 	}
 
-	protected def void collectPackages() {
+	protected def void collectEPackages() {
 		for (eclassifier : input) {
-			packages.put(eclassifier.eContainer as EPackage, eclassifier)
+			ePackages.put(eclassifier.eContainer as EPackage, eclassifier)
 		}
-	}
-
-	// TODO: Unused?
-	protected def dispatch CharSequence writeEClassifierType(EClass clazz) {
-		'''Class'''
-	}
-
-	// TODO: Unused?
-	protected def dispatch CharSequence writeEClassifierType(EEnum eenum) {
-		'''Enum'''
-	}
-
-	// TODO: Unused?
-	protected def dispatch CharSequence writeEClassifierType(EDataType dataType) {
 	}
 }

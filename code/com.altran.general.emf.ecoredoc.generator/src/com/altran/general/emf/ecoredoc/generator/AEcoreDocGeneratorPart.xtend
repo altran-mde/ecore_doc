@@ -6,29 +6,30 @@ import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.emf.ecore.EModelElement
 
 abstract class AEcoreDocGeneratorPart {
 
-	val Multimap<EPackage, EClassifier> packages
+	val Multimap<EPackage, EClassifier> ePackages
 
 	val output = new StringBuilder
 
-	new(Multimap<EPackage, EClassifier> packages) {
-		this.packages = packages
+	new(Multimap<EPackage, EClassifier> ePackages) {
+		this.ePackages = ePackages
 	}
 
-	def abstract StringBuilder write(EPackage pack)
+	def abstract StringBuilder write(EPackage ePackage)
 
-	protected def getPackages() {
-		this.packages
+	protected def getEPackages() {
+		this.ePackages
 	}
 
 	protected def getOutput() {
 		this.output
 	}
 
-	protected def EPackage getPackage(EClassifier eclassifier) {
-		eclassifier.eContainer as EPackage
+	protected def EPackage getEPackage(EClassifier eClassifier) {
+		eClassifier.eContainer as EPackage
 	}
 
 	// FIXME: Introduce method to create the anchor name (<EPackage.name>-<EClass.name>-<EAttribute.name>) of EClassifiers and use it at any place we output the anchor name
@@ -40,17 +41,17 @@ abstract class AEcoreDocGeneratorPart {
 	protected def void writeUseCases(EClassifier target) {
 		var anyMatch = false
 
-		val eclasses = collectAllEClasses.reject[it == target]
+		val eClasses = collectAllEClasses.reject[it == target]
 
 		val useCaseStrings = newArrayList()
-		for (eclass : eclasses) {
-			for (feature : eclass.EAllStructuralFeatures) {
+		for (eClass : eClasses) {
+			for (feature : eClass.EAllStructuralFeatures) {
 				if (feature.EType == target) {
 					anyMatch = true
-					val packageName = (eclass.eContainer as EPackage).name
+					val ePackageName = (eClass.eContainer as EPackage).name
 					useCaseStrings.add(
 					'''
-						* <<«packageName»-«eclass.name»-«feature.name», «packageName».«eclass.name».«feature.name»>>
+						* <<«ePackageName»-«eClass.name»-«feature.name», «ePackageName».«eClass.name».«feature.name»>>
 					''')
 				}
 
@@ -67,18 +68,33 @@ abstract class AEcoreDocGeneratorPart {
 			output.append(newline)
 		}
 	}
-
-	// FIXME: This is the footer of a table in AsciiDoc. Use appropriate method name.
-	// FIXME: Use at all places that end a table, symmetrically to the start of the table
-	protected def writeBlockClosure() {
-		output.append('''|===
-
+	// FIXME: Either move to superclass and reuse it or rename
+	protected def writeEClassifierHeader(EClassifier eClassifier) {
+		val pack = getEPackage(eClassifier)
+		output.append(
+		'''
+		[[«pack.name»-«eClassifier.name»]]
+		==== «eClassifier.name»
+		
 		''')
 	}
 
-	// FIXME: Use the for every element that may have a documentation
-	protected def getDocumentation(EClassifier eclassifier) {
-		EcoreUtil.getDocumentation(eclassifier)
+	// FIXME: This is the footer of a table in AsciiDoc. Use appropriate method name.
+	// FIXME: Use at all places that end a table, symmetrically to the start of the table
+	protected def writeFooter() {
+		output.append(
+		'''
+		|===
+		
+		''')
+	}
+	// FIXME: Use the for every element that may have a documentation - DONE
+	protected def getDocumentation(EModelElement modelElement) {
+		output.append(
+		'''
+		«EcoreUtil.getDocumentation(modelElement)
+		»
+		''')
 	}
 
 	protected def String newline() {
@@ -86,6 +102,6 @@ abstract class AEcoreDocGeneratorPart {
 	}
 
 	protected def Collection<EClass> collectAllEClasses() {
-		packages.values.filter(EClass).toSet
+		ePackages.values.filter(EClass).toSet
 	}
 }

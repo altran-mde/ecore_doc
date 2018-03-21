@@ -1,18 +1,14 @@
 package com.altran.general.emf.ecoredoc.generator;
 
-import com.altran.general.emf.ecoredoc.generator.ClassGeneratorPart;
-import com.altran.general.emf.ecoredoc.generator.DataTypeGeneratorPart;
-import com.altran.general.emf.ecoredoc.generator.EnumGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.EClassGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.EDataTypeGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.EEnumGeneratorPart;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.TreeMultimap;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Set;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -23,7 +19,7 @@ public class EcoreDocGenerator {
   
   private final StringBuilder output = new StringBuilder();
   
-  private final Multimap<EPackage, EClassifier> packages = TreeMultimap.<EPackage, EClassifier>create(
+  private final Multimap<EPackage, EClassifier> ePackages = TreeMultimap.<EPackage, EClassifier>create(
     ((Comparator<EPackage>) (EPackage o1, EPackage o2) -> {
       return o1.getName().compareTo(o2.getName());
     }), 
@@ -37,17 +33,17 @@ public class EcoreDocGenerator {
   
   public CharSequence generate() {
     this.writeIntro();
-    this.collectPackages();
-    final DataTypeGeneratorPart dataTypeGeneratorPart = new DataTypeGeneratorPart(this.packages);
-    final EnumGeneratorPart enumGeneratorPart = new EnumGeneratorPart(this.packages);
-    final ClassGeneratorPart classGeneratorPart = new ClassGeneratorPart(this.packages);
-    Set<EPackage> _keySet = this.packages.keySet();
-    for (final EPackage pack : _keySet) {
+    this.collectEPackages();
+    final EDataTypeGeneratorPart eDataTypeGeneratorPart = new EDataTypeGeneratorPart(this.ePackages);
+    final EEnumGeneratorPart eEnumGeneratorPart = new EEnumGeneratorPart(this.ePackages);
+    final EClassGeneratorPart eClassGeneratorPart = new EClassGeneratorPart(this.ePackages);
+    Set<EPackage> _keySet = this.ePackages.keySet();
+    for (final EPackage ePackage : _keySet) {
       {
-        this.writePackageIntro(pack.getName());
-        this.output.append(dataTypeGeneratorPart.write(pack));
-        this.output.append(enumGeneratorPart.write(pack));
-        this.output.append(classGeneratorPart.write(pack));
+        this.writeEPackageIntro(ePackage.getName());
+        this.output.append(eDataTypeGeneratorPart.write(ePackage));
+        this.output.append(eEnumGeneratorPart.write(ePackage));
+        this.output.append(eClassGeneratorPart.write(ePackage));
       }
     }
     return this.output.toString();
@@ -76,52 +72,23 @@ public class EcoreDocGenerator {
     return this.output.append(_builder);
   }
   
-  protected StringBuilder writePackageIntro(final String packageName) {
+  protected StringBuilder writeEPackageIntro(final String ePackageName) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("[[");
-    _builder.append(packageName);
+    _builder.append(ePackageName);
     _builder.append("]]");
     _builder.newLineIfNotEmpty();
     _builder.append("== Contents of ");
-    _builder.append(packageName);
+    _builder.append(ePackageName);
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     return this.output.append(_builder);
   }
   
-  protected void collectPackages() {
+  protected void collectEPackages() {
     for (final EClassifier eclassifier : this.input) {
       EObject _eContainer = eclassifier.eContainer();
-      this.packages.put(((EPackage) _eContainer), eclassifier);
-    }
-  }
-  
-  protected CharSequence _writeEClassifierType(final EClass clazz) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Class");
-    return _builder;
-  }
-  
-  protected CharSequence _writeEClassifierType(final EEnum eenum) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Enum");
-    return _builder;
-  }
-  
-  protected CharSequence _writeEClassifierType(final EDataType dataType) {
-    return null;
-  }
-  
-  protected CharSequence writeEClassifierType(final EClassifier eenum) {
-    if (eenum instanceof EEnum) {
-      return _writeEClassifierType((EEnum)eenum);
-    } else if (eenum instanceof EClass) {
-      return _writeEClassifierType((EClass)eenum);
-    } else if (eenum instanceof EDataType) {
-      return _writeEClassifierType((EDataType)eenum);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(eenum).toString());
+      this.ePackages.put(((EPackage) _eContainer), eclassifier);
     }
   }
 }

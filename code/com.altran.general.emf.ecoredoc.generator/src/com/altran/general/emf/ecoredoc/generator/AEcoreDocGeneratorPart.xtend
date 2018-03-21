@@ -38,6 +38,27 @@ abstract class AEcoreDocGeneratorPart {
 	 * Writes in which classes the given EClassifier is used. 
 	 * Goes through every class and then every attribute and it compare the dataType.name with the attribute type name.
 	 */
+	protected def CharSequence writeAnchorName(String...toAnchor){
+		var anchor = ''''''
+		var counter = 0;
+		for(name : toAnchor){
+			anchor = anchor+'''«IF counter!=0»-«ENDIF»'''+name
+			counter++
+		}
+		return anchor
+	}
+	protected def CharSequence writeReferenceName(String...toReference){
+		var reference = ''''''
+		var counter = 0;
+		for(name : toReference){
+			reference = reference+'''«IF counter!=0».«ENDIF»'''+name
+			counter++
+		}
+		return reference
+	}
+	protected def CharSequence writeAnchorAndReference(String...names){
+		'''«writeAnchorName(names)», «writeReferenceName(names)»'''
+	}
 	protected def void writeUseCases(EClassifier target) {
 		var anyMatch = false
 
@@ -51,7 +72,7 @@ abstract class AEcoreDocGeneratorPart {
 					val ePackageName = (eClass.eContainer as EPackage).name
 					useCaseStrings.add(
 					'''
-						* <<«ePackageName»-«eClass.name»-«feature.name», «ePackageName».«eClass.name».«feature.name»>>
+						* <<«writeAnchorAndReference(ePackageName, eClass.name, feature.name)»>>
 					''')
 				}
 
@@ -68,7 +89,7 @@ abstract class AEcoreDocGeneratorPart {
 			output.append(newline)
 		}
 	}
-	// FIXME: Either move to superclass and reuse it or rename
+	// FIXME: Either move to superclass and reuse it or rename - DONE
 	protected def writeEClassifierHeader(EClassifier eClassifier) {
 		val pack = getEPackage(eClassifier)
 		output.append(
@@ -79,7 +100,7 @@ abstract class AEcoreDocGeneratorPart {
 		''')
 	}
 
-	// FIXME: This is the footer of a table in AsciiDoc. Use appropriate method name.
+	// FIXME: This is the footer of a table in AsciiDoc. Use appropriate method name. - DONE
 	// FIXME: Use at all places that end a table, symmetrically to the start of the table
 	protected def writeFooter() {
 		output.append(

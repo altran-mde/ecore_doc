@@ -3,7 +3,6 @@ package com.altran.general.emf.ecoredoc.generator;
 import com.altran.general.emf.ecoredoc.generator.AEcoreDocGeneratorPart;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +36,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return IterableExtensions.<EClass, String>sortBy(Iterables.<EClass>filter(this.getEPackages().get(ePackages), EClass.class), _function);
   }
   
-  protected void writeEClasses(final Collection<EClass> eClasses) {
+  protected void writeEClasses(final List<EClass> eClasses) {
     boolean _isEmpty = eClasses.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
@@ -103,8 +102,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     {
       this.getDocumentation(eclass);
       this.writeSuperTypes(eclass);
-      this.writeEAttributes(eclass);
-      _xblockexpression = this.writeReferences(eclass);
+      _xblockexpression = this.writeEAttributes(eclass);
     }
     return _xblockexpression;
   }
@@ -209,11 +207,11 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
         final Function1<EAttribute, String> _function_1 = (EAttribute it) -> {
           return it.getName();
         };
-        List<EAttribute> _sortBy_1 = IterableExtensions.<EAttribute, String>sortBy(inheritedEAttributes.keySet(), _function_1);
+        List<EAttribute> _sortBy_1 = IterableExtensions.<EAttribute, String>sortBy(eClass.getEAllAttributes(), _function_1);
         for (final EAttribute eAttribute_1 : _sortBy_1) {
-          {
-            final String packageNameOfInherited = this.getEPackage(inheritedEAttributes.get(eAttribute_1)).getName();
-            final EClass superclass_1 = inheritedEAttributes.get(eAttribute_1);
+          boolean _contains = inheritedEAttributes.keySet().contains(eAttribute_1);
+          boolean _not = (!_contains);
+          if (_not) {
             final String eAttributeTypeName = eAttribute_1.getEAttributeType().getName();
             final int lowerBound = eAttribute_1.getLowerBound();
             final int upperBound = eAttribute_1.getUpperBound();
@@ -223,41 +221,23 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
             String _name = eAttribute_1.getName();
             _builder.append(_name);
             _builder.append("[[");
-            _builder.append(packageNameOfInherited);
+            _builder.append(ePackageName);
             _builder.append("-");
             String _name_1 = eClass.getName();
             _builder.append(_name_1);
             _builder.append("-");
             String _name_2 = eAttribute_1.getName();
             _builder.append(_name_2);
-            _builder.append("]] +");
+            _builder.append("]]");
             _builder.newLineIfNotEmpty();
-            _builder.append("(<<");
-            _builder.append(packageNameOfInherited);
-            _builder.append("-");
-            String _name_3 = superclass_1.getName();
-            _builder.append(_name_3);
-            _builder.append("-");
-            String _name_4 = eAttribute_1.getName();
-            _builder.append(_name_4);
-            _builder.append(", {inherited}");
-            _builder.append(packageNameOfInherited);
-            _builder.append(".");
-            String _name_5 = superclass_1.getName();
-            _builder.append(_name_5);
-            _builder.append(">>)");
+            _builder.append("|<<");
+            CharSequence _writeAnchorAndReference = this.writeAnchorAndReference(ePackageName, eAttributeTypeName);
+            _builder.append(_writeAnchorAndReference);
+            _builder.append(">>");
             _builder.newLineIfNotEmpty();
             _builder.append("|");
-            _builder.append(eAttributeTypeName);
-            _builder.newLineIfNotEmpty();
-            _builder.append("|");
-            _builder.append(lowerBound);
-            {
-              if ((lowerBound != upperBound)) {
-                _builder.append("..");
-                _builder.append(upperBound);
-              }
-            }
+            CharSequence _writeBounds = this.writeBounds(lowerBound, upperBound);
+            _builder.append(_writeBounds);
             _builder.newLineIfNotEmpty();
             _builder.append("|");
             _builder.newLine();
@@ -272,56 +252,59 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
         final Function1<EAttribute, String> _function_2 = (EAttribute it) -> {
           return it.getName();
         };
-        List<EAttribute> _sortBy_2 = IterableExtensions.<EAttribute, String>sortBy(eClass.getEAllAttributes(), _function_2);
+        List<EAttribute> _sortBy_2 = IterableExtensions.<EAttribute, String>sortBy(inheritedEAttributes.keySet(), _function_2);
         for (final EAttribute eAttribute_2 : _sortBy_2) {
-          boolean _contains = inheritedEAttributes.keySet().contains(eAttribute_2);
-          boolean _not = (!_contains);
-          if (_not) {
-            final String eAttributeTypeName = eAttribute_2.getEAttributeType().getName();
-            final int lowerBound = eAttribute_2.getLowerBound();
-            final int upperBound = eAttribute_2.getUpperBound();
-            StringBuilder _output = this.getOutput();
-            StringConcatenation _builder = new StringConcatenation();
-            _builder.append("|");
-            String _name = eAttribute_2.getName();
-            _builder.append(_name);
-            _builder.append("[[");
-            _builder.append(ePackageName);
-            _builder.append("-");
-            String _name_1 = eClass.getName();
-            _builder.append(_name_1);
-            _builder.append("-");
-            String _name_2 = eAttribute_2.getName();
-            _builder.append(_name_2);
-            _builder.append("]]");
-            _builder.newLineIfNotEmpty();
-            _builder.append("|<<");
-            _builder.append(ePackageName);
-            _builder.append("-");
-            _builder.append(eAttributeTypeName);
-            _builder.append(", ");
-            _builder.append(ePackageName);
-            _builder.append(".");
-            _builder.append(eAttributeTypeName);
-            _builder.append(">>");
-            _builder.newLineIfNotEmpty();
-            _builder.append("|");
-            _builder.append(lowerBound);
-            {
-              if ((lowerBound != upperBound)) {
-                _builder.append("..");
-                _builder.append(upperBound);
-              }
-            }
-            _builder.newLineIfNotEmpty();
-            _builder.append("|");
-            _builder.newLine();
-            _builder.append("|");
-            StringBuilder _documentation = this.getDocumentation(eAttribute_2);
-            _builder.append(_documentation);
-            _builder.newLineIfNotEmpty();
-            _builder.newLine();
-            _output.append(_builder);
+          {
+            final String packageNameOfInherited = this.getEPackage(inheritedEAttributes.get(eAttribute_2)).getName();
+            final EClass superclass_1 = inheritedEAttributes.get(eAttribute_2);
+            final String eAttributeTypeName_1 = eAttribute_2.getEAttributeType().getName();
+            final int lowerBound_1 = eAttribute_2.getLowerBound();
+            final int upperBound_1 = eAttribute_2.getUpperBound();
+            StringBuilder _output_1 = this.getOutput();
+            StringConcatenation _builder_1 = new StringConcatenation();
+            _builder_1.append("|");
+            String _name_3 = eAttribute_2.getName();
+            _builder_1.append(_name_3);
+            _builder_1.append("[[");
+            _builder_1.append(packageNameOfInherited);
+            _builder_1.append("-");
+            String _name_4 = eClass.getName();
+            _builder_1.append(_name_4);
+            _builder_1.append("-");
+            String _name_5 = eAttribute_2.getName();
+            _builder_1.append(_name_5);
+            _builder_1.append("]] +");
+            _builder_1.newLineIfNotEmpty();
+            _builder_1.append("(<<");
+            _builder_1.append(packageNameOfInherited);
+            _builder_1.append("-");
+            String _name_6 = superclass_1.getName();
+            _builder_1.append(_name_6);
+            _builder_1.append("-");
+            String _name_7 = eAttribute_2.getName();
+            _builder_1.append(_name_7);
+            _builder_1.append(", {inherited}");
+            _builder_1.append(packageNameOfInherited);
+            _builder_1.append(".");
+            String _name_8 = superclass_1.getName();
+            _builder_1.append(_name_8);
+            _builder_1.append(">>)");
+            _builder_1.newLineIfNotEmpty();
+            _builder_1.append("|");
+            _builder_1.append(eAttributeTypeName_1);
+            _builder_1.newLineIfNotEmpty();
+            _builder_1.append("|");
+            CharSequence _writeBounds_1 = this.writeBounds(lowerBound_1, upperBound_1);
+            _builder_1.append(_writeBounds_1);
+            _builder_1.newLineIfNotEmpty();
+            _builder_1.append("|");
+            _builder_1.newLine();
+            _builder_1.append("|");
+            StringBuilder _documentation_1 = this.getDocumentation(eAttribute_2);
+            _builder_1.append(_documentation_1);
+            _builder_1.newLineIfNotEmpty();
+            _builder_1.newLine();
+            _output_1.append(_builder_1);
           }
         }
         _xblockexpression = this.writeFooter();
@@ -331,170 +314,146 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _xifexpression;
   }
   
-  public StringBuilder writeReferences(final EClass eClass) {
-    StringBuilder _xblockexpression = null;
+  public CharSequence writeBounds(final int lowerBound, final int upperBound) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(lowerBound);
     {
-      int _size = eClass.getEReferences().size();
-      boolean _greaterThan = (_size > 0);
-      if (_greaterThan) {
-        this.writeEReferencesHeader();
+      if ((lowerBound != upperBound)) {
+        _builder.append("..");
+        _builder.append(upperBound);
       }
-      final String ePackageName = this.getEPackage(eClass).getName();
-      Map<EReference, EClass> inheritedEReferences = new HashMap<EReference, EClass>();
-      EList<EClass> _eAllSuperTypes = eClass.getEAllSuperTypes();
-      for (final EClass superclass : _eAllSuperTypes) {
-        if ((superclass instanceof EClass)) {
-          final Function1<EReference, String> _function = (EReference it) -> {
-            return it.getName();
-          };
-          List<EReference> _sortBy = IterableExtensions.<EReference, String>sortBy(superclass.getEReferences(), _function);
-          for (final EReference eReference : _sortBy) {
-            inheritedEReferences.put(eReference, superclass);
-          }
-        }
-      }
-      final Function1<EReference, String> _function_1 = (EReference it) -> {
-        return it.getName();
-      };
-      List<EReference> _sortBy_1 = IterableExtensions.<EReference, String>sortBy(inheritedEReferences.keySet(), _function_1);
-      for (final EReference eReference_1 : _sortBy_1) {
-        {
-          final String packageNameOfInherited = this.getEPackage(inheritedEReferences.get(eReference_1)).getName();
-          final EClass superclass_1 = inheritedEReferences.get(eReference_1);
-          final String eReferenceTypeName = eReference_1.getEReferenceType().getName();
-          final int lowerBound = eReference_1.getLowerBound();
-          final int upperBound = eReference_1.getUpperBound();
-          StringBuilder _output = this.getOutput();
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("|");
-          String _name = eReference_1.getName();
-          _builder.append(_name);
-          _builder.append("[[");
-          _builder.append(packageNameOfInherited);
-          _builder.append("-");
-          String _name_1 = eClass.getName();
-          _builder.append(_name_1);
-          _builder.append("-");
-          String _name_2 = eReference_1.getName();
-          _builder.append(_name_2);
-          _builder.append("]] +");
-          _builder.newLineIfNotEmpty();
-          _builder.append("(<<");
-          _builder.append(packageNameOfInherited);
-          _builder.append("-");
-          String _name_3 = superclass_1.getName();
-          _builder.append(_name_3);
-          _builder.append("-");
-          String _name_4 = eReference_1.getName();
-          _builder.append(_name_4);
-          _builder.append(", {inherited}");
-          _builder.append(packageNameOfInherited);
-          _builder.append(".");
-          String _name_5 = superclass_1.getName();
-          _builder.append(_name_5);
-          _builder.append(">>)");
-          _builder.newLineIfNotEmpty();
-          _builder.append("|<<");
-          _builder.append(ePackageName);
-          _builder.append("-");
-          _builder.append(eReferenceTypeName);
-          _builder.append(", ");
-          _builder.append(ePackageName);
-          _builder.append(".");
-          _builder.append(eReferenceTypeName);
-          _builder.append(">>");
-          _builder.newLineIfNotEmpty();
-          _builder.append("|");
-          _builder.append(lowerBound);
-          {
-            if ((lowerBound != upperBound)) {
-              _builder.append("..");
-              _builder.append(upperBound);
-            }
-          }
-          _builder.newLineIfNotEmpty();
-          _builder.append("|<<");
-          _builder.append(ePackageName);
-          _builder.append("-");
-          _builder.append(eReferenceTypeName);
-          _builder.append("-");
-          String _name_6 = eReference_1.getEOpposite().getName();
-          _builder.append(_name_6);
-          _builder.append(", ");
-          String _name_7 = eReference_1.getEOpposite().getName();
-          _builder.append(_name_7);
-          _builder.append(">>");
-          _builder.newLineIfNotEmpty();
-          _builder.append("|");
-          StringBuilder _documentation = this.getDocumentation(eReference_1);
-          _builder.append(_documentation);
-          _builder.newLineIfNotEmpty();
-          _builder.newLine();
-          _output.append(_builder);
-        }
-      }
-      final Function1<EReference, String> _function_2 = (EReference it) -> {
-        return it.getName();
-      };
-      List<EReference> _sortBy_2 = IterableExtensions.<EReference, String>sortBy(eClass.getEReferences(), _function_2);
-      for (final EReference eReference_2 : _sortBy_2) {
-        boolean _contains = inheritedEReferences.keySet().contains(eReference_2);
-        boolean _not = (!_contains);
-        if (_not) {
-          StringBuilder _output = this.getOutput();
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("|");
-          String _name = eReference_2.getName();
-          _builder.append(_name);
-          _builder.append("[[");
-          _builder.append(ePackageName);
-          _builder.append("-");
-          String _name_1 = eClass.getName();
-          _builder.append(_name_1);
-          _builder.append("-");
-          String _name_2 = eReference_2.getName();
-          _builder.append(_name_2);
-          _builder.append("]]");
-          _builder.newLineIfNotEmpty();
-          _builder.append("|<<");
-          _builder.append(ePackageName);
-          _builder.append("-");
-          String _name_3 = eReference_2.getEReferenceType().getName();
-          _builder.append(_name_3);
-          _builder.append(", ");
-          _builder.append(ePackageName);
-          _builder.append(".");
-          String _name_4 = eReference_2.getEReferenceType().getName();
-          _builder.append(_name_4);
-          _builder.append(">>");
-          _builder.newLineIfNotEmpty();
-          _builder.append("|");
-          int _lowerBound = eReference_2.getLowerBound();
-          _builder.append(_lowerBound);
-          {
-            int _lowerBound_1 = eReference_2.getLowerBound();
-            int _upperBound = eReference_2.getUpperBound();
-            boolean _notEquals = (_lowerBound_1 != _upperBound);
-            if (_notEquals) {
-              _builder.append("..");
-              int _upperBound_1 = eReference_2.getUpperBound();
-              _builder.append(_upperBound_1);
-            }
-          }
-          _builder.newLineIfNotEmpty();
-          _builder.append("|");
-          _builder.newLine();
-          _builder.append("|");
-          StringBuilder _documentation = this.getDocumentation(eReference_2);
-          _builder.append(_documentation);
-          _builder.newLineIfNotEmpty();
-          _builder.newLine();
-          _output.append(_builder);
-        }
-      }
-      _xblockexpression = this.writeFooter();
     }
-    return _xblockexpression;
+    return _builder;
+  }
+  
+  public StringBuilder writeReferences(final EClass eClass) {
+    StringBuilder _xifexpression = null;
+    int _size = eClass.getEReferences().size();
+    boolean _greaterThan = (_size > 0);
+    if (_greaterThan) {
+      StringBuilder _xblockexpression = null;
+      {
+        this.writeEReferencesHeader();
+        final String ePackageName = this.getEPackage(eClass).getName();
+        Map<EReference, EClass> inheritedEReferences = new HashMap<EReference, EClass>();
+        EList<EClass> _eAllSuperTypes = eClass.getEAllSuperTypes();
+        for (final EClass superclass : _eAllSuperTypes) {
+          if ((superclass instanceof EClass)) {
+            final Function1<EReference, String> _function = (EReference it) -> {
+              return it.getName();
+            };
+            List<EReference> _sortBy = IterableExtensions.<EReference, String>sortBy(superclass.getEReferences(), _function);
+            for (final EReference eReference : _sortBy) {
+              inheritedEReferences.put(eReference, superclass);
+            }
+          }
+        }
+        final Function1<EReference, String> _function_1 = (EReference it) -> {
+          return it.getName();
+        };
+        List<EReference> _sortBy_1 = IterableExtensions.<EReference, String>sortBy(eClass.getEReferences(), _function_1);
+        for (final EReference eReference_1 : _sortBy_1) {
+          boolean _contains = inheritedEReferences.keySet().contains(eReference_1);
+          boolean _not = (!_contains);
+          if (_not) {
+            StringBuilder _output = this.getOutput();
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("|");
+            String _name = eReference_1.getName();
+            _builder.append(_name);
+            _builder.append("[[");
+            _builder.append(ePackageName);
+            _builder.append("-");
+            String _name_1 = eClass.getName();
+            _builder.append(_name_1);
+            _builder.append("-");
+            String _name_2 = eReference_1.getName();
+            _builder.append(_name_2);
+            _builder.append("]]");
+            _builder.newLineIfNotEmpty();
+            _builder.append("|<<");
+            CharSequence _writeAnchorAndReference = this.writeAnchorAndReference(ePackageName, eReference_1.getEReferenceType().getName());
+            _builder.append(_writeAnchorAndReference);
+            _builder.append(">>");
+            _builder.newLineIfNotEmpty();
+            _builder.append("|");
+            CharSequence _writeBounds = this.writeBounds(eReference_1.getLowerBound(), eReference_1.getUpperBound());
+            _builder.append(_writeBounds);
+            _builder.newLineIfNotEmpty();
+            _builder.append("|");
+            _builder.newLine();
+            _builder.append("|");
+            StringBuilder _documentation = this.getDocumentation(eReference_1);
+            _builder.append(_documentation);
+            _builder.newLineIfNotEmpty();
+            _builder.newLine();
+            _output.append(_builder);
+          }
+        }
+        final Function1<EReference, String> _function_2 = (EReference it) -> {
+          return it.getName();
+        };
+        List<EReference> _sortBy_2 = IterableExtensions.<EReference, String>sortBy(inheritedEReferences.keySet(), _function_2);
+        for (final EReference eReference_2 : _sortBy_2) {
+          {
+            final String packageNameOfInherited = this.getEPackage(inheritedEReferences.get(eReference_2)).getName();
+            final EClass superclass_1 = inheritedEReferences.get(eReference_2);
+            final String eReferenceTypeName = eReference_2.getEReferenceType().getName();
+            final int lowerBound = eReference_2.getLowerBound();
+            final int upperBound = eReference_2.getUpperBound();
+            StringBuilder _output_1 = this.getOutput();
+            StringConcatenation _builder_1 = new StringConcatenation();
+            _builder_1.append("|");
+            String _name_3 = eReference_2.getName();
+            _builder_1.append(_name_3);
+            _builder_1.append("[[");
+            _builder_1.append(packageNameOfInherited);
+            _builder_1.append("-");
+            String _name_4 = eClass.getName();
+            _builder_1.append(_name_4);
+            _builder_1.append("-");
+            String _name_5 = eReference_2.getName();
+            _builder_1.append(_name_5);
+            _builder_1.append("]] +");
+            _builder_1.newLineIfNotEmpty();
+            _builder_1.append("(<<");
+            CharSequence _writeAnchorName = this.writeAnchorName(packageNameOfInherited, superclass_1.getName(), eReference_2.getName());
+            _builder_1.append(_writeAnchorName);
+            _builder_1.append(", {inherited}");
+            CharSequence _writeReferenceName = this.writeReferenceName(packageNameOfInherited, superclass_1.getName());
+            _builder_1.append(_writeReferenceName);
+            _builder_1.append(">>)");
+            _builder_1.newLineIfNotEmpty();
+            _builder_1.append("|<<");
+            CharSequence _writeAnchorAndReference_1 = this.writeAnchorAndReference(ePackageName, eReferenceTypeName);
+            _builder_1.append(_writeAnchorAndReference_1);
+            _builder_1.append(">>");
+            _builder_1.newLineIfNotEmpty();
+            _builder_1.append("|");
+            CharSequence _writeBounds_1 = this.writeBounds(lowerBound, upperBound);
+            _builder_1.append(_writeBounds_1);
+            _builder_1.newLineIfNotEmpty();
+            _builder_1.append("|<<");
+            CharSequence _writeAnchorName_1 = this.writeAnchorName(ePackageName, eReferenceTypeName, eReference_2.getEOpposite().getName());
+            _builder_1.append(_writeAnchorName_1);
+            _builder_1.append(", ");
+            String _name_6 = eReference_2.getEOpposite().getName();
+            _builder_1.append(_name_6);
+            _builder_1.append(">>");
+            _builder_1.newLineIfNotEmpty();
+            _builder_1.append("|");
+            StringBuilder _documentation_1 = this.getDocumentation(eReference_2);
+            _builder_1.append(_documentation_1);
+            _builder_1.newLineIfNotEmpty();
+            _builder_1.newLine();
+            _output_1.append(_builder_1);
+          }
+        }
+        _xblockexpression = this.writeFooter();
+      }
+      _xifexpression = _xblockexpression;
+    }
+    return _xifexpression;
   }
   
   public StringBuilder writeEReferencesHeader() {

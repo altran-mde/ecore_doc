@@ -48,6 +48,58 @@ public abstract class AEcoreDocGeneratorPart {
    * Writes in which classes the given EClassifier is used.
    * Goes through every class and then every attribute and it compare the dataType.name with the attribute type name.
    */
+  protected CharSequence writeAnchorName(final String... toAnchor) {
+    StringConcatenation _builder = new StringConcatenation();
+    String anchor = _builder.toString();
+    int counter = 0;
+    for (final String name : toAnchor) {
+      {
+        StringConcatenation _builder_1 = new StringConcatenation();
+        {
+          if ((counter != 0)) {
+            _builder_1.append("-");
+          }
+        }
+        String _plus = (anchor + _builder_1);
+        String _plus_1 = (_plus + name);
+        anchor = _plus_1;
+        counter++;
+      }
+    }
+    return anchor;
+  }
+  
+  protected CharSequence writeReferenceName(final String... toReference) {
+    StringConcatenation _builder = new StringConcatenation();
+    String reference = _builder.toString();
+    int counter = 0;
+    for (final String name : toReference) {
+      {
+        StringConcatenation _builder_1 = new StringConcatenation();
+        {
+          if ((counter != 0)) {
+            _builder_1.append(".");
+          }
+        }
+        String _plus = (reference + _builder_1);
+        String _plus_1 = (_plus + name);
+        reference = _plus_1;
+        counter++;
+      }
+    }
+    return reference;
+  }
+  
+  protected CharSequence writeAnchorAndReference(final String... names) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _writeAnchorName = this.writeAnchorName(names);
+    _builder.append(_writeAnchorName);
+    _builder.append(", ");
+    CharSequence _writeReferenceName = this.writeReferenceName(names);
+    _builder.append(_writeReferenceName);
+    return _builder;
+  }
+  
   protected void writeUseCases(final EClassifier target) {
     boolean anyMatch = false;
     final Function1<EClass, Boolean> _function = (EClass it) -> {
@@ -66,21 +118,8 @@ public abstract class AEcoreDocGeneratorPart {
           final String ePackageName = ((EPackage) _eContainer).getName();
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("* <<");
-          _builder.append(ePackageName);
-          _builder.append("-");
-          String _name = eClass.getName();
-          _builder.append(_name);
-          _builder.append("-");
-          String _name_1 = feature.getName();
-          _builder.append(_name_1);
-          _builder.append(", ");
-          _builder.append(ePackageName);
-          _builder.append(".");
-          String _name_2 = eClass.getName();
-          _builder.append(_name_2);
-          _builder.append(".");
-          String _name_3 = feature.getName();
-          _builder.append(_name_3);
+          CharSequence _writeAnchorAndReference = this.writeAnchorAndReference(ePackageName, eClass.getName(), feature.getName());
+          _builder.append(_writeAnchorAndReference);
           _builder.append(">>");
           _builder.newLineIfNotEmpty();
           useCaseStrings.add(_builder.toString());

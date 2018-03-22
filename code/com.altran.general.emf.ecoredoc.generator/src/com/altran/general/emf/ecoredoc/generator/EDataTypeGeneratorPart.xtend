@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EPackage
+import java.util.List
 
 class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 
@@ -21,23 +22,22 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 		return output
 	}
 
-	// FIXME: sort
+	// FIXME: sort - DONE
 	// FIXME: same name as similar methods
-	protected def Collection<EDataType> collectEDataTypes(EPackage ePackage) {
-		this.getEPackages.get(ePackage).filter(EDataType).filter[!(it instanceof EEnum)].toSet
+	protected def List<EDataType> collectEDataTypes(EPackage ePackage) {
+		this.getEPackages.get(ePackage).filter(EDataType).filter[!(it instanceof EEnum)].sortBy[it.name]
 	}
 
 	/*
 	 * Writes the dataTypes of the EPackage and where they are used in.
 	 */
-	// FIXME: parameter should be List (is sorted)
-	protected def void writeEDataTypes(Collection<EDataType> eDataTypes) {
+	// FIXME: parameter should be List (is sorted) - DONE
+	protected def void writeEDataTypes(List<EDataType> eDataTypes) {
 
 		if (!eDataTypes.isEmpty) {
 			writeEDataTypesHeader()
-			val ePackage = getEPackage(eDataTypes.get(0))
 			for (eDataType : eDataTypes) {
-				writeEDataType(ePackage.name, eDataType.name)
+				output.append('''«writeEClassifierHeader(eDataType)»''')
 				writeUseCases(eDataType)
 			}
 		}
@@ -51,14 +51,4 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 			
 		''')
 	}
-
-	// FIXME: Use same signature for similar methods in all GeneratorParts
-	protected def writeEDataType(String ePackageName, String eDataTypeName) {
-		output.append('''
-			[[«ePackageName»-«eDataTypeName»]]
-			==== «eDataTypeName»
-			
-		''')
-	}
-
 }

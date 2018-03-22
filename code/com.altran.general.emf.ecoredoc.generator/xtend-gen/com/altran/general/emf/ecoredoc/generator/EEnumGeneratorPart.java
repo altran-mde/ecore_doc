@@ -3,7 +3,7 @@ package com.altran.general.emf.ecoredoc.generator;
 import com.altran.general.emf.ecoredoc.generator.AEcoreDocGeneratorPart;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
-import java.util.Collection;
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnum;
@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
@@ -23,24 +23,36 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
   
   @Override
   public StringBuilder write(final EPackage ePackage) {
-    final Collection<EEnum> eEnums = this.collectEEnums(ePackage);
+    final List<EEnum> eEnums = this.collectEEnums(ePackage);
     this.writeEEnumerations(eEnums);
     return this.getOutput();
   }
   
-  protected Collection<EEnum> collectEEnums(final EPackage ePackage) {
-    return IterableExtensions.<EEnum>toSet(Iterables.<EEnum>filter(this.getEPackages().get(ePackage), EEnum.class));
+  protected List<EEnum> collectEEnums(final EPackage ePackage) {
+    final Function1<EEnum, String> _function = (EEnum it) -> {
+      return it.getName();
+    };
+    return IterableExtensions.<EEnum, String>sortBy(Iterables.<EEnum>filter(this.getEPackages().get(ePackage), EEnum.class), _function);
   }
   
-  protected void writeEEnumerations(final Collection<EEnum> eEnums) {
+  protected void writeEEnumerations(final List<EEnum> eEnums) {
     boolean _isEmpty = eEnums.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
       this.writeEEnumerationsHeader();
-      final EPackage ePackage = this.getEPackage(((EClassifier[])Conversions.unwrapArray(eEnums, EClassifier.class))[0]);
+      final EPackage ePackage = this.getEPackage(eEnums.get(0));
       for (final EEnum eEnum : eEnums) {
         {
-          this.writeEEnumHeader(eEnum);
+          StringBuilder _output = this.getOutput();
+          StringConcatenation _builder = new StringConcatenation();
+          CharSequence _writeEClassifierHeader = this.writeEClassifierHeader(eEnum);
+          _builder.append(_writeEClassifierHeader);
+          _output.append(_builder);
+          StringBuilder _output_1 = this.getOutput();
+          StringConcatenation _builder_1 = new StringConcatenation();
+          CharSequence _documentation = this.getDocumentation(eEnum);
+          _builder_1.append(_documentation);
+          _output_1.append(_builder_1);
           this.writeEEnumLiterals(eEnum, ePackage);
           this.writeUseCases(eEnum);
         }
@@ -57,45 +69,36 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     return _output.append(_builder);
   }
   
-  protected StringBuilder writeEEnumHeader(final EEnum eEnum) {
-    StringBuilder _output = this.getOutput();
-    StringConcatenation _builder = new StringConcatenation();
-    CharSequence _writeEClassifierHeader = this.writeEClassifierHeader(eEnum);
-    _builder.append(_writeEClassifierHeader);
-    _builder.newLineIfNotEmpty();
-    CharSequence _documentation = this.getDocumentation(eEnum);
-    _builder.append(_documentation);
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append(".Literals");
-    _builder.newLine();
-    _builder.append("[cols=\"<20m,>10m,<70a\",options=\"header\"]");
-    _builder.newLine();
-    _builder.append("|===");
-    _builder.newLine();
-    _builder.append("|Symbol");
-    _builder.newLine();
-    _builder.append("|Value");
-    _builder.newLine();
-    _builder.append("|Description");
-    _builder.newLine();
-    _builder.newLine();
-    return _output.append(_builder);
-  }
-  
   protected StringBuilder writeEEnumLiterals(final EEnum eEnum, final EPackage ePackage) {
     StringBuilder _xblockexpression = null;
     {
+      StringBuilder _output = this.getOutput();
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.newLine();
+      _builder.append(".Literals");
+      _builder.newLine();
+      _builder.append("[cols=\"<20m,>10m,<70a\",options=\"header\"]");
+      _builder.newLine();
+      _builder.append("|===");
+      _builder.newLine();
+      _builder.append("|Symbol");
+      _builder.newLine();
+      _builder.append("|Value");
+      _builder.newLine();
+      _builder.append("|Description");
+      _builder.newLine();
+      _builder.newLine();
+      _output.append(_builder);
       EList<EEnumLiteral> _eLiterals = eEnum.getELiterals();
       for (final EEnumLiteral eLiteral : _eLiterals) {
         this.writeELiteral(eLiteral);
       }
-      StringBuilder _output = this.getOutput();
-      StringConcatenation _builder = new StringConcatenation();
+      StringBuilder _output_1 = this.getOutput();
+      StringConcatenation _builder_1 = new StringConcatenation();
       CharSequence _writeFooter = this.writeFooter();
-      _builder.append(_writeFooter);
-      _builder.newLineIfNotEmpty();
-      _xblockexpression = _output.append(_builder);
+      _builder_1.append(_writeFooter);
+      _builder_1.newLineIfNotEmpty();
+      _xblockexpression = _output_1.append(_builder_1);
     }
     return _xblockexpression;
   }

@@ -11,11 +11,8 @@ import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EModelElement
 import org.eclipse.emf.ecore.util.EcoreUtil
 
-// FIXME: Decide for all places: Either include the leading "E" in names or omit it, do not mix -->
-// EcoreDocGenerator.packages vs. EcoreDocGenerator.epackages
-// EcoreDocGenerator.generate(): pack vs. epackage
-// DataTypeGeneratorPart.writeDataType() vs. ClassGeneratorPart.writeEClass()
-// DataTypeGeneratorPart.writeDataTypes parameter dataTypes vs. AEcoreDocGeneratorPart.getPackage parameter eclassifier
+// FIXME: Decide for all places: Either include the leading "E" in names or omit it, do not mix --> DONE
+
 class EcoreDocGenerator {
 
 	val Collection<? extends EClassifier> input

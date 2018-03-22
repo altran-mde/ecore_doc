@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.util.EcoreUtil
+import java.util.List
 
 // FIXME: Decide for one naming:
 // EEnum vs. Enumerations vs. Enum
@@ -24,19 +25,20 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 		return output
 	}
 
-	// FIXME: sort
+	// FIXME: sort - DONE
 	// FIXME: same name as similar methods
-	protected def Collection<EEnum> collectEEnums(EPackage ePackage) {
-		this.getEPackages.get(ePackage).filter(EEnum).toSet
+	protected def List<EEnum> collectEEnums(EPackage ePackage) {
+		this.getEPackages.get(ePackage).filter(EEnum).sortBy[it.name]
 	}
 
 	// FIXME: parameter should be List (is sorted)
-	protected def void writeEEnumerations(Collection<EEnum> eEnums) {
+	protected def void writeEEnumerations(List<EEnum> eEnums) {
 		if (!eEnums.isEmpty) {
 			writeEEnumerationsHeader()
 			val ePackage = getEPackage(eEnums.get(0))
 			for (eEnum : eEnums) {
-				writeEEnumHeader(eEnum)
+				output.append('''«writeEClassifierHeader(eEnum)»''')
+				output.append('''«getDocumentation(eEnum)»''')
 				writeEEnumLiterals(eEnum, ePackage)
 				writeUseCases(eEnum)
 			}
@@ -49,12 +51,10 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 			''')
 	}
 
-	protected def writeEEnumHeader(EEnum eEnum) {
-		
+	// FIXME: Use same signature for similar methods
+	protected def writeEEnumLiterals(EEnum eEnum, EPackage ePackage) {
 		output.append(
 		'''
-		«writeEClassifierHeader(eEnum)»
-		«getDocumentation(eEnum)»
 		
 		.Literals
 		[cols="<20m,>10m,<70a",options="header"]
@@ -63,11 +63,8 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 		|Value
 		|Description
 		
-		''')
-	}
-
-	// FIXME: Use same signature for similar methods
-	protected def writeEEnumLiterals(EEnum eEnum, EPackage ePackage) {
+		'''
+		)
 		for (eLiteral : eEnum.ELiterals) {
 			writeELiteral(eLiteral)
 		}
@@ -84,11 +81,11 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 		val eEnum = eLiteral.eContainer as EEnum
 		val ePackage = eEnum.eContainer as EPackage
 		output.append(
-			'''
-			|«eLiteral.name»[[«ePackage.name»-«eEnum.name»-«eLiteral.name»]]
-			|«eLiteral.value»
-			|«EcoreUtil.getDocumentation(eLiteral)»
-			
+		'''
+		|«eLiteral.name»[[«ePackage.name»-«eEnum.name»-«eLiteral.name»]]
+		|«eLiteral.value»
+		|«EcoreUtil.getDocumentation(eLiteral)»
+		
 		''')
 	}
 

@@ -4,11 +4,13 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -139,22 +141,54 @@ public abstract class AEcoreDocGeneratorPart {
     }
   }
   
-  public CharSequence writeEClassifierHeader(final EClassifier eClassifier) {
+  protected CharSequence _writeEClassifierHeader(final EDataType eDataType) {
     CharSequence _xblockexpression = null;
     {
-      final EPackage pack = this.getEPackage(eClassifier);
+      final String ePackageName = this.getEPackage(eDataType).getName();
+      final String eDataTypeName = eDataType.getName();
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("[[");
-      String _name = pack.getName();
-      _builder.append(_name);
-      _builder.append("-");
-      String _name_1 = eClassifier.getName();
-      _builder.append(_name_1);
+      CharSequence _writeAnchor = this.writeAnchor(ePackageName, eDataTypeName);
+      _builder.append(_writeAnchor);
       _builder.append("]]");
       _builder.newLineIfNotEmpty();
       _builder.append("==== ");
-      String _name_2 = eClassifier.getName();
-      _builder.append(_name_2);
+      String _name = eDataType.getName();
+      _builder.append(_name);
+      _builder.newLineIfNotEmpty();
+      _builder.newLine();
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+  
+  protected CharSequence _writeEClassifierHeader(final EClass eClass) {
+    CharSequence _xblockexpression = null;
+    {
+      final String ePackageName = this.getEPackage(eClass).getName();
+      final String eClassName = eClass.getName();
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("[[");
+      CharSequence _writeAnchor = this.writeAnchor(ePackageName, eClassName);
+      _builder.append(_writeAnchor);
+      _builder.append("]]");
+      _builder.newLineIfNotEmpty();
+      _builder.append("==== ");
+      {
+        if ((eClass.isAbstract() && (!eClass.isInterface()))) {
+          _builder.append("Abstract ");
+        }
+      }
+      {
+        boolean _isInterface = eClass.isInterface();
+        if (_isInterface) {
+          _builder.append("Interface");
+        } else {
+          _builder.append("Class");
+        }
+      }
+      _builder.append(" ");
+      _builder.append(eClassName);
       _builder.newLineIfNotEmpty();
       _builder.newLine();
       _xblockexpression = _builder;
@@ -184,5 +218,16 @@ public abstract class AEcoreDocGeneratorPart {
   
   protected Collection<EClass> collectAllEClasses() {
     return IterableExtensions.<EClass>toSet(Iterables.<EClass>filter(this.ePackages.values(), EClass.class));
+  }
+  
+  public CharSequence writeEClassifierHeader(final EClassifier eClass) {
+    if (eClass instanceof EClass) {
+      return _writeEClassifierHeader((EClass)eClass);
+    } else if (eClass instanceof EDataType) {
+      return _writeEClassifierHeader((EDataType)eClass);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(eClass).toString());
+    }
   }
 }

@@ -79,10 +79,9 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 
 	protected def writeELiteral(EEnumLiteral eLiteral) {
 		val eEnum = eLiteral.eContainer as EEnum
-		val ePackage = eEnum.eContainer as EPackage
 		output.append(
 		'''
-		|«eLiteral.name»[[«ePackage.name»-«eEnum.name»-«eLiteral.name»]]
+		|«eLiteral.name»[[«writeAnchor(eLiteral)»]]
 		|«eLiteral.value»
 		|«EcoreUtil.getDocumentation(eLiteral)»
 		

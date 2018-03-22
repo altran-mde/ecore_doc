@@ -11,6 +11,8 @@ import java.util.Map
 import java.util.HashMap
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EReference
+import org.eclipse.xtend.lib.macro.declaration.NamedElement
+import org.eclipse.emf.ecore.ENamedElement
 
 class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
@@ -35,7 +37,6 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def writeEClasses(List<EClass> eClasses) {
 		if (!eClasses.isEmpty) {
 			writeEClassesHeader()
-			println("eClasses.size "+eClasses.size)
 			for (eClass : eClasses) {
 				writeEClass(eClass)
 			}
@@ -72,7 +73,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			«FOR supertype : eClass.EAllSuperTypes.sortBy[it.name]»
 			«var superTypeEPackageName = getEPackage(supertype).name
 			»
-			* <<«writeAnchorAndReference(superTypeEPackageName, supertype.name)»>>
+			* <<«writeAnchorAndReference(supertype)»>>
 			«ENDFOR»
 			
 			''')
@@ -82,7 +83,6 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 				
 				''')
 		}
-		
 	}
 
 	protected def writeEAttributesHeader() {
@@ -120,7 +120,6 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 					}
 				}	
 			}
-			println("inheritedEAttributes.keySet.size "+inheritedEAttributes.keySet.size)
 			//Iterate through non inherited attributes.
 			for(eAttribute : eClass.EAllAttributes.sortBy[it.name]){
 				if(!inheritedEAttributes.keySet.contains(eAttribute)){
@@ -128,10 +127,11 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 					val lowerBound = eAttribute.lowerBound
 					val upperBound = eAttribute.upperBound
 					val eAttributeName = eAttribute.name
+					//writeReferenceTable(eAttributeName, false, inheritedEAttributes, )
 					output.append(
 					'''
-					|«eAttributeName»[[«writeAnchor(ePackageName, eClassName, eAttributeName)»]]
-					|<<«writeAnchorAndReference(ePackageName, eAttributeTypeName)»>>
+					|«eAttributeName»[[«writeAnchor(eAttribute)»]]
+					|<<«writeAnchorAndReference(eAttribute)»>>
 					|«writeBounds(lowerBound, upperBound)»
 					|
 					|«getDocumentation(eAttribute)»
@@ -141,16 +141,14 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			}
 			//Iterate through inherited attributes.
 			for(eAttribute : inheritedEAttributes.keySet.sortBy[it.name]){
-				val packageNameOfInherited = getEPackage(inheritedEAttributes.get(eAttribute)).name
-				val superClassName = inheritedEAttributes.get(eAttribute).name
 				val eAttributeTypeName = eAttribute.EAttributeType.name
 				val lowerBound = eAttribute.lowerBound
 				val upperBound = eAttribute.upperBound
 				val eAttributeName = eAttribute.name
 				output.append(
 				'''
-				|«eAttributeName»[[«writeAnchor(packageNameOfInherited, eClassName, eAttributeName)»]] +
-				«inheritedAnchorAndReference(packageNameOfInherited, superClassName, eAttributeName)»
+				|«eAttributeName»[[«writeAnchor(eAttribute)»]] +
+				«inheritedAnchorAndReference(eAttribute)»
 				|«eAttributeTypeName»
 				|«writeBounds(lowerBound, upperBound)»
 				|
@@ -158,24 +156,19 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 				
 				''')
 			}
-			output.append(
-			'''
-			«writeFooter()»
-			''')	
+			output.append('''«writeFooter()»''')	
 		}
 	}
-	def inheritedAnchorAndReference(String packageName, String superClassName, String eAttributeName){
-		'''(<<«writeAnchor(packageName, superClassName, eAttributeName)», {inherited}«writeReference(packageName, superClassName)»>>)'''
+	def inheritedAnchorAndReference(ENamedElement eNamedElement){
+		'''(<<«writeAnchor(eNamedElement)», {inherited}«writeReferenceName(eNamedElement)»>>)'''
 	}
 	def writeBounds(int lowerBound, int upperBound){
 		'''«lowerBound»«IF lowerBound != upperBound»..«upperBound»«ENDIF»'''
 	}
+	
 	def writeReferences(EClass eClass) {
 		if(eClass.EReferences.size>0){
 			writeEReferencesHeader()
-			val ePackageName = getEPackage(eClass).name
-			val eClassName = eClass.name
-			
 			//Gather all inherited attributes and their classes.
 			var Map<EReference, EClass> inheritedEReferences = new HashMap<EReference, EClass>
 			for(superclass : eClass.EAllSuperTypes){
@@ -188,44 +181,39 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			//Iterate through non inherited references.
 			for(eReference : eClass.EReferences.sortBy[it.name]){
 				if(!inheritedEReferences.keySet.contains(eReference)){
-					writeReferenceTable(eReference, false, inheritedEReferences, ePackageName, eClassName)
+					writeReferenceRow(eReference, false, eClass.name)
 				}
 			}
 			//Iterate through inherited references.
 			for(eReference : inheritedEReferences.keySet.sortBy[it.name]){
-				writeReferenceTable(eReference, true, inheritedEReferences, ePackageName, eClassName)
+				writeReferenceRow(eReference, true, eClass.name)
 			}
-			output.append(
-			'''
-			«writeFooter()»
-			''')	
+			output.append('''«writeFooter()»''')	
 		}
 	}
-	def writeReferenceTable(EReference eReference, boolean inherited, Map<EReference, EClass> inheritedEReferences, String ePackageName, String eClassName){
-		val eReferenceTypeName = eReference.EReferenceType.name
-		var ePackageNameOfInherited = ""
-		var superEClassName = ""
-		if(inherited){
-			ePackageNameOfInherited = getEPackage(inheritedEReferences.get(eReference)).name
-			superEClassName = inheritedEReferences.get(eReference).name
-		}
+	
+	def writeReferenceRow(EReference eReference, boolean inherited, String eClassName){
 		val lowerBound = eReference.lowerBound
 		val upperBound = eReference.upperBound
 		val eReferenceName = eReference.name
 		
 		output.append(
 		'''
-		|«eReferenceName»[[«IF inherited»«writeAnchor(ePackageNameOfInherited, eClassName, eReferenceName)»]] +«ELSE»«writeAnchor(ePackageName, eClassName, eReferenceName)»]]«ENDIF»
-		«IF inherited»«inheritedAnchorAndReference(ePackageNameOfInherited, superEClassName, eReferenceName)»«ENDIF»
-		|<<«writeAnchorAndReference(ePackageName, eReferenceTypeName)»>>
+		|«eReferenceName»[[«IF inherited»«writeAnchor(eReference)»]] +«ELSE»«writeAnchor(eReference)»]]«ENDIF»
+		«IF inherited»«inheritedAnchorAndReference(eReference)»«ENDIF»
+		|<<«writeAnchorAndReference(eReference)»>>
 		|«writeBounds(lowerBound, upperBound)»
-		|«IF eReference.EOpposite !== null»«writeOpposite(eReference, ePackageName, eReferenceTypeName, eReference.EOpposite.name)»«ENDIF»
+		|«IF eReference.EOpposite !== null»«writeOpposite(eReference)»«ENDIF»
 		|«getDocumentation(eReference)»
 		
 		''')
 	}
-	def writeOpposite(EReference eReference, String ePackageName, String eReferenceTypeName, String oppositeName){
-		'''<<«writeAnchor(ePackageName, eReferenceTypeName, oppositeName)», «oppositeName»>>'''
+//	writeTable(){
+//		
+//	}
+	def writeOpposite(EReference eReference){
+		val eOppositeName = eReference.EOpposite.name
+		'''<<«writeAnchor(eReference)»-«eOppositeName», «eOppositeName»>>'''
 	}
 	def writeEReferencesHeader() {
 		output.append(

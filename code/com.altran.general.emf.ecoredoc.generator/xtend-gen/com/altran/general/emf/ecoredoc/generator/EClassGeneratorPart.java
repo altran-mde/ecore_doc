@@ -10,11 +10,11 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
@@ -42,9 +42,6 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     boolean _not = (!_isEmpty);
     if (_not) {
       this.writeEClassesHeader();
-      int _size = eClasses.size();
-      String _plus = ("eClasses.size " + Integer.valueOf(_size));
-      InputOutput.<String>println(_plus);
       for (final EClass eClass : eClasses) {
         this.writeEClass(eClass);
       }
@@ -99,7 +96,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
           String superTypeEPackageName = this.getEPackage(supertype).getName();
           _builder.newLineIfNotEmpty();
           _builder.append("* <<");
-          CharSequence _writeAnchorAndReference = this.writeAnchorAndReference(superTypeEPackageName, supertype.getName());
+          CharSequence _writeAnchorAndReference = this.writeAnchorAndReference(supertype);
           _builder.append(_writeAnchorAndReference);
           _builder.append(">>");
           _builder.newLineIfNotEmpty();
@@ -170,9 +167,6 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
             }
           }
         }
-        int _size_1 = inheritedEAttributes.keySet().size();
-        String _plus = ("inheritedEAttributes.keySet.size " + Integer.valueOf(_size_1));
-        InputOutput.<String>println(_plus);
         final Function1<EAttribute, String> _function_1 = (EAttribute it) -> {
           return it.getName();
         };
@@ -190,12 +184,12 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
             _builder.append("|");
             _builder.append(eAttributeName);
             _builder.append("[[");
-            CharSequence _writeAnchor = this.writeAnchor(ePackageName, eClassName, eAttributeName);
+            CharSequence _writeAnchor = this.writeAnchor(eAttribute_1);
             _builder.append(_writeAnchor);
             _builder.append("]]");
             _builder.newLineIfNotEmpty();
             _builder.append("|<<");
-            CharSequence _writeAnchorAndReference = this.writeAnchorAndReference(ePackageName, eAttributeTypeName);
+            CharSequence _writeAnchorAndReference = this.writeAnchorAndReference(eAttribute_1);
             _builder.append(_writeAnchorAndReference);
             _builder.append(">>");
             _builder.newLineIfNotEmpty();
@@ -219,8 +213,6 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
         List<EAttribute> _sortBy_2 = IterableExtensions.<EAttribute, String>sortBy(inheritedEAttributes.keySet(), _function_2);
         for (final EAttribute eAttribute_2 : _sortBy_2) {
           {
-            final String packageNameOfInherited = this.getEPackage(inheritedEAttributes.get(eAttribute_2)).getName();
-            final String superClassName = inheritedEAttributes.get(eAttribute_2).getName();
             final String eAttributeTypeName_1 = eAttribute_2.getEAttributeType().getName();
             final int lowerBound_1 = eAttribute_2.getLowerBound();
             final int upperBound_1 = eAttribute_2.getUpperBound();
@@ -230,11 +222,11 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
             _builder_1.append("|");
             _builder_1.append(eAttributeName_1);
             _builder_1.append("[[");
-            CharSequence _writeAnchor_1 = this.writeAnchor(packageNameOfInherited, eClassName, eAttributeName_1);
+            CharSequence _writeAnchor_1 = this.writeAnchor(eAttribute_2);
             _builder_1.append(_writeAnchor_1);
             _builder_1.append("]] +");
             _builder_1.newLineIfNotEmpty();
-            CharSequence _inheritedAnchorAndReference = this.inheritedAnchorAndReference(packageNameOfInherited, superClassName, eAttributeName_1);
+            CharSequence _inheritedAnchorAndReference = this.inheritedAnchorAndReference(eAttribute_2);
             _builder_1.append(_inheritedAnchorAndReference);
             _builder_1.newLineIfNotEmpty();
             _builder_1.append("|");
@@ -258,7 +250,6 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
         StringConcatenation _builder_1 = new StringConcatenation();
         CharSequence _writeFooter = this.writeFooter();
         _builder_1.append(_writeFooter);
-        _builder_1.newLineIfNotEmpty();
         _xblockexpression = _output_1.append(_builder_1);
       }
       _xifexpression = _xblockexpression;
@@ -266,14 +257,14 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _xifexpression;
   }
   
-  public CharSequence inheritedAnchorAndReference(final String packageName, final String superClassName, final String eAttributeName) {
+  public CharSequence inheritedAnchorAndReference(final ENamedElement eNamedElement) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("(<<");
-    CharSequence _writeAnchor = this.writeAnchor(packageName, superClassName, eAttributeName);
+    CharSequence _writeAnchor = this.writeAnchor(eNamedElement);
     _builder.append(_writeAnchor);
     _builder.append(", {inherited}");
-    CharSequence _writeReference = this.writeReference(packageName, superClassName);
-    _builder.append(_writeReference);
+    CharSequence _writeReferenceName = this.writeReferenceName(eNamedElement);
+    _builder.append(_writeReferenceName);
     _builder.append(">>)");
     return _builder;
   }
@@ -298,8 +289,6 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       StringBuilder _xblockexpression = null;
       {
         this.writeEReferencesHeader();
-        final String ePackageName = this.getEPackage(eClass).getName();
-        final String eClassName = eClass.getName();
         Map<EReference, EClass> inheritedEReferences = new HashMap<EReference, EClass>();
         EList<EClass> _eAllSuperTypes = eClass.getEAllSuperTypes();
         for (final EClass superclass : _eAllSuperTypes) {
@@ -321,7 +310,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
           boolean _contains = inheritedEReferences.keySet().contains(eReference_1);
           boolean _not = (!_contains);
           if (_not) {
-            this.writeReferenceTable(eReference_1, false, inheritedEReferences, ePackageName, eClassName);
+            this.writeReferenceRow(eReference_1, false, eClass.getName());
           }
         }
         final Function1<EReference, String> _function_2 = (EReference it) -> {
@@ -329,13 +318,12 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
         };
         List<EReference> _sortBy_2 = IterableExtensions.<EReference, String>sortBy(inheritedEReferences.keySet(), _function_2);
         for (final EReference eReference_2 : _sortBy_2) {
-          this.writeReferenceTable(eReference_2, true, inheritedEReferences, ePackageName, eClassName);
+          this.writeReferenceRow(eReference_2, true, eClass.getName());
         }
         StringBuilder _output = this.getOutput();
         StringConcatenation _builder = new StringConcatenation();
         CharSequence _writeFooter = this.writeFooter();
         _builder.append(_writeFooter);
-        _builder.newLineIfNotEmpty();
         _xblockexpression = _output.append(_builder);
       }
       _xifexpression = _xblockexpression;
@@ -343,16 +331,9 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _xifexpression;
   }
   
-  public StringBuilder writeReferenceTable(final EReference eReference, final boolean inherited, final Map<EReference, EClass> inheritedEReferences, final String ePackageName, final String eClassName) {
+  public StringBuilder writeReferenceRow(final EReference eReference, final boolean inherited, final String eClassName) {
     StringBuilder _xblockexpression = null;
     {
-      final String eReferenceTypeName = eReference.getEReferenceType().getName();
-      String ePackageNameOfInherited = "";
-      String superEClassName = "";
-      if (inherited) {
-        ePackageNameOfInherited = this.getEPackage(inheritedEReferences.get(eReference)).getName();
-        superEClassName = inheritedEReferences.get(eReference).getName();
-      }
       final int lowerBound = eReference.getLowerBound();
       final int upperBound = eReference.getUpperBound();
       final String eReferenceName = eReference.getName();
@@ -363,11 +344,11 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.append("[[");
       {
         if (inherited) {
-          CharSequence _writeAnchor = this.writeAnchor(ePackageNameOfInherited, eClassName, eReferenceName);
+          CharSequence _writeAnchor = this.writeAnchor(eReference);
           _builder.append(_writeAnchor);
           _builder.append("]] +");
         } else {
-          CharSequence _writeAnchor_1 = this.writeAnchor(ePackageName, eClassName, eReferenceName);
+          CharSequence _writeAnchor_1 = this.writeAnchor(eReference);
           _builder.append(_writeAnchor_1);
           _builder.append("]]");
         }
@@ -375,13 +356,13 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.newLineIfNotEmpty();
       {
         if (inherited) {
-          CharSequence _inheritedAnchorAndReference = this.inheritedAnchorAndReference(ePackageNameOfInherited, superEClassName, eReferenceName);
+          CharSequence _inheritedAnchorAndReference = this.inheritedAnchorAndReference(eReference);
           _builder.append(_inheritedAnchorAndReference);
         }
       }
       _builder.newLineIfNotEmpty();
       _builder.append("|<<");
-      CharSequence _writeAnchorAndReference = this.writeAnchorAndReference(ePackageName, eReferenceTypeName);
+      CharSequence _writeAnchorAndReference = this.writeAnchorAndReference(eReference);
       _builder.append(_writeAnchorAndReference);
       _builder.append(">>");
       _builder.newLineIfNotEmpty();
@@ -394,7 +375,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
         EReference _eOpposite = eReference.getEOpposite();
         boolean _tripleNotEquals = (_eOpposite != null);
         if (_tripleNotEquals) {
-          CharSequence _writeOpposite = this.writeOpposite(eReference, ePackageName, eReferenceTypeName, eReference.getEOpposite().getName());
+          CharSequence _writeOpposite = this.writeOpposite(eReference);
           _builder.append(_writeOpposite);
         }
       }
@@ -409,15 +390,22 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  public CharSequence writeOpposite(final EReference eReference, final String ePackageName, final String eReferenceTypeName, final String oppositeName) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<<");
-    CharSequence _writeAnchor = this.writeAnchor(ePackageName, eReferenceTypeName, oppositeName);
-    _builder.append(_writeAnchor);
-    _builder.append(", ");
-    _builder.append(oppositeName);
-    _builder.append(">>");
-    return _builder;
+  public CharSequence writeOpposite(final EReference eReference) {
+    CharSequence _xblockexpression = null;
+    {
+      final String eOppositeName = eReference.getEOpposite().getName();
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("<<");
+      CharSequence _writeAnchor = this.writeAnchor(eReference);
+      _builder.append(_writeAnchor);
+      _builder.append("-");
+      _builder.append(eOppositeName);
+      _builder.append(", ");
+      _builder.append(eOppositeName);
+      _builder.append(">>");
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
   }
   
   public StringBuilder writeEReferencesHeader() {

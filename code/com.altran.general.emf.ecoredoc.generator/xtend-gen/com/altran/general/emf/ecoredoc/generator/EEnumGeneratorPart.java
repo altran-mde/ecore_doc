@@ -108,22 +108,14 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     {
       EObject _eContainer = eLiteral.eContainer();
       final EEnum eEnum = ((EEnum) _eContainer);
-      EObject _eContainer_1 = eEnum.eContainer();
-      final EPackage ePackage = ((EPackage) _eContainer_1);
       StringBuilder _output = this.getOutput();
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("|");
       String _name = eLiteral.getName();
       _builder.append(_name);
       _builder.append("[[");
-      String _name_1 = ePackage.getName();
-      _builder.append(_name_1);
-      _builder.append("-");
-      String _name_2 = eEnum.getName();
-      _builder.append(_name_2);
-      _builder.append("-");
-      String _name_3 = eLiteral.getName();
-      _builder.append(_name_3);
+      CharSequence _writeAnchor = this.writeAnchor(eLiteral);
+      _builder.append(_writeAnchor);
       _builder.append("]]");
       _builder.newLineIfNotEmpty();
       _builder.append("|");

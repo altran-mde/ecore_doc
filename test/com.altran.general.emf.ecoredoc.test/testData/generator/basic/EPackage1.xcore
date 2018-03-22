@@ -48,7 +48,7 @@ class Class3 extends EClass1 {
 	Enum1[0..6] something
 	//refers EClass1[1] backwards opposite myRelation
  @GenModel(documentation="Bla")
-	container MyEClass specialParent opposite clazzes
+	container MyEClass[0..1] specialParent opposite clazzes
 	
 }
 

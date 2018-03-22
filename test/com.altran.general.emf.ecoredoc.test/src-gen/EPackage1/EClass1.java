@@ -35,7 +35,7 @@ public interface EClass1 extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Veary speial
+	 * Name desc.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Name</em>' attribute list.
 	 * @see EPackage1.EPackage1Package#getEClass1_Name()

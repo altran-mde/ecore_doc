@@ -19,7 +19,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	override write(EPackage ePackage) {
-		val eClasses = collectPackageEClasses(ePackage)
+		val eClasses = collectEPackageEClasses(ePackage)
 
 		writeEClasses(eClasses)
 
@@ -27,7 +27,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	// FIXME: same name as similar methods
-	protected def List<EClass> collectPackageEClasses(EPackage ePackages) {
+	protected def List<EClass> collectEPackageEClasses(EPackage ePackages) {
 		this.getEPackages.get(ePackages).filter(EClass).sortBy[it.name]
 	}
 
@@ -35,15 +35,14 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def writeEClasses(List<EClass> eClasses) {
 		if (!eClasses.isEmpty) {
 			writeEClassesHeader()
-
+			println("eClasses.size "+eClasses.size)
 			for (eClass : eClasses) {
-				writeEClassHeader(eClass)
 				writeEClass(eClass)
 			}
 		}
 	}
 
-	// FIXME: Should read "Types"
+	// FIXME: Should read "Types" 
 	protected def writeEClassesHeader() {
 		output.append('''=== Classes
 
@@ -54,19 +53,23 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		val ePackage = getEPackage(eClass)
 		output.append(
 		'''
-			[[«ePackage.name»-«eClass.name»]]
-			==== «IF eClass.isAbstract && !eClass.isInterface»Abstract «ENDIF»«IF eClass.isInterface»Interface«ELSE»Class«ENDIF» «eClass.name»
-			
+		[[«ePackage.name»-«eClass.name»]]
+		==== «IF eClass.isAbstract && !eClass.isInterface»Abstract «ENDIF»«IF eClass.isInterface»Interface«ELSE»Class«ENDIF» «eClass.name»
+		
 		''')
 	}
 
 	// FIXME: AttributesHeader must be omitted if there are no attributes - DONE inside writeEAtributes
-	def writeEClass(EClass eclass) {
+	def writeEClass(EClass eClass) {
 		
-		getDocumentation(eclass)
-		writeSuperTypes(eclass)
-		writeEAttributes(eclass)
-		//writeReferences(eclass)
+		writeEClassHeader(eClass)
+		output.append(
+		'''
+		«getDocumentation(eClass)»
+		''')
+		writeSuperTypes(eClass)
+		writeEAttributes(eClass)
+		//writeReferences(eClass)
 	}
 
 	// FIXME: Supertypes must be omitted if empty - DONE
@@ -80,7 +83,9 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			
 			.Supertypes
 			«FOR supertype : eClass.EAllSuperTypes.sortBy[it.name]»
-			* <<«getEPackage(supertype).name»-«supertype.name», «getEPackage(supertype).name».«supertype.name»>>
+			«var superTypeEPackageName = getEPackage(supertype).name
+			»
+			* <<«writeAnchorAndReference(superTypeEPackageName, supertype.name)»>>
 			«ENDFOR»
 			
 			''')
@@ -104,7 +109,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		|Multiplicity{nbsp}/ Order
 		|Default Value
 		|Description
-			
+		
 		''')
 	}
 
@@ -116,9 +121,8 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	// FIXME: Why use attr.EAttributeType.name? Even twice?? - DONE
 	def writeEAttributes(EClass eClass) {
 		if(eClass.EAllAttributes.size>0){
-			
 			writeEAttributesHeader()
-			
+			val eClassName = eClass.name
 			val ePackageName = getEPackage(eClass).name
 			//Gather all inherited attributes and their classes.
 			var Map<EAttribute, EClass> inheritedEAttributes = new HashMap<EAttribute, EClass>
@@ -129,15 +133,17 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 					}
 				}	
 			}
+			println("inheritedEAttributes.keySet.size "+inheritedEAttributes.keySet.size)
 			//Iterate through non inherited attributes.
 			for(eAttribute : eClass.EAllAttributes.sortBy[it.name]){
 				if(!inheritedEAttributes.keySet.contains(eAttribute)){
 					val eAttributeTypeName = eAttribute.EAttributeType.name
 					val lowerBound = eAttribute.lowerBound
 					val upperBound = eAttribute.upperBound
+					val eAttributeName = eAttribute.name
 					output.append(
 					'''
-					|«eAttribute.name»[[«ePackageName»-«eClass.name»-«eAttribute.name»]]
+					|«eAttributeName»[[«writeAnchor(ePackageName, eClassName, eAttributeName)»]]
 					|<<«writeAnchorAndReference(ePackageName, eAttributeTypeName)»>>
 					|«writeBounds(lowerBound, upperBound)»
 					|
@@ -149,14 +155,15 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			//Iterate through inherited attributes.
 			for(eAttribute : inheritedEAttributes.keySet.sortBy[it.name]){
 				val packageNameOfInherited = getEPackage(inheritedEAttributes.get(eAttribute)).name
-				val superclass = inheritedEAttributes.get(eAttribute)
+				val superClassName = inheritedEAttributes.get(eAttribute).name
 				val eAttributeTypeName = eAttribute.EAttributeType.name
 				val lowerBound = eAttribute.lowerBound
 				val upperBound = eAttribute.upperBound
+				val eAttributeName = eAttribute.name
 				output.append(
 				'''
-				|«eAttribute.name»[[«packageNameOfInherited»-«eClass.name»-«eAttribute.name»]] +
-				(<<«packageNameOfInherited»-«superclass.name»-«eAttribute.name», {inherited}«packageNameOfInherited».«superclass.name»>>)
+				|«eAttributeName»[[«writeAnchor(packageNameOfInherited, eClassName, eAttributeName)»]] +
+				«inheritedAnchorAndReference(packageNameOfInherited, superClassName, eAttributeName)»
 				|«eAttributeTypeName»
 				|«writeBounds(lowerBound, upperBound)»
 				|
@@ -164,9 +171,11 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 				
 				''')
 			}
-			
 			writeFooter()
 		}
+	}
+	def inheritedAnchorAndReference(String packageName, String superClassName, String eAttributeName){
+		'''(<<«writeAnchor(packageName, superClassName, eAttributeName)», {inherited}«writeReference(packageName, superClassName)»>>)'''
 	}
 	def writeBounds(int lowerBound, int upperBound){
 		'''«lowerBound»«IF lowerBound != upperBound»..«upperBound»«ENDIF»'''
@@ -209,10 +218,10 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 				output.append(
 				'''
 				|«eReference.name»[[«packageNameOfInherited»-«eClass.name»-«eReference.name»]] +
-				(<<«writeAnchorName(packageNameOfInherited, superclass.name, eReference.name)», {inherited}«writeReferenceName(packageNameOfInherited, superclass.name)»>>)
+				(<<«writeAnchor(packageNameOfInherited, superclass.name, eReference.name)», {inherited}«writeReference(packageNameOfInherited, superclass.name)»>>)
 				|<<«writeAnchorAndReference(ePackageName, eReferenceTypeName)»>>
 				|«writeBounds(lowerBound, upperBound)»
-				|<<«writeAnchorName(ePackageName, eReferenceTypeName, eReference.EOpposite.name)», «eReference.EOpposite.name»>>
+				|<<«writeAnchor(ePackageName, eReferenceTypeName, eReference.EOpposite.name)», «eReference.EOpposite.name»>>
 				|«getDocumentation(eReference)»
 				
 				''')

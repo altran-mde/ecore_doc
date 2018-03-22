@@ -58,29 +58,29 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
   }
   
   protected StringBuilder writeEEnumHeader(final EEnum eEnum) {
-    StringBuilder _xblockexpression = null;
-    {
-      this.writeEClassifierHeader(eEnum);
-      this.getDocumentation(eEnum);
-      StringBuilder _output = this.getOutput();
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.newLine();
-      _builder.append(".Literals");
-      _builder.newLine();
-      _builder.append("[cols=\"<20m,>10m,<70a\",options=\"header\"]");
-      _builder.newLine();
-      _builder.append("|===");
-      _builder.newLine();
-      _builder.append("|Symbol");
-      _builder.newLine();
-      _builder.append("|Value");
-      _builder.newLine();
-      _builder.append("|Description");
-      _builder.newLine();
-      _builder.newLine();
-      _xblockexpression = _output.append(_builder);
-    }
-    return _xblockexpression;
+    StringBuilder _output = this.getOutput();
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _writeEClassifierHeader = this.writeEClassifierHeader(eEnum);
+    _builder.append(_writeEClassifierHeader);
+    _builder.newLineIfNotEmpty();
+    CharSequence _documentation = this.getDocumentation(eEnum);
+    _builder.append(_documentation);
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append(".Literals");
+    _builder.newLine();
+    _builder.append("[cols=\"<20m,>10m,<70a\",options=\"header\"]");
+    _builder.newLine();
+    _builder.append("|===");
+    _builder.newLine();
+    _builder.append("|Symbol");
+    _builder.newLine();
+    _builder.append("|Value");
+    _builder.newLine();
+    _builder.append("|Description");
+    _builder.newLine();
+    _builder.newLine();
+    return _output.append(_builder);
   }
   
   protected StringBuilder writeEEnumLiterals(final EEnum eEnum, final EPackage ePackage) {
@@ -90,7 +90,12 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
       for (final EEnumLiteral eLiteral : _eLiterals) {
         this.writeELiteral(eLiteral);
       }
-      _xblockexpression = this.writeFooter();
+      StringBuilder _output = this.getOutput();
+      StringConcatenation _builder = new StringConcatenation();
+      CharSequence _writeFooter = this.writeFooter();
+      _builder.append(_writeFooter);
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = _output.append(_builder);
     }
     return _xblockexpression;
   }

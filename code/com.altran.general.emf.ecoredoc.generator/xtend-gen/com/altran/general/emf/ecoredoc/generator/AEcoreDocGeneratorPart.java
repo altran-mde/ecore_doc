@@ -48,7 +48,7 @@ public abstract class AEcoreDocGeneratorPart {
    * Writes in which classes the given EClassifier is used.
    * Goes through every class and then every attribute and it compare the dataType.name with the attribute type name.
    */
-  protected CharSequence writeAnchorName(final String... toAnchor) {
+  protected CharSequence writeAnchor(final String... toAnchor) {
     StringConcatenation _builder = new StringConcatenation();
     String anchor = _builder.toString();
     int counter = 0;
@@ -69,7 +69,7 @@ public abstract class AEcoreDocGeneratorPart {
     return anchor;
   }
   
-  protected CharSequence writeReferenceName(final String... toReference) {
+  protected CharSequence writeReference(final String... toReference) {
     StringConcatenation _builder = new StringConcatenation();
     String reference = _builder.toString();
     int counter = 0;
@@ -92,11 +92,11 @@ public abstract class AEcoreDocGeneratorPart {
   
   protected CharSequence writeAnchorAndReference(final String... names) {
     StringConcatenation _builder = new StringConcatenation();
-    CharSequence _writeAnchorName = this.writeAnchorName(names);
-    _builder.append(_writeAnchorName);
+    CharSequence _writeAnchor = this.writeAnchor(names);
+    _builder.append(_writeAnchor);
     _builder.append(", ");
-    CharSequence _writeReferenceName = this.writeReferenceName(names);
-    _builder.append(_writeReferenceName);
+    CharSequence _writeReference = this.writeReference(names);
+    _builder.append(_writeReference);
     return _builder;
   }
   
@@ -139,8 +139,8 @@ public abstract class AEcoreDocGeneratorPart {
     }
   }
   
-  protected StringBuilder writeEClassifierHeader(final EClassifier eClassifier) {
-    StringBuilder _xblockexpression = null;
+  public CharSequence writeEClassifierHeader(final EClassifier eClassifier) {
+    CharSequence _xblockexpression = null;
     {
       final EPackage pack = this.getEPackage(eClassifier);
       StringConcatenation _builder = new StringConcatenation();
@@ -157,25 +157,25 @@ public abstract class AEcoreDocGeneratorPart {
       _builder.append(_name_2);
       _builder.newLineIfNotEmpty();
       _builder.newLine();
-      _xblockexpression = this.output.append(_builder);
+      _xblockexpression = _builder;
     }
     return _xblockexpression;
   }
   
-  protected StringBuilder writeFooter() {
+  public CharSequence writeFooter() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("|===");
     _builder.newLine();
     _builder.newLine();
-    return this.output.append(_builder);
+    return _builder;
   }
   
-  protected StringBuilder getDocumentation(final EModelElement modelElement) {
+  public CharSequence getDocumentation(final EModelElement modelElement) {
     StringConcatenation _builder = new StringConcatenation();
     String _documentation = EcoreUtil.getDocumentation(modelElement);
     _builder.append(_documentation);
     _builder.newLineIfNotEmpty();
-    return this.output.append(_builder);
+    return _builder;
   }
   
   protected String newline() {

@@ -50,11 +50,11 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def writeEEnumHeader(EEnum eEnum) {
-
-		writeEClassifierHeader(eEnum)
-		getDocumentation(eEnum)
+		
 		output.append(
 		'''
+		«writeEClassifierHeader(eEnum)»
+		«getDocumentation(eEnum)»
 		
 		.Literals
 		[cols="<20m,>10m,<70a",options="header"]
@@ -72,7 +72,12 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 			writeELiteral(eLiteral)
 		}
 		// FIXME: Call this symmetrically in the same method that creates the table header
-		writeFooter()
+		output.append(
+		'''
+		«writeFooter()»
+		'''
+		)
+		
 	}
 
 	protected def writeELiteral(EEnumLiteral eLiteral) {

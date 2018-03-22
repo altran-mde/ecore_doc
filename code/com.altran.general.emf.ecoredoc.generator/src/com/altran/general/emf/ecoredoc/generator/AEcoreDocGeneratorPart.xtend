@@ -38,7 +38,7 @@ abstract class AEcoreDocGeneratorPart {
 	 * Writes in which classes the given EClassifier is used. 
 	 * Goes through every class and then every attribute and it compare the dataType.name with the attribute type name.
 	 */
-	protected def CharSequence writeAnchorName(String...toAnchor){
+	protected def CharSequence writeAnchor(String...toAnchor){
 		var anchor = ''''''
 		var counter = 0;
 		for(name : toAnchor){
@@ -47,7 +47,7 @@ abstract class AEcoreDocGeneratorPart {
 		}
 		return anchor
 	}
-	protected def CharSequence writeReferenceName(String...toReference){
+	protected def CharSequence writeReference(String...toReference){
 		var reference = ''''''
 		var counter = 0;
 		for(name : toReference){
@@ -57,7 +57,7 @@ abstract class AEcoreDocGeneratorPart {
 		return reference
 	}
 	protected def CharSequence writeAnchorAndReference(String...names){
-		'''«writeAnchorName(names)», «writeReferenceName(names)»'''
+		'''«writeAnchor(names)», «writeReference(names)»'''
 	}
 	protected def void writeUseCases(EClassifier target) {
 		var anyMatch = false
@@ -90,32 +90,29 @@ abstract class AEcoreDocGeneratorPart {
 		}
 	}
 	// FIXME: Either move to superclass and reuse it or rename - DONE
-	protected def writeEClassifierHeader(EClassifier eClassifier) {
+	def CharSequence writeEClassifierHeader(EClassifier eClassifier) {
 		val pack = getEPackage(eClassifier)
-		output.append(
 		'''
 		[[«pack.name»-«eClassifier.name»]]
 		==== «eClassifier.name»
 		
-		''')
+		'''
 	}
 
 	// FIXME: This is the footer of a table in AsciiDoc. Use appropriate method name. - DONE
 	// FIXME: Use at all places that end a table, symmetrically to the start of the table
-	protected def writeFooter() {
-		output.append(
+	def CharSequence writeFooter() {
 		'''
 		|===
 		
-		''')
+		'''
 	}
 	// FIXME: Use the for every element that may have a documentation - DONE
-	protected def getDocumentation(EModelElement modelElement) {
-		output.append(
+	def CharSequence getDocumentation(EModelElement modelElement) {
 		'''
 		«EcoreUtil.getDocumentation(modelElement)
 		»
-		''')
+		'''
 	}
 
 	protected def String newline() {

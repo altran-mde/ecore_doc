@@ -1,18 +1,15 @@
 package com.altran.general.emf.ecoredoc.generator
 
 import com.google.common.collect.Multimap
-import java.util.Collection
+import java.util.HashMap
 import java.util.List
+import java.util.Map
+import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
-import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.util.EcoreUtil
-import java.util.Map
-import java.util.HashMap
-import org.eclipse.emf.ecore.EAttribute
-import org.eclipse.emf.ecore.EReference
-import org.eclipse.xtend.lib.macro.declaration.NamedElement
 import org.eclipse.emf.ecore.ENamedElement
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EReference
 
 class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
@@ -33,24 +30,26 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		this.getEPackages.get(ePackages).filter(EClass).sortBy[it.name]
 	}
 
-	// FIXME: parameter type is list - DONE
 	protected def writeEClasses(List<EClass> eClasses) {
 		if (!eClasses.isEmpty) {
 			writeEClassesHeader()
+			
 			for (eClass : eClasses) {
 				writeEClass(eClass)
 			}
 		}
 	}
 
-	// FIXME: Should read "Types" - DONE
 	protected def writeEClassesHeader() {
 		output.append('''=== Types
 
 			''')
 	}
 
-	// FIXME: AttributesHeader must be omitted if there are no attributes - DONE (inside writeEAtributes)
+	// FIXME: Why is this method public?
+	// FIXME: Don't mix calls of different granularity in one method
+	// FIXME: The documentation is part of the header
+	// FIXME: Why wrap the call to header and documentation into a richstring?
 	def writeEClass(EClass eClass) {
 		
 		output.append('''«writeEClassifierHeader(eClass)»''')
@@ -60,24 +59,24 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		writeReferences(eClass)
 	}
 
-	// FIXME: Supertypes must be omitted if empty - DONE
-	// FIXME: Why type check? Can never be false - DONE
-	// FIXME: Supertypes must be sorted - DONE
-	
+	// FIXME: Why is this method public?
 	def writeSuperTypes(EClass eClass) {
+		// FIXME: use isEmpty, also in similar cases
 		if(eClass.EAllSuperTypes.size>0){
 			output.append(
 			'''
 			
 			.Supertypes
 			«FOR supertype : eClass.EAllSuperTypes.sortBy[it.name]»
-			«var superTypeEPackageName = getEPackage(supertype).name
+			«
+			//FIXME: There is a warning for a reason. Act on it. In all cases!
+			var superTypeEPackageName = getEPackage(supertype).name
 			»
 			* <<«writeAnchorAndReference(supertype)»>>
 			«ENDFOR»
 			
 			''')
-		}else{
+		} else {
 			output.append(
 				'''
 				
@@ -100,19 +99,22 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		''')
 	}
 
-	// FIXME: This is the header of a table in AsciiDoc. Use appropriate method name. - DONE
 	protected def writeTableHeader() {
 		'''[cols="<15m,<15,<15m,<15m,<40a",options="header"]'''
 	}
-	// FIXME: Use getDocumentation() - DONE
-	// FIXME: Why use attr.EAttributeType.name? Even twice?? - DONE
+	
+	// FIXME: Why is this method public?
 	def writeEAttributes(EClass eClass) {
 		if(eClass.EAllAttributes.size>0){
 			writeEAttributesHeader()
 			val eClassName = eClass.name
 			val ePackageName = getEPackage(eClass).name
 			//Gather all inherited attributes and their classes.
+			
+			//FIXME: Why is this a map? I don't see any usage of the values
+			//FIXME: Why variable, not constant? Value never changes
 			var Map<EAttribute, EClass> inheritedEAttributes = new HashMap<EAttribute, EClass>
+			// FIXME: All this sorting is useless as long your're using a HashMap. Learn why, fix it!
 			for(superclass : eClass.EAllSuperTypes){
 				if(superclass instanceof EClass){
 					for(eAttribute : superclass.EAllAttributes.sortBy[it.name]){
@@ -120,6 +122,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 					}
 				}	
 			}
+			
 			//Iterate through non inherited attributes.
 			for(eAttribute : eClass.EAllAttributes.sortBy[it.name]){
 				if(!inheritedEAttributes.keySet.contains(eAttribute)){
@@ -128,6 +131,8 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 					val upperBound = eAttribute.upperBound
 					val eAttributeName = eAttribute.name
 					//writeReferenceTable(eAttributeName, false, inheritedEAttributes, )
+
+					// FIXME: Why is there an empty cell?
 					output.append(
 					'''
 					|«eAttributeName»[[«writeAnchor(eAttribute)»]]
@@ -139,8 +144,10 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 					''')
 				}
 			}
+			
 			//Iterate through inherited attributes.
 			for(eAttribute : inheritedEAttributes.keySet.sortBy[it.name]){
+				// FIXME: This is almost the same code as above. Refactor and reuse
 				val eAttributeTypeName = eAttribute.EAttributeType.name
 				val lowerBound = eAttribute.lowerBound
 				val upperBound = eAttribute.upperBound
@@ -159,17 +166,23 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			output.append('''«writeFooter()»''')	
 		}
 	}
+	
+	// FIXME: Why is this method public?
 	def inheritedAnchorAndReference(ENamedElement eNamedElement){
 		'''(<<«writeAnchor(eNamedElement)», {inherited}«writeReferenceName(eNamedElement)»>>)'''
 	}
+
+	// FIXME: Why is this method public?
 	def writeBounds(int lowerBound, int upperBound){
 		'''«lowerBound»«IF lowerBound != upperBound»..«upperBound»«ENDIF»'''
 	}
 	
+	// FIXME: Why is this method public?
 	def writeReferences(EClass eClass) {
 		if(eClass.EReferences.size>0){
 			writeEReferencesHeader()
 			//Gather all inherited attributes and their classes.
+			// FIXME: Same as for attributes
 			var Map<EReference, EClass> inheritedEReferences = new HashMap<EReference, EClass>
 			for(superclass : eClass.EAllSuperTypes){
 				if(superclass instanceof EClass){
@@ -178,12 +191,14 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 					}
 				}	
 			}
+			
 			//Iterate through non inherited references.
 			for(eReference : eClass.EReferences.sortBy[it.name]){
 				if(!inheritedEReferences.keySet.contains(eReference)){
 					writeReferenceRow(eReference, false, eClass.name)
 				}
 			}
+			
 			//Iterate through inherited references.
 			for(eReference : inheritedEReferences.keySet.sortBy[it.name]){
 				writeReferenceRow(eReference, true, eClass.name)
@@ -192,6 +207,8 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		}
 	}
 	
+	// FIXME: Why is this method public?
+	// FIXME: eClassName is not used --> Use or remove
 	def writeReferenceRow(EReference eReference, boolean inherited, String eClassName){
 		val lowerBound = eReference.lowerBound
 		val upperBound = eReference.upperBound
@@ -208,13 +225,15 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		
 		''')
 	}
-//	writeTable(){
-//		
-//	}
+
+	// FIXME: Why is this method public?
 	def writeOpposite(EReference eReference){
 		val eOppositeName = eReference.EOpposite.name
+		// I'm pretty sure this will not produce the right outcome
 		'''<<«writeAnchor(eReference)»-«eOppositeName», «eOppositeName»>>'''
 	}
+
+	// FIXME: Why is this method public?
 	def writeEReferencesHeader() {
 		output.append(
 		'''

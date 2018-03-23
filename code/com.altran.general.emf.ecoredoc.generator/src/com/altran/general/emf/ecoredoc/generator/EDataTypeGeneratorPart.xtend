@@ -1,12 +1,11 @@
 package com.altran.general.emf.ecoredoc.generator
 
 import com.google.common.collect.Multimap
-import java.util.Collection
+import java.util.List
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EPackage
-import java.util.List
 
 class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 
@@ -22,7 +21,6 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 		return output
 	}
 
-	// FIXME: sort - DONE
 	// FIXME: same name as similar methods
 	protected def List<EDataType> collectEDataTypes(EPackage ePackage) {
 		this.getEPackages.get(ePackage).filter(EDataType).filter[!(it instanceof EEnum)].sortBy[it.name]
@@ -31,12 +29,12 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 	/*
 	 * Writes the dataTypes of the EPackage and where they are used in.
 	 */
-	// FIXME: parameter should be List (is sorted) - DONE
 	protected def void writeEDataTypes(List<EDataType> eDataTypes) {
-
 		if (!eDataTypes.isEmpty) {
 			writeEDataTypesHeader()
+
 			for (eDataType : eDataTypes) {
+				//FIXME: Why wrap in richtstring?
 				output.append('''«writeEClassifierHeader(eDataType)»''')
 				writeUseCases(eDataType)
 			}

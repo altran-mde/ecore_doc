@@ -3,15 +3,8 @@ package com.altran.general.emf.ecoredoc.generator
 import com.google.common.collect.Multimap
 import com.google.common.collect.TreeMultimap
 import java.util.Collection
-import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
-import org.eclipse.emf.ecore.EDataType
-import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.EModelElement
-import org.eclipse.emf.ecore.util.EcoreUtil
-
-// FIXME: Decide for all places: Either include the leading "E" in names or omit it, do not mix --> DONE
 
 class EcoreDocGenerator {
 

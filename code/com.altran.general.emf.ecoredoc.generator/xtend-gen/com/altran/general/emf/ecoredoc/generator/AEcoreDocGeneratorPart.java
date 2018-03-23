@@ -77,13 +77,13 @@ public abstract class AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected CharSequence _writeType(final EReference eReferece, final Character S) {
+  protected CharSequence _writeType(final EReference eReference, final Character S) {
     CharSequence _xblockexpression = null;
     {
-      final EClass eClass = eReferece.getEReferenceType();
+      final EClass eClass = eReference.getEReferenceType();
       final String ePackageName = this.getEPackage(eClass).getName();
       final String eClassName = eClass.getName();
-      final String eReferenceName = eReferece.getName();
+      final String eReferenceName = eReference.getName();
       StringConcatenation _builder = new StringConcatenation();
       _builder.append(ePackageName);
       _builder.append(S);

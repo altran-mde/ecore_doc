@@ -1,13 +1,12 @@
 package com.altran.general.emf.ecoredoc.generator
 
 import com.google.common.collect.Multimap
-import java.util.Collection
+import java.util.List
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.util.EcoreUtil
-import java.util.List
 
 // FIXME: Decide for one naming:
 // EEnum vs. Enumerations vs. Enum
@@ -25,18 +24,18 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 		return output
 	}
 
-	// FIXME: sort - DONE
 	// FIXME: same name as similar methods
 	protected def List<EEnum> collectEEnums(EPackage ePackage) {
 		this.getEPackages.get(ePackage).filter(EEnum).sortBy[it.name]
 	}
 
-	// FIXME: parameter should be List (is sorted)
 	protected def void writeEEnumerations(List<EEnum> eEnums) {
 		if (!eEnums.isEmpty) {
 			writeEEnumerationsHeader()
+
 			val ePackage = getEPackage(eEnums.get(0))
 			for (eEnum : eEnums) {
+				//FIXME: Why wrap in richstring?
 				output.append('''«writeEClassifierHeader(eEnum)»''')
 				output.append('''«getDocumentation(eEnum)»''')
 				writeEEnumLiterals(eEnum, ePackage)
@@ -68,7 +67,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 		for (eLiteral : eEnum.ELiterals) {
 			writeELiteral(eLiteral)
 		}
-		// FIXME: Call this symmetrically in the same method that creates the table header
+		// FIXME: Why wrap in richstring?
 		output.append(
 		'''
 		«writeFooter()»
@@ -78,6 +77,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def writeELiteral(EEnumLiteral eLiteral) {
+		// FIXME: Warning! --> act!
 		val eEnum = eLiteral.eContainer as EEnum
 		output.append(
 		'''
@@ -87,7 +87,5 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 		
 		''')
 	}
-
-	
 
 }

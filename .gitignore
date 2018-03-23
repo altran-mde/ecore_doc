@@ -4,6 +4,7 @@
 # Compiled xtend files
 *.java._trace
 *.xtendbin
+**/bin/**/*.xtend
 
 # Log file
 *.log

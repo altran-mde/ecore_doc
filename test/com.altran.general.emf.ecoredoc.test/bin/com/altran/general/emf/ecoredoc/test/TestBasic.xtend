@@ -4,13 +4,12 @@ import com.altran.general.emf.ecoredoc.generator.EcoreDocGenerator
 import java.io.File
 import org.apache.commons.io.FileUtils
 import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.EClassifier
+import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup
 import org.junit.Test
 
 import static org.junit.Assert.assertEquals
-import org.eclipse.emf.ecore.EPackage
 
 class TestBasic {
 	@Test

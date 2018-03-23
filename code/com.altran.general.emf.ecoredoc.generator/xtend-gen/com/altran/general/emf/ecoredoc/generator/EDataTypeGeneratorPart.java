@@ -45,11 +45,7 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
       this.writeEDataTypesHeader();
       for (final EDataType eDataType : eDataTypes) {
         {
-          StringBuilder _output = this.getOutput();
-          StringConcatenation _builder = new StringConcatenation();
-          CharSequence _writeEClassifierHeader = this.writeEClassifierHeader(eDataType);
-          _builder.append(_writeEClassifierHeader);
-          _output.append(_builder);
+          this.writeEDataTypeHeader(eDataType);
           this.writeUseCases(eDataType);
         }
       }
@@ -64,6 +60,22 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLine();
     _builder.append("TODO: Create template for EDataType");
     _builder.newLine();
+    _builder.newLine();
+    return _output.append(_builder);
+  }
+  
+  protected CharSequence writeEDataTypeHeader(final EDataType eDataType) {
+    StringBuilder _output = this.getOutput();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("[[");
+    String _writeDataTypes = this.writeDataTypes(eDataType);
+    _builder.append(_writeDataTypes);
+    _builder.append("]]");
+    _builder.newLineIfNotEmpty();
+    _builder.append("==== ");
+    String _name = eDataType.getName();
+    _builder.append(_name);
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
     return _output.append(_builder);
   }

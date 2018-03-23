@@ -108,7 +108,7 @@ Description
 
 |specialParent[[EPackage1-Class3-specialParent]]
 |<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|5
+|0..1
 |<<EPackage1-MyEClass-clazzes, clazzes>>
 |Bla
 

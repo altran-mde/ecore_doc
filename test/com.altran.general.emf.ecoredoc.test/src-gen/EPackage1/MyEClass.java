@@ -29,10 +29,11 @@ public interface MyEClass extends EClass1 {
 	/**
 	 * Returns the value of the '<em><b>Attr</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Attr</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Description. Second sentence.
-	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Attr</em>' attribute.
 	 * @see #setAttr(Number)
 	 * @see EPackage1.EPackage1Package#getMyEClass_Attr()
@@ -54,10 +55,11 @@ public interface MyEClass extends EClass1 {
 	/**
 	 * Returns the value of the '<em><b>Ref</b></em>' reference.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ref</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Whatever.
-	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Ref</em>' reference.
 	 * @see #setRef(EClass1)
 	 * @see EPackage1.EPackage1Package#getMyEClass_Ref()
@@ -99,10 +101,11 @@ public interface MyEClass extends EClass1 {
 	 * The list contents are of type {@link EPackage1.Enum1}.
 	 * The literals are from the enumeration {@link EPackage1.Enum1}.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Eeeenum</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Deschkriptschion
-	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Eeeenum</em>' attribute list.
 	 * @see EPackage1.Enum1
 	 * @see EPackage1.EPackage1Package#getMyEClass_Eeeenum()

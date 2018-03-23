@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.ENamedElement
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EReference
+import java.util.ArrayList
 
 class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
@@ -46,33 +47,28 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			''')
 	}
 
-	// FIXME: Why is this method public?
-	// FIXME: Don't mix calls of different granularity in one method
-	// FIXME: The documentation is part of the header
-	// FIXME: Why wrap the call to header and documentation into a richstring?
-	def writeEClass(EClass eClass) {
+	// FIXME: Why is this method public? - DONE
+	// FIXME: Don't mix calls of different granularity in one method - DONE
+	// FIXME: The documentation is part of the header - DONE
+	// FIXME: Why wrap the call to header and documentation into a richstring? - DONE
+	def protected writeEClass(EClass eClass) {
 		
-		output.append('''«writeEClassifierHeader(eClass)»''')
-		output.append('''«getDocumentation(eClass)»''')
+		writeEClassHeader(eClass)
 		writeSuperTypes(eClass)
 		writeEAttributes(eClass)
-		writeReferences(eClass)
+		writeEReferences(eClass)
 	}
 
-	// FIXME: Why is this method public?
-	def writeSuperTypes(EClass eClass) {
-		// FIXME: use isEmpty, also in similar cases
-		if(eClass.EAllSuperTypes.size>0){
+	// FIXME: Why is this method public? - DONE
+	def protected writeSuperTypes(EClass eClass) {
+		// FIXME: use isEmpty, also in similar cases - DONE
+		if(!eClass.EAllSuperTypes.isEmpty){
 			output.append(
 			'''
 			
 			.Supertypes
 			«FOR supertype : eClass.EAllSuperTypes.sortBy[it.name]»
-			«
-			//FIXME: There is a warning for a reason. Act on it. In all cases!
-			var superTypeEPackageName = getEPackage(supertype).name
-			»
-			* <<«writeAnchorAndReference(supertype)»>>
+			* <<«writeEClassType(supertype)»>>
 			«ENDFOR»
 			
 			''')
@@ -103,122 +99,113 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		'''[cols="<15m,<15,<15m,<15m,<40a",options="header"]'''
 	}
 	
-	// FIXME: Why is this method public?
-	def writeEAttributes(EClass eClass) {
-		if(eClass.EAllAttributes.size>0){
+	// FIXME: Why is this method public? - DONE
+	def protected writeEAttributes(EClass eClass) {
+		if(!eClass.EAllAttributes.isEmpty){
 			writeEAttributesHeader()
-			val eClassName = eClass.name
-			val ePackageName = getEPackage(eClass).name
+			
 			//Gather all inherited attributes and their classes.
 			
-			//FIXME: Why is this a map? I don't see any usage of the values
-			//FIXME: Why variable, not constant? Value never changes
-			var Map<EAttribute, EClass> inheritedEAttributes = new HashMap<EAttribute, EClass>
-			// FIXME: All this sorting is useless as long your're using a HashMap. Learn why, fix it!
+			//FIXME: Why is this a map? I don't see any usage of the values - DONE
+			//FIXME: Why variable, not constant? Value never changes - DONE
+			val List<EAttribute> inheritedEAttributes = new ArrayList<EAttribute>
+			// FIXME: All this sorting is useless as long your're using a HashMap. Learn why, fix it! - DONE
 			for(superclass : eClass.EAllSuperTypes){
 				if(superclass instanceof EClass){
 					for(eAttribute : superclass.EAllAttributes.sortBy[it.name]){
-						inheritedEAttributes.put(eAttribute, superclass)
+						inheritedEAttributes.add(eAttribute)
 					}
 				}	
 			}
 			
 			//Iterate through non inherited attributes.
 			for(eAttribute : eClass.EAllAttributes.sortBy[it.name]){
-				if(!inheritedEAttributes.keySet.contains(eAttribute)){
-					val eAttributeTypeName = eAttribute.EAttributeType.name
-					val lowerBound = eAttribute.lowerBound
-					val upperBound = eAttribute.upperBound
-					val eAttributeName = eAttribute.name
-					//writeReferenceTable(eAttributeName, false, inheritedEAttributes, )
-
-					// FIXME: Why is there an empty cell?
-					output.append(
-					'''
-					|«eAttributeName»[[«writeAnchor(eAttribute)»]]
-					|<<«writeAnchorAndReference(eAttribute)»>>
-					|«writeBounds(lowerBound, upperBound)»
-					|
-					|«getDocumentation(eAttribute)»
-					
-					''')
+				if(!inheritedEAttributes.contains(eAttribute)){
+				
+					writeEAttributeRow(eAttribute, eClass)
 				}
 			}
 			
 			//Iterate through inherited attributes.
-			for(eAttribute : inheritedEAttributes.keySet.sortBy[it.name]){
-				// FIXME: This is almost the same code as above. Refactor and reuse
-				val eAttributeTypeName = eAttribute.EAttributeType.name
-				val lowerBound = eAttribute.lowerBound
-				val upperBound = eAttribute.upperBound
-				val eAttributeName = eAttribute.name
-				output.append(
-				'''
-				|«eAttributeName»[[«writeAnchor(eAttribute)»]] +
-				«inheritedAnchorAndReference(eAttribute)»
-				|«eAttributeTypeName»
-				|«writeBounds(lowerBound, upperBound)»
-				|
-				|«getDocumentation(eAttribute)»
-				
-				''')
+			for(eAttribute : inheritedEAttributes.sortBy[it.name]){
+				// FIXME: This is almost the same code as above. Refactor and reuse - DONE
+				writeEAttributeRow(eAttribute, eClass)
 			}
-			output.append('''«writeFooter()»''')	
+			output.append('''«writeTableFooter()»''')	
 		}
 	}
 	
-	// FIXME: Why is this method public?
-	def inheritedAnchorAndReference(ENamedElement eNamedElement){
-		'''(<<«writeAnchor(eNamedElement)», {inherited}«writeReferenceName(eNamedElement)»>>)'''
+	def protected writeEAttributeRow(EAttribute eAttribute, EClass eClass){
+		println(eAttribute.name+" "+eClass.name+" "+(eAttribute.eContainer as EClass).name)
+		val inherited = !(eClass == eAttribute.eContainer as EClass) 
+		val lowerBound = eAttribute.lowerBound
+		val upperBound = eAttribute.upperBound
+		val eAttributeName = eAttribute.name
+		output.append(
+		'''
+		|«eAttributeName»[[«writeEStructuralFeatureType(eAttribute, eClass).join("-")»]]«IF inherited» +«ENDIF»
+		«IF inherited»«writeInheretedEStructuralElementType(eAttribute)»«ENDIF»
+		|«writeEStructuralFeatureAnchor(eAttribute)»
+		|«writeBounds(lowerBound, upperBound)»
+		|
+		|«getDocumentation(eAttribute)»
+		
+		''')
+	}
+	
+	// FIXME: Why is this method public? - DONE
+	def protected writeInheretedEStructuralElementType(ENamedElement eNamedElement){
+		'''(<<«writeAnchor(eNamedElement)», {inherited}«writeReferenceName(eNamedElement.eContainer as EClass)»>>)'''
 	}
 
-	// FIXME: Why is this method public?
-	def writeBounds(int lowerBound, int upperBound){
+	// FIXME: Why is this method public? - DONE
+	def protected writeBounds(int lowerBound, int upperBound){
 		'''«lowerBound»«IF lowerBound != upperBound»..«upperBound»«ENDIF»'''
 	}
 	
-	// FIXME: Why is this method public?
-	def writeReferences(EClass eClass) {
+	// FIXME: Why is this method public? - DONE
+	def protected writeEReferences(EClass eClass) {
 		if(eClass.EReferences.size>0){
 			writeEReferencesHeader()
 			//Gather all inherited attributes and their classes.
-			// FIXME: Same as for attributes
-			var Map<EReference, EClass> inheritedEReferences = new HashMap<EReference, EClass>
+			// FIXME: Same as for attributes - DONE
+			val List<EReference> inheritedEReferences = new ArrayList<EReference>
 			for(superclass : eClass.EAllSuperTypes){
 				if(superclass instanceof EClass){
 					for(eReference : superclass.EReferences.sortBy[it.name]){
-						inheritedEReferences.put(eReference, superclass)
+						inheritedEReferences.add(eReference)
 					}
 				}	
 			}
 			
 			//Iterate through non inherited references.
 			for(eReference : eClass.EReferences.sortBy[it.name]){
-				if(!inheritedEReferences.keySet.contains(eReference)){
-					writeReferenceRow(eReference, false, eClass.name)
+				if(!inheritedEReferences.contains(eReference)){
+					writeEReferenceRow(eReference, eClass)
 				}
 			}
 			
 			//Iterate through inherited references.
-			for(eReference : inheritedEReferences.keySet.sortBy[it.name]){
-				writeReferenceRow(eReference, true, eClass.name)
+			for(eReference : inheritedEReferences.sortBy[it.name]){
+				writeEReferenceRow(eReference, eClass)
 			}
-			output.append('''«writeFooter()»''')	
+			output.append('''«writeTableFooter()»''')	
 		}
 	}
 	
-	// FIXME: Why is this method public?
-	// FIXME: eClassName is not used --> Use or remove
-	def writeReferenceRow(EReference eReference, boolean inherited, String eClassName){
+	// FIXME: Why is this method public? - DONE
+	// FIXME: eClassName is not used --> Use or remove - DONE
+	def protected writeEReferenceRow(EReference eReference, EClass eClass){
+		val inherited = !(eClass == eReference.eContainer as EClass) 
 		val lowerBound = eReference.lowerBound
 		val upperBound = eReference.upperBound
 		val eReferenceName = eReference.name
 		
 		output.append(
 		'''
-		|«eReferenceName»[[«IF inherited»«writeAnchor(eReference)»]] +«ELSE»«writeAnchor(eReference)»]]«ENDIF»
-		«IF inherited»«inheritedAnchorAndReference(eReference)»«ENDIF»
-		|<<«writeAnchorAndReference(eReference)»>>
+		|«eReferenceName»[[«writeEStructuralFeatureType(eReference, eClass).join("-")»]]«IF inherited» +«ENDIF»
+		«IF inherited»«writeInheretedEStructuralElementType(eReference)»«ENDIF»
+		|«writeEStructuralFeatureAnchor(eReference)»
 		|«writeBounds(lowerBound, upperBound)»
 		|«IF eReference.EOpposite !== null»«writeOpposite(eReference)»«ENDIF»
 		|«getDocumentation(eReference)»
@@ -226,15 +213,15 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		''')
 	}
 
-	// FIXME: Why is this method public?
-	def writeOpposite(EReference eReference){
+	// FIXME: Why is this method public? - DONE
+	def protected writeOpposite(EReference eReference){
 		val eOppositeName = eReference.EOpposite.name
 		// I'm pretty sure this will not produce the right outcome
-		'''<<«writeAnchor(eReference)»-«eOppositeName», «eOppositeName»>>'''
+		'''<<«writeAnchor(eReference.EReferenceType)»-«eOppositeName», «eOppositeName»>>'''
 	}
 
-	// FIXME: Why is this method public?
-	def writeEReferencesHeader() {
+	// FIXME: Why is this method public? - DONE
+	def protected writeEReferencesHeader() {
 		output.append(
 		'''
 		.References
@@ -248,5 +235,17 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		
 		'''
 		)
+	}
+	// FIXME: Why is this method public? - DONE
+	def protected CharSequence writeEClassHeader(EClass eClass) {
+		
+		val eClassName = eClass.name
+		output.append(
+		'''
+		[[«writeAnchor(eClass)»]]
+		==== «IF eClass.isAbstract && !eClass.isInterface»Abstract «ENDIF»«IF eClass.isInterface»Interface«ELSE»Class«ENDIF» «eClassName»
+		
+		«getDocumentation(eClass)»
+		''')
 	}
 }

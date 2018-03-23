@@ -8,8 +8,7 @@ import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.util.EcoreUtil
 
-// FIXME: Decide for one naming:
-// EEnum vs. Enumerations vs. Enum
+// FIXME: Decide for one naming - DONE
 class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 
 	new(Multimap<EPackage, EClassifier> ePackages) {
@@ -33,12 +32,10 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 		if (!eEnums.isEmpty) {
 			writeEEnumerationsHeader()
 
-			val ePackage = getEPackage(eEnums.get(0))
 			for (eEnum : eEnums) {
-				//FIXME: Why wrap in richstring?
-				output.append('''«writeEClassifierHeader(eEnum)»''')
-				output.append('''«getDocumentation(eEnum)»''')
-				writeEEnumLiterals(eEnum, ePackage)
+				//FIXME: Why wrap in richstring? - DONE
+				writeEEnumHeader(eEnum)
+				writeEEnumLiterals(eEnum)
 				writeUseCases(eEnum)
 			}
 		}
@@ -50,8 +47,8 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 			''')
 	}
 
-	// FIXME: Use same signature for similar methods
-	protected def writeEEnumLiterals(EEnum eEnum, EPackage ePackage) {
+	// FIXME: Use same signature for similar methods - DONE
+	protected def writeEEnumLiterals(EEnum eEnum) {
 		output.append(
 		'''
 		
@@ -70,21 +67,29 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 		// FIXME: Why wrap in richstring?
 		output.append(
 		'''
-		«writeFooter()»
+		«writeTableFooter()»
 		'''
 		)
 		
 	}
 
 	protected def writeELiteral(EEnumLiteral eLiteral) {
-		// FIXME: Warning! --> act!
-		val eEnum = eLiteral.eContainer as EEnum
 		output.append(
 		'''
 		|«eLiteral.name»[[«writeAnchor(eLiteral)»]]
 		|«eLiteral.value»
 		|«EcoreUtil.getDocumentation(eLiteral)»
 		
+		''')
+	}
+	
+	def protected CharSequence writeEEnumHeader(EEnum eEnum) {
+		output.append(
+		'''
+		[[«writeAnchor(eEnum)»]]
+		==== «eEnum.name»
+		
+		«getDocumentation(eEnum)»
 		''')
 	}
 

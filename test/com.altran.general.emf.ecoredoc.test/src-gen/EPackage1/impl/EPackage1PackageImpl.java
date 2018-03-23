@@ -405,6 +405,98 @@ public class EPackage1PackageImpl extends EPackageImpl implements EPackage1Packa
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// null
+		createNullAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>null</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createNullAnnotations() {
+		String source = null;	
+		addAnnotation
+		  (enum1EEnum, 
+		   source, 
+		   new String[] {
+			 "documentation", "Enum1 Description"
+		   });	
+		addAnnotation
+		  (enum1EEnum.getELiterals().get(0), 
+		   source, 
+		   new String[] {
+			 "documentation", "Literal1 Description\n\nSecond sentence of Literal1 Description."
+		   });	
+		addAnnotation
+		  (enum1EEnum.getELiterals().get(2), 
+		   source, 
+		   new String[] {
+			 "documentation", "Literal3 Description"
+		   });	
+		addAnnotation
+		  (eClass1EClass, 
+		   source, 
+		   new String[] {
+			 "documentation", "Description of EClass1"
+		   });	
+		addAnnotation
+		  (getEClass1_Name(), 
+		   source, 
+		   new String[] {
+			 "documentation", "Name desc."
+		   });	
+		addAnnotation
+		  (getEClass1_Id(), 
+		   source, 
+		   new String[] {
+			 "documentation", "Description of id."
+		   });	
+		addAnnotation
+		  (getEClass1_MyRelation(), 
+		   source, 
+		   new String[] {
+			 "documentation", "Description."
+		   });	
+		addAnnotation
+		  (getMyEClass_Attr(), 
+		   source, 
+		   new String[] {
+			 "documentation", "Description. Second sentence."
+		   });	
+		addAnnotation
+		  (getMyEClass_Ref(), 
+		   source, 
+		   new String[] {
+			 "documentation", "Whatever."
+		   });	
+		addAnnotation
+		  (getMyEClass_Eeeenum(), 
+		   source, 
+		   new String[] {
+			 "documentation", "Deschkriptschion"
+		   });	
+		addAnnotation
+		  (class3EClass, 
+		   source, 
+		   new String[] {
+			 "documentation", "Description"
+		   });	
+		addAnnotation
+		  (getClass3_Something(), 
+		   source, 
+		   new String[] {
+			 "documentation", "Something."
+		   });	
+		addAnnotation
+		  (getClass3_SpecialParent(), 
+		   source, 
+		   new String[] {
+			 "documentation", "Bla"
+		   });
 	}
 
 } //EPackage1PackageImpl

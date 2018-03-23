@@ -13,9 +13,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Enum1</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * <!-- begin-model-doc -->
- * Enum1 Description
- * <!-- end-model-doc -->
  * @see EPackage1.EPackage1Package#getEnum1()
  * @model
  * @generated
@@ -54,12 +51,11 @@ public enum Enum1 implements Enumerator {
 	/**
 	 * The '<em><b>Literal1</b></em>' literal value.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Literal1</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Literal1 Description
-	 * 
-	 * Second sentence of Literal1 Description.
-	 * <!-- end-model-doc -->
 	 * @see #LITERAL1
 	 * @model name="Literal1"
 	 * @generated
@@ -85,10 +81,11 @@ public enum Enum1 implements Enumerator {
 	/**
 	 * The '<em><b>Literal3</b></em>' literal value.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Literal3</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Literal3 Description
-	 * <!-- end-model-doc -->
 	 * @see #LITERAL3
 	 * @model name="Literal3"
 	 * @generated

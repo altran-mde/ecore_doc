@@ -21,7 +21,7 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 		return output
 	}
 
-	// FIXME: same name as similar methods
+	// FIXME: same name as similar methods - Vasileios : i dont understand.
 	protected def List<EDataType> collectEDataTypes(EPackage ePackage) {
 		this.getEPackages.get(ePackage).filter(EDataType).filter[!(it instanceof EEnum)].sortBy[it.name]
 	}
@@ -34,8 +34,8 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 			writeEDataTypesHeader()
 
 			for (eDataType : eDataTypes) {
-				//FIXME: Why wrap in richtstring?
-				output.append('''«writeEClassifierHeader(eDataType)»''')
+				//FIXME: Why wrap in richtstring? - DONE
+				writeEDataTypeHeader(eDataType)
 				writeUseCases(eDataType)
 			}
 		}
@@ -47,6 +47,16 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 			
 			TODO: Create template for EDataType
 			
+		''')
+	}
+	// FIXME: Why is this method public?- DONE
+	// TODO: does this need to be a dispatch method? - DONE
+	def protected CharSequence writeEDataTypeHeader(EDataType eDataType) {
+		output.append(
+		'''
+		[[«writeDataTypes(eDataType)»]]
+		==== «eDataType.name»
+		
 		''')
 	}
 }

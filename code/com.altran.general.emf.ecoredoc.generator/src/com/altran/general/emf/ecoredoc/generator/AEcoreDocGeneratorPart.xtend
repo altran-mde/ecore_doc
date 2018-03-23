@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.emf.ecore.EStructuralFeature
 
 abstract class AEcoreDocGeneratorPart {
 
@@ -38,99 +39,158 @@ abstract class AEcoreDocGeneratorPart {
 	protected def EPackage getEPackage(EClassifier eClassifier) {
 		eClassifier.eContainer as EPackage
 	}
-
-	// FIXME: This comment is completely unrelated to its surroundings --> move or delete
-	/*
-	 * Writes in which classes the given EClassifier is used. 
-	 * Goes through every class and then every attribute and it compare the dataType.name with the attribute type name.
-	 */
-	 
+	
 	protected def CharSequence writeAnchor(ENamedElement eNamedElement){
-		writeType(eNamedElement, '-')
+		writeType(eNamedElement).join("-")
 	}
 	
 	protected def CharSequence writeReferenceName(ENamedElement eNamedElement){
-		writeType(eNamedElement, '.')
+		writeType(eNamedElement).join(".")
 	}
 	
-	// FIXME: This is description of a parameter --> Use appropriate JavaDoc
-	// FIXME: variables and parameters start lowercase. Also, nobody knows what "S" means. We use IDEs, so there is no reason for using short names. Use an appropriate name.
-	
-	//Character S is separator chosen to improve readability.
-	protected def dispatch CharSequence writeType(EClass eClass, Character S) {
-		val eClassName = eClass.name
-		val ePackageName = getEPackage(eClass).name
-		
-		'''«ePackageName»«S»«eClassName»'''
+	protected def CharSequence writeEClassType(EClass eClass){
+		'''«writeAnchor(eClass)», «writeReferenceName(eClass)»'''
 	}
-	
-	protected def dispatch CharSequence writeType(EReference eReference, Character S){
-		val eClass = eReference.EReferenceType
-		val ePackageName = getEPackage(eClass).name
-		val eClassName = eClass.name
-		val eReferenceName = eReference.name
-		
-		'''«ePackageName»«S»«eClassName»«S»«eReferenceName»'''
-	}
-	
-	protected def dispatch CharSequence writeType(EAttribute eAttribute, Character S){
-		val eClass = eAttribute.EAttributeType
-		val ePackageName = getEPackage(eClass).name
-		val eClassName = eClass.name
-		val eAttributeName = eAttribute.name
-		
-		'''«ePackageName»«S»«eClassName»«S»«eAttributeName»'''
-	}
-
-	protected def dispatch CharSequence writeType(EDataType eDataType, Character S) {
-		switch(eDataType) {
-			case EcorePackage.eINSTANCE.EInt:
-				'''EInt'''
+	protected def CharSequence writeEStructuralFeatureAnchor(EStructuralFeature eAttribute){
+		var CharSequence result
+		println("eAttributeType.name "+eAttribute.EType+" "+eAttribute.name )
+		switch(eAttribute.EType.name) {
+			case EcorePackage.eINSTANCE.EInt.name:
+				result = '''EInt'''
 			
-			case EcorePackage.eINSTANCE.EString:
-				'''EString'''
+			case EcorePackage.eINSTANCE.EString.name:
+				result = '''EString'''
 				
-			case EcorePackage.eINSTANCE.EDouble:
-				'''EDouble'''
+			case EcorePackage.eINSTANCE.EDouble.name:
+				result = '''EDouble'''
 				
-			case EcorePackage.eINSTANCE.EChar:
-				'''EChar'''
+			case EcorePackage.eINSTANCE.EChar.name:
+				result = '''EChar'''
 			
-			case EcorePackage.eINSTANCE.EFloat:
-				'''EFloat'''
+			case EcorePackage.eINSTANCE.EFloat.name:
+				result = '''EFloat'''
 				
-			case EcorePackage.eINSTANCE.ELong:
-				'''ELong'''
+			case EcorePackage.eINSTANCE.ELong.name:
+				result = '''ELong'''
 				
-			case EcorePackage.eINSTANCE.EShort:
-				'''EShort'''
+			case EcorePackage.eINSTANCE.EShort.name:
+				result = '''EShort'''
 				
-			case EcorePackage.eINSTANCE.EBoolean:
-				'''EBoolean'''
+			case EcorePackage.eINSTANCE.EBoolean.name:
+				result = '''EBoolean'''
 				
-			case EcorePackage.eINSTANCE.EByte:
-				'''EByte'''
+			case EcorePackage.eINSTANCE.EByte.name:
+				result = '''EByte'''
 				
-			case EcorePackage.eINSTANCE.EDate:
-				'''EDate'''
+			case EcorePackage.eINSTANCE.EDate.name:
+				result = '''EDate'''
 					
 			default:
-				'''«getEPackage(eDataType).name»«S»«(eDataType.eContainer as ENamedElement).name»«S»«eDataType.name»'''
+				result = '''<<«writeAnchor(eAttribute.EType)», «writeReferenceName(eAttribute.EType)»>>'''
 		}
+		result
 	}
 	
-	protected def dispatch CharSequence writeType(EEnumLiteral eEnumLiteral, Character S) {
+	protected def CharSequence writeEReferenceType(EReference eReference){
+		'''«writeAnchor(eReference)», «writeReferenceName(eReference.eClass)»'''
+	}
+	protected def CharSequence writeWhereUsed(EStructuralFeature eStructuralFeature, EClass eClassThatInherits){
+		'''«writeEStructuralFeatureType(eStructuralFeature, eClassThatInherits).join("-")», «writeEStructuralFeatureType(eStructuralFeature, eClassThatInherits).join(".")»'''
+	}
+	
+	protected def String[] writeEStructuralFeatureType(EStructuralFeature eStructuralFeature, EClass eClassThatInherits){
+		
+		val ePackageName = getEPackage(eClassThatInherits).name
+		val eClassName = eClassThatInherits.name
+		val eStructuralFeatureName = eStructuralFeature.name
+		
+		#[ePackageName, eClassName, eStructuralFeatureName]
+	}
+	
+	protected def dispatch String[] writeType(EClass eClass) {
+		val eClassName = eClass.name
+		val ePackageName = getEPackage(eClass).name
+		
+		#[ePackageName, eClassName]
+		
+	}
+	
+	protected def dispatch String[] writeType(EStructuralFeature eStructuralFeature){
+		val eClass = eStructuralFeature.eContainer as EClass
+		val ePackageName = getEPackage(eClass).name
+		val eClassName = eClass.name
+		val eStructuralFeatureName = eStructuralFeature.name
+		
+		#[ePackageName, eClassName, eStructuralFeatureName]
+	}
+	
+//	protected def dispatch String[] writeType(EReference eReference){
+//		val eClass = eReference.eContainer as EClass
+//		val ePackageName = getEPackage(eClass).name
+//		val eClassName = eClass.name
+//		val eReferenceName = eReference.name
+//		
+//		#[ePackageName, eClassName, eReferenceName]
+//	}
+//	
+//	protected def dispatch  String[] writeType(EAttribute eAttribute){
+//		val eClass = eAttribute.eContainer as EClass
+//		val ePackageName = getEPackage(eClass).name
+//		val eClassName = eClass.name
+//		val eAttributeName = eAttribute.name
+//		
+//		#[ePackageName, eClassName, eAttributeName]
+//	}
+	
+	protected def dispatch String[] writeType(EEnumLiteral eEnumLiteral) {
 		val eEnum = eEnumLiteral.eContainer as EEnum
 		val ePackageName = getEPackage(eEnum).name
-		//FIXME: There is a warning on this line for a reason. Act on it.
-		val eClassName = eEnum.eClass.name
-		'''«ePackageName»«S»«eEnum.name»«S»«eEnumLiteral.name»'''
+		
+		#[ePackageName, eEnum.name, eEnumLiteral.name]
 	}
-	
-	
-	// FIXME: Learn from AsciiDoc what we're actually writing here. Adjust name and content.
-	protected def CharSequence writeAnchorAndReference(ENamedElement eNamedElement){
-		'''«writeAnchor(eNamedElement)», «writeReferenceName(eNamedElement)»'''
+	protected def writeDataTypes(EDataType eDataType){
+		val ePackageName = (eDataType.eContainer as EPackage).name
+		val eDataTypeName = eDataType.name
+		
+		#[ePackageName, eDataTypeName].join("-")
+	}
+	protected def dispatch String[] writeType(EDataType eDataType) {
+		var String[] result
+		switch(eDataType) {
+			case EcorePackage.eINSTANCE.EInt:
+				result = #["EInt"]
+			
+			case EcorePackage.eINSTANCE.EString:
+				result = #["EString"]
+				
+			case EcorePackage.eINSTANCE.EDouble:
+				result = #["EDouble"]
+				
+			case EcorePackage.eINSTANCE.EChar:
+				result = #["EChar"]
+			
+			case EcorePackage.eINSTANCE.EFloat:
+				result = #["EFloat"]
+				
+			case EcorePackage.eINSTANCE.ELong:
+				result = #["ELong"]
+				
+			case EcorePackage.eINSTANCE.EShort:
+				result = #["EShort"]
+				
+			case EcorePackage.eINSTANCE.EBoolean:
+				result = #["EBoolean"]
+				
+			case EcorePackage.eINSTANCE.EByte:
+				result = #["EByte"]
+				
+			case EcorePackage.eINSTANCE.EDate:
+				result = #["EDate"]
+					
+			default:
+				result = #[(eDataType.eContainer as EPackage).name, eDataType.name]
+		}
+		result
 	}
 	
 	protected def void writeUseCases(EClassifier target) {
@@ -145,7 +205,7 @@ abstract class AEcoreDocGeneratorPart {
 					anyMatch = true
 					useCaseStrings.add(
 					'''
-					* <<«writeAnchorAndReference(feature)»>>
+					* <<«writeWhereUsed(feature, eClass)»>>
 					''')
 				}
 
@@ -163,38 +223,17 @@ abstract class AEcoreDocGeneratorPart {
 		}
 	}
 	
-	// FIXME: Why is this method public?
-	// TODO: does this need to be a dispatch method? 
-	def  dispatch CharSequence writeEClassifierHeader(EDataType eDataType) {
-		'''
-		[[«writeAnchor(eDataType)»]]
-		==== «eDataType.name»
-		
-		'''
-	}
-	
-	// FIXME: Why is this method public?
-	def  dispatch CharSequence writeEClassifierHeader(EClass eClass) {
-		val eClassName = eClass.name
-		'''
-		[[«writeAnchor(eClass)»]]
-		==== «IF eClass.isAbstract && !eClass.isInterface»Abstract «ENDIF»«IF eClass.isInterface»Interface«ELSE»Class«ENDIF» «eClassName»
-		
-		'''
-	}
-
-
-	// FIXME: Why is this method public?
-	// FIXME: What kind of footer? For Images? Screen stands? Shoe shops?
-	def CharSequence writeFooter() {
+	// FIXME: Why is this method public? - DONE
+	// FIXME: What kind of footer? For Images? Screen stands? Shoe shops? - DONE
+	def protected CharSequence writeTableFooter() {
 		'''
 		|===
 		
 		'''
 	}
 	
-	// FIXME: Why is this method public?
-	def CharSequence getDocumentation(EModelElement modelElement) {
+	// FIXME: Why is this method public? - DONE
+	def protected CharSequence getDocumentation(EModelElement modelElement) {
 		'''
 		«EcoreUtil.getDocumentation(modelElement)
 		»

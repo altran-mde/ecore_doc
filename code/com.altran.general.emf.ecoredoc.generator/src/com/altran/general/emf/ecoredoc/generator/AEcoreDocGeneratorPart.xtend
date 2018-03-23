@@ -2,7 +2,6 @@ package com.altran.general.emf.ecoredoc.generator
 
 import com.google.common.collect.Multimap
 import java.util.Collection
-import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
@@ -11,11 +10,11 @@ import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.EModelElement
 import org.eclipse.emf.ecore.ENamedElement
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.emf.ecore.EStructuralFeature
 
+// FIXME: Explain: why did I rename some methods writeXXX -> concatXXX, other writeXXX -> collectXXX, others not renamed?
 abstract class AEcoreDocGeneratorPart {
 
 	val Multimap<EPackage, EClassifier> ePackages
@@ -40,65 +39,41 @@ abstract class AEcoreDocGeneratorPart {
 		eClassifier.eContainer as EPackage
 	}
 	
-	protected def CharSequence writeAnchor(ENamedElement eNamedElement){
-		writeType(eNamedElement).join("-")
+	protected def dispatch CharSequence concatAnchor(ENamedElement eNamedElement) {
+		collectTypeSegments(eNamedElement).join("-")
 	}
 	
-	protected def CharSequence writeReferenceName(ENamedElement eNamedElement){
-		writeType(eNamedElement).join(".")
-	}
-	
-	protected def CharSequence writeEClassType(EClass eClass){
-		'''«writeAnchor(eClass)», «writeReferenceName(eClass)»'''
-	}
-	protected def CharSequence writeEStructuralFeatureAnchor(EStructuralFeature eAttribute){
-		var CharSequence result
-		println("eAttributeType.name "+eAttribute.EType+" "+eAttribute.name )
-		switch(eAttribute.EType.name) {
-			case EcorePackage.eINSTANCE.EInt.name:
-				result = '''EInt'''
-			
-			case EcorePackage.eINSTANCE.EString.name:
-				result = '''EString'''
-				
-			case EcorePackage.eINSTANCE.EDouble.name:
-				result = '''EDouble'''
-				
-			case EcorePackage.eINSTANCE.EChar.name:
-				result = '''EChar'''
-			
-			case EcorePackage.eINSTANCE.EFloat.name:
-				result = '''EFloat'''
-				
-			case EcorePackage.eINSTANCE.ELong.name:
-				result = '''ELong'''
-				
-			case EcorePackage.eINSTANCE.EShort.name:
-				result = '''EShort'''
-				
-			case EcorePackage.eINSTANCE.EBoolean.name:
-				result = '''EBoolean'''
-				
-			case EcorePackage.eINSTANCE.EByte.name:
-				result = '''EByte'''
-				
-			case EcorePackage.eINSTANCE.EDate.name:
-				result = '''EDate'''
-					
-			default:
-				result = '''<<«writeAnchor(eAttribute.EType)», «writeReferenceName(eAttribute.EType)»>>'''
+	// Special handling for default EDataTypes: Don't create anchor
+	protected def dispatch CharSequence concatAnchor(EDataType eDataType) {
+		if (!isDefaultEDataType(eDataType)) {
+			collectTypeSegments(eDataType).join("-")
+		} else {
+			""
 		}
-		result
 	}
 	
-	protected def CharSequence writeEReferenceType(EReference eReference){
-		'''«writeAnchor(eReference)», «writeReferenceName(eReference.eClass)»'''
-	}
-	protected def CharSequence writeWhereUsed(EStructuralFeature eStructuralFeature, EClass eClassThatInherits){
-		'''«writeEStructuralFeatureType(eStructuralFeature, eClassThatInherits).join("-")», «writeEStructuralFeatureType(eStructuralFeature, eClassThatInherits).join(".")»'''
+	protected def CharSequence concatReferenceName(ENamedElement eNamedElement) {
+		collectTypeSegments(eNamedElement).join(".")
 	}
 	
-	protected def String[] writeEStructuralFeatureType(EStructuralFeature eStructuralFeature, EClass eClassThatInherits){
+	protected def dispatch CharSequence concatLinkTo(ENamedElement eNamedElement) {
+		'''<<«concatAnchor(eNamedElement)», «concatReferenceName(eNamedElement)»>>'''
+	}
+
+	// Special handling for default EDataTypes: Don't create anchor
+	protected def dispatch CharSequence concatLinkTo(EDataType eDataType) {
+		if (!isDefaultEDataType(eDataType)) {
+			'''<<«concatAnchor(eDataType)», «concatReferenceName(eDataType)»>>'''
+		} else {
+			eDataType.name
+		}
+	}
+	
+	protected def CharSequence concatUsedLink(EStructuralFeature eStructuralFeature, EClass eClassThatInherits){
+		'''<<«collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits).join("-")», «collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits).join(".")»>>'''
+	}
+	
+	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature, EClass eClassThatInherits){
 		
 		val ePackageName = getEPackage(eClassThatInherits).name
 		val eClassName = eClassThatInherits.name
@@ -107,7 +82,7 @@ abstract class AEcoreDocGeneratorPart {
 		#[ePackageName, eClassName, eStructuralFeatureName]
 	}
 	
-	protected def dispatch String[] writeType(EClass eClass) {
+	protected def dispatch String[] collectTypeSegments(EClass eClass) {
 		val eClassName = eClass.name
 		val ePackageName = getEPackage(eClass).name
 		
@@ -115,7 +90,7 @@ abstract class AEcoreDocGeneratorPart {
 		
 	}
 	
-	protected def dispatch String[] writeType(EStructuralFeature eStructuralFeature){
+	protected def dispatch String[] collectTypeSegments(EStructuralFeature eStructuralFeature) {
 		val eClass = eStructuralFeature.eContainer as EClass
 		val ePackageName = getEPackage(eClass).name
 		val eClassName = eClass.name
@@ -124,76 +99,22 @@ abstract class AEcoreDocGeneratorPart {
 		#[ePackageName, eClassName, eStructuralFeatureName]
 	}
 	
-//	protected def dispatch String[] writeType(EReference eReference){
-//		val eClass = eReference.eContainer as EClass
-//		val ePackageName = getEPackage(eClass).name
-//		val eClassName = eClass.name
-//		val eReferenceName = eReference.name
-//		
-//		#[ePackageName, eClassName, eReferenceName]
-//	}
-//	
-//	protected def dispatch  String[] writeType(EAttribute eAttribute){
-//		val eClass = eAttribute.eContainer as EClass
-//		val ePackageName = getEPackage(eClass).name
-//		val eClassName = eClass.name
-//		val eAttributeName = eAttribute.name
-//		
-//		#[ePackageName, eClassName, eAttributeName]
-//	}
-	
-	protected def dispatch String[] writeType(EEnumLiteral eEnumLiteral) {
+	protected def dispatch String[] collectTypeSegments(EEnumLiteral eEnumLiteral) {
 		val eEnum = eEnumLiteral.eContainer as EEnum
 		val ePackageName = getEPackage(eEnum).name
 		
 		#[ePackageName, eEnum.name, eEnumLiteral.name]
 	}
-	protected def writeDataTypes(EDataType eDataType){
-		val ePackageName = (eDataType.eContainer as EPackage).name
-		val eDataTypeName = eDataType.name
-		
-		#[ePackageName, eDataTypeName].join("-")
-	}
-	protected def dispatch String[] writeType(EDataType eDataType) {
-		var String[] result
-		switch(eDataType) {
-			case EcorePackage.eINSTANCE.EInt:
-				result = #["EInt"]
-			
-			case EcorePackage.eINSTANCE.EString:
-				result = #["EString"]
-				
-			case EcorePackage.eINSTANCE.EDouble:
-				result = #["EDouble"]
-				
-			case EcorePackage.eINSTANCE.EChar:
-				result = #["EChar"]
-			
-			case EcorePackage.eINSTANCE.EFloat:
-				result = #["EFloat"]
-				
-			case EcorePackage.eINSTANCE.ELong:
-				result = #["ELong"]
-				
-			case EcorePackage.eINSTANCE.EShort:
-				result = #["EShort"]
-				
-			case EcorePackage.eINSTANCE.EBoolean:
-				result = #["EBoolean"]
-				
-			case EcorePackage.eINSTANCE.EByte:
-				result = #["EByte"]
-				
-			case EcorePackage.eINSTANCE.EDate:
-				result = #["EDate"]
-					
-			default:
-				result = #[(eDataType.eContainer as EPackage).name, eDataType.name]
+
+	protected def dispatch String[] collectTypeSegments(EDataType eDataType) {
+		if (!isDefaultEDataType(eDataType)) {
+			#[(eDataType.eContainer as EPackage).name, eDataType.name]
+		} else {
+			#[eDataType.name]
 		}
-		result
 	}
 	
-	protected def void writeUseCases(EClassifier target) {
+	protected def void concatUseCases(EClassifier target) {
 		var anyMatch = false
 
 		val eClasses = collectAllEClasses.reject[it == target]
@@ -205,7 +126,7 @@ abstract class AEcoreDocGeneratorPart {
 					anyMatch = true
 					useCaseStrings.add(
 					'''
-					* <<«writeWhereUsed(feature, eClass)»>>
+						* «concatUsedLink(feature, eClass)»
 					''')
 				}
 
@@ -223,21 +144,19 @@ abstract class AEcoreDocGeneratorPart {
 		}
 	}
 	
-	// FIXME: Why is this method public? - DONE
-	// FIXME: What kind of footer? For Images? Screen stands? Shoe shops? - DONE
-	def protected CharSequence writeTableFooter() {
+	def protected CharSequence tableFooter() {
 		'''
 		|===
 		
 		'''
 	}
 	
-	// FIXME: Why is this method public? - DONE
 	def protected CharSequence getDocumentation(EModelElement modelElement) {
-		'''
-		«EcoreUtil.getDocumentation(modelElement)
-		»
-		'''
+		EcoreUtil.getDocumentation(modelElement)
+	}
+
+	protected def boolean isDefaultEDataType(EDataType eDataType) {
+		EcorePackage.eINSTANCE.nsURI == getEPackage(eDataType).nsURI
 	}
 
 	protected def String newline() {

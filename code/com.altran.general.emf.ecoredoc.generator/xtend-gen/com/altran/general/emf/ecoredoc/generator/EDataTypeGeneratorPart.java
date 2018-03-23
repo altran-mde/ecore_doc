@@ -46,7 +46,7 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
       for (final EDataType eDataType : eDataTypes) {
         {
           this.writeEDataTypeHeader(eDataType);
-          this.writeUseCases(eDataType);
+          this.concatUseCases(eDataType);
         }
       }
     }
@@ -68,8 +68,8 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("[[");
-    String _writeDataTypes = this.writeDataTypes(eDataType);
-    _builder.append(_writeDataTypes);
+    CharSequence _concatAnchor = this.concatAnchor(eDataType);
+    _builder.append(_concatAnchor);
     _builder.append("]]");
     _builder.newLineIfNotEmpty();
     _builder.append("==== ");

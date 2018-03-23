@@ -43,7 +43,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
         {
           this.writeEEnumHeader(eEnum);
           this.writeEEnumLiterals(eEnum);
-          this.writeUseCases(eEnum);
+          this.concatUseCases(eEnum);
         }
       }
     }
@@ -84,8 +84,8 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
       }
       StringBuilder _output_1 = this.getOutput();
       StringConcatenation _builder_1 = new StringConcatenation();
-      CharSequence _writeTableFooter = this.writeTableFooter();
-      _builder_1.append(_writeTableFooter);
+      CharSequence _tableFooter = this.tableFooter();
+      _builder_1.append(_tableFooter);
       _builder_1.newLineIfNotEmpty();
       _xblockexpression = _output_1.append(_builder_1);
     }
@@ -99,8 +99,8 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     String _name = eLiteral.getName();
     _builder.append(_name);
     _builder.append("[[");
-    CharSequence _writeAnchor = this.writeAnchor(eLiteral);
-    _builder.append(_writeAnchor);
+    CharSequence _concatAnchor = this.concatAnchor(eLiteral);
+    _builder.append(_concatAnchor);
     _builder.append("]]");
     _builder.newLineIfNotEmpty();
     _builder.append("|");
@@ -119,8 +119,8 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("[[");
-    CharSequence _writeAnchor = this.writeAnchor(eEnum);
-    _builder.append(_writeAnchor);
+    CharSequence _concatAnchor = this.concatAnchor(eEnum);
+    _builder.append(_concatAnchor);
     _builder.append("]]");
     _builder.newLineIfNotEmpty();
     _builder.append("==== ");

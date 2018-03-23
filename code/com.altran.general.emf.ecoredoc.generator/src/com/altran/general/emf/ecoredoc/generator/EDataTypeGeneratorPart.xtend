@@ -34,9 +34,8 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 			writeEDataTypesHeader()
 
 			for (eDataType : eDataTypes) {
-				//FIXME: Why wrap in richtstring? - DONE
 				writeEDataTypeHeader(eDataType)
-				writeUseCases(eDataType)
+				concatUseCases(eDataType)
 			}
 		}
 	}
@@ -49,12 +48,11 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 			
 		''')
 	}
-	// FIXME: Why is this method public?- DONE
-	// TODO: does this need to be a dispatch method? - DONE
-	def protected CharSequence writeEDataTypeHeader(EDataType eDataType) {
+	
+	protected def CharSequence writeEDataTypeHeader(EDataType eDataType) {
 		output.append(
 		'''
-		[[«writeDataTypes(eDataType)»]]
+		[[«concatAnchor(eDataType)»]]
 		==== «eDataType.name»
 		
 		''')

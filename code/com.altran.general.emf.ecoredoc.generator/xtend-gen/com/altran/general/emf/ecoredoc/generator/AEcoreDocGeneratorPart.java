@@ -6,7 +6,6 @@ import com.google.common.collect.Multimap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -17,7 +16,6 @@ import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -25,7 +23,6 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
@@ -53,161 +50,71 @@ public abstract class AEcoreDocGeneratorPart {
     return ((EPackage) _eContainer);
   }
   
-  protected CharSequence writeAnchor(final ENamedElement eNamedElement) {
-    return IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.writeType(eNamedElement))), "-");
+  protected CharSequence _concatAnchor(final ENamedElement eNamedElement) {
+    return IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eNamedElement))), "-");
   }
   
-  protected CharSequence writeReferenceName(final ENamedElement eNamedElement) {
-    return IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.writeType(eNamedElement))), ".");
-  }
-  
-  protected CharSequence writeEClassType(final EClass eClass) {
-    StringConcatenation _builder = new StringConcatenation();
-    CharSequence _writeAnchor = this.writeAnchor(eClass);
-    _builder.append(_writeAnchor);
-    _builder.append(", ");
-    CharSequence _writeReferenceName = this.writeReferenceName(eClass);
-    _builder.append(_writeReferenceName);
-    return _builder;
-  }
-  
-  protected CharSequence writeEStructuralFeatureAnchor(final EStructuralFeature eAttribute) {
-    CharSequence _xblockexpression = null;
-    {
-      CharSequence result = null;
-      EClassifier _eType = eAttribute.getEType();
-      String _plus = ("eAttributeType.name " + _eType);
-      String _plus_1 = (_plus + " ");
-      String _name = eAttribute.getName();
-      String _plus_2 = (_plus_1 + _name);
-      InputOutput.<String>println(_plus_2);
-      String _name_1 = eAttribute.getEType().getName();
-      boolean _matched = false;
-      String _name_2 = EcorePackage.eINSTANCE.getEInt().getName();
-      if (Objects.equal(_name_1, _name_2)) {
-        _matched=true;
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("EInt");
-        result = _builder;
-      }
-      if (!_matched) {
-        String _name_3 = EcorePackage.eINSTANCE.getEString().getName();
-        if (Objects.equal(_name_1, _name_3)) {
-          _matched=true;
-          StringConcatenation _builder_1 = new StringConcatenation();
-          _builder_1.append("EString");
-          result = _builder_1;
-        }
-      }
-      if (!_matched) {
-        String _name_4 = EcorePackage.eINSTANCE.getEDouble().getName();
-        if (Objects.equal(_name_1, _name_4)) {
-          _matched=true;
-          StringConcatenation _builder_2 = new StringConcatenation();
-          _builder_2.append("EDouble");
-          result = _builder_2;
-        }
-      }
-      if (!_matched) {
-        String _name_5 = EcorePackage.eINSTANCE.getEChar().getName();
-        if (Objects.equal(_name_1, _name_5)) {
-          _matched=true;
-          StringConcatenation _builder_3 = new StringConcatenation();
-          _builder_3.append("EChar");
-          result = _builder_3;
-        }
-      }
-      if (!_matched) {
-        String _name_6 = EcorePackage.eINSTANCE.getEFloat().getName();
-        if (Objects.equal(_name_1, _name_6)) {
-          _matched=true;
-          StringConcatenation _builder_4 = new StringConcatenation();
-          _builder_4.append("EFloat");
-          result = _builder_4;
-        }
-      }
-      if (!_matched) {
-        String _name_7 = EcorePackage.eINSTANCE.getELong().getName();
-        if (Objects.equal(_name_1, _name_7)) {
-          _matched=true;
-          StringConcatenation _builder_5 = new StringConcatenation();
-          _builder_5.append("ELong");
-          result = _builder_5;
-        }
-      }
-      if (!_matched) {
-        String _name_8 = EcorePackage.eINSTANCE.getEShort().getName();
-        if (Objects.equal(_name_1, _name_8)) {
-          _matched=true;
-          StringConcatenation _builder_6 = new StringConcatenation();
-          _builder_6.append("EShort");
-          result = _builder_6;
-        }
-      }
-      if (!_matched) {
-        String _name_9 = EcorePackage.eINSTANCE.getEBoolean().getName();
-        if (Objects.equal(_name_1, _name_9)) {
-          _matched=true;
-          StringConcatenation _builder_7 = new StringConcatenation();
-          _builder_7.append("EBoolean");
-          result = _builder_7;
-        }
-      }
-      if (!_matched) {
-        String _name_10 = EcorePackage.eINSTANCE.getEByte().getName();
-        if (Objects.equal(_name_1, _name_10)) {
-          _matched=true;
-          StringConcatenation _builder_8 = new StringConcatenation();
-          _builder_8.append("EByte");
-          result = _builder_8;
-        }
-      }
-      if (!_matched) {
-        String _name_11 = EcorePackage.eINSTANCE.getEDate().getName();
-        if (Objects.equal(_name_1, _name_11)) {
-          _matched=true;
-          StringConcatenation _builder_9 = new StringConcatenation();
-          _builder_9.append("EDate");
-          result = _builder_9;
-        }
-      }
-      if (!_matched) {
-        StringConcatenation _builder_10 = new StringConcatenation();
-        _builder_10.append("<<");
-        CharSequence _writeAnchor = this.writeAnchor(eAttribute.getEType());
-        _builder_10.append(_writeAnchor);
-        _builder_10.append(", ");
-        CharSequence _writeReferenceName = this.writeReferenceName(eAttribute.getEType());
-        _builder_10.append(_writeReferenceName);
-        _builder_10.append(">>");
-        result = _builder_10;
-      }
-      _xblockexpression = result;
+  protected CharSequence _concatAnchor(final EDataType eDataType) {
+    String _xifexpression = null;
+    boolean _isDefaultEDataType = this.isDefaultEDataType(eDataType);
+    boolean _not = (!_isDefaultEDataType);
+    if (_not) {
+      _xifexpression = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eDataType))), "-");
+    } else {
+      _xifexpression = "";
     }
-    return _xblockexpression;
+    return _xifexpression;
   }
   
-  protected CharSequence writeEReferenceType(final EReference eReference) {
+  protected CharSequence concatReferenceName(final ENamedElement eNamedElement) {
+    return IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eNamedElement))), ".");
+  }
+  
+  protected CharSequence _concatLinkTo(final ENamedElement eNamedElement) {
     StringConcatenation _builder = new StringConcatenation();
-    CharSequence _writeAnchor = this.writeAnchor(eReference);
-    _builder.append(_writeAnchor);
+    _builder.append("<<");
+    CharSequence _concatAnchor = this.concatAnchor(eNamedElement);
+    _builder.append(_concatAnchor);
     _builder.append(", ");
-    CharSequence _writeReferenceName = this.writeReferenceName(eReference.eClass());
-    _builder.append(_writeReferenceName);
+    CharSequence _concatReferenceName = this.concatReferenceName(eNamedElement);
+    _builder.append(_concatReferenceName);
+    _builder.append(">>");
     return _builder;
   }
   
-  protected CharSequence writeWhereUsed(final EStructuralFeature eStructuralFeature, final EClass eClassThatInherits) {
+  protected CharSequence _concatLinkTo(final EDataType eDataType) {
+    CharSequence _xifexpression = null;
+    boolean _isDefaultEDataType = this.isDefaultEDataType(eDataType);
+    boolean _not = (!_isDefaultEDataType);
+    if (_not) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("<<");
+      CharSequence _concatAnchor = this.concatAnchor(eDataType);
+      _builder.append(_concatAnchor);
+      _builder.append(", ");
+      CharSequence _concatReferenceName = this.concatReferenceName(eDataType);
+      _builder.append(_concatReferenceName);
+      _builder.append(">>");
+      _xifexpression = _builder;
+    } else {
+      _xifexpression = eDataType.getName();
+    }
+    return _xifexpression;
+  }
+  
+  protected CharSequence concatUsedLink(final EStructuralFeature eStructuralFeature, final EClass eClassThatInherits) {
     StringConcatenation _builder = new StringConcatenation();
-    String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.writeEStructuralFeatureType(eStructuralFeature, eClassThatInherits))), "-");
+    _builder.append("<<");
+    String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits))), "-");
     _builder.append(_join);
     _builder.append(", ");
-    String _join_1 = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.writeEStructuralFeatureType(eStructuralFeature, eClassThatInherits))), ".");
+    String _join_1 = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits))), ".");
     _builder.append(_join_1);
+    _builder.append(">>");
     return _builder;
   }
   
-  protected String[] writeEStructuralFeatureType(final EStructuralFeature eStructuralFeature, final EClass eClassThatInherits) {
+  protected String[] collectInheritedFeatureSegments(final EStructuralFeature eStructuralFeature, final EClass eClassThatInherits) {
     String[] _xblockexpression = null;
     {
       final String ePackageName = this.getEPackage(eClassThatInherits).getName();
@@ -218,7 +125,7 @@ public abstract class AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected String[] _writeType(final EClass eClass) {
+  protected String[] _collectTypeSegments(final EClass eClass) {
     String[] _xblockexpression = null;
     {
       final String eClassName = eClass.getName();
@@ -228,7 +135,7 @@ public abstract class AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected String[] _writeType(final EStructuralFeature eStructuralFeature) {
+  protected String[] _collectTypeSegments(final EStructuralFeature eStructuralFeature) {
     String[] _xblockexpression = null;
     {
       EObject _eContainer = eStructuralFeature.eContainer();
@@ -241,7 +148,7 @@ public abstract class AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected String[] _writeType(final EEnumLiteral eEnumLiteral) {
+  protected String[] _collectTypeSegments(final EEnumLiteral eEnumLiteral) {
     String[] _xblockexpression = null;
     {
       EObject _eContainer = eEnumLiteral.eContainer();
@@ -254,102 +161,23 @@ public abstract class AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected String writeDataTypes(final EDataType eDataType) {
-    String _xblockexpression = null;
-    {
+  protected String[] _collectTypeSegments(final EDataType eDataType) {
+    String[] _xifexpression = null;
+    boolean _isDefaultEDataType = this.isDefaultEDataType(eDataType);
+    boolean _not = (!_isDefaultEDataType);
+    if (_not) {
       EObject _eContainer = eDataType.eContainer();
-      final String ePackageName = ((EPackage) _eContainer).getName();
-      final String eDataTypeName = eDataType.getName();
-      _xblockexpression = IterableExtensions.join(Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList(ePackageName, eDataTypeName)), "-");
+      String _name = ((EPackage) _eContainer).getName();
+      String _name_1 = eDataType.getName();
+      _xifexpression = new String[] { _name, _name_1 };
+    } else {
+      String _name_2 = eDataType.getName();
+      _xifexpression = new String[] { _name_2 };
     }
-    return _xblockexpression;
+    return _xifexpression;
   }
   
-  protected String[] _writeType(final EDataType eDataType) {
-    String[] _xblockexpression = null;
-    {
-      String[] result = null;
-      boolean _matched = false;
-      EDataType _eInt = EcorePackage.eINSTANCE.getEInt();
-      if (Objects.equal(eDataType, _eInt)) {
-        _matched=true;
-        result = new String[] { "EInt" };
-      }
-      if (!_matched) {
-        EDataType _eString = EcorePackage.eINSTANCE.getEString();
-        if (Objects.equal(eDataType, _eString)) {
-          _matched=true;
-          result = new String[] { "EString" };
-        }
-      }
-      if (!_matched) {
-        EDataType _eDouble = EcorePackage.eINSTANCE.getEDouble();
-        if (Objects.equal(eDataType, _eDouble)) {
-          _matched=true;
-          result = new String[] { "EDouble" };
-        }
-      }
-      if (!_matched) {
-        EDataType _eChar = EcorePackage.eINSTANCE.getEChar();
-        if (Objects.equal(eDataType, _eChar)) {
-          _matched=true;
-          result = new String[] { "EChar" };
-        }
-      }
-      if (!_matched) {
-        EDataType _eFloat = EcorePackage.eINSTANCE.getEFloat();
-        if (Objects.equal(eDataType, _eFloat)) {
-          _matched=true;
-          result = new String[] { "EFloat" };
-        }
-      }
-      if (!_matched) {
-        EDataType _eLong = EcorePackage.eINSTANCE.getELong();
-        if (Objects.equal(eDataType, _eLong)) {
-          _matched=true;
-          result = new String[] { "ELong" };
-        }
-      }
-      if (!_matched) {
-        EDataType _eShort = EcorePackage.eINSTANCE.getEShort();
-        if (Objects.equal(eDataType, _eShort)) {
-          _matched=true;
-          result = new String[] { "EShort" };
-        }
-      }
-      if (!_matched) {
-        EDataType _eBoolean = EcorePackage.eINSTANCE.getEBoolean();
-        if (Objects.equal(eDataType, _eBoolean)) {
-          _matched=true;
-          result = new String[] { "EBoolean" };
-        }
-      }
-      if (!_matched) {
-        EDataType _eByte = EcorePackage.eINSTANCE.getEByte();
-        if (Objects.equal(eDataType, _eByte)) {
-          _matched=true;
-          result = new String[] { "EByte" };
-        }
-      }
-      if (!_matched) {
-        EDataType _eDate = EcorePackage.eINSTANCE.getEDate();
-        if (Objects.equal(eDataType, _eDate)) {
-          _matched=true;
-          result = new String[] { "EDate" };
-        }
-      }
-      if (!_matched) {
-        EObject _eContainer = eDataType.eContainer();
-        String _name = ((EPackage) _eContainer).getName();
-        String _name_1 = eDataType.getName();
-        result = new String[] { _name, _name_1 };
-      }
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
-  }
-  
-  protected void writeUseCases(final EClassifier target) {
+  protected void concatUseCases(final EClassifier target) {
     boolean anyMatch = false;
     final Function1<EClass, Boolean> _function = (EClass it) -> {
       return Boolean.valueOf(Objects.equal(it, target));
@@ -367,10 +195,9 @@ public abstract class AEcoreDocGeneratorPart {
         if (_equals) {
           anyMatch = true;
           StringConcatenation _builder = new StringConcatenation();
-          _builder.append("* <<");
-          CharSequence _writeWhereUsed = this.writeWhereUsed(feature, eClass);
-          _builder.append(_writeWhereUsed);
-          _builder.append(">>");
+          _builder.append("* ");
+          CharSequence _concatUsedLink = this.concatUsedLink(feature, eClass);
+          _builder.append(_concatUsedLink);
           _builder.newLineIfNotEmpty();
           useCaseStrings.add(_builder.toString());
         }
@@ -389,7 +216,7 @@ public abstract class AEcoreDocGeneratorPart {
     }
   }
   
-  protected CharSequence writeTableFooter() {
+  protected CharSequence tableFooter() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("|===");
     _builder.newLine();
@@ -398,11 +225,13 @@ public abstract class AEcoreDocGeneratorPart {
   }
   
   protected CharSequence getDocumentation(final EModelElement modelElement) {
-    StringConcatenation _builder = new StringConcatenation();
-    String _documentation = EcoreUtil.getDocumentation(modelElement);
-    _builder.append(_documentation);
-    _builder.newLineIfNotEmpty();
-    return _builder;
+    return EcoreUtil.getDocumentation(modelElement);
+  }
+  
+  protected boolean isDefaultEDataType(final EDataType eDataType) {
+    String _nsURI = EcorePackage.eINSTANCE.getNsURI();
+    String _nsURI_1 = this.getEPackage(eDataType).getNsURI();
+    return Objects.equal(_nsURI, _nsURI_1);
   }
   
   protected String newline() {
@@ -413,15 +242,37 @@ public abstract class AEcoreDocGeneratorPart {
     return IterableExtensions.<EClass>toSet(Iterables.<EClass>filter(this.ePackages.values(), EClass.class));
   }
   
-  protected String[] writeType(final ENamedElement eClass) {
+  protected CharSequence concatAnchor(final ENamedElement eDataType) {
+    if (eDataType instanceof EDataType) {
+      return _concatAnchor((EDataType)eDataType);
+    } else if (eDataType != null) {
+      return _concatAnchor(eDataType);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(eDataType).toString());
+    }
+  }
+  
+  protected CharSequence concatLinkTo(final ENamedElement eDataType) {
+    if (eDataType instanceof EDataType) {
+      return _concatLinkTo((EDataType)eDataType);
+    } else if (eDataType != null) {
+      return _concatLinkTo(eDataType);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(eDataType).toString());
+    }
+  }
+  
+  protected String[] collectTypeSegments(final ENamedElement eClass) {
     if (eClass instanceof EClass) {
-      return _writeType((EClass)eClass);
+      return _collectTypeSegments((EClass)eClass);
     } else if (eClass instanceof EDataType) {
-      return _writeType((EDataType)eClass);
+      return _collectTypeSegments((EDataType)eClass);
     } else if (eClass instanceof EStructuralFeature) {
-      return _writeType((EStructuralFeature)eClass);
+      return _collectTypeSegments((EStructuralFeature)eClass);
     } else if (eClass instanceof EEnumLiteral) {
-      return _writeType((EEnumLiteral)eClass);
+      return _collectTypeSegments((EEnumLiteral)eClass);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(eClass).toString());

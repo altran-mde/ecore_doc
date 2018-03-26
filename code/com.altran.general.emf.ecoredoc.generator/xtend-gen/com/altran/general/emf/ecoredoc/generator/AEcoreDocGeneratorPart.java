@@ -29,6 +29,18 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 public abstract class AEcoreDocGeneratorPart {
   private final Multimap<EPackage, EClassifier> ePackages;
   
+  private final String anchorSeparator = "-";
+  
+  protected String getAnchorSeparator() {
+    return this.anchorSeparator;
+  }
+  
+  private final String referenceSeparator = ".";
+  
+  protected String getReferenceSeparator() {
+    return this.referenceSeparator;
+  }
+  
   private final StringBuilder output = new StringBuilder();
   
   public AEcoreDocGeneratorPart(final Multimap<EPackage, EClassifier> ePackages) {
@@ -51,7 +63,7 @@ public abstract class AEcoreDocGeneratorPart {
   }
   
   protected CharSequence _concatAnchor(final ENamedElement eNamedElement) {
-    return IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eNamedElement))), "-");
+    return IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eNamedElement))), this.anchorSeparator);
   }
   
   protected CharSequence _concatAnchor(final EDataType eDataType) {
@@ -59,7 +71,7 @@ public abstract class AEcoreDocGeneratorPart {
     boolean _isDefaultEDataType = this.isDefaultEDataType(eDataType);
     boolean _not = (!_isDefaultEDataType);
     if (_not) {
-      _xifexpression = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eDataType))), "-");
+      _xifexpression = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eDataType))), this.anchorSeparator);
     } else {
       _xifexpression = "";
     }
@@ -67,7 +79,7 @@ public abstract class AEcoreDocGeneratorPart {
   }
   
   protected CharSequence concatReferenceName(final ENamedElement eNamedElement) {
-    return IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eNamedElement))), ".");
+    return IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eNamedElement))), this.referenceSeparator);
   }
   
   protected CharSequence _concatLinkTo(final ENamedElement eNamedElement) {
@@ -108,10 +120,10 @@ public abstract class AEcoreDocGeneratorPart {
       final String[] inheritedFeatureSegments = this.collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("<<");
-      String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), "-");
+      String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), this.anchorSeparator);
       _builder.append(_join);
       _builder.append(", ");
-      String _join_1 = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), ".");
+      String _join_1 = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), this.referenceSeparator);
       _builder.append(_join_1);
       _builder.append(">>");
       _xblockexpression = _builder;

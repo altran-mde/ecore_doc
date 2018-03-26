@@ -17,7 +17,19 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 abstract class AEcoreDocGeneratorPart {
 
 	val Multimap<EPackage, EClassifier> ePackages
-
+	
+	val anchorSeparator = '-'
+	
+	protected def getAnchorSeparator() {
+		this.anchorSeparator
+	}
+	
+	val referenceSeparator = '.'
+	
+	protected def getReferenceSeparator() {
+		this.referenceSeparator
+	}
+	
 	val output = new StringBuilder()
 
 	new(Multimap<EPackage, EClassifier> ePackages) {
@@ -39,20 +51,20 @@ abstract class AEcoreDocGeneratorPart {
 	}
 	
 	protected def dispatch CharSequence concatAnchor(ENamedElement eNamedElement) {
-		collectTypeSegments(eNamedElement).join("-")
+		collectTypeSegments(eNamedElement).join(anchorSeparator)
 	}
 	
 	// Special handling for default EDataTypes: Don't create anchor
 	protected def dispatch CharSequence concatAnchor(EDataType eDataType) {
 		if (!isDefaultEDataType(eDataType)) {
-			collectTypeSegments(eDataType).join("-")
+			collectTypeSegments(eDataType).join(anchorSeparator)
 		} else {
 			""
 		}
 	}
 	
 	protected def CharSequence concatReferenceName(ENamedElement eNamedElement) {
-		collectTypeSegments(eNamedElement).join(".")
+		collectTypeSegments(eNamedElement).join(referenceSeparator)
 	}
 	
 	protected def dispatch CharSequence concatLinkTo(ENamedElement eNamedElement) {
@@ -70,7 +82,7 @@ abstract class AEcoreDocGeneratorPart {
 	
 	protected def CharSequence concatUsedLink(EStructuralFeature eStructuralFeature, EClass eClassThatInherits){
 		val inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits)
-		'''<<«inheritedFeatureSegments.join("-")», «inheritedFeatureSegments.join(".")»>>'''
+		'''<<«inheritedFeatureSegments.join(anchorSeparator)», «inheritedFeatureSegments.join(referenceSeparator)»>>'''
 	}
 	
 	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature, EClass eClassThatInherits){

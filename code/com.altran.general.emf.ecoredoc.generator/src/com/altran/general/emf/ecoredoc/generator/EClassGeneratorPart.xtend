@@ -9,9 +9,10 @@ import org.eclipse.emf.ecore.ENamedElement
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.ecore.EAttribute
 
 class EClassGeneratorPart extends AEcoreDocGeneratorPart {
-
+	
 	new(Multimap<EPackage, EClassifier> ePackages) {
 		super(ePackages)
 	}
@@ -95,8 +96,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		'''[cols="<15m,<15,<15m,<15m,<40a",options="header"]'''
 	}
 
-	protected def writeEStructuralFeatures(List<? extends EStructuralFeature> eStructuralFeatures, EClass eClass,
-		boolean isEReference) {
+	protected def writeEStructuralFeatures(List<? extends EStructuralFeature> eStructuralFeatures, EClass eClass, boolean isEReference) {
 
 		// Gather all inherited eStructuralFeatures and their classes.
 		val Set<EStructuralFeature> inheritedStructuralFeatures = newLinkedHashSet()
@@ -133,25 +133,29 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		val upperBound = eStructuralFeature.upperBound
 		val eStructuralFeatureName = eStructuralFeature.name
 		val inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClass)
-		val isEReference = (eStructuralFeature instanceof EReference)
-		var EReference eReference
-//		var EAttribute eAttribute
-		if (isEReference) {
-			eReference = (eStructuralFeature as EReference)
-		} else {
-//			eAttribute = (eStructuralFeature as EAttribute)
-		}
 
 		output.append(
 		'''
-		|«eStructuralFeatureName»[[«inheritedFeatureSegments.join("-")»]]«IF isInherited» +«ENDIF»
+		|«eStructuralFeatureName»[[«inheritedFeatureSegments.join(anchorSeparator)»]]«IF isInherited» +«ENDIF»
 		«IF isInherited»«concatInheritedEStructuralElementType(eStructuralFeature)»«ENDIF»
 		|«concatLinkTo(eStructuralFeature.EType)»
 		|«concatBounds(lowerBound, upperBound)»
-		|«IF isEReference»«IF eReference.EOpposite !== null»«concatOpposite(eReference)»«ENDIF»«ENDIF»
+		|«dispatchEStructuralFeature(eStructuralFeature)»
 		|«getDocumentation(eStructuralFeature)»
 		
 		''')
+	}
+	
+	def protected dispatch dispatchEStructuralFeature(EAttribute eAttribute){
+		if(eAttribute.defaultValue != 0){
+			eAttribute.defaultValue
+		}
+	}
+	
+	def protected dispatch dispatchEStructuralFeature(EReference eReference){
+		if(eReference.EOpposite !== null){
+			concatOpposite(eReference)
+		} 
 	}
 
 	def protected concatInheritedEStructuralElementType(ENamedElement eNamedElement) {
@@ -159,13 +163,20 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	def protected concatBounds(int lowerBound, int upperBound) {
-		'''«lowerBound»«IF lowerBound != upperBound»..«upperBound»«ENDIF»'''
+		'''«lowerBound»«IF lowerBound != upperBound»..«writeUpperBound(upperBound)»«ENDIF»'''
+	}
+	def protected writeUpperBound(int upperBound){
+		if(upperBound == -1){
+			'''*{nbsp}/ unordered'''
+		}else{
+			'''«upperBound»'''
+		}
 	}
 
 	def protected concatOpposite(EReference eReference) {
 		val eOppositeName = eReference.EOpposite.name
 		// I'm pretty sure this will not produce the right outcome
-		'''<<«concatAnchor(eReference.EReferenceType)»-«eOppositeName», «eOppositeName»>>'''
+		'''<<«concatAnchor(eReference.EReferenceType)»«anchorSeparator»«eOppositeName», «eOppositeName»>>'''
 	}
 
 	def protected writeEReferencesHeader() {

@@ -11,7 +11,7 @@ class EcoreDocGenerator {
 	val Collection<? extends EClassifier> input
 
 	val output = new StringBuilder
-
+	
 	val Multimap<EPackage, EClassifier> ePackages = TreeMultimap.create(
 		[o1, o2|o1.name.compareTo(o2.name)],
 		[o1, o2|o1.name.compareTo(o2.name)]

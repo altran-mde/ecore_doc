@@ -4,9 +4,11 @@ import com.altran.general.emf.ecoredoc.generator.AEcoreDocGeneratorPart;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.ENamedElement;
@@ -192,18 +194,12 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       final int upperBound = eStructuralFeature.getUpperBound();
       final String eStructuralFeatureName = eStructuralFeature.getName();
       final String[] inheritedFeatureSegments = this.collectInheritedFeatureSegments(eStructuralFeature, eClass);
-      final boolean isEReference = (eStructuralFeature instanceof EReference);
-      EReference eReference = null;
-      if (isEReference) {
-        eReference = ((EReference) eStructuralFeature);
-      } else {
-      }
       StringBuilder _output = this.getOutput();
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("|");
       _builder.append(eStructuralFeatureName);
       _builder.append("[[");
-      String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), "-");
+      String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), this.getAnchorSeparator());
       _builder.append(_join);
       _builder.append("]]");
       {
@@ -228,18 +224,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.append(_concatBounds);
       _builder.newLineIfNotEmpty();
       _builder.append("|");
-      {
-        if (isEReference) {
-          {
-            EReference _eOpposite = eReference.getEOpposite();
-            boolean _tripleNotEquals = (_eOpposite != null);
-            if (_tripleNotEquals) {
-              CharSequence _concatOpposite = this.concatOpposite(eReference);
-              _builder.append(_concatOpposite);
-            }
-          }
-        }
-      }
+      Object _dispatchEStructuralFeature = this.dispatchEStructuralFeature(eStructuralFeature);
+      _builder.append(_dispatchEStructuralFeature);
       _builder.newLineIfNotEmpty();
       _builder.append("|");
       CharSequence _documentation = this.getDocumentation(eStructuralFeature);
@@ -249,6 +235,26 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _xblockexpression = _output.append(_builder);
     }
     return _xblockexpression;
+  }
+  
+  protected Object _dispatchEStructuralFeature(final EAttribute eAttribute) {
+    Object _xifexpression = null;
+    Object _defaultValue = eAttribute.getDefaultValue();
+    boolean _notEquals = (!Objects.equal(_defaultValue, Integer.valueOf(0)));
+    if (_notEquals) {
+      _xifexpression = eAttribute.getDefaultValue();
+    }
+    return _xifexpression;
+  }
+  
+  protected Object _dispatchEStructuralFeature(final EReference eReference) {
+    CharSequence _xifexpression = null;
+    EReference _eOpposite = eReference.getEOpposite();
+    boolean _tripleNotEquals = (_eOpposite != null);
+    if (_tripleNotEquals) {
+      _xifexpression = this.concatOpposite(eReference);
+    }
+    return _xifexpression;
   }
   
   protected CharSequence concatInheritedEStructuralElementType(final ENamedElement eNamedElement) {
@@ -270,10 +276,25 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     {
       if ((lowerBound != upperBound)) {
         _builder.append("..");
-        _builder.append(upperBound);
+        CharSequence _writeUpperBound = this.writeUpperBound(upperBound);
+        _builder.append(_writeUpperBound);
       }
     }
     return _builder;
+  }
+  
+  protected CharSequence writeUpperBound(final int upperBound) {
+    CharSequence _xifexpression = null;
+    if ((upperBound == (-1))) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("*{nbsp}/ unordered");
+      _xifexpression = _builder;
+    } else {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append(upperBound);
+      _xifexpression = _builder_1;
+    }
+    return _xifexpression;
   }
   
   protected CharSequence concatOpposite(final EReference eReference) {
@@ -284,7 +305,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.append("<<");
       CharSequence _concatAnchor = this.concatAnchor(eReference.getEReferenceType());
       _builder.append(_concatAnchor);
-      _builder.append("-");
+      String _anchorSeparator = this.getAnchorSeparator();
+      _builder.append(_anchorSeparator);
       _builder.append(eOppositeName);
       _builder.append(", ");
       _builder.append(eOppositeName);
@@ -352,5 +374,16 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _xblockexpression = _output.append(_builder);
     }
     return _xblockexpression;
+  }
+  
+  protected Object dispatchEStructuralFeature(final EStructuralFeature eAttribute) {
+    if (eAttribute instanceof EAttribute) {
+      return _dispatchEStructuralFeature((EAttribute)eAttribute);
+    } else if (eAttribute instanceof EReference) {
+      return _dispatchEStructuralFeature((EReference)eAttribute);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(eAttribute).toString());
+    }
   }
 }

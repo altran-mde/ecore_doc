@@ -8,7 +8,6 @@ import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.util.EcoreUtil
 
-// FIXME: Decide for one naming - NOT DONE!!
 class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 
 	new(Multimap<EPackage, EClassifier> ePackages) {
@@ -18,7 +17,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 	override write(EPackage ePackage) {
 		val eEnums = collectEEnums(ePackage)
 
-		writeEEnumerations(eEnums)
+		writeEEnums(eEnums)
 
 		return output
 	}
@@ -27,9 +26,9 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 		this.getEPackages.get(ePackage).filter(EEnum).sortBy[it.name]
 	}
 
-	protected def void writeEEnumerations(List<EEnum> eEnums) {
+	protected def void writeEEnums(List<EEnum> eEnums) {
 		if (!eEnums.isEmpty) {
-			writeEEnumerationsHeader()
+			writeEEnumsHeader()
 			
 			for (eEnum : eEnums) {
 				writeEEnumHeader(eEnum)
@@ -39,7 +38,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 		}
 	}
 
-	protected def writeEEnumerationsHeader() {
+	protected def writeEEnumsHeader() {
 		output.append('''=== Enumerations
 
 			''')

@@ -23,7 +23,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
   @Override
   public StringBuilder write(final EPackage ePackage) {
     final List<EEnum> eEnums = this.collectEEnums(ePackage);
-    this.writeEEnumerations(eEnums);
+    this.writeEEnums(eEnums);
     return this.getOutput();
   }
   
@@ -34,11 +34,11 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     return IterableExtensions.<EEnum, String>sortBy(Iterables.<EEnum>filter(this.getEPackages().get(ePackage), EEnum.class), _function);
   }
   
-  protected void writeEEnumerations(final List<EEnum> eEnums) {
+  protected void writeEEnums(final List<EEnum> eEnums) {
     boolean _isEmpty = eEnums.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      this.writeEEnumerationsHeader();
+      this.writeEEnumsHeader();
       for (final EEnum eEnum : eEnums) {
         {
           this.writeEEnumHeader(eEnum);
@@ -49,7 +49,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     }
   }
   
-  protected StringBuilder writeEEnumerationsHeader() {
+  protected StringBuilder writeEEnumsHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("=== Enumerations");

@@ -18,6 +18,8 @@ abstract class EClass1 {
 	 
 	@GenModel(documentation="Description of id.")
 	int[1] ^id
+	int specialNumber = "23"
+	String someStringAttr = "Hello, World!"
 	 
 	@GenModel(documentation="Description.")
 	refers MyEClass[] myRelation opposite backwards

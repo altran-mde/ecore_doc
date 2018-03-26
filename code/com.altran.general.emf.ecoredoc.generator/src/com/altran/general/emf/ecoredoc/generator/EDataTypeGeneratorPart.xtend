@@ -21,7 +21,6 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 		return output
 	}
 
-	// FIXME: same name as similar methods - Vasileios : i dont understand.
 	protected def List<EDataType> collectEDataTypes(EPackage ePackage) {
 		this.getEPackages.get(ePackage).filter(EDataType).filter[!(it instanceof EEnum)].sortBy[it.name]
 	}

@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link EPackage1.EClass1#getName <em>Name</em>}</li>
  *   <li>{@link EPackage1.EClass1#getId <em>Id</em>}</li>
+ *   <li>{@link EPackage1.EClass1#getSpecialNumber <em>Special Number</em>}</li>
+ *   <li>{@link EPackage1.EClass1#getSomeStringAttr <em>Some String Attr</em>}</li>
  *   <li>{@link EPackage1.EClass1#getMyRelation <em>My Relation</em>}</li>
  * </ul>
  *
@@ -68,6 +70,60 @@ public interface EClass1 extends EObject {
 	 * @generated
 	 */
 	void setId(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Special Number</b></em>' attribute.
+	 * The default value is <code>"23"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Special Number</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Special Number</em>' attribute.
+	 * @see #setSpecialNumber(int)
+	 * @see EPackage1.EPackage1Package#getEClass1_SpecialNumber()
+	 * @model default="23" unique="false"
+	 * @generated
+	 */
+	int getSpecialNumber();
+
+	/**
+	 * Sets the value of the '{@link EPackage1.EClass1#getSpecialNumber <em>Special Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Special Number</em>' attribute.
+	 * @see #getSpecialNumber()
+	 * @generated
+	 */
+	void setSpecialNumber(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Some String Attr</b></em>' attribute.
+	 * The default value is <code>"Hello, World!"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Some String Attr</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Some String Attr</em>' attribute.
+	 * @see #setSomeStringAttr(String)
+	 * @see EPackage1.EPackage1Package#getEClass1_SomeStringAttr()
+	 * @model default="Hello, World!" unique="false"
+	 * @generated
+	 */
+	String getSomeStringAttr();
+
+	/**
+	 * Sets the value of the '{@link EPackage1.EClass1#getSomeStringAttr <em>Some String Attr</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Some String Attr</em>' attribute.
+	 * @see #getSomeStringAttr()
+	 * @generated
+	 */
+	void setSomeStringAttr(String value);
 
 	/**
 	 * Returns the value of the '<em><b>My Relation</b></em>' reference list.

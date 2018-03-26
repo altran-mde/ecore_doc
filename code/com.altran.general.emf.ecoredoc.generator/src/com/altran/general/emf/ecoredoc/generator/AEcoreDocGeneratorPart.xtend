@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.util.EcoreUtil
 
-// FIXME: Explain: why did I rename some methods writeXXX -> concatXXX, other writeXXX -> collectXXX, others not renamed?
 abstract class AEcoreDocGeneratorPart {
 
 	val Multimap<EPackage, EClassifier> ePackages
@@ -70,7 +69,8 @@ abstract class AEcoreDocGeneratorPart {
 	}
 	
 	protected def CharSequence concatUsedLink(EStructuralFeature eStructuralFeature, EClass eClassThatInherits){
-		'''<<«collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits).join("-")», «collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits).join(".")»>>'''
+		val inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits)
+		'''<<«inheritedFeatureSegments.join("-")», «inheritedFeatureSegments.join(".")»>>'''
 	}
 	
 	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature, EClass eClassThatInherits){
@@ -107,10 +107,12 @@ abstract class AEcoreDocGeneratorPart {
 	}
 
 	protected def dispatch String[] collectTypeSegments(EDataType eDataType) {
+		val eDataTypeName = eDataType.name
 		if (!isDefaultEDataType(eDataType)) {
-			#[(eDataType.eContainer as EPackage).name, eDataType.name]
+			val eDataTypePackageName = (eDataType.eContainer as EPackage).name
+			#[eDataTypePackageName, eDataTypeName]
 		} else {
-			#[eDataType.name]
+			#[eDataTypeName]
 		}
 	}
 	

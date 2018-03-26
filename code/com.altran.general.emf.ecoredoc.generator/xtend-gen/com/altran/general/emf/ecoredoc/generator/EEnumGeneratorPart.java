@@ -82,12 +82,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
       for (final EEnumLiteral eLiteral : _eLiterals) {
         this.writeELiteral(eLiteral);
       }
-      StringBuilder _output_1 = this.getOutput();
-      StringConcatenation _builder_1 = new StringConcatenation();
-      CharSequence _tableFooter = this.tableFooter();
-      _builder_1.append(_tableFooter);
-      _builder_1.newLineIfNotEmpty();
-      _xblockexpression = _output_1.append(_builder_1);
+      _xblockexpression = this.getOutput().append(this.tableFooter());
     }
     return _xblockexpression;
   }

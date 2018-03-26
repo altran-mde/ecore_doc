@@ -23,7 +23,6 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 		return output
 	}
 
-	// FIXME: same name as similar methods
 	protected def List<EEnum> collectEEnums(EPackage ePackage) {
 		this.getEPackages.get(ePackage).filter(EEnum).sortBy[it.name]
 	}
@@ -31,7 +30,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def void writeEEnumerations(List<EEnum> eEnums) {
 		if (!eEnums.isEmpty) {
 			writeEEnumerationsHeader()
-
+			
 			for (eEnum : eEnums) {
 				writeEEnumHeader(eEnum)
 				writeEEnumLiterals(eEnum)
@@ -62,13 +61,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 		for (eLiteral : eEnum.ELiterals) {
 			writeELiteral(eLiteral)
 		}
-		// FIXME: Why wrap in richstring?
-		output.append(
-		'''
-		«tableFooter()»
-		'''
-		)
-		
+		output.append(tableFooter())
 	}
 
 	protected def writeELiteral(EEnumLiteral eLiteral) {

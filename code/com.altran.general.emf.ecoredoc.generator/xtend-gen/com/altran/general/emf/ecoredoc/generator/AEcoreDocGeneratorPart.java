@@ -103,15 +103,20 @@ public abstract class AEcoreDocGeneratorPart {
   }
   
   protected CharSequence concatUsedLink(final EStructuralFeature eStructuralFeature, final EClass eClassThatInherits) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<<");
-    String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits))), "-");
-    _builder.append(_join);
-    _builder.append(", ");
-    String _join_1 = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits))), ".");
-    _builder.append(_join_1);
-    _builder.append(">>");
-    return _builder;
+    CharSequence _xblockexpression = null;
+    {
+      final String[] inheritedFeatureSegments = this.collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("<<");
+      String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), "-");
+      _builder.append(_join);
+      _builder.append(", ");
+      String _join_1 = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), ".");
+      _builder.append(_join_1);
+      _builder.append(">>");
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
   }
   
   protected String[] collectInheritedFeatureSegments(final EStructuralFeature eStructuralFeature, final EClass eClassThatInherits) {
@@ -162,19 +167,26 @@ public abstract class AEcoreDocGeneratorPart {
   }
   
   protected String[] _collectTypeSegments(final EDataType eDataType) {
-    String[] _xifexpression = null;
-    boolean _isDefaultEDataType = this.isDefaultEDataType(eDataType);
-    boolean _not = (!_isDefaultEDataType);
-    if (_not) {
-      EObject _eContainer = eDataType.eContainer();
-      String _name = ((EPackage) _eContainer).getName();
-      String _name_1 = eDataType.getName();
-      _xifexpression = new String[] { _name, _name_1 };
-    } else {
-      String _name_2 = eDataType.getName();
-      _xifexpression = new String[] { _name_2 };
+    String[] _xblockexpression = null;
+    {
+      final String eDataTypeName = eDataType.getName();
+      String[] _xifexpression = null;
+      boolean _isDefaultEDataType = this.isDefaultEDataType(eDataType);
+      boolean _not = (!_isDefaultEDataType);
+      if (_not) {
+        String[] _xblockexpression_1 = null;
+        {
+          EObject _eContainer = eDataType.eContainer();
+          final String eDataTypePackageName = ((EPackage) _eContainer).getName();
+          _xblockexpression_1 = new String[] { eDataTypePackageName, eDataTypeName };
+        }
+        _xifexpression = _xblockexpression_1;
+      } else {
+        _xifexpression = new String[] { eDataTypeName };
+      }
+      _xblockexpression = _xifexpression;
     }
-    return _xifexpression;
+    return _xblockexpression;
   }
   
   protected void concatUseCases(final EClassifier target) {

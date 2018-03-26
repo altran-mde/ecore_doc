@@ -33,6 +33,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link EPackage1.impl.EClass1Impl#getName <em>Name</em>}</li>
  *   <li>{@link EPackage1.impl.EClass1Impl#getId <em>Id</em>}</li>
+ *   <li>{@link EPackage1.impl.EClass1Impl#getSpecialNumber <em>Special Number</em>}</li>
+ *   <li>{@link EPackage1.impl.EClass1Impl#getSomeStringAttr <em>Some String Attr</em>}</li>
  *   <li>{@link EPackage1.impl.EClass1Impl#getMyRelation <em>My Relation</em>}</li>
  * </ul>
  *
@@ -68,6 +70,46 @@ public abstract class EClass1Impl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected int id = ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSpecialNumber() <em>Special Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSpecialNumber()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SPECIAL_NUMBER_EDEFAULT = 23;
+
+	/**
+	 * The cached value of the '{@link #getSpecialNumber() <em>Special Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSpecialNumber()
+	 * @generated
+	 * @ordered
+	 */
+	protected int specialNumber = SPECIAL_NUMBER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSomeStringAttr() <em>Some String Attr</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSomeStringAttr()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SOME_STRING_ATTR_EDEFAULT = "Hello, World!";
+
+	/**
+	 * The cached value of the '{@link #getSomeStringAttr() <em>Some String Attr</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSomeStringAttr()
+	 * @generated
+	 * @ordered
+	 */
+	protected String someStringAttr = SOME_STRING_ATTR_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getMyRelation() <em>My Relation</em>}' reference list.
@@ -136,6 +178,48 @@ public abstract class EClass1Impl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getSpecialNumber() {
+		return specialNumber;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSpecialNumber(int newSpecialNumber) {
+		int oldSpecialNumber = specialNumber;
+		specialNumber = newSpecialNumber;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EPackage1Package.ECLASS1__SPECIAL_NUMBER, oldSpecialNumber, specialNumber));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSomeStringAttr() {
+		return someStringAttr;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSomeStringAttr(String newSomeStringAttr) {
+		String oldSomeStringAttr = someStringAttr;
+		someStringAttr = newSomeStringAttr;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EPackage1Package.ECLASS1__SOME_STRING_ATTR, oldSomeStringAttr, someStringAttr));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<MyEClass> getMyRelation() {
 		if (myRelation == null) {
 			myRelation = new EObjectWithInverseResolvingEList<MyEClass>(MyEClass.class, this, EPackage1Package.ECLASS1__MY_RELATION, EPackage1Package.MY_ECLASS__BACKWARDS);
@@ -184,6 +268,10 @@ public abstract class EClass1Impl extends MinimalEObjectImpl.Container implement
 				return getName();
 			case EPackage1Package.ECLASS1__ID:
 				return getId();
+			case EPackage1Package.ECLASS1__SPECIAL_NUMBER:
+				return getSpecialNumber();
+			case EPackage1Package.ECLASS1__SOME_STRING_ATTR:
+				return getSomeStringAttr();
 			case EPackage1Package.ECLASS1__MY_RELATION:
 				return getMyRelation();
 		}
@@ -205,6 +293,12 @@ public abstract class EClass1Impl extends MinimalEObjectImpl.Container implement
 				return;
 			case EPackage1Package.ECLASS1__ID:
 				setId((Integer)newValue);
+				return;
+			case EPackage1Package.ECLASS1__SPECIAL_NUMBER:
+				setSpecialNumber((Integer)newValue);
+				return;
+			case EPackage1Package.ECLASS1__SOME_STRING_ATTR:
+				setSomeStringAttr((String)newValue);
 				return;
 			case EPackage1Package.ECLASS1__MY_RELATION:
 				getMyRelation().clear();
@@ -228,6 +322,12 @@ public abstract class EClass1Impl extends MinimalEObjectImpl.Container implement
 			case EPackage1Package.ECLASS1__ID:
 				setId(ID_EDEFAULT);
 				return;
+			case EPackage1Package.ECLASS1__SPECIAL_NUMBER:
+				setSpecialNumber(SPECIAL_NUMBER_EDEFAULT);
+				return;
+			case EPackage1Package.ECLASS1__SOME_STRING_ATTR:
+				setSomeStringAttr(SOME_STRING_ATTR_EDEFAULT);
+				return;
 			case EPackage1Package.ECLASS1__MY_RELATION:
 				getMyRelation().clear();
 				return;
@@ -247,6 +347,10 @@ public abstract class EClass1Impl extends MinimalEObjectImpl.Container implement
 				return name != null && !name.isEmpty();
 			case EPackage1Package.ECLASS1__ID:
 				return id != ID_EDEFAULT;
+			case EPackage1Package.ECLASS1__SPECIAL_NUMBER:
+				return specialNumber != SPECIAL_NUMBER_EDEFAULT;
+			case EPackage1Package.ECLASS1__SOME_STRING_ATTR:
+				return SOME_STRING_ATTR_EDEFAULT == null ? someStringAttr != null : !SOME_STRING_ATTR_EDEFAULT.equals(someStringAttr);
 			case EPackage1Package.ECLASS1__MY_RELATION:
 				return myRelation != null && !myRelation.isEmpty();
 		}
@@ -267,6 +371,10 @@ public abstract class EClass1Impl extends MinimalEObjectImpl.Container implement
 		result.append(name);
 		result.append(", id: ");
 		result.append(id);
+		result.append(", specialNumber: ");
+		result.append(specialNumber);
+		result.append(", someStringAttr: ");
+		result.append(someStringAttr);
 		result.append(')');
 		return result.toString();
 	}

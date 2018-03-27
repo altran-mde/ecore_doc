@@ -129,6 +129,7 @@ TODO: Find a good way to show class attributes like abstract.
 Description of EClass1
 
 .Sub-concepts
+* <<EPackage1-Class3, EPackage1.Class3>>
 * <<EPackage1-MyEClass, EPackage1.MyEClass>>
 * <<EPackage2-SomeClass, EPackage2.SomeClass>>
 
@@ -173,8 +174,8 @@ Description of EClass1
 |===
 
 .Used at
-* <<EPackage1-MyEClass-ref, EPackage1.MyEClass.ref>>
 * <<EPackage1-MyEClass-backwards, EPackage1.MyEClass.backwards>>
+* <<EPackage1-MyEClass-ref, EPackage1.MyEClass.ref>>
 
 [[EPackage1-MyEClass]]
 ==== Class MyEClass

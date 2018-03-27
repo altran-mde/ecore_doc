@@ -25,9 +25,9 @@ abstract class EClass1 {
 	refers MyEClass[] myRelation opposite backwards
 	
 }
-
+@GenModel(documentation = "Description")
 class MyEClass extends EClass1 {
-	@GenModel(documentation="Description. Second sentence.")
+	@GenModel(documentation="Description.\n\nSecond sentence.")
 	SpecialDataType[?] attr
 	
  @GenModel(documentation="Whatever.")
@@ -35,7 +35,7 @@ class MyEClass extends EClass1 {
 	
 	contains Class3[1..*] clazzes opposite specialParent
 	
- @GenModel(documentation="Deschkriptschion")
+ @GenModel(documentation="Deschkriptschion.")
 	Enum1[0..6] eeeenum = "Literal1"
 	
 	contains Class3[0..*] otherClasses

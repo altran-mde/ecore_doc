@@ -240,19 +240,27 @@ public abstract class AEcoreDocGeneratorPart {
     }
   }
   
+  protected StringBuilder writeSubConceptsHeader() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(".Sub-concepts");
+    _builder.newLine();
+    return this.output.append(_builder);
+  }
+  
   protected CharSequence tableFooter() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("|===");
     _builder.newLine();
-    _builder.newLine();
+    CharSequence _writeNewLine = this.writeNewLine();
+    _builder.append(_writeNewLine);
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
-  public StringBuilder writeSubConceptsFooter() {
+  protected CharSequence writeNewLine() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Sub-concepts");
     _builder.newLine();
-    return this.output.append(_builder);
+    return _builder;
   }
   
   protected CharSequence getDocumentation(final EModelElement modelElement) {

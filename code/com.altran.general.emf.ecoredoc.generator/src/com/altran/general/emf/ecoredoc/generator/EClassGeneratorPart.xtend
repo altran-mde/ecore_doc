@@ -40,9 +40,10 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def writeEClassesHeader() {
-		output.append('''=== Types
-
-			''')
+		output.append('''
+		=== Types
+		«writeNewLine»
+		''')
 	}
 
 	def protected writeEClass(EClass eClass) {
@@ -56,38 +57,50 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		}
 
 		if (!eClass.EAllReferences.isEmpty) {
-			writeEReferencesHeader()
-			writeEStructuralFeatures(eClass.EAllReferences, eClass, true)
+			if(!eClass.eCrossReferences.isEmpty){
+				writeEReferencesHeader()
+				writeEStructuralFeatures(eClass.EAllReferences, eClass, true)
+			}
+			if(eClass.EAllReferences.exists[isContainment])
+				writeEContainmentHeader()
 		}
+		
+		concatUseCases(eClass)
 
 	}
 	
+	def writeEContainmentHeader() {
+		output.append(
+		'''
+		.Containments
+		[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+		|===
+		|Name
+		|Type
+		|Multiplicity{nbsp}/ Order
+		|Opposite
+		|Description
+		«writeNewLine»
+		''')
+	}
+	
 	def writeSubConcepts(EClass currentEClass) {
-		var subConceptExist = false
+		var Set<EClass> eClassesThatInheritCurrent = newLinkedHashSet() 
 		for (eClass : collectAllEClasses.reject[eClass == currentEClass]){
 			if(eClass.EAllSuperTypes.contains(currentEClass)){
-				if(!subConceptExist){
-					writeSubConceptsFooter()
-				}
-				writeSubConcept(eClass)
-				subConceptExist = true
+				eClassesThatInheritCurrent.add(eClass)
+				
 			}
-//			for (superclass : eClass.EAllSuperTypes.sortBy[it.name]) {
-//				if(superclass == currentEClass){
-//					if(!subConceptExist){
-//						writeSubConceptsFooter()
-//					}
-//					writeSubConcept(eClass)
-//					subConceptExist = true
-//				}
-//			}
 		}
-		if(subConceptExist){
-			output.append(
-				'''
-
-				'''
-			)
+		var subConceptExists = !eClassesThatInheritCurrent.isEmpty
+		if(subConceptExists){
+			writeSubConceptsHeader()
+		}
+		for(eClass : eClassesThatInheritCurrent){
+			writeSubConcept(eClass)
+		}
+		if(subConceptExists){
+			output.append('''«writeNewLine»''')
 		}
 	}
 	
@@ -103,7 +116,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		if (!eClass.EAllSuperTypes.isEmpty) {
 			output.append(
 			'''
-				
+				«writeNewLine»
 				.Supertypes
 				«FOR supertype : eClass.EAllSuperTypes.sortBy[it.name]»
 					* «concatLinkTo(supertype)»
@@ -126,7 +139,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			|Multiplicity{nbsp}/ Order
 			|Default Value
 			|Description
-			
+			«writeNewLine»
 		''')
 	}
 
@@ -180,13 +193,14 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		|«concatBounds(lowerBound, upperBound)»
 		|«dispatchEStructuralFeature(eStructuralFeature)»
 		|«getDocumentation(eStructuralFeature)»
-		
+		«writeNewLine»
 		''')
 	}
 	
 	def protected dispatch dispatchEStructuralFeature(EAttribute eAttribute){
-		if(eAttribute.defaultValue != 0){
-			eAttribute.defaultValue
+		if(eAttribute.defaultValue != 0 && eAttribute.defaultValue !== null){
+			val eAttributeDefaultvalue = eAttribute.defaultValue
+			'''<<«concatAnchor(eAttribute.EAttributeType)»«anchorSeparator»«eAttributeDefaultvalue», «eAttributeDefaultvalue»>>'''
 		}
 	}
 	
@@ -228,7 +242,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 				|Multiplicity{nbsp}/ Order
 				|Opposite
 				|Description
-				
+				«writeNewLine»
 			'''
 		)
 	}
@@ -240,7 +254,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		'''
 			[[«concatAnchor(eClass)»]]
 			==== «IF eClass.isAbstract && !eClass.isInterface»Abstract «ENDIF»«IF eClass.isInterface»Interface«ELSE»Class«ENDIF» «eClassName»
-			
+			«writeNewLine»
 			«getDocumentation(eClass)»
 		''')
 	}

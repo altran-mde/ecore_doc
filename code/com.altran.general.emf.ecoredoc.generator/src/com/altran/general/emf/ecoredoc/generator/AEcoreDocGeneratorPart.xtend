@@ -157,20 +157,22 @@ abstract class AEcoreDocGeneratorPart {
 			output.append(newline)
 		}
 	}
+	def protected writeSubConceptsHeader(){
+		output.append('''.Sub-concepts
+		''')
 	
+	}
 	def protected CharSequence tableFooter() {
 		'''
 		|===
-		
+		«writeNewLine»
 		'''
 	}
 	
-	def writeSubConceptsFooter(){
-		output.append(
-			'''
-			Sub-concepts
-			'''
-		)
+	def protected CharSequence writeNewLine(){
+		'''
+
+		'''
 	}
 	
 	def protected CharSequence getDocumentation(EModelElement modelElement) {

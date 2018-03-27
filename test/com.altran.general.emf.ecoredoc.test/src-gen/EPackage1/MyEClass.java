@@ -9,6 +9,10 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>My EClass</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * Description
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -31,7 +35,9 @@ public interface MyEClass extends EClass1 {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Description. Second sentence.
+	 * Description.
+	 * 
+	 * Second sentence.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Attr</em>' attribute.
 	 * @see #setAttr(Number)
@@ -101,7 +107,7 @@ public interface MyEClass extends EClass1 {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Deschkriptschion
+	 * Deschkriptschion.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Eeeenum</em>' attribute list.
 	 * @see EPackage1.Enum1

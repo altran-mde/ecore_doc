@@ -165,6 +165,14 @@ abstract class AEcoreDocGeneratorPart {
 		'''
 	}
 	
+	def writeSubConceptsFooter(){
+		output.append(
+			'''
+			Sub-concepts
+			'''
+		)
+	}
+	
 	def protected CharSequence getDocumentation(EModelElement modelElement) {
 		EcoreUtil.getDocumentation(modelElement)
 	}

@@ -48,7 +48,8 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	def protected writeEClass(EClass eClass) {
 		writeEClassHeader(eClass)
 		writeSuperTypes(eClass)
-
+		writeSubConcepts(eClass)
+		
 		if (!eClass.EAllAttributes.isEmpty) {
 			writeEAttributesHeader()
 			writeEStructuralFeatures(eClass.EAllAttributes, eClass, false)
@@ -59,6 +60,43 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			writeEStructuralFeatures(eClass.EAllReferences, eClass, true)
 		}
 
+	}
+	
+	def writeSubConcepts(EClass currentEClass) {
+		var subConceptExist = false
+		for (eClass : collectAllEClasses.reject[eClass == currentEClass]){
+			if(eClass.EAllSuperTypes.contains(currentEClass)){
+				if(!subConceptExist){
+					writeSubConceptsFooter()
+				}
+				writeSubConcept(eClass)
+				subConceptExist = true
+			}
+//			for (superclass : eClass.EAllSuperTypes.sortBy[it.name]) {
+//				if(superclass == currentEClass){
+//					if(!subConceptExist){
+//						writeSubConceptsFooter()
+//					}
+//					writeSubConcept(eClass)
+//					subConceptExist = true
+//				}
+//			}
+		}
+		if(subConceptExist){
+			output.append(
+				'''
+
+				'''
+			)
+		}
+	}
+	
+	def protected writeSubConcept(EClass eClass){
+		output.append(
+			'''
+			* «concatLinkTo(eClass)»
+			'''
+		)
 	}
 
 	def protected writeSuperTypes(EClass eClass) {

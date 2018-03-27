@@ -7,4 +7,5 @@
       <details key="documentation" value="This is&#xD;&#xA;&#xD;&#xA;my doc"/>
     </eAnnotations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Class3"/>
 </ecore:EPackage>

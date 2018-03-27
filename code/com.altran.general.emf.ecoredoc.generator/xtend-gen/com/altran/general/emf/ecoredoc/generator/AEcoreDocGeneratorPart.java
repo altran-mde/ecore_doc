@@ -248,6 +248,13 @@ public abstract class AEcoreDocGeneratorPart {
     return _builder;
   }
   
+  public StringBuilder writeSubConceptsFooter() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("Sub-concepts");
+    _builder.newLine();
+    return this.output.append(_builder);
+  }
+  
   protected CharSequence getDocumentation(final EModelElement modelElement) {
     return EcoreUtil.getDocumentation(modelElement);
   }

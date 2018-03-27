@@ -67,6 +67,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     {
       this.writeEClassHeader(eClass);
       this.writeSuperTypes(eClass);
+      this.writeSubConcepts(eClass);
       boolean _isEmpty = eClass.getEAllAttributes().isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
@@ -87,6 +88,47 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
+  }
+  
+  public StringBuilder writeSubConcepts(final EClass currentEClass) {
+    StringBuilder _xblockexpression = null;
+    {
+      boolean subConceptExist = false;
+      final Function1<EClass, Boolean> _function = (EClass it) -> {
+        EClass _eClass = it.eClass();
+        return Boolean.valueOf(Objects.equal(_eClass, currentEClass));
+      };
+      Iterable<EClass> _reject = IterableExtensions.<EClass>reject(this.collectAllEClasses(), _function);
+      for (final EClass eClass : _reject) {
+        boolean _contains = eClass.getEAllSuperTypes().contains(currentEClass);
+        if (_contains) {
+          if ((!subConceptExist)) {
+            this.writeSubConceptsFooter();
+          }
+          this.writeSubConcept(eClass);
+          subConceptExist = true;
+        }
+      }
+      StringBuilder _xifexpression = null;
+      if (subConceptExist) {
+        StringBuilder _output = this.getOutput();
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.newLine();
+        _xifexpression = _output.append(_builder);
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
+  }
+  
+  protected StringBuilder writeSubConcept(final EClass eClass) {
+    StringBuilder _output = this.getOutput();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("* ");
+    CharSequence _concatLinkTo = this.concatLinkTo(eClass);
+    _builder.append(_concatLinkTo);
+    _builder.newLineIfNotEmpty();
+    return _output.append(_builder);
   }
   
   protected StringBuilder writeSuperTypes(final EClass eClass) {

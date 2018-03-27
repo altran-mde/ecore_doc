@@ -142,8 +142,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		output.append(
 			'''
 			* «concatLinkTo(eClass)»
-			'''
-		)
+			''')
 	}
 
 	protected def writeSuperTypes(EClass eClass) {

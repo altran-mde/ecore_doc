@@ -58,10 +58,14 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("=== Data Types");
     _builder.newLine();
-    _builder.newLine();
+    String _newline = this.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
     _builder.append("TODO: Create template for EDataType");
     _builder.newLine();
-    _builder.newLine();
+    String _newline_1 = this.newline();
+    _builder.append(_newline_1);
+    _builder.newLineIfNotEmpty();
     return _output.append(_builder);
   }
   
@@ -77,7 +81,9 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
     String _name = eDataType.getName();
     _builder.append(_name);
     _builder.newLineIfNotEmpty();
-    _builder.newLine();
+    String _newline = this.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
     return _output.append(_builder);
   }
 }

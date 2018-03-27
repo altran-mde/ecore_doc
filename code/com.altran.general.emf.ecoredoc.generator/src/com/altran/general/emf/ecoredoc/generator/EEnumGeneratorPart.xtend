@@ -41,22 +41,24 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def writeEEnumsHeader() {
-		output.append('''=== Enumerations
-
+		output.append(
+			'''
+			=== Enumerations
+			«newline»
 			''')
 	}
 
 	protected def writeEEnumLiterals(EEnum eEnum) {
 		output.append(
 		'''
-		
+		«newline»
 		.Literals
 		[cols="<20m,>10m,<70a",options="header"]
 		|===
 		|Symbol
 		|Value
 		|Description
-		
+		«newline»
 		'''
 		)
 		for (eLiteral : eEnum.ELiterals) {
@@ -71,7 +73,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 		|«eLiteral.name»[[«concatAnchor(eLiteral)»]]
 		|«eLiteral.value»
 		|«EcoreUtil.getDocumentation(eLiteral)»
-		
+		«newline»
 		''')
 	}
 	
@@ -80,7 +82,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 		'''
 		[[«concatAnchor(eEnum)»]]
 		==== «eEnum.name»
-		
+		«newline»
 		«getDocumentation(eEnum)»
 		''')
 	}

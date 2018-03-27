@@ -55,7 +55,9 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("=== Enumerations");
     _builder.newLine();
-    _builder.newLine();
+    String _newline = this.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
     return _output.append(_builder);
   }
   
@@ -64,7 +66,9 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     {
       StringBuilder _output = this.getOutput();
       StringConcatenation _builder = new StringConcatenation();
-      _builder.newLine();
+      String _newline = this.newline();
+      _builder.append(_newline);
+      _builder.newLineIfNotEmpty();
       _builder.append(".Literals");
       _builder.newLine();
       _builder.append("[cols=\"<20m,>10m,<70a\",options=\"header\"]");
@@ -77,7 +81,9 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.newLine();
       _builder.append("|Description");
       _builder.newLine();
-      _builder.newLine();
+      String _newline_1 = this.newline();
+      _builder.append(_newline_1);
+      _builder.newLineIfNotEmpty();
       _output.append(_builder);
       EList<EEnumLiteral> _eLiterals = eEnum.getELiterals();
       for (final EEnumLiteral eLiteral : _eLiterals) {
@@ -107,7 +113,9 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     String _documentation = EcoreUtil.getDocumentation(eLiteral);
     _builder.append(_documentation);
     _builder.newLineIfNotEmpty();
-    _builder.newLine();
+    String _newline = this.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
     return _output.append(_builder);
   }
   
@@ -123,7 +131,9 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     String _name = eEnum.getName();
     _builder.append(_name);
     _builder.newLineIfNotEmpty();
-    _builder.newLine();
+    String _newline = this.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
     CharSequence _documentation = this.getDocumentation(eEnum);
     _builder.append(_documentation);
     _builder.newLineIfNotEmpty();

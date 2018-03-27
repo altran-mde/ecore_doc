@@ -44,9 +44,9 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def writeEDataTypesHeader() {
 		output.append('''
 			=== Data Types
-			
+			«newline»
 			TODO: Create template for EDataType
-			
+			«newline»
 		''')
 	}
 	
@@ -55,7 +55,7 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 		'''
 		[[«concatAnchor(eDataType)»]]
 		==== «eDataType.name»
-		
+		«newline»
 		''')
 	}
 }

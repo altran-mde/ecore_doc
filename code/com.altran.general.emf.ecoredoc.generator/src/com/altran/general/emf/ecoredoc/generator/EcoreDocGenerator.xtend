@@ -46,15 +46,15 @@ class EcoreDocGenerator {
 		output.append('''
 			// White Up-Pointing Triangle
 			:wupt: &#9651;
-			
+			«newline»
 			:inherited: {wupt}{nbsp}
-			
+			«newline»
 			:table-caption!:
-			
+			«newline»
 			= Ecore Documentation
 			:toc:
 			:toclevels: 4
-			
+			«newline»
 		''')
 	}
 
@@ -62,7 +62,7 @@ class EcoreDocGenerator {
 		output.append('''
 			[[«ePackageName»]]
 			== Contents of «ePackageName»
-			
+			«newline»
 		''')
 	}
 
@@ -70,5 +70,8 @@ class EcoreDocGenerator {
 		for (eclassifier : input) {
 			ePackages.put(eclassifier.eContainer as EPackage, eclassifier)
 		}
+	}
+	protected def String newline() {
+		System.getProperty("line.separator")
 	}
 }

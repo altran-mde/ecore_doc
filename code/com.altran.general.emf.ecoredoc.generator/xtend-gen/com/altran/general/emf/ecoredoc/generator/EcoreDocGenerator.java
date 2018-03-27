@@ -55,20 +55,28 @@ public class EcoreDocGenerator {
     _builder.newLine();
     _builder.append(":wupt: &#9651;");
     _builder.newLine();
-    _builder.newLine();
+    String _newline = this.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
     _builder.append(":inherited: {wupt}{nbsp}");
     _builder.newLine();
-    _builder.newLine();
+    String _newline_1 = this.newline();
+    _builder.append(_newline_1);
+    _builder.newLineIfNotEmpty();
     _builder.append(":table-caption!:");
     _builder.newLine();
-    _builder.newLine();
+    String _newline_2 = this.newline();
+    _builder.append(_newline_2);
+    _builder.newLineIfNotEmpty();
     _builder.append("= Ecore Documentation");
     _builder.newLine();
     _builder.append(":toc:");
     _builder.newLine();
     _builder.append(":toclevels: 4");
     _builder.newLine();
-    _builder.newLine();
+    String _newline_3 = this.newline();
+    _builder.append(_newline_3);
+    _builder.newLineIfNotEmpty();
     return this.output.append(_builder);
   }
   
@@ -81,7 +89,9 @@ public class EcoreDocGenerator {
     _builder.append("== Contents of ");
     _builder.append(ePackageName);
     _builder.newLineIfNotEmpty();
-    _builder.newLine();
+    String _newline = this.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
     return this.output.append(_builder);
   }
   
@@ -90,5 +100,9 @@ public class EcoreDocGenerator {
       EObject _eContainer = eclassifier.eContainer();
       this.ePackages.put(((EPackage) _eContainer), eclassifier);
     }
+  }
+  
+  protected String newline() {
+    return System.getProperty("line.separator");
   }
 }

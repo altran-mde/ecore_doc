@@ -22,8 +22,7 @@ abstract class EClass1 {
 	//String someStringAttr = "Hello, World!"
 	 
 	@GenModel(documentation="Description.")
-	refers MyEClass[] myRelation opposite backwards
-	
+	refers unordered MyEClass[] myRelation opposite backwards
 }
 @GenModel(documentation = "Description")
 class MyEClass extends EClass1 {
@@ -33,14 +32,14 @@ class MyEClass extends EClass1 {
  @GenModel(documentation="Whatever.")
 	refers EClass1[0..1] ref
  @GenModel(documentation="Desc.")	
-	contains Class3[1..*] clazzes opposite specialParent
+	contains unordered Class3[1..*] clazzes opposite specialParent
 	
  @GenModel(documentation="Deschkriptschion.")
 	Enum1[0..6] eeeenum = "Literal1"
 	
-	@GenModel(documentation="Desc.")	
-	contains Class3[0..*] otherClasses
-	
+	@GenModel(documentation="Desc.\n\nContainments could also be inherited.")	
+	contains Class3[0..*] otherClasses 
+	 
 	//multiplicity is wrong in output
 	refers EClass1[1] backwards opposite myRelation
 
@@ -51,10 +50,10 @@ class Class3 extends EClass1 {
 	Enum1[0..6] something
 	//refers EClass1[1] backwards opposite myRelation
  @GenModel(documentation="Bla")
-	container MyEClass[0..1] specialParent opposite clazzes
+	container MyEClass[0..1] specialParent opposite clazzes 
 	
 }
-
+@GenModel(documentation="Description")
 interface Iface {
 	
 }

@@ -29,15 +29,14 @@ class EcoreDocGenerator {
 		val eDataTypeGeneratorPart = new EDataTypeGeneratorPart(ePackages)
 		val eEnumGeneratorPart = new EEnumGeneratorPart(ePackages)
 		val eClassGeneratorPart = new EClassGeneratorPart(ePackages)
-
+		
 		for (ePackage : ePackages.keySet) {
-
+			
 			writeEPackageIntro(ePackage.name)
-
+			
 			output.append(eDataTypeGeneratorPart.write(ePackage))
 			output.append(eEnumGeneratorPart.write(ePackage))
 			output.append(eClassGeneratorPart.write(ePackage))
-
 		}
 
 		return output.toString

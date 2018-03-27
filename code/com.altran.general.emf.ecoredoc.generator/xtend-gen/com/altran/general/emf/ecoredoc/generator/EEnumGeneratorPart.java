@@ -22,6 +22,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
   
   @Override
   public StringBuilder write(final EPackage ePackage) {
+    this.clearOutput();
     final List<EEnum> eEnums = this.collectEEnums(ePackage);
     this.writeEEnums(eEnums);
     return this.getOutput();

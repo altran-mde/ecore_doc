@@ -184,8 +184,9 @@ Description of EClass1
 [[EPackage1-Iface]]
 ==== Interface Iface
 
+Description
 
-.Sub-concepts
+.Known Implementations
 * <<EPackage2-SomeClass, EPackage2.SomeClass>>
 
 [[EPackage1-MyEClass]]
@@ -257,6 +258,7 @@ Second sentence.
 |Desc.
 
 Containments could also be inherited.
+
 |===
 
 .References
@@ -268,17 +270,17 @@ Containments could also be inherited.
 |Opposite
 |Description
 
-|ref[[EPackage1-MyEClass-ref]]
-|<<EPackage1-EClass1, EPackage1.EClass1>>
-|0..1
-|
-|Whatever.
-
 |backwards[[EPackage1-MyEClass-backwards]]
 |<<EPackage1-EClass1, EPackage1.EClass1>>
 |1
 |<<EPackage1-EClass1-myRelation, myRelation>>
 |
+
+|ref[[EPackage1-MyEClass-ref]]
+|<<EPackage1-EClass1, EPackage1.EClass1>>
+|0..1
+|
+|Whatever.
 
 |myRelation[[EPackage1-MyEClass-myRelation]] +
 (<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
@@ -290,30 +292,26 @@ Containments could also be inherited.
 |===
 
 .Used at
-* <<EPackage1-MyEClass-myRelation, EPackage1.MyEClass.myRelation>>
-* <<EPackage1-Class3-specialParent, EPackage1.Class3.ref>>
 * <<EPackage1-Class3-myRelation, EPackage1.Class3.myRelation>>
+* <<EPackage1-Class3-specialParent, EPackage1.Class3.specialParent>>
 * <<EPackage1-EClass1-myRelation, EPackage1.EClass1.myRelation>>
-
-
-
-
-
-[[EPackage1-Iface]]
-==== Interface Iface
-
-Description
-
-.Known Implementations
-* <<EPackage2-SomeClass, EPackage2.SomeClass>>
-
-Attributes, Containments, References
+* <<EPackage1-MyEClass-myRelation, EPackage1.MyEClass.myRelation>>
+* <<EPackage2-SomeClass-myRelation, EPackage2.SomeClass.myRelation>>
 
 [[EPackage2]]
 == Contents of EPackage2
 
+=== Types
+
+[[EPackage2-Class3]]
+==== Class Class3
+
 [[EPackage2-SomeClass]]
-=== Class SomeClass
+==== Class SomeClass
+
+This is
+
+my doc
 
 .Supertypes
 * <<EPackage1-EClass1, EPackage1.EClass1>>
@@ -328,14 +326,14 @@ Attributes, Containments, References
 |Default Value
 |Description
 
-|id[[EPackage1-Class3-id]] +
+|id[[EPackage2-SomeClass-id]] +
 (<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
 |EInt
 |1
 |
 |Description of id.
 
-|name[[EPackage1-Class3-name]] +
+|name[[EPackage2-SomeClass-name]] +
 (<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
 |EString
 |3..5
@@ -353,7 +351,7 @@ Attributes, Containments, References
 |Opposite
 |Description
 
-|myRelation[[EPackage1-Class3-myRelation]] +
+|myRelation[[EPackage2-SomeClass-myRelation]] +
 (<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
 |<<EPackage1-MyEClass, EPackage1.MyEClass>>
 |0..*{nbsp}/ unordered

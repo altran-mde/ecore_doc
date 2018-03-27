@@ -94,7 +94,7 @@ public interface MyEClass extends EClass1 {
 	 * @return the value of the '<em>Clazzes</em>' containment reference list.
 	 * @see EPackage1.EPackage1Package#getMyEClass_Clazzes()
 	 * @see EPackage1.Class3#getSpecialParent
-	 * @model opposite="specialParent" containment="true" required="true"
+	 * @model opposite="specialParent" containment="true" required="true" ordered="false"
 	 * @generated
 	 */
 	EList<Class3> getClazzes();
@@ -123,6 +123,8 @@ public interface MyEClass extends EClass1 {
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Desc.
+	 * 
+	 * Containments could also be inherited.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Other Classes</em>' containment reference list.
 	 * @see EPackage1.EPackage1Package#getMyEClass_OtherClasses()

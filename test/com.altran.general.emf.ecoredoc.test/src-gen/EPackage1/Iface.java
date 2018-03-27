@@ -9,6 +9,10 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Iface</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * Description
+ * <!-- end-model-doc -->
+ *
  *
  * @see EPackage1.EPackage1Package#getIface()
  * @model interface="true" abstract="true"

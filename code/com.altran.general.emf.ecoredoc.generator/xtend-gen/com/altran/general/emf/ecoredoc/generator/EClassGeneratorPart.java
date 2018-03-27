@@ -30,6 +30,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   
   @Override
   public StringBuilder write(final EPackage ePackage) {
+    this.clearOutput();
     final List<EClass> eClasses = this.collectEClasses(ePackage);
     this.writeEClasses(eClasses);
     return this.getOutput();
@@ -80,7 +81,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     if (_not) {
       StringBuilder _xblockexpression = null;
       {
-        this.writeEConainments(eClass);
+        this.writeEContainments(eClass);
         _xblockexpression = this.writeECrossReferences(eClass);
       }
       _xifexpression = _xblockexpression;
@@ -88,21 +89,28 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _xifexpression;
   }
   
-  protected void writeEConainments(final EClass eClass) {
+  protected StringBuilder writeEContainments(final EClass eClass) {
+    StringBuilder _xifexpression = null;
     final Function1<EReference, Boolean> _function = (EReference it) -> {
       return Boolean.valueOf(it.isContainment());
     };
     boolean _exists = IterableExtensions.<EReference>exists(eClass.getEAllReferences(), _function);
     if (_exists) {
-      this.writeEContainmentHeader();
-      EList<EReference> _eAllReferences = eClass.getEAllReferences();
-      for (final EReference eReference : _eAllReferences) {
-        boolean _isContainment = eReference.isContainment();
-        if (_isContainment) {
-          this.writeRow(eReference, eClass);
+      StringBuilder _xblockexpression = null;
+      {
+        this.writeEContainmentHeader();
+        EList<EReference> _eAllReferences = eClass.getEAllReferences();
+        for (final EReference eReference : _eAllReferences) {
+          boolean _isContainment = eReference.isContainment();
+          if (_isContainment) {
+            this.writeRow(eReference, eClass);
+          }
         }
+        _xblockexpression = this.getOutput().append(this.tableFooter());
       }
+      _xifexpression = _xblockexpression;
     }
+    return _xifexpression;
   }
   
   protected StringBuilder writeECrossReferences(final EClass eClass) {
@@ -113,7 +121,16 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       StringBuilder _xblockexpression = null;
       {
         this.writeEReferencesHeader();
-        _xblockexpression = this.writeEStructuralFeatures(eClass.getEAllReferences(), eClass, true);
+        List<EReference> crossReferences = CollectionLiterals.<EReference>newArrayList();
+        EList<EReference> _eReferences = eClass.getEReferences();
+        for (final EReference eReference : _eReferences) {
+          boolean _isContainment = eReference.isContainment();
+          boolean _not_1 = (!_isContainment);
+          if (_not_1) {
+            crossReferences.add(eReference);
+          }
+        }
+        _xblockexpression = this.writeEStructuralFeatures(crossReferences, eClass, true);
       }
       _xifexpression = _xblockexpression;
     }
@@ -178,7 +195,12 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       boolean _isEmpty = eClassesThatInheritCurrent.isEmpty();
       boolean subConceptExists = (!_isEmpty);
       if (subConceptExists) {
-        this.writeSubConceptsHeader();
+        boolean _isInterface = currentEClass.isInterface();
+        if (_isInterface) {
+          this.writeKnownImplementations();
+        } else {
+          this.writeSubConceptsHeader();
+        }
       }
       for (final EClass eClass_1 : eClassesThatInheritCurrent) {
         this.writeSubConcept(eClass_1);
@@ -226,7 +248,9 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
           _builder.newLineIfNotEmpty();
         }
       }
-      _builder.newLine();
+      String _newline_1 = this.newline();
+      _builder.append(_newline_1);
+      _builder.newLineIfNotEmpty();
       _xifexpression = _output.append(_builder);
     } else {
       _xifexpression = this.getOutput().append(this.newline());
@@ -307,8 +331,6 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       EObject _eContainer = eStructuralFeature.eContainer();
       final EClass eStructuralFeatureClass = ((EClass) _eContainer);
       final boolean isInherited = (!Objects.equal(eClass, eStructuralFeatureClass));
-      final int lowerBound = eStructuralFeature.getLowerBound();
-      final int upperBound = eStructuralFeature.getUpperBound();
       final String eStructuralFeatureName = eStructuralFeature.getName();
       final String[] inheritedFeatureSegments = this.collectInheritedFeatureSegments(eStructuralFeature, eClass);
       StringBuilder _output = this.getOutput();
@@ -337,7 +359,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.append(_concatLinkTo);
       _builder.newLineIfNotEmpty();
       _builder.append("|");
-      CharSequence _concatBounds = this.concatBounds(lowerBound, upperBound);
+      CharSequence _concatBounds = this.concatBounds(eStructuralFeature);
       _builder.append(_concatBounds);
       _builder.newLineIfNotEmpty();
       _builder.append("|");
@@ -357,26 +379,26 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   }
   
   protected CharSequence _dispatchEStructuralFeature(final EAttribute eAttribute) {
-    CharSequence _xifexpression = null;
-    if (((!Objects.equal(eAttribute.getDefaultValue(), Integer.valueOf(0))) && (eAttribute.getDefaultValue() != null))) {
-      CharSequence _xblockexpression = null;
-      {
-        final Object eAttributeDefaultvalue = eAttribute.getDefaultValue();
+    CharSequence _xblockexpression = null;
+    {
+      final Object defaultValue = eAttribute.getDefaultValue();
+      CharSequence _xifexpression = null;
+      if (((!Objects.equal(defaultValue, Integer.valueOf(0))) && (defaultValue != null))) {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("<<");
         CharSequence _concatAnchor = this.concatAnchor(eAttribute.getEAttributeType());
         _builder.append(_concatAnchor);
         String _anchorSeparator = this.getAnchorSeparator();
         _builder.append(_anchorSeparator);
-        _builder.append(eAttributeDefaultvalue);
+        _builder.append(defaultValue);
         _builder.append(", ");
-        _builder.append(eAttributeDefaultvalue);
+        _builder.append(defaultValue);
         _builder.append(">>");
-        _xblockexpression = _builder;
+        _xifexpression = _builder;
       }
-      _xifexpression = _xblockexpression;
+      _xblockexpression = _xifexpression;
     }
-    return _xifexpression;
+    return _xblockexpression;
   }
   
   protected CharSequence _dispatchEStructuralFeature(final EReference eReference) {
@@ -402,24 +424,38 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _builder;
   }
   
-  protected CharSequence concatBounds(final int lowerBound, final int upperBound) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append(lowerBound);
+  protected CharSequence concatBounds(final EStructuralFeature eStructuralFeature) {
+    CharSequence _xblockexpression = null;
     {
-      if ((lowerBound != upperBound)) {
-        _builder.append("..");
-        CharSequence _writeUpperBound = this.writeUpperBound(upperBound);
-        _builder.append(_writeUpperBound);
+      final int lowerBound = eStructuralFeature.getLowerBound();
+      final int upperBound = eStructuralFeature.getUpperBound();
+      final boolean ordered = eStructuralFeature.isOrdered();
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(lowerBound);
+      {
+        if ((lowerBound != upperBound)) {
+          _builder.append("..");
+          CharSequence _writeUpperBound = this.writeUpperBound(upperBound, ordered);
+          _builder.append(_writeUpperBound);
+        }
       }
+      _xblockexpression = _builder;
     }
-    return _builder;
+    return _xblockexpression;
   }
   
-  protected CharSequence writeUpperBound(final int upperBound) {
+  protected CharSequence writeUpperBound(final int upperBound, final boolean ordered) {
     CharSequence _xifexpression = null;
     if ((upperBound == (-1))) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("*{nbsp}/ unordered");
+      _builder.append("*{nbsp}/ ");
+      {
+        if (ordered) {
+          _builder.append("ordered");
+        } else {
+          _builder.append("unordered");
+        }
+      }
       _xifexpression = _builder;
     } else {
       StringConcatenation _builder_1 = new StringConcatenation();

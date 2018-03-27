@@ -15,6 +15,8 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	override write(EPackage ePackage) {
+		clearOutput()
+		
 		val eEnums = collectEEnums(ePackage)
 
 		writeEEnums(eEnums)

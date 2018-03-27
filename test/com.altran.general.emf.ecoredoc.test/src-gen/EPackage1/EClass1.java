@@ -83,7 +83,7 @@ public interface EClass1 extends EObject {
 	 * @return the value of the '<em>My Relation</em>' reference list.
 	 * @see EPackage1.EPackage1Package#getEClass1_MyRelation()
 	 * @see EPackage1.MyEClass#getBackwards
-	 * @model opposite="backwards"
+	 * @model opposite="backwards" ordered="false"
 	 * @generated
 	 */
 	EList<MyEClass> getMyRelation();

@@ -18,6 +18,8 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	override write(EPackage ePackage) {
+		clearOutput()
+		
 		val eClasses = collectEClasses(ePackage)
 
 		writeEClasses(eClasses)
@@ -55,13 +57,15 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	
 		concatUseCases(eClass)
 	}
+	
 	protected def writeEReferences(EClass eClass){
 		if (!eClass.EAllReferences.isEmpty) {
-			writeEConainments(eClass)
+			writeEContainments(eClass)
 			writeECrossReferences(eClass)
 		}
 	}
-	protected def writeEConainments(EClass eClass){
+	
+	protected def writeEContainments(EClass eClass){
 		if(eClass.EAllReferences.exists[isContainment]){
 			writeEContainmentHeader()
 			for(eReference : eClass.EAllReferences){
@@ -69,13 +73,20 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 					writeRow(eReference, eClass)
 				}
 			}
+			output.append(tableFooter())
 		}
 	}
 	
 	protected def writeECrossReferences(EClass eClass){
 		if(!eClass.eCrossReferences.isEmpty){
 			writeEReferencesHeader()
-			writeEStructuralFeatures(eClass.EAllReferences, eClass, true)
+			var List<EReference> crossReferences = newArrayList()
+			for(eReference :  eClass.EReferences){
+				if(!eReference.isContainment){
+					crossReferences.add(eReference)
+				}	
+			}
+			writeEStructuralFeatures(crossReferences, eClass, true)
 		}
 	}
 	protected def writeEAttributes(EClass eClass){
@@ -103,15 +114,22 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	
 	protected def writeSubConcepts(EClass currentEClass) {
 		var Set<EClass> eClassesThatInheritCurrent = newLinkedHashSet() 
+		
 		for (eClass : collectAllEClasses.reject[eClass == currentEClass]){
 			if(eClass.EAllSuperTypes.contains(currentEClass)){
 				eClassesThatInheritCurrent.add(eClass)
 			}
 		}
+		
 		var subConceptExists = !eClassesThatInheritCurrent.isEmpty
 		if(subConceptExists){
-			writeSubConceptsHeader()
+			if(currentEClass.isInterface){
+				writeKnownImplementations
+			}else{
+				writeSubConceptsHeader()
+			}	
 		}
+		
 		for(eClass : eClassesThatInheritCurrent){
 			writeSubConcept(eClass)
 		}
@@ -137,7 +155,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 				«FOR supertype : eClass.EAllSuperTypes.sortBy[it.name]»
 					* «concatLinkTo(supertype)»
 				«ENDFOR»
-				
+				«newline»
 			''')
 		} else {
 			output.append(newline)
@@ -196,8 +214,6 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 		val eStructuralFeatureClass = eStructuralFeature.eContainer as EClass
 		val isInherited = (eClass != eStructuralFeatureClass)
-		val lowerBound = eStructuralFeature.lowerBound
-		val upperBound = eStructuralFeature.upperBound
 		val eStructuralFeatureName = eStructuralFeature.name
 		val inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClass)
 
@@ -206,7 +222,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		|«eStructuralFeatureName»[[«inheritedFeatureSegments.join(anchorSeparator)»]]«IF isInherited» +«ENDIF»
 		«IF isInherited»«concatInheritedEStructuralElementType(eStructuralFeature)»«ENDIF»
 		|«concatLinkTo(eStructuralFeature.EType)»
-		|«concatBounds(lowerBound, upperBound)»
+		|«concatBounds(eStructuralFeature)»
 		|«dispatchEStructuralFeature(eStructuralFeature)»
 		|«getDocumentation(eStructuralFeature)»
 		«newline»
@@ -214,9 +230,9 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 	
 	protected def dispatch dispatchEStructuralFeature(EAttribute eAttribute){
-		if(eAttribute.defaultValue != 0 && eAttribute.defaultValue !== null){
-			val eAttributeDefaultvalue = eAttribute.defaultValue
-			'''<<«concatAnchor(eAttribute.EAttributeType)»«anchorSeparator»«eAttributeDefaultvalue», «eAttributeDefaultvalue»>>'''
+		val defaultValue = eAttribute.defaultValue
+		if(defaultValue != 0 && defaultValue !== null){
+			'''<<«concatAnchor(eAttribute.EAttributeType)»«anchorSeparator»«defaultValue», «defaultValue»>>'''
 		}
 	}
 	
@@ -230,12 +246,16 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		'''(<<«concatAnchor(eNamedElement)», {inherited}«concatReferenceName(eNamedElement.eContainer as EClass)»>>)'''
 	}
 
-	protected def concatBounds(int lowerBound, int upperBound) {
-		'''«lowerBound»«IF lowerBound != upperBound»..«writeUpperBound(upperBound)»«ENDIF»'''
+	protected def concatBounds(EStructuralFeature eStructuralFeature) {
+		val lowerBound = eStructuralFeature.lowerBound
+		val upperBound = eStructuralFeature.upperBound
+		val ordered = eStructuralFeature.ordered
+		'''«lowerBound»«IF lowerBound != upperBound»..«writeUpperBound(upperBound, ordered)»«ENDIF»'''
 	}
-	protected def writeUpperBound(int upperBound){
+	
+	protected def writeUpperBound(int upperBound, boolean ordered){
 		if(upperBound == -1){
-			'''*{nbsp}/ unordered'''
+			'''*{nbsp}/ «IF ordered»ordered«ELSE»unordered«ENDIF»'''
 		}else{
 			'''«upperBound»'''
 		}

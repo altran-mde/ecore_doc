@@ -27,21 +27,21 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public abstract class AEcoreDocGeneratorPart {
+  private final String anchorSeparator = "-";
+  
+  private final String referenceSeparator = ".";
+  
   private final Multimap<EPackage, EClassifier> ePackages;
   
-  private final String anchorSeparator = "-";
+  private StringBuilder output;
   
   protected String getAnchorSeparator() {
     return this.anchorSeparator;
   }
   
-  private final String referenceSeparator = ".";
-  
   protected String getReferenceSeparator() {
     return this.referenceSeparator;
   }
-  
-  private final StringBuilder output = new StringBuilder();
   
   public AEcoreDocGeneratorPart(final Multimap<EPackage, EClassifier> ePackages) {
     this.ePackages = ePackages;
@@ -49,12 +49,24 @@ public abstract class AEcoreDocGeneratorPart {
   
   public abstract StringBuilder write(final EPackage ePackage);
   
+  protected StringBuilder clearOutput() {
+    StringBuilder _stringBuilder = new StringBuilder();
+    return this.output = _stringBuilder;
+  }
+  
   protected Multimap<EPackage, EClassifier> getEPackages() {
     return this.ePackages;
   }
   
   protected StringBuilder getOutput() {
-    return this.output;
+    StringBuilder _xblockexpression = null;
+    {
+      if ((this.output == null)) {
+        throw new IllegalStateException("Tried to write to output before clearing it");
+      }
+      _xblockexpression = this.output;
+    }
+    return _xblockexpression;
   }
   
   protected EPackage getEPackage(final EClassifier eClassifier) {
@@ -203,17 +215,18 @@ public abstract class AEcoreDocGeneratorPart {
   
   protected void concatUseCases(final EClassifier target) {
     boolean anyMatch = false;
-    final Function1<EClass, Boolean> _function = (EClass it) -> {
-      return Boolean.valueOf(Objects.equal(it, target));
-    };
-    final Iterable<EClass> eClasses = IterableExtensions.<EClass>reject(this.collectAllEClasses(), _function);
+    final Collection<EClass> eClasses = this.collectAllEClasses();
     final ArrayList<String> useCaseStrings = CollectionLiterals.<String>newArrayList();
-    for (final EClass eClass : eClasses) {
+    final Function1<EClass, String> _function = (EClass it) -> {
+      return it.getName();
+    };
+    List<EClass> _sortBy = IterableExtensions.<EClass, String>sortBy(eClasses, _function);
+    for (final EClass eClass : _sortBy) {
       final Function1<EStructuralFeature, String> _function_1 = (EStructuralFeature it) -> {
         return it.getName();
       };
-      List<EStructuralFeature> _sortBy = IterableExtensions.<EStructuralFeature, String>sortBy(eClass.getEAllStructuralFeatures(), _function_1);
-      for (final EStructuralFeature feature : _sortBy) {
+      List<EStructuralFeature> _sortBy_1 = IterableExtensions.<EStructuralFeature, String>sortBy(eClass.getEAllStructuralFeatures(), _function_1);
+      for (final EStructuralFeature feature : _sortBy_1) {
         EClassifier _eType = feature.getEType();
         boolean _equals = Objects.equal(_eType, target);
         if (_equals) {
@@ -238,6 +251,13 @@ public abstract class AEcoreDocGeneratorPart {
       }
       this.output.append(this.newline());
     }
+  }
+  
+  protected StringBuilder writeKnownImplementations() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(".Known Implementations");
+    _builder.newLine();
+    return this.output.append(_builder);
   }
   
   protected StringBuilder writeSubConceptsHeader() {

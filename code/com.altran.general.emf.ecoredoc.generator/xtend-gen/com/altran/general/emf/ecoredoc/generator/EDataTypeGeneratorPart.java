@@ -20,6 +20,7 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
   
   @Override
   public StringBuilder write(final EPackage ePackage) {
+    this.clearOutput();
     final List<EDataType> eDataTypes = this.collectEDataTypes(ePackage);
     this.writeEDataTypes(eDataTypes);
     return this.getOutput();

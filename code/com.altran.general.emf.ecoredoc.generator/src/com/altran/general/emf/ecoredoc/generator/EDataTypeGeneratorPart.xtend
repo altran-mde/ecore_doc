@@ -14,6 +14,8 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	override write(EPackage ePackage) {
+		clearOutput()
+		
 		val eDataTypes = collectEDataTypes(ePackage)
 
 		writeEDataTypes(eDataTypes)

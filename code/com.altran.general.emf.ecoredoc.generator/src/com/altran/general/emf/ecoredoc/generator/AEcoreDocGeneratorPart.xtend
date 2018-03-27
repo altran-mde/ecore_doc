@@ -15,34 +15,43 @@ import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.util.EcoreUtil
 
 abstract class AEcoreDocGeneratorPart {
-
-	val Multimap<EPackage, EClassifier> ePackages
-	
 	val anchorSeparator = '-'
+	
+	val referenceSeparator = '.'
+	
+	val Multimap<EPackage, EClassifier> ePackages
+
+	var StringBuilder output
 	
 	protected def getAnchorSeparator() {
 		this.anchorSeparator
 	}
 	
-	val referenceSeparator = '.'
 	
 	protected def getReferenceSeparator() {
 		this.referenceSeparator
 	}
 	
-	val output = new StringBuilder()
 
 	new(Multimap<EPackage, EClassifier> ePackages) {
 		this.ePackages = ePackages
 	}
 
 	def abstract StringBuilder write(EPackage ePackage)
+	
+	protected def clearOutput() {
+		this.output = new StringBuilder()
+	}
 
 	protected def getEPackages() {
 		this.ePackages
 	}
 
 	protected def getOutput() {
+		if (this.output === null) {
+			throw new IllegalStateException("Tried to write to output before clearing it")
+		}
+		
 		this.output
 	}
 
@@ -131,10 +140,10 @@ abstract class AEcoreDocGeneratorPart {
 	protected def void concatUseCases(EClassifier target) {
 		var anyMatch = false
 
-		val eClasses = collectAllEClasses.reject[it == target]
+		val eClasses = collectAllEClasses()
 
 		val useCaseStrings = newArrayList()
-		for (eClass : eClasses) {
+		for (eClass : eClasses.sortBy[it.name]) {
 			for (feature : eClass.EAllStructuralFeatures.sortBy[it.name]) {
 				if (feature.EType == target) {
 					anyMatch = true
@@ -156,6 +165,10 @@ abstract class AEcoreDocGeneratorPart {
 			}
 			output.append(newline)
 		}
+	}
+	protected def writeKnownImplementations(){
+		output.append('''.Known Implementations
+		''')
 	}
 	protected def writeSubConceptsHeader(){
 		output.append('''.Sub-concepts

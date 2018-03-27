@@ -121,6 +121,10 @@ Description
 
 |===
 
+.Used at
+* <<EPackage1-MyEClass-clazzes, EPackage1.MyEClass.clazzes>>
+* <<EPackage1-MyEClass-otherClasses, EPackage1.MyEClass.otherClasses>>
+
 [[EPackage1-EClass1]]
 ==== Abstract Class EClass1
 
@@ -177,6 +181,13 @@ Description of EClass1
 * <<EPackage1-MyEClass-backwards, EPackage1.MyEClass.backwards>>
 * <<EPackage1-MyEClass-ref, EPackage1.MyEClass.ref>>
 
+[[EPackage1-Iface]]
+==== Interface Iface
+
+
+.Sub-concepts
+* <<EPackage2-SomeClass, EPackage2.SomeClass>>
+
 [[EPackage1-MyEClass]]
 ==== Class MyEClass
 
@@ -205,7 +216,7 @@ Second sentence.
 |eeeenum[[EPackage1-MyEClass-eeeenum]]
 |<<EPackage1-Enum1, EPackage1.Enum1>>
 |0..6
-|<<EPackage1-Enum-Literal1, Literal1>>
+|<<EPackage1-Enum1-Literal1, Literal1>>
 |Deschkriptschion.
 
 |id[[EPackage1-MyEClass-id]] +

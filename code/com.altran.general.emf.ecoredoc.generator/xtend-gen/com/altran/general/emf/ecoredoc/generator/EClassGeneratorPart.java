@@ -58,8 +58,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("=== Types");
     _builder.newLine();
-    CharSequence _writeNewLine = this.writeNewLine();
-    _builder.append(_writeNewLine);
+    String _newline = this.newline();
+    _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     return _output.append(_builder);
   }
@@ -113,8 +113,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLine();
     _builder.append("|Description");
     _builder.newLine();
-    CharSequence _writeNewLine = this.writeNewLine();
-    _builder.append(_writeNewLine);
+    String _newline = this.newline();
+    _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     return _output.append(_builder);
   }
@@ -144,11 +144,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       }
       StringBuilder _xifexpression = null;
       if (subConceptExists) {
-        StringBuilder _output = this.getOutput();
-        StringConcatenation _builder = new StringConcatenation();
-        CharSequence _writeNewLine = this.writeNewLine();
-        _builder.append(_writeNewLine);
-        _xifexpression = _output.append(_builder);
+        _xifexpression = this.getOutput().append(this.newline());
       }
       _xblockexpression = _xifexpression;
     }
@@ -172,8 +168,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     if (_not) {
       StringBuilder _output = this.getOutput();
       StringConcatenation _builder = new StringConcatenation();
-      CharSequence _writeNewLine = this.writeNewLine();
-      _builder.append(_writeNewLine);
+      String _newline = this.newline();
+      _builder.append(_newline);
       _builder.newLineIfNotEmpty();
       _builder.append(".Supertypes");
       _builder.newLine();
@@ -217,8 +213,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLine();
     _builder.append("|Description");
     _builder.newLine();
-    CharSequence _writeNewLine = this.writeNewLine();
-    _builder.append(_writeNewLine);
+    String _newline = this.newline();
+    _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     return _output.append(_builder);
   }
@@ -311,8 +307,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       CharSequence _documentation = this.getDocumentation(eStructuralFeature);
       _builder.append(_documentation);
       _builder.newLineIfNotEmpty();
-      CharSequence _writeNewLine = this.writeNewLine();
-      _builder.append(_writeNewLine);
+      String _newline = this.newline();
+      _builder.append(_newline);
       _builder.newLineIfNotEmpty();
       _xblockexpression = _output.append(_builder);
     }
@@ -430,8 +426,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLine();
     _builder.append("|Description");
     _builder.newLine();
-    CharSequence _writeNewLine = this.writeNewLine();
-    _builder.append(_writeNewLine);
+    String _newline = this.newline();
+    _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     return _output.append(_builder);
   }
@@ -464,8 +460,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.append(" ");
       _builder.append(eClassName);
       _builder.newLineIfNotEmpty();
-      CharSequence _writeNewLine = this.writeNewLine();
-      _builder.append(_writeNewLine);
+      String _newline = this.newline();
+      _builder.append(_newline);
       _builder.newLineIfNotEmpty();
       CharSequence _documentation = this.getDocumentation(eClass);
       _builder.append(_documentation);

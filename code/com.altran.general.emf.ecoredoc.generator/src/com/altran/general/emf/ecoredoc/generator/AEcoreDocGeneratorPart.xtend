@@ -165,13 +165,7 @@ abstract class AEcoreDocGeneratorPart {
 	def protected CharSequence tableFooter() {
 		'''
 		|===
-		«writeNewLine»
-		'''
-	}
-	
-	def protected CharSequence writeNewLine(){
-		'''
-
+		«newline»
 		'''
 	}
 	

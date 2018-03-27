@@ -251,15 +251,9 @@ public abstract class AEcoreDocGeneratorPart {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("|===");
     _builder.newLine();
-    CharSequence _writeNewLine = this.writeNewLine();
-    _builder.append(_writeNewLine);
+    String _newline = this.newline();
+    _builder.append(_newline);
     _builder.newLineIfNotEmpty();
-    return _builder;
-  }
-  
-  protected CharSequence writeNewLine() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.newLine();
     return _builder;
   }
   

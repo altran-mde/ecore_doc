@@ -42,7 +42,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def writeEClassesHeader() {
 		output.append('''
 		=== Types
-		«writeNewLine»
+		«newline»
 		''')
 	}
 
@@ -80,7 +80,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		|Multiplicity{nbsp}/ Order
 		|Opposite
 		|Description
-		«writeNewLine»
+		«newline»
 		''')
 	}
 	
@@ -100,7 +100,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			writeSubConcept(eClass)
 		}
 		if(subConceptExists){
-			output.append('''«writeNewLine»''')
+			output.append(newline)
 		}
 	}
 	
@@ -116,7 +116,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		if (!eClass.EAllSuperTypes.isEmpty) {
 			output.append(
 			'''
-				«writeNewLine»
+				«newline»
 				.Supertypes
 				«FOR supertype : eClass.EAllSuperTypes.sortBy[it.name]»
 					* «concatLinkTo(supertype)»
@@ -139,7 +139,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			|Multiplicity{nbsp}/ Order
 			|Default Value
 			|Description
-			«writeNewLine»
+			«newline»
 		''')
 	}
 
@@ -193,7 +193,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		|«concatBounds(lowerBound, upperBound)»
 		|«dispatchEStructuralFeature(eStructuralFeature)»
 		|«getDocumentation(eStructuralFeature)»
-		«writeNewLine»
+		«newline»
 		''')
 	}
 	
@@ -242,7 +242,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 				|Multiplicity{nbsp}/ Order
 				|Opposite
 				|Description
-				«writeNewLine»
+				«newline»
 			'''
 		)
 	}
@@ -254,7 +254,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		'''
 			[[«concatAnchor(eClass)»]]
 			==== «IF eClass.isAbstract && !eClass.isInterface»Abstract «ENDIF»«IF eClass.isInterface»Interface«ELSE»Class«ENDIF» «eClassName»
-			«writeNewLine»
+			«newline»
 			«getDocumentation(eClass)»
 		''')
 	}

@@ -87,11 +87,10 @@ public interface MyEClass extends EClass1 {
 	 * The list contents are of type {@link EPackage1.Class3}.
 	 * It is bidirectional and its opposite is '{@link EPackage1.Class3#getSpecialParent <em>Special Parent</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Clazzes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Desc.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Clazzes</em>' containment reference list.
 	 * @see EPackage1.EPackage1Package#getMyEClass_Clazzes()
 	 * @see EPackage1.Class3#getSpecialParent
@@ -121,11 +120,10 @@ public interface MyEClass extends EClass1 {
 	 * Returns the value of the '<em><b>Other Classes</b></em>' containment reference list.
 	 * The list contents are of type {@link EPackage1.Class3}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Other Classes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Desc.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Other Classes</em>' containment reference list.
 	 * @see EPackage1.EPackage1Package#getMyEClass_OtherClasses()
 	 * @model containment="true"

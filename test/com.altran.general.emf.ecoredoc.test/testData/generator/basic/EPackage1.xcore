@@ -32,12 +32,13 @@ class MyEClass extends EClass1 {
 	
  @GenModel(documentation="Whatever.")
 	refers EClass1[0..1] ref
-	
+ @GenModel(documentation="Desc.")	
 	contains Class3[1..*] clazzes opposite specialParent
 	
  @GenModel(documentation="Deschkriptschion.")
 	Enum1[0..6] eeeenum = "Literal1"
 	
+	@GenModel(documentation="Desc.")	
 	contains Class3[0..*] otherClasses
 	
 	//multiplicity is wrong in output

@@ -68,37 +68,71 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     this.writeEClassHeader(eClass);
     this.writeSuperTypes(eClass);
     this.writeSubConcepts(eClass);
-    boolean _isEmpty = eClass.getEAllAttributes().isEmpty();
+    this.writeEAttributes(eClass);
+    this.writeEReferences(eClass);
+    this.concatUseCases(eClass);
+  }
+  
+  protected StringBuilder writeEReferences(final EClass eClass) {
+    StringBuilder _xifexpression = null;
+    boolean _isEmpty = eClass.getEAllReferences().isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      this.writeEAttributesHeader();
-      this.writeEStructuralFeatures(eClass.getEAllAttributes(), eClass, false);
-    }
-    boolean _isEmpty_1 = eClass.getEAllReferences().isEmpty();
-    boolean _not_1 = (!_isEmpty_1);
-    if (_not_1) {
-      boolean _isEmpty_2 = eClass.eCrossReferences().isEmpty();
-      boolean _not_2 = (!_isEmpty_2);
-      if (_not_2) {
-        this.writeEReferencesHeader();
-        this.writeEStructuralFeatures(eClass.getEAllReferences(), eClass, true);
+      StringBuilder _xblockexpression = null;
+      {
+        this.writeEConainments(eClass);
+        _xblockexpression = this.writeECrossReferences(eClass);
       }
+      _xifexpression = _xblockexpression;
+    }
+    return _xifexpression;
+  }
+  
+  protected void writeEConainments(final EClass eClass) {
+    final Function1<EReference, Boolean> _function = (EReference it) -> {
+      return Boolean.valueOf(it.isContainment());
+    };
+    boolean _exists = IterableExtensions.<EReference>exists(eClass.getEAllReferences(), _function);
+    if (_exists) {
+      this.writeEContainmentHeader();
       EList<EReference> _eAllReferences = eClass.getEAllReferences();
       for (final EReference eReference : _eAllReferences) {
         boolean _isContainment = eReference.isContainment();
         if (_isContainment) {
-          this.writeEContainmentHeader();
+          this.writeRow(eReference, eClass);
         }
       }
-      final Function1<EReference, Boolean> _function = (EReference it) -> {
-        return Boolean.valueOf(it.isContainment());
-      };
-      boolean _exists = IterableExtensions.<EReference>exists(eClass.getEAllReferences(), _function);
-      if (_exists) {
-        this.writeEContainmentHeader();
-      }
     }
-    this.concatUseCases(eClass);
+  }
+  
+  protected StringBuilder writeECrossReferences(final EClass eClass) {
+    StringBuilder _xifexpression = null;
+    boolean _isEmpty = eClass.eCrossReferences().isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      StringBuilder _xblockexpression = null;
+      {
+        this.writeEReferencesHeader();
+        _xblockexpression = this.writeEStructuralFeatures(eClass.getEAllReferences(), eClass, true);
+      }
+      _xifexpression = _xblockexpression;
+    }
+    return _xifexpression;
+  }
+  
+  protected StringBuilder writeEAttributes(final EClass eClass) {
+    StringBuilder _xifexpression = null;
+    boolean _isEmpty = eClass.getEAllAttributes().isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      StringBuilder _xblockexpression = null;
+      {
+        this.writeEAttributesHeader();
+        _xblockexpression = this.writeEStructuralFeatures(eClass.getEAllAttributes(), eClass, false);
+      }
+      _xifexpression = _xblockexpression;
+    }
+    return _xifexpression;
   }
   
   protected StringBuilder writeEContainmentHeader() {

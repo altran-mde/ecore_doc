@@ -50,28 +50,40 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		writeEClassHeader(eClass)
 		writeSuperTypes(eClass)
 		writeSubConcepts(eClass)
-		
+		writeEAttributes(eClass)
+		writeEReferences(eClass)
+	
+		concatUseCases(eClass)
+	}
+	protected def writeEReferences(EClass eClass){
+		if (!eClass.EAllReferences.isEmpty) {
+			writeEConainments(eClass)
+			writeECrossReferences(eClass)
+		}
+	}
+	protected def writeEConainments(EClass eClass){
+		if(eClass.EAllReferences.exists[isContainment]){
+			writeEContainmentHeader()
+			for(eReference : eClass.EAllReferences){
+				if(eReference.isContainment){
+					writeRow(eReference, eClass)
+				}
+			}
+		}
+	}
+	
+	protected def writeECrossReferences(EClass eClass){
+		if(!eClass.eCrossReferences.isEmpty){
+			writeEReferencesHeader()
+			writeEStructuralFeatures(eClass.EAllReferences, eClass, true)
+		}
+	}
+	protected def writeEAttributes(EClass eClass){
 		if (!eClass.EAllAttributes.isEmpty) {
 			writeEAttributesHeader()
 			writeEStructuralFeatures(eClass.EAllAttributes, eClass, false)
 		}
-
-		if (!eClass.EAllReferences.isEmpty) {
-			if(!eClass.eCrossReferences.isEmpty){
-				writeEReferencesHeader()
-				writeEStructuralFeatures(eClass.EAllReferences, eClass, true)
-			}
-			for(eReference : eClass.EAllReferences){
-				if(eReference.isContainment){
-					writeEContainmentHeader()
-				}
-			}
-			if(eClass.EAllReferences.exists[isContainment])
-				writeEContainmentHeader()
-		}
-		concatUseCases(eClass)
 	}
-	
 	
 	
 	protected def writeEContainmentHeader() {

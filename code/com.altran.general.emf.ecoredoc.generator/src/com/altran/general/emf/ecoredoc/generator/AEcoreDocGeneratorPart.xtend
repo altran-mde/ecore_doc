@@ -15,20 +15,21 @@ import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.util.EcoreUtil
 
 abstract class AEcoreDocGeneratorPart {
+	// FIXME: Read about constants in Java, including naming conventions, and figure out how to do the same in Xtend; apply to all appropriate places
 	val protected anchorSeparator = '-'
-	
+
 	val protected referenceSeparator = '.'
-	
+
 	val Multimap<EPackage, EClassifier> ePackages
 
 	var StringBuilder output
-	
+
 	new(Multimap<EPackage, EClassifier> ePackages) {
 		this.ePackages = ePackages
 	}
 
 	def abstract StringBuilder write(EPackage ePackage)
-	
+
 	protected def clearOutput() {
 		this.output = new StringBuilder()
 	}
@@ -41,18 +42,18 @@ abstract class AEcoreDocGeneratorPart {
 		if (this.output === null) {
 			throw new IllegalStateException("Tried to write to output before clearing it")
 		}
-		
+
 		this.output
 	}
 
 	protected def EPackage getEPackage(EClassifier eClassifier) {
 		eClassifier.eContainer as EPackage
 	}
-	
+
 	protected def dispatch CharSequence concatAnchor(ENamedElement eNamedElement) {
 		collectTypeSegments(eNamedElement).join(anchorSeparator)
 	}
-	
+
 	// Special handling for default EDataTypes: Don't create anchor
 	protected def dispatch CharSequence concatAnchor(EDataType eDataType) {
 		if (!isDefaultEDataType(eDataType)) {
@@ -61,11 +62,11 @@ abstract class AEcoreDocGeneratorPart {
 			""
 		}
 	}
-	
+
 	protected def CharSequence concatReferenceName(ENamedElement eNamedElement) {
 		collectTypeSegments(eNamedElement).join(referenceSeparator)
 	}
-	
+
 	protected def dispatch CharSequence concatLinkTo(ENamedElement eNamedElement) {
 		'''<<«concatAnchor(eNamedElement)», «concatReferenceName(eNamedElement)»>>'''
 	}
@@ -78,55 +79,58 @@ abstract class AEcoreDocGeneratorPart {
 			eDataType.name
 		}
 	}
-	
-	protected def CharSequence concatUsedLink(EStructuralFeature eStructuralFeature, EClass eClassThatInherits){
+
+	protected def CharSequence concatUsedLink(EStructuralFeature eStructuralFeature, EClass eClassThatInherits) {
 		val inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits)
 		'''<<«inheritedFeatureSegments.join(anchorSeparator)», «inheritedFeatureSegments.join(referenceSeparator)»>>'''
 	}
-	
-	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature, EClass eClassThatInherits){
-		
+
+	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature,
+		EClass eClassThatInherits) {
+
 		val ePackageName = getEPackage(eClassThatInherits).name
 		val eClassName = eClassThatInherits.name
 		val eStructuralFeatureName = eStructuralFeature.name
-		
+
 		#[ePackageName, eClassName, eStructuralFeatureName]
 	}
-	
+
 	protected def dispatch String[] collectTypeSegments(EClass eClass) {
 		val eClassName = eClass.name
 		val ePackageName = getEPackage(eClass).name
-		
+
 		#[ePackageName, eClassName]
-		
+
 	}
-	
+
 	protected def dispatch String[] collectTypeSegments(EStructuralFeature eStructuralFeature) {
 		val eClass = eStructuralFeature.eContainer as EClass
 		val ePackageName = getEPackage(eClass).name
 		val eClassName = eClass.name
 		val eStructuralFeatureName = eStructuralFeature.name
-		
+
 		#[ePackageName, eClassName, eStructuralFeatureName]
 	}
-	
+
 	protected def dispatch String[] collectTypeSegments(EEnumLiteral eEnumLiteral) {
 		val eEnum = eEnumLiteral.eContainer as EEnum
 		val ePackageName = getEPackage(eEnum).name
-		
+
 		#[ePackageName, eEnum.name, eEnumLiteral.name]
 	}
 
 	protected def dispatch String[] collectTypeSegments(EDataType eDataType) {
 		val eDataTypeName = eDataType.name
 		if (!isDefaultEDataType(eDataType)) {
+			// FIXME: Use getEPackage()
 			val eDataTypePackageName = (eDataType.eContainer as EPackage).name
 			#[eDataTypePackageName, eDataTypeName]
 		} else {
 			#[eDataTypeName]
 		}
 	}
-	
+
+	// FIXME: Does this have the right name?
 	protected def void concatUseCases(EClassifier target) {
 		var anyMatch = false
 
@@ -156,22 +160,26 @@ abstract class AEcoreDocGeneratorPart {
 			output.append(newline)
 		}
 	}
-	protected def writeKnownImplementations(){
+
+	// FIXME: This is only used in one class --> move it there. Also for all similar methods
+	protected def writeKnownImplementations() {
 		output.append('''.Known Implementations
 		''')
 	}
-	protected def writeSubConceptsHeader(){
+
+	protected def writeSubConceptsHeader() {
 		output.append('''.Sub-concepts
 		''')
-	
+
 	}
+
 	protected def CharSequence tableFooter() {
 		'''
-		|===
-		«newline»
+			|===
+			«newline»
 		'''
 	}
-	
+
 	protected def CharSequence getDocumentation(EModelElement modelElement) {
 		EcoreUtil.getDocumentation(modelElement)
 	}

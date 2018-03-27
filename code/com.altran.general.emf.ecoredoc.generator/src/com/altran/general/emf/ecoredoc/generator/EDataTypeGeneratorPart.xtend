@@ -15,7 +15,7 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 
 	override write(EPackage ePackage) {
 		clearOutput()
-		
+
 		val eDataTypes = collectEDataTypes(ePackage)
 
 		writeEDataTypes(eDataTypes)
@@ -49,13 +49,13 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 			«newline»
 		''')
 	}
-	
+
 	protected def CharSequence writeEDataTypeHeader(EDataType eDataType) {
 		output.append(
 		'''
-		[[«concatAnchor(eDataType)»]]
-		==== «eDataType.name»
-		«newline»
+			[[«concatAnchor(eDataType)»]]
+			==== «eDataType.name»
+			«newline»
 		''')
 	}
 }

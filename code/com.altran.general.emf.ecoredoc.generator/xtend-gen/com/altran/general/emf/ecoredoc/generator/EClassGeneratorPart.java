@@ -192,22 +192,24 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
           eClassesThatInheritCurrent.add(eClass);
         }
       }
-      boolean _isEmpty = eClassesThatInheritCurrent.isEmpty();
-      boolean subConceptExists = (!_isEmpty);
-      if (subConceptExists) {
-        boolean _isInterface = currentEClass.isInterface();
-        if (_isInterface) {
-          this.writeKnownImplementations();
-        } else {
-          this.writeSubConceptsHeader();
-        }
-      }
-      for (final EClass eClass_1 : eClassesThatInheritCurrent) {
-        this.writeSubConcept(eClass_1);
-      }
       StringBuilder _xifexpression = null;
-      if (subConceptExists) {
-        _xifexpression = this.getOutput().append(this.newline());
+      boolean _isEmpty = eClassesThatInheritCurrent.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        StringBuilder _xblockexpression_1 = null;
+        {
+          boolean _isInterface = currentEClass.isInterface();
+          if (_isInterface) {
+            this.writeKnownImplementations();
+          } else {
+            this.writeSubConceptsHeader();
+          }
+          for (final EClass eClass_1 : eClassesThatInheritCurrent) {
+            this.writeSubConcept(eClass_1);
+          }
+          _xblockexpression_1 = this.getOutput().append(this.newline());
+        }
+        _xifexpression = _xblockexpression_1;
       }
       _xblockexpression = _xifexpression;
     }

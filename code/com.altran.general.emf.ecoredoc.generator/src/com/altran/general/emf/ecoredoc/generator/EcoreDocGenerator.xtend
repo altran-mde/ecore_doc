@@ -11,7 +11,7 @@ class EcoreDocGenerator {
 	val Collection<? extends EClassifier> input
 
 	val output = new StringBuilder
-	
+
 	val Multimap<EPackage, EClassifier> ePackages = TreeMultimap.create(
 		[o1, o2|o1.name.compareTo(o2.name)],
 		[o1, o2|o1.name.compareTo(o2.name)]
@@ -29,11 +29,11 @@ class EcoreDocGenerator {
 		val eDataTypeGeneratorPart = new EDataTypeGeneratorPart(ePackages)
 		val eEnumGeneratorPart = new EEnumGeneratorPart(ePackages)
 		val eClassGeneratorPart = new EClassGeneratorPart(ePackages)
-		
+
 		for (ePackage : ePackages.keySet) {
-			
+
 			writeEPackageIntro(ePackage.name)
-			
+
 			output.append(eDataTypeGeneratorPart.write(ePackage))
 			output.append(eEnumGeneratorPart.write(ePackage))
 			output.append(eClassGeneratorPart.write(ePackage))
@@ -71,6 +71,7 @@ class EcoreDocGenerator {
 			ePackages.put(eclassifier.eContainer as EPackage, eclassifier)
 		}
 	}
+
 	protected def String newline() {
 		System.getProperty("line.separator")
 	}

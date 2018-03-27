@@ -16,7 +16,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 
 	override write(EPackage ePackage) {
 		clearOutput()
-		
+
 		val eEnums = collectEEnums(ePackage)
 
 		writeEEnums(eEnums)
@@ -31,7 +31,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def void writeEEnums(List<EEnum> eEnums) {
 		if (!eEnums.isEmpty) {
 			writeEEnumsHeader()
-			
+
 			for (eEnum : eEnums) {
 				writeEEnumHeader(eEnum)
 				writeEEnumLiterals(eEnum)
@@ -45,21 +45,21 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 			'''
 			=== Enumerations
 			«newline»
-			''')
+		''')
 	}
 
 	protected def writeEEnumLiterals(EEnum eEnum) {
 		output.append(
-		'''
-		«newline»
-		.Literals
-		[cols="<20m,>10m,<70a",options="header"]
-		|===
-		|Symbol
-		|Value
-		|Description
-		«newline»
-		'''
+			'''
+				«newline»
+				.Literals
+				[cols="<20m,>10m,<70a",options="header"]
+				|===
+				|Symbol
+				|Value
+				|Description
+				«newline»
+			'''
 		)
 		for (eLiteral : eEnum.ELiterals) {
 			writeELiteral(eLiteral)
@@ -68,22 +68,23 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def writeELiteral(EEnumLiteral eLiteral) {
+		// FIXME: Why not using our getDocumentation()
 		output.append(
 		'''
-		|«eLiteral.name»[[«concatAnchor(eLiteral)»]]
-		|«eLiteral.value»
-		|«EcoreUtil.getDocumentation(eLiteral)»
-		«newline»
+			|«eLiteral.name»[[«concatAnchor(eLiteral)»]]
+			|«eLiteral.value»
+			|«EcoreUtil.getDocumentation(eLiteral)»
+			«newline»
 		''')
 	}
-	
+
 	def protected CharSequence writeEEnumHeader(EEnum eEnum) {
 		output.append(
 		'''
-		[[«concatAnchor(eEnum)»]]
-		==== «eEnum.name»
-		«newline»
-		«getDocumentation(eEnum)»
+			[[«concatAnchor(eEnum)»]]
+			==== «eEnum.name»
+			«newline»
+			«getDocumentation(eEnum)»
 		''')
 	}
 

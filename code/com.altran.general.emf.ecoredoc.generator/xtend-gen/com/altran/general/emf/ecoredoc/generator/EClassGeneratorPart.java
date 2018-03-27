@@ -83,6 +83,13 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
         this.writeEReferencesHeader();
         this.writeEStructuralFeatures(eClass.getEAllReferences(), eClass, true);
       }
+      EList<EReference> _eAllReferences = eClass.getEAllReferences();
+      for (final EReference eReference : _eAllReferences) {
+        boolean _isContainment = eReference.isContainment();
+        if (_isContainment) {
+          this.writeEContainmentHeader();
+        }
+      }
       final Function1<EReference, Boolean> _function = (EReference it) -> {
         return Boolean.valueOf(it.isContainment());
       };
@@ -94,7 +101,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     this.concatUseCases(eClass);
   }
   
-  public StringBuilder writeEContainmentHeader() {
+  protected StringBuilder writeEContainmentHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append(".Containments");
@@ -119,7 +126,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _output.append(_builder);
   }
   
-  public StringBuilder writeSubConcepts(final EClass currentEClass) {
+  protected StringBuilder writeSubConcepts(final EClass currentEClass) {
     StringBuilder _xblockexpression = null;
     {
       Set<EClass> eClassesThatInheritCurrent = CollectionLiterals.<EClass>newLinkedHashSet();

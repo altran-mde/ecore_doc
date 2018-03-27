@@ -157,19 +157,19 @@ abstract class AEcoreDocGeneratorPart {
 			output.append(newline)
 		}
 	}
-	def protected writeSubConceptsHeader(){
+	protected def writeSubConceptsHeader(){
 		output.append('''.Sub-concepts
 		''')
 	
 	}
-	def protected CharSequence tableFooter() {
+	protected def CharSequence tableFooter() {
 		'''
 		|===
 		«newline»
 		'''
 	}
 	
-	def protected CharSequence getDocumentation(EModelElement modelElement) {
+	protected def CharSequence getDocumentation(EModelElement modelElement) {
 		EcoreUtil.getDocumentation(modelElement)
 	}
 

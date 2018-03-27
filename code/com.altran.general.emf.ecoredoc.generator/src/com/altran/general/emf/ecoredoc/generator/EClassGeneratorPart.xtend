@@ -46,7 +46,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		''')
 	}
 
-	def protected writeEClass(EClass eClass) {
+	protected def writeEClass(EClass eClass) {
 		writeEClassHeader(eClass)
 		writeSuperTypes(eClass)
 		writeSubConcepts(eClass)
@@ -61,15 +61,20 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 				writeEReferencesHeader()
 				writeEStructuralFeatures(eClass.EAllReferences, eClass, true)
 			}
+			for(eReference : eClass.EAllReferences){
+				if(eReference.isContainment){
+					writeEContainmentHeader()
+				}
+			}
 			if(eClass.EAllReferences.exists[isContainment])
 				writeEContainmentHeader()
 		}
-		
 		concatUseCases(eClass)
-
 	}
 	
-	def writeEContainmentHeader() {
+	
+	
+	protected def writeEContainmentHeader() {
 		output.append(
 		'''
 		.Containments
@@ -84,12 +89,11 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		''')
 	}
 	
-	def writeSubConcepts(EClass currentEClass) {
+	protected def writeSubConcepts(EClass currentEClass) {
 		var Set<EClass> eClassesThatInheritCurrent = newLinkedHashSet() 
 		for (eClass : collectAllEClasses.reject[eClass == currentEClass]){
 			if(eClass.EAllSuperTypes.contains(currentEClass)){
 				eClassesThatInheritCurrent.add(eClass)
-				
 			}
 		}
 		var subConceptExists = !eClassesThatInheritCurrent.isEmpty
@@ -104,7 +108,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		}
 	}
 	
-	def protected writeSubConcept(EClass eClass){
+	protected def writeSubConcept(EClass eClass){
 		output.append(
 			'''
 			* «concatLinkTo(eClass)»
@@ -112,7 +116,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		)
 	}
 
-	def protected writeSuperTypes(EClass eClass) {
+	protected def writeSuperTypes(EClass eClass) {
 		if (!eClass.EAllSuperTypes.isEmpty) {
 			output.append(
 			'''
@@ -176,7 +180,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		output.append(tableFooter())
 	}
 
-	def protected writeRow(EStructuralFeature eStructuralFeature, EClass eClass) {
+	protected def writeRow(EStructuralFeature eStructuralFeature, EClass eClass) {
 
 		val eStructuralFeatureClass = eStructuralFeature.eContainer as EClass
 		val isInherited = (eClass != eStructuralFeatureClass)
@@ -197,27 +201,27 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		''')
 	}
 	
-	def protected dispatch dispatchEStructuralFeature(EAttribute eAttribute){
+	protected def dispatch dispatchEStructuralFeature(EAttribute eAttribute){
 		if(eAttribute.defaultValue != 0 && eAttribute.defaultValue !== null){
 			val eAttributeDefaultvalue = eAttribute.defaultValue
 			'''<<«concatAnchor(eAttribute.EAttributeType)»«anchorSeparator»«eAttributeDefaultvalue», «eAttributeDefaultvalue»>>'''
 		}
 	}
 	
-	def protected dispatch dispatchEStructuralFeature(EReference eReference){
+	protected def dispatch dispatchEStructuralFeature(EReference eReference){
 		if(eReference.EOpposite !== null){
 			concatOpposite(eReference)
 		} 
 	}
 
-	def protected concatInheritedEStructuralElementType(ENamedElement eNamedElement) {
+	protected def concatInheritedEStructuralElementType(ENamedElement eNamedElement) {
 		'''(<<«concatAnchor(eNamedElement)», {inherited}«concatReferenceName(eNamedElement.eContainer as EClass)»>>)'''
 	}
 
-	def protected concatBounds(int lowerBound, int upperBound) {
+	protected def concatBounds(int lowerBound, int upperBound) {
 		'''«lowerBound»«IF lowerBound != upperBound»..«writeUpperBound(upperBound)»«ENDIF»'''
 	}
-	def protected writeUpperBound(int upperBound){
+	protected def writeUpperBound(int upperBound){
 		if(upperBound == -1){
 			'''*{nbsp}/ unordered'''
 		}else{
@@ -225,13 +229,13 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		}
 	}
 
-	def protected concatOpposite(EReference eReference) {
+	protected def concatOpposite(EReference eReference) {
 		val eOppositeName = eReference.EOpposite.name
 		// I'm pretty sure this will not produce the right outcome
 		'''<<«concatAnchor(eReference.EReferenceType)»«anchorSeparator»«eOppositeName», «eOppositeName»>>'''
 	}
 
-	def protected writeEReferencesHeader() {
+	protected def writeEReferencesHeader() {
 		output.append(
 			'''
 				.References
@@ -247,7 +251,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		)
 	}
 
-	def protected CharSequence writeEClassHeader(EClass eClass) {
+	protected def CharSequence writeEClassHeader(EClass eClass) {
 
 		val eClassName = eClass.name
 		output.append(

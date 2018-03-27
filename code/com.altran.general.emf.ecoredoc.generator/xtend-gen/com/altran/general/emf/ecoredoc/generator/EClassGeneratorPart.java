@@ -338,7 +338,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.append("|");
       _builder.append(eStructuralFeatureName);
       _builder.append("[[");
-      String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), this.getAnchorSeparator());
+      String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), this.anchorSeparator);
       _builder.append(_join);
       _builder.append("]]");
       {
@@ -388,8 +388,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
         _builder.append("<<");
         CharSequence _concatAnchor = this.concatAnchor(eAttribute.getEAttributeType());
         _builder.append(_concatAnchor);
-        String _anchorSeparator = this.getAnchorSeparator();
-        _builder.append(_anchorSeparator);
+        _builder.append(this.anchorSeparator);
         _builder.append(defaultValue);
         _builder.append(", ");
         _builder.append(defaultValue);
@@ -473,8 +472,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.append("<<");
       CharSequence _concatAnchor = this.concatAnchor(eReference.getEReferenceType());
       _builder.append(_concatAnchor);
-      String _anchorSeparator = this.getAnchorSeparator();
-      _builder.append(_anchorSeparator);
+      _builder.append(this.anchorSeparator);
       _builder.append(eOppositeName);
       _builder.append(", ");
       _builder.append(eOppositeName);

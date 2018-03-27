@@ -15,24 +15,14 @@ import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.util.EcoreUtil
 
 abstract class AEcoreDocGeneratorPart {
-	val anchorSeparator = '-'
+	val protected anchorSeparator = '-'
 	
-	val referenceSeparator = '.'
+	val protected referenceSeparator = '.'
 	
 	val Multimap<EPackage, EClassifier> ePackages
 
 	var StringBuilder output
 	
-	protected def getAnchorSeparator() {
-		this.anchorSeparator
-	}
-	
-	
-	protected def getReferenceSeparator() {
-		this.referenceSeparator
-	}
-	
-
 	new(Multimap<EPackage, EClassifier> ePackages) {
 		this.ePackages = ePackages
 	}

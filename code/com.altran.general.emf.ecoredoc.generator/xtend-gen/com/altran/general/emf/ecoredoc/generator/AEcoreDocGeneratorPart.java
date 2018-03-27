@@ -27,21 +27,13 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public abstract class AEcoreDocGeneratorPart {
-  private final String anchorSeparator = "-";
+  protected final String anchorSeparator = "-";
   
-  private final String referenceSeparator = ".";
+  protected final String referenceSeparator = ".";
   
   private final Multimap<EPackage, EClassifier> ePackages;
   
   private StringBuilder output;
-  
-  protected String getAnchorSeparator() {
-    return this.anchorSeparator;
-  }
-  
-  protected String getReferenceSeparator() {
-    return this.referenceSeparator;
-  }
   
   public AEcoreDocGeneratorPart(final Multimap<EPackage, EClassifier> ePackages) {
     this.ePackages = ePackages;

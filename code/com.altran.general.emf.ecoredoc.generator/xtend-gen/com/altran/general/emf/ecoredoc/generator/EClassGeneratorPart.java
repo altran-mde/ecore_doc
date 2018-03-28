@@ -11,11 +11,13 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -68,88 +70,78 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected void writeEClass(final EClass eClass) {
     this.writeEClassHeader(eClass);
     this.writeSuperTypes(eClass);
-    this.writeSubConcepts(eClass);
+    this.writeSubTypes(eClass);
     this.writeEAttributes(eClass);
-    this.writeEReferences(eClass);
-    this.concatUseCases(eClass);
-  }
-  
-  protected StringBuilder writeEReferences(final EClass eClass) {
-    StringBuilder _xifexpression = null;
-    boolean _isEmpty = eClass.getEAllReferences().isEmpty();
-    boolean _not = (!_isEmpty);
-    if (_not) {
-      StringBuilder _xblockexpression = null;
-      {
-        this.writeEContainments(eClass);
-        _xblockexpression = this.writeECrossReferences(eClass);
-      }
-      _xifexpression = _xblockexpression;
-    }
-    return _xifexpression;
+    this.writeEContainments(eClass);
+    this.writeECrossReferences(eClass);
+    this.writeUseCases(eClass);
   }
   
   protected StringBuilder writeEContainments(final EClass eClass) {
-    StringBuilder _xifexpression = null;
-    final Function1<EReference, Boolean> _function = (EReference it) -> {
-      return Boolean.valueOf(it.isContainment());
-    };
-    boolean _exists = IterableExtensions.<EReference>exists(eClass.getEAllReferences(), _function);
-    if (_exists) {
-      StringBuilder _xblockexpression = null;
-      {
-        this.writeEContainmentHeader();
-        EList<EReference> _eAllReferences = eClass.getEAllReferences();
-        for (final EReference eReference : _eAllReferences) {
-          boolean _isContainment = eReference.isContainment();
-          if (_isContainment) {
-            this.writeRow(eReference, eClass);
-          }
+    StringBuilder _xblockexpression = null;
+    {
+      final Function1<EReference, Boolean> _function = (EReference it) -> {
+        return Boolean.valueOf(it.isContainment());
+      };
+      final boolean containmentExists = IterableExtensions.<EReference>exists(eClass.getEAllReferences(), _function);
+      StringBuilder _xifexpression = null;
+      if (containmentExists) {
+        StringBuilder _xblockexpression_1 = null;
+        {
+          this.writeEContainmentHeader();
+          List<EReference> eContainments = this.collectEContainments(eClass);
+          Set<? extends EStructuralFeature> inheritedEContainments = this.collectInheritedEContainments(eClass);
+          _xblockexpression_1 = this.writeEStructuralFeatures(eContainments, eClass, inheritedEContainments);
         }
-        _xblockexpression = this.getOutput().append(this.tableFooter());
+        _xifexpression = _xblockexpression_1;
       }
-      _xifexpression = _xblockexpression;
+      _xblockexpression = _xifexpression;
     }
-    return _xifexpression;
+    return _xblockexpression;
   }
   
   protected StringBuilder writeECrossReferences(final EClass eClass) {
-    StringBuilder _xifexpression = null;
-    boolean _isEmpty = eClass.eCrossReferences().isEmpty();
-    boolean _not = (!_isEmpty);
-    if (_not) {
-      StringBuilder _xblockexpression = null;
-      {
-        this.writeEReferencesHeader();
-        List<EReference> crossReferences = CollectionLiterals.<EReference>newArrayList();
-        EList<EReference> _eReferences = eClass.getEReferences();
-        for (final EReference eReference : _eReferences) {
-          boolean _isContainment = eReference.isContainment();
-          boolean _not_1 = (!_isContainment);
-          if (_not_1) {
-            crossReferences.add(eReference);
-          }
+    StringBuilder _xblockexpression = null;
+    {
+      final Function1<EReference, Boolean> _function = (EReference it) -> {
+        boolean _isContainment = it.isContainment();
+        return Boolean.valueOf((!_isContainment));
+      };
+      final boolean eCrossReferenceExists = IterableExtensions.<EReference>exists(eClass.getEAllReferences(), _function);
+      StringBuilder _xifexpression = null;
+      if (eCrossReferenceExists) {
+        StringBuilder _xblockexpression_1 = null;
+        {
+          this.writeEReferencesHeader();
+          List<EReference> crossReferences = this.collectECrossReferences(eClass);
+          Set<? extends EStructuralFeature> inheritedECrossReferences = this.collectInheritedECrossReferences(eClass);
+          _xblockexpression_1 = this.writeEStructuralFeatures(crossReferences, eClass, inheritedECrossReferences);
         }
-        _xblockexpression = this.writeEStructuralFeatures(crossReferences, eClass, true);
+        _xifexpression = _xblockexpression_1;
       }
-      _xifexpression = _xblockexpression;
+      _xblockexpression = _xifexpression;
     }
-    return _xifexpression;
+    return _xblockexpression;
   }
   
   protected StringBuilder writeEAttributes(final EClass eClass) {
-    StringBuilder _xifexpression = null;
-    boolean _isEmpty = eClass.getEAllAttributes().isEmpty();
-    boolean _not = (!_isEmpty);
-    if (_not) {
-      StringBuilder _xblockexpression = null;
-      {
-        this.writeEAttributesHeader();
-        _xblockexpression = this.writeEStructuralFeatures(eClass.getEAllAttributes(), eClass, false);
+    StringBuilder _xblockexpression = null;
+    {
+      boolean _isEmpty = eClass.getEAllAttributes().isEmpty();
+      final boolean eAttributeExists = (!_isEmpty);
+      StringBuilder _xifexpression = null;
+      if (eAttributeExists) {
+        StringBuilder _xblockexpression_1 = null;
+        {
+          this.writeEAttributesHeader();
+          Set<EStructuralFeature> inheritedEAttributes = this.collectInheritedEAttributes(eClass);
+          _xblockexpression_1 = this.writeEStructuralFeatures(eClass.getEAttributes(), eClass, inheritedEAttributes);
+        }
+        _xifexpression = _xblockexpression_1;
       }
-      _xifexpression = _xblockexpression;
+      _xblockexpression = _xifexpression;
     }
-    return _xifexpression;
+    return _xblockexpression;
   }
   
   protected StringBuilder writeEContainmentHeader() {
@@ -177,10 +169,10 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _output.append(_builder);
   }
   
-  protected StringBuilder writeSubConcepts(final EClass currentEClass) {
+  protected StringBuilder writeSubTypes(final EClass currentEClass) {
     StringBuilder _xblockexpression = null;
     {
-      Set<EClass> eClassesThatInheritCurrent = CollectionLiterals.<EClass>newLinkedHashSet();
+      Set<EClass> subTypes = CollectionLiterals.<EClass>newLinkedHashSet();
       final Function1<EClass, Boolean> _function = (EClass it) -> {
         EClass _eClass = it.eClass();
         return Boolean.valueOf(Objects.equal(_eClass, currentEClass));
@@ -189,23 +181,18 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       for (final EClass eClass : _reject) {
         boolean _contains = eClass.getEAllSuperTypes().contains(currentEClass);
         if (_contains) {
-          eClassesThatInheritCurrent.add(eClass);
+          subTypes.add(eClass);
         }
       }
       StringBuilder _xifexpression = null;
-      boolean _isEmpty = eClassesThatInheritCurrent.isEmpty();
+      boolean _isEmpty = subTypes.isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
         StringBuilder _xblockexpression_1 = null;
         {
-          boolean _isInterface = currentEClass.isInterface();
-          if (_isInterface) {
-            this.writeKnownImplementations();
-          } else {
-            this.writeSubConceptsHeader();
-          }
-          for (final EClass eClass_1 : eClassesThatInheritCurrent) {
-            this.writeSubConcept(eClass_1);
+          this.writeSubTypesHeader();
+          for (final EClass eClass_1 : subTypes) {
+            this.writeType(eClass_1);
           }
           _xblockexpression_1 = this.getOutput().append(this.newline());
         }
@@ -216,7 +203,33 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected StringBuilder writeSubConcept(final EClass eClass) {
+  protected StringBuilder writeSuperTypes(final EClass eClass) {
+    StringBuilder _xblockexpression = null;
+    {
+      boolean _isEmpty = eClass.getEAllSuperTypes().isEmpty();
+      final boolean superTypesExist = (!_isEmpty);
+      StringBuilder _xifexpression = null;
+      if (superTypesExist) {
+        StringBuilder _xblockexpression_1 = null;
+        {
+          this.writeSuperTypesHeader();
+          final Function1<EClass, String> _function = (EClass it) -> {
+            return it.getName();
+          };
+          List<EClass> _sortBy = IterableExtensions.<EClass, String>sortBy(eClass.getEAllSuperTypes(), _function);
+          for (final EClass supertype : _sortBy) {
+            this.writeType(supertype);
+          }
+          _xblockexpression_1 = this.getOutput().append(this.newline());
+        }
+        _xifexpression = _xblockexpression_1;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
+  }
+  
+  protected StringBuilder writeType(final EClass eClass) {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("* ");
@@ -226,38 +239,20 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _output.append(_builder);
   }
   
-  protected StringBuilder writeSuperTypes(final EClass eClass) {
-    StringBuilder _xifexpression = null;
-    boolean _isEmpty = eClass.getEAllSuperTypes().isEmpty();
-    boolean _not = (!_isEmpty);
-    if (_not) {
-      StringBuilder _output = this.getOutput();
-      StringConcatenation _builder = new StringConcatenation();
-      String _newline = this.newline();
-      _builder.append(_newline);
-      _builder.newLineIfNotEmpty();
-      _builder.append(".Supertypes");
-      _builder.newLine();
-      {
-        final Function1<EClass, String> _function = (EClass it) -> {
-          return it.getName();
-        };
-        List<EClass> _sortBy = IterableExtensions.<EClass, String>sortBy(eClass.getEAllSuperTypes(), _function);
-        for(final EClass supertype : _sortBy) {
-          _builder.append("* ");
-          CharSequence _concatLinkTo = this.concatLinkTo(supertype);
-          _builder.append(_concatLinkTo);
-          _builder.newLineIfNotEmpty();
-        }
-      }
-      String _newline_1 = this.newline();
-      _builder.append(_newline_1);
-      _builder.newLineIfNotEmpty();
-      _xifexpression = _output.append(_builder);
-    } else {
-      _xifexpression = this.getOutput().append(this.newline());
-    }
-    return _xifexpression;
+  protected StringBuilder writeSubTypesHeader() {
+    StringBuilder _output = this.getOutput();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(".Sub-types");
+    _builder.newLine();
+    return _output.append(_builder);
+  }
+  
+  protected StringBuilder writeSuperTypesHeader() {
+    StringBuilder _output = this.getOutput();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(".Super-types");
+    _builder.newLine();
+    return _output.append(_builder);
   }
   
   protected StringBuilder writeEAttributesHeader() {
@@ -292,33 +287,65 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _builder;
   }
   
-  protected StringBuilder writeEStructuralFeatures(final List<? extends EStructuralFeature> eStructuralFeatures, final EClass eClass, final boolean isEReference) {
+  protected List<EReference> collectEContainments(final EClass eClass) {
+    final Function1<EReference, Boolean> _function = (EReference it) -> {
+      return Boolean.valueOf(it.isContainment());
+    };
+    return IterableExtensions.<EReference>toList(IterableExtensions.<EReference>filter(eClass.getEReferences(), _function));
+  }
+  
+  protected Set<? extends EStructuralFeature> collectInheritedEContainments(final EClass eClass) {
+    final Function1<EReference, Boolean> _function = (EReference it) -> {
+      return Boolean.valueOf(it.isContainment());
+    };
+    final Function1<EReference, Boolean> _function_1 = (EReference it) -> {
+      return Boolean.valueOf(eClass.getEReferences().contains(it));
+    };
+    return IterableExtensions.<EReference>toSet(IterableExtensions.<EReference>reject(IterableExtensions.<EReference>filter(eClass.getEAllReferences(), _function), _function_1));
+  }
+  
+  protected List<EReference> collectECrossReferences(final EClass eClass) {
+    final Function1<EReference, Boolean> _function = (EReference it) -> {
+      boolean _isContainment = it.isContainment();
+      return Boolean.valueOf((!_isContainment));
+    };
+    return IterableExtensions.<EReference>toList(IterableExtensions.<EReference>filter(eClass.getEReferences(), _function));
+  }
+  
+  protected Set<? extends EStructuralFeature> collectInheritedECrossReferences(final EClass eClass) {
+    final Function1<EReference, Boolean> _function = (EReference it) -> {
+      boolean _isContainment = it.isContainment();
+      return Boolean.valueOf((!_isContainment));
+    };
+    final Function1<EReference, Boolean> _function_1 = (EReference it) -> {
+      return Boolean.valueOf(eClass.getEReferences().contains(it));
+    };
+    return IterableExtensions.<EReference>toSet(IterableExtensions.<EReference>reject(IterableExtensions.<EReference>filter(eClass.getEAllReferences(), _function), _function_1));
+  }
+  
+  protected Set<EStructuralFeature> collectInheritedEAttributes(final EClass eClass) {
+    final Set<EStructuralFeature> inheritedEAttributes = CollectionLiterals.<EStructuralFeature>newLinkedHashSet();
+    EList<EClass> _eAllSuperTypes = eClass.getEAllSuperTypes();
+    for (final EClass superclass : _eAllSuperTypes) {
+      inheritedEAttributes.addAll(superclass.getEAllAttributes());
+    }
+    return inheritedEAttributes;
+  }
+  
+  protected StringBuilder writeEStructuralFeatures(final List<? extends EStructuralFeature> eStructuralFeatures, final EClass eClass, final Set<? extends EStructuralFeature> inheritedStructuralFeatures) {
     StringBuilder _xblockexpression = null;
     {
-      final Set<EStructuralFeature> inheritedStructuralFeatures = CollectionLiterals.<EStructuralFeature>newLinkedHashSet();
-      EList<EClass> _eAllSuperTypes = eClass.getEAllSuperTypes();
-      for (final EClass superclass : _eAllSuperTypes) {
-        if (isEReference) {
-          inheritedStructuralFeatures.addAll(superclass.getEAllReferences());
-        } else {
-          inheritedStructuralFeatures.addAll(superclass.getEAllAttributes());
-        }
-      }
       final Function1<EStructuralFeature, String> _function = (EStructuralFeature it) -> {
         return it.getName();
       };
       List<? extends EStructuralFeature> _sortBy = IterableExtensions.sortBy(eStructuralFeatures, _function);
       for (final EStructuralFeature eStructuralFeature : _sortBy) {
-        boolean _contains = inheritedStructuralFeatures.contains(eStructuralFeature);
-        boolean _not = (!_contains);
-        if (_not) {
-          this.writeRow(eStructuralFeature, eClass);
-        }
+        this.writeRow(eStructuralFeature, eClass);
       }
       final Function1<EStructuralFeature, String> _function_1 = (EStructuralFeature it) -> {
         return it.getName();
       };
-      List<EStructuralFeature> _sortBy_1 = IterableExtensions.<EStructuralFeature, String>sortBy(inheritedStructuralFeatures, _function_1);
+      List<? extends EStructuralFeature> _sortBy_1 = IterableExtensions.sortBy(inheritedStructuralFeatures, _function_1);
       for (final EStructuralFeature eStructuralFeature_1 : _sortBy_1) {
         this.writeRow(eStructuralFeature_1, eClass);
       }
@@ -340,7 +367,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.append("|");
       _builder.append(eStructuralFeatureName);
       _builder.append("[[");
-      String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), this.anchorSeparator);
+      String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), AEcoreDocGeneratorPart.ANCHOR_SEPARATOR);
       _builder.append(_join);
       _builder.append("]]");
       {
@@ -351,8 +378,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.newLineIfNotEmpty();
       {
         if (isInherited) {
-          CharSequence _concatInheritedEStructuralElementType = this.concatInheritedEStructuralElementType(eStructuralFeature);
-          _builder.append(_concatInheritedEStructuralElementType);
+          CharSequence _concatInheritedElement = this.concatInheritedElement(eStructuralFeature);
+          _builder.append(_concatInheritedElement);
         }
       }
       _builder.newLineIfNotEmpty();
@@ -365,8 +392,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.append(_concatBounds);
       _builder.newLineIfNotEmpty();
       _builder.append("|");
-      CharSequence _dispatchEStructuralFeature = this.dispatchEStructuralFeature(eStructuralFeature);
-      _builder.append(_dispatchEStructuralFeature);
+      CharSequence _writeOppositeOrDefaultValue = this.writeOppositeOrDefaultValue(eStructuralFeature);
+      _builder.append(_writeOppositeOrDefaultValue);
       _builder.newLineIfNotEmpty();
       _builder.append("|");
       CharSequence _documentation = this.getDocumentation(eStructuralFeature);
@@ -380,29 +407,48 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected CharSequence _dispatchEStructuralFeature(final EAttribute eAttribute) {
+  protected CharSequence _writeOppositeOrDefaultValue(final EAttribute eAttribute) {
     CharSequence _xblockexpression = null;
     {
       final Object defaultValue = eAttribute.getDefaultValue();
       CharSequence _xifexpression = null;
-      if (((!Objects.equal(defaultValue, Integer.valueOf(0))) && (defaultValue != null))) {
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("<<");
-        CharSequence _concatAnchor = this.concatAnchor(eAttribute.getEAttributeType());
-        _builder.append(_concatAnchor);
-        _builder.append(this.anchorSeparator);
-        _builder.append(defaultValue);
-        _builder.append(", ");
-        _builder.append(defaultValue);
-        _builder.append(">>");
-        _xifexpression = _builder;
+      boolean _eIsSet = eAttribute.eIsSet(EcorePackage.eINSTANCE.getEStructuralFeature_DefaultValueLiteral());
+      if (_eIsSet) {
+        CharSequence _xifexpression_1 = null;
+        if ((defaultValue instanceof EEnumLiteral)) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("<<");
+          CharSequence _concatAnchor = this.concatAnchor(eAttribute.getEAttributeType());
+          _builder.append(_concatAnchor);
+          _builder.append(AEcoreDocGeneratorPart.ANCHOR_SEPARATOR);
+          _builder.append(((EEnumLiteral)defaultValue));
+          _builder.append(", ");
+          _builder.append(((EEnumLiteral)defaultValue));
+          _builder.append(">>");
+          _xifexpression_1 = _builder;
+        } else {
+          CharSequence _xifexpression_2 = null;
+          if ((defaultValue instanceof String)) {
+            StringConcatenation _builder_1 = new StringConcatenation();
+            _builder_1.append("\"");
+            _builder_1.append(((String)defaultValue));
+            _builder_1.append("\"");
+            _xifexpression_2 = _builder_1;
+          } else {
+            StringConcatenation _builder_2 = new StringConcatenation();
+            _builder_2.append(defaultValue);
+            _xifexpression_2 = _builder_2;
+          }
+          _xifexpression_1 = _xifexpression_2;
+        }
+        _xifexpression = _xifexpression_1;
       }
       _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
   }
   
-  protected CharSequence _dispatchEStructuralFeature(final EReference eReference) {
+  protected CharSequence _writeOppositeOrDefaultValue(final EReference eReference) {
     CharSequence _xifexpression = null;
     EReference _eOpposite = eReference.getEOpposite();
     boolean _tripleNotEquals = (_eOpposite != null);
@@ -412,7 +458,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _xifexpression;
   }
   
-  protected CharSequence concatInheritedEStructuralElementType(final ENamedElement eNamedElement) {
+  protected CharSequence concatInheritedElement(final ENamedElement eNamedElement) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("(<<");
     CharSequence _concatAnchor = this.concatAnchor(eNamedElement);
@@ -436,8 +482,14 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       {
         if ((lowerBound != upperBound)) {
           _builder.append("..");
-          CharSequence _writeUpperBound = this.writeUpperBound(upperBound, ordered);
-          _builder.append(_writeUpperBound);
+          Object _defineUpperBound = this.defineUpperBound(upperBound);
+          _builder.append(_defineUpperBound);
+          {
+            if ((upperBound == (-1))) {
+              CharSequence _defineOrdered = this.defineOrdered(ordered);
+              _builder.append(_defineOrdered);
+            }
+          }
         }
       }
       _xblockexpression = _builder;
@@ -445,25 +497,29 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected CharSequence writeUpperBound(final int upperBound, final boolean ordered) {
-    CharSequence _xifexpression = null;
+  protected Object defineUpperBound(final int upperBound) {
+    Object _xifexpression = null;
     if ((upperBound == (-1))) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("*{nbsp}/ ");
-      {
-        if (ordered) {
-          _builder.append("ordered");
-        } else {
-          _builder.append("unordered");
-        }
-      }
+      _builder.append("*{nbsp}");
       _xifexpression = _builder;
     } else {
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append(upperBound);
-      _xifexpression = _builder_1;
+      _xifexpression = Integer.valueOf(upperBound);
     }
     return _xifexpression;
+  }
+  
+  protected CharSequence defineOrdered(final boolean ordered) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("/ ");
+    {
+      if (ordered) {
+        _builder.append("ordered");
+      } else {
+        _builder.append("unordered");
+      }
+    }
+    return _builder;
   }
   
   protected CharSequence concatOpposite(final EReference eReference) {
@@ -474,7 +530,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.append("<<");
       CharSequence _concatAnchor = this.concatAnchor(eReference.getEReferenceType());
       _builder.append(_concatAnchor);
-      _builder.append(this.anchorSeparator);
+      _builder.append(AEcoreDocGeneratorPart.ANCHOR_SEPARATOR);
       _builder.append(eOppositeName);
       _builder.append(", ");
       _builder.append(eOppositeName);
@@ -543,16 +599,19 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       CharSequence _documentation = this.getDocumentation(eClass);
       _builder.append(_documentation);
       _builder.newLineIfNotEmpty();
+      String _newline_1 = this.newline();
+      _builder.append(_newline_1);
+      _builder.newLineIfNotEmpty();
       _xblockexpression = _output.append(_builder);
     }
     return _xblockexpression;
   }
   
-  protected CharSequence dispatchEStructuralFeature(final EStructuralFeature eAttribute) {
+  protected CharSequence writeOppositeOrDefaultValue(final EStructuralFeature eAttribute) {
     if (eAttribute instanceof EAttribute) {
-      return _dispatchEStructuralFeature((EAttribute)eAttribute);
+      return _writeOppositeOrDefaultValue((EAttribute)eAttribute);
     } else if (eAttribute instanceof EReference) {
-      return _dispatchEStructuralFeature((EReference)eAttribute);
+      return _writeOppositeOrDefaultValue((EReference)eAttribute);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(eAttribute).toString());

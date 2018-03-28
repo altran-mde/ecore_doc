@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.util.EcoreUtil
 
 abstract class AEcoreDocGeneratorPart {
-	// FIXME: Read about constants in Java, including naming conventions, and figure out how to do the same in Xtend; apply to all appropriate places
-	val protected anchorSeparator = '-'
 
-	val protected referenceSeparator = '.'
+	protected static val ANCHOR_SEPARATOR = '-'
+
+	protected static val REFERENCE_SEPARATOR = '.'
 
 	val Multimap<EPackage, EClassifier> ePackages
 
@@ -51,20 +51,21 @@ abstract class AEcoreDocGeneratorPart {
 	}
 
 	protected def dispatch CharSequence concatAnchor(ENamedElement eNamedElement) {
-		collectTypeSegments(eNamedElement).join(anchorSeparator)
+		collectTypeSegments(eNamedElement).join(ANCHOR_SEPARATOR)
 	}
 
 	// Special handling for default EDataTypes: Don't create anchor
 	protected def dispatch CharSequence concatAnchor(EDataType eDataType) {
 		if (!isDefaultEDataType(eDataType)) {
-			collectTypeSegments(eDataType).join(anchorSeparator)
+			collectTypeSegments(eDataType).join(ANCHOR_SEPARATOR)
+			
 		} else {
 			""
 		}
 	}
 
 	protected def CharSequence concatReferenceName(ENamedElement eNamedElement) {
-		collectTypeSegments(eNamedElement).join(referenceSeparator)
+		collectTypeSegments(eNamedElement).join(REFERENCE_SEPARATOR)
 	}
 
 	protected def dispatch CharSequence concatLinkTo(ENamedElement eNamedElement) {
@@ -75,6 +76,7 @@ abstract class AEcoreDocGeneratorPart {
 	protected def dispatch CharSequence concatLinkTo(EDataType eDataType) {
 		if (!isDefaultEDataType(eDataType)) {
 			'''<<«concatAnchor(eDataType)», «concatReferenceName(eDataType)»>>'''
+			
 		} else {
 			eDataType.name
 		}
@@ -82,11 +84,11 @@ abstract class AEcoreDocGeneratorPart {
 
 	protected def CharSequence concatUsedLink(EStructuralFeature eStructuralFeature, EClass eClassThatInherits) {
 		val inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits)
-		'''<<«inheritedFeatureSegments.join(anchorSeparator)», «inheritedFeatureSegments.join(referenceSeparator)»>>'''
+		
+		'''<<«inheritedFeatureSegments.join(ANCHOR_SEPARATOR)», «inheritedFeatureSegments.join(REFERENCE_SEPARATOR)»>>'''
 	}
 
-	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature,
-		EClass eClassThatInherits) {
+	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature, EClass eClassThatInherits) {
 
 		val ePackageName = getEPackage(eClassThatInherits).name
 		val eClassName = eClassThatInherits.name
@@ -121,26 +123,27 @@ abstract class AEcoreDocGeneratorPart {
 
 	protected def dispatch String[] collectTypeSegments(EDataType eDataType) {
 		val eDataTypeName = eDataType.name
+		
 		if (!isDefaultEDataType(eDataType)) {
-			// FIXME: Use getEPackage()
-			val eDataTypePackageName = (eDataType.eContainer as EPackage).name
+			val eDataTypePackageName = getEPackage(eDataType).name
+			
 			#[eDataTypePackageName, eDataTypeName]
+			
 		} else {
 			#[eDataTypeName]
 		}
 	}
 
-	// FIXME: Does this have the right name?
-	protected def void concatUseCases(EClassifier target) {
+	protected def void writeUseCases(EClassifier target) {
 		var anyMatch = false
-
 		val eClasses = collectAllEClasses()
-
 		val useCaseStrings = newArrayList()
+		
 		for (eClass : eClasses.sortBy[it.name]) {
 			for (feature : eClass.EAllStructuralFeatures.sortBy[it.name]) {
 				if (feature.EType == target) {
 					anyMatch = true
+					
 					useCaseStrings.add(
 					'''
 						* «concatUsedLink(feature, eClass)»
@@ -154,23 +157,13 @@ abstract class AEcoreDocGeneratorPart {
 			output.append('''
 				.Used at
 			''')
+			
 			for (useCaseString : useCaseStrings.sort) {
 				output.append(useCaseString)
 			}
+			
 			output.append(newline)
 		}
-	}
-
-	// FIXME: This is only used in one class --> move it there. Also for all similar methods
-	protected def writeKnownImplementations() {
-		output.append('''.Known Implementations
-		''')
-	}
-
-	protected def writeSubConceptsHeader() {
-		output.append('''.Sub-concepts
-		''')
-
 	}
 
 	protected def CharSequence tableFooter() {

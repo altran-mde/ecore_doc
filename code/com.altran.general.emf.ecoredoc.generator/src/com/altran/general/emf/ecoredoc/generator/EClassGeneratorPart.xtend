@@ -10,6 +10,8 @@ import org.eclipse.emf.ecore.ENamedElement
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.ecore.EcorePackage
+import org.eclipse.emf.ecore.EEnumLiteral
 
 class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
@@ -50,54 +52,55 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 	protected def writeEClass(EClass eClass) {
 		writeEClassHeader(eClass)
+		
 		writeSuperTypes(eClass)
-		writeSubConcepts(eClass)
+		
+		writeSubTypes(eClass)
+		
 		writeEAttributes(eClass)
-		writeEReferences(eClass)
+		
+		writeEContainments(eClass)
+		
+		writeECrossReferences(eClass)
 
-		concatUseCases(eClass)
-	}
-
-	// FIXME: containments and references are on the same level as supertypes, subconcepts and attributes.
-	protected def writeEReferences(EClass eClass) {
-		if (!eClass.EAllReferences.isEmpty) {
-			writeEContainments(eClass)
-			writeECrossReferences(eClass)
-		}
+		writeUseCases(eClass)
 	}
 
 	protected def writeEContainments(EClass eClass) {
-		if (eClass.EAllReferences.exists[isContainment]) {
+		val containmentExists = eClass.EAllReferences.exists[isContainment]
+		
+		if (containmentExists) {
 			writeEContainmentHeader()
-			for (eReference : eClass.EAllReferences) {
-				// FIXME: Use filter in loop (in all cases)
-				if (eReference.isContainment) {
-					writeRow(eReference, eClass)
-				}
-			}
-			output.append(tableFooter())
+			
+			var List<EReference> eContainments = collectEContainments(eClass)
+			var Set<? extends EStructuralFeature> inheritedEContainments = collectInheritedEContainments(eClass)
+			
+			writeEStructuralFeatures(eContainments, eClass, inheritedEContainments)
 		}
 	}
-
+	
 	protected def writeECrossReferences(EClass eClass) {
-		// FIXME: Don't use eCrossReferences, it provokes loading the targets of all references.
-		if (!eClass.eCrossReferences.isEmpty) {
+		val eCrossReferenceExists = eClass.EAllReferences.exists[!isContainment]
+		
+		if (eCrossReferenceExists) {
 			writeEReferencesHeader()
-			// FIXME: Why are you using a completely different implementation as for Containments?
-			var List<EReference> crossReferences = newArrayList()
-			for (eReference : eClass.EReferences) {
-				if (!eReference.isContainment) {
-					crossReferences.add(eReference)
-				}
-			}
-			writeEStructuralFeatures(crossReferences, eClass, true)
+			
+			var List<EReference> crossReferences = collectECrossReferences(eClass)
+			var Set<? extends EStructuralFeature> inheritedECrossReferences = collectInheritedECrossReferences(eClass)
+			
+			writeEStructuralFeatures(crossReferences, eClass, inheritedECrossReferences)
 		}
 	}
 
 	protected def writeEAttributes(EClass eClass) {
-		if (!eClass.EAllAttributes.isEmpty) {
+		val eAttributeExists = !eClass.EAllAttributes.isEmpty
+		
+		if (eAttributeExists) {
 			writeEAttributesHeader()
-			writeEStructuralFeatures(eClass.EAllAttributes, eClass, false)
+			
+			var Set<EStructuralFeature> inheritedEAttributes = collectInheritedEAttributes(eClass)
+			
+			writeEStructuralFeatures(eClass.EAttributes, eClass, inheritedEAttributes)
 		}
 	}
 
@@ -116,52 +119,55 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		''')
 	}
 
-	protected def writeSubConcepts(EClass currentEClass) {
-		// FIXME: Commonly known as subtypes
-		var Set<EClass> eClassesThatInheritCurrent = newLinkedHashSet()
-
+	protected def writeSubTypes(EClass currentEClass) {
+		var Set<EClass> subTypes = newLinkedHashSet()
+		
 		for (eClass : collectAllEClasses.reject[eClass == currentEClass]) {
 			if (eClass.EAllSuperTypes.contains(currentEClass)) {
-				eClassesThatInheritCurrent.add(eClass)
+				subTypes.add(eClass)
 			}
 		}
 
-		if (!eClassesThatInheritCurrent.isEmpty) {
-			if (currentEClass.isInterface) {
-				writeKnownImplementations
-			} else {
-				writeSubConceptsHeader()
+		if (!subTypes.isEmpty) {
+			writeSubTypesHeader()
+			
+			for (eClass : subTypes) {
+				writeType(eClass)
 			}
-
-			for (eClass : eClassesThatInheritCurrent) {
-				writeSubConcept(eClass)
+			
+			output.append(newline)
+		}
+	}
+	
+	protected def writeSuperTypes(EClass eClass) {
+		val superTypesExist = !eClass.EAllSuperTypes.isEmpty
+		
+		if (superTypesExist) {
+			writeSuperTypesHeader()
+			
+			for (supertype : eClass.EAllSuperTypes.sortBy[it.name]) {
+				writeType(supertype)
 			}
 			
 			output.append(newline)
 		}
 	}
 
-	protected def writeSubConcept(EClass eClass) {
+	protected def writeType(EClass eClass) {
 		output.append(
-			'''
+		'''
 			* «concatLinkTo(eClass)»
 		''')
 	}
-
-	protected def writeSuperTypes(EClass eClass) {
-		if (!eClass.EAllSuperTypes.isEmpty) {
-			output.append(
-			'''
-				«newline»
-				.Supertypes
-				«FOR supertype : eClass.EAllSuperTypes.sortBy[it.name]»
-					* «concatLinkTo(supertype)»
-				«ENDFOR»
-				«newline»
-			''')
-		} else {
-			output.append(newline)
-		}
+	
+	protected def writeSubTypesHeader() {
+		output.append('''.Sub-types
+		''')
+	}
+	
+	protected def writeSuperTypesHeader(){
+		output.append('''.Super-types
+		''')
 	}
 
 	protected def writeEAttributesHeader() {
@@ -180,36 +186,50 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def tableHeader() {
-		'''[cols="<15m,<15,<15m,<15m,<40a",options="header"]'''
+		'''[cols="<15m,<15,<15m,<15m,<40a",options="header"]'''	
 	}
-
-	protected def writeEStructuralFeatures(List<? extends EStructuralFeature> eStructuralFeatures, EClass eClass,
-		boolean isEReference) {
-
-		// Gather all inherited eStructuralFeatures and their classes.
-		val Set<EStructuralFeature> inheritedStructuralFeatures = newLinkedHashSet()
-
+	
+	protected def List<EReference> collectEContainments(EClass eClass) {
+		eClass.EReferences.filter[isContainment].toList
+	}
+	
+	protected def Set<? extends EStructuralFeature> collectInheritedEContainments(EClass eClass) {
+		eClass.EAllReferences.filter[isContainment].reject[eClass.EReferences.contains(it)].toSet
+	}
+	
+	protected def List<EReference> collectECrossReferences(EClass eClass) {
+		eClass.EReferences.filter[!isContainment].toList
+	}
+	
+	protected def Set<? extends EStructuralFeature> collectInheritedECrossReferences(EClass eClass) {
+		eClass.EAllReferences.filter[!isContainment]
+							 .reject[eClass.EReferences.contains(it)]
+							 .toSet
+	}
+	
+	protected def Set<EStructuralFeature> collectInheritedEAttributes(EClass eClass){
+		val Set<EStructuralFeature> inheritedEAttributes = newLinkedHashSet()
+		
 		for (superclass : eClass.EAllSuperTypes) {
-			if (isEReference) {
-				inheritedStructuralFeatures.addAll(superclass.EAllReferences)
-			} else {
-				inheritedStructuralFeatures.addAll(superclass.EAllAttributes)
-			}
+			inheritedEAttributes.addAll(superclass.EAllAttributes)
 		}
-
+		
+		return inheritedEAttributes
+	}
+	
+	protected def writeEStructuralFeatures(List<? extends EStructuralFeature> eStructuralFeatures, EClass eClass,
+		Set<? extends EStructuralFeature> inheritedStructuralFeatures) {
+			
 		// Iterate through non inherited eStructuralFeatures.
 		for (eStructuralFeature : eStructuralFeatures.sortBy[it.name]) {
-			if (!inheritedStructuralFeatures.contains(eStructuralFeature)) {
-
-				writeRow(eStructuralFeature, eClass)
-			}
+			writeRow(eStructuralFeature, eClass)
 		}
 
 		// Iterate through inherited eStructuralFeatures.
 		for (eStructuralFeature : inheritedStructuralFeatures.sortBy[it.name]) {
-
 			writeRow(eStructuralFeature, eClass)
 		}
+		
 		output.append(tableFooter())
 	}
 
@@ -222,32 +242,40 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 		output.append(
 		'''
-			|«eStructuralFeatureName»[[«inheritedFeatureSegments.join(anchorSeparator)»]]«IF isInherited» +«ENDIF»
-			«IF isInherited»«concatInheritedEStructuralElementType(eStructuralFeature)»«ENDIF»
+			|«eStructuralFeatureName»[[«inheritedFeatureSegments.join(ANCHOR_SEPARATOR)»]]«IF isInherited» +«ENDIF»
+			«IF isInherited»«concatInheritedElement(eStructuralFeature)»«ENDIF»
 			|«concatLinkTo(eStructuralFeature.EType)»
 			|«concatBounds(eStructuralFeature)»
-			|«dispatchEStructuralFeature(eStructuralFeature)»
+			|«writeOppositeOrDefaultValue(eStructuralFeature)»
 			|«getDocumentation(eStructuralFeature)»
 			«newline»
 		''')
 	}
 
-	//FIXME: Use semantic name
-	protected def dispatch dispatchEStructuralFeature(EAttribute eAttribute) {
+	protected def dispatch writeOppositeOrDefaultValue(EAttribute eAttribute) {
 		val defaultValue = eAttribute.defaultValue
-		// FIXME: use eIsSet()
-		if (defaultValue != 0 && defaultValue !== null) {
-			'''<<«concatAnchor(eAttribute.EAttributeType)»«anchorSeparator»«defaultValue», «defaultValue»>>'''
+
+		if (eAttribute.eIsSet(EcorePackage.eINSTANCE.EStructuralFeature_DefaultValueLiteral)) {
+			
+			if(defaultValue instanceof EEnumLiteral){
+				'''<<«concatAnchor(eAttribute.EAttributeType)»«ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>'''
+				
+			}else if(defaultValue instanceof String){
+				'''"«defaultValue»"'''
+				
+			}else{
+				'''«defaultValue»'''
+			}
 		}
 	}
 
-	protected def dispatch dispatchEStructuralFeature(EReference eReference) {
+	protected def dispatch writeOppositeOrDefaultValue(EReference eReference) {
 		if (eReference.EOpposite !== null) {
 			concatOpposite(eReference)
 		}
 	}
 
-	protected def concatInheritedEStructuralElementType(ENamedElement eNamedElement) {
+	protected def concatInheritedElement(ENamedElement eNamedElement) {
 		'''(<<«concatAnchor(eNamedElement)», {inherited}«concatReferenceName(eNamedElement.eContainer as EClass)»>>)'''
 	}
 
@@ -255,23 +283,28 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		val lowerBound = eStructuralFeature.lowerBound
 		val upperBound = eStructuralFeature.upperBound
 		val ordered = eStructuralFeature.ordered
-		'''«lowerBound»«IF lowerBound != upperBound»..«writeUpperBound(upperBound, ordered)»«ENDIF»'''
+
+		'''«lowerBound»«IF lowerBound != upperBound»..«defineUpperBound(upperBound)»«IF upperBound == -1»«defineOrdered(ordered)»«ENDIF»«ENDIF»'''
 	}
 
-	// FIXME: Why does a method called "upperBound" do something about "ordered"?
-	// FIXME: is "write" the correct prefix? Check everywhere!
-	protected def writeUpperBound(int upperBound, boolean ordered) {
+	protected def defineUpperBound(int upperBound) {
+	
 		if (upperBound == -1) {
-			'''*{nbsp}/ «IF ordered»ordered«ELSE»unordered«ENDIF»'''
+			'''*{nbsp}'''
+			
 		} else {
-			//FIXME: AAAAAAAAAAAAAAAAAAAAAAARRRRRRRRRRRRRRRGGGGGGGGGGGGGGGHHHHHHHHHHHHH!!!!!!!!!!!!!!!!!!!
-			'''«upperBound»'''
+			upperBound
 		}
+	}
+	
+	protected def defineOrdered(boolean ordered){
+		'''/ «IF ordered»ordered«ELSE»unordered«ENDIF»'''
 	}
 
 	protected def concatOpposite(EReference eReference) {
 		val eOppositeName = eReference.EOpposite.name
-		'''<<«concatAnchor(eReference.EReferenceType)»«anchorSeparator»«eOppositeName», «eOppositeName»>>'''
+		
+		'''<<«concatAnchor(eReference.EReferenceType)»«ANCHOR_SEPARATOR»«eOppositeName», «eOppositeName»>>'''
 	}
 
 	protected def writeEReferencesHeader() {
@@ -291,14 +324,15 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def CharSequence writeEClassHeader(EClass eClass) {
-
 		val eClassName = eClass.name
+		
 		output.append(
 		'''
 			[[«concatAnchor(eClass)»]]
 			==== «IF eClass.isAbstract && !eClass.isInterface»Abstract «ENDIF»«IF eClass.isInterface»Interface«ELSE»Class«ENDIF» «eClassName»
 			«newline»
 			«getDocumentation(eClass)»
+			«newline»
 		''')
 	}
 }

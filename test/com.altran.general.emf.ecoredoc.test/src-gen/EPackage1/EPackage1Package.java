@@ -87,13 +87,40 @@ public interface EPackage1Package extends EPackage {
 	int ECLASS1__ID = 1;
 
 	/**
+	 * The feature id for the '<em><b>Special Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS1__SPECIAL_NUMBER = 2;
+
+	/**
+	 * The feature id for the '<em><b>Some String Attr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS1__SOME_STRING_ATTR = 3;
+
+	/**
+	 * The feature id for the '<em><b>D</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS1__D = 4;
+
+	/**
 	 * The feature id for the '<em><b>My Relation</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS1__MY_RELATION = 2;
+	int ECLASS1__MY_RELATION = 5;
 
 	/**
 	 * The number of structural features of the '<em>EClass1</em>' class.
@@ -102,7 +129,7 @@ public interface EPackage1Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS1_FEATURE_COUNT = 3;
+	int ECLASS1_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>EClass1</em>' class.
@@ -140,6 +167,33 @@ public interface EPackage1Package extends EPackage {
 	 * @ordered
 	 */
 	int MY_ECLASS__ID = ECLASS1__ID;
+
+	/**
+	 * The feature id for the '<em><b>Special Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_ECLASS__SPECIAL_NUMBER = ECLASS1__SPECIAL_NUMBER;
+
+	/**
+	 * The feature id for the '<em><b>Some String Attr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_ECLASS__SOME_STRING_ATTR = ECLASS1__SOME_STRING_ATTR;
+
+	/**
+	 * The feature id for the '<em><b>D</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_ECLASS__D = ECLASS1__D;
 
 	/**
 	 * The feature id for the '<em><b>My Relation</b></em>' reference list.
@@ -249,6 +303,33 @@ public interface EPackage1Package extends EPackage {
 	 * @ordered
 	 */
 	int CLASS3__ID = ECLASS1__ID;
+
+	/**
+	 * The feature id for the '<em><b>Special Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS3__SPECIAL_NUMBER = ECLASS1__SPECIAL_NUMBER;
+
+	/**
+	 * The feature id for the '<em><b>Some String Attr</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS3__SOME_STRING_ATTR = ECLASS1__SOME_STRING_ATTR;
+
+	/**
+	 * The feature id for the '<em><b>D</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS3__D = ECLASS1__D;
 
 	/**
 	 * The feature id for the '<em><b>My Relation</b></em>' reference list.
@@ -375,6 +456,39 @@ public interface EPackage1Package extends EPackage {
 	 * @generated
 	 */
 	EAttribute getEClass1_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link EPackage1.EClass1#getSpecialNumber <em>Special Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Special Number</em>'.
+	 * @see EPackage1.EClass1#getSpecialNumber()
+	 * @see #getEClass1()
+	 * @generated
+	 */
+	EAttribute getEClass1_SpecialNumber();
+
+	/**
+	 * Returns the meta object for the attribute '{@link EPackage1.EClass1#getSomeStringAttr <em>Some String Attr</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Some String Attr</em>'.
+	 * @see EPackage1.EClass1#getSomeStringAttr()
+	 * @see #getEClass1()
+	 * @generated
+	 */
+	EAttribute getEClass1_SomeStringAttr();
+
+	/**
+	 * Returns the meta object for the attribute '{@link EPackage1.EClass1#getD <em>D</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>D</em>'.
+	 * @see EPackage1.EClass1#getD()
+	 * @see #getEClass1()
+	 * @generated
+	 */
+	EAttribute getEClass1_D();
 
 	/**
 	 * Returns the meta object for the reference list '{@link EPackage1.EClass1#getMyRelation <em>My Relation</em>}'.
@@ -574,6 +688,30 @@ public interface EPackage1Package extends EPackage {
 		 * @generated
 		 */
 		EAttribute ECLASS1__ID = eINSTANCE.getEClass1_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Special Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECLASS1__SPECIAL_NUMBER = eINSTANCE.getEClass1_SpecialNumber();
+
+		/**
+		 * The meta object literal for the '<em><b>Some String Attr</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECLASS1__SOME_STRING_ATTR = eINSTANCE.getEClass1_SomeStringAttr();
+
+		/**
+		 * The meta object literal for the '<em><b>D</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECLASS1__D = eINSTANCE.getEClass1_D();
 
 		/**
 		 * The meta object literal for the '<em><b>My Relation</b></em>' reference list feature.

@@ -6,7 +6,6 @@ import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.util.EcoreUtil
 
 class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 
@@ -35,7 +34,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 			for (eEnum : eEnums) {
 				writeEEnumHeader(eEnum)
 				writeEEnumLiterals(eEnum)
-				concatUseCases(eEnum)
+				writeUseCases(eEnum)
 			}
 		}
 	}
@@ -61,19 +60,20 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 				«newline»
 			'''
 		)
+		
 		for (eLiteral : eEnum.ELiterals) {
 			writeELiteral(eLiteral)
 		}
+		
 		output.append(tableFooter())
 	}
 
 	protected def writeELiteral(EEnumLiteral eLiteral) {
-		// FIXME: Why not using our getDocumentation()
 		output.append(
 		'''
 			|«eLiteral.name»[[«concatAnchor(eLiteral)»]]
 			|«eLiteral.value»
-			|«EcoreUtil.getDocumentation(eLiteral)»
+			|«getDocumentation(eLiteral)»
 			«newline»
 		''')
 	}

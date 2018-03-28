@@ -6,7 +6,9 @@ type SpecialDataType wraps java.lang.Number
 enum Enum1 {
 	@GenModel(documentation="Literal1 Description\n\nSecond sentence of Literal1 Description.")
 	Literal1 = 0
+	
 	Literal2 = 1
+	
 	@GenModel(documentation="Literal3 Description")
 	Literal3 = 5
 }
@@ -18,23 +20,29 @@ abstract class EClass1 {
 	 
 	@GenModel(documentation="Description of id.")
 	int[1] ^id
-	//int specialNumber = "23"
-	//String someStringAttr = "Hello, World!"
+	
+	int specialNumber = "23"
+	
+	String someStringAttr = "Hello, World!"
+	
+	double d = "3.141592"
 	 
 	@GenModel(documentation="Description.")
 	refers unordered MyEClass[] myRelation opposite backwards
 }
+
 @GenModel(documentation = "Description")
 class MyEClass extends EClass1 {
 	@GenModel(documentation="Description.\n\nSecond sentence.")
 	SpecialDataType[?] attr
 	
- @GenModel(documentation="Whatever.")
+ 	@GenModel(documentation="Whatever.")
 	refers EClass1[0..1] ref
- @GenModel(documentation="Desc.")	
+ 	
+ 	@GenModel(documentation="Desc.")	
 	contains unordered Class3[1..*] clazzes opposite specialParent
 	
- @GenModel(documentation="Deschkriptschion.")
+ 	@GenModel(documentation="Deschkriptschion.")
 	Enum1[0..6] eeeenum = "Literal1"
 	
 	@GenModel(documentation="Desc.\n\nContainments could also be inherited.")	
@@ -42,20 +50,20 @@ class MyEClass extends EClass1 {
 	 
 	//multiplicity is wrong in output
 	refers EClass1[1] backwards opposite myRelation
-
 }
+
 @GenModel(documentation="Description")
 class Class3 extends EClass1 {
- @GenModel(documentation="Something.")
+	@GenModel(documentation="Something.")
 	Enum1[0..6] something
-	//refers EClass1[1] backwards opposite myRelation
- @GenModel(documentation="Bla")
-	container MyEClass[0..1] specialParent opposite clazzes 
 	
+	//refers EClass1[1] backwards opposite myRelation
+ 
+ 	@GenModel(documentation="Bla")
+	container MyEClass[0..1] specialParent opposite clazzes 
 }
+
 @GenModel(documentation="Description")
 interface Iface {
 	
 }
-
-

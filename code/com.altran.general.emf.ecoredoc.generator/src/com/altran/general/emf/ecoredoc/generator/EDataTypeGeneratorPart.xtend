@@ -36,7 +36,7 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 
 			for (eDataType : eDataTypes) {
 				writeEDataTypeHeader(eDataType)
-				concatUseCases(eDataType)
+				writeUseCases(eDataType)
 			}
 		}
 	}

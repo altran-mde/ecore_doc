@@ -47,7 +47,7 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
       for (final EDataType eDataType : eDataTypes) {
         {
           this.writeEDataTypeHeader(eDataType);
-          this.concatUseCases(eDataType);
+          this.writeUseCases(eDataType);
         }
       }
     }

@@ -165,8 +165,35 @@ public class EPackage1PackageImpl extends EPackageImpl implements EPackage1Packa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getEClass1_SpecialNumber() {
+		return (EAttribute)eClass1EClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEClass1_SomeStringAttr() {
+		return (EAttribute)eClass1EClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEClass1_D() {
+		return (EAttribute)eClass1EClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getEClass1_MyRelation() {
-		return (EReference)eClass1EClass.getEStructuralFeatures().get(2);
+		return (EReference)eClass1EClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -317,6 +344,9 @@ public class EPackage1PackageImpl extends EPackageImpl implements EPackage1Packa
 		eClass1EClass = createEClass(ECLASS1);
 		createEAttribute(eClass1EClass, ECLASS1__NAME);
 		createEAttribute(eClass1EClass, ECLASS1__ID);
+		createEAttribute(eClass1EClass, ECLASS1__SPECIAL_NUMBER);
+		createEAttribute(eClass1EClass, ECLASS1__SOME_STRING_ATTR);
+		createEAttribute(eClass1EClass, ECLASS1__D);
 		createEReference(eClass1EClass, ECLASS1__MY_RELATION);
 
 		myEClassEClass = createEClass(MY_ECLASS);
@@ -378,6 +408,9 @@ public class EPackage1PackageImpl extends EPackageImpl implements EPackage1Packa
 		initEClass(eClass1EClass, EClass1.class, "EClass1", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEClass1_Name(), theEcorePackage.getEString(), "name", null, 3, 5, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEClass1_Id(), theEcorePackage.getEInt(), "id", null, 1, 1, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEClass1_SpecialNumber(), theEcorePackage.getEInt(), "specialNumber", "23", 0, 1, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEClass1_SomeStringAttr(), theEcorePackage.getEString(), "someStringAttr", "Hello, World!", 0, 1, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEClass1_D(), theEcorePackage.getEDouble(), "d", "3.141592", 0, 1, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEClass1_MyRelation(), this.getMyEClass(), this.getMyEClass_Backwards(), "myRelation", null, 0, -1, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(myEClassEClass, MyEClass.class, "MyEClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

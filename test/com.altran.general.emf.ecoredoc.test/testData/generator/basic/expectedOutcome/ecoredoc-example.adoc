@@ -63,7 +63,7 @@ Second sentence of Literal1 Description.
 
 Description
 
-.Supertypes
+.Super-types
 * <<EPackage1-EClass1, EPackage1.EClass1>>
 
 .Attributes
@@ -81,6 +81,13 @@ Description
 |
 |Something.
 
+|d[[EPackage1-Class3-d]] +
+(<<EPackage1-EClass1-d, {inherited}EPackage1.EClass1>>)
+|EDouble
+|0..1
+|3.141592
+|
+
 |id[[EPackage1-Class3-id]] +
 (<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
 |EInt
@@ -94,6 +101,20 @@ Description
 |3..5
 |
 |Name desc.
+
+|someStringAttr[[EPackage1-Class3-someStringAttr]] +
+(<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.EClass1>>)
+|EString
+|0..1
+|"Hello, World!"
+|
+
+|specialNumber[[EPackage1-Class3-specialNumber]] +
+(<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.EClass1>>)
+|EInt
+|0..1
+|23
+|
 
 |===
 
@@ -132,7 +153,7 @@ TODO: Find a good way to show class attributes like abstract.
 
 Description of EClass1
 
-.Sub-concepts
+.Sub-types
 * <<EPackage1-Class3, EPackage1.Class3>>
 * <<EPackage1-MyEClass, EPackage1.MyEClass>>
 * <<EPackage2-SomeClass, EPackage2.SomeClass>>
@@ -146,6 +167,12 @@ Description of EClass1
 |Default Value
 |Description
 
+|d[[EPackage1-EClass1-d]]
+|EDouble
+|0..1
+|3.141592
+|
+
 |id[[EPackage1-EClass1-id]]
 |EInt
 |1
@@ -157,6 +184,18 @@ Description of EClass1
 |3..5
 |
 |Name desc.
+
+|someStringAttr[[EPackage1-EClass1-someStringAttr]]
+|EString
+|0..1
+|"Hello, World!"
+|
+
+|specialNumber[[EPackage1-EClass1-specialNumber]]
+|EInt
+|0..1
+|23
+|
 
 |===
 
@@ -186,7 +225,7 @@ Description of EClass1
 
 Description
 
-.Known Implementations
+.Sub-types
 * <<EPackage2-SomeClass, EPackage2.SomeClass>>
 
 [[EPackage1-MyEClass]]
@@ -194,7 +233,7 @@ Description
 
 Description
 
-.Supertypes
+.Super-types
 * <<EPackage1-EClass1, EPackage1.EClass1>>
 
 .Attributes
@@ -220,6 +259,13 @@ Second sentence.
 |<<EPackage1-Enum1-Literal1, Literal1>>
 |Deschkriptschion.
 
+|d[[EPackage1-MyEClass-d]] +
+(<<EPackage1-EClass1-d, {inherited}EPackage1.EClass1>>)
+|EDouble
+|0..1
+|3.141592
+|
+
 |id[[EPackage1-MyEClass-id]] +
 (<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
 |EInt
@@ -233,6 +279,20 @@ Second sentence.
 |3..5
 |
 |Name desc.
+
+|someStringAttr[[EPackage1-MyEClass-someStringAttr]] +
+(<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.EClass1>>)
+|EString
+|0..1
+|"Hello, World!"
+|
+
+|specialNumber[[EPackage1-MyEClass-specialNumber]] +
+(<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.EClass1>>)
+|EInt
+|0..1
+|23
+|
 
 |===
 
@@ -306,6 +366,7 @@ Containments could also be inherited.
 [[EPackage2-Class3]]
 ==== Class Class3
 
+
 [[EPackage2-SomeClass]]
 ==== Class SomeClass
 
@@ -313,7 +374,7 @@ This is
 
 my doc
 
-.Supertypes
+.Super-types
 * <<EPackage1-EClass1, EPackage1.EClass1>>
 * <<EPackage1-Iface, EPackage1.Iface>>
 
@@ -325,6 +386,13 @@ my doc
 |Multiplicity{nbsp}/ Order
 |Default Value
 |Description
+
+|d[[EPackage2-SomeClass-d]] +
+(<<EPackage1-EClass1-d, {inherited}EPackage1.EClass1>>)
+|EDouble
+|0..1
+|3.141592
+|
 
 |id[[EPackage2-SomeClass-id]] +
 (<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
@@ -339,6 +407,20 @@ my doc
 |3..5
 |
 |Name desc.
+
+|someStringAttr[[EPackage2-SomeClass-someStringAttr]] +
+(<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.EClass1>>)
+|EString
+|0..1
+|"Hello, World!"
+|
+
+|specialNumber[[EPackage2-SomeClass-specialNumber]] +
+(<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.EClass1>>)
+|EInt
+|0..1
+|23
+|
 
 |===
 
@@ -359,3 +441,4 @@ my doc
 |Description.
 
 |===
+

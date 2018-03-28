@@ -27,9 +27,9 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public abstract class AEcoreDocGeneratorPart {
-  protected final String anchorSeparator = "-";
+  protected final static String ANCHOR_SEPARATOR = "-";
   
-  protected final String referenceSeparator = ".";
+  protected final static String REFERENCE_SEPARATOR = ".";
   
   private final Multimap<EPackage, EClassifier> ePackages;
   
@@ -67,7 +67,7 @@ public abstract class AEcoreDocGeneratorPart {
   }
   
   protected CharSequence _concatAnchor(final ENamedElement eNamedElement) {
-    return IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eNamedElement))), this.anchorSeparator);
+    return IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eNamedElement))), AEcoreDocGeneratorPart.ANCHOR_SEPARATOR);
   }
   
   protected CharSequence _concatAnchor(final EDataType eDataType) {
@@ -75,7 +75,7 @@ public abstract class AEcoreDocGeneratorPart {
     boolean _isDefaultEDataType = this.isDefaultEDataType(eDataType);
     boolean _not = (!_isDefaultEDataType);
     if (_not) {
-      _xifexpression = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eDataType))), this.anchorSeparator);
+      _xifexpression = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eDataType))), AEcoreDocGeneratorPart.ANCHOR_SEPARATOR);
     } else {
       _xifexpression = "";
     }
@@ -83,7 +83,7 @@ public abstract class AEcoreDocGeneratorPart {
   }
   
   protected CharSequence concatReferenceName(final ENamedElement eNamedElement) {
-    return IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eNamedElement))), this.referenceSeparator);
+    return IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eNamedElement))), AEcoreDocGeneratorPart.REFERENCE_SEPARATOR);
   }
   
   protected CharSequence _concatLinkTo(final ENamedElement eNamedElement) {
@@ -124,10 +124,10 @@ public abstract class AEcoreDocGeneratorPart {
       final String[] inheritedFeatureSegments = this.collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("<<");
-      String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), this.anchorSeparator);
+      String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), AEcoreDocGeneratorPart.ANCHOR_SEPARATOR);
       _builder.append(_join);
       _builder.append(", ");
-      String _join_1 = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), this.referenceSeparator);
+      String _join_1 = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), AEcoreDocGeneratorPart.REFERENCE_SEPARATOR);
       _builder.append(_join_1);
       _builder.append(">>");
       _xblockexpression = _builder;
@@ -192,8 +192,7 @@ public abstract class AEcoreDocGeneratorPart {
       if (_not) {
         String[] _xblockexpression_1 = null;
         {
-          EObject _eContainer = eDataType.eContainer();
-          final String eDataTypePackageName = ((EPackage) _eContainer).getName();
+          final String eDataTypePackageName = this.getEPackage(eDataType).getName();
           _xblockexpression_1 = new String[] { eDataTypePackageName, eDataTypeName };
         }
         _xifexpression = _xblockexpression_1;
@@ -205,7 +204,7 @@ public abstract class AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected void concatUseCases(final EClassifier target) {
+  protected void writeUseCases(final EClassifier target) {
     boolean anyMatch = false;
     final Collection<EClass> eClasses = this.collectAllEClasses();
     final ArrayList<String> useCaseStrings = CollectionLiterals.<String>newArrayList();
@@ -243,20 +242,6 @@ public abstract class AEcoreDocGeneratorPart {
       }
       this.output.append(this.newline());
     }
-  }
-  
-  protected StringBuilder writeKnownImplementations() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append(".Known Implementations");
-    _builder.newLine();
-    return this.output.append(_builder);
-  }
-  
-  protected StringBuilder writeSubConceptsHeader() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append(".Sub-concepts");
-    _builder.newLine();
-    return this.output.append(_builder);
   }
   
   protected CharSequence tableFooter() {

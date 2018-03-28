@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -44,7 +43,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
         {
           this.writeEEnumHeader(eEnum);
           this.writeEEnumLiterals(eEnum);
-          this.concatUseCases(eEnum);
+          this.writeUseCases(eEnum);
         }
       }
     }
@@ -110,7 +109,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.append(_value);
     _builder.newLineIfNotEmpty();
     _builder.append("|");
-    String _documentation = EcoreUtil.getDocumentation(eLiteral);
+    CharSequence _documentation = this.getDocumentation(eLiteral);
     _builder.append(_documentation);
     _builder.newLineIfNotEmpty();
     String _newline = this.newline();

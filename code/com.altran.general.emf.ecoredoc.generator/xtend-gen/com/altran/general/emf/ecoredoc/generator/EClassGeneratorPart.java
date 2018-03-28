@@ -485,7 +485,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
           Object _defineUpperBound = this.defineUpperBound(upperBound);
           _builder.append(_defineUpperBound);
           {
-            if ((upperBound == (-1))) {
+            if (((upperBound == (-1)) || (upperBound > 1))) {
               CharSequence _defineOrdered = this.defineOrdered(ordered);
               _builder.append(_defineOrdered);
             }

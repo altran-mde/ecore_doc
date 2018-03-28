@@ -30,7 +30,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def List<EClass> collectEClasses(EPackage ePackages) {
-		this.getEPackages.get(ePackages).filter(EClass).sortBy[it.name]
+		getEPackages.get(ePackages).filter(EClass).sortBy[it.name]
 	}
 
 	protected def writeEClasses(List<EClass> eClasses) {
@@ -284,7 +284,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		val upperBound = eStructuralFeature.upperBound
 		val ordered = eStructuralFeature.ordered
 
-		'''«lowerBound»«IF lowerBound != upperBound»..«defineUpperBound(upperBound)»«IF upperBound == -1»«defineOrdered(ordered)»«ENDIF»«ENDIF»'''
+		'''«lowerBound»«IF lowerBound != upperBound»..«defineUpperBound(upperBound)»«IF upperBound == -1 || upperBound>1»«defineOrdered(ordered)»«ENDIF»«ENDIF»'''
 	}
 
 	protected def defineUpperBound(int upperBound) {

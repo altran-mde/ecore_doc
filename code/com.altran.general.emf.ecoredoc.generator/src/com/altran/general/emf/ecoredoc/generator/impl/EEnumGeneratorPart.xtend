@@ -1,5 +1,6 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
+import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig
 import com.google.common.collect.Multimap
 import java.util.List
 import org.eclipse.emf.ecore.EClassifier
@@ -11,14 +12,14 @@ import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.n
 
 class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 
-	new(Multimap<EPackage, EClassifier> ePackages) {
-		super(ePackages)
+	new(IEcoreDocGeneratorPartConfig config, Multimap<EPackage, EClassifier> ePackages) {
+		super(config, ePackages)
 	}
 
 	override StringBuilder write(EPackage ePackage) {
 		clearOutput()
 
-		val List<EEnum> eEnums = collectEEnums(ePackage)
+		val eEnums = collectEEnums(ePackage)
 
 		writeEEnums(eEnums)
 
@@ -62,11 +63,11 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 				|Description
 			'''
 		)
-
+		
 		for (eLiteral : eEnum.ELiterals) {
 			writeELiteral(eLiteral)
 		}
-
+		
 		output.append(tableFooter())
 	}
 

@@ -16,8 +16,9 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
-  public EEnumGeneratorPart(final Multimap<EPackage, EClassifier> ePackages) {
-    super(ePackages);
+  public EEnumGeneratorPart(final /* IEcoreDocGeneratorPartConfig */Object config, final Multimap<EPackage, EClassifier> ePackages) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe constructor AEcoreDocGeneratorPart(Object, Multimap<EPackage, EClassifier>) refers to the missing type Object");
   }
   
   @Override

@@ -9,6 +9,8 @@ import com.google.common.collect.TreeMultimap
 import java.util.Collection
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EPackage
+import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig
+import com.altran.general.ecoredoc.generator.config.ConfigFactory
 
 import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
 
@@ -18,12 +20,14 @@ class EcoreDocGenerator {
 
 	val Collection<? extends EClassifier> input
 
-	val StringBuilder output = new StringBuilder
+	val output = new StringBuilder
 
 	val Multimap<EPackage, EClassifier> ePackages = TreeMultimap.create(
 		[o1, o2|o1.name.compareTo(o2.name)],
 		[o1, o2|o1.name.compareTo(o2.name)]
 	);
+	
+	var EcoreDocGeneratorConfig config
 
 	new(Collection<? extends EClassifier> input) {
 		this.input = input
@@ -34,11 +38,12 @@ class EcoreDocGenerator {
 
 		collectEPackages()
 
-		val EDataTypeGeneratorPart eDataTypeGeneratorPart = new EDataTypeGeneratorPart(ePackages)
-		val EEnumGeneratorPart eEnumGeneratorPart = new EEnumGeneratorPart(ePackages)
-		val EClassGeneratorPart eClassGeneratorPart = new EClassGeneratorPart(ePackages)
+		val eDataTypeGeneratorPart = new EDataTypeGeneratorPart(getConfig().EDataType, ePackages)
+		val eEnumGeneratorPart = new EEnumGeneratorPart(getConfig().EEnum, ePackages)
+		val eClassGeneratorPart = new EClassGeneratorPart(getConfig().EClass, ePackages)
 
 		for (ePackage : ePackages.keySet) {
+
 			writeEPackageIntro(ePackage)
 
 			output.append(eDataTypeGeneratorPart.write(ePackage))
@@ -48,8 +53,14 @@ class EcoreDocGenerator {
 
 		return output.toString
 	}
+	
+	def getConfig() {
+		assureConfigExists()
+		
+		return this.config
+	}
 
-	protected def void writeIntro() {
+	protected def writeIntro() {
 		output.append(
 		'''
 			// White Up-Pointing Triangle
@@ -65,9 +76,8 @@ class EcoreDocGenerator {
 		''')
 	}
 
-	protected def void writeEPackageIntro(EPackage ePackage) {
-		val String ePackageName = ePackage.name
-
+	protected def writeEPackageIntro(EPackage ePackage) {
+		val ePackageName = ePackage.name
 		output.append(
 		'''
 			«newline»
@@ -80,7 +90,7 @@ class EcoreDocGenerator {
 			«concatEPackageProperties(ePackage)»
 		''')
 	}
-	
+
 	protected def concatEPackageProperties(EPackage ePackage) {
 		'''
 			Ns Prefix:: «ePackage.nsPrefix»
@@ -91,6 +101,12 @@ class EcoreDocGenerator {
 	protected def void collectEPackages() {
 		for (eclassifier : input) {
 			ePackages.put(eclassifier.eContainer as EPackage, eclassifier)
+		}
+	}
+	
+	protected def void assureConfigExists() {
+		if (this.config === null) {
+			this.config = ConfigFactory.eINSTANCE.createEcoreDocGeneratorConfig
 		}
 	}
 }

@@ -1,0 +1,40 @@
+@GenModel(
+	modelDirectory="/com.altran.general.ecoredoc.generator.config/emf-gen"
+)
+package com.altran.general.ecoredoc.generator.config
+
+class EcoreDocGeneratorConfig {
+	boolean renderDefaults = "true"
+	
+	contains EDataTypeConfig eDataType
+	contains EEnumConfig eEnum
+	contains EClassConfig eClass
+}
+
+interface IEcoreDocGeneratorPartConfig {
+	
+}
+
+class EDataTypeConfig extends IEcoreDocGeneratorPartConfig {
+
+}
+
+class EEnumConfig extends IEcoreDocGeneratorPartConfig {
+	
+}
+
+class EClassConfig extends IEcoreDocGeneratorPartConfig {
+	contains EAttributeConfig eAttribute	
+}
+
+abstract class EStructuralFeatureConfig {
+	boolean ordered
+	
+	op boolean renderOrdered() {
+		ordered // + some logic
+	}
+}
+
+class EAttributeConfig extends EStructuralFeatureConfig {
+	
+}

@@ -13,16 +13,19 @@ import org.eclipse.emf.ecore.EStructuralFeature
 
 import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
 import org.eclipse.emf.ecore.EcorePackage
+import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig
 
 abstract class AEcoreDocGeneratorPart {
 
 	protected extension EcoreDocExtension = new EcoreDocExtension
 
+	val IEcoreDocGeneratorPartConfig config
 	val Multimap<EPackage, EClassifier> ePackages
 
 	var StringBuilder output
 
-	new(Multimap<EPackage, EClassifier> ePackages) {
+	new(IEcoreDocGeneratorPartConfig config, Multimap<EPackage, EClassifier> ePackages) {
+		this.config = config
 		this.ePackages = ePackages
 	}
 

@@ -1,5 +1,6 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
+import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig
 import com.google.common.collect.Multimap
 import java.util.List
 import java.util.Set
@@ -16,8 +17,8 @@ import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.n
 class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	extension EStructuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper
 	
-	new(Multimap<EPackage, EClassifier> ePackages) {
-		super(ePackages)
+	new(IEcoreDocGeneratorPartConfig config, Multimap<EPackage, EClassifier> ePackages) {
+		super(config, ePackages)
 	}
 
 	override StringBuilder write(EPackage ePackage) {

@@ -6,19 +6,19 @@ import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EPackage
-
+import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig
 import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
 
 class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 
-	new(Multimap<EPackage, EClassifier> ePackages) {
-		super(ePackages)
+	new(IEcoreDocGeneratorPartConfig config, Multimap<EPackage, EClassifier> ePackages) {
+		super(config, ePackages)
 	}
 
 	override StringBuilder write(EPackage ePackage) {
 		clearOutput()
 
-		val List<EDataType> eDataTypes = collectEDataTypes(ePackage)
+		val eDataTypes = collectEDataTypes(ePackage)
 
 		writeEDataTypes(eDataTypes)
 
@@ -32,7 +32,7 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def void writeEDataTypes(List<EDataType> eDataTypes) {
 		if (!eDataTypes.isEmpty) {
 			writeEDataTypesHeader()
-			
+
 			for (eDataType : eDataTypes) {
 				writeEDataTypeHeader(eDataType)
 				writeProperties(eDataType)

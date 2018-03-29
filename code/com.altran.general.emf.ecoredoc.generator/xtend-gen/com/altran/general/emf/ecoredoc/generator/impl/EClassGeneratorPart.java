@@ -33,8 +33,9 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   @Extension
   private EStructuralFeaturePropertyHelper _eStructuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper();
   
-  public EClassGeneratorPart(final Multimap<EPackage, EClassifier> ePackages) {
-    super(ePackages);
+  public EClassGeneratorPart(final /* IEcoreDocGeneratorPartConfig */Object config, final Multimap<EPackage, EClassifier> ePackages) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe constructor AEcoreDocGeneratorPart(Object, Multimap<EPackage, EClassifier>) refers to the missing type Object");
   }
   
   @Override

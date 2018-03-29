@@ -28,12 +28,15 @@ public abstract class AEcoreDocGeneratorPart {
   @Extension
   protected EcoreDocExtension _ecoreDocExtension = new EcoreDocExtension();
   
+  private final /* IEcoreDocGeneratorPartConfig */Object config;
+  
   private final Multimap<EPackage, EClassifier> ePackages;
   
   private StringBuilder output;
   
-  public AEcoreDocGeneratorPart(final Multimap<EPackage, EClassifier> ePackages) {
-    this.ePackages = ePackages;
+  public AEcoreDocGeneratorPart(final /* IEcoreDocGeneratorPartConfig */Object config, final Multimap<EPackage, EClassifier> ePackages) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe field AEcoreDocGeneratorPart.config refers to the missing type IEcoreDocGeneratorPartConfig");
   }
   
   protected abstract StringBuilder write(final EPackage ePackage);

@@ -1,9 +1,9 @@
 package com.altran.general.emf.ecoredoc.generator;
 
-import com.altran.general.emf.ecoredoc.generator.EClassGeneratorPart;
-import com.altran.general.emf.ecoredoc.generator.EDataTypeGeneratorPart;
-import com.altran.general.emf.ecoredoc.generator.EEnumGeneratorPart;
-import com.altran.general.emf.ecoredoc.generator.EcoreDocExtension;
+import com.altran.general.emf.ecoredoc.generator.impl.EClassGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.impl.EDataTypeGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.impl.EEnumGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.TreeMultimap;
 import java.util.Collection;

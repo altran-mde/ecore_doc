@@ -1,4 +1,4 @@
-package com.altran.general.emf.ecoredoc.generator
+package com.altran.general.emf.ecoredoc.generator.impl
 
 import com.google.common.collect.Multimap
 import java.util.Collection
@@ -7,12 +7,10 @@ import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EEnumLiteral
-import org.eclipse.emf.ecore.EModelElement
 import org.eclipse.emf.ecore.ENamedElement
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage
-import org.eclipse.emf.ecore.util.EcoreUtil
 
 abstract class AEcoreDocGeneratorPart {
 	protected extension EcoreDocExtension = new EcoreDocExtension

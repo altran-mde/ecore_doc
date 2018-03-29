@@ -1,13 +1,14 @@
 package com.altran.general.emf.ecoredoc.generator
 
+import com.altran.general.emf.ecoredoc.generator.impl.EClassGeneratorPart
+import com.altran.general.emf.ecoredoc.generator.impl.EDataTypeGeneratorPart
+import com.altran.general.emf.ecoredoc.generator.impl.EEnumGeneratorPart
+import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension
 import com.google.common.collect.Multimap
 import com.google.common.collect.TreeMultimap
 import java.util.Collection
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.util.EcoreUtil
-
-
 
 class EcoreDocGenerator {
 	extension EcoreDocExtension = new EcoreDocExtension

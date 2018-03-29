@@ -1,4 +1,4 @@
-package com.altran.general.emf.ecoredoc.generator
+package com.altran.general.emf.ecoredoc.generator.impl
 
 import com.google.common.collect.Multimap
 import java.util.List

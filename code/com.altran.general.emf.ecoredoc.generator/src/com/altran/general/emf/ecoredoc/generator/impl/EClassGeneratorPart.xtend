@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EStructuralFeature
 
 class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	extension EStructuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper
-	
+
 	new(Multimap<EPackage, EClassifier> ePackages) {
 		super(ePackages)
 	}
@@ -52,15 +52,15 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 	protected def writeEClass(EClass eClass) {
 		writeEClassHeader(eClass)
-		
+
 		writeSuperTypes(eClass)
-		
+
 		writeSubTypes(eClass)
-		
+
 		writeEAttributes(eClass)
-		
+
 		writeEContainments(eClass)
-		
+
 		writeECrossReferences(eClass)
 
 		writeUseCases(eClass)
@@ -68,38 +68,38 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 	protected def writeEContainments(EClass eClass) {
 		val containmentExists = eClass.EAllReferences.exists[isContainment]
-		
+
 		if (containmentExists) {
 			writeEContainmentHeader()
-			
+
 			var List<EReference> eContainments = collectEContainments(eClass)
 			var Set<? extends EStructuralFeature> inheritedEContainments = collectInheritedEContainments(eClass)
-			
+
 			writeEStructuralFeatures(eContainments, eClass, inheritedEContainments)
 		}
 	}
-	
+
 	protected def writeECrossReferences(EClass eClass) {
 		val eCrossReferenceExists = eClass.EAllReferences.exists[!isContainment]
-		
+
 		if (eCrossReferenceExists) {
 			writeEReferencesHeader()
-			
+
 			var List<EReference> crossReferences = collectECrossReferences(eClass)
 			var Set<? extends EStructuralFeature> inheritedECrossReferences = collectInheritedECrossReferences(eClass)
-			
+
 			writeEStructuralFeatures(crossReferences, eClass, inheritedECrossReferences)
 		}
 	}
 
 	protected def writeEAttributes(EClass eClass) {
 		val eAttributeExists = !eClass.EAllAttributes.isEmpty
-		
+
 		if (eAttributeExists) {
 			writeEAttributesHeader()
-			
+
 			var Set<EStructuralFeature> inheritedEAttributes = collectInheritedEAttributes(eClass)
-			
+
 			writeEStructuralFeatures(eClass.EAttributes, eClass, inheritedEAttributes)
 		}
 	}
@@ -120,7 +120,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 	protected def writeSubTypes(EClass currentEClass) {
 		var Set<EClass> subTypes = newLinkedHashSet()
-		
+
 		for (eClass : collectAllEClasses.reject[eClass == currentEClass]) {
 			if (eClass.EAllSuperTypes.contains(currentEClass)) {
 				subTypes.add(eClass)
@@ -129,19 +129,19 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 		if (!subTypes.isEmpty) {
 			writeSubTypesHeader()
-			
+
 			for (eClass : subTypes) {
 				writeType(eClass)
 			}
 		}
 	}
-	
+
 	protected def writeSuperTypes(EClass eClass) {
 		val superTypesExist = !eClass.EAllSuperTypes.isEmpty
-		
+
 		if (superTypesExist) {
 			writeSuperTypesHeader()
-			
+
 			for (supertype : eClass.EAllSuperTypes.sortBy[it.name]) {
 				writeType(supertype)
 			}
@@ -154,7 +154,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			* «concatLinkTo(eClass)»
 		''')
 	}
-	
+
 	protected def writeSubTypesHeader() {
 		output.append(
 		'''
@@ -162,7 +162,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			.Sub-types
 		''')
 	}
-	
+
 	protected def writeSuperTypesHeader() {
 		output.append(
 		'''
@@ -186,40 +186,40 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def tableHeader() {
-		'''[cols="<20m,<20,<20m,<40a",options="header"]'''	
+		'''[cols="<20,<20,<20,<40a",options="header"]'''
 	}
-	
+
 	protected def List<EReference> collectEContainments(EClass eClass) {
 		eClass.EReferences.filter[isContainment].toList
 	}
-	
+
 	protected def Set<? extends EStructuralFeature> collectInheritedEContainments(EClass eClass) {
 		eClass.EAllReferences.filter[isContainment].reject[eClass.EReferences.contains(it)].toSet
 	}
-	
+
 	protected def List<EReference> collectECrossReferences(EClass eClass) {
 		eClass.EReferences.filter[!isContainment].toList
 	}
-	
+
 	protected def Set<? extends EStructuralFeature> collectInheritedECrossReferences(EClass eClass) {
 		eClass.EAllReferences.filter[!isContainment]
 							 .reject[eClass.EReferences.contains(it)]
 							 .toSet
 	}
-	
+
 	protected def Set<EStructuralFeature> collectInheritedEAttributes(EClass eClass) {
 		val Set<EStructuralFeature> inheritedEAttributes = newLinkedHashSet()
-		
+
 		for (superclass : eClass.EAllSuperTypes) {
 			inheritedEAttributes.addAll(superclass.EAllAttributes)
 		}
-		
+
 		return inheritedEAttributes
 	}
-	
+
 	protected def writeEStructuralFeatures(List<? extends EStructuralFeature> eStructuralFeatures, EClass eClass,
 		Set<? extends EStructuralFeature> inheritedStructuralFeatures) {
-			
+
 		// Iterate through non inherited eStructuralFeatures.
 		for (eStructuralFeature : eStructuralFeatures.sortBy[it.name]) {
 			writeRow(eStructuralFeature, eClass)
@@ -229,7 +229,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		for (eStructuralFeature : inheritedStructuralFeatures.sortBy[it.name]) {
 			writeRow(eStructuralFeature, eClass)
 		}
-		
+
 		output.append(tableFooter())
 	}
 
@@ -250,7 +250,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			|«getDocumentation(eStructuralFeature)»
 		''')
 	}
-	
+
 	protected def dispatch concatFeatureProperties(EReference eReference) {
 		#[
 			concatBounds(eReference),
@@ -259,7 +259,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		.filter[it !== null]
 		.join(newline)
 	}
-	
+
 	protected def dispatch concatFeatureProperties(EAttribute eAttribute) {
 		#[
 			concatBounds(eAttribute),
@@ -270,14 +270,14 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		.filter[it !== null]
 		.join(newline)
 	}
-	
+
 	protected def dispatch concatFeatureType(EReference eReference) {
 		'''
 			«concatLinkTo(eReference.EType)»
 			«getOpposite(eReference)»
 		'''
 	}
-	
+
 	protected def dispatch concatFeatureType(EAttribute eAttribute) {
 		'''
 			«concatLinkTo(eAttribute.EType)»
@@ -287,7 +287,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def getOpposite(EReference eReference) {
 		if (eReference.EOpposite !== null) {
 			val eOppositeName = eReference.EOpposite.name
-			
+
 			'''
 				«newline»
 				_opposite_ <<«concatAnchor(eReference.EReferenceType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«eOppositeName», «eOppositeName»>>
@@ -315,7 +315,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 	protected def CharSequence writeEClassHeader(EClass eClass) {
 		val eClassName = eClass.name
-		
+
 		output.append(
 		'''
 			«newline»

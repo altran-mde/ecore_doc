@@ -36,9 +36,6 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
     return IterableExtensions.<EDataType, String>sortBy(IterableExtensions.<EDataType>filter(Iterables.<EDataType>filter(this.getEPackages().get(ePackage), EDataType.class), _function), _function_1);
   }
   
-  /**
-   * Writes the dataTypes of the EPackage and where they are used in.
-   */
   protected void writeEDataTypes(final List<EDataType> eDataTypes) {
     boolean _isEmpty = eDataTypes.isEmpty();
     boolean _not = (!_isEmpty);
@@ -60,11 +57,6 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append("=== Data Types");
-    _builder.newLine();
-    String _newline_1 = this._ecoreDocExtension.newline();
-    _builder.append(_newline_1);
-    _builder.newLineIfNotEmpty();
-    _builder.append("TODO: Create template for EDataType");
     _builder.newLine();
     return _output.append(_builder);
   }

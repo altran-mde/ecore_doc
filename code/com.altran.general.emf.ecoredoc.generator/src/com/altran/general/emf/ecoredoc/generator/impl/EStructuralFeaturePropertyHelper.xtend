@@ -13,55 +13,52 @@ class EStructuralFeaturePropertyHelper {
 		val upperBound = eStructuralFeature.upperBound
 
 		'''
-			``[«lowerBound»«IF lowerBound != upperBound»..«defineUpperBound(upperBound)»«ENDIF»]``
+			`[«lowerBound»«IF lowerBound != upperBound»..«defineUpperBound(upperBound)»«ENDIF»]`
 		'''
 	}
 
-	def defineOrdered(EStructuralFeature eStructuralFeature){
+	def defineOrdered(EStructuralFeature eStructuralFeature) {
 		val upperBound = eStructuralFeature.upperBound
-		val ordered =eStructuralFeature.ordered
-		
+		val ordered = eStructuralFeature.ordered
+
 		if (upperBound != 1) {
 			'''
-				`«IF ordered»ordered«ELSE»unordered«ENDIF»`
-			'''
-		} else {
-			null
-		}
-	}
-	
-	def defineId(EAttribute eAttribute) {
-		if (eAttribute.isID) {
-			'''
-				`*is id*`
+				«IF ordered»ordered«ELSE»unordered«ENDIF»
 			'''
 		} else {
 			null
 		}
 	}
 
+	def defineId(EAttribute eAttribute) {
+		if (eAttribute.isID) {
+			'''
+				*is id*
+			'''
+		} else {
+			null
+		}
+	}
 
 	def concatDefaultValue(EAttribute eAttribute) {
 
 		if (eAttribute.eIsSet(EcorePackage.eINSTANCE.EStructuralFeature_DefaultValueLiteral)) {
 			val defaultValue = eAttribute.defaultValue
-			
-			var result = 
-			'''
+
+			var result = '''
 				_default:_ 
 			'''
-			
+
 			switch (defaultValue) {
 				case EEnumLiteral:
-					result += '''`<<«concatAnchor(eAttribute.EAttributeType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>`'''
-					
+					result +=
+						'''`<<«concatAnchor(eAttribute.EAttributeType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>`'''
 				case String:
 					result += '''`"«defaultValue»"`'''
-					
 				default:
 					result += '''`«defaultValue»`'''
 			}
-			
+
 			return result
 		} else {
 			return ""
@@ -71,11 +68,10 @@ class EStructuralFeaturePropertyHelper {
 	protected def defineUpperBound(int upperBound) {
 		if (upperBound == -1) {
 			'''*'''
-			
+
 		} else {
 			upperBound
 		}
 	}
-	
-	
+
 }

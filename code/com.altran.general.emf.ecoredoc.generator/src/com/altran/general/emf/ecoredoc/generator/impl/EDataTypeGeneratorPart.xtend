@@ -27,9 +27,6 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 		this.getEPackages.get(ePackage).filter(EDataType).filter[!(it instanceof EEnum)].sortBy[it.name]
 	}
 
-	/*
-	 * Writes the dataTypes of the EPackage and where they are used in.
-	 */
 	protected def void writeEDataTypes(List<EDataType> eDataTypes) {
 		if (!eDataTypes.isEmpty) {
 			writeEDataTypesHeader()
@@ -46,8 +43,6 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 		'''
 			«newline»
 			=== Data Types
-			«newline»
-			TODO: Create template for EDataType
 		''')
 	}
 

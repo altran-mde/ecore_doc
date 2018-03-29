@@ -269,7 +269,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   
   protected CharSequence tableHeader() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("[cols=\"<20m,<20,<20m,<40a\",options=\"header\"]");
+    _builder.append("[cols=\"<20,<20,<20,<40a\",options=\"header\"]");
     return _builder;
   }
   

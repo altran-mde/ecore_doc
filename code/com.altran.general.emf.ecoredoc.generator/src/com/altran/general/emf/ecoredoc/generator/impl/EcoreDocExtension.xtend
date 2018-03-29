@@ -17,17 +17,16 @@ class EcoreDocExtension {
 
 	public static val REFERENCE_SEPARATOR = '.'
 
-	
 	def String newline() {
 		System.getProperty("line.separator")
 	}
-	
+
 	def CharSequence getDocumentation(EModelElement modelElement) {
 		val documentation = EcoreUtil.getDocumentation(modelElement)
-		
+
 		if (documentation !== null) {
-			return documentation + newline 
-			
+			return documentation + newline
+
 		} else {
 			return ""
 		}
@@ -45,7 +44,7 @@ class EcoreDocExtension {
 	def dispatch CharSequence concatAnchor(EDataType eDataType) {
 		if (!isDefaultEDataType(eDataType)) {
 			collectTypeSegments(eDataType).join(ANCHOR_SEPARATOR)
-			
+
 		} else {
 			""
 		}
@@ -77,12 +76,12 @@ class EcoreDocExtension {
 
 	def dispatch String[] collectTypeSegments(EDataType eDataType) {
 		val eDataTypeName = eDataType.name
-		
+
 		if (!isDefaultEDataType(eDataType)) {
 			val eDataTypePackageName = getEPackage(eDataType).name
-			
+
 			#[eDataTypePackageName, eDataTypeName]
-			
+
 		} else {
 			#[eDataTypeName]
 		}

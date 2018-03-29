@@ -16,8 +16,6 @@
 
 === Data Types
 
-TODO: Create template for EDataType
-
 [[EPackage1-SpecialDataType]]
 ==== SpecialDataType
 

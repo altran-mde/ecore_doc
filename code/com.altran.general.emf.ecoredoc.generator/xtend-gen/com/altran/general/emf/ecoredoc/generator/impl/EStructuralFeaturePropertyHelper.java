@@ -20,7 +20,7 @@ public class EStructuralFeaturePropertyHelper {
       final int lowerBound = eStructuralFeature.getLowerBound();
       final int upperBound = eStructuralFeature.getUpperBound();
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("``[");
+      _builder.append("`[");
       _builder.append(lowerBound);
       {
         if ((lowerBound != upperBound)) {
@@ -29,7 +29,7 @@ public class EStructuralFeaturePropertyHelper {
           _builder.append(_defineUpperBound);
         }
       }
-      _builder.append("]``");
+      _builder.append("]`");
       _builder.newLineIfNotEmpty();
       _xblockexpression = _builder;
     }
@@ -44,7 +44,6 @@ public class EStructuralFeaturePropertyHelper {
       CharSequence _xifexpression = null;
       if ((upperBound != 1)) {
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("`");
         {
           if (ordered) {
             _builder.append("ordered");
@@ -52,7 +51,6 @@ public class EStructuralFeaturePropertyHelper {
             _builder.append("unordered");
           }
         }
-        _builder.append("`");
         _builder.newLineIfNotEmpty();
         _xifexpression = _builder;
       } else {
@@ -68,7 +66,7 @@ public class EStructuralFeaturePropertyHelper {
     boolean _isID = eAttribute.isID();
     if (_isID) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("`*is id*`");
+      _builder.append("*is id*");
       _builder.newLine();
       _xifexpression = _builder;
     } else {

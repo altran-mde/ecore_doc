@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EStructuralFeature
 
 abstract class AEcoreDocGeneratorPart {
-	
+
 	protected extension EcoreDocExtension = new EcoreDocExtension
 
 	val Multimap<EPackage, EClassifier> ePackages
@@ -51,7 +51,7 @@ abstract class AEcoreDocGeneratorPart {
 	protected def dispatch CharSequence concatLinkTo(EDataType eDataType) {
 		if (!isDefaultEDataType(eDataType)) {
 			'''<<«concatAnchor(eDataType)», «concatReferenceName(eDataType)»>>'''
-			
+
 		} else {
 			eDataType.name
 		}
@@ -59,11 +59,12 @@ abstract class AEcoreDocGeneratorPart {
 
 	protected def CharSequence concatUsedLink(EStructuralFeature eStructuralFeature, EClass eClassThatInherits) {
 		val inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits)
-		
+
 		'''<<«inheritedFeatureSegments.join(EcoreDocExtension.ANCHOR_SEPARATOR)», «inheritedFeatureSegments.join(EcoreDocExtension.REFERENCE_SEPARATOR)»>>'''
 	}
 
-	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature, EClass eClassThatInherits) {
+	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature,
+		EClass eClassThatInherits) {
 		val ePackageName = getEPackage(eClassThatInherits).name
 		val eClassName = eClassThatInherits.name
 		val eStructuralFeatureName = eStructuralFeature.name
@@ -75,12 +76,12 @@ abstract class AEcoreDocGeneratorPart {
 		var anyMatch = false
 		val eClasses = collectAllEClasses()
 		val useCaseStrings = newArrayList()
-		
+
 		for (eClass : eClasses.sortBy[it.name]) {
 			for (feature : eClass.EAllStructuralFeatures.sortBy[it.name]) {
 				if (feature.EType == target) {
 					anyMatch = true
-					
+
 					useCaseStrings.add(
 					'''
 						* «concatUsedLink(feature, eClass)»
@@ -96,7 +97,7 @@ abstract class AEcoreDocGeneratorPart {
 				«newline»
 				.Used at
 			''')
-			
+
 			for (useCaseString : useCaseStrings.sort) {
 				output.append(useCaseString)
 			}

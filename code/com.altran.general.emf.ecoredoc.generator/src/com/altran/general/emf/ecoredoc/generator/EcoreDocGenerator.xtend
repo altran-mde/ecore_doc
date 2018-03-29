@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EPackage
 
 class EcoreDocGenerator {
-	
+
 	extension EcoreDocExtension = new EcoreDocExtension
 
 	val Collection<? extends EClassifier> input
@@ -65,7 +65,7 @@ class EcoreDocGenerator {
 
 	protected def writeEPackageIntro(EPackage ePackage) {
 		val ePackageName = ePackage.name
-		
+
 		output.append(
 		'''
 			«newline»

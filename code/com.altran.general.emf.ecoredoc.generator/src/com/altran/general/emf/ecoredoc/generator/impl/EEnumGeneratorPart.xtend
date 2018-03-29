@@ -59,11 +59,11 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 				|Description
 			'''
 		)
-		
+
 		for (eLiteral : eEnum.ELiterals) {
 			writeELiteral(eLiteral)
 		}
-		
+
 		output.append(tableFooter())
 	}
 

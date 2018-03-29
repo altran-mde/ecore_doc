@@ -13,7 +13,7 @@ class EStructuralFeaturePropertyHelper {
 		val upperBound = eStructuralFeature.upperBound
 
 		'''
-			_Multiplicity_ `[«lowerBound»«IF lowerBound != upperBound»..«defineUpperBound(upperBound)»«ENDIF»]`
+			``[«lowerBound»«IF lowerBound != upperBound»..«defineUpperBound(upperBound)»«ENDIF»]``
 		'''
 	}
 
@@ -22,7 +22,9 @@ class EStructuralFeaturePropertyHelper {
 		val ordered =eStructuralFeature.ordered
 		
 		if (upperBound != 1) {
-			'''`«IF ordered»ordered«ELSE»unordered«ENDIF»`'''
+			'''
+				`«IF ordered»ordered«ELSE»unordered«ENDIF»`
+			'''
 		} else {
 			null
 		}
@@ -30,7 +32,9 @@ class EStructuralFeaturePropertyHelper {
 	
 	def defineId(EAttribute eAttribute) {
 		if (eAttribute.isID) {
-			'''*`is id`*'''
+			'''
+				`*is id*`
+			'''
 		} else {
 			null
 		}
@@ -42,7 +46,10 @@ class EStructuralFeaturePropertyHelper {
 		if (eAttribute.eIsSet(EcorePackage.eINSTANCE.EStructuralFeature_DefaultValueLiteral)) {
 			val defaultValue = eAttribute.defaultValue
 			
-			var result = '''_default_ '''
+			var result = 
+			'''
+				_default:_ 
+			'''
 			
 			switch (defaultValue) {
 				case EEnumLiteral:
@@ -60,7 +67,6 @@ class EStructuralFeaturePropertyHelper {
 			return ""
 		}
 	}
-
 
 	protected def defineUpperBound(int upperBound) {
 		if (upperBound == -1) {

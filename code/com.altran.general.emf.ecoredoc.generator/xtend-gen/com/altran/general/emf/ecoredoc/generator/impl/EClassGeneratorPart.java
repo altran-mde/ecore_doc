@@ -157,8 +157,9 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLineIfNotEmpty();
     _builder.append(".Containments");
     _builder.newLine();
-    _builder.append("[cols=\"<15m,<15,<15m,<15m,<40a\",options=\"header\"]");
-    _builder.newLine();
+    CharSequence _tableHeader = this.tableHeader();
+    _builder.append(_tableHeader);
+    _builder.newLineIfNotEmpty();
     _builder.append("|===");
     _builder.newLine();
     _builder.append("|Name");
@@ -268,7 +269,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   
   protected CharSequence tableHeader() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("[cols=\"<15m,<15,<15m,<15m,<40a\",options=\"header\"]");
+    _builder.append("[cols=\"<20m,<20,<20m,<40a\",options=\"header\"]");
     return _builder;
   }
   
@@ -476,8 +477,9 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLineIfNotEmpty();
     _builder.append(".References");
     _builder.newLine();
-    _builder.append("[cols=\"<15m,<15,<15m,<15m,<40a\",options=\"header\"]");
-    _builder.newLine();
+    CharSequence _tableHeader = this.tableHeader();
+    _builder.append(_tableHeader);
+    _builder.newLineIfNotEmpty();
     _builder.append("|===");
     _builder.newLine();
     _builder.append("|Name");

@@ -20,7 +20,7 @@ public class EStructuralFeaturePropertyHelper {
       final int lowerBound = eStructuralFeature.getLowerBound();
       final int upperBound = eStructuralFeature.getUpperBound();
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("_Multiplicity_ `[");
+      _builder.append("``[");
       _builder.append(lowerBound);
       {
         if ((lowerBound != upperBound)) {
@@ -29,7 +29,7 @@ public class EStructuralFeaturePropertyHelper {
           _builder.append(_defineUpperBound);
         }
       }
-      _builder.append("]`");
+      _builder.append("]``");
       _builder.newLineIfNotEmpty();
       _xblockexpression = _builder;
     }
@@ -53,6 +53,7 @@ public class EStructuralFeaturePropertyHelper {
           }
         }
         _builder.append("`");
+        _builder.newLineIfNotEmpty();
         _xifexpression = _builder;
       } else {
         _xifexpression = null;
@@ -67,7 +68,8 @@ public class EStructuralFeaturePropertyHelper {
     boolean _isID = eAttribute.isID();
     if (_isID) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("*`is id`*");
+      _builder.append("`*is id*`");
+      _builder.newLine();
       _xifexpression = _builder;
     } else {
       _xifexpression = null;
@@ -80,7 +82,8 @@ public class EStructuralFeaturePropertyHelper {
     if (_eIsSet) {
       final Object defaultValue = eAttribute.getDefaultValue();
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("_default_ ");
+      _builder.append("_default:_ ");
+      _builder.newLine();
       String result = _builder.toString();
       boolean _matched = false;
       if (Objects.equal(defaultValue, EEnumLiteral.class)) {

@@ -109,7 +109,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		'''
 			«newline»
 			.Containments
-			[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+			«tableHeader»
 			|===
 			|Name
 			|Type
@@ -186,7 +186,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def tableHeader() {
-		'''[cols="<15m,<15,<15m,<15m,<40a",options="header"]'''	
+		'''[cols="<20m,<20,<20m,<40a",options="header"]'''	
 	}
 	
 	protected def List<EReference> collectEContainments(EClass eClass) {
@@ -304,7 +304,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		'''
 			«newline»
 			.References
-			[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+			«tableHeader»
 			|===
 			|Name
 			|Type

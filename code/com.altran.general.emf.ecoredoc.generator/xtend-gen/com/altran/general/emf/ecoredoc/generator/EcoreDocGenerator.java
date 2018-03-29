@@ -3,6 +3,7 @@ package com.altran.general.emf.ecoredoc.generator;
 import com.altran.general.emf.ecoredoc.generator.EClassGeneratorPart;
 import com.altran.general.emf.ecoredoc.generator.EDataTypeGeneratorPart;
 import com.altran.general.emf.ecoredoc.generator.EEnumGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.EcoreDocExtension;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.TreeMultimap;
 import java.util.Collection;
@@ -11,11 +12,14 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 @SuppressWarnings("all")
 public class EcoreDocGenerator {
+  @Extension
+  private EcoreDocExtension _ecoreDocExtension = new EcoreDocExtension();
+  
   private final Collection<? extends EClassifier> input;
   
   private final StringBuilder output = new StringBuilder();
@@ -56,17 +60,17 @@ public class EcoreDocGenerator {
     _builder.newLine();
     _builder.append(":wupt: &#9651;");
     _builder.newLine();
-    String _newline = this.newline();
+    String _newline = this._ecoreDocExtension.newline();
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append(":inherited: {wupt}{nbsp}");
     _builder.newLine();
-    String _newline_1 = this.newline();
+    String _newline_1 = this._ecoreDocExtension.newline();
     _builder.append(_newline_1);
     _builder.newLineIfNotEmpty();
     _builder.append(":table-caption!:");
     _builder.newLine();
-    String _newline_2 = this.newline();
+    String _newline_2 = this._ecoreDocExtension.newline();
     _builder.append(_newline_2);
     _builder.newLineIfNotEmpty();
     _builder.append("= Ecore Documentation");
@@ -75,9 +79,6 @@ public class EcoreDocGenerator {
     _builder.newLine();
     _builder.append(":toclevels: 4");
     _builder.newLine();
-    String _newline_3 = this.newline();
-    _builder.append(_newline_3);
-    _builder.newLineIfNotEmpty();
     return this.output.append(_builder);
   }
   
@@ -86,6 +87,12 @@ public class EcoreDocGenerator {
     {
       final String ePackageName = ePackage.getName();
       StringConcatenation _builder = new StringConcatenation();
+      String _newline = this._ecoreDocExtension.newline();
+      _builder.append(_newline);
+      _builder.newLineIfNotEmpty();
+      String _newline_1 = this._ecoreDocExtension.newline();
+      _builder.append(_newline_1);
+      _builder.newLineIfNotEmpty();
       _builder.append("[[");
       _builder.append(ePackageName);
       _builder.append("]]");
@@ -93,11 +100,11 @@ public class EcoreDocGenerator {
       _builder.append("== Contents of ");
       _builder.append(ePackageName);
       _builder.newLineIfNotEmpty();
-      String _newline = this.newline();
-      _builder.append(_newline);
+      String _newline_2 = this._ecoreDocExtension.newline();
+      _builder.append(_newline_2);
       _builder.newLineIfNotEmpty();
-      CharSequence _ePackageDocumentation = this.getEPackageDocumentation(ePackage);
-      _builder.append(_ePackageDocumentation);
+      CharSequence _documentation = this._ecoreDocExtension.getDocumentation(ePackage);
+      _builder.append(_documentation);
       _builder.newLineIfNotEmpty();
       _xblockexpression = this.output.append(_builder);
     }
@@ -109,28 +116,5 @@ public class EcoreDocGenerator {
       EObject _eContainer = eclassifier.eContainer();
       this.ePackages.put(((EPackage) _eContainer), eclassifier);
     }
-  }
-  
-  protected String newline() {
-    return System.getProperty("line.separator");
-  }
-  
-  protected CharSequence getEPackageDocumentation(final EPackage ePackage) {
-    CharSequence _xblockexpression = null;
-    {
-      final String ePackageDocumentation = EcoreUtil.getDocumentation(ePackage);
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append(ePackageDocumentation);
-      _builder.newLineIfNotEmpty();
-      {
-        if ((ePackageDocumentation != null)) {
-          String _newline = this.newline();
-          _builder.append(_newline);
-        }
-      }
-      _builder.newLineIfNotEmpty();
-      _xblockexpression = _builder;
-    }
-    return _xblockexpression;
   }
 }

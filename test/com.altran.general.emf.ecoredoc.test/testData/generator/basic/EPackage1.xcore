@@ -1,5 +1,6 @@
 package EPackage1
 
+@GenModel(documentation="Special documentation for special data type")
 type SpecialDataType wraps java.lang.Number
 
 @GenModel(documentation="Enum1 Description")

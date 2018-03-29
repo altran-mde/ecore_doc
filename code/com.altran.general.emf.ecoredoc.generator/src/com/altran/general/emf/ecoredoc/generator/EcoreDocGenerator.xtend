@@ -7,7 +7,10 @@ import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.util.EcoreUtil
 
+
+
 class EcoreDocGenerator {
+	extension EcoreDocExtension = new EcoreDocExtension
 
 	val Collection<? extends EClassifier> input
 
@@ -56,7 +59,6 @@ class EcoreDocGenerator {
 			= Ecore Documentation
 			:toc:
 			:toclevels: 4
-			«newline»
 		''')
 	}
 
@@ -64,11 +66,12 @@ class EcoreDocGenerator {
 		val ePackageName = ePackage.name
 		output.append(
 		'''
+			«newline»
+			«newline»
 			[[«ePackageName»]]
 			== Contents of «ePackageName»
 			«newline»
-			«getEPackageDocumentation(ePackage)
-			»
+			«getDocumentation(ePackage)»
 		''')
 	}
 
@@ -76,17 +79,5 @@ class EcoreDocGenerator {
 		for (eclassifier : input) {
 			ePackages.put(eclassifier.eContainer as EPackage, eclassifier)
 		}
-	}
-
-	protected def String newline() {
-		System.getProperty("line.separator")
-	}
-	
-	protected def CharSequence getEPackageDocumentation(EPackage ePackage) {
-		val ePackageDocumentation = EcoreUtil.getDocumentation(ePackage)
-		'''
-			«ePackageDocumentation»
-			«IF ePackageDocumentation !==null»«newline»«ENDIF»
-		'''
 	}
 }

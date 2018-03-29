@@ -59,11 +59,11 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected StringBuilder writeEClassesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("=== Types");
-    _builder.newLine();
-    String _newline = this.newline();
+    String _newline = this._ecoreDocExtension.newline();
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
+    _builder.append("=== Types");
+    _builder.newLine();
     return _output.append(_builder);
   }
   
@@ -147,6 +147,9 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected StringBuilder writeEContainmentHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
+    String _newline = this._ecoreDocExtension.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
     _builder.append(".Containments");
     _builder.newLine();
     _builder.append("[cols=\"<15m,<15,<15m,<15m,<40a\",options=\"header\"]");
@@ -163,70 +166,45 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLine();
     _builder.append("|Description");
     _builder.newLine();
-    String _newline = this.newline();
-    _builder.append(_newline);
-    _builder.newLineIfNotEmpty();
     return _output.append(_builder);
   }
   
-  protected StringBuilder writeSubTypes(final EClass currentEClass) {
-    StringBuilder _xblockexpression = null;
-    {
-      Set<EClass> subTypes = CollectionLiterals.<EClass>newLinkedHashSet();
-      final Function1<EClass, Boolean> _function = (EClass it) -> {
-        EClass _eClass = it.eClass();
-        return Boolean.valueOf(Objects.equal(_eClass, currentEClass));
-      };
-      Iterable<EClass> _reject = IterableExtensions.<EClass>reject(this.collectAllEClasses(), _function);
-      for (final EClass eClass : _reject) {
-        boolean _contains = eClass.getEAllSuperTypes().contains(currentEClass);
-        if (_contains) {
-          subTypes.add(eClass);
-        }
+  protected void writeSubTypes(final EClass currentEClass) {
+    Set<EClass> subTypes = CollectionLiterals.<EClass>newLinkedHashSet();
+    final Function1<EClass, Boolean> _function = (EClass it) -> {
+      EClass _eClass = it.eClass();
+      return Boolean.valueOf(Objects.equal(_eClass, currentEClass));
+    };
+    Iterable<EClass> _reject = IterableExtensions.<EClass>reject(this.collectAllEClasses(), _function);
+    for (final EClass eClass : _reject) {
+      boolean _contains = eClass.getEAllSuperTypes().contains(currentEClass);
+      if (_contains) {
+        subTypes.add(eClass);
       }
-      StringBuilder _xifexpression = null;
-      boolean _isEmpty = subTypes.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        StringBuilder _xblockexpression_1 = null;
-        {
-          this.writeSubTypesHeader();
-          for (final EClass eClass_1 : subTypes) {
-            this.writeType(eClass_1);
-          }
-          _xblockexpression_1 = this.getOutput().append(this.newline());
-        }
-        _xifexpression = _xblockexpression_1;
-      }
-      _xblockexpression = _xifexpression;
     }
-    return _xblockexpression;
+    boolean _isEmpty = subTypes.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      this.writeSubTypesHeader();
+      for (final EClass eClass_1 : subTypes) {
+        this.writeType(eClass_1);
+      }
+    }
   }
   
-  protected StringBuilder writeSuperTypes(final EClass eClass) {
-    StringBuilder _xblockexpression = null;
-    {
-      boolean _isEmpty = eClass.getEAllSuperTypes().isEmpty();
-      final boolean superTypesExist = (!_isEmpty);
-      StringBuilder _xifexpression = null;
-      if (superTypesExist) {
-        StringBuilder _xblockexpression_1 = null;
-        {
-          this.writeSuperTypesHeader();
-          final Function1<EClass, String> _function = (EClass it) -> {
-            return it.getName();
-          };
-          List<EClass> _sortBy = IterableExtensions.<EClass, String>sortBy(eClass.getEAllSuperTypes(), _function);
-          for (final EClass supertype : _sortBy) {
-            this.writeType(supertype);
-          }
-          _xblockexpression_1 = this.getOutput().append(this.newline());
-        }
-        _xifexpression = _xblockexpression_1;
+  protected void writeSuperTypes(final EClass eClass) {
+    boolean _isEmpty = eClass.getEAllSuperTypes().isEmpty();
+    final boolean superTypesExist = (!_isEmpty);
+    if (superTypesExist) {
+      this.writeSuperTypesHeader();
+      final Function1<EClass, String> _function = (EClass it) -> {
+        return it.getName();
+      };
+      List<EClass> _sortBy = IterableExtensions.<EClass, String>sortBy(eClass.getEAllSuperTypes(), _function);
+      for (final EClass supertype : _sortBy) {
+        this.writeType(supertype);
       }
-      _xblockexpression = _xifexpression;
     }
-    return _xblockexpression;
   }
   
   protected StringBuilder writeType(final EClass eClass) {
@@ -242,6 +220,9 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected StringBuilder writeSubTypesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
+    String _newline = this._ecoreDocExtension.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
     _builder.append(".Sub-types");
     _builder.newLine();
     return _output.append(_builder);
@@ -250,6 +231,9 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected StringBuilder writeSuperTypesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
+    String _newline = this._ecoreDocExtension.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
     _builder.append(".Super-types");
     _builder.newLine();
     return _output.append(_builder);
@@ -258,6 +242,9 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected StringBuilder writeEAttributesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
+    String _newline = this._ecoreDocExtension.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
     _builder.append(".Attributes");
     _builder.newLine();
     CharSequence _tableHeader = this.tableHeader();
@@ -275,9 +262,6 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLine();
     _builder.append("|Description");
     _builder.newLine();
-    String _newline = this.newline();
-    _builder.append(_newline);
-    _builder.newLineIfNotEmpty();
     return _output.append(_builder);
   }
   
@@ -364,6 +348,9 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       final String[] inheritedFeatureSegments = this.collectInheritedFeatureSegments(eStructuralFeature, eClass);
       StringBuilder _output = this.getOutput();
       StringConcatenation _builder = new StringConcatenation();
+      String _newline = this._ecoreDocExtension.newline();
+      _builder.append(_newline);
+      _builder.newLineIfNotEmpty();
       _builder.append("|");
       _builder.append(eStructuralFeatureName);
       _builder.append("[[");
@@ -396,11 +383,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.append(_writeOppositeOrDefaultValue);
       _builder.newLineIfNotEmpty();
       _builder.append("|");
-      CharSequence _documentation = this.getDocumentation(eStructuralFeature);
+      CharSequence _documentation = this._ecoreDocExtension.getDocumentation(eStructuralFeature);
       _builder.append(_documentation);
-      _builder.newLineIfNotEmpty();
-      String _newline = this.newline();
-      _builder.append(_newline);
       _builder.newLineIfNotEmpty();
       _xblockexpression = _output.append(_builder);
     }
@@ -543,6 +527,9 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected StringBuilder writeEReferencesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
+    String _newline = this._ecoreDocExtension.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
     _builder.append(".References");
     _builder.newLine();
     _builder.append("[cols=\"<15m,<15,<15m,<15m,<40a\",options=\"header\"]");
@@ -559,9 +546,6 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLine();
     _builder.append("|Description");
     _builder.newLine();
-    String _newline = this.newline();
-    _builder.append(_newline);
-    _builder.newLineIfNotEmpty();
     return _output.append(_builder);
   }
   
@@ -571,6 +555,9 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       final String eClassName = eClass.getName();
       StringBuilder _output = this.getOutput();
       StringConcatenation _builder = new StringConcatenation();
+      String _newline = this._ecoreDocExtension.newline();
+      _builder.append(_newline);
+      _builder.newLineIfNotEmpty();
       _builder.append("[[");
       CharSequence _concatAnchor = this.concatAnchor(eClass);
       _builder.append(_concatAnchor);
@@ -593,14 +580,11 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.append(" ");
       _builder.append(eClassName);
       _builder.newLineIfNotEmpty();
-      String _newline = this.newline();
-      _builder.append(_newline);
-      _builder.newLineIfNotEmpty();
-      CharSequence _documentation = this.getDocumentation(eClass);
-      _builder.append(_documentation);
-      _builder.newLineIfNotEmpty();
-      String _newline_1 = this.newline();
+      String _newline_1 = this._ecoreDocExtension.newline();
       _builder.append(_newline_1);
+      _builder.newLineIfNotEmpty();
+      CharSequence _documentation = this._ecoreDocExtension.getDocumentation(eClass);
+      _builder.append(_documentation);
       _builder.newLineIfNotEmpty();
       _xblockexpression = _output.append(_builder);
     }

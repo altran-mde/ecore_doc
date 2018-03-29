@@ -44,19 +44,21 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def writeEDataTypesHeader() {
 		output.append(
 		'''
+			«newline»
 			=== Data Types
 			«newline»
 			TODO: Create template for EDataType
-			«newline»
 		''')
 	}
 
 	protected def CharSequence writeEDataTypeHeader(EDataType eDataType) {
 		output.append(
 		'''
+			«newline»
 			[[«concatAnchor(eDataType)»]]
 			==== «eDataType.name»
 			«newline»
+			«getDocumentation(eDataType)»
 		''')
 	}
 }

@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.util.EcoreUtil
 
 abstract class AEcoreDocGeneratorPart {
+	protected extension EcoreDocExtension = new EcoreDocExtension
 
 	protected static val ANCHOR_SEPARATOR = '-'
 
@@ -156,34 +157,24 @@ abstract class AEcoreDocGeneratorPart {
 		if (anyMatch) {
 			output.append(
 			'''
+				«newline»
 				.Used at
 			''')
 			
 			for (useCaseString : useCaseStrings.sort) {
 				output.append(useCaseString)
 			}
-			
-			output.append(newline)
 		}
 	}
 
 	protected def CharSequence tableFooter() {
 		'''
 			|===
-			«newline»
 		'''
-	}
-
-	protected def CharSequence getDocumentation(EModelElement modelElement) {
-		EcoreUtil.getDocumentation(modelElement)
 	}
 
 	protected def boolean isDefaultEDataType(EDataType eDataType) {
 		EcorePackage.eINSTANCE.nsURI == getEPackage(eDataType).nsURI
-	}
-
-	protected def String newline() {
-		System.getProperty("line.separator")
 	}
 
 	protected def Collection<EClass> collectAllEClasses() {

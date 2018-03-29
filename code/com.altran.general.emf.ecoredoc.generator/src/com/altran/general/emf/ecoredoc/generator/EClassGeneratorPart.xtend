@@ -44,9 +44,10 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def writeEClassesHeader() {
-		output.append('''
-			=== Types
+		output.append(
+		'''
 			«newline»
+			=== Types
 		''')
 	}
 
@@ -107,6 +108,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def writeEContainmentHeader() {
 		output.append(
 		'''
+			«newline»
 			.Containments
 			[cols="<15m,<15,<15m,<15m,<40a",options="header"]
 			|===
@@ -115,7 +117,6 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			|Multiplicity{nbsp}/ Order
 			|Opposite
 			|Description
-			«newline»
 		''')
 	}
 
@@ -134,8 +135,6 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			for (eClass : subTypes) {
 				writeType(eClass)
 			}
-			
-			output.append(newline)
 		}
 	}
 	
@@ -148,8 +147,6 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			for (supertype : eClass.EAllSuperTypes.sortBy[it.name]) {
 				writeType(supertype)
 			}
-			
-			output.append(newline)
 		}
 	}
 
@@ -163,6 +160,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def writeSubTypesHeader() {
 		output.append(
 		'''
+			«newline»
 			.Sub-types
 		''')
 	}
@@ -170,6 +168,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def writeSuperTypesHeader() {
 		output.append(
 		'''
+			«newline»
 			.Super-types
 		''')
 	}
@@ -177,6 +176,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def writeEAttributesHeader() {
 		output.append(
 		'''
+			«newline»
 			.Attributes
 			«tableHeader»
 			|===
@@ -185,7 +185,6 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			|Multiplicity{nbsp}/ Order
 			|Default Value
 			|Description
-			«newline»
 		''')
 	}
 
@@ -246,13 +245,13 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 		output.append(
 		'''
+			«newline»
 			|«eStructuralFeatureName»[[«inheritedFeatureSegments.join(ANCHOR_SEPARATOR)»]]«IF isInherited» +«ENDIF»
 			«IF isInherited»«concatInheritedElement(eStructuralFeature)»«ENDIF»
 			|«concatLinkTo(eStructuralFeature.EType)»
 			|«concatBounds(eStructuralFeature)»
 			|«writeOppositeOrDefaultValue(eStructuralFeature)»
 			|«getDocumentation(eStructuralFeature)»
-			«newline»
 		''')
 	}
 
@@ -314,6 +313,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def writeEReferencesHeader() {
 		output.append(
 			'''
+				«newline»
 				.References
 				[cols="<15m,<15,<15m,<15m,<40a",options="header"]
 				|===
@@ -322,7 +322,6 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 				|Multiplicity{nbsp}/ Order
 				|Opposite
 				|Description
-				«newline»
 			'''
 		)
 	}
@@ -332,11 +331,11 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		
 		output.append(
 		'''
+			«newline»
 			[[«concatAnchor(eClass)»]]
 			==== «IF eClass.isAbstract && !eClass.isInterface»Abstract «ENDIF»«IF eClass.isInterface»Interface«ELSE»Class«ENDIF» «eClassName»
 			«newline»
 			«getDocumentation(eClass)»
-			«newline»
 		''')
 	}
 }

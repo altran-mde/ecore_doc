@@ -9,8 +9,10 @@
 :toc:
 :toclevels: 4
 
+
 [[EPackage1]]
 == Contents of EPackage1
+
 
 === Data Types
 
@@ -18,6 +20,8 @@ TODO: Create template for EDataType
 
 [[EPackage1-SpecialDataType]]
 ==== SpecialDataType
+
+Special documentation for special data type
 
 .Used at
 * <<EPackage1-MyEClass-attr, EPackage1.MyEClass.attr>>
@@ -49,7 +53,6 @@ Second sentence of Literal1 Description.
 |Literal3[[EPackage1-Enum1-Literal3]]
 |5
 |Literal3 Description
-
 |===
 
 .Used at
@@ -115,7 +118,6 @@ Description
 |0..1
 |23
 |
-
 |===
 
 .References
@@ -139,7 +141,6 @@ Description
 |0..*{nbsp}/ unordered
 |<<EPackage1-MyEClass-backwards, backwards>>
 |Description.
-
 |===
 
 .Used at
@@ -196,7 +197,6 @@ Description of EClass1
 |0..1
 |23
 |
-
 |===
 
 .References
@@ -213,7 +213,6 @@ Description of EClass1
 |0..*{nbsp}/ unordered
 |<<EPackage1-MyEClass-backwards, backwards>>
 |Description.
-
 |===
 
 .Used at
@@ -293,7 +292,6 @@ Second sentence.
 |0..1
 |23
 |
-
 |===
 
 .Containments
@@ -318,7 +316,6 @@ Second sentence.
 |Desc.
 
 Containments could also be inherited.
-
 |===
 
 .References
@@ -348,7 +345,6 @@ Containments could also be inherited.
 |0..*{nbsp}/ unordered
 |<<EPackage1-MyEClass-backwards, backwards>>
 |Description.
-
 |===
 
 .Used at
@@ -357,6 +353,7 @@ Containments could also be inherited.
 * <<EPackage1-EClass1-myRelation, EPackage1.EClass1.myRelation>>
 * <<EPackage1-MyEClass-myRelation, EPackage1.MyEClass.myRelation>>
 * <<EPackage2-SomeClass-myRelation, EPackage2.SomeClass.myRelation>>
+
 
 [[EPackage2]]
 == Contents of EPackage2
@@ -423,7 +420,6 @@ my doc
 |0..1
 |23
 |
-
 |===
 
 .References
@@ -441,8 +437,4 @@ my doc
 |0..*{nbsp}/ unordered
 |<<EPackage1-MyEClass-backwards, backwards>>
 |Description.
-
 |===
-  
-  
-  

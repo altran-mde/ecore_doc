@@ -42,8 +42,8 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def writeEEnumsHeader() {
 		output.append(
 		'''
-			=== Enumerations
 			«newline»
+			=== Enumerations
 		''')
 	}
 
@@ -57,7 +57,6 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 				|Symbol
 				|Value
 				|Description
-				«newline»
 			'''
 		)
 		
@@ -71,16 +70,17 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def writeELiteral(EEnumLiteral eLiteral) {
 		output.append(
 		'''
+			«newline»
 			|«eLiteral.name»[[«concatAnchor(eLiteral)»]]
 			|«eLiteral.value»
 			|«getDocumentation(eLiteral)»
-			«newline»
 		''')
 	}
 
 	def protected CharSequence writeEEnumHeader(EEnum eEnum) {
 		output.append(
 		'''
+			«newline»
 			[[«concatAnchor(eEnum)»]]
 			==== «eEnum.name»
 			«newline»

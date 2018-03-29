@@ -56,22 +56,25 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
   protected StringBuilder writeEDataTypesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
+    String _newline = this._ecoreDocExtension.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
     _builder.append("=== Data Types");
     _builder.newLine();
-    String _newline = this.newline();
-    _builder.append(_newline);
+    String _newline_1 = this._ecoreDocExtension.newline();
+    _builder.append(_newline_1);
     _builder.newLineIfNotEmpty();
     _builder.append("TODO: Create template for EDataType");
     _builder.newLine();
-    String _newline_1 = this.newline();
-    _builder.append(_newline_1);
-    _builder.newLineIfNotEmpty();
     return _output.append(_builder);
   }
   
   protected CharSequence writeEDataTypeHeader(final EDataType eDataType) {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
+    String _newline = this._ecoreDocExtension.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
     _builder.append("[[");
     CharSequence _concatAnchor = this.concatAnchor(eDataType);
     _builder.append(_concatAnchor);
@@ -81,8 +84,11 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
     String _name = eDataType.getName();
     _builder.append(_name);
     _builder.newLineIfNotEmpty();
-    String _newline = this.newline();
-    _builder.append(_newline);
+    String _newline_1 = this._ecoreDocExtension.newline();
+    _builder.append(_newline_1);
+    _builder.newLineIfNotEmpty();
+    CharSequence _documentation = this._ecoreDocExtension.getDocumentation(eDataType);
+    _builder.append(_documentation);
     _builder.newLineIfNotEmpty();
     return _output.append(_builder);
   }

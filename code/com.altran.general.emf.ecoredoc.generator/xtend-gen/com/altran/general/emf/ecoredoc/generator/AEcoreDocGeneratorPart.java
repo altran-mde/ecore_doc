@@ -1,5 +1,6 @@
 package com.altran.general.emf.ecoredoc.generator;
 
+import com.altran.general.emf.ecoredoc.generator.EcoreDocExtension;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
@@ -12,21 +13,23 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
-import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public abstract class AEcoreDocGeneratorPart {
+  @Extension
+  protected EcoreDocExtension _ecoreDocExtension = new EcoreDocExtension();
+  
   protected final static String ANCHOR_SEPARATOR = "-";
   
   protected final static String REFERENCE_SEPARATOR = ".";
@@ -233,6 +236,9 @@ public abstract class AEcoreDocGeneratorPart {
     }
     if (anyMatch) {
       StringConcatenation _builder_1 = new StringConcatenation();
+      String _newline = this._ecoreDocExtension.newline();
+      _builder_1.append(_newline);
+      _builder_1.newLineIfNotEmpty();
       _builder_1.append(".Used at");
       _builder_1.newLine();
       this.output.append(_builder_1);
@@ -240,7 +246,6 @@ public abstract class AEcoreDocGeneratorPart {
       for (final String useCaseString : _sort) {
         this.output.append(useCaseString);
       }
-      this.output.append(this.newline());
     }
   }
   
@@ -248,24 +253,13 @@ public abstract class AEcoreDocGeneratorPart {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("|===");
     _builder.newLine();
-    String _newline = this.newline();
-    _builder.append(_newline);
-    _builder.newLineIfNotEmpty();
     return _builder;
-  }
-  
-  protected CharSequence getDocumentation(final EModelElement modelElement) {
-    return EcoreUtil.getDocumentation(modelElement);
   }
   
   protected boolean isDefaultEDataType(final EDataType eDataType) {
     String _nsURI = EcorePackage.eINSTANCE.getNsURI();
     String _nsURI_1 = this.getEPackage(eDataType).getNsURI();
     return Objects.equal(_nsURI, _nsURI_1);
-  }
-  
-  protected String newline() {
-    return System.getProperty("line.separator");
   }
   
   protected Collection<EClass> collectAllEClasses() {

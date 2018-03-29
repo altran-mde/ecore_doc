@@ -161,12 +161,16 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 	
 	protected def writeSubTypesHeader() {
-		output.append('''.Sub-types
+		output.append(
+		'''
+			.Sub-types
 		''')
 	}
 	
-	protected def writeSuperTypesHeader(){
-		output.append('''.Super-types
+	protected def writeSuperTypesHeader() {
+		output.append(
+		'''
+			.Super-types
 		''')
 	}
 
@@ -207,7 +211,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 							 .toSet
 	}
 	
-	protected def Set<EStructuralFeature> collectInheritedEAttributes(EClass eClass){
+	protected def Set<EStructuralFeature> collectInheritedEAttributes(EClass eClass) {
 		val Set<EStructuralFeature> inheritedEAttributes = newLinkedHashSet()
 		
 		for (superclass : eClass.EAllSuperTypes) {

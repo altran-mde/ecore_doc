@@ -11,6 +11,7 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
@@ -40,7 +41,7 @@ public class EcoreDocGenerator {
     Set<EPackage> _keySet = this.ePackages.keySet();
     for (final EPackage ePackage : _keySet) {
       {
-        this.writeEPackageIntro(ePackage.getName());
+        this.writeEPackageIntro(ePackage);
         this.output.append(eDataTypeGeneratorPart.write(ePackage));
         this.output.append(eEnumGeneratorPart.write(ePackage));
         this.output.append(eClassGeneratorPart.write(ePackage));
@@ -80,19 +81,27 @@ public class EcoreDocGenerator {
     return this.output.append(_builder);
   }
   
-  protected StringBuilder writeEPackageIntro(final String ePackageName) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("[[");
-    _builder.append(ePackageName);
-    _builder.append("]]");
-    _builder.newLineIfNotEmpty();
-    _builder.append("== Contents of ");
-    _builder.append(ePackageName);
-    _builder.newLineIfNotEmpty();
-    String _newline = this.newline();
-    _builder.append(_newline);
-    _builder.newLineIfNotEmpty();
-    return this.output.append(_builder);
+  protected StringBuilder writeEPackageIntro(final EPackage ePackage) {
+    StringBuilder _xblockexpression = null;
+    {
+      final String ePackageName = ePackage.getName();
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("[[");
+      _builder.append(ePackageName);
+      _builder.append("]]");
+      _builder.newLineIfNotEmpty();
+      _builder.append("== Contents of ");
+      _builder.append(ePackageName);
+      _builder.newLineIfNotEmpty();
+      String _newline = this.newline();
+      _builder.append(_newline);
+      _builder.newLineIfNotEmpty();
+      CharSequence _ePackageDocumentation = this.getEPackageDocumentation(ePackage);
+      _builder.append(_ePackageDocumentation);
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = this.output.append(_builder);
+    }
+    return _xblockexpression;
   }
   
   protected void collectEPackages() {
@@ -104,5 +113,24 @@ public class EcoreDocGenerator {
   
   protected String newline() {
     return System.getProperty("line.separator");
+  }
+  
+  protected CharSequence getEPackageDocumentation(final EPackage ePackage) {
+    CharSequence _xblockexpression = null;
+    {
+      final String ePackageDocumentation = EcoreUtil.getDocumentation(ePackage);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(ePackageDocumentation);
+      _builder.newLineIfNotEmpty();
+      {
+        if ((ePackageDocumentation != null)) {
+          String _newline = this.newline();
+          _builder.append(_newline);
+        }
+      }
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
   }
 }

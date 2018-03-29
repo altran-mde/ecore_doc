@@ -154,7 +154,8 @@ abstract class AEcoreDocGeneratorPart {
 		}
 
 		if (anyMatch) {
-			output.append('''
+			output.append(
+			'''
 				.Used at
 			''')
 			

@@ -361,6 +361,8 @@ Containments could also be inherited.
 [[EPackage2]]
 == Contents of EPackage2
 
+Package2 documentation
+
 === Types
 
 [[EPackage2-Class3]]
@@ -441,4 +443,6 @@ my doc
 |Description.
 
 |===
-
+  
+  
+  

@@ -5,6 +5,7 @@ import com.google.common.collect.TreeMultimap
 import java.util.Collection
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.util.EcoreUtil
 
 class EcoreDocGenerator {
 
@@ -32,7 +33,7 @@ class EcoreDocGenerator {
 
 		for (ePackage : ePackages.keySet) {
 
-			writeEPackageIntro(ePackage.name)
+			writeEPackageIntro(ePackage)
 
 			output.append(eDataTypeGeneratorPart.write(ePackage))
 			output.append(eEnumGeneratorPart.write(ePackage))
@@ -43,7 +44,8 @@ class EcoreDocGenerator {
 	}
 
 	protected def writeIntro() {
-		output.append('''
+		output.append(
+		'''
 			// White Up-Pointing Triangle
 			:wupt: &#9651;
 			«newline»
@@ -58,11 +60,15 @@ class EcoreDocGenerator {
 		''')
 	}
 
-	protected def writeEPackageIntro(String ePackageName) {
-		output.append('''
+	protected def writeEPackageIntro(EPackage ePackage) {
+		val ePackageName = ePackage.name
+		output.append(
+		'''
 			[[«ePackageName»]]
 			== Contents of «ePackageName»
 			«newline»
+			«getEPackageDocumentation(ePackage)
+			»
 		''')
 	}
 
@@ -74,5 +80,13 @@ class EcoreDocGenerator {
 
 	protected def String newline() {
 		System.getProperty("line.separator")
+	}
+	
+	protected def CharSequence getEPackageDocumentation(EPackage ePackage) {
+		val ePackageDocumentation = EcoreUtil.getDocumentation(ePackage)
+		'''
+			«ePackageDocumentation»
+			«IF ePackageDocumentation !==null»«newline»«ENDIF»
+		'''
 	}
 }

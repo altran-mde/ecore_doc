@@ -42,7 +42,8 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def writeEDataTypesHeader() {
-		output.append('''
+		output.append(
+		'''
 			=== Data Types
 			«newline»
 			TODO: Create template for EDataType

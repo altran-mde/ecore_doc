@@ -41,7 +41,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 
 	protected def writeEEnumsHeader() {
 		output.append(
-			'''
+		'''
 			=== Enumerations
 			«newline»
 		''')

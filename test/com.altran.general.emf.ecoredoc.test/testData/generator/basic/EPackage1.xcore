@@ -20,7 +20,7 @@ abstract class EClass1 {
 	String[3..5] name
 	 
 	@GenModel(documentation="Description of id.")
-	int[1] ^id
+	id int[1] ^id
 	
 	int specialNumber = "23"
 	

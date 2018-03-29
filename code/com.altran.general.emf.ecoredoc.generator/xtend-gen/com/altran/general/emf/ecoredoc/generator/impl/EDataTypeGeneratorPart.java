@@ -76,7 +76,7 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append("[[");
-    CharSequence _concatAnchor = this.concatAnchor(eDataType);
+    CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eDataType);
     _builder.append(_concatAnchor);
     _builder.append("]]");
     _builder.newLineIfNotEmpty();

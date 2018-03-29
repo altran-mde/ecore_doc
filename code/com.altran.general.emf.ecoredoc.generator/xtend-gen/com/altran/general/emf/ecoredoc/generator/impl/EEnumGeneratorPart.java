@@ -100,7 +100,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     String _name = eLiteral.getName();
     _builder.append(_name);
     _builder.append("[[");
-    CharSequence _concatAnchor = this.concatAnchor(eLiteral);
+    CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eLiteral);
     _builder.append(_concatAnchor);
     _builder.append("]]");
     _builder.newLineIfNotEmpty();
@@ -122,7 +122,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append("[[");
-    CharSequence _concatAnchor = this.concatAnchor(eEnum);
+    CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eEnum);
     _builder.append(_concatAnchor);
     _builder.append("]]");
     _builder.newLineIfNotEmpty();

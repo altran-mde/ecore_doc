@@ -1,31 +1,36 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.impl.EStructuralFeaturePropertyHelper;
+import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
+  @Extension
+  private EStructuralFeaturePropertyHelper _eStructuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper();
+  
   public EClassGeneratorPart(final Multimap<EPackage, EClassifier> ePackages) {
     super(ePackages);
   }
@@ -160,9 +165,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLine();
     _builder.append("|Type");
     _builder.newLine();
-    _builder.append("|Multiplicity{nbsp}/ Order");
-    _builder.newLine();
-    _builder.append("|Opposite");
+    _builder.append("|Properties");
     _builder.newLine();
     _builder.append("|Description");
     _builder.newLine();
@@ -256,9 +259,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLine();
     _builder.append("|Type");
     _builder.newLine();
-    _builder.append("|Multiplicity{nbsp}/ Order");
-    _builder.newLine();
-    _builder.append("|Default Value");
+    _builder.append("|Properties");
     _builder.newLine();
     _builder.append("|Description");
     _builder.newLine();
@@ -354,7 +355,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.append("|");
       _builder.append(eStructuralFeatureName);
       _builder.append("[[");
-      String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), AEcoreDocGeneratorPart.ANCHOR_SEPARATOR);
+      String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), EcoreDocExtension.ANCHOR_SEPARATOR);
       _builder.append(_join);
       _builder.append("]]");
       {
@@ -371,16 +372,12 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       }
       _builder.newLineIfNotEmpty();
       _builder.append("|");
-      CharSequence _concatLinkTo = this.concatLinkTo(eStructuralFeature.getEType());
-      _builder.append(_concatLinkTo);
+      CharSequence _concatFeatureType = this.concatFeatureType(eStructuralFeature);
+      _builder.append(_concatFeatureType);
       _builder.newLineIfNotEmpty();
       _builder.append("|");
-      CharSequence _concatBounds = this.concatBounds(eStructuralFeature);
-      _builder.append(_concatBounds);
-      _builder.newLineIfNotEmpty();
-      _builder.append("|");
-      CharSequence _writeOppositeOrDefaultValue = this.writeOppositeOrDefaultValue(eStructuralFeature);
-      _builder.append(_writeOppositeOrDefaultValue);
+      String _concatFeatureProperties = this.concatFeatureProperties(eStructuralFeature);
+      _builder.append(_concatFeatureProperties);
       _builder.newLineIfNotEmpty();
       _builder.append("|");
       CharSequence _documentation = this._ecoreDocExtension.getDocumentation(eStructuralFeature);
@@ -391,53 +388,69 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected CharSequence _writeOppositeOrDefaultValue(final EAttribute eAttribute) {
-    CharSequence _xblockexpression = null;
-    {
-      final Object defaultValue = eAttribute.getDefaultValue();
-      CharSequence _xifexpression = null;
-      boolean _eIsSet = eAttribute.eIsSet(EcorePackage.eINSTANCE.getEStructuralFeature_DefaultValueLiteral());
-      if (_eIsSet) {
-        CharSequence _xifexpression_1 = null;
-        if ((defaultValue instanceof EEnumLiteral)) {
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("<<");
-          CharSequence _concatAnchor = this.concatAnchor(eAttribute.getEAttributeType());
-          _builder.append(_concatAnchor);
-          _builder.append(AEcoreDocGeneratorPart.ANCHOR_SEPARATOR);
-          _builder.append(((EEnumLiteral)defaultValue));
-          _builder.append(", ");
-          _builder.append(((EEnumLiteral)defaultValue));
-          _builder.append(">>");
-          _xifexpression_1 = _builder;
-        } else {
-          CharSequence _xifexpression_2 = null;
-          if ((defaultValue instanceof String)) {
-            StringConcatenation _builder_1 = new StringConcatenation();
-            _builder_1.append("\"");
-            _builder_1.append(((String)defaultValue));
-            _builder_1.append("\"");
-            _xifexpression_2 = _builder_1;
-          } else {
-            StringConcatenation _builder_2 = new StringConcatenation();
-            _builder_2.append(defaultValue);
-            _xifexpression_2 = _builder_2;
-          }
-          _xifexpression_1 = _xifexpression_2;
-        }
-        _xifexpression = _xifexpression_1;
-      }
-      _xblockexpression = _xifexpression;
-    }
-    return _xblockexpression;
+  protected String _concatFeatureProperties(final EReference eReference) {
+    CharSequence _concatBounds = this._eStructuralFeaturePropertyHelper.concatBounds(eReference);
+    CharSequence _defineOrdered = this._eStructuralFeaturePropertyHelper.defineOrdered(eReference);
+    final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
+      return Boolean.valueOf((it != null));
+    };
+    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_concatBounds, _defineOrdered)), _function), this._ecoreDocExtension.newline());
   }
   
-  protected CharSequence _writeOppositeOrDefaultValue(final EReference eReference) {
+  protected String _concatFeatureProperties(final EAttribute eAttribute) {
+    CharSequence _concatBounds = this._eStructuralFeaturePropertyHelper.concatBounds(eAttribute);
+    CharSequence _defineOrdered = this._eStructuralFeaturePropertyHelper.defineOrdered(eAttribute);
+    String _concatDefaultValue = this._eStructuralFeaturePropertyHelper.concatDefaultValue(eAttribute);
+    CharSequence _defineId = this._eStructuralFeaturePropertyHelper.defineId(eAttribute);
+    final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
+      return Boolean.valueOf((it != null));
+    };
+    return IterableExtensions.join(IterableExtensions.filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_concatBounds, _defineOrdered, _concatDefaultValue, _defineId)), _function), this._ecoreDocExtension.newline());
+  }
+  
+  protected CharSequence _concatFeatureType(final EReference eReference) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _concatLinkTo = this.concatLinkTo(eReference.getEType());
+    _builder.append(_concatLinkTo);
+    _builder.newLineIfNotEmpty();
+    CharSequence _opposite = this.getOpposite(eReference);
+    _builder.append(_opposite);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  protected CharSequence _concatFeatureType(final EAttribute eAttribute) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _concatLinkTo = this.concatLinkTo(eAttribute.getEType());
+    _builder.append(_concatLinkTo);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  protected CharSequence getOpposite(final EReference eReference) {
     CharSequence _xifexpression = null;
     EReference _eOpposite = eReference.getEOpposite();
     boolean _tripleNotEquals = (_eOpposite != null);
     if (_tripleNotEquals) {
-      _xifexpression = this.concatOpposite(eReference);
+      CharSequence _xblockexpression = null;
+      {
+        final String eOppositeName = eReference.getEOpposite().getName();
+        StringConcatenation _builder = new StringConcatenation();
+        String _newline = this._ecoreDocExtension.newline();
+        _builder.append(_newline);
+        _builder.newLineIfNotEmpty();
+        _builder.append("_opposite_ <<");
+        CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eReference.getEReferenceType());
+        _builder.append(_concatAnchor);
+        _builder.append(EcoreDocExtension.ANCHOR_SEPARATOR);
+        _builder.append(eOppositeName);
+        _builder.append(", ");
+        _builder.append(eOppositeName);
+        _builder.append(">>");
+        _builder.newLineIfNotEmpty();
+        _xblockexpression = _builder;
+      }
+      _xifexpression = _xblockexpression;
     }
     return _xifexpression;
   }
@@ -445,7 +458,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected CharSequence concatInheritedElement(final ENamedElement eNamedElement) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("(<<");
-    CharSequence _concatAnchor = this.concatAnchor(eNamedElement);
+    CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eNamedElement);
     _builder.append(_concatAnchor);
     _builder.append(", {inherited}");
     EObject _eContainer = eNamedElement.eContainer();
@@ -453,75 +466,6 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.append(_concatReferenceName);
     _builder.append(">>)");
     return _builder;
-  }
-  
-  protected CharSequence concatBounds(final EStructuralFeature eStructuralFeature) {
-    CharSequence _xblockexpression = null;
-    {
-      final int lowerBound = eStructuralFeature.getLowerBound();
-      final int upperBound = eStructuralFeature.getUpperBound();
-      final boolean ordered = eStructuralFeature.isOrdered();
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append(lowerBound);
-      {
-        if ((lowerBound != upperBound)) {
-          _builder.append("..");
-          Object _defineUpperBound = this.defineUpperBound(upperBound);
-          _builder.append(_defineUpperBound);
-          {
-            if (((upperBound == (-1)) || (upperBound > 1))) {
-              CharSequence _defineOrdered = this.defineOrdered(ordered);
-              _builder.append(_defineOrdered);
-            }
-          }
-        }
-      }
-      _xblockexpression = _builder;
-    }
-    return _xblockexpression;
-  }
-  
-  protected Object defineUpperBound(final int upperBound) {
-    Object _xifexpression = null;
-    if ((upperBound == (-1))) {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("*{nbsp}");
-      _xifexpression = _builder;
-    } else {
-      _xifexpression = Integer.valueOf(upperBound);
-    }
-    return _xifexpression;
-  }
-  
-  protected CharSequence defineOrdered(final boolean ordered) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("/ ");
-    {
-      if (ordered) {
-        _builder.append("ordered");
-      } else {
-        _builder.append("unordered");
-      }
-    }
-    return _builder;
-  }
-  
-  protected CharSequence concatOpposite(final EReference eReference) {
-    CharSequence _xblockexpression = null;
-    {
-      final String eOppositeName = eReference.getEOpposite().getName();
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("<<");
-      CharSequence _concatAnchor = this.concatAnchor(eReference.getEReferenceType());
-      _builder.append(_concatAnchor);
-      _builder.append(AEcoreDocGeneratorPart.ANCHOR_SEPARATOR);
-      _builder.append(eOppositeName);
-      _builder.append(", ");
-      _builder.append(eOppositeName);
-      _builder.append(">>");
-      _xblockexpression = _builder;
-    }
-    return _xblockexpression;
   }
   
   protected StringBuilder writeEReferencesHeader() {
@@ -540,9 +484,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLine();
     _builder.append("|Type");
     _builder.newLine();
-    _builder.append("|Multiplicity{nbsp}/ Order");
-    _builder.newLine();
-    _builder.append("|Opposite");
+    _builder.append("|Properties");
     _builder.newLine();
     _builder.append("|Description");
     _builder.newLine();
@@ -559,7 +501,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.append(_newline);
       _builder.newLineIfNotEmpty();
       _builder.append("[[");
-      CharSequence _concatAnchor = this.concatAnchor(eClass);
+      CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eClass);
       _builder.append(_concatAnchor);
       _builder.append("]]");
       _builder.newLineIfNotEmpty();
@@ -591,11 +533,22 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected CharSequence writeOppositeOrDefaultValue(final EStructuralFeature eAttribute) {
+  protected String concatFeatureProperties(final EStructuralFeature eAttribute) {
     if (eAttribute instanceof EAttribute) {
-      return _writeOppositeOrDefaultValue((EAttribute)eAttribute);
+      return _concatFeatureProperties((EAttribute)eAttribute);
     } else if (eAttribute instanceof EReference) {
-      return _writeOppositeOrDefaultValue((EReference)eAttribute);
+      return _concatFeatureProperties((EReference)eAttribute);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(eAttribute).toString());
+    }
+  }
+  
+  protected CharSequence concatFeatureType(final EStructuralFeature eAttribute) {
+    if (eAttribute instanceof EAttribute) {
+      return _concatFeatureType((EAttribute)eAttribute);
+    } else if (eAttribute instanceof EReference) {
+      return _concatFeatureType((EReference)eAttribute);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(eAttribute).toString());

@@ -5,19 +5,13 @@ import java.util.Collection
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
-import org.eclipse.emf.ecore.EEnum
-import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.ENamedElement
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EStructuralFeature
-import org.eclipse.emf.ecore.EcorePackage
 
 abstract class AEcoreDocGeneratorPart {
+	
 	protected extension EcoreDocExtension = new EcoreDocExtension
-
-	protected static val ANCHOR_SEPARATOR = '-'
-
-	protected static val REFERENCE_SEPARATOR = '.'
 
 	val Multimap<EPackage, EClassifier> ePackages
 
@@ -45,26 +39,8 @@ abstract class AEcoreDocGeneratorPart {
 		this.output
 	}
 
-	protected def EPackage getEPackage(EClassifier eClassifier) {
-		eClassifier.eContainer as EPackage
-	}
-
-	protected def dispatch CharSequence concatAnchor(ENamedElement eNamedElement) {
-		collectTypeSegments(eNamedElement).join(ANCHOR_SEPARATOR)
-	}
-
-	// Special handling for default EDataTypes: Don't create anchor
-	protected def dispatch CharSequence concatAnchor(EDataType eDataType) {
-		if (!isDefaultEDataType(eDataType)) {
-			collectTypeSegments(eDataType).join(ANCHOR_SEPARATOR)
-			
-		} else {
-			""
-		}
-	}
-
 	protected def CharSequence concatReferenceName(ENamedElement eNamedElement) {
-		collectTypeSegments(eNamedElement).join(REFERENCE_SEPARATOR)
+		collectTypeSegments(eNamedElement).join(EcoreDocExtension.REFERENCE_SEPARATOR)
 	}
 
 	protected def dispatch CharSequence concatLinkTo(ENamedElement eNamedElement) {
@@ -84,53 +60,15 @@ abstract class AEcoreDocGeneratorPart {
 	protected def CharSequence concatUsedLink(EStructuralFeature eStructuralFeature, EClass eClassThatInherits) {
 		val inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits)
 		
-		'''<<«inheritedFeatureSegments.join(ANCHOR_SEPARATOR)», «inheritedFeatureSegments.join(REFERENCE_SEPARATOR)»>>'''
+		'''<<«inheritedFeatureSegments.join(EcoreDocExtension.ANCHOR_SEPARATOR)», «inheritedFeatureSegments.join(EcoreDocExtension.REFERENCE_SEPARATOR)»>>'''
 	}
 
 	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature, EClass eClassThatInherits) {
-
 		val ePackageName = getEPackage(eClassThatInherits).name
 		val eClassName = eClassThatInherits.name
 		val eStructuralFeatureName = eStructuralFeature.name
 
 		#[ePackageName, eClassName, eStructuralFeatureName]
-	}
-
-	protected def dispatch String[] collectTypeSegments(EClass eClass) {
-		val eClassName = eClass.name
-		val ePackageName = getEPackage(eClass).name
-
-		#[ePackageName, eClassName]
-
-	}
-
-	protected def dispatch String[] collectTypeSegments(EStructuralFeature eStructuralFeature) {
-		val eClass = eStructuralFeature.eContainer as EClass
-		val ePackageName = getEPackage(eClass).name
-		val eClassName = eClass.name
-		val eStructuralFeatureName = eStructuralFeature.name
-
-		#[ePackageName, eClassName, eStructuralFeatureName]
-	}
-
-	protected def dispatch String[] collectTypeSegments(EEnumLiteral eEnumLiteral) {
-		val eEnum = eEnumLiteral.eContainer as EEnum
-		val ePackageName = getEPackage(eEnum).name
-
-		#[ePackageName, eEnum.name, eEnumLiteral.name]
-	}
-
-	protected def dispatch String[] collectTypeSegments(EDataType eDataType) {
-		val eDataTypeName = eDataType.name
-		
-		if (!isDefaultEDataType(eDataType)) {
-			val eDataTypePackageName = getEPackage(eDataType).name
-			
-			#[eDataTypePackageName, eDataTypeName]
-			
-		} else {
-			#[eDataTypeName]
-		}
 	}
 
 	protected def void writeUseCases(EClassifier target) {
@@ -169,10 +107,6 @@ abstract class AEcoreDocGeneratorPart {
 		'''
 			|===
 		'''
-	}
-
-	protected def boolean isDefaultEDataType(EDataType eDataType) {
-		EcorePackage.eINSTANCE.nsURI == getEPackage(eDataType).nsURI
 	}
 
 	protected def Collection<EClass> collectAllEClasses() {

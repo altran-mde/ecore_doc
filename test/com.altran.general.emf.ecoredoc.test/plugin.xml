@@ -17,9 +17,9 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated EPackage1 -->
       <package
-            uri="EPackage1Extended"
-            class="EPackage1Extended.EPackage1ExtendedPackage"
-            genModel="testData/generator/extended/EPackage1Extended.xcore"/>
+            uri="EPackage1"
+            class="EPackage1.EPackage1Package"
+            genModel="testData/generator/basic/EPackage1.xcore"/>
    </extension>
 
 </plugin>

@@ -10,11 +10,10 @@ import org.eclipse.emf.ecore.ENamedElement
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
-import org.eclipse.emf.ecore.EcorePackage
-import org.eclipse.emf.ecore.EEnumLiteral
 
 class EClassGeneratorPart extends AEcoreDocGeneratorPart {
-
+	extension EStructuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper
+	
 	new(Multimap<EPackage, EClassifier> ePackages) {
 		super(ePackages)
 	}
@@ -114,8 +113,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			|===
 			|Name
 			|Type
-			|Multiplicity{nbsp}/ Order
-			|Opposite
+			|Properties
 			|Description
 		''')
 	}
@@ -182,8 +180,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			|===
 			|Name
 			|Type
-			|Multiplicity{nbsp}/ Order
-			|Default Value
+			|Properties
 			|Description
 		''')
 	}
@@ -246,35 +243,55 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		output.append(
 		'''
 			«newline»
-			|«eStructuralFeatureName»[[«inheritedFeatureSegments.join(ANCHOR_SEPARATOR)»]]«IF isInherited» +«ENDIF»
+			|«eStructuralFeatureName»[[«inheritedFeatureSegments.join(EcoreDocExtension.ANCHOR_SEPARATOR)»]]«IF isInherited» +«ENDIF»
 			«IF isInherited»«concatInheritedElement(eStructuralFeature)»«ENDIF»
-			|«concatLinkTo(eStructuralFeature.EType)»
-			|«concatBounds(eStructuralFeature)»
-			|«writeOppositeOrDefaultValue(eStructuralFeature)»
+			|«concatFeatureType(eStructuralFeature)»
+			|«concatFeatureProperties(eStructuralFeature)»
 			|«getDocumentation(eStructuralFeature)»
 		''')
 	}
-
-	protected def dispatch writeOppositeOrDefaultValue(EAttribute eAttribute) {
-		val defaultValue = eAttribute.defaultValue
-
-		if (eAttribute.eIsSet(EcorePackage.eINSTANCE.EStructuralFeature_DefaultValueLiteral)) {
-			
-			if(defaultValue instanceof EEnumLiteral){
-				'''<<«concatAnchor(eAttribute.EAttributeType)»«ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>'''
-				
-			}else if(defaultValue instanceof String){
-				'''"«defaultValue»"'''
-				
-			}else{
-				'''«defaultValue»'''
-			}
-		}
+	
+	protected def dispatch concatFeatureProperties(EReference eReference) {
+		#[
+			concatBounds(eReference),
+			defineOrdered(eReference)
+		]
+		.filter[it !== null]
+		.join(newline)
+	}
+	
+	protected def dispatch concatFeatureProperties(EAttribute eAttribute) {
+		#[
+			concatBounds(eAttribute),
+			defineOrdered(eAttribute),
+			concatDefaultValue(eAttribute),
+			defineId(eAttribute)
+		]
+		.filter[it !== null]
+		.join(newline)
+	}
+	
+	protected def dispatch concatFeatureType(EReference eReference) {
+		'''
+			«concatLinkTo(eReference.EType)»
+			«getOpposite(eReference)»
+		'''
+	}
+	
+	protected def dispatch concatFeatureType(EAttribute eAttribute) {
+		'''
+			«concatLinkTo(eAttribute.EType)»
+		'''
 	}
 
-	protected def dispatch writeOppositeOrDefaultValue(EReference eReference) {
+	protected def getOpposite(EReference eReference) {
 		if (eReference.EOpposite !== null) {
-			concatOpposite(eReference)
+			val eOppositeName = eReference.EOpposite.name
+			
+			'''
+				«newline»
+				_opposite_ <<«concatAnchor(eReference.EReferenceType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«eOppositeName», «eOppositeName»>>
+			'''
 		}
 	}
 
@@ -282,48 +299,18 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		'''(<<«concatAnchor(eNamedElement)», {inherited}«concatReferenceName(eNamedElement.eContainer as EClass)»>>)'''
 	}
 
-	protected def concatBounds(EStructuralFeature eStructuralFeature) {
-		val lowerBound = eStructuralFeature.lowerBound
-		val upperBound = eStructuralFeature.upperBound
-		val ordered = eStructuralFeature.ordered
-
-		'''«lowerBound»«IF lowerBound != upperBound»..«defineUpperBound(upperBound)»«IF upperBound == -1 || upperBound>1»«defineOrdered(ordered)»«ENDIF»«ENDIF»'''
-	}
-
-	protected def defineUpperBound(int upperBound) {
-	
-		if (upperBound == -1) {
-			'''*{nbsp}'''
-			
-		} else {
-			upperBound
-		}
-	}
-	
-	protected def defineOrdered(boolean ordered){
-		'''/ «IF ordered»ordered«ELSE»unordered«ENDIF»'''
-	}
-
-	protected def concatOpposite(EReference eReference) {
-		val eOppositeName = eReference.EOpposite.name
-		
-		'''<<«concatAnchor(eReference.EReferenceType)»«ANCHOR_SEPARATOR»«eOppositeName», «eOppositeName»>>'''
-	}
-
 	protected def writeEReferencesHeader() {
 		output.append(
-			'''
-				«newline»
-				.References
-				[cols="<15m,<15,<15m,<15m,<40a",options="header"]
-				|===
-				|Name
-				|Type
-				|Multiplicity{nbsp}/ Order
-				|Opposite
-				|Description
-			'''
-		)
+		'''
+			«newline»
+			.References
+			[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+			|===
+			|Name
+			|Type
+			|Properties
+			|Description
+		''')
 	}
 
 	protected def CharSequence writeEClassHeader(EClass eClass) {

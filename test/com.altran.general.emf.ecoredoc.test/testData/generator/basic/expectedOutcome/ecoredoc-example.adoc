@@ -68,76 +68,139 @@ Description
 * <<EPackage1-EClass1, EPackage1.EClass1>>
 
 .Attributes
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Default Value
+|Properties
 |Description
 
 |something[[EPackage1-Class3-something]]
 |<<EPackage1-Enum1, EPackage1.Enum1>>
-|0..6/ ordered
-|
+|[0..6] +
+_Default:_ `"Hello, World!"` +
+Ordered +
+Changeable +
+_Default:_  +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |Something.
 
 |d[[EPackage1-Class3-d]] +
 (<<EPackage1-EClass1-d, {inherited}EPackage1.EClass1>>)
 |EDouble
-|0..1
-|3.141592
+|[0..1] +
+_Default:_ 3.141592 +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |
 
 |id[[EPackage1-Class3-id]] +
 (<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
 |EInt
-|1
-|
+|[1] +
+_Default:_  3.141592 +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |Description of id.
 
 |name[[EPackage1-Class3-name]] +
 (<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
 |EString
-|3..5/ ordered
-|
+|[3..5] +
+_Default:_  3.141592 +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |Name desc.
 
 |someStringAttr[[EPackage1-Class3-someStringAttr]] +
 (<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.EClass1>>)
 |EString
-|0..1
-|"Hello, World!"
+|[0..1] +
+_Default:_  "Hello, World" +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |
 
 |specialNumber[[EPackage1-Class3-specialNumber]] +
 (<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.EClass1>>)
 |EInt
-|0..1
-|23
-|
+|[0..1] +
+_Default:_  23 +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |===
 
 .References
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Opposite
+|Properties
 |Description
 
 |specialParent[[EPackage1-Class3-specialParent]]
 |<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|0..1
-|<<EPackage1-MyEClass-clazzes, clazzes>>
+|[0..1] +
+_Default:_ - +
+Unordered +
+Container +
+Containment +
+Changeable +
+Derived +
+_EKeys:_ +
+_EOpposite:_ <<EPackage1-MyEClass-clazzes, clazzes>> +
+Resolve Proxies +
+Transient +
+Unique +
+Unsettable +
+Volatile 
 |Bla
 
 |myRelation[[EPackage1-Class3-myRelation]] +
 (<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
 |<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|0..*{nbsp}/ unordered
-|<<EPackage1-MyEClass-backwards, backwards>>
+|[0..*] +
+_Default:_ - +
+Unordered +
+Container +
+Containment +
+Changeable +
+Derived +
+_EKeys:_ +
+_EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>> +
+Resolve Proxies +
+Transient +
+Unique +
+Unsettable +
+Volatile 
 |Description.
 |===
 
@@ -158,58 +221,103 @@ Description of EClass1
 * <<EPackage2-SomeClass, EPackage2.SomeClass>>
 
 .Attributes
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Default Value
+|Properties
 |Description
 
 |d[[EPackage1-EClass1-d]]
 |EDouble
-|0..1
-|3.141592
+|[0..1] +
+_Default:_  3.141592 +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |
 
 |id[[EPackage1-EClass1-id]]
 |EInt
-|1
-|
+|[1] +
+_Default:_  - +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |Description of id.
 
 |name[[EPackage1-EClass1-name]]
 |EString
-|3..5/ ordered
-|
+|[3..5] +
+_Default:_  - +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |Name desc.
 
 |someStringAttr[[EPackage1-EClass1-someStringAttr]]
 |EString
-|0..1
-|"Hello, World!"
+|[0..1] +
+_Default:_  "Hello, World" +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |
 
 |specialNumber[[EPackage1-EClass1-specialNumber]]
 |EInt
-|0..1
-|23
+|[0..1] +
+_Default:_  23 +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |
 |===
 
 .References
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Opposite
+|Properties
 |Description
 
 |myRelation[[EPackage1-EClass1-myRelation]]
 |<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|0..*{nbsp}/ unordered
-|<<EPackage1-MyEClass-backwards, backwards>>
+|[0..*] +
+_Default:_ - +
+Unordered +
+Container +
+Containment +
+Changeable +
+Derived +
+_EKeys:_ +
+_EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>> +
+Resolve Proxies +
+Transient +
+Unique +
+Unsettable +
+Volatile 
 |Description.
 |===
 
@@ -234,114 +342,221 @@ Description
 * <<EPackage1-EClass1, EPackage1.EClass1>>
 
 .Attributes
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Default Value
+|Properties
 |Description
 
 |attr[[EPackage1-MyEClass-attr]]
 |<<EPackage1-SpecialDataType, EPackage1.SpecialDataType>>
-|0..1
-|
+|[0..1] +
+_Default:_  - +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |Description.
 
 Second sentence.
 
 |eeeenum[[EPackage1-MyEClass-eeeenum]]
 |<<EPackage1-Enum1, EPackage1.Enum1>>
-|0..6/ ordered
-|<<EPackage1-Enum1-Literal1, Literal1>>
+|[0..6] +
+_Default:_  <<EPackage1-Enum1-Literal1, Literal1>> +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |Deschkriptschion.
 
 |d[[EPackage1-MyEClass-d]] +
 (<<EPackage1-EClass1-d, {inherited}EPackage1.EClass1>>)
 |EDouble
-|0..1
-|3.141592
+|[0..1] +
+_Default:_  3.141592 +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |
 
 |id[[EPackage1-MyEClass-id]] +
 (<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
 |EInt
-|1
-|
+|[1] +
+_Default:_  - +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |Description of id.
 
 |name[[EPackage1-MyEClass-name]] +
 (<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
 |EString
-|3..5/ ordered
-|
+|[3..5] +
+_Default:_  - +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |Name desc.
 
 |someStringAttr[[EPackage1-MyEClass-someStringAttr]] +
 (<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.EClass1>>)
 |EString
-|0..1
-|"Hello, World!"
+|[0..1] +
+_Default:_ "Hello, World!" +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |
 
 |specialNumber[[EPackage1-MyEClass-specialNumber]] +
 (<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.EClass1>>)
 |EInt
-|0..1
-|23
+|[0..1] +
+_Default:_  23 +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |
 |===
 
 .Containments
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Opposite
+|Properties
 |Description
 
 |clazzes[[EPackage1-MyEClass-clazzes]]
 |<<EPackage1-Class3, EPackage1.Class3>>
-|1..*{nbsp}/ unordered
-|<<EPackage1-Class3-specialParent, specialParent>>
+|[1..*] + 
+_Default:_ - +
+Unordered +
+Container +
+Containment +
+Changeable +
+Derived +
+_EKeys:_ +
+_EOpposite:_ <<EPackage1-Class3-specialParent, specialParent>> +
+Resolve Proxies +
+Transient +
+Unique +
+Unsettable +
+Volatile 
 |Desc.
 
 |otherClasses[[EPackage1-MyEClass-otherClasses]]
 |<<EPackage1-Class3, EPackage1.Class3>>
-|0..*{nbsp}/ ordered
-|
+|[0..*] + 
+_Default:_ - +
+Ordered +
+Container +
+Containment +
+Changeable +
+Derived +
+_EKeys:_ +
+_EOpposite:_ - +
+Resolve Proxies +
+Transient +
+Unique +
+Unsettable +
+Volatile 
+|Description.
 |Desc.
 
 Containments could also be inherited.
 |===
 
 .References
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Opposite
+|Properties
 |Description
 
 |backwards[[EPackage1-MyEClass-backwards]]
 |<<EPackage1-EClass1, EPackage1.EClass1>>
-|1
-|<<EPackage1-EClass1-myRelation, myRelation>>
+|[1] +
+_Default:_ - +
+Unordered +
+Container +
+Containment +
+Changeable +
+Derived +
+_EKeys:_ +
+_EOpposite:_ <<EPackage1-EClass1-myRelation, myRelation>> +
+Resolve Proxies +
+Transient +
+Unique +
+Unsettable +
+Volatile 
 |
 
 |ref[[EPackage1-MyEClass-ref]]
 |<<EPackage1-EClass1, EPackage1.EClass1>>
-|0..1
-|
+|[0..1] +
+_Default:_ - +
+Unordered +
+Container +
+Containment +
+Changeable +
+Derived +
+_EKeys:_ +
+_EOpposite:_ - +
+Resolve Proxies +
+Transient +
+Unique +
+Unsettable +
+Volatile 
 |Whatever.
 
 |myRelation[[EPackage1-MyEClass-myRelation]] +
 (<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
 |<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|0..*{nbsp}/ unordered
-|<<EPackage1-MyEClass-backwards, backwards>>
+|[0..*] + unordered
+_Default:_ - +
+Unordered +
+Container +
+Containment +
+Changeable +
+Derived +
+_EKeys:_ +
+_EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>> +
+Resolve Proxies +
+Transient +
+Unique +
+Unsettable +
+Volatile 
 |Description.
 |===
 
@@ -376,63 +591,107 @@ my doc
 * <<EPackage1-Iface, EPackage1.Iface>>
 
 .Attributes
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Default Value
+|Properties
 |Description
 
 |d[[EPackage2-SomeClass-d]] +
 (<<EPackage1-EClass1-d, {inherited}EPackage1.EClass1>>)
 |EDouble
-|0..1
-|3.141592
+|[0..1] +
+_Default:_  3.141592 +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |
 
 |id[[EPackage2-SomeClass-id]] +
 (<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
 |EInt
-|1
-|
+|[1] +
+_Default:_  - +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |Description of id.
 
 |name[[EPackage2-SomeClass-name]] +
 (<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
 |EString
-|3..5/ ordered
-|
+|[3..5] +
+_Default:_  - +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |Name desc.
 
 |someStringAttr[[EPackage2-SomeClass-someStringAttr]] +
 (<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.EClass1>>)
 |EString
-|0..1
-|"Hello, World!"
+|[0..1] +
+_Default:_  "Hello, World!" +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |
 
 |specialNumber[[EPackage2-SomeClass-specialNumber]] +
 (<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.EClass1>>)
 |EInt
-|0..1
-|23
-|
+|[0..1] +
+_Default:_ 23 +
+Ordered +
+Changeable +
+Derived +
+*is id* +
+Transient +
+Unique +
+Unsettable 
 |===
 
 .References
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Opposite
+|Properties
 |Description
 
 |myRelation[[EPackage2-SomeClass-myRelation]] +
 (<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
 |<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|0..*{nbsp}/ unordered
-|<<EPackage1-MyEClass-backwards, backwards>>
+|[0..*] +
+_Default:_ - +
+Unordered +
+Container +
+Containment +
+Changeable +
+Derived +
+_EKeys:_ +
+_EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>> +
+Resolve Proxies +
+Transient +
+Unique +
+Unsettable +
+Volatile 
 |Description.
 |===

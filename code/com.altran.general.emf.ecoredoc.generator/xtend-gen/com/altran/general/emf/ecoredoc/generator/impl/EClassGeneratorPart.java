@@ -395,10 +395,13 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     CharSequence _defineChangeable = this._eStructuralFeaturePropertyHelper.defineChangeable(eReference);
     CharSequence _defineDerived = this._eStructuralFeaturePropertyHelper.defineDerived(eReference);
     CharSequence _defineTransient = this._eStructuralFeaturePropertyHelper.defineTransient(eReference);
+    CharSequence _defineUnique = this._eStructuralFeaturePropertyHelper.defineUnique(eReference);
+    CharSequence _defineUnsettable = this._eStructuralFeaturePropertyHelper.defineUnsettable(eReference);
+    CharSequence _defineVolatile = this._eStructuralFeaturePropertyHelper.defineVolatile(eReference);
     final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
       return Boolean.valueOf((it != null));
     };
-    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_concatBounds, _defineOrdered, _defineChangeable, _defineDerived, _defineTransient)), _function));
+    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_concatBounds, _defineOrdered, _defineChangeable, _defineDerived, _defineTransient, _defineUnique, _defineUnsettable, _defineVolatile)), _function));
   }
   
   protected String _concatFeatureProperties(final EAttribute eAttribute) {
@@ -409,10 +412,13 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     CharSequence _defineChangeable = this._eStructuralFeaturePropertyHelper.defineChangeable(eAttribute);
     CharSequence _defineDerived = this._eStructuralFeaturePropertyHelper.defineDerived(eAttribute);
     CharSequence _defineTransient = this._eStructuralFeaturePropertyHelper.defineTransient(eAttribute);
+    CharSequence _defineUnique = this._eStructuralFeaturePropertyHelper.defineUnique(eAttribute);
+    CharSequence _defineUnsettable = this._eStructuralFeaturePropertyHelper.defineUnsettable(eAttribute);
+    CharSequence _defineVolatile = this._eStructuralFeaturePropertyHelper.defineVolatile(eAttribute);
     final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
       return Boolean.valueOf((it != null));
     };
-    return IterableExtensions.join(IterableExtensions.filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineId, _concatBounds, _concatDefaultValue, _defineOrdered, _defineChangeable, _defineDerived, _defineTransient)), _function));
+    return IterableExtensions.join(IterableExtensions.filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineId, _concatBounds, _concatDefaultValue, _defineOrdered, _defineChangeable, _defineDerived, _defineTransient, _defineUnique, _defineUnsettable, _defineVolatile)), _function));
   }
   
   protected CharSequence _concatFeatureType(final EReference eReference) {

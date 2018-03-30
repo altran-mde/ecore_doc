@@ -9,14 +9,14 @@ class EStructuralFeaturePropertyHelper {
 	extension EcoreDocExtension = new EcoreDocExtension
 	
 	val static BOLD = '*'
-	val static JOIN = " +"
+	val static JOIN = " + "
 	
 	def concatBounds(EStructuralFeature eStructuralFeature) {
 		val lowerBound = eStructuralFeature.lowerBound
 		val upperBound = eStructuralFeature.upperBound
 
 		'''
-			`[«lowerBound»«IF lowerBound != upperBound»..«defineUpperBound(upperBound)»«ENDIF»]`
+			`[«lowerBound»«IF lowerBound != upperBound»..«defineUpperBound(upperBound)»«ENDIF»]`«JOIN»
 		'''
 	}
 	
@@ -61,7 +61,7 @@ class EStructuralFeaturePropertyHelper {
 
 		if (upperBound != 1) {
 			'''
-				«definePropertyString("derived", "underived", true, isOrdered)»
+				«definePropertyString("ordered", "unordered", true, isOrdered)»
 			'''
 			
 		} else {
@@ -70,11 +70,38 @@ class EStructuralFeaturePropertyHelper {
 	}
 	
 	def defineTransient(EStructuralFeature eStructuralFeature) {
-		//default: true
+		//default: false
 		val isTransient = eStructuralFeature.transient
 		
 		'''
-			«definePropertyString("transient", "non-transient", true, isTransient)»
+			«definePropertyString("transient", "non-transient", false, isTransient)»
+		'''
+	}
+	
+	def defineUnique(EStructuralFeature eStructuralFeature) {
+		//default: false
+		val isUnique = eStructuralFeature.unique
+		
+		'''
+			«definePropertyString("unique", "non-unique", false, isUnique)»
+		'''
+	}
+	
+	def defineUnsettable(EStructuralFeature eStructuralFeature) {
+		//default: false
+		val isUnsettable = eStructuralFeature.unsettable
+		
+		'''
+			«definePropertyString("unsettable", "settable", false, isUnsettable)»
+		'''
+	}
+	
+	def defineVolatile(EStructuralFeature eStructuralFeature) {
+		//default: false
+		val isVolatile = eStructuralFeature.volatile
+		
+		'''
+			«definePropertyString("volatile", "non-volatile", false, isVolatile)»
 		'''
 	}
 
@@ -94,23 +121,22 @@ class EStructuralFeaturePropertyHelper {
 		if (eAttribute.eIsSet(EcorePackage.eINSTANCE.EStructuralFeature_DefaultValueLiteral)) {
 			val defaultValue = eAttribute.defaultValue
 
-			var result = '''
-				_default:_ 
-			'''
+			var result = '''_default:_ '''
 
 			switch (defaultValue) {
 				case EEnumLiteral:
-					result +=
-						'''`<<«concatAnchor(eAttribute.EAttributeType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>`'''
+					result += '''`<<«concatAnchor(eAttribute.EAttributeType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>`«newline»'''
+					
 				case String:
-					result += '''`"«defaultValue»"`'''
+					result += '''`"«defaultValue»"`«newline»'''
+					
 				default:
-					result += '''`«defaultValue»`'''
+					result += '''`«defaultValue»`«newline»'''
 			}
 
 			return result
 		} else {
-			return ""
+			return '''_default:_ -«newline»'''
 		}
 	}
 

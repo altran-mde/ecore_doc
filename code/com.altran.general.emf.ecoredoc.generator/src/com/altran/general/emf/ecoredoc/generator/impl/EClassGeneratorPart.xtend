@@ -257,7 +257,10 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			defineOrdered(eReference),
 			defineChangeable(eReference),
 			defineDerived(eReference),
-			defineTransient(eReference)
+			defineTransient(eReference),
+			defineUnique(eReference),
+			defineUnsettable(eReference),
+			defineVolatile(eReference)
 		]
 		.filter[it !== null]
 		.join()
@@ -271,7 +274,10 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			defineOrdered(eAttribute),
 			defineChangeable(eAttribute),
 			defineDerived(eAttribute),
-			defineTransient(eAttribute)	
+			defineTransient(eAttribute)	,
+			defineUnique(eAttribute),
+			defineUnsettable(eAttribute),
+			defineVolatile(eAttribute)
 		]
 		.filter[it !== null]
 		.join()

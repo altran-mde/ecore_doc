@@ -111,7 +111,7 @@ Volatile
 |*is id* +
 
 [1] +
-_Default:_  3.141592 +
+_Default:_ 3.141592 +
 Ordered +
 Changeable +
 Derived +
@@ -159,7 +159,7 @@ Volatile
 |*is id* +
 
 [0..1] +
-_Default:_  23 +
+_Default:_ 23 +
 Ordered +
 Changeable +
 Derived +
@@ -185,7 +185,7 @@ Resolve Proxies +
 
 [0..1] +
 _Default:_ - +
-Unordered +
+*Unordered* +
 Container +
 Containment +
 Changeable +
@@ -205,7 +205,7 @@ Resolve Proxies +
 
 [0..*] +
 _Default:_ - +
-Unordered +
+**Unordered** +
 Container +
 Containment +
 Changeable +
@@ -291,7 +291,7 @@ Volatile
 |*is id* +
 
 [0..1] +
-_Default:_  "Hello, World" +
+_Default:_ "Hello, World" +
 Ordered +
 Changeable +
 Derived +
@@ -306,7 +306,7 @@ Volatile
 |*is id* +
 
 [0..1] +
-_Default:_  23 +
+_Default:_ 23 +
 Ordered +
 Changeable +
 Derived +
@@ -333,7 +333,7 @@ Resolve Proxies +
 
 [0..*] +
 _Default:_ - +
-Unordered +
+**Unordered** +
 Container +
 Containment +
 Changeable +
@@ -502,7 +502,7 @@ Resolve Proxies +
 
 [1..*] + 
 _Default:_ - +
-Unordered +
+**Unordered** +
 Container +
 Containment +
 Changeable +
@@ -552,7 +552,7 @@ Resolve Proxies +
 
 [1] +
 _Default:_ - +
-Unordered +
+**Unordered** +
 Container +
 Containment +
 Changeable +
@@ -571,7 +571,7 @@ Resolve Proxies +
 
 [0..1] +
 _Default:_ - +
-Unordered +
+*Unordered* +
 Container +
 Containment +
 Changeable +
@@ -591,7 +591,7 @@ Resolve Proxies +
 
 [0..*] + 
 _Default:_ - +
-Unordered +
+**Unordered** +
 Container +
 Containment +
 Changeable +
@@ -738,7 +738,7 @@ Resolve Proxies +
 
 [0..*] +
 _Default:_ - +
-Unordered +
+**Unordered** +
 Container +
 Containment +
 Changeable +

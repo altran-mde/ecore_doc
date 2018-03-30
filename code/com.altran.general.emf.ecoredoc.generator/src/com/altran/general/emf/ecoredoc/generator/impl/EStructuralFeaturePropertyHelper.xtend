@@ -7,13 +7,32 @@ import org.eclipse.emf.ecore.EcorePackage
 
 class EStructuralFeaturePropertyHelper {
 	extension EcoreDocExtension = new EcoreDocExtension
-
+	
+	val static BOLD = '*'
 	def concatBounds(EStructuralFeature eStructuralFeature) {
 		val lowerBound = eStructuralFeature.lowerBound
 		val upperBound = eStructuralFeature.upperBound
 
 		'''
 			`[«lowerBound»«IF lowerBound != upperBound»..«defineUpperBound(upperBound)»«ENDIF»]`
+		'''
+	}
+	
+	def defineChangeable(EStructuralFeature eStructuralFeature) {
+		//default: true
+		val changeable = eStructuralFeature.changeable
+		
+		'''
+			«IF changeable»changeable«ELSE»«BOLD»unchangeable«BOLD»«ENDIF»
+		'''
+	}
+	
+	def defineDerived(EStructuralFeature eStructuralFeature) {
+		//default: false
+		val derived = eStructuralFeature.derived
+		
+		'''
+			«IF derived»«BOLD»derived«BOLD»«ELSE»underived«ENDIF»
 		'''
 	}
 
@@ -23,7 +42,7 @@ class EStructuralFeaturePropertyHelper {
 
 		if (upperBound != 1) {
 			'''
-				«IF ordered»ordered«ELSE»unordered«ENDIF»
+				«IF ordered»ordered«ELSE»«BOLD»unordered«BOLD»«ENDIF»
 			'''
 		} else {
 			null

@@ -14,6 +14,8 @@ public class EStructuralFeaturePropertyHelper {
   @Extension
   private EcoreDocExtension _ecoreDocExtension = new EcoreDocExtension();
   
+  private final static String BOLD = "*";
+  
   public CharSequence concatBounds(final EStructuralFeature eStructuralFeature) {
     CharSequence _xblockexpression = null;
     {
@@ -36,6 +38,46 @@ public class EStructuralFeaturePropertyHelper {
     return _xblockexpression;
   }
   
+  public CharSequence defineChangeable(final EStructuralFeature eStructuralFeature) {
+    CharSequence _xblockexpression = null;
+    {
+      final boolean changeable = eStructuralFeature.isChangeable();
+      StringConcatenation _builder = new StringConcatenation();
+      {
+        if (changeable) {
+          _builder.append("changeable");
+        } else {
+          _builder.append(EStructuralFeaturePropertyHelper.BOLD);
+          _builder.append("unchangeable");
+          _builder.append(EStructuralFeaturePropertyHelper.BOLD);
+        }
+      }
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+  
+  public CharSequence defineDerived(final EStructuralFeature eStructuralFeature) {
+    CharSequence _xblockexpression = null;
+    {
+      final boolean derived = eStructuralFeature.isDerived();
+      StringConcatenation _builder = new StringConcatenation();
+      {
+        if (derived) {
+          _builder.append(EStructuralFeaturePropertyHelper.BOLD);
+          _builder.append("derived");
+          _builder.append(EStructuralFeaturePropertyHelper.BOLD);
+        } else {
+          _builder.append("underived");
+        }
+      }
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+  
   public CharSequence defineOrdered(final EStructuralFeature eStructuralFeature) {
     CharSequence _xblockexpression = null;
     {
@@ -48,7 +90,9 @@ public class EStructuralFeaturePropertyHelper {
           if (ordered) {
             _builder.append("ordered");
           } else {
+            _builder.append(EStructuralFeaturePropertyHelper.BOLD);
             _builder.append("unordered");
+            _builder.append(EStructuralFeaturePropertyHelper.BOLD);
           }
         }
         _builder.newLineIfNotEmpty();

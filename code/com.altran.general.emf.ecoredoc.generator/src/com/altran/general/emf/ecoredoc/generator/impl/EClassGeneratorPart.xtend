@@ -254,21 +254,27 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def dispatch concatFeatureProperties(EReference eReference) {
 		#[
 			concatBounds(eReference),
-			defineOrdered(eReference)
+			defineOrdered(eReference),
+			defineChangeable(eReference),
+			defineDerived(eReference),
+			defineTransient(eReference)
 		]
 		.filter[it !== null]
-		.join(newline)
+		.join()
 	}
 
 	protected def dispatch concatFeatureProperties(EAttribute eAttribute) {
 		#[
+			defineId(eAttribute),
 			concatBounds(eAttribute),
-			defineOrdered(eAttribute),
 			concatDefaultValue(eAttribute),
-			defineId(eAttribute)
+			defineOrdered(eAttribute),
+			defineChangeable(eAttribute),
+			defineDerived(eAttribute),
+			defineTransient(eAttribute)	
 		]
 		.filter[it !== null]
-		.join(newline)
+		.join()
 	}
 
 	protected def dispatch concatFeatureType(EReference eReference) {

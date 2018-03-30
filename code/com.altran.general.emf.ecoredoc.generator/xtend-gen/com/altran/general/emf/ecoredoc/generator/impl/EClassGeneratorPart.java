@@ -392,21 +392,27 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected String _concatFeatureProperties(final EReference eReference) {
     CharSequence _concatBounds = this._eStructuralFeaturePropertyHelper.concatBounds(eReference);
     CharSequence _defineOrdered = this._eStructuralFeaturePropertyHelper.defineOrdered(eReference);
+    CharSequence _defineChangeable = this._eStructuralFeaturePropertyHelper.defineChangeable(eReference);
+    CharSequence _defineDerived = this._eStructuralFeaturePropertyHelper.defineDerived(eReference);
+    CharSequence _defineTransient = this._eStructuralFeaturePropertyHelper.defineTransient(eReference);
     final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
       return Boolean.valueOf((it != null));
     };
-    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_concatBounds, _defineOrdered)), _function), this._ecoreDocExtension.newline());
+    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_concatBounds, _defineOrdered, _defineChangeable, _defineDerived, _defineTransient)), _function));
   }
   
   protected String _concatFeatureProperties(final EAttribute eAttribute) {
-    CharSequence _concatBounds = this._eStructuralFeaturePropertyHelper.concatBounds(eAttribute);
-    CharSequence _defineOrdered = this._eStructuralFeaturePropertyHelper.defineOrdered(eAttribute);
-    String _concatDefaultValue = this._eStructuralFeaturePropertyHelper.concatDefaultValue(eAttribute);
     CharSequence _defineId = this._eStructuralFeaturePropertyHelper.defineId(eAttribute);
+    CharSequence _concatBounds = this._eStructuralFeaturePropertyHelper.concatBounds(eAttribute);
+    String _concatDefaultValue = this._eStructuralFeaturePropertyHelper.concatDefaultValue(eAttribute);
+    CharSequence _defineOrdered = this._eStructuralFeaturePropertyHelper.defineOrdered(eAttribute);
+    CharSequence _defineChangeable = this._eStructuralFeaturePropertyHelper.defineChangeable(eAttribute);
+    CharSequence _defineDerived = this._eStructuralFeaturePropertyHelper.defineDerived(eAttribute);
+    CharSequence _defineTransient = this._eStructuralFeaturePropertyHelper.defineTransient(eAttribute);
     final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
       return Boolean.valueOf((it != null));
     };
-    return IterableExtensions.join(IterableExtensions.filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_concatBounds, _defineOrdered, _concatDefaultValue, _defineId)), _function), this._ecoreDocExtension.newline());
+    return IterableExtensions.join(IterableExtensions.filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineId, _concatBounds, _concatDefaultValue, _defineOrdered, _defineChangeable, _defineDerived, _defineTransient)), _function));
   }
   
   protected CharSequence _concatFeatureType(final EReference eReference) {

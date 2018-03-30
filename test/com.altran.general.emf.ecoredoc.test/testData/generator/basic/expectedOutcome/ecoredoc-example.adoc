@@ -77,9 +77,7 @@ Description
 
 |something[[EPackage1-Class3-something]]
 |<<EPackage1-Enum1, EPackage1.Enum1>>
-|*is id* +
-
-[0..6] +
+|[0..6] +
 _Default:_ `"Hello, World!"` +
 Ordered +
 Changeable +
@@ -92,9 +90,7 @@ Volatile
 |d[[EPackage1-Class3-d]] +
 (<<EPackage1-EClass1-d, {inherited}EPackage1.EClass1>>)
 |EDouble
-|*is id* +
-
-[0..1] +
+|[0..1] +
 _Default:_ 3.141592 +
 Ordered +
 Changeable +
@@ -124,9 +120,7 @@ Volatile
 |name[[EPackage1-Class3-name]] +
 (<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
 |EString
-|*is id* +
-
-[3..5] +
+|[3..5] +
 _Default:_  3.141592 +
 Ordered +
 Changeable +
@@ -140,9 +134,7 @@ Volatile
 |someStringAttr[[EPackage1-Class3-someStringAttr]] +
 (<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.EClass1>>)
 |EString
-|*is id* +
-
-[0..1] +
+|[0..1] +
 _Default:_  "Hello, World" +
 Ordered +
 Changeable +
@@ -156,9 +148,7 @@ Volatile
 |specialNumber[[EPackage1-Class3-specialNumber]] +
 (<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.EClass1>>)
 |EInt
-|*is id* +
-
-[0..1] +
+|[0..1] +
 _Default:_ 23 +
 Ordered +
 Changeable +
@@ -243,9 +233,7 @@ Description of EClass1
 
 |d[[EPackage1-EClass1-d]]
 |EDouble
-|*is id* +
-
-[0..1] +
+|[0..1] +
 _Default:_  3.141592 +
 Ordered +
 Changeable +
@@ -273,9 +261,7 @@ Volatile
 
 |name[[EPackage1-EClass1-name]]
 |EString
-|*is id* +
-
-[3..5] +
+|[3..5] +
 _Default:_  - +
 Ordered +
 Changeable +
@@ -288,9 +274,7 @@ Volatile
 
 |someStringAttr[[EPackage1-EClass1-someStringAttr]]
 |EString
-|*is id* +
-
-[0..1] +
+|[0..1] +
 _Default:_ "Hello, World" +
 Ordered +
 Changeable +
@@ -303,9 +287,7 @@ Volatile
 
 |specialNumber[[EPackage1-EClass1-specialNumber]]
 |EInt
-|*is id* +
-
-[0..1] +
+|[0..1] +
 _Default:_ 23 +
 Ordered +
 Changeable +
@@ -375,9 +357,7 @@ Description
 
 |attr[[EPackage1-MyEClass-attr]]
 |<<EPackage1-SpecialDataType, EPackage1.SpecialDataType>>
-|*is id* +
-
-[0..1] +
+|[0..1] +
 _Default:_  - +
 Ordered +
 Changeable +
@@ -392,9 +372,7 @@ Second sentence.
 
 |eeeenum[[EPackage1-MyEClass-eeeenum]]
 |<<EPackage1-Enum1, EPackage1.Enum1>>
-|*is id* +
-
-[0..6] +
+|[0..6] +
 _Default:_  <<EPackage1-Enum1-Literal1, Literal1>> +
 Ordered +
 Changeable +
@@ -408,9 +386,7 @@ Volatile
 |d[[EPackage1-MyEClass-d]] +
 (<<EPackage1-EClass1-d, {inherited}EPackage1.EClass1>>)
 |EDouble
-|*is id* +
-
-[0..1] +
+|[0..1] +
 _Default:_  3.141592 +
 Ordered +
 Changeable +
@@ -440,9 +416,7 @@ Volatile
 |name[[EPackage1-MyEClass-name]] +
 (<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
 |EString
-|*is id* +
-
-[3..5] +
+|[3..5] +
 _Default:_  - +
 Ordered +
 Changeable +
@@ -456,9 +430,7 @@ Volatile
 |someStringAttr[[EPackage1-MyEClass-someStringAttr]] +
 (<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.EClass1>>)
 |EString
-|*is id* +
-
-[0..1] +
+|[0..1] +
 _Default:_ "Hello, World!" +
 Ordered +
 Changeable +
@@ -472,9 +444,7 @@ Volatile
 |specialNumber[[EPackage1-MyEClass-specialNumber]] +
 (<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.EClass1>>)
 |EInt
-|*is id* +
-
-[0..1] +
+|[0..1] +
 _Default:_  23 +
 Ordered +
 Changeable +
@@ -644,9 +614,7 @@ my doc
 |d[[EPackage2-SomeClass-d]] +
 (<<EPackage1-EClass1-d, {inherited}EPackage1.EClass1>>)
 |EDouble
-|*is id* +
-
-[0..1] +
+|[0..1] +
 _Default:_  3.141592 +
 Ordered +
 Changeable +
@@ -676,9 +644,7 @@ Volatile
 |name[[EPackage2-SomeClass-name]] +
 (<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
 |EString
-|*is id* +
-
-[3..5] +
+|[3..5] +
 _Default:_  - +
 Ordered +
 Changeable +
@@ -692,9 +658,7 @@ Volatile
 |someStringAttr[[EPackage2-SomeClass-someStringAttr]] +
 (<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.EClass1>>)
 |EString
-|*is id* +
-
-[0..1] +
+|[0..1] +
 _Default:_  "Hello, World!" +
 Ordered +
 Changeable +
@@ -708,9 +672,7 @@ Volatile
 |specialNumber[[EPackage2-SomeClass-specialNumber]] +
 (<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.EClass1>>)
 |EInt
-|*is id* 
-
-[0..1] +
+|[0..1] +
 _Default:_ 23 +
 Ordered +
 Changeable +

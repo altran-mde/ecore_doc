@@ -9,6 +9,8 @@ class EStructuralFeaturePropertyHelper {
 	extension EcoreDocExtension = new EcoreDocExtension
 	
 	val static BOLD = '*'
+	val static JOIN = " +"
+	
 	def concatBounds(EStructuralFeature eStructuralFeature) {
 		val lowerBound = eStructuralFeature.lowerBound
 		val upperBound = eStructuralFeature.upperBound
@@ -18,41 +20,69 @@ class EStructuralFeaturePropertyHelper {
 		'''
 	}
 	
+	def boldifyString(String string){
+		'''«BOLD»«string»«BOLD»'''
+	}
+	
+	def definePropertyString(String trueLiteral, String falseLiteral, boolean defaultValue, boolean currentPropertyValue) {
+		var result =''''''
+		val boldify = (defaultValue != currentPropertyValue)
+		
+		if(currentPropertyValue){
+			result = '''«IF boldify»«boldifyString(trueLiteral)»«ELSE»«trueLiteral»«ENDIF»«JOIN»'''
+			
+		}else{
+			result = '''«IF boldify»«boldifyString(falseLiteral)»«ELSE»«falseLiteral»«ENDIF»«JOIN»'''
+		}
+	}
+	
 	def defineChangeable(EStructuralFeature eStructuralFeature) {
 		//default: true
-		val changeable = eStructuralFeature.changeable
+		val isChangeable = eStructuralFeature.changeable
 		
 		'''
-			«IF changeable»changeable«ELSE»«BOLD»unchangeable«BOLD»«ENDIF»
+			«definePropertyString("changeable", "unchangeable", true, isChangeable)»
 		'''
 	}
 	
 	def defineDerived(EStructuralFeature eStructuralFeature) {
 		//default: false
-		val derived = eStructuralFeature.derived
+		val isDerived = eStructuralFeature.derived
 		
 		'''
-			«IF derived»«BOLD»derived«BOLD»«ELSE»underived«ENDIF»
+			«definePropertyString("derived", "underived", false, isDerived)»
 		'''
 	}
 
 	def defineOrdered(EStructuralFeature eStructuralFeature) {
+		//default: true
 		val upperBound = eStructuralFeature.upperBound
-		val ordered = eStructuralFeature.ordered
+		val isOrdered = eStructuralFeature.ordered
 
 		if (upperBound != 1) {
 			'''
-				«IF ordered»ordered«ELSE»«BOLD»unordered«BOLD»«ENDIF»
+				«definePropertyString("derived", "underived", true, isOrdered)»
 			'''
+			
 		} else {
 			null
 		}
+	}
+	
+	def defineTransient(EStructuralFeature eStructuralFeature) {
+		//default: true
+		val isTransient = eStructuralFeature.transient
+		
+		'''
+			«definePropertyString("transient", "non-transient", true, isTransient)»
+		'''
 	}
 
 	def defineId(EAttribute eAttribute) {
 		if (eAttribute.isID) {
 			'''
 				*is id*
+				«newline»
 			'''
 		} else {
 			null

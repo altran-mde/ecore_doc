@@ -253,14 +253,36 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 	protected def dispatch CharSequence concatFeatureProperties(EReference eReference) {
 		#[
-			concatBounds(eReference),
-			defineOrdered(eReference),
-			defineChangeable(eReference),
-			defineDerived(eReference),
-			defineTransient(eReference),
-			defineUnique(eReference),
-			defineUnsettable(eReference),
-			defineVolatile(eReference)
+			defineEKeys(eReference),
+			defineResolveProxies(eReference),
+			defineContainment(eReference),
+			
+			concatGenericProperties(eReference)
+//			concatBounds(eReference),
+//			concatDefaultValue(eReference),
+//			defineOrdered(eReference),
+//			defineChangeable(eReference),
+//			defineDerived(eReference),
+//			defineTransient(eReference),
+//			defineUnique(eReference),
+//			defineUnsettable(eReference),
+//			defineVolatile(eReference)
+		]
+		.filter[it !== null]
+		.join()
+	}
+	
+	protected def CharSequence concatGenericProperties(EStructuralFeature eStructuralFeature){
+		#[
+			concatBounds(eStructuralFeature),
+			concatDefaultValue(eStructuralFeature),
+			defineOrdered(eStructuralFeature),
+			defineChangeable(eStructuralFeature),
+			defineDerived(eStructuralFeature),
+			defineTransient(eStructuralFeature)	,
+			defineUnique(eStructuralFeature),
+			defineUnsettable(eStructuralFeature),
+			defineVolatile(eStructuralFeature)
 		]
 		.filter[it !== null]
 		.join()
@@ -269,15 +291,17 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def dispatch CharSequence concatFeatureProperties(EAttribute eAttribute) {
 		#[
 			defineId(eAttribute),
-			concatBounds(eAttribute),
-			concatDefaultValue(eAttribute),
-			defineOrdered(eAttribute),
-			defineChangeable(eAttribute),
-			defineDerived(eAttribute),
-			defineTransient(eAttribute)	,
-			defineUnique(eAttribute),
-			defineUnsettable(eAttribute),
-			defineVolatile(eAttribute)
+			
+			concatGenericProperties(eAttribute)
+//			concatBounds(eAttribute),
+//			concatDefaultValue(eAttribute),
+//			defineOrdered(eAttribute),
+//			defineChangeable(eAttribute),
+//			defineDerived(eAttribute),
+//			defineTransient(eAttribute)	,
+//			defineUnique(eAttribute),
+//			defineUnsettable(eAttribute),
+//			defineVolatile(eAttribute)
 		]
 		.filter[it !== null]
 		.join()
@@ -302,7 +326,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 			'''
 				«newline»
-				_opposite_ <<«concatAnchor(eReference.EReferenceType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«eOppositeName», «eOppositeName»>>
+				_EOpposite:_ <<«concatAnchor(eReference.EReferenceType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«eOppositeName», «eOppositeName»>>
 			'''
 		}
 	}

@@ -78,85 +78,83 @@ Description
 |something[[EPackage1-Class3-something]]
 |<<EPackage1-Enum1, EPackage1.Enum1>>
 |`[0..6]` +
-_Default:_ `"Hello, World!"` +
-Ordered +
-Changeable +
-Transient +
-Unique +
-Unsettable +
-Volatile
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Something.
 
 |d[[EPackage1-Class3-d]] +
 (<<EPackage1-EClass1-d, {inherited}EPackage1.EClass1>>)
 |EDouble
 |`[0..1]` +
-_Default:_ 3.141592 +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile
+_Default:_ `3.141592` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
 |id[[EPackage1-Class3-id]] +
 (<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
 |EInt
-|*is id* +
+|*is id*
 
 `[1]` +
-_Default:_ 3.141592 +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Description of id.
 
 |name[[EPackage1-Class3-name]] +
 (<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
 |EString
 |`[3..5]` +
-_Default:_  3.141592 +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Name desc.
 
 |someStringAttr[[EPackage1-Class3-someStringAttr]] +
 (<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.EClass1>>)
 |EString
 |`[0..1]` +
-_Default:_  "Hello, World" +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `Hello, World!` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
 |specialNumber[[EPackage1-Class3-specialNumber]] +
 (<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.EClass1>>)
 |EInt
 |`[0..1]` +
-_Default:_ 23 +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile
+_Default:_ `23` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
+|
 |===
 
 .References
@@ -169,41 +167,42 @@ Volatile
 
 |specialParent[[EPackage1-Class3-specialParent]]
 |<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|_EOpposite:_ <<EPackage1-MyEClass-clazzes, clazzes>> +
-_EKeys:_ +
-Resolve Proxies +
+
+_EOpposite:_ <<EPackage1-MyEClass-clazzes, clazzes>>
+|_EKeys:_ `-` +
+resolveProxies +
+container +
+non-containment +
 
 `[0..1]` +
-_Default:_ - +
-*Unordered* +
-Container +
-Containment +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Bla
 
 |myRelation[[EPackage1-Class3-myRelation]] +
 (<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
 |<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|_EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>> +
-_EKeys:_ +
-Resolve Proxies +
+
+_EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>>
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+non-containment +
 
 `[0..*]` +
-_Default:_ - +
-**Unordered** +
-Container +
-Containment +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Description.
 |===
 
@@ -234,68 +233,64 @@ Description of EClass1
 |d[[EPackage1-EClass1-d]]
 |EDouble
 |`[0..1]` +
-_Default:_  3.141592 +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `3.141592` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
 |id[[EPackage1-EClass1-id]]
 |EInt
-|*is id* +
+|*is id*
 
 `[1]` +
-_Default:_  - +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Description of id.
 
 |name[[EPackage1-EClass1-name]]
 |EString
 |`[3..5]` +
-_Default:_  - +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Name desc.
 
 |someStringAttr[[EPackage1-EClass1-someStringAttr]]
 |EString
 |`[0..1]` +
-_Default:_ "Hello, World" +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `Hello, World!` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
 |specialNumber[[EPackage1-EClass1-specialNumber]]
 |EInt
 |`[0..1]` +
-_Default:_ 23 +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `23` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 |===
 
@@ -309,21 +304,22 @@ Volatile
 
 |myRelation[[EPackage1-EClass1-myRelation]]
 |<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|_EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>> +
-_EKeys:_ +
-Resolve Proxies +
+
+_EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>>
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+non-containment +
 
 `[0..*]` +
-_Default:_ - +
-**Unordered** +
-Container +
-Containment +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Description.
 |===
 
@@ -358,14 +354,13 @@ Description
 |attr[[EPackage1-MyEClass-attr]]
 |<<EPackage1-SpecialDataType, EPackage1.SpecialDataType>>
 |`[0..1]` +
-_Default:_  - +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Description.
 
 Second sentence.
@@ -373,86 +368,82 @@ Second sentence.
 |eeeenum[[EPackage1-MyEClass-eeeenum]]
 |<<EPackage1-Enum1, EPackage1.Enum1>>
 |`[0..6]` +
-_Default:_  <<EPackage1-Enum1-Literal1, Literal1>> +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `<<EPackage1-Enum1-Literal1, Literal1>>` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Deschkriptschion.
 
 |d[[EPackage1-MyEClass-d]] +
 (<<EPackage1-EClass1-d, {inherited}EPackage1.EClass1>>)
 |EDouble
 |`[0..1]` +
-_Default:_  3.141592 +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `3.141592` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
 |id[[EPackage1-MyEClass-id]] +
 (<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
 |EInt
-|*is id* +
+|*is id*
 
 `[1]` +
-_Default:_  - +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Description of id.
 
 |name[[EPackage1-MyEClass-name]] +
 (<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
 |EString
 |`[3..5]` +
-_Default:_  - +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Name desc.
 
 |someStringAttr[[EPackage1-MyEClass-someStringAttr]] +
 (<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.EClass1>>)
 |EString
 |`[0..1]` +
-_Default:_ "Hello, World!" +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `Hello, World!` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
 |specialNumber[[EPackage1-MyEClass-specialNumber]] +
 (<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.EClass1>>)
 |EInt
 |`[0..1]` +
-_Default:_  23 +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `23` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 |===
 
@@ -466,41 +457,40 @@ Volatile
 
 |clazzes[[EPackage1-MyEClass-clazzes]]
 |<<EPackage1-Class3, EPackage1.Class3>>
-|_EOpposite:_ <<EPackage1-Class3-specialParent, specialParent>> +
-_EKeys:_ +
-Resolve Proxies +
 
-`[1..*]` + 
-_Default:_ - +
-**Unordered** +
-Container +
-Containment +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_EOpposite:_ <<EPackage1-Class3-specialParent, specialParent>>
+|_EKeys:_ `-` +
+**non-resolveProxies** +
+non-container +
+containment +
+
+`[1..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Desc.
 
 |otherClasses[[EPackage1-MyEClass-otherClasses]]
 |<<EPackage1-Class3, EPackage1.Class3>>
-|_EOpposite:_ - +
-_EKeys:_ +
-Resolve Proxies +
+|_EKeys:_ `-` +
+**non-resolveProxies** +
+non-container +
+containment +
 
-`[0..*]` + 
-_Default:_ - +
-Ordered +
-Container +
-Containment +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
-|Description.
+`[0..*]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Desc.
 
 Containments could also be inherited.
@@ -516,60 +506,59 @@ Containments could also be inherited.
 
 |backwards[[EPackage1-MyEClass-backwards]]
 |<<EPackage1-EClass1, EPackage1.EClass1>>
-|_EOpposite:_ <<EPackage1-EClass1-myRelation, myRelation>> +
-_EKeys:_ +
-Resolve Proxies +
+
+_EOpposite:_ <<EPackage1-EClass1-myRelation, myRelation>>
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+non-containment +
 
 `[1]` +
-_Default:_ - +
-**Unordered** +
-Container +
-Containment +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |
 
 |ref[[EPackage1-MyEClass-ref]]
 |<<EPackage1-EClass1, EPackage1.EClass1>>
-|_EOpposite:_ - +
-_EKeys:_ +
-Resolve Proxies +
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+non-containment +
 
 `[0..1]` +
-_Default:_ - +
-*Unordered* +
-Container +
-Containment +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Whatever.
 
 |myRelation[[EPackage1-MyEClass-myRelation]] +
 (<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
 |<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|_EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>> +
-_EKeys:_ +
-Resolve Proxies +
 
-`[0..*]` + 
-_Default:_ - +
-**Unordered** +
-Container +
-Containment +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>>
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+non-containment +
+
+`[0..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Description.
 |===
 
@@ -615,72 +604,69 @@ my doc
 (<<EPackage1-EClass1-d, {inherited}EPackage1.EClass1>>)
 |EDouble
 |`[0..1]` +
-_Default:_  3.141592 +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `3.141592` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
 |id[[EPackage2-SomeClass-id]] +
 (<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
 |EInt
-|*is id* +
+|*is id*
 
 `[1]` +
-_Default:_  - +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Description of id.
 
 |name[[EPackage2-SomeClass-name]] +
 (<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
 |EString
 |`[3..5]` +
-_Default:_  - +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Name desc.
 
 |someStringAttr[[EPackage2-SomeClass-someStringAttr]] +
 (<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.EClass1>>)
 |EString
 |`[0..1]` +
-_Default:_  "Hello, World!" +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `Hello, World!` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
 |specialNumber[[EPackage2-SomeClass-specialNumber]] +
 (<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.EClass1>>)
 |EInt
 |`[0..1]` +
-_Default:_ 23 +
-Ordered +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `23` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
+|
 |===
 
 .References
@@ -694,20 +680,21 @@ Volatile
 |myRelation[[EPackage2-SomeClass-myRelation]] +
 (<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
 |<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|_EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>> +
-_EKeys:_ +
-Resolve Proxies + 
+
+_EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>>
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+non-containment +
 
 `[0..*]` +
-_Default:_ - +
-**Unordered** +
-Container +
-Containment +
-Changeable +
-Derived +
-Transient +
-Unique +
-Unsettable +
-Volatile 
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Description.
 |===

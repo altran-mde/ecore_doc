@@ -352,35 +352,39 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   }
   
   protected CharSequence _concatFeatureProperties(final EReference eReference) {
-    CharSequence _concatBounds = this._eStructuralFeaturePropertyHelper.concatBounds(eReference);
-    CharSequence _defineOrdered = this._eStructuralFeaturePropertyHelper.defineOrdered(eReference);
-    CharSequence _defineChangeable = this._eStructuralFeaturePropertyHelper.defineChangeable(eReference);
-    CharSequence _defineDerived = this._eStructuralFeaturePropertyHelper.defineDerived(eReference);
-    CharSequence _defineTransient = this._eStructuralFeaturePropertyHelper.defineTransient(eReference);
-    CharSequence _defineUnique = this._eStructuralFeaturePropertyHelper.defineUnique(eReference);
-    CharSequence _defineUnsettable = this._eStructuralFeaturePropertyHelper.defineUnsettable(eReference);
-    CharSequence _defineVolatile = this._eStructuralFeaturePropertyHelper.defineVolatile(eReference);
+    StringBuilder _defineEKeys = this._eStructuralFeaturePropertyHelper.defineEKeys(eReference);
+    CharSequence _defineResolveProxies = this._eStructuralFeaturePropertyHelper.defineResolveProxies(eReference);
+    CharSequence _defineContainment = this._eStructuralFeaturePropertyHelper.defineContainment(eReference);
+    CharSequence _concatGenericProperties = this.concatGenericProperties(eReference);
     final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
       return Boolean.valueOf((it != null));
     };
-    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_concatBounds, _defineOrdered, _defineChangeable, _defineDerived, _defineTransient, _defineUnique, _defineUnsettable, _defineVolatile)), _function));
+    return IterableExtensions.join(IterableExtensions.filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineEKeys, _defineResolveProxies, _defineContainment, _concatGenericProperties)), _function));
+  }
+  
+  protected CharSequence concatGenericProperties(final EStructuralFeature eStructuralFeature) {
+    CharSequence _concatBounds = this._eStructuralFeaturePropertyHelper.concatBounds(eStructuralFeature);
+    CharSequence _concatDefaultValue = this._eStructuralFeaturePropertyHelper.concatDefaultValue(eStructuralFeature);
+    CharSequence _defineOrdered = this._eStructuralFeaturePropertyHelper.defineOrdered(eStructuralFeature);
+    CharSequence _defineChangeable = this._eStructuralFeaturePropertyHelper.defineChangeable(eStructuralFeature);
+    CharSequence _defineDerived = this._eStructuralFeaturePropertyHelper.defineDerived(eStructuralFeature);
+    CharSequence _defineTransient = this._eStructuralFeaturePropertyHelper.defineTransient(eStructuralFeature);
+    CharSequence _defineUnique = this._eStructuralFeaturePropertyHelper.defineUnique(eStructuralFeature);
+    CharSequence _defineUnsettable = this._eStructuralFeaturePropertyHelper.defineUnsettable(eStructuralFeature);
+    CharSequence _defineVolatile = this._eStructuralFeaturePropertyHelper.defineVolatile(eStructuralFeature);
+    final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
+      return Boolean.valueOf((it != null));
+    };
+    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_concatBounds, _concatDefaultValue, _defineOrdered, _defineChangeable, _defineDerived, _defineTransient, _defineUnique, _defineUnsettable, _defineVolatile)), _function));
   }
   
   protected CharSequence _concatFeatureProperties(final EAttribute eAttribute) {
     CharSequence _defineId = this._eStructuralFeaturePropertyHelper.defineId(eAttribute);
-    CharSequence _concatBounds = this._eStructuralFeaturePropertyHelper.concatBounds(eAttribute);
-    CharSequence _concatDefaultValue = this._eStructuralFeaturePropertyHelper.concatDefaultValue(eAttribute);
-    CharSequence _defineOrdered = this._eStructuralFeaturePropertyHelper.defineOrdered(eAttribute);
-    CharSequence _defineChangeable = this._eStructuralFeaturePropertyHelper.defineChangeable(eAttribute);
-    CharSequence _defineDerived = this._eStructuralFeaturePropertyHelper.defineDerived(eAttribute);
-    CharSequence _defineTransient = this._eStructuralFeaturePropertyHelper.defineTransient(eAttribute);
-    CharSequence _defineUnique = this._eStructuralFeaturePropertyHelper.defineUnique(eAttribute);
-    CharSequence _defineUnsettable = this._eStructuralFeaturePropertyHelper.defineUnsettable(eAttribute);
-    CharSequence _defineVolatile = this._eStructuralFeaturePropertyHelper.defineVolatile(eAttribute);
+    CharSequence _concatGenericProperties = this.concatGenericProperties(eAttribute);
     final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
       return Boolean.valueOf((it != null));
     };
-    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineId, _concatBounds, _concatDefaultValue, _defineOrdered, _defineChangeable, _defineDerived, _defineTransient, _defineUnique, _defineUnsettable, _defineVolatile)), _function));
+    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineId, _concatGenericProperties)), _function));
   }
   
   protected CharSequence _concatFeatureType(final EReference eReference) {
@@ -414,7 +418,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
         String _newline = this._ecoreDocExtension.newline();
         _builder.append(_newline);
         _builder.newLineIfNotEmpty();
-        _builder.append("_opposite_ <<");
+        _builder.append("_EOpposite:_ <<");
         CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eReference.getEReferenceType());
         _builder.append(_concatAnchor);
         _builder.append(EcoreDocExtension.ANCHOR_SEPARATOR);

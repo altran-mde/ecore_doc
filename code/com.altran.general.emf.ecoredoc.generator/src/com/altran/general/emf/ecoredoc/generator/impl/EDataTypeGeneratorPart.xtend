@@ -13,10 +13,10 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 		super(ePackages)
 	}
 
-	override write(EPackage ePackage) {
+	override StringBuilder write(EPackage ePackage) {
 		clearOutput()
 
-		val eDataTypes = collectEDataTypes(ePackage)
+		val List<EDataType> eDataTypes = collectEDataTypes(ePackage)
 
 		writeEDataTypes(eDataTypes)
 
@@ -38,7 +38,7 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 		}
 	}
 
-	protected def writeEDataTypesHeader() {
+	protected def void writeEDataTypesHeader() {
 		output.append(
 		'''
 			«newline»

@@ -16,7 +16,7 @@ class EcoreDocGenerator {
 
 	val Collection<? extends EClassifier> input
 
-	val output = new StringBuilder
+	val StringBuilder output = new StringBuilder
 
 	val Multimap<EPackage, EClassifier> ePackages = TreeMultimap.create(
 		[o1, o2|o1.name.compareTo(o2.name)],
@@ -32,9 +32,9 @@ class EcoreDocGenerator {
 
 		collectEPackages()
 
-		val eDataTypeGeneratorPart = new EDataTypeGeneratorPart(ePackages)
-		val eEnumGeneratorPart = new EEnumGeneratorPart(ePackages)
-		val eClassGeneratorPart = new EClassGeneratorPart(ePackages)
+		val EDataTypeGeneratorPart eDataTypeGeneratorPart = new EDataTypeGeneratorPart(ePackages)
+		val EEnumGeneratorPart eEnumGeneratorPart = new EEnumGeneratorPart(ePackages)
+		val EClassGeneratorPart eClassGeneratorPart = new EClassGeneratorPart(ePackages)
 
 		for (ePackage : ePackages.keySet) {
 			writeEPackageIntro(ePackage)
@@ -47,7 +47,7 @@ class EcoreDocGenerator {
 		return output.toString
 	}
 
-	protected def writeIntro() {
+	protected def void writeIntro() {
 		output.append(
 		'''
 			// White Up-Pointing Triangle
@@ -63,8 +63,8 @@ class EcoreDocGenerator {
 		''')
 	}
 
-	protected def writeEPackageIntro(EPackage ePackage) {
-		val ePackageName = ePackage.name
+	protected def void writeEPackageIntro(EPackage ePackage) {
+		val String ePackageName = ePackage.name
 
 		output.append(
 		'''

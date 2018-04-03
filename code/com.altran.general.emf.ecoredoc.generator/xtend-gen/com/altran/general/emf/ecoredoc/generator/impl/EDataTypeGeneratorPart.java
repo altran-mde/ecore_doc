@@ -50,7 +50,7 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
     }
   }
   
-  protected StringBuilder writeEDataTypesHeader() {
+  protected void writeEDataTypesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     String _newline = this._ecoreDocExtension.newline();
@@ -58,7 +58,7 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLineIfNotEmpty();
     _builder.append("=== Data Types");
     _builder.newLine();
-    return _output.append(_builder);
+    _output.append(_builder);
   }
   
   protected CharSequence writeEDataTypeHeader(final EDataType eDataType) {

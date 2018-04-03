@@ -8,25 +8,25 @@ import org.eclipse.emf.ecore.EcorePackage
 class EStructuralFeaturePropertyHelper {
 	extension EcoreDocExtension = new EcoreDocExtension
 	
-	val static BOLD = '*'
-	val static JOIN = " + "
+	val static Character BOLD = '*'
+	val static String JOIN = " + "
 	
-	def concatBounds(EStructuralFeature eStructuralFeature) {
-		val lowerBound = eStructuralFeature.lowerBound
-		val upperBound = eStructuralFeature.upperBound
+	def CharSequence concatBounds(EStructuralFeature eStructuralFeature) {
+		val int lowerBound = eStructuralFeature.lowerBound
+		val int upperBound = eStructuralFeature.upperBound
 
 		'''
 			`[«lowerBound»«IF lowerBound != upperBound»..«defineUpperBound(upperBound)»«ENDIF»]`«JOIN»
 		'''
 	}
 	
-	def boldifyString(String string){
+	def CharSequence boldifyString(String string){
 		'''«BOLD»«string»«BOLD»'''
 	}
 	
-	def definePropertyString(String trueLiteral, String falseLiteral, boolean defaultValue, boolean currentPropertyValue) {
-		var result =''''''
-		val boldify = (defaultValue != currentPropertyValue)
+	def CharSequence definePropertyString(String trueLiteral, String falseLiteral, boolean defaultValue, boolean currentPropertyValue) {
+		var CharSequence result =''''''
+		val boolean boldify = (defaultValue != currentPropertyValue)
 		
 		if(currentPropertyValue){
 			result = '''«IF boldify»«boldifyString(trueLiteral)»«ELSE»«trueLiteral»«ENDIF»«JOIN»'''
@@ -36,28 +36,28 @@ class EStructuralFeaturePropertyHelper {
 		}
 	}
 	
-	def defineChangeable(EStructuralFeature eStructuralFeature) {
+	def CharSequence defineChangeable(EStructuralFeature eStructuralFeature) {
 		//default: true
-		val isChangeable = eStructuralFeature.changeable
+		val boolean isChangeable = eStructuralFeature.changeable
 		
 		'''
 			«definePropertyString("changeable", "unchangeable", true, isChangeable)»
 		'''
 	}
 	
-	def defineDerived(EStructuralFeature eStructuralFeature) {
+	def CharSequence defineDerived(EStructuralFeature eStructuralFeature) {
 		//default: false
-		val isDerived = eStructuralFeature.derived
+		val boolean isDerived = eStructuralFeature.derived
 		
 		'''
 			«definePropertyString("derived", "underived", false, isDerived)»
 		'''
 	}
 
-	def defineOrdered(EStructuralFeature eStructuralFeature) {
+	def CharSequence defineOrdered(EStructuralFeature eStructuralFeature) {
 		//default: true
-		val upperBound = eStructuralFeature.upperBound
-		val isOrdered = eStructuralFeature.ordered
+		val int upperBound = eStructuralFeature.upperBound
+		val boolean isOrdered = eStructuralFeature.ordered
 
 		if (upperBound != 1) {
 			'''
@@ -69,43 +69,43 @@ class EStructuralFeaturePropertyHelper {
 		}
 	}
 	
-	def defineTransient(EStructuralFeature eStructuralFeature) {
+	def CharSequence defineTransient(EStructuralFeature eStructuralFeature) {
 		//default: false
-		val isTransient = eStructuralFeature.transient
+		val boolean isTransient = eStructuralFeature.transient
 		
 		'''
 			«definePropertyString("transient", "non-transient", false, isTransient)»
 		'''
 	}
 	
-	def defineUnique(EStructuralFeature eStructuralFeature) {
+	def CharSequence defineUnique(EStructuralFeature eStructuralFeature) {
 		//default: false
-		val isUnique = eStructuralFeature.unique
+		val boolean isUnique = eStructuralFeature.unique
 		
 		'''
 			«definePropertyString("unique", "non-unique", false, isUnique)»
 		'''
 	}
 	
-	def defineUnsettable(EStructuralFeature eStructuralFeature) {
+	def CharSequence defineUnsettable(EStructuralFeature eStructuralFeature) {
 		//default: false
-		val isUnsettable = eStructuralFeature.unsettable
+		val boolean isUnsettable = eStructuralFeature.unsettable
 		
 		'''
 			«definePropertyString("unsettable", "settable", false, isUnsettable)»
 		'''
 	}
 	
-	def defineVolatile(EStructuralFeature eStructuralFeature) {
+	def CharSequence defineVolatile(EStructuralFeature eStructuralFeature) {
 		//default: false
-		val isVolatile = eStructuralFeature.volatile
+		val boolean isVolatile = eStructuralFeature.volatile
 		
 		'''
 			«definePropertyString("volatile", "non-volatile", false, isVolatile)»
 		'''
 	}
 
-	def defineId(EAttribute eAttribute) {
+	def CharSequence defineId(EAttribute eAttribute) {
 		if (eAttribute.isID) {
 			'''
 				*is id*
@@ -116,7 +116,7 @@ class EStructuralFeaturePropertyHelper {
 		}
 	}
 
-	def concatDefaultValue(EAttribute eAttribute) {
+	def CharSequence concatDefaultValue(EAttribute eAttribute) {
 
 		if (eAttribute.eIsSet(EcorePackage.eINSTANCE.EStructuralFeature_DefaultValueLiteral)) {
 			val defaultValue = eAttribute.defaultValue
@@ -140,12 +140,12 @@ class EStructuralFeaturePropertyHelper {
 		}
 	}
 
-	protected def defineUpperBound(int upperBound) {
+	protected def CharSequence defineUpperBound(int upperBound) {
 		if (upperBound == -1) {
 			'''*'''
 
 		} else {
-			upperBound
+			'''«upperBound»'''
 		}
 	}
 

@@ -61,7 +61,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     }
   }
   
-  protected StringBuilder writeEClassesHeader() {
+  protected void writeEClassesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     String _newline = this._ecoreDocExtension.newline();
@@ -69,7 +69,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLineIfNotEmpty();
     _builder.append("=== Types");
     _builder.newLine();
-    return _output.append(_builder);
+    _output.append(_builder);
   }
   
   protected void writeEClass(final EClass eClass) {
@@ -119,7 +119,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     }
   }
   
-  protected StringBuilder writeEContainmentHeader() {
+  protected void writeEContainmentHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     String _newline = this._ecoreDocExtension.newline();
@@ -140,7 +140,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLine();
     _builder.append("|Description");
     _builder.newLine();
-    return _output.append(_builder);
+    _output.append(_builder);
   }
   
   protected void writeSubTypes(final EClass currentEClass) {
@@ -181,17 +181,17 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     }
   }
   
-  protected StringBuilder writeType(final EClass eClass) {
+  protected void writeType(final EClass eClass) {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("* ");
     CharSequence _concatLinkTo = this.concatLinkTo(eClass);
     _builder.append(_concatLinkTo);
     _builder.newLineIfNotEmpty();
-    return _output.append(_builder);
+    _output.append(_builder);
   }
   
-  protected StringBuilder writeSubTypesHeader() {
+  protected void writeSubTypesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     String _newline = this._ecoreDocExtension.newline();
@@ -199,10 +199,10 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLineIfNotEmpty();
     _builder.append(".Sub-types");
     _builder.newLine();
-    return _output.append(_builder);
+    _output.append(_builder);
   }
   
-  protected StringBuilder writeSuperTypesHeader() {
+  protected void writeSuperTypesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     String _newline = this._ecoreDocExtension.newline();
@@ -210,10 +210,10 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLineIfNotEmpty();
     _builder.append(".Super-types");
     _builder.newLine();
-    return _output.append(_builder);
+    _output.append(_builder);
   }
   
-  protected StringBuilder writeEAttributesHeader() {
+  protected void writeEAttributesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     String _newline = this._ecoreDocExtension.newline();
@@ -234,7 +234,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLine();
     _builder.append("|Description");
     _builder.newLine();
-    return _output.append(_builder);
+    _output.append(_builder);
   }
   
   protected CharSequence tableHeader() {
@@ -369,7 +369,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected CharSequence _concatFeatureProperties(final EAttribute eAttribute) {
     CharSequence _defineId = this._eStructuralFeaturePropertyHelper.defineId(eAttribute);
     CharSequence _concatBounds = this._eStructuralFeaturePropertyHelper.concatBounds(eAttribute);
-    String _concatDefaultValue = this._eStructuralFeaturePropertyHelper.concatDefaultValue(eAttribute);
+    CharSequence _concatDefaultValue = this._eStructuralFeaturePropertyHelper.concatDefaultValue(eAttribute);
     CharSequence _defineOrdered = this._eStructuralFeaturePropertyHelper.defineOrdered(eAttribute);
     CharSequence _defineChangeable = this._eStructuralFeaturePropertyHelper.defineChangeable(eAttribute);
     CharSequence _defineDerived = this._eStructuralFeaturePropertyHelper.defineDerived(eAttribute);
@@ -380,7 +380,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
       return Boolean.valueOf((it != null));
     };
-    return IterableExtensions.join(IterableExtensions.filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineId, _concatBounds, _concatDefaultValue, _defineOrdered, _defineChangeable, _defineDerived, _defineTransient, _defineUnique, _defineUnsettable, _defineVolatile)), _function));
+    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineId, _concatBounds, _concatDefaultValue, _defineOrdered, _defineChangeable, _defineDerived, _defineTransient, _defineUnique, _defineUnsettable, _defineVolatile)), _function));
   }
   
   protected CharSequence _concatFeatureType(final EReference eReference) {
@@ -443,7 +443,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _builder;
   }
   
-  protected StringBuilder writeEReferencesHeader() {
+  protected void writeEReferencesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     String _newline = this._ecoreDocExtension.newline();
@@ -464,7 +464,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.newLine();
     _builder.append("|Description");
     _builder.newLine();
-    return _output.append(_builder);
+    _output.append(_builder);
   }
   
   protected CharSequence writeEClassHeader(final EClass eClass) {

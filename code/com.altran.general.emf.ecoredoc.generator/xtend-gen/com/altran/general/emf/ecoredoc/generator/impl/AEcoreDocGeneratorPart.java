@@ -73,23 +73,26 @@ public abstract class AEcoreDocGeneratorPart {
   }
   
   protected CharSequence _concatLinkTo(final EDataType eDataType) {
-    CharSequence _xifexpression = null;
-    boolean _isDefaultEDataType = this._ecoreDocExtension.isDefaultEDataType(eDataType);
-    boolean _not = (!_isDefaultEDataType);
-    if (_not) {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("<<");
-      CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eDataType);
-      _builder.append(_concatAnchor);
-      _builder.append(", ");
-      CharSequence _concatReferenceName = this.concatReferenceName(eDataType);
-      _builder.append(_concatReferenceName);
-      _builder.append(">>");
-      _xifexpression = _builder;
-    } else {
-      _xifexpression = eDataType.getName();
+    CharSequence _xblockexpression = null;
+    {
+      final boolean defaultDataType = this._ecoreDocExtension.isDefaultEDataType(eDataType);
+      CharSequence _xifexpression = null;
+      if (defaultDataType) {
+        _xifexpression = eDataType.getName();
+      } else {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("<<");
+        CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eDataType);
+        _builder.append(_concatAnchor);
+        _builder.append(", ");
+        CharSequence _concatReferenceName = this.concatReferenceName(eDataType);
+        _builder.append(_concatReferenceName);
+        _builder.append(">>");
+        _xifexpression = _builder;
+      }
+      _xblockexpression = _xifexpression;
     }
-    return _xifexpression;
+    return _xblockexpression;
   }
   
   protected CharSequence concatUsedLink(final EStructuralFeature eStructuralFeature, final EClass eClassThatInherits) {
@@ -97,14 +100,20 @@ public abstract class AEcoreDocGeneratorPart {
     {
       final String[] inheritedFeatureSegments = this.collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("<<");
       String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), EcoreDocExtension.ANCHOR_SEPARATOR);
       _builder.append(_join);
-      _builder.append(", ");
+      final CharSequence anchor = _builder;
+      StringConcatenation _builder_1 = new StringConcatenation();
       String _join_1 = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), EcoreDocExtension.REFERENCE_SEPARATOR);
-      _builder.append(_join_1);
-      _builder.append(">>");
-      _xblockexpression = _builder;
+      _builder_1.append(_join_1);
+      final CharSequence reference = _builder_1;
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("<<");
+      _builder_2.append(anchor);
+      _builder_2.append(", ");
+      _builder_2.append(reference);
+      _builder_2.append(">>");
+      _xblockexpression = _builder_2;
     }
     return _xblockexpression;
   }
@@ -127,34 +136,36 @@ public abstract class AEcoreDocGeneratorPart {
     final Function1<EClass, String> _function = (EClass it) -> {
       return it.getName();
     };
-    List<EClass> _sortBy = IterableExtensions.<EClass, String>sortBy(eClasses, _function);
-    for (final EClass eClass : _sortBy) {
-      final Function1<EStructuralFeature, String> _function_1 = (EStructuralFeature it) -> {
-        return it.getName();
-      };
-      List<EStructuralFeature> _sortBy_1 = IterableExtensions.<EStructuralFeature, String>sortBy(eClass.getEAllStructuralFeatures(), _function_1);
-      for (final EStructuralFeature feature : _sortBy_1) {
-        EClassifier _eType = feature.getEType();
-        boolean _equals = Objects.equal(_eType, target);
-        if (_equals) {
-          anyMatch = true;
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("* ");
-          CharSequence _concatUsedLink = this.concatUsedLink(feature, eClass);
-          _builder.append(_concatUsedLink);
-          _builder.newLineIfNotEmpty();
-          useCaseStrings.add(_builder.toString());
+    final List<EClass> sortedEClasses = IterableExtensions.<EClass, String>sortBy(eClasses, _function);
+    for (final EClass eClass : sortedEClasses) {
+      {
+        final Function1<EStructuralFeature, String> _function_1 = (EStructuralFeature it) -> {
+          return it.getName();
+        };
+        final List<EStructuralFeature> sortedEStructuralFeatures = IterableExtensions.<EStructuralFeature, String>sortBy(eClass.getEAllStructuralFeatures(), _function_1);
+        for (final EStructuralFeature feature : sortedEStructuralFeatures) {
+          EClassifier _eType = feature.getEType();
+          boolean _equals = Objects.equal(_eType, target);
+          if (_equals) {
+            anyMatch = true;
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("* ");
+            CharSequence _concatUsedLink = this.concatUsedLink(feature, eClass);
+            _builder.append(_concatUsedLink);
+            _builder.newLineIfNotEmpty();
+            useCaseStrings.add(_builder.toString());
+          }
         }
       }
     }
     if (anyMatch) {
-      StringConcatenation _builder_1 = new StringConcatenation();
+      StringConcatenation _builder = new StringConcatenation();
       String _newline = this._ecoreDocExtension.newline();
-      _builder_1.append(_newline);
-      _builder_1.newLineIfNotEmpty();
-      _builder_1.append(".Used at");
-      _builder_1.newLine();
-      this.output.append(_builder_1);
+      _builder.append(_newline);
+      _builder.newLineIfNotEmpty();
+      _builder.append(".Used at");
+      _builder.newLine();
+      this.output.append(_builder);
       List<String> _sort = IterableExtensions.<String>sort(useCaseStrings);
       for (final String useCaseString : _sort) {
         this.output.append(useCaseString);

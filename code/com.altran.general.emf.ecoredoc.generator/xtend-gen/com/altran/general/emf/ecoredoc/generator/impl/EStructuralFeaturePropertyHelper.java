@@ -14,7 +14,7 @@ public class EStructuralFeaturePropertyHelper {
   @Extension
   private EcoreDocExtension _ecoreDocExtension = new EcoreDocExtension();
   
-  private final static String BOLD = "*";
+  private final static Character BOLD = Character.valueOf('*');
   
   private final static String JOIN = " + ";
   
@@ -29,7 +29,7 @@ public class EStructuralFeaturePropertyHelper {
       {
         if ((lowerBound != upperBound)) {
           _builder.append("..");
-          Object _defineUpperBound = this.defineUpperBound(upperBound);
+          CharSequence _defineUpperBound = this.defineUpperBound(upperBound);
           _builder.append(_defineUpperBound);
         }
       }
@@ -49,13 +49,13 @@ public class EStructuralFeaturePropertyHelper {
     return _builder;
   }
   
-  public String definePropertyString(final String trueLiteral, final String falseLiteral, final boolean defaultValue, final boolean currentPropertyValue) {
-    String _xblockexpression = null;
+  public CharSequence definePropertyString(final String trueLiteral, final String falseLiteral, final boolean defaultValue, final boolean currentPropertyValue) {
+    CharSequence _xblockexpression = null;
     {
       StringConcatenation _builder = new StringConcatenation();
-      String result = _builder.toString();
+      CharSequence result = _builder;
       final boolean boldify = (defaultValue != currentPropertyValue);
-      String _xifexpression = null;
+      CharSequence _xifexpression = null;
       if (currentPropertyValue) {
         StringConcatenation _builder_1 = new StringConcatenation();
         {
@@ -67,7 +67,7 @@ public class EStructuralFeaturePropertyHelper {
           }
         }
         _builder_1.append(EStructuralFeaturePropertyHelper.JOIN);
-        _xifexpression = result = _builder_1.toString();
+        _xifexpression = result = _builder_1;
       } else {
         StringConcatenation _builder_2 = new StringConcatenation();
         {
@@ -79,7 +79,7 @@ public class EStructuralFeaturePropertyHelper {
           }
         }
         _builder_2.append(EStructuralFeaturePropertyHelper.JOIN);
-        _xifexpression = result = _builder_2.toString();
+        _xifexpression = result = _builder_2;
       }
       _xblockexpression = _xifexpression;
     }
@@ -91,7 +91,7 @@ public class EStructuralFeaturePropertyHelper {
     {
       final boolean isChangeable = eStructuralFeature.isChangeable();
       StringConcatenation _builder = new StringConcatenation();
-      String _definePropertyString = this.definePropertyString("changeable", "unchangeable", true, isChangeable);
+      CharSequence _definePropertyString = this.definePropertyString("changeable", "unchangeable", true, isChangeable);
       _builder.append(_definePropertyString);
       _builder.newLineIfNotEmpty();
       _xblockexpression = _builder;
@@ -104,7 +104,7 @@ public class EStructuralFeaturePropertyHelper {
     {
       final boolean isDerived = eStructuralFeature.isDerived();
       StringConcatenation _builder = new StringConcatenation();
-      String _definePropertyString = this.definePropertyString("derived", "underived", false, isDerived);
+      CharSequence _definePropertyString = this.definePropertyString("derived", "underived", false, isDerived);
       _builder.append(_definePropertyString);
       _builder.newLineIfNotEmpty();
       _xblockexpression = _builder;
@@ -120,7 +120,7 @@ public class EStructuralFeaturePropertyHelper {
       CharSequence _xifexpression = null;
       if ((upperBound != 1)) {
         StringConcatenation _builder = new StringConcatenation();
-        String _definePropertyString = this.definePropertyString("ordered", "unordered", true, isOrdered);
+        CharSequence _definePropertyString = this.definePropertyString("ordered", "unordered", true, isOrdered);
         _builder.append(_definePropertyString);
         _builder.newLineIfNotEmpty();
         _xifexpression = _builder;
@@ -137,7 +137,7 @@ public class EStructuralFeaturePropertyHelper {
     {
       final boolean isTransient = eStructuralFeature.isTransient();
       StringConcatenation _builder = new StringConcatenation();
-      String _definePropertyString = this.definePropertyString("transient", "non-transient", false, isTransient);
+      CharSequence _definePropertyString = this.definePropertyString("transient", "non-transient", false, isTransient);
       _builder.append(_definePropertyString);
       _builder.newLineIfNotEmpty();
       _xblockexpression = _builder;
@@ -150,7 +150,7 @@ public class EStructuralFeaturePropertyHelper {
     {
       final boolean isUnique = eStructuralFeature.isUnique();
       StringConcatenation _builder = new StringConcatenation();
-      String _definePropertyString = this.definePropertyString("unique", "non-unique", false, isUnique);
+      CharSequence _definePropertyString = this.definePropertyString("unique", "non-unique", false, isUnique);
       _builder.append(_definePropertyString);
       _builder.newLineIfNotEmpty();
       _xblockexpression = _builder;
@@ -163,7 +163,7 @@ public class EStructuralFeaturePropertyHelper {
     {
       final boolean isUnsettable = eStructuralFeature.isUnsettable();
       StringConcatenation _builder = new StringConcatenation();
-      String _definePropertyString = this.definePropertyString("unsettable", "settable", false, isUnsettable);
+      CharSequence _definePropertyString = this.definePropertyString("unsettable", "settable", false, isUnsettable);
       _builder.append(_definePropertyString);
       _builder.newLineIfNotEmpty();
       _xblockexpression = _builder;
@@ -176,7 +176,7 @@ public class EStructuralFeaturePropertyHelper {
     {
       final boolean isVolatile = eStructuralFeature.isVolatile();
       StringConcatenation _builder = new StringConcatenation();
-      String _definePropertyString = this.definePropertyString("volatile", "non-volatile", false, isVolatile);
+      CharSequence _definePropertyString = this.definePropertyString("volatile", "non-volatile", false, isVolatile);
       _builder.append(_definePropertyString);
       _builder.newLineIfNotEmpty();
       _xblockexpression = _builder;
@@ -201,7 +201,7 @@ public class EStructuralFeaturePropertyHelper {
     return _xifexpression;
   }
   
-  public String concatDefaultValue(final EAttribute eAttribute) {
+  public CharSequence concatDefaultValue(final EAttribute eAttribute) {
     boolean _eIsSet = eAttribute.eIsSet(EcorePackage.eINSTANCE.getEStructuralFeature_DefaultValueLiteral());
     if (_eIsSet) {
       final Object defaultValue = eAttribute.getDefaultValue();
@@ -254,18 +254,20 @@ public class EStructuralFeaturePropertyHelper {
       _builder_4.append("_default:_ -");
       String _newline_3 = this._ecoreDocExtension.newline();
       _builder_4.append(_newline_3);
-      return _builder_4.toString();
+      return _builder_4;
     }
   }
   
-  protected Object defineUpperBound(final int upperBound) {
-    Object _xifexpression = null;
+  protected CharSequence defineUpperBound(final int upperBound) {
+    CharSequence _xifexpression = null;
     if ((upperBound == (-1))) {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("*");
       _xifexpression = _builder;
     } else {
-      _xifexpression = Integer.valueOf(upperBound);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append(upperBound);
+      _xifexpression = _builder_1;
     }
     return _xifexpression;
   }

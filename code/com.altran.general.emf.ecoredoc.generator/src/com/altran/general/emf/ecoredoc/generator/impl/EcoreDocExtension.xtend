@@ -13,16 +13,16 @@ import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.util.EcoreUtil
 
 class EcoreDocExtension {
-	public static val ANCHOR_SEPARATOR = '-'
+	public static val CharSequence ANCHOR_SEPARATOR = '-'
 
-	public static val REFERENCE_SEPARATOR = '.'
+	public static val CharSequence REFERENCE_SEPARATOR = '.'
 
 	def String newline() {
 		System.getProperty("line.separator")
 	}
 
 	def CharSequence getDocumentation(EModelElement modelElement) {
-		val documentation = EcoreUtil.getDocumentation(modelElement)
+		val CharSequence documentation = EcoreUtil.getDocumentation(modelElement)
 
 		if (documentation !== null) {
 			return documentation + newline
@@ -51,39 +51,40 @@ class EcoreDocExtension {
 	}
 
 	def dispatch String[] collectTypeSegments(EClass eClass) {
-		val eClassName = eClass.name
-		val ePackageName = getEPackage(eClass).name
+		val String eClassName = eClass.name
+		val String ePackageName = getEPackage(eClass).name
 
 		#[ePackageName, eClassName]
 
 	}
 
 	def dispatch String[] collectTypeSegments(EStructuralFeature eStructuralFeature) {
-		val eClass = eStructuralFeature.eContainer as EClass
-		val ePackageName = getEPackage(eClass).name
-		val eClassName = eClass.name
-		val eStructuralFeatureName = eStructuralFeature.name
+		val EClass eClass = eStructuralFeature.eContainer as EClass
+		val String ePackageName = getEPackage(eClass).name
+		val String eClassName = eClass.name
+		val String eStructuralFeatureName = eStructuralFeature.name
 
 		#[ePackageName, eClassName, eStructuralFeatureName]
 	}
 
 	def dispatch String[] collectTypeSegments(EEnumLiteral eEnumLiteral) {
-		val eEnum = eEnumLiteral.eContainer as EEnum
-		val ePackageName = getEPackage(eEnum).name
+		val EEnum eEnum = eEnumLiteral.eContainer as EEnum
+		val String ePackageName = getEPackage(eEnum).name
 
 		#[ePackageName, eEnum.name, eEnumLiteral.name]
 	}
 
 	def dispatch String[] collectTypeSegments(EDataType eDataType) {
-		val eDataTypeName = eDataType.name
+		val String eDataTypeName = eDataType.name
+		val boolean defaultEDataType = isDefaultEDataType(eDataType)
 
-		if (!isDefaultEDataType(eDataType)) {
-			val eDataTypePackageName = getEPackage(eDataType).name
-
-			#[eDataTypePackageName, eDataTypeName]
+		if (defaultEDataType) {
+			#[eDataTypeName]
 
 		} else {
-			#[eDataTypeName]
+			val String eDataTypePackageName = getEPackage(eDataType).name
+
+			#[eDataTypePackageName, eDataTypeName]	
 		}
 	}
 

@@ -1,6 +1,7 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
 import com.google.common.collect.Multimap
+import java.util.ArrayList
 import java.util.Collection
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
@@ -8,6 +9,7 @@ import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.ENamedElement
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EStructuralFeature
+import java.util.List
 
 abstract class AEcoreDocGeneratorPart {
 
@@ -49,36 +51,44 @@ abstract class AEcoreDocGeneratorPart {
 
 	// Special handling for default EDataTypes: Don't create anchor
 	protected def dispatch CharSequence concatLinkTo(EDataType eDataType) {
-		if (!isDefaultEDataType(eDataType)) {
-			'''<<«concatAnchor(eDataType)», «concatReferenceName(eDataType)»>>'''
+		val boolean defaultDataType = isDefaultEDataType(eDataType)
+		
+		if (defaultDataType) {
+			eDataType.name
 
 		} else {
-			eDataType.name
+			'''<<«concatAnchor(eDataType)», «concatReferenceName(eDataType)»>>'''
+			
 		}
 	}
 
 	protected def CharSequence concatUsedLink(EStructuralFeature eStructuralFeature, EClass eClassThatInherits) {
-		val inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits)
+		val String[] inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits)
+		val CharSequence anchor = '''«inheritedFeatureSegments.join(EcoreDocExtension.ANCHOR_SEPARATOR)»'''
+		val CharSequence reference = '''«inheritedFeatureSegments.join(EcoreDocExtension.REFERENCE_SEPARATOR)»'''
 
-		'''<<«inheritedFeatureSegments.join(EcoreDocExtension.ANCHOR_SEPARATOR)», «inheritedFeatureSegments.join(EcoreDocExtension.REFERENCE_SEPARATOR)»>>'''
+		'''<<«anchor», «reference»>>'''
 	}
 
 	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature,
 		EClass eClassThatInherits) {
-		val ePackageName = getEPackage(eClassThatInherits).name
-		val eClassName = eClassThatInherits.name
-		val eStructuralFeatureName = eStructuralFeature.name
+		val String ePackageName = getEPackage(eClassThatInherits).name
+		val String eClassName = eClassThatInherits.name
+		val String eStructuralFeatureName = eStructuralFeature.name
 
 		#[ePackageName, eClassName, eStructuralFeatureName]
 	}
 
 	protected def void writeUseCases(EClassifier target) {
-		var anyMatch = false
-		val eClasses = collectAllEClasses()
-		val useCaseStrings = newArrayList()
+		var boolean anyMatch = false
+		val Collection<EClass> eClasses = collectAllEClasses()
+		val ArrayList<String> useCaseStrings = newArrayList()
+		val List<EClass> sortedEClasses = eClasses.sortBy[it.name]
 
-		for (eClass : eClasses.sortBy[it.name]) {
-			for (feature : eClass.EAllStructuralFeatures.sortBy[it.name]) {
+		for (eClass : sortedEClasses) {
+			val List<EStructuralFeature> sortedEStructuralFeatures = eClass.EAllStructuralFeatures.sortBy[it.name]
+			
+			for (feature : sortedEStructuralFeatures) {
 				if (feature.EType == target) {
 					anyMatch = true
 
@@ -87,7 +97,6 @@ abstract class AEcoreDocGeneratorPart {
 						* «concatUsedLink(feature, eClass)»
 					''')
 				}
-
 			}
 		}
 

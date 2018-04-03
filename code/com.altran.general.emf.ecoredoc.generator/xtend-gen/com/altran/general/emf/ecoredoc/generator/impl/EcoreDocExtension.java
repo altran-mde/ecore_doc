@@ -19,16 +19,16 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class EcoreDocExtension {
-  public final static String ANCHOR_SEPARATOR = "-";
+  public final static CharSequence ANCHOR_SEPARATOR = "-";
   
-  public final static String REFERENCE_SEPARATOR = ".";
+  public final static CharSequence REFERENCE_SEPARATOR = ".";
   
   public String newline() {
     return System.getProperty("line.separator");
   }
   
   public CharSequence getDocumentation(final EModelElement modelElement) {
-    final String documentation = EcoreUtil.getDocumentation(modelElement);
+    final CharSequence documentation = EcoreUtil.getDocumentation(modelElement);
     if ((documentation != null)) {
       String _newline = this.newline();
       return (documentation + _newline);
@@ -98,18 +98,17 @@ public class EcoreDocExtension {
     String[] _xblockexpression = null;
     {
       final String eDataTypeName = eDataType.getName();
+      final boolean defaultEDataType = this.isDefaultEDataType(eDataType);
       String[] _xifexpression = null;
-      boolean _isDefaultEDataType = this.isDefaultEDataType(eDataType);
-      boolean _not = (!_isDefaultEDataType);
-      if (_not) {
+      if (defaultEDataType) {
+        _xifexpression = new String[] { eDataTypeName };
+      } else {
         String[] _xblockexpression_1 = null;
         {
           final String eDataTypePackageName = this.getEPackage(eDataType).getName();
           _xblockexpression_1 = new String[] { eDataTypePackageName, eDataTypeName };
         }
         _xifexpression = _xblockexpression_1;
-      } else {
-        _xifexpression = new String[] { eDataTypeName };
       }
       _xblockexpression = _xifexpression;
     }

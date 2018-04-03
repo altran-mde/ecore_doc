@@ -14,9 +14,10 @@ class EStructuralFeaturePropertyHelper {
 	def CharSequence concatBounds(EStructuralFeature eStructuralFeature) {
 		val int lowerBound = eStructuralFeature.lowerBound
 		val int upperBound = eStructuralFeature.upperBound
+		val boolean lowerNotEqualUpperBound = lowerBound != upperBound
 
 		'''
-			`[«lowerBound»«IF lowerBound != upperBound»..«defineUpperBound(upperBound)»«ENDIF»]`«JOIN»
+			`[«lowerBound»«IF lowerNotEqualUpperBound»..«defineUpperBound(upperBound)»«ENDIF»]`«JOIN»
 		'''
 	}
 	
@@ -117,11 +118,13 @@ class EStructuralFeaturePropertyHelper {
 	}
 
 	def CharSequence concatDefaultValue(EAttribute eAttribute) {
-
-		if (eAttribute.eIsSet(EcorePackage.eINSTANCE.EStructuralFeature_DefaultValueLiteral)) {
+		val EStructuralFeature defaultValueLiteral = EcorePackage.eINSTANCE.EStructuralFeature_DefaultValueLiteral
+		val boolean defaultIsSet = eAttribute.eIsSet(defaultValueLiteral)
+		
+		if (defaultIsSet) {
 			val defaultValue = eAttribute.defaultValue
 
-			var result = '''_default:_ '''
+			var result = '''_Default:_ '''
 
 			switch (defaultValue) {
 				case EEnumLiteral:
@@ -135,8 +138,9 @@ class EStructuralFeaturePropertyHelper {
 			}
 
 			return result
+			
 		} else {
-			return '''_default:_ -«newline»'''
+			return '''_Default:_ -«newline»'''
 		}
 	}
 

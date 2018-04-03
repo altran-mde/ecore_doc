@@ -23,11 +23,12 @@ public class EStructuralFeaturePropertyHelper {
     {
       final int lowerBound = eStructuralFeature.getLowerBound();
       final int upperBound = eStructuralFeature.getUpperBound();
+      final boolean lowerNotEqualUpperBound = (lowerBound != upperBound);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("`[");
       _builder.append(lowerBound);
       {
-        if ((lowerBound != upperBound)) {
+        if (lowerNotEqualUpperBound) {
           _builder.append("..");
           CharSequence _defineUpperBound = this.defineUpperBound(upperBound);
           _builder.append(_defineUpperBound);
@@ -202,11 +203,12 @@ public class EStructuralFeaturePropertyHelper {
   }
   
   public CharSequence concatDefaultValue(final EAttribute eAttribute) {
-    boolean _eIsSet = eAttribute.eIsSet(EcorePackage.eINSTANCE.getEStructuralFeature_DefaultValueLiteral());
-    if (_eIsSet) {
+    final EStructuralFeature defaultValueLiteral = EcorePackage.eINSTANCE.getEStructuralFeature_DefaultValueLiteral();
+    final boolean defaultIsSet = eAttribute.eIsSet(defaultValueLiteral);
+    if (defaultIsSet) {
       final Object defaultValue = eAttribute.getDefaultValue();
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("_default:_ ");
+      _builder.append("_Default:_ ");
       String result = _builder.toString();
       boolean _matched = false;
       if (Objects.equal(defaultValue, EEnumLiteral.class)) {
@@ -251,7 +253,7 @@ public class EStructuralFeaturePropertyHelper {
       return result;
     } else {
       StringConcatenation _builder_4 = new StringConcatenation();
-      _builder_4.append("_default:_ -");
+      _builder_4.append("_Default:_ -");
       String _newline_3 = this._ecoreDocExtension.newline();
       _builder_4.append(_newline_3);
       return _builder_4;

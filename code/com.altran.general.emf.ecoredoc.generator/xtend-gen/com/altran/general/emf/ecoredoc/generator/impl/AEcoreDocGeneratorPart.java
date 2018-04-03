@@ -34,11 +34,11 @@ public abstract class AEcoreDocGeneratorPart {
     this.ePackages = ePackages;
   }
   
-  public abstract StringBuilder write(final EPackage ePackage);
+  protected abstract StringBuilder write(final EPackage ePackage);
   
-  protected StringBuilder clearOutput() {
+  protected void clearOutput() {
     StringBuilder _stringBuilder = new StringBuilder();
-    return this.output = _stringBuilder;
+    this.output = _stringBuilder;
   }
   
   protected Multimap<EPackage, EClassifier> getEPackages() {

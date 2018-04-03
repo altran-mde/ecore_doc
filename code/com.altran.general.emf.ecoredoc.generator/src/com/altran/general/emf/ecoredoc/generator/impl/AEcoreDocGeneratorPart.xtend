@@ -21,17 +21,17 @@ abstract class AEcoreDocGeneratorPart {
 		this.ePackages = ePackages
 	}
 
-	def abstract StringBuilder write(EPackage ePackage)
+	protected def abstract StringBuilder write(EPackage ePackage)
 
-	protected def clearOutput() {
+	protected def void clearOutput() {
 		this.output = new StringBuilder()
 	}
 
-	protected def getEPackages() {
+	protected def  Multimap<EPackage, EClassifier> getEPackages() {
 		this.ePackages
 	}
 
-	protected def getOutput() {
+	protected def StringBuilder getOutput() {
 		if (this.output === null) {
 			throw new IllegalStateException("Tried to write to output before clearing it")
 		}

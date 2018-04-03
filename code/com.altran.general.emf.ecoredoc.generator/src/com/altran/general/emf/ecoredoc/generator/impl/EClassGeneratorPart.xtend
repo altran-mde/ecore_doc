@@ -217,7 +217,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		return inheritedEAttributes
 	}
 
-	protected def writeEStructuralFeatures(List<? extends EStructuralFeature> eStructuralFeatures, EClass eClass,
+	protected def void writeEStructuralFeatures(List<? extends EStructuralFeature> eStructuralFeatures, EClass eClass,
 		Set<? extends EStructuralFeature> inheritedStructuralFeatures) {
 
 		// Iterate through non inherited eStructuralFeatures.
@@ -233,7 +233,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		output.append(tableFooter())
 	}
 
-	protected def writeRow(EStructuralFeature eStructuralFeature, EClass eClass) {
+	protected def void writeRow(EStructuralFeature eStructuralFeature, EClass eClass) {
 
 		val eStructuralFeatureClass = eStructuralFeature.eContainer as EClass
 		val isInherited = (eClass != eStructuralFeatureClass)
@@ -251,7 +251,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		''')
 	}
 
-	protected def dispatch concatFeatureProperties(EReference eReference) {
+	protected def dispatch CharSequence concatFeatureProperties(EReference eReference) {
 		#[
 			concatBounds(eReference),
 			defineOrdered(eReference),
@@ -266,7 +266,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		.join()
 	}
 
-	protected def dispatch concatFeatureProperties(EAttribute eAttribute) {
+	protected def dispatch CharSequence concatFeatureProperties(EAttribute eAttribute) {
 		#[
 			defineId(eAttribute),
 			concatBounds(eAttribute),

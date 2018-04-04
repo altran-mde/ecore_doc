@@ -272,6 +272,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		.join()
 	}
 	
+	// FIXME: This should return a list, and the result should be concatenated to the specific entries for ERefs and EAttrs
 	protected def CharSequence concatGenericProperties(EStructuralFeature eStructuralFeature){
 		#[
 			concatBounds(eStructuralFeature),

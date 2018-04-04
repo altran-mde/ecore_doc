@@ -6,10 +6,12 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.EReference
 
+// FIXME: Use formatter
 class EStructuralFeaturePropertyHelper {
 	extension EcoreDocExtension = new EcoreDocExtension
 	
 	val static String BOLD = "**"
+	// FIXME: I think we should do this in the join() methods for ERef / EAttr, so we only and this in between lines
 	val static String JOIN = " +"
 	
 	def CharSequence concatBounds(EStructuralFeature eStructuralFeature) {
@@ -26,6 +28,7 @@ class EStructuralFeaturePropertyHelper {
 		'''«BOLD»«string»«BOLD»'''
 	}
 	
+	// FIXME: Learn the difference between richstring IF and Xtend if, and when to use which one
 	def CharSequence definePropertyString(String trueLiteral, String falseLiteral, boolean defaultValue, boolean currentPropertyValue) {
 		var CharSequence result =''''''
 		val boolean boldify = (defaultValue != currentPropertyValue)
@@ -147,6 +150,8 @@ class EStructuralFeaturePropertyHelper {
 	
 	def StringBuilder defineEKeys(EReference eReference){
 		val eKeys = eReference.EKeys
+		
+		// FIXME: You already used join()
 		var StringBuilder result = new StringBuilder
 		val separator = '''«JOIN»«newline»'''
 		
@@ -164,6 +169,7 @@ class EStructuralFeaturePropertyHelper {
 		return result	
 	}
 	
+	// FIXME: Why does Containment do something with container?
 	def CharSequence defineContainment(EReference eReference){
 		val boolean isContainer = eReference.isContainer
 		val boolean isContainment = eReference.isContainment
@@ -209,6 +215,7 @@ class EStructuralFeaturePropertyHelper {
 			var result = '''_Default:_ '''
 			
 			switch (defaultValue) {
+				// FIXME: Can an EReference EVER have a literal as default?
 				case EEnumLiteral:
 					result += '''`<<«concatAnchor(eReference.EReferenceType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>`«separator»'''
 					
@@ -227,6 +234,7 @@ class EStructuralFeaturePropertyHelper {
 		val boolean upperBoundExists = (upperBound != -1)
 		
 		if (upperBoundExists) {
+			// FIXME: Now you owe me a cake!
 			'''«upperBound»'''
 			
 		} else {

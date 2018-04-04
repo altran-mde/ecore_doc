@@ -11,8 +11,14 @@
 
 
 [[EPackage1]]
-== Contents of EPackage1
+== EPackage: EPackage1
 
+Package description will be displayed here
+
+Ns Prefix:: org.eclipse.example.bowling
+Ns URI:: https://eclipsesource.com/blogs/tutorials/emf-tutorial/
+
+== Contents
 
 === Data Types
 
@@ -20,6 +26,12 @@
 ==== SpecialDataType
 
 Special documentation for special data type
+
+Default Value::  specialValue
+
+Instance type name::  org.java.ArrayList
+
+Serializable :: true
 
 .Used at
 * <<EPackage1-MyEClass-attr, EPackage1.MyEClass.attr>>
@@ -30,6 +42,12 @@ Special documentation for special data type
 ==== Enum1
 
 Enum1 Description
+
+Default Value::  Literal1
+
+Instance type name::  Something
+
+Serializable :: true
 
 .Literals
 [cols="<20m,>10m,<70a",options="header"]
@@ -63,6 +81,10 @@ Second sentence of Literal1 Description.
 ==== Class Class3
 
 Description
+
+Default Value::  ObjectX
+
+Instance type name::  Something
 
 .Super-types
 * <<EPackage1-EClass1, EPackage1.EClass1>>
@@ -217,6 +239,8 @@ TODO: Find a good way to show class attributes like abstract.
 
 Description of EClass1
 
+Instance type name::  Something
+
 .Sub-types
 * <<EPackage1-Class3, EPackage1.Class3>>
 * <<EPackage1-MyEClass, EPackage1.MyEClass>>
@@ -332,6 +356,8 @@ non-volatile
 
 Description
 
+Instance type name::  java.map
+
 .Sub-types
 * <<EPackage2-SomeClass, EPackage2.SomeClass>>
 
@@ -339,6 +365,10 @@ Description
 ==== Class MyEClass
 
 Description
+
+Default Value::  ObjectA
+
+Instance type name::  Something else
 
 .Super-types
 * <<EPackage1-EClass1, EPackage1.EClass1>>
@@ -575,11 +605,19 @@ non-volatile
 
 Package2 documentation
 
+Ns Prefix:: org.eclipse.example.bowling
+Ns URI:: https://eclipsesource.com/blogs/tutorials/emf-tutorial/
+
 === Types
 
 [[EPackage2-Class3]]
 ==== Class Class3
 
+Description class3
+
+Default Value::  Object3
+
+Instance type name::  java.map
 
 [[EPackage2-SomeClass]]
 ==== Class SomeClass
@@ -587,6 +625,10 @@ Package2 documentation
 This is
 
 my doc
+
+Default Value::  ObjectA
+
+Instance type name::  Something else
 
 .Super-types
 * <<EPackage1-EClass1, EPackage1.EClass1>>

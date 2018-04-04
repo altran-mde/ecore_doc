@@ -13,7 +13,9 @@ import org.eclipse.emf.ecore.EStructuralFeature
 
 class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	extension EStructuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper
-
+	
+	public static val separator = EcoreDocExtension.ANCHOR_SEPARATOR
+	
 	new(Multimap<EPackage, EClassifier> ePackages) {
 		super(ePackages)
 	}
@@ -141,8 +143,10 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 		if (superTypesExist) {
 			writeSuperTypesHeader()
+			
+			val sortedSuperTypes = eClass.EAllSuperTypes.sortBy[it.name]
 
-			for (supertype : eClass.EAllSuperTypes.sortBy[it.name]) {
+			for (supertype : sortedSuperTypes) {
 				writeType(supertype)
 			}
 		}
@@ -190,19 +194,25 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def List<EReference> collectEContainments(EClass eClass) {
-		eClass.EReferences.filter[isContainment].toList
+		eClass.EReferences.filter[isContainment]
+						  .toList
 	}
 
 	protected def Set<? extends EStructuralFeature> collectInheritedEContainments(EClass eClass) {
-		eClass.EAllReferences.filter[isContainment].reject[eClass.EReferences.contains(it)].toSet
+		eClass.EAllReferences.filter[isContainment]
+							 .reject[eClass.EReferences.contains(it)]
+							 .toSet
 	}
 
 	protected def List<EReference> collectECrossReferences(EClass eClass) {
-		eClass.EReferences.filter[!isContainment].toList
+		eClass.EReferences.filter[!isContainment]
+						  .toList
 	}
 
 	protected def Set<? extends EStructuralFeature> collectInheritedECrossReferences(EClass eClass) {
-		eClass.EAllReferences.filter[!isContainment].reject[eClass.EReferences.contains(it)].toSet
+		eClass.EAllReferences.filter[!isContainment]
+							 .reject[eClass.EReferences.contains(it)]
+							 .toSet
 	}
 
 	protected def Set<EStructuralFeature> collectInheritedEAttributes(EClass eClass) {
@@ -217,7 +227,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 	protected def void writeEStructuralFeatures(List<? extends EStructuralFeature> eStructuralFeatures, EClass eClass,
 		Set<? extends EStructuralFeature> inheritedStructuralFeatures) {
-
+		
 		// Iterate through non inherited eStructuralFeatures.
 		for (eStructuralFeature : eStructuralFeatures.sortBy[it.name]) {
 			writeRow(eStructuralFeature, eClass)
@@ -232,16 +242,15 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def void writeRow(EStructuralFeature eStructuralFeature, EClass eClass) {
-
 		val EClass eStructuralFeatureClass = eStructuralFeature.eContainer as EClass
 		val boolean isInherited = (eClass != eStructuralFeatureClass)
 		val String eStructuralFeatureName = eStructuralFeature.name
-		val String[] inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClass)
+		val String[] inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClass) 
 
 		output.append(
 		'''
 			«newline»
-			|«eStructuralFeatureName»[[«inheritedFeatureSegments.join(EcoreDocExtension.ANCHOR_SEPARATOR)»]]«IF isInherited» +«ENDIF»
+			|«eStructuralFeatureName»[[«inheritedFeatureSegments.join(separator)»]]«IF isInherited» +«ENDIF»
 			«IF isInherited»«concatInheritedElement(eStructuralFeature)»«ENDIF»
 			|«concatFeatureType(eStructuralFeature)»
 			|«concatFeatureProperties(eStructuralFeature)»
@@ -263,6 +272,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	
 	protected def CharSequence genericPropertiesToString(EStructuralFeature eStructuralFeature){
 		val CharSequence separator = ''' +«newline»'''
+		
 		return  concatGenericProperties(eStructuralFeature).filter[it !== null].join(separator)
 	}
 
@@ -271,7 +281,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		val CharSequence genericProperties = genericPropertiesToString(eReference)
 		
 		if(eReferenceProperties != ""){
-			return eReferenceProperties + newline + newline +genericProperties
+			return eReferenceProperties + newline + newline + genericProperties
 			
 		}else{
 			return genericProperties
@@ -280,7 +290,9 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	
 	protected def idToString(EAttribute eAttribute){
 		val CharSequence separator = ''' +«newline»'''
-		return #[defineId(eAttribute)].filter[it !== null].join(separator)
+		
+		return #[defineId(eAttribute)].filter[it !== null]
+									  .join(separator)
 	}
 	
 	protected def dispatch CharSequence concatFeatureProperties(EAttribute eAttribute) {
@@ -323,18 +335,23 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def CharSequence getOpposite(EReference eReference) {
-		if (eReference.EOpposite !== null) {
-			val String eOppositeName = eReference.EOpposite.name
-
+		val eOpposite = eReference.EOpposite
+		
+		if (eOpposite !== null) {
+			val String eOppositeName = eOpposite.name
+			val eReferenceType = eReference.EReferenceType
+			
 			'''
 				«newline»
-				_EOpposite:_ <<«concatAnchor(eReference.EReferenceType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«eOppositeName», «eOppositeName»>>
+				_EOpposite:_ <<«concatAnchor(eReferenceType)»«separator»«eOppositeName», «eOppositeName»>>
 			'''
 		}
 	}
 
 	protected def CharSequence concatInheritedElement(ENamedElement eNamedElement) {
-		'''(<<«concatAnchor(eNamedElement)», {inherited}«concatReferenceName(eNamedElement.eContainer as EClass)»>>)'''
+		val eClass = eNamedElement.eContainer as EClass
+		
+		'''(<<«concatAnchor(eNamedElement)», {inherited}«concatReferenceName(eClass)»>>)'''
 	}
 
 	protected def void writeEReferencesHeader() {
@@ -353,12 +370,15 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 	protected def CharSequence writeEClassHeader(EClass eClass) {
 		val String eClassName = eClass.name
+		val boolean isAbstract = eClass.isAbstract
+		val boolean isInterface = eClass.isInterface
+		val boolean notInterface = !isInterface
 
 		output.append(
 		'''
 			«newline»
 			[[«concatAnchor(eClass)»]]
-			==== «IF eClass.isAbstract && !eClass.isInterface»Abstract «ENDIF»«IF eClass.isInterface»Interface«ELSE»Class«ENDIF» «eClassName»
+			==== «IF isAbstract && notInterface»Abstract «ENDIF»«IF isInterface»Interface«ELSE»Class«ENDIF» «eClassName»
 			«newline»
 			«getDocumentation(eClass)»
 		''')

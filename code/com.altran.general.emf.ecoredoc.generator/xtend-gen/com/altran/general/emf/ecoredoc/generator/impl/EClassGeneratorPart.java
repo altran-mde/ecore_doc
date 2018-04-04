@@ -31,6 +31,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   @Extension
   private EStructuralFeaturePropertyHelper _eStructuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper();
   
+  public final static CharSequence separator = EcoreDocExtension.ANCHOR_SEPARATOR;
+  
   public EClassGeneratorPart(final Multimap<EPackage, EClassifier> ePackages) {
     super(ePackages);
   }
@@ -174,8 +176,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       final Function1<EClass, String> _function = (EClass it) -> {
         return it.getName();
       };
-      List<EClass> _sortBy = IterableExtensions.<EClass, String>sortBy(eClass.getEAllSuperTypes(), _function);
-      for (final EClass supertype : _sortBy) {
+      final List<EClass> sortedSuperTypes = IterableExtensions.<EClass, String>sortBy(eClass.getEAllSuperTypes(), _function);
+      for (final EClass supertype : sortedSuperTypes) {
         this.writeType(supertype);
       }
     }
@@ -320,7 +322,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.append("|");
     _builder.append(eStructuralFeatureName);
     _builder.append("[[");
-    String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), EcoreDocExtension.ANCHOR_SEPARATOR);
+    String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), EClassGeneratorPart.separator);
     _builder.append(_join);
     _builder.append("]]");
     {
@@ -462,44 +464,53 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   }
   
   protected CharSequence getOpposite(final EReference eReference) {
-    CharSequence _xifexpression = null;
-    EReference _eOpposite = eReference.getEOpposite();
-    boolean _tripleNotEquals = (_eOpposite != null);
-    if (_tripleNotEquals) {
-      CharSequence _xblockexpression = null;
-      {
-        final String eOppositeName = eReference.getEOpposite().getName();
-        StringConcatenation _builder = new StringConcatenation();
-        String _newline = this._ecoreDocExtension.newline();
-        _builder.append(_newline);
-        _builder.newLineIfNotEmpty();
-        _builder.append("_EOpposite:_ <<");
-        CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eReference.getEReferenceType());
-        _builder.append(_concatAnchor);
-        _builder.append(EcoreDocExtension.ANCHOR_SEPARATOR);
-        _builder.append(eOppositeName);
-        _builder.append(", ");
-        _builder.append(eOppositeName);
-        _builder.append(">>");
-        _builder.newLineIfNotEmpty();
-        _xblockexpression = _builder;
+    CharSequence _xblockexpression = null;
+    {
+      final EReference eOpposite = eReference.getEOpposite();
+      CharSequence _xifexpression = null;
+      if ((eOpposite != null)) {
+        CharSequence _xblockexpression_1 = null;
+        {
+          final String eOppositeName = eOpposite.getName();
+          final EClass eReferenceType = eReference.getEReferenceType();
+          StringConcatenation _builder = new StringConcatenation();
+          String _newline = this._ecoreDocExtension.newline();
+          _builder.append(_newline);
+          _builder.newLineIfNotEmpty();
+          _builder.append("_EOpposite:_ <<");
+          CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eReferenceType);
+          _builder.append(_concatAnchor);
+          _builder.append(EClassGeneratorPart.separator);
+          _builder.append(eOppositeName);
+          _builder.append(", ");
+          _builder.append(eOppositeName);
+          _builder.append(">>");
+          _builder.newLineIfNotEmpty();
+          _xblockexpression_1 = _builder;
+        }
+        _xifexpression = _xblockexpression_1;
       }
-      _xifexpression = _xblockexpression;
+      _xblockexpression = _xifexpression;
     }
-    return _xifexpression;
+    return _xblockexpression;
   }
   
   protected CharSequence concatInheritedElement(final ENamedElement eNamedElement) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("(<<");
-    CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eNamedElement);
-    _builder.append(_concatAnchor);
-    _builder.append(", {inherited}");
-    EObject _eContainer = eNamedElement.eContainer();
-    CharSequence _concatReferenceName = this.concatReferenceName(((EClass) _eContainer));
-    _builder.append(_concatReferenceName);
-    _builder.append(">>)");
-    return _builder;
+    CharSequence _xblockexpression = null;
+    {
+      EObject _eContainer = eNamedElement.eContainer();
+      final EClass eClass = ((EClass) _eContainer);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("(<<");
+      CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eNamedElement);
+      _builder.append(_concatAnchor);
+      _builder.append(", {inherited}");
+      CharSequence _concatReferenceName = this.concatReferenceName(eClass);
+      _builder.append(_concatReferenceName);
+      _builder.append(">>)");
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
   }
   
   protected void writeEReferencesHeader() {
@@ -530,6 +541,9 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     StringBuilder _xblockexpression = null;
     {
       final String eClassName = eClass.getName();
+      final boolean isAbstract = eClass.isAbstract();
+      final boolean isInterface = eClass.isInterface();
+      final boolean notInterface = (!isInterface);
       StringBuilder _output = this.getOutput();
       StringConcatenation _builder = new StringConcatenation();
       String _newline = this._ecoreDocExtension.newline();
@@ -542,13 +556,12 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.newLineIfNotEmpty();
       _builder.append("==== ");
       {
-        if ((eClass.isAbstract() && (!eClass.isInterface()))) {
+        if ((isAbstract && notInterface)) {
           _builder.append("Abstract ");
         }
       }
       {
-        boolean _isInterface = eClass.isInterface();
-        if (_isInterface) {
+        if (isInterface) {
           _builder.append("Interface");
         } else {
           _builder.append("Class");

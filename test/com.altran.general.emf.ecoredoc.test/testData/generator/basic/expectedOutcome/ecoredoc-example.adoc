@@ -172,7 +172,7 @@ _EOpposite:_ <<EPackage1-MyEClass-clazzes, clazzes>>
 |_EKeys:_ `-` +
 resolveProxies +
 container +
-non-containment +
+non-containment
 
 `[0..1]` +
 _Default:_ `-` +
@@ -192,7 +192,7 @@ _EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>>
 |_EKeys:_ `-` +
 resolveProxies +
 non-container +
-non-containment +
+non-containment
 
 `[0..*]` +
 _Default:_ `-` +
@@ -309,7 +309,7 @@ _EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>>
 |_EKeys:_ `-` +
 resolveProxies +
 non-container +
-non-containment +
+non-containment
 
 `[0..*]` +
 _Default:_ `-` +
@@ -462,7 +462,7 @@ _EOpposite:_ <<EPackage1-Class3-specialParent, specialParent>>
 |_EKeys:_ `-` +
 **non-resolveProxies** +
 non-container +
-containment +
+containment
 
 `[1..*]` +
 _Default:_ `-` +
@@ -480,7 +480,7 @@ non-volatile
 |_EKeys:_ `-` +
 **non-resolveProxies** +
 non-container +
-containment +
+containment
 
 `[0..*]` +
 _Default:_ `-` +
@@ -511,7 +511,7 @@ _EOpposite:_ <<EPackage1-EClass1-myRelation, myRelation>>
 |_EKeys:_ `-` +
 resolveProxies +
 non-container +
-non-containment +
+non-containment
 
 `[1]` +
 _Default:_ `-` +
@@ -528,7 +528,7 @@ non-volatile
 |_EKeys:_ `-` +
 resolveProxies +
 non-container +
-non-containment +
+non-containment
 
 `[0..1]` +
 _Default:_ `-` +
@@ -548,7 +548,7 @@ _EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>>
 |_EKeys:_ `-` +
 resolveProxies +
 non-container +
-non-containment +
+non-containment
 
 `[0..*]` +
 _Default:_ `-` +
@@ -685,7 +685,7 @@ _EOpposite:_ <<EPackage1-MyEClass-backwards, backwards>>
 |_EKeys:_ `-` +
 resolveProxies +
 non-container +
-non-containment +
+non-containment
 
 `[0..*]` +
 _Default:_ `-` +

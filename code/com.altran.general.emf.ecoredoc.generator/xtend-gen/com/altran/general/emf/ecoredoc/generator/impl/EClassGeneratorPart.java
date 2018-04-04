@@ -351,18 +351,85 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _output.append(_builder);
   }
   
-  protected CharSequence _concatFeatureProperties(final EReference eReference) {
-    StringBuilder _defineEKeys = this._eStructuralFeaturePropertyHelper.defineEKeys(eReference);
-    CharSequence _defineResolveProxies = this._eStructuralFeaturePropertyHelper.defineResolveProxies(eReference);
-    CharSequence _defineContainment = this._eStructuralFeaturePropertyHelper.defineContainment(eReference);
-    CharSequence _concatGenericProperties = this.concatGenericProperties(eReference);
+  protected CharSequence eReferencePropertiesToString(final EReference eReference) {
+    String _xblockexpression = null;
+    {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(" ");
+      _builder.append("+");
+      String _newline = this._ecoreDocExtension.newline();
+      _builder.append(_newline, " ");
+      final CharSequence separator = _builder;
+      CharSequence _defineEKeys = this._eStructuralFeaturePropertyHelper.defineEKeys(eReference);
+      CharSequence _defineResolveProxies = this._eStructuralFeaturePropertyHelper.defineResolveProxies(eReference);
+      CharSequence _defineContainer = this._eStructuralFeaturePropertyHelper.defineContainer(eReference);
+      CharSequence _defineContainment = this._eStructuralFeaturePropertyHelper.defineContainment(eReference);
+      final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
+        return Boolean.valueOf((it != null));
+      };
+      _xblockexpression = IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineEKeys, _defineResolveProxies, _defineContainer, _defineContainment)), _function), separator);
+    }
+    return _xblockexpression;
+  }
+  
+  protected CharSequence genericPropertiesToString(final EStructuralFeature eStructuralFeature) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(" ");
+    _builder.append("+");
+    String _newline = this._ecoreDocExtension.newline();
+    _builder.append(_newline, " ");
+    final CharSequence separator = _builder;
     final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
       return Boolean.valueOf((it != null));
     };
-    return IterableExtensions.join(IterableExtensions.filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineEKeys, _defineResolveProxies, _defineContainment, _concatGenericProperties)), _function));
+    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(this.concatGenericProperties(eStructuralFeature), _function), separator);
   }
   
-  protected CharSequence concatGenericProperties(final EStructuralFeature eStructuralFeature) {
+  protected CharSequence _concatFeatureProperties(final EReference eReference) {
+    final CharSequence eReferenceProperties = this.eReferencePropertiesToString(eReference);
+    final CharSequence genericProperties = this.genericPropertiesToString(eReference);
+    boolean _notEquals = (!Objects.equal(eReferenceProperties, ""));
+    if (_notEquals) {
+      String _newline = this._ecoreDocExtension.newline();
+      String _plus = (eReferenceProperties + _newline);
+      String _newline_1 = this._ecoreDocExtension.newline();
+      String _plus_1 = (_plus + _newline_1);
+      return (_plus_1 + genericProperties);
+    } else {
+      return genericProperties;
+    }
+  }
+  
+  protected String idToString(final EAttribute eAttribute) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(" ");
+    _builder.append("+");
+    String _newline = this._ecoreDocExtension.newline();
+    _builder.append(_newline, " ");
+    final CharSequence separator = _builder;
+    CharSequence _defineId = this._eStructuralFeaturePropertyHelper.defineId(eAttribute);
+    final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
+      return Boolean.valueOf((it != null));
+    };
+    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineId)), _function), separator);
+  }
+  
+  protected CharSequence _concatFeatureProperties(final EAttribute eAttribute) {
+    final CharSequence id = this.idToString(eAttribute);
+    CharSequence genericProperties = this.genericPropertiesToString(eAttribute);
+    boolean _notEquals = (!Objects.equal(id, ""));
+    if (_notEquals) {
+      String _newline = this._ecoreDocExtension.newline();
+      String _plus = (id + _newline);
+      String _newline_1 = this._ecoreDocExtension.newline();
+      String _plus_1 = (_plus + _newline_1);
+      return (_plus_1 + genericProperties);
+    } else {
+      return genericProperties;
+    }
+  }
+  
+  protected List<CharSequence> concatGenericProperties(final EStructuralFeature eStructuralFeature) {
     CharSequence _concatBounds = this._eStructuralFeaturePropertyHelper.concatBounds(eStructuralFeature);
     CharSequence _concatDefaultValue = this._eStructuralFeaturePropertyHelper.concatDefaultValue(eStructuralFeature);
     CharSequence _defineOrdered = this._eStructuralFeaturePropertyHelper.defineOrdered(eStructuralFeature);
@@ -372,19 +439,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     CharSequence _defineUnique = this._eStructuralFeaturePropertyHelper.defineUnique(eStructuralFeature);
     CharSequence _defineUnsettable = this._eStructuralFeaturePropertyHelper.defineUnsettable(eStructuralFeature);
     CharSequence _defineVolatile = this._eStructuralFeaturePropertyHelper.defineVolatile(eStructuralFeature);
-    final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
-      return Boolean.valueOf((it != null));
-    };
-    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_concatBounds, _concatDefaultValue, _defineOrdered, _defineChangeable, _defineDerived, _defineTransient, _defineUnique, _defineUnsettable, _defineVolatile)), _function));
-  }
-  
-  protected CharSequence _concatFeatureProperties(final EAttribute eAttribute) {
-    CharSequence _defineId = this._eStructuralFeaturePropertyHelper.defineId(eAttribute);
-    CharSequence _concatGenericProperties = this.concatGenericProperties(eAttribute);
-    final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
-      return Boolean.valueOf((it != null));
-    };
-    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineId, _concatGenericProperties)), _function));
+    return Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_concatBounds, _concatDefaultValue, _defineOrdered, _defineChangeable, _defineDerived, _defineTransient, _defineUnique, _defineUnsettable, _defineVolatile));
   }
   
   protected CharSequence _concatFeatureType(final EReference eReference) {

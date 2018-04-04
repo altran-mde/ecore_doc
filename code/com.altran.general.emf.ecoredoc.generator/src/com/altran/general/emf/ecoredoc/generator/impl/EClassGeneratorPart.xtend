@@ -202,9 +202,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def Set<? extends EStructuralFeature> collectInheritedECrossReferences(EClass eClass) {
-		eClass.EAllReferences.filter[!isContainment]
-							 .reject[eClass.EReferences.contains(it)]
-							 .toSet
+		eClass.EAllReferences.filter[!isContainment].reject[eClass.EReferences.contains(it)].toSet
 	}
 
 	protected def Set<EStructuralFeature> collectInheritedEAttributes(EClass eClass) {
@@ -250,62 +248,65 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			|«getDocumentation(eStructuralFeature)»
 		''')
 	}
-
-	protected def dispatch CharSequence concatFeatureProperties(EReference eReference) {
-		#[
+	
+	protected def CharSequence eReferencePropertiesToString(EReference eReference){
+		val CharSequence separator = ''' +«newline»'''
+		
+		 #[
 			defineEKeys(eReference),
 			defineResolveProxies(eReference),
-			defineContainment(eReference),
+			defineContainer(eReference),
+			defineContainment(eReference)
 			
-			concatGenericProperties(eReference)
-//			concatBounds(eReference),
-//			concatDefaultValue(eReference),
-//			defineOrdered(eReference),
-//			defineChangeable(eReference),
-//			defineDerived(eReference),
-//			defineTransient(eReference),
-//			defineUnique(eReference),
-//			defineUnsettable(eReference),
-//			defineVolatile(eReference)
-		]
-		.filter[it !== null]
-		.join()
+		].filter[it !== null].join(separator)
 	}
 	
-	// FIXME: This should return a list, and the result should be concatenated to the specific entries for ERefs and EAttrs
-	protected def CharSequence concatGenericProperties(EStructuralFeature eStructuralFeature){
+	protected def CharSequence genericPropertiesToString(EStructuralFeature eStructuralFeature){
+		val CharSequence separator = ''' +«newline»'''
+		return  concatGenericProperties(eStructuralFeature).filter[it !== null].join(separator)
+	}
+
+	protected def dispatch CharSequence concatFeatureProperties(EReference eReference) {
+		val CharSequence eReferenceProperties = eReferencePropertiesToString(eReference)
+		val CharSequence genericProperties = genericPropertiesToString(eReference)
+		
+		if(eReferenceProperties != ""){
+			return eReferenceProperties + newline + newline +genericProperties
+			
+		}else{
+			return genericProperties
+		}	
+	}
+	
+	protected def idToString(EAttribute eAttribute){
+		val CharSequence separator = ''' +«newline»'''
+		return #[defineId(eAttribute)].filter[it !== null].join(separator)
+	}
+	
+	protected def dispatch CharSequence concatFeatureProperties(EAttribute eAttribute) {
+		val CharSequence id = idToString(eAttribute)
+		var CharSequence genericProperties = genericPropertiesToString(eAttribute)
+		
+		if(id != ""){
+			return id + newline + newline +genericProperties
+			
+		}else{
+			return genericProperties
+		}	
+	}
+
+	protected def List<CharSequence> concatGenericProperties(EStructuralFeature eStructuralFeature) {
 		#[
 			concatBounds(eStructuralFeature),
 			concatDefaultValue(eStructuralFeature),
 			defineOrdered(eStructuralFeature),
 			defineChangeable(eStructuralFeature),
 			defineDerived(eStructuralFeature),
-			defineTransient(eStructuralFeature)	,
+			defineTransient(eStructuralFeature),
 			defineUnique(eStructuralFeature),
 			defineUnsettable(eStructuralFeature),
 			defineVolatile(eStructuralFeature)
 		]
-		.filter[it !== null]
-		.join()
-	}
-
-	protected def dispatch CharSequence concatFeatureProperties(EAttribute eAttribute) {
-		#[
-			defineId(eAttribute),
-			
-			concatGenericProperties(eAttribute)
-//			concatBounds(eAttribute),
-//			concatDefaultValue(eAttribute),
-//			defineOrdered(eAttribute),
-//			defineChangeable(eAttribute),
-//			defineDerived(eAttribute),
-//			defineTransient(eAttribute)	,
-//			defineUnique(eAttribute),
-//			defineUnsettable(eAttribute),
-//			defineVolatile(eAttribute)
-		]
-		.filter[it !== null]
-		.join()
 	}
 
 	protected def dispatch CharSequence concatFeatureType(EReference eReference) {

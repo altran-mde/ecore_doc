@@ -2,76 +2,75 @@ package com.altran.general.emf.ecoredoc.generator.impl
 
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EEnumLiteral
+import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage
-import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.ecore.EEnum
+import org.eclipse.emf.ecore.impl.EEnumLiteralImpl
 
-// FIXME: Use formatter
 class EStructuralFeaturePropertyHelper {
 	extension EcoreDocExtension = new EcoreDocExtension
-	
+
 	val static String BOLD = "**"
-	// FIXME: I think we should do this in the join() methods for ERef / EAttr, so we only and this in between lines
-	val static String JOIN = " +"
-	
+
 	def CharSequence concatBounds(EStructuralFeature eStructuralFeature) {
 		val int lowerBound = eStructuralFeature.lowerBound
 		val int upperBound = eStructuralFeature.upperBound
 		val boolean lowerNotEqualUpperBound = lowerBound != upperBound
 
-		'''
-			`[«lowerBound»«IF lowerNotEqualUpperBound»..«defineUpperBound(upperBound)»«ENDIF»]`«JOIN»
-		'''
+		'''`[«lowerBound»«IF lowerNotEqualUpperBound»..«defineUpperBound(upperBound)»«ENDIF»]`'''
+
 	}
-	
-	def CharSequence boldifyString(String string){
+
+	def CharSequence boldifyString(String string) {
 		'''«BOLD»«string»«BOLD»'''
 	}
-	
-	// FIXME: Learn the difference between richstring IF and Xtend if, and when to use which one
-	def CharSequence definePropertyString(String trueLiteral, String falseLiteral, boolean defaultValue, boolean currentPropertyValue) {
-		var CharSequence result =''''''
+
+	def CharSequence definePropertyString(String trueLiteral, String falseLiteral, boolean defaultValue,
+		boolean currentPropertyValue) { 
 		val boolean boldify = (defaultValue != currentPropertyValue)
-		
-		if(currentPropertyValue){
-			result = '''«IF boldify»«boldifyString(trueLiteral)»«ELSE»«trueLiteral»«ENDIF»'''
-			
-		}else{
-			result = '''«IF boldify»«boldifyString(falseLiteral)»«ELSE»«falseLiteral»«ENDIF»'''
+
+		if (currentPropertyValue) {
+			if(boldify){
+				return boldifyString(trueLiteral)
+				
+			}else{
+				return trueLiteral
+			}
+
+		} else {
+			if(boldify){
+				return boldifyString(falseLiteral)
+				
+			}else{
+				return falseLiteral
+			}	
 		}
-		
-		return result
 	}
-	
+
 	def CharSequence definePropertyString(String trueLiteral, String falseLiteral, boolean currentPropertyValue) {
-		var CharSequence result =''''''
-		
-		if(currentPropertyValue){
-			result = trueLiteral
-			
-		}else{
-			result = falseLiteral
+		if (currentPropertyValue) {
+			return trueLiteral
+
+		} else {
+			return falseLiteral
 		}
-		
-		return result
 	}
-	
+
 	def CharSequence defineChangeable(EStructuralFeature eStructuralFeature) {
 		val boolean defaultValue = true
 		val boolean isChangeable = eStructuralFeature.changeable
-		
-		'''
-			«definePropertyString("changeable", "unchangeable", defaultValue, isChangeable)»«JOIN»
-		'''
+
+		definePropertyString("changeable", "unchangeable", defaultValue, isChangeable)
+
 	}
-	
+
 	def CharSequence defineDerived(EStructuralFeature eStructuralFeature) {
 		val boolean defaultValue = false
 		val boolean isDerived = eStructuralFeature.derived
-		
-		'''
-			«definePropertyString("derived", "underived", defaultValue, isDerived)»«JOIN»
-		'''
+
+		definePropertyString("derived", "underived", defaultValue, isDerived)
+
 	}
 
 	def CharSequence defineOrdered(EStructuralFeature eStructuralFeature) {
@@ -80,163 +79,134 @@ class EStructuralFeaturePropertyHelper {
 		val boolean isOrdered = eStructuralFeature.ordered
 
 		if (upperBound != 1) {
-			'''
-				«definePropertyString("ordered", "unordered", defaultValue, isOrdered)»«JOIN»
-			'''
-			
+			definePropertyString("ordered", "unordered", defaultValue, isOrdered)
+
 		} else {
 			null
 		}
 	}
-	
+
 	def CharSequence defineTransient(EStructuralFeature eStructuralFeature) {
 		val boolean defaultValue = false
 		val boolean isTransient = eStructuralFeature.transient
-		
-		'''
-			«definePropertyString("transient", "non-transient", defaultValue, isTransient)»«JOIN»
-		'''
+
+		definePropertyString("transient", "non-transient", defaultValue, isTransient)
 	}
-	
+
 	def CharSequence defineUnique(EStructuralFeature eStructuralFeature) {
 		val boolean isUnique = eStructuralFeature.unique
-		
-		'''
-			«definePropertyString("unique", "non-unique", isUnique)»«JOIN»
-		'''
+
+		definePropertyString("unique", "non-unique", isUnique)
 	}
-	
+
 	def CharSequence defineUnsettable(EStructuralFeature eStructuralFeature) {
 		val boolean defaultValue = false
 		val boolean isUnsettable = eStructuralFeature.unsettable
-		
-		'''
-			«definePropertyString("unsettable", "settable", defaultValue, isUnsettable)»«JOIN»
-		'''
+
+		definePropertyString("unsettable", "settable", defaultValue, isUnsettable)
+
 	}
-	
+
 	def CharSequence defineVolatile(EStructuralFeature eStructuralFeature) {
 		val boolean defaultValue = false
 		val boolean isVolatile = eStructuralFeature.volatile
-		
-		'''
-			«definePropertyString("volatile", "non-volatile", defaultValue, isVolatile)»
-		'''
-	}
-	
-	def CharSequence defineResolveProxies(EReference eReference){
-		val boolean defaultValue = true
-		val boolean resolveProxies = eReference.resolveProxies
-		val CharSequence separator = '''«JOIN»«newline»'''
-		
-		'''
-			«definePropertyString("resolveProxies", "non-resolveProxies", defaultValue, resolveProxies)»«separator»
-		'''
+
+		definePropertyString("volatile", "non-volatile", defaultValue, isVolatile)
 	}
 
+	def CharSequence defineResolveProxies(EReference eReference) {
+		//val isDefault = eReference.eIsSet(EcorePackage.eINSTANCE.EReference_ResolveProxies)
+		val boolean defaultValue = true
+		val boolean resolveProxies = eReference.resolveProxies
+
+		definePropertyString("resolveProxies", "non-resolveProxies", defaultValue, resolveProxies)
+	}
+	
+	def CharSequence defineContainer(EReference eReference){
+		val boolean isContainer = eReference.isContainer
+		
+		definePropertyString("container", "non-container", isContainer)
+	}
+	
+	def CharSequence defineContainment(EReference eReference) {
+		val boolean isContainment = eReference.isContainment
+		
+		definePropertyString("containment", "non-containment", isContainment)
+	}
+	
 	def CharSequence defineId(EAttribute eAttribute) {
 		val boolean isID = eAttribute.isID
-		
+
 		if (isID) {
-			'''
-				*is id*
-				«newline»
-			'''
-			
+			'''*is id*'''
+
 		} else {
 			null
 		}
 	}
-	
-	def StringBuilder defineEKeys(EReference eReference){
+
+	def CharSequence defineEKeys(EReference eReference) {
 		val eKeys = eReference.EKeys
-		
-		// FIXME: You already used join()
-		var StringBuilder result = new StringBuilder
-		val separator = '''«JOIN»«newline»'''
-		
-		result.append('''_EKeys:_''')
-		
-		if(!eKeys.isEmpty){
-			for(eKey : eKeys){
-				result.append(''' `«eKey.name»`«separator»''')
-			}
-			
-		}else{
-			result.append(''' `-`«separator»''')
-		}
-		
-		return result	
+		val boolean eKeysExist = !eKeys.isEmpty
+
+		'''_EKeys:_«IF eKeysExist»«eKeys.join("`", ", ", "`") [name]»«ELSE» `-`«ENDIF»'''
 	}
-	
-	// FIXME: Why does Containment do something with container?
-	def CharSequence defineContainment(EReference eReference){
-		val boolean isContainer = eReference.isContainer
-		val boolean isContainment = eReference.isContainment
-		val CharSequence separator = '''«JOIN»«newline»«newline»'''
-		
-		'''
-			«definePropertyString("container", "non-container", isContainer)»«JOIN»
-			«definePropertyString("containment", "non-containment", isContainment)»«separator»
-		'''
-	}
-	
+
 	def dispatch CharSequence concatDefaultValue(EAttribute eAttribute) {
+		val CharSequence separator = EcoreDocExtension.ANCHOR_SEPARATOR
 		val EStructuralFeature defaultValueLiteral = EcorePackage.eINSTANCE.EStructuralFeature_DefaultValueLiteral
 		val boolean defaultIsSet = eAttribute.eIsSet(defaultValueLiteral)
-		val separator = '''«JOIN»«newline»'''
+		var result = '''_Default:_ '''
 		
 		if (defaultIsSet) {
 			val defaultValue = eAttribute.defaultValue
-			var result = '''_Default:_ '''
-			
-			switch (defaultValue) {
-				case EEnumLiteral:
-					result += '''`<<«concatAnchor(eAttribute.EAttributeType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>`«separator»'''
-					
+			switch (defaultValue.class) {
+				case EEnumLiteralImpl:
+					result += '''`<<«concatAnchor(eAttribute.EAttributeType)»«separator»«defaultValue», «defaultValue»>>`'''
+						
 				default:
-					result += '''`«defaultValue»`«separator»'''
+					result += '''`«defaultValue»`'''
 			}
-			
-			return result
-			
+
 		} else {
-			return '''_Default:_ `-`«separator»'''
+			result += '''`-`'''
 		}
+
+		return result 
 	}
-	
+
 	def dispatch CharSequence concatDefaultValue(EReference eReference) {
 		val EStructuralFeature defaultValueLiteral = EcorePackage.eINSTANCE.EStructuralFeature_DefaultValueLiteral
 		val boolean defaultIsSet = eReference.eIsSet(defaultValueLiteral)
-		val separator = '''«JOIN»«newline»'''
-		
+
 		if (defaultIsSet) {
 			val defaultValue = eReference.defaultValue
+			val CharSequence separator = EcoreDocExtension.ANCHOR_SEPARATOR
+			val eReferenceType = eReference.EReferenceType
 			var result = '''_Default:_ '''
 			
-			switch (defaultValue) {
-				// FIXME: Can an EReference EVER have a literal as default?
-				case EEnumLiteral:
-					result += '''`<<«concatAnchor(eReference.EReferenceType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>`«separator»'''
-					
+			switch (defaultValue.class) {
+				case EEnumLiteralImpl:
+					result += '''`<<«concatAnchor(eReferenceType)»«separator»«defaultValue», «defaultValue»>>`'''
+						
 				default:
-					result += '''`«defaultValue»`«separator»'''
+					result += '''`«defaultValue»`'''
 			}
-			
+
 			return result
-			
+
 		} else {
-			return '''_Default:_ `-`«separator»'''
+			return '''_Default:_ `-`'''
 		}
 	}
 
 	protected def CharSequence defineUpperBound(int upperBound) {
 		val boolean upperBoundExists = (upperBound != -1)
-		
+
 		if (upperBoundExists) {
 			// FIXME: Now you owe me a cake!
 			'''«upperBound»'''
-			
+
 		} else {
 			'''*'''
 		}

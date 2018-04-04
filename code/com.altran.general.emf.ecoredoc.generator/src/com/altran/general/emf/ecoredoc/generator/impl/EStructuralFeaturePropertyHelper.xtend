@@ -1,11 +1,9 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
 import org.eclipse.emf.ecore.EAttribute
-import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage
-import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.impl.EEnumLiteralImpl
 
 class EStructuralFeaturePropertyHelper {
@@ -160,6 +158,7 @@ class EStructuralFeaturePropertyHelper {
 		
 		if (defaultIsSet) {
 			val defaultValue = eAttribute.defaultValue
+			
 			switch (defaultValue.class) {
 				case EEnumLiteralImpl:
 					result += '''`<<«concatAnchor(eAttribute.EAttributeType)»«separator»«defaultValue», «defaultValue»>>`'''
@@ -204,8 +203,7 @@ class EStructuralFeaturePropertyHelper {
 		val boolean upperBoundExists = (upperBound != -1)
 
 		if (upperBoundExists) {
-			// FIXME: Now you owe me a cake!
-			'''«upperBound»'''
+			upperBound.toString
 
 		} else {
 			'''*'''

@@ -312,13 +312,11 @@ public class EStructuralFeaturePropertyHelper {
       final boolean upperBoundExists = (upperBound != (-1));
       CharSequence _xifexpression = null;
       if (upperBoundExists) {
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append(upperBound);
-        _xifexpression = _builder;
+        _xifexpression = Integer.valueOf(upperBound).toString();
       } else {
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append("*");
-        _xifexpression = _builder_1;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("*");
+        _xifexpression = _builder;
       }
       _xblockexpression = _xifexpression;
     }

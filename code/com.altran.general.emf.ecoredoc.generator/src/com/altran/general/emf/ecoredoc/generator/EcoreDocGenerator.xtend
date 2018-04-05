@@ -10,12 +10,15 @@ import java.util.Collection
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EPackage
 
+import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
+
 class EcoreDocGenerator {
+
 	extension EcoreDocExtension = new EcoreDocExtension
 
 	val Collection<? extends EClassifier> input
 
-	val output = new StringBuilder
+	val StringBuilder output = new StringBuilder
 
 	val Multimap<EPackage, EClassifier> ePackages = TreeMultimap.create(
 		[o1, o2|o1.name.compareTo(o2.name)],
@@ -31,12 +34,11 @@ class EcoreDocGenerator {
 
 		collectEPackages()
 
-		val eDataTypeGeneratorPart = new EDataTypeGeneratorPart(ePackages)
-		val eEnumGeneratorPart = new EEnumGeneratorPart(ePackages)
-		val eClassGeneratorPart = new EClassGeneratorPart(ePackages)
+		val EDataTypeGeneratorPart eDataTypeGeneratorPart = new EDataTypeGeneratorPart(ePackages)
+		val EEnumGeneratorPart eEnumGeneratorPart = new EEnumGeneratorPart(ePackages)
+		val EClassGeneratorPart eClassGeneratorPart = new EClassGeneratorPart(ePackages)
 
 		for (ePackage : ePackages.keySet) {
-
 			writeEPackageIntro(ePackage)
 
 			output.append(eDataTypeGeneratorPart.write(ePackage))
@@ -47,7 +49,7 @@ class EcoreDocGenerator {
 		return output.toString
 	}
 
-	protected def writeIntro() {
+	protected def void writeIntro() {
 		output.append(
 		'''
 			// White Up-Pointing Triangle
@@ -63,8 +65,9 @@ class EcoreDocGenerator {
 		''')
 	}
 
-	protected def writeEPackageIntro(EPackage ePackage) {
-		val ePackageName = ePackage.name
+	protected def void writeEPackageIntro(EPackage ePackage) {
+		val String ePackageName = ePackage.name
+
 		output.append(
 		'''
 			«newline»
@@ -73,7 +76,16 @@ class EcoreDocGenerator {
 			== Contents of «ePackageName»
 			«newline»
 			«getDocumentation(ePackage)»
+			«newline»
+			«concatEPackageProperties(ePackage)»
 		''')
+	}
+	
+	protected def concatEPackageProperties(EPackage ePackage) {
+		'''
+			Ns Prefix:: «ePackage.nsPrefix»
+			Ns URI:: «ePackage.nsURI»
+		'''
 	}
 
 	protected def void collectEPackages() {

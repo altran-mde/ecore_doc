@@ -407,7 +407,7 @@ public class EPackage1PackageImpl extends EPackageImpl implements EPackage1Packa
 		// Initialize classes, features, and operations; add parameters
 		initEClass(eClass1EClass, EClass1.class, "EClass1", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEClass1_Name(), theEcorePackage.getEString(), "name", null, 3, 5, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEClass1_Id(), theEcorePackage.getEInt(), "id", null, 1, 1, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEClass1_Id(), theEcorePackage.getEInt(), "id", null, 1, 1, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEClass1_SpecialNumber(), theEcorePackage.getEInt(), "specialNumber", "23", 0, 1, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEClass1_SomeStringAttr(), theEcorePackage.getEString(), "someStringAttr", "Hello, World!", 0, 1, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEClass1_D(), theEcorePackage.getEDouble(), "d", "3.141592", 0, 1, EClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

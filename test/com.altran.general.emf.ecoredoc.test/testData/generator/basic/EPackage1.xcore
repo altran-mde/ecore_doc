@@ -20,7 +20,7 @@ abstract class EClass1 {
 	String[3..5] name
 	 
 	@GenModel(documentation="Description of id.")
-	int[1] ^id
+	id int[1] ^id
 	
 	int specialNumber = "23"
 	
@@ -59,7 +59,6 @@ class Class3 extends EClass1 {
 	Enum1[0..6] something
 	
 	//refers EClass1[1] backwards opposite myRelation
- 
  	@GenModel(documentation="Bla")
 	container MyEClass[0..1] specialParent opposite clazzes 
 }

@@ -59,7 +59,7 @@ public interface EClass1 extends EObject {
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(int)
 	 * @see EPackage1.EPackage1Package#getEClass1_Id()
-	 * @model unique="false" required="true"
+	 * @model unique="false" id="true" required="true"
 	 * @generated
 	 */
 	int getId();

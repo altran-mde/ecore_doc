@@ -443,19 +443,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#EPackage1-Enum1">Enum1</a></li>
 </ul>
 </li>
-<li><a href="#_classes">Classes</a>
+<li><a href="#_types">Types</a>
 <ul class="sectlevel3">
-<li><a href="#EPackage1-EClass1">Abstract Class EClass1</a></li>
-<li><a href="#EPackage1-MyEClass">Class MyEClass</a></li>
 <li><a href="#EPackage1-Class3">Class Class3</a></li>
+<li><a href="#EPackage1-EClass1">Abstract Class EClass1</a></li>
 <li><a href="#EPackage1-Iface">Interface Iface</a></li>
+<li><a href="#EPackage1-MyEClass">Class MyEClass</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#EPackage2">Contents of EPackage2</a>
 <ul class="sectlevel2">
+<li><a href="#_types_2">Types</a>
+<ul class="sectlevel3">
+<li><a href="#EPackage2-Class3">Class Class3</a></li>
 <li><a href="#EPackage2-SomeClass">Class SomeClass</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -465,18 +470,46 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="EPackage1">Contents of EPackage1</h2>
 <div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Ns Prefix</dt>
+<dd>
+<p>EPackage1</p>
+</dd>
+<dt class="hdlist1">Ns URI</dt>
+<dd>
+<p>EPackage1</p>
+</dd>
+</dl>
+</div>
 <div class="sect2">
 <h3 id="_data_types">Data Types</h3>
-<div class="paragraph">
-<p>TODO: Create template for EDataType</p>
-</div>
 <div class="sect3">
 <h4 id="EPackage1-SpecialDataType">SpecialDataType</h4>
+<div class="paragraph">
+<p>Special documentation for special data type</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Default Value</dt>
+<dd>
+<p><em>undefined</em></p>
+</dd>
+<dt class="hdlist1">Instance Type Name</dt>
+<dd>
+<p><code>java.lang.Number</code></p>
+</dd>
+<dt class="hdlist1">Serializable</dt>
+<dd>
+<p>true</p>
+</dd>
+</dl>
+</div>
 <div class="ulist">
 <div class="title">Used at</div>
 <ul>
 <li>
-<p><a href="#EPackage1-MyEClass-attr">EPackage1.MyEClass.attr</a></p>
+<p><code><a href="#EPackage1-MyEClass-attr">EPackage1.&#8203;MyEClass.&#8203;attr</a></code></p>
 </li>
 </ul>
 </div>
@@ -487,7 +520,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect3">
 <h4 id="EPackage1-Enum1">Enum1</h4>
 <div class="paragraph">
-<p>Enum 1 Description</p>
+<p>Enum1 Description</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Default Value</dt>
+<dd>
+<p><code>Literal1</code></p>
+</dd>
+<dt class="hdlist1">Instance Type Name</dt>
+<dd>
+<p><em>undefined</em></p>
+</dd>
+<dt class="hdlist1">Serializable</dt>
+<dd>
+<p>true</p>
+</dd>
+</dl>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Literals</caption>
@@ -517,8 +566,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Literal2<a id="EPackage1-Enum1-Literal2"></a></code></p></td>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Literal3<a id="EPackage1-Enum1-Literal3"></a></code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>5</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Literal2 Description</p>
+<p>Literal3 Description</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -527,99 +581,208 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="title">Used at</div>
 <ul>
 <li>
-<p><a href="#EPackage1-MyEClass-eeeenum">EPackage1.MyEClass.eeeenum</a></p>
+<p><code><a href="#EPackage1-Class3-something">EPackage1.&#8203;Class3.&#8203;something</a></code></p>
 </li>
 <li>
-<p><a href="#EPackage1-Class3-something">EPackage1.Class3.something</a></p>
+<p><code><a href="#EPackage1-MyEClass-eeeenum">EPackage1.&#8203;MyEClass.&#8203;eeeenum</a></code></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_classes">Classes</h3>
+<h3 id="_types">Types</h3>
 <div class="sect3">
-<h4 id="EPackage1-EClass1">Abstract Class EClass1</h4>
+<h4 id="EPackage1-Class3">Class Class3</h4>
 <div class="paragraph">
-<p>TODO: Find a good way to show class attributes like abstract.</p>
+<p>Description</p>
 </div>
-<div class="paragraph">
-<p>Description of EClass1</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Default Value</dt>
+<dd>
+<p><em>undefined</em></p>
+</dd>
+<dt class="hdlist1">Instance Type Name</dt>
+<dd>
+<p><em>undefined</em></p>
+</dd>
+</dl>
 </div>
 <div class="ulist">
-<div class="title">Sub-concepts</div>
+<div class="title">Super-types</div>
 <ul>
 <li>
-<p><a href="#EPackage1-MyEClass">EPackage1.MyEClass</a></p>
-</li>
-<li>
-<p><a href="#EPackage2-SomeClass">EPackage2.SomeClass</a></p>
+<p><code><a href="#EPackage1-EClass1">EPackage1.&#8203;EClass1</a></code></p>
 </li>
 </ul>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Attributes</caption>
 <colgroup>
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 <col style="width: 40%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Multiplicity&#160;/ Order</th>
-<th class="tableblock halign-left valign-top">Default Value</th>
+<th class="tableblock halign-left valign-top">Properties</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id<a id="EPackage1-EClass1-id"></a></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EInt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>something</code><a id="EPackage1-Class3-something"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-Enum1">EPackage1.&#8203;Enum1</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..6]</code><br>
+<em>Default:</em> <code>-</code><br>
+ordered<br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Something.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>d</code><a id="EPackage1-Class3-d"></a><br>
+(<code><a href="#EPackage1-EClass1-d">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EDouble</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code><br>
+<em>Default:</em> <code>3.141592</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code><a id="EPackage1-Class3-id"></a><br>
+(<code><a href="#EPackage1-EClass1-id">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EInt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is id</strong><br>
+<code>[1]</code><br>
+<em>Default:</em> <code>-</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Description of id.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name<a id="EPackage1-EClass1-name"></a></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EString</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3..5</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code><a id="EPackage1-Class3-name"></a><br>
+(<code><a href="#EPackage1-EClass1-name">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[3..5]</code><br>
+<em>Default:</em> <code>-</code><br>
+ordered<br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Name desc.</p>
 </div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>someStringAttr</code><a id="EPackage1-Class3-someStringAttr"></a><br>
+(<code><a href="#EPackage1-EClass1-someStringAttr">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code><br>
+<em>Default:</em> <code>Hello, World!</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>specialNumber</code><a id="EPackage1-Class3-specialNumber"></a><br>
+(<code><a href="#EPackage1-EClass1-specialNumber">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EInt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code><br>
+<em>Default:</em> <code>23</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">References</caption>
 <colgroup>
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 <col style="width: 40%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Multiplicity&#160;/ Order</th>
-<th class="tableblock halign-left valign-top">Opposite</th>
+<th class="tableblock halign-left valign-top">Properties</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>myRelation<a id="EPackage1-EClass1-myRelation"></a></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#EPackage1-MyEClass">EPackage1.MyEClass</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0..*&#160;/ unordered</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-MyEClass-backwards">backwards</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>specialParent</code><a id="EPackage1-Class3-specialParent"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-MyEClass">EPackage1.&#8203;MyEClass</a></code></p>
+<p class="tableblock"><em>EOpposite:</em> <code><a href="#EPackage1-MyEClass-clazzes">clazzes</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>EKeys:</em> <code>-</code><br>
+resolveProxies<br>
+container<br>
+non-containment<br>
+<code>[0..1]</code><br>
+<em>Default:</em> <code>-</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Bla</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>myRelation</code><a id="EPackage1-Class3-myRelation"></a><br>
+(<code><a href="#EPackage1-EClass1-myRelation">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-MyEClass">EPackage1.&#8203;MyEClass</a></code></p>
+<p class="tableblock"><em>EOpposite:</em> <code><a href="#EPackage1-MyEClass-backwards">backwards</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>EKeys:</em> <code>-</code><br>
+resolveProxies<br>
+non-container<br>
+non-containment<br>
+<code>[0..*]</code><br>
+<em>Default:</em> <code>-</code><br>
+<strong>unordered</strong><br>
+changeable<br>
+underived<br>
+non-transient<br>
+unique<br>
+settable<br>
+non-volatile</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Description.</p>
 </div></div></td>
@@ -630,10 +793,204 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="title">Used at</div>
 <ul>
 <li>
-<p><a href="#EPackage1-MyEClass-ref">EPackage1.MyEClass.ref</a></p>
+<p><code><a href="#EPackage1-MyEClass-clazzes">EPackage1.&#8203;MyEClass.&#8203;clazzes</a></code></p>
 </li>
 <li>
-<p><a href="#EPackage1-MyEClass-backwards">EPackage1.MyEClass.backwards</a></p>
+<p><code><a href="#EPackage1-MyEClass-otherClasses">EPackage1.&#8203;MyEClass.&#8203;otherClasses</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="EPackage1-EClass1">Abstract Class EClass1</h4>
+<div class="paragraph">
+<p>TODO: Find a good way to show class attributes like abstract.</p>
+</div>
+<div class="paragraph">
+<p>Description of EClass1</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Instance Type Name</dt>
+<dd>
+<p><em>undefined</em></p>
+</dd>
+</dl>
+</div>
+<div class="ulist">
+<div class="title">Sub-types</div>
+<ul>
+<li>
+<p><code><a href="#EPackage1-Class3">EPackage1.&#8203;Class3</a></code></p>
+</li>
+<li>
+<p><code><a href="#EPackage1-MyEClass">EPackage1.&#8203;MyEClass</a></code></p>
+</li>
+<li>
+<p><code><a href="#EPackage2-SomeClass">EPackage2.&#8203;SomeClass</a></code></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Attributes</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>d</code><a id="EPackage1-EClass1-d"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EDouble</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code><br>
+<em>Default:</em> <code>3.141592</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code><a id="EPackage1-EClass1-id"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EInt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is id</strong><br>
+<code>[1]</code><br>
+<em>Default:</em> <code>-</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Description of id.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code><a id="EPackage1-EClass1-name"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[3..5]</code><br>
+<em>Default:</em> <code>-</code><br>
+ordered<br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name desc.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>someStringAttr</code><a id="EPackage1-EClass1-someStringAttr"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code><br>
+<em>Default:</em> <code>Hello, World!</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>specialNumber</code><a id="EPackage1-EClass1-specialNumber"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EInt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code><br>
+<em>Default:</em> <code>23</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">References</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>myRelation</code><a id="EPackage1-EClass1-myRelation"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-MyEClass">EPackage1.&#8203;MyEClass</a></code></p>
+<p class="tableblock"><em>EOpposite:</em> <code><a href="#EPackage1-MyEClass-backwards">backwards</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>EKeys:</em> <code>-</code><br>
+resolveProxies<br>
+non-container<br>
+non-containment<br>
+<code>[0..*]</code><br>
+<em>Default:</em> <code>-</code><br>
+<strong>unordered</strong><br>
+changeable<br>
+underived<br>
+non-transient<br>
+unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Description.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<div class="title">Used at</div>
+<ul>
+<li>
+<p><code><a href="#EPackage1-MyEClass-backwards">EPackage1.&#8203;MyEClass.&#8203;backwards</a></code></p>
+</li>
+<li>
+<p><code><a href="#EPackage1-MyEClass-ref">EPackage1.&#8203;MyEClass.&#8203;ref</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="EPackage1-Iface">Interface Iface</h4>
+<div class="paragraph">
+<p>Description</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Instance Type Name</dt>
+<dd>
+<p><em>undefined</em></p>
+</dd>
+</dl>
+</div>
+<div class="ulist">
+<div class="title">Sub-types</div>
+<ul>
+<li>
+<p><code><a href="#EPackage2-SomeClass">EPackage2.&#8203;SomeClass</a></code></p>
 </li>
 </ul>
 </div>
@@ -643,38 +1000,54 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Description</p>
 </div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Default Value</dt>
+<dd>
+<p><em>undefined</em></p>
+</dd>
+<dt class="hdlist1">Instance Type Name</dt>
+<dd>
+<p><em>undefined</em></p>
+</dd>
+</dl>
+</div>
 <div class="ulist">
-<div class="title">Supertypes</div>
+<div class="title">Super-types</div>
 <ul>
 <li>
-<p><a href="#EPackage1-EClass1">EPackage1.EClass1</a></p>
+<p><code><a href="#EPackage1-EClass1">EPackage1.&#8203;EClass1</a></code></p>
 </li>
 </ul>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Attributes</caption>
 <colgroup>
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 <col style="width: 40%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Multiplicity&#160;/ Order</th>
-<th class="tableblock halign-left valign-top">Default Value</th>
+<th class="tableblock halign-left valign-top">Properties</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>attr<a id="EPackage1-MyEClass-attr"></a></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#EPackage1-SpecialDataType">EPackage1.SpecialDataType</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0..1</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>attr</code><a id="EPackage1-MyEClass-attr"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-SpecialDataType">EPackage1.&#8203;SpecialDataType</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code><br>
+<em>Default:</em> <code>-</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Description.</p>
 </div>
@@ -683,69 +1056,153 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eeeenum<a id="EPackage1-MyEClass-eeeenum"></a></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#EPackage1-Enum1">EPackage1.Enum1</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0..6</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-Enum-Literal1">Literal1</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eeeenum</code><a id="EPackage1-MyEClass-eeeenum"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-Enum1">EPackage1.&#8203;Enum1</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..6]</code><br>
+<em>Default:</em> <code><a href="#EPackage1-Enum1-Literal1">Literal1</a></code><br>
+ordered<br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Deschkriptschion.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id<a id="EPackage1-MyEClass-id"></a><br>
-(<a href="#EPackage1-EClass1-id">&#9651;&#160;EPackage1.EClass1</a>)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EInt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>d</code><a id="EPackage1-MyEClass-d"></a><br>
+(<code><a href="#EPackage1-EClass1-d">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EDouble</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code><br>
+<em>Default:</em> <code>3.141592</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code><a id="EPackage1-MyEClass-id"></a><br>
+(<code><a href="#EPackage1-EClass1-id">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EInt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is id</strong><br>
+<code>[1]</code><br>
+<em>Default:</em> <code>-</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Description of id.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name<a id="EPackage1-MyEClass-name"></a><br>
-(<a href="#EPackage1-EClass1-name">&#9651;&#160;EPackage1.EClass1</a>)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EString</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3..5</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code><a id="EPackage1-MyEClass-name"></a><br>
+(<code><a href="#EPackage1-EClass1-name">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[3..5]</code><br>
+<em>Default:</em> <code>-</code><br>
+ordered<br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Name desc.</p>
 </div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>someStringAttr</code><a id="EPackage1-MyEClass-someStringAttr"></a><br>
+(<code><a href="#EPackage1-EClass1-someStringAttr">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code><br>
+<em>Default:</em> <code>Hello, World!</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>specialNumber</code><a id="EPackage1-MyEClass-specialNumber"></a><br>
+(<code><a href="#EPackage1-EClass1-specialNumber">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EInt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code><br>
+<em>Default:</em> <code>23</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Containments</caption>
 <colgroup>
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 <col style="width: 40%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Multiplicity&#160;/ Order</th>
-<th class="tableblock halign-left valign-top">Opposite</th>
+<th class="tableblock halign-left valign-top">Properties</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clazzes<a id="EPackage1-MyEClass-clazzes"></a></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#EPackage1-Class3">EPackage1.Class3</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1..*&#160;/ unordered</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-Class3-specialParent">specialParent</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clazzes</code><a id="EPackage1-MyEClass-clazzes"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-Class3">EPackage1.&#8203;Class3</a></code></p>
+<p class="tableblock"><em>EOpposite:</em> <code><a href="#EPackage1-Class3-specialParent">specialParent</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>EKeys:</em> <code>-</code><br>
+<strong>non-resolveProxies</strong><br>
+non-container<br>
+containment<br>
+<code>[1..*]</code><br>
+<em>Default:</em> <code>-</code><br>
+<strong>unordered</strong><br>
+changeable<br>
+underived<br>
+non-transient<br>
+unique<br>
+settable<br>
+non-volatile</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Desc.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>otherClasses<a id="EPackage1-MyEClass-otherClasses"></a></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#EPackage1-Class3">EPackage1.Class3</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0..*&#160;/ ordered</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>otherClasses</code><a id="EPackage1-MyEClass-otherClasses"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-Class3">EPackage1.&#8203;Class3</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>EKeys:</em> <code>-</code><br>
+<strong>non-resolveProxies</strong><br>
+non-container<br>
+containment<br>
+<code>[0..*]</code><br>
+<em>Default:</em> <code>-</code><br>
+ordered<br>
+changeable<br>
+underived<br>
+non-transient<br>
+unique<br>
+settable<br>
+non-volatile</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Desc.</p>
 </div>
@@ -758,44 +1215,75 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">References</caption>
 <colgroup>
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 <col style="width: 40%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Multiplicity&#160;/ Order</th>
-<th class="tableblock halign-left valign-top">Opposite</th>
+<th class="tableblock halign-left valign-top">Properties</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ref<a id="EPackage1-MyEClass-ref"></a></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#EPackage1-EClass1">EPackage1.EClass1</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0..1</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>backwards</code><a id="EPackage1-MyEClass-backwards"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-EClass1">EPackage1.&#8203;EClass1</a></code></p>
+<p class="tableblock"><em>EOpposite:</em> <code><a href="#EPackage1-EClass1-myRelation">myRelation</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>EKeys:</em> <code>-</code><br>
+resolveProxies<br>
+non-container<br>
+non-containment<br>
+<code>[1]</code><br>
+<em>Default:</em> <code>-</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ref</code><a id="EPackage1-MyEClass-ref"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-EClass1">EPackage1.&#8203;EClass1</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>EKeys:</em> <code>-</code><br>
+resolveProxies<br>
+non-container<br>
+non-containment<br>
+<code>[0..1]</code><br>
+<em>Default:</em> <code>-</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+unique<br>
+settable<br>
+non-volatile</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Whatever.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>backwards<a id="EPackage1-MyEClass-backwards"></a></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#EPackage1-EClass1">EPackage1.EClass1</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-EClass1-myRelation">myRelation</a></code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>myRelation<a id="EPackage1-MyEClass-myRelation"></a><br>
-(<a href="#EPackage1-EClass1-myRelation">&#9651;&#160;EPackage1.EClass1</a>)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#EPackage1-MyEClass">EPackage1.MyEClass</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0..*&#160;/ unordered</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-MyEClass-backwards">backwards</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>myRelation</code><a id="EPackage1-MyEClass-myRelation"></a><br>
+(<code><a href="#EPackage1-EClass1-myRelation">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-MyEClass">EPackage1.&#8203;MyEClass</a></code></p>
+<p class="tableblock"><em>EOpposite:</em> <code><a href="#EPackage1-MyEClass-backwards">backwards</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>EKeys:</em> <code>-</code><br>
+resolveProxies<br>
+non-container<br>
+non-containment<br>
+<code>[0..*]</code><br>
+<em>Default:</em> <code>-</code><br>
+<strong>unordered</strong><br>
+changeable<br>
+underived<br>
+non-transient<br>
+unique<br>
+settable<br>
+non-volatile</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Description.</p>
 </div></div></td>
@@ -806,139 +1294,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="title">Used at</div>
 <ul>
 <li>
-<p><a href="#EPackage1-MyEClass-myRelation">EPackage1.MyEClass.myRelation</a></p>
+<p><code><a href="#EPackage1-Class3-myRelation">EPackage1.&#8203;Class3.&#8203;myRelation</a></code></p>
 </li>
 <li>
-<p><a href="#EPackage1-Class3-specialParent">EPackage1.Class3.ref</a></p>
+<p><code><a href="#EPackage1-Class3-specialParent">EPackage1.&#8203;Class3.&#8203;specialParent</a></code></p>
 </li>
 <li>
-<p><a href="#EPackage1-Class3-myRelation">EPackage1.Class3.myRelation</a></p>
+<p><code><a href="#EPackage1-EClass1-myRelation">EPackage1.&#8203;EClass1.&#8203;myRelation</a></code></p>
 </li>
 <li>
-<p><a href="#EPackage1-EClass1-myRelation">EPackage1.EClass1.myRelation</a></p>
+<p><code><a href="#EPackage1-MyEClass-myRelation">EPackage1.&#8203;MyEClass.&#8203;myRelation</a></code></p>
+</li>
+<li>
+<p><code><a href="#EPackage2-SomeClass-myRelation">EPackage2.&#8203;SomeClass.&#8203;myRelation</a></code></p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="EPackage1-Class3">Class Class3</h4>
-<div class="paragraph">
-<p>Description</p>
-</div>
-<div class="ulist">
-<div class="title">Supertypes</div>
-<ul>
-<li>
-<p><a href="#EPackage1-EClass1">EPackage1.EClass1</a></p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Attributes</caption>
-<colgroup>
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 40%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Multiplicity&#160;/ Order</th>
-<th class="tableblock halign-left valign-top">Default Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>something<a id="EPackage1-Class3-something"></a></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#EPackage1-Enum1">EPackage1.Enum1</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0..6</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Something.</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id<a id="EPackage1-Class3-id"></a><br>
-(<a href="#EPackage1-EClass1-id">&#9651;&#160;EPackage1.EClass1</a>)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EInt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Description of id.</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name<a id="EPackage1-Class3-name"></a><br>
-(<a href="#EPackage1-EClass1-name">&#9651;&#160;EPackage1.EClass1</a>)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EString</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3..5</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Name desc.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">References</caption>
-<colgroup>
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 40%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Multiplicity&#160;/ Order</th>
-<th class="tableblock halign-left valign-top">Opposite</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>specialParent<a id="EPackage1-Class3-specialParent"></a></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#EPackage1-MyEClass">EPackage1.MyEClass</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>5</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-MyEClass-clazzes">clazzes</a></code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Bla</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>myRelation<a id="EPackage1-Class3-myRelation"></a><br>
-(<a href="#EPackage1-EClass1-myRelation">&#9651;&#160;EPackage1.EClass1</a>)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#EPackage1-MyEClass">EPackage1.MyEClass</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0..*&#160;/ unordered</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-MyEClass-backwards">backwards</a></code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Description.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="EPackage1-Iface">Interface Iface</h4>
-<div class="paragraph">
-<p>Description</p>
-</div>
-<div class="ulist">
-<div class="title">Known Implementations</div>
-<ul>
-<li>
-<p><a href="#EPackage2-SomeClass">EPackage2.SomeClass</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Attributes, Containments, References</p>
 </div>
 </div>
 </div>
@@ -947,85 +1317,199 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="EPackage2">Contents of EPackage2</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Package2 documentation</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Ns Prefix</dt>
+<dd>
+<p>ep2</p>
+</dd>
+<dt class="hdlist1">Ns URI</dt>
+<dd>
+<p><a href="http://altran.com/general/emf/ecoredoc/test/epackage2/1.0.0" class="bare">http://altran.com/general/emf/ecoredoc/test/epackage2/1.0.0</a></p>
+</dd>
+</dl>
+</div>
 <div class="sect2">
-<h3 id="EPackage2-SomeClass">Class SomeClass</h3>
+<h3 id="_types_2">Types</h3>
+<div class="sect3">
+<h4 id="EPackage2-Class3">Class Class3</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Default Value</dt>
+<dd>
+<p><em>undefined</em></p>
+</dd>
+<dt class="hdlist1">Instance Type Name</dt>
+<dd>
+<p><em>undefined</em></p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="EPackage2-SomeClass">Class SomeClass</h4>
+<div class="paragraph">
+<p>This is</p>
+</div>
+<div class="paragraph">
+<p>my doc</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Default Value</dt>
+<dd>
+<p><em>undefined</em></p>
+</dd>
+<dt class="hdlist1">Instance Type Name</dt>
+<dd>
+<p><em>undefined</em></p>
+</dd>
+</dl>
+</div>
 <div class="ulist">
-<div class="title">Supertypes</div>
+<div class="title">Super-types</div>
 <ul>
 <li>
-<p><a href="#EPackage1-EClass1">EPackage1.EClass1</a></p>
+<p><code><a href="#EPackage1-EClass1">EPackage1.&#8203;EClass1</a></code></p>
 </li>
 <li>
-<p><a href="#EPackage1-Iface">EPackage1.Iface</a></p>
+<p><code><a href="#EPackage1-Iface">EPackage1.&#8203;Iface</a></code></p>
 </li>
 </ul>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Attributes</caption>
 <colgroup>
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 <col style="width: 40%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Multiplicity&#160;/ Order</th>
-<th class="tableblock halign-left valign-top">Default Value</th>
+<th class="tableblock halign-left valign-top">Properties</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id<a id="EPackage1-Class3-id"></a><br>
-(<a href="#EPackage1-EClass1-id">&#9651;&#160;EPackage1.EClass1</a>)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EInt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>d</code><a id="EPackage2-SomeClass-d"></a><br>
+(<code><a href="#EPackage1-EClass1-d">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EDouble</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code><br>
+<em>Default:</em> <code>3.141592</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code><a id="EPackage2-SomeClass-id"></a><br>
+(<code><a href="#EPackage1-EClass1-id">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EInt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is id</strong><br>
+<code>[1]</code><br>
+<em>Default:</em> <code>-</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Description of id.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name<a id="EPackage1-Class3-name"></a><br>
-(<a href="#EPackage1-EClass1-name">&#9651;&#160;EPackage1.EClass1</a>)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EString</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3..5</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code><a id="EPackage2-SomeClass-name"></a><br>
+(<code><a href="#EPackage1-EClass1-name">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[3..5]</code><br>
+<em>Default:</em> <code>-</code><br>
+ordered<br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Name desc.</p>
 </div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>someStringAttr</code><a id="EPackage2-SomeClass-someStringAttr"></a><br>
+(<code><a href="#EPackage1-EClass1-someStringAttr">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code><br>
+<em>Default:</em> <code>Hello, World!</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>specialNumber</code><a id="EPackage2-SomeClass-specialNumber"></a><br>
+(<code><a href="#EPackage1-EClass1-specialNumber">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EInt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code><br>
+<em>Default:</em> <code>23</code><br>
+changeable<br>
+underived<br>
+non-transient<br>
+non-unique<br>
+settable<br>
+non-volatile</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">References</caption>
 <colgroup>
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 <col style="width: 40%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
 <th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Multiplicity&#160;/ Order</th>
-<th class="tableblock halign-left valign-top">Opposite</th>
+<th class="tableblock halign-left valign-top">Properties</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>myRelation<a id="EPackage1-Class3-myRelation"></a><br>
-(<a href="#EPackage1-EClass1-myRelation">&#9651;&#160;EPackage1.EClass1</a>)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#EPackage1-MyEClass">EPackage1.MyEClass</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0..*&#160;/ unordered</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-MyEClass-backwards">backwards</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>myRelation</code><a id="EPackage2-SomeClass-myRelation"></a><br>
+(<code><a href="#EPackage1-EClass1-myRelation">&#9651;&#160;EPackage1.&#8203;EClass1</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#EPackage1-MyEClass">EPackage1.&#8203;MyEClass</a></code></p>
+<p class="tableblock"><em>EOpposite:</em> <code><a href="#EPackage1-MyEClass-backwards">backwards</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>EKeys:</em> <code>-</code><br>
+resolveProxies<br>
+non-container<br>
+non-containment<br>
+<code>[0..*]</code><br>
+<em>Default:</em> <code>-</code><br>
+<strong>unordered</strong><br>
+changeable<br>
+underived<br>
+non-transient<br>
+unique<br>
+settable<br>
+non-volatile</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Description.</p>
 </div></div></td>
@@ -1036,9 +1520,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-15 11:40:56 STD
+Last updated 2018-04-05 12:31:23 DST
 </div>
 </div>
 </body>

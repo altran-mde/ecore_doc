@@ -1,23 +1,22 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
 import com.google.common.collect.Multimap
+import java.util.ArrayList
 import java.util.Collection
+import java.util.List
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
-import org.eclipse.emf.ecore.EEnum
-import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.ENamedElement
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EStructuralFeature
+
+import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
 import org.eclipse.emf.ecore.EcorePackage
 
 abstract class AEcoreDocGeneratorPart {
+
 	protected extension EcoreDocExtension = new EcoreDocExtension
-
-	protected static val ANCHOR_SEPARATOR = '-'
-
-	protected static val REFERENCE_SEPARATOR = '.'
 
 	val Multimap<EPackage, EClassifier> ePackages
 
@@ -27,17 +26,17 @@ abstract class AEcoreDocGeneratorPart {
 		this.ePackages = ePackages
 	}
 
-	def abstract StringBuilder write(EPackage ePackage)
+	protected def abstract StringBuilder write(EPackage ePackage)
 
-	protected def clearOutput() {
+	protected def void clearOutput() {
 		this.output = new StringBuilder()
 	}
 
-	protected def getEPackages() {
+	protected def  Multimap<EPackage, EClassifier> getEPackages() {
 		this.ePackages
 	}
 
-	protected def getOutput() {
+	protected def StringBuilder getOutput() {
 		if (this.output === null) {
 			throw new IllegalStateException("Tried to write to output before clearing it")
 		}
@@ -45,110 +44,62 @@ abstract class AEcoreDocGeneratorPart {
 		this.output
 	}
 
-	protected def EPackage getEPackage(EClassifier eClassifier) {
-		eClassifier.eContainer as EPackage
-	}
-
-	protected def dispatch CharSequence concatAnchor(ENamedElement eNamedElement) {
-		collectTypeSegments(eNamedElement).join(ANCHOR_SEPARATOR)
-	}
-
-	// Special handling for default EDataTypes: Don't create anchor
-	protected def dispatch CharSequence concatAnchor(EDataType eDataType) {
-		if (!isDefaultEDataType(eDataType)) {
-			collectTypeSegments(eDataType).join(ANCHOR_SEPARATOR)
-			
-		} else {
-			""
-		}
-	}
-
 	protected def CharSequence concatReferenceName(ENamedElement eNamedElement) {
-		collectTypeSegments(eNamedElement).join(REFERENCE_SEPARATOR)
+		collectTypeSegments(eNamedElement).join(EcoreDocExtension.REFERENCE_SEPARATOR)
 	}
 
 	protected def dispatch CharSequence concatLinkTo(ENamedElement eNamedElement) {
-		'''<<«concatAnchor(eNamedElement)», «concatReferenceName(eNamedElement)»>>'''
+		'''`<<«concatAnchor(eNamedElement)», «concatReferenceName(eNamedElement)»>>`'''
 	}
 
 	// Special handling for default EDataTypes: Don't create anchor
 	protected def dispatch CharSequence concatLinkTo(EDataType eDataType) {
-		if (!isDefaultEDataType(eDataType)) {
-			'''<<«concatAnchor(eDataType)», «concatReferenceName(eDataType)»>>'''
-			
+		val boolean defaultDataType = isDefaultEDataType(eDataType)
+		
+		if (defaultDataType) {
+			'''`«eDataType.name»`'''
+
 		} else {
-			eDataType.name
+			'''`<<«concatAnchor(eDataType)», «concatReferenceName(eDataType)»>>`'''
+			
 		}
 	}
 
 	protected def CharSequence concatUsedLink(EStructuralFeature eStructuralFeature, EClass eClassThatInherits) {
-		val inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits)
-		
-		'''<<«inheritedFeatureSegments.join(ANCHOR_SEPARATOR)», «inheritedFeatureSegments.join(REFERENCE_SEPARATOR)»>>'''
+		val String[] inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits)
+		val CharSequence anchor = '''«inheritedFeatureSegments.join(EcoreDocExtension.ANCHOR_SEPARATOR)»'''
+		val CharSequence reference = '''«inheritedFeatureSegments.join(EcoreDocExtension.REFERENCE_SEPARATOR)»'''
+
+		'''`<<«anchor», «reference»>>`'''
 	}
 
-	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature, EClass eClassThatInherits) {
-
-		val ePackageName = getEPackage(eClassThatInherits).name
-		val eClassName = eClassThatInherits.name
-		val eStructuralFeatureName = eStructuralFeature.name
+	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature,
+		EClass eClassThatInherits) {
+		val String ePackageName = getEPackage(eClassThatInherits).name
+		val String eClassName = eClassThatInherits.name
+		val String eStructuralFeatureName = eStructuralFeature.name
 
 		#[ePackageName, eClassName, eStructuralFeatureName]
-	}
-
-	protected def dispatch String[] collectTypeSegments(EClass eClass) {
-		val eClassName = eClass.name
-		val ePackageName = getEPackage(eClass).name
-
-		#[ePackageName, eClassName]
-
-	}
-
-	protected def dispatch String[] collectTypeSegments(EStructuralFeature eStructuralFeature) {
-		val eClass = eStructuralFeature.eContainer as EClass
-		val ePackageName = getEPackage(eClass).name
-		val eClassName = eClass.name
-		val eStructuralFeatureName = eStructuralFeature.name
-
-		#[ePackageName, eClassName, eStructuralFeatureName]
-	}
-
-	protected def dispatch String[] collectTypeSegments(EEnumLiteral eEnumLiteral) {
-		val eEnum = eEnumLiteral.eContainer as EEnum
-		val ePackageName = getEPackage(eEnum).name
-
-		#[ePackageName, eEnum.name, eEnumLiteral.name]
-	}
-
-	protected def dispatch String[] collectTypeSegments(EDataType eDataType) {
-		val eDataTypeName = eDataType.name
-		
-		if (!isDefaultEDataType(eDataType)) {
-			val eDataTypePackageName = getEPackage(eDataType).name
-			
-			#[eDataTypePackageName, eDataTypeName]
-			
-		} else {
-			#[eDataTypeName]
-		}
 	}
 
 	protected def void writeUseCases(EClassifier target) {
-		var anyMatch = false
-		val eClasses = collectAllEClasses()
-		val useCaseStrings = newArrayList()
-		
-		for (eClass : eClasses.sortBy[it.name]) {
-			for (feature : eClass.EAllStructuralFeatures.sortBy[it.name]) {
+		var boolean anyMatch = false
+		val Collection<EClass> eClasses = collectAllEClasses()
+		val ArrayList<String> useCaseStrings = newArrayList()
+		val List<EClass> sortedEClasses = eClasses.sortBy[it.name]
+
+		for (eClass : sortedEClasses) {
+			val List<EStructuralFeature> sortedEStructuralFeatures = eClass.EAllStructuralFeatures.sortBy[it.name]
+			
+			for (feature : sortedEStructuralFeatures) {
 				if (feature.EType == target) {
 					anyMatch = true
-					
+
 					useCaseStrings.add(
 					'''
 						* «concatUsedLink(feature, eClass)»
 					''')
 				}
-
 			}
 		}
 
@@ -158,24 +109,59 @@ abstract class AEcoreDocGeneratorPart {
 				«newline»
 				.Used at
 			''')
-			
+
 			for (useCaseString : useCaseStrings.sort) {
 				output.append(useCaseString)
 			}
 		}
 	}
+	
+	protected def defineDefaultValue(EClassifier eClassifier) {
+		val defaultValue = '''_undefined_'''
+		val value = if (eClassifier.eIsSet(EcorePackage.eINSTANCE.EClassifier_DefaultValue)) '''`«eClassifier.defaultValue»`''' else null
 
+		concatProperty("Default Value", defaultValue, value)
+	}
+	
+	protected def defineInstanceClassName(EClassifier eClassifier) {
+		val defaultValue = '''_undefined_'''
+		val value = if (eClassifier.eIsSet(EcorePackage.eINSTANCE.EClassifier_InstanceClassName)) '''`«eClassifier.instanceClassName»`''' else null
+
+		concatProperty("Instance Type Name", defaultValue, value)
+	}
+	
+	protected def defineSerializable(EDataType eDataType) {
+		val defaultValue = '''true'''
+		val value = eDataType.serializable
+
+		concatProperty("Serializable", defaultValue, value.toString)
+	}
+	
+	protected def concatProperty(String name, String defaultValue, String value) {
+		'''«name»:: «IF value !== null»«value»«ELSE»«defaultValue»«ENDIF»'''
+	}
+	
 	protected def CharSequence tableFooter() {
 		'''
 			|===
 		'''
 	}
 
-	protected def boolean isDefaultEDataType(EDataType eDataType) {
-		EcorePackage.eINSTANCE.nsURI == getEPackage(eDataType).nsURI
-	}
-
 	protected def Collection<EClass> collectAllEClasses() {
 		ePackages.values.filter(EClass).toSet
 	}
+	
+	protected def CharSequence writeProperties(EDataType eDataType) {
+		output.append(
+			#[
+				defineDefaultValue(eDataType),
+				defineInstanceClassName(eDataType),
+				defineSerializable(eDataType)
+			]
+			.filterNull
+			.join(EcoreDocExtension.ECLASSIFIER_PROPERTY_SEPARATOR)
+		)
+		output.append(newline)
+	}
+	
 }

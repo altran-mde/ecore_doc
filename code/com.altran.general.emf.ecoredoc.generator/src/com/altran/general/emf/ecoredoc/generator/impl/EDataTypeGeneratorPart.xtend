@@ -7,16 +7,18 @@ import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EPackage
 
+import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
+
 class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 
 	new(Multimap<EPackage, EClassifier> ePackages) {
 		super(ePackages)
 	}
 
-	override write(EPackage ePackage) {
+	override StringBuilder write(EPackage ePackage) {
 		clearOutput()
 
-		val eDataTypes = collectEDataTypes(ePackage)
+		val List<EDataType> eDataTypes = collectEDataTypes(ePackage)
 
 		writeEDataTypes(eDataTypes)
 
@@ -27,27 +29,23 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 		this.getEPackages.get(ePackage).filter(EDataType).filter[!(it instanceof EEnum)].sortBy[it.name]
 	}
 
-	/*
-	 * Writes the dataTypes of the EPackage and where they are used in.
-	 */
 	protected def void writeEDataTypes(List<EDataType> eDataTypes) {
 		if (!eDataTypes.isEmpty) {
 			writeEDataTypesHeader()
-
+			
 			for (eDataType : eDataTypes) {
 				writeEDataTypeHeader(eDataType)
+				writeProperties(eDataType)
 				writeUseCases(eDataType)
 			}
 		}
 	}
 
-	protected def writeEDataTypesHeader() {
+	protected def void writeEDataTypesHeader() {
 		output.append(
 		'''
 			«newline»
 			=== Data Types
-			«newline»
-			TODO: Create template for EDataType
 		''')
 	}
 
@@ -59,6 +57,7 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 			==== «eDataType.name»
 			«newline»
 			«getDocumentation(eDataType)»
+			«newline»
 		''')
 	}
 }

@@ -7,16 +7,18 @@ import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.EPackage
 
+import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
+
 class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 
 	new(Multimap<EPackage, EClassifier> ePackages) {
 		super(ePackages)
 	}
 
-	override write(EPackage ePackage) {
+	override StringBuilder write(EPackage ePackage) {
 		clearOutput()
 
-		val eEnums = collectEEnums(ePackage)
+		val List<EEnum> eEnums = collectEEnums(ePackage)
 
 		writeEEnums(eEnums)
 
@@ -33,13 +35,14 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 
 			for (eEnum : eEnums) {
 				writeEEnumHeader(eEnum)
+				writeProperties(eEnum)
 				writeEEnumLiterals(eEnum)
 				writeUseCases(eEnum)
 			}
 		}
 	}
 
-	protected def writeEEnumsHeader() {
+	protected def void writeEEnumsHeader() {
 		output.append(
 		'''
 			«newline»
@@ -47,7 +50,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 		''')
 	}
 
-	protected def writeEEnumLiterals(EEnum eEnum) {
+	protected def void writeEEnumLiterals(EEnum eEnum) {
 		output.append(
 			'''
 				«newline»
@@ -59,15 +62,15 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 				|Description
 			'''
 		)
-		
+
 		for (eLiteral : eEnum.ELiterals) {
 			writeELiteral(eLiteral)
 		}
-		
+
 		output.append(tableFooter())
 	}
 
-	protected def writeELiteral(EEnumLiteral eLiteral) {
+	protected def void writeELiteral(EEnumLiteral eLiteral) {
 		output.append(
 		'''
 			«newline»
@@ -85,6 +88,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 			==== «eEnum.name»
 			«newline»
 			«getDocumentation(eEnum)»
+			«newline»
 		''')
 	}
 

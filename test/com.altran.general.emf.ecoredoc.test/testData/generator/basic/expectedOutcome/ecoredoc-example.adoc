@@ -14,17 +14,22 @@
 == Contents of EPackage1
 
 
-=== Data Types
+Ns Prefix:: EPackage1
+Ns URI:: EPackage1
 
-TODO: Create template for EDataType
+=== Data Types
 
 [[EPackage1-SpecialDataType]]
 ==== SpecialDataType
 
 Special documentation for special data type
 
+Default Value:: _undefined_
+Instance Type Name:: `java.lang.Number`
+Serializable:: true
+
 .Used at
-* <<EPackage1-MyEClass-attr, EPackage1.MyEClass.attr>>
+* `<<EPackage1-MyEClass-attr, EPackage1.{zwsp}MyEClass.{zwsp}attr>>`
 
 === Enumerations
 
@@ -32,6 +37,10 @@ Special documentation for special data type
 ==== Enum1
 
 Enum1 Description
+
+Default Value:: `Literal1`
+Instance Type Name:: _undefined_
+Serializable:: true
 
 .Literals
 [cols="<20m,>10m,<70a",options="header"]
@@ -56,8 +65,8 @@ Second sentence of Literal1 Description.
 |===
 
 .Used at
-* <<EPackage1-Class3-something, EPackage1.Class3.something>>
-* <<EPackage1-MyEClass-eeeenum, EPackage1.MyEClass.eeeenum>>
+* `<<EPackage1-Class3-something, EPackage1.{zwsp}Class3.{zwsp}something>>`
+* `<<EPackage1-MyEClass-eeeenum, EPackage1.{zwsp}MyEClass.{zwsp}eeeenum>>`
 
 === Types
 
@@ -66,86 +75,151 @@ Second sentence of Literal1 Description.
 
 Description
 
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
+
 .Super-types
-* <<EPackage1-EClass1, EPackage1.EClass1>>
+* `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
 
 .Attributes
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Default Value
+|Properties
 |Description
 
-|something[[EPackage1-Class3-something]]
-|<<EPackage1-Enum1, EPackage1.Enum1>>
-|0..6/ ordered
-|
+|`something`[[EPackage1-Class3-something]]
+|`<<EPackage1-Enum1, EPackage1.{zwsp}Enum1>>`
+|`[0..6]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Something.
 
-|d[[EPackage1-Class3-d]] +
-(<<EPackage1-EClass1-d, {inherited}EPackage1.EClass1>>)
-|EDouble
-|0..1
-|3.141592
+|`d`[[EPackage1-Class3-d]] +
+(`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EDouble`
+|`[0..1]` +
+_Default:_ `3.141592` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
-|id[[EPackage1-Class3-id]] +
-(<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
-|EInt
-|1
-|
+|`id`[[EPackage1-Class3-id]] +
+(`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EInt`
+|*is id* +
+`[1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Description of id.
 
-|name[[EPackage1-Class3-name]] +
-(<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
-|EString
-|3..5/ ordered
-|
+|`name`[[EPackage1-Class3-name]] +
+(`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EString`
+|`[3..5]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Name desc.
 
-|someStringAttr[[EPackage1-Class3-someStringAttr]] +
-(<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.EClass1>>)
-|EString
-|0..1
-|"Hello, World!"
+|`someStringAttr`[[EPackage1-Class3-someStringAttr]] +
+(`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EString`
+|`[0..1]` +
+_Default:_ `Hello, World!` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
-|specialNumber[[EPackage1-Class3-specialNumber]] +
-(<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.EClass1>>)
-|EInt
-|0..1
-|23
+|`specialNumber`[[EPackage1-Class3-specialNumber]] +
+(`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EInt`
+|`[0..1]` +
+_Default:_ `23` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 |===
 
 .References
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Opposite
+|Properties
 |Description
 
-|specialParent[[EPackage1-Class3-specialParent]]
-|<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|0..1
-|<<EPackage1-MyEClass-clazzes, clazzes>>
+|`specialParent`[[EPackage1-Class3-specialParent]]
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-clazzes, clazzes>>`
+|_EKeys:_ `-` +
+resolveProxies +
+container +
+non-containment +
+`[0..1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Bla
 
-|myRelation[[EPackage1-Class3-myRelation]] +
-(<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
-|<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|0..*{nbsp}/ unordered
-|<<EPackage1-MyEClass-backwards, backwards>>
+|`myRelation`[[EPackage1-Class3-myRelation]] +
+(`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+non-containment +
+`[0..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Description.
 |===
 
 .Used at
-* <<EPackage1-MyEClass-clazzes, EPackage1.MyEClass.clazzes>>
-* <<EPackage1-MyEClass-otherClasses, EPackage1.MyEClass.otherClasses>>
+* `<<EPackage1-MyEClass-clazzes, EPackage1.{zwsp}MyEClass.{zwsp}clazzes>>`
+* `<<EPackage1-MyEClass-otherClasses, EPackage1.{zwsp}MyEClass.{zwsp}otherClasses>>`
 
 [[EPackage1-EClass1]]
 ==== Abstract Class EClass1
@@ -154,205 +228,356 @@ TODO: Find a good way to show class attributes like abstract.
 
 Description of EClass1
 
+Instance Type Name:: _undefined_
+
 .Sub-types
-* <<EPackage1-Class3, EPackage1.Class3>>
-* <<EPackage1-MyEClass, EPackage1.MyEClass>>
-* <<EPackage2-SomeClass, EPackage2.SomeClass>>
+* `<<EPackage1-Class3, EPackage1.{zwsp}Class3>>`
+* `<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+* `<<EPackage2-SomeClass, EPackage2.{zwsp}SomeClass>>`
 
 .Attributes
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Default Value
+|Properties
 |Description
 
-|d[[EPackage1-EClass1-d]]
-|EDouble
-|0..1
-|3.141592
+|`d`[[EPackage1-EClass1-d]]
+|`EDouble`
+|`[0..1]` +
+_Default:_ `3.141592` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
-|id[[EPackage1-EClass1-id]]
-|EInt
-|1
-|
+|`id`[[EPackage1-EClass1-id]]
+|`EInt`
+|*is id* +
+`[1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Description of id.
 
-|name[[EPackage1-EClass1-name]]
-|EString
-|3..5/ ordered
-|
+|`name`[[EPackage1-EClass1-name]]
+|`EString`
+|`[3..5]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Name desc.
 
-|someStringAttr[[EPackage1-EClass1-someStringAttr]]
-|EString
-|0..1
-|"Hello, World!"
+|`someStringAttr`[[EPackage1-EClass1-someStringAttr]]
+|`EString`
+|`[0..1]` +
+_Default:_ `Hello, World!` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
-|specialNumber[[EPackage1-EClass1-specialNumber]]
-|EInt
-|0..1
-|23
+|`specialNumber`[[EPackage1-EClass1-specialNumber]]
+|`EInt`
+|`[0..1]` +
+_Default:_ `23` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 |===
 
 .References
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Opposite
+|Properties
 |Description
 
-|myRelation[[EPackage1-EClass1-myRelation]]
-|<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|0..*{nbsp}/ unordered
-|<<EPackage1-MyEClass-backwards, backwards>>
+|`myRelation`[[EPackage1-EClass1-myRelation]]
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+non-containment +
+`[0..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Description.
 |===
 
 .Used at
-* <<EPackage1-MyEClass-backwards, EPackage1.MyEClass.backwards>>
-* <<EPackage1-MyEClass-ref, EPackage1.MyEClass.ref>>
+* `<<EPackage1-MyEClass-backwards, EPackage1.{zwsp}MyEClass.{zwsp}backwards>>`
+* `<<EPackage1-MyEClass-ref, EPackage1.{zwsp}MyEClass.{zwsp}ref>>`
 
 [[EPackage1-Iface]]
 ==== Interface Iface
 
 Description
 
+Instance Type Name:: _undefined_
+
 .Sub-types
-* <<EPackage2-SomeClass, EPackage2.SomeClass>>
+* `<<EPackage2-SomeClass, EPackage2.{zwsp}SomeClass>>`
 
 [[EPackage1-MyEClass]]
 ==== Class MyEClass
 
 Description
 
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
+
 .Super-types
-* <<EPackage1-EClass1, EPackage1.EClass1>>
+* `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
 
 .Attributes
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Default Value
+|Properties
 |Description
 
-|attr[[EPackage1-MyEClass-attr]]
-|<<EPackage1-SpecialDataType, EPackage1.SpecialDataType>>
-|0..1
-|
+|`attr`[[EPackage1-MyEClass-attr]]
+|`<<EPackage1-SpecialDataType, EPackage1.{zwsp}SpecialDataType>>`
+|`[0..1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Description.
 
 Second sentence.
 
-|eeeenum[[EPackage1-MyEClass-eeeenum]]
-|<<EPackage1-Enum1, EPackage1.Enum1>>
-|0..6/ ordered
-|<<EPackage1-Enum1-Literal1, Literal1>>
+|`eeeenum`[[EPackage1-MyEClass-eeeenum]]
+|`<<EPackage1-Enum1, EPackage1.{zwsp}Enum1>>`
+|`[0..6]` +
+_Default:_ `<<EPackage1-Enum1-Literal1, Literal1>>` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Deschkriptschion.
 
-|d[[EPackage1-MyEClass-d]] +
-(<<EPackage1-EClass1-d, {inherited}EPackage1.EClass1>>)
-|EDouble
-|0..1
-|3.141592
+|`d`[[EPackage1-MyEClass-d]] +
+(`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EDouble`
+|`[0..1]` +
+_Default:_ `3.141592` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
-|id[[EPackage1-MyEClass-id]] +
-(<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
-|EInt
-|1
-|
+|`id`[[EPackage1-MyEClass-id]] +
+(`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EInt`
+|*is id* +
+`[1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Description of id.
 
-|name[[EPackage1-MyEClass-name]] +
-(<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
-|EString
-|3..5/ ordered
-|
+|`name`[[EPackage1-MyEClass-name]] +
+(`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EString`
+|`[3..5]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Name desc.
 
-|someStringAttr[[EPackage1-MyEClass-someStringAttr]] +
-(<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.EClass1>>)
-|EString
-|0..1
-|"Hello, World!"
+|`someStringAttr`[[EPackage1-MyEClass-someStringAttr]] +
+(`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EString`
+|`[0..1]` +
+_Default:_ `Hello, World!` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
-|specialNumber[[EPackage1-MyEClass-specialNumber]] +
-(<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.EClass1>>)
-|EInt
-|0..1
-|23
+|`specialNumber`[[EPackage1-MyEClass-specialNumber]] +
+(`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EInt`
+|`[0..1]` +
+_Default:_ `23` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 |===
 
 .Containments
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Opposite
+|Properties
 |Description
 
-|clazzes[[EPackage1-MyEClass-clazzes]]
-|<<EPackage1-Class3, EPackage1.Class3>>
-|1..*{nbsp}/ unordered
-|<<EPackage1-Class3-specialParent, specialParent>>
+|`clazzes`[[EPackage1-MyEClass-clazzes]]
+|`<<EPackage1-Class3, EPackage1.{zwsp}Class3>>`
+
+_EOpposite:_ `<<EPackage1-Class3-specialParent, specialParent>>`
+|_EKeys:_ `-` +
+**non-resolveProxies** +
+non-container +
+containment +
+`[1..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Desc.
 
-|otherClasses[[EPackage1-MyEClass-otherClasses]]
-|<<EPackage1-Class3, EPackage1.Class3>>
-|0..*{nbsp}/ ordered
-|
+|`otherClasses`[[EPackage1-MyEClass-otherClasses]]
+|`<<EPackage1-Class3, EPackage1.{zwsp}Class3>>`
+|_EKeys:_ `-` +
+**non-resolveProxies** +
+non-container +
+containment +
+`[0..*]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Desc.
 
 Containments could also be inherited.
 |===
 
 .References
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Opposite
+|Properties
 |Description
 
-|backwards[[EPackage1-MyEClass-backwards]]
-|<<EPackage1-EClass1, EPackage1.EClass1>>
-|1
-|<<EPackage1-EClass1-myRelation, myRelation>>
+|`backwards`[[EPackage1-MyEClass-backwards]]
+|`<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
+
+_EOpposite:_ `<<EPackage1-EClass1-myRelation, myRelation>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+non-containment +
+`[1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |
 
-|ref[[EPackage1-MyEClass-ref]]
-|<<EPackage1-EClass1, EPackage1.EClass1>>
-|0..1
-|
+|`ref`[[EPackage1-MyEClass-ref]]
+|`<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+non-containment +
+`[0..1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Whatever.
 
-|myRelation[[EPackage1-MyEClass-myRelation]] +
-(<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
-|<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|0..*{nbsp}/ unordered
-|<<EPackage1-MyEClass-backwards, backwards>>
+|`myRelation`[[EPackage1-MyEClass-myRelation]] +
+(`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+non-containment +
+`[0..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Description.
 |===
 
 .Used at
-* <<EPackage1-Class3-myRelation, EPackage1.Class3.myRelation>>
-* <<EPackage1-Class3-specialParent, EPackage1.Class3.specialParent>>
-* <<EPackage1-EClass1-myRelation, EPackage1.EClass1.myRelation>>
-* <<EPackage1-MyEClass-myRelation, EPackage1.MyEClass.myRelation>>
-* <<EPackage2-SomeClass-myRelation, EPackage2.SomeClass.myRelation>>
+* `<<EPackage1-Class3-myRelation, EPackage1.{zwsp}Class3.{zwsp}myRelation>>`
+* `<<EPackage1-Class3-specialParent, EPackage1.{zwsp}Class3.{zwsp}specialParent>>`
+* `<<EPackage1-EClass1-myRelation, EPackage1.{zwsp}EClass1.{zwsp}myRelation>>`
+* `<<EPackage1-MyEClass-myRelation, EPackage1.{zwsp}MyEClass.{zwsp}myRelation>>`
+* `<<EPackage2-SomeClass-myRelation, EPackage2.{zwsp}SomeClass.{zwsp}myRelation>>`
 
 
 [[EPackage2]]
@@ -360,11 +585,17 @@ Containments could also be inherited.
 
 Package2 documentation
 
+Ns Prefix:: ep2
+Ns URI:: http://altran.com/general/emf/ecoredoc/test/epackage2/1.0.0
+
 === Types
 
 [[EPackage2-Class3]]
 ==== Class Class3
 
+
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
 
 [[EPackage2-SomeClass]]
 ==== Class SomeClass
@@ -373,68 +604,114 @@ This is
 
 my doc
 
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
+
 .Super-types
-* <<EPackage1-EClass1, EPackage1.EClass1>>
-* <<EPackage1-Iface, EPackage1.Iface>>
+* `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
+* `<<EPackage1-Iface, EPackage1.{zwsp}Iface>>`
 
 .Attributes
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Default Value
+|Properties
 |Description
 
-|d[[EPackage2-SomeClass-d]] +
-(<<EPackage1-EClass1-d, {inherited}EPackage1.EClass1>>)
-|EDouble
-|0..1
-|3.141592
+|`d`[[EPackage2-SomeClass-d]] +
+(`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EDouble`
+|`[0..1]` +
+_Default:_ `3.141592` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
-|id[[EPackage2-SomeClass-id]] +
-(<<EPackage1-EClass1-id, {inherited}EPackage1.EClass1>>)
-|EInt
-|1
-|
+|`id`[[EPackage2-SomeClass-id]] +
+(`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EInt`
+|*is id* +
+`[1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Description of id.
 
-|name[[EPackage2-SomeClass-name]] +
-(<<EPackage1-EClass1-name, {inherited}EPackage1.EClass1>>)
-|EString
-|3..5/ ordered
-|
+|`name`[[EPackage2-SomeClass-name]] +
+(`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EString`
+|`[3..5]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |Name desc.
 
-|someStringAttr[[EPackage2-SomeClass-someStringAttr]] +
-(<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.EClass1>>)
-|EString
-|0..1
-|"Hello, World!"
+|`someStringAttr`[[EPackage2-SomeClass-someStringAttr]] +
+(`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EString`
+|`[0..1]` +
+_Default:_ `Hello, World!` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 
-|specialNumber[[EPackage2-SomeClass-specialNumber]] +
-(<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.EClass1>>)
-|EInt
-|0..1
-|23
+|`specialNumber`[[EPackage2-SomeClass-specialNumber]] +
+(`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EInt`
+|`[0..1]` +
+_Default:_ `23` +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
 |
 |===
 
 .References
-[cols="<15m,<15,<15m,<15m,<40a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
-|Multiplicity{nbsp}/ Order
-|Opposite
+|Properties
 |Description
 
-|myRelation[[EPackage2-SomeClass-myRelation]] +
-(<<EPackage1-EClass1-myRelation, {inherited}EPackage1.EClass1>>)
-|<<EPackage1-MyEClass, EPackage1.MyEClass>>
-|0..*{nbsp}/ unordered
-|<<EPackage1-MyEClass-backwards, backwards>>
+|`myRelation`[[EPackage2-SomeClass-myRelation]] +
+(`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+non-containment +
+`[0..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
 |Description.
 |===

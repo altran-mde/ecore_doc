@@ -10,6 +10,8 @@ import java.util.Collection
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EPackage
 
+import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
+
 class EcoreDocGenerator {
 
 	extension EcoreDocExtension = new EcoreDocExtension
@@ -74,7 +76,16 @@ class EcoreDocGenerator {
 			== Contents of «ePackageName»
 			«newline»
 			«getDocumentation(ePackage)»
+			«newline»
+			«concatEPackageProperties(ePackage)»
 		''')
+	}
+	
+	protected def concatEPackageProperties(EPackage ePackage) {
+		'''
+			Ns Prefix:: «ePackage.nsPrefix»
+			Ns URI:: «ePackage.nsURI»
+		'''
 	}
 
 	protected def void collectEPackages() {

@@ -11,6 +11,8 @@ import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
 
+import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
+
 class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	extension EStructuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper
 	
@@ -54,6 +56,8 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 	protected def void writeEClass(EClass eClass) {
 		writeEClassHeader(eClass)
+		
+		writeProperties(eClass)
 
 		writeSuperTypes(eClass)
 
@@ -250,7 +254,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		output.append(
 		'''
 			«newline»
-			|«eStructuralFeatureName»[[«inheritedFeatureSegments.join(separator)»]]«IF isInherited» +«ENDIF»
+			|`«eStructuralFeatureName»`[[«inheritedFeatureSegments.join(separator)»]]«IF isInherited» +«ENDIF»
 			«IF isInherited»«concatInheritedElement(eStructuralFeature)»«ENDIF»
 			|«concatFeatureType(eStructuralFeature)»
 			|«concatFeatureProperties(eStructuralFeature)»
@@ -258,56 +262,33 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		''')
 	}
 	
-	protected def CharSequence eReferencePropertiesToString(EReference eReference){
+	protected def CharSequence concatFeatureProperties(EStructuralFeature eStructuralFeature) {
+		val featureProperties = enumerateFeatureProperties(eStructuralFeature)
+		val genericProperties = enumerateGenericProperties(eStructuralFeature)
+		
 		val CharSequence separator = ''' +«newline»'''
 		
+		return (featureProperties + genericProperties)
+			.filterNull
+			.join(separator)
+	}
+	
+	protected def dispatch List<CharSequence> enumerateFeatureProperties(EAttribute eAttribute){
+		 #[
+		 	defineId(eAttribute)
+		 ]
+	 }
+		 
+	protected def dispatch List<CharSequence> enumerateFeatureProperties(EReference eReference){
 		 #[
 			defineEKeys(eReference),
 			defineResolveProxies(eReference),
 			defineContainer(eReference),
 			defineContainment(eReference)
-			
-		].filter[it !== null].join(separator)
+		]
 	}
 	
-	protected def CharSequence genericPropertiesToString(EStructuralFeature eStructuralFeature){
-		val CharSequence separator = ''' +«newline»'''
-		
-		return  concatGenericProperties(eStructuralFeature).filter[it !== null].join(separator)
-	}
-
-	protected def dispatch CharSequence concatFeatureProperties(EReference eReference) {
-		val CharSequence eReferenceProperties = eReferencePropertiesToString(eReference)
-		val CharSequence genericProperties = genericPropertiesToString(eReference)
-		
-		if(eReferenceProperties != ""){
-			return eReferenceProperties + newline + newline + genericProperties
-			
-		}else{
-			return genericProperties
-		}	
-	}
-	
-	protected def idToString(EAttribute eAttribute){
-		val CharSequence separator = ''' +«newline»'''
-		
-		return #[defineId(eAttribute)].filter[it !== null]
-									  .join(separator)
-	}
-	
-	protected def dispatch CharSequence concatFeatureProperties(EAttribute eAttribute) {
-		val CharSequence id = idToString(eAttribute)
-		var CharSequence genericProperties = genericPropertiesToString(eAttribute)
-		
-		if(id != ""){
-			return id + newline + newline +genericProperties
-			
-		}else{
-			return genericProperties
-		}	
-	}
-
-	protected def List<CharSequence> concatGenericProperties(EStructuralFeature eStructuralFeature) {
+	protected def List<CharSequence> enumerateGenericProperties(EStructuralFeature eStructuralFeature) {
 		#[
 			concatBounds(eStructuralFeature),
 			concatDefaultValue(eStructuralFeature),
@@ -343,7 +324,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			
 			'''
 				«newline»
-				_EOpposite:_ <<«concatAnchor(eReferenceType)»«separator»«eOppositeName», «eOppositeName»>>
+				_EOpposite:_ `<<«concatAnchor(eReferenceType)»«separator»«eOppositeName», «eOppositeName»>>`
 			'''
 		}
 	}
@@ -351,7 +332,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def CharSequence concatInheritedElement(ENamedElement eNamedElement) {
 		val eClass = eNamedElement.eContainer as EClass
 		
-		'''(<<«concatAnchor(eNamedElement)», {inherited}«concatReferenceName(eClass)»>>)'''
+		'''(`<<«concatAnchor(eNamedElement)», {inherited}«concatReferenceName(eClass)»>>`)'''
 	}
 
 	protected def void writeEReferencesHeader() {
@@ -381,6 +362,25 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			==== «IF isAbstract && notInterface»Abstract «ENDIF»«IF isInterface»Interface«ELSE»Class«ENDIF» «eClassName»
 			«newline»
 			«getDocumentation(eClass)»
+			«newline»
 		''')
+	}
+	
+	protected def CharSequence writeProperties(EClass eClass) {
+		val properties = newArrayList
+		
+		if (!eClass.isAbstract) {
+			properties += defineDefaultValue(eClass)
+		}
+		
+		properties += defineInstanceClassName(eClass)
+		
+		output.append(
+			properties
+				.filterNull
+				.join(EcoreDocExtension.ECLASSIFIER_PROPERTY_SEPARATOR)
+		)
+		
+		output.append(newline)
 	}
 }

@@ -3,13 +3,16 @@ package com.altran.general.emf.ecoredoc.generator.impl
 import com.google.common.collect.Multimap
 import java.util.ArrayList
 import java.util.Collection
+import java.util.List
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.ENamedElement
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EStructuralFeature
-import java.util.List
+
+import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
+import org.eclipse.emf.ecore.EcorePackage
 
 abstract class AEcoreDocGeneratorPart {
 
@@ -46,7 +49,7 @@ abstract class AEcoreDocGeneratorPart {
 	}
 
 	protected def dispatch CharSequence concatLinkTo(ENamedElement eNamedElement) {
-		'''<<«concatAnchor(eNamedElement)», «concatReferenceName(eNamedElement)»>>'''
+		'''`<<«concatAnchor(eNamedElement)», «concatReferenceName(eNamedElement)»>>`'''
 	}
 
 	// Special handling for default EDataTypes: Don't create anchor
@@ -54,10 +57,10 @@ abstract class AEcoreDocGeneratorPart {
 		val boolean defaultDataType = isDefaultEDataType(eDataType)
 		
 		if (defaultDataType) {
-			eDataType.name
+			'''`«eDataType.name»`'''
 
 		} else {
-			'''<<«concatAnchor(eDataType)», «concatReferenceName(eDataType)»>>'''
+			'''`<<«concatAnchor(eDataType)», «concatReferenceName(eDataType)»>>`'''
 			
 		}
 	}
@@ -67,7 +70,7 @@ abstract class AEcoreDocGeneratorPart {
 		val CharSequence anchor = '''«inheritedFeatureSegments.join(EcoreDocExtension.ANCHOR_SEPARATOR)»'''
 		val CharSequence reference = '''«inheritedFeatureSegments.join(EcoreDocExtension.REFERENCE_SEPARATOR)»'''
 
-		'''<<«anchor», «reference»>>'''
+		'''`<<«anchor», «reference»>>`'''
 	}
 
 	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature,
@@ -112,7 +115,32 @@ abstract class AEcoreDocGeneratorPart {
 			}
 		}
 	}
+	
+	protected def defineDefaultValue(EClassifier eClassifier) {
+		val defaultValue = '''_undefined_'''
+		val value = if (eClassifier.eIsSet(EcorePackage.eINSTANCE.EClassifier_DefaultValue)) '''`«eClassifier.defaultValue»`''' else null
 
+		concatProperty("Default Value", defaultValue, value)
+	}
+	
+	protected def defineInstanceClassName(EClassifier eClassifier) {
+		val defaultValue = '''_undefined_'''
+		val value = if (eClassifier.eIsSet(EcorePackage.eINSTANCE.EClassifier_InstanceClassName)) '''`«eClassifier.instanceClassName»`''' else null
+
+		concatProperty("Instance Type Name", defaultValue, value)
+	}
+	
+	protected def defineSerializable(EDataType eDataType) {
+		val defaultValue = '''true'''
+		val value = eDataType.serializable
+
+		concatProperty("Serializable", defaultValue, value.toString)
+	}
+	
+	protected def concatProperty(String name, String defaultValue, String value) {
+		'''«name»:: «IF value !== null»«value»«ELSE»«defaultValue»«ENDIF»'''
+	}
+	
 	protected def CharSequence tableFooter() {
 		'''
 			|===
@@ -122,4 +150,18 @@ abstract class AEcoreDocGeneratorPart {
 	protected def Collection<EClass> collectAllEClasses() {
 		ePackages.values.filter(EClass).toSet
 	}
+	
+	protected def CharSequence writeProperties(EDataType eDataType) {
+		output.append(
+			#[
+				defineDefaultValue(eDataType),
+				defineInstanceClassName(eDataType),
+				defineSerializable(eDataType)
+			]
+			.filterNull
+			.join(EcoreDocExtension.ECLASSIFIER_PROPERTY_SEPARATOR)
+		)
+		output.append(newline)
+	}
+	
 }

@@ -7,6 +7,7 @@ import com.google.common.collect.Multimap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -14,6 +15,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -62,13 +64,13 @@ public abstract class AEcoreDocGeneratorPart {
   
   protected CharSequence _concatLinkTo(final ENamedElement eNamedElement) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<<");
+    _builder.append("`<<");
     CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eNamedElement);
     _builder.append(_concatAnchor);
     _builder.append(", ");
     CharSequence _concatReferenceName = this.concatReferenceName(eNamedElement);
     _builder.append(_concatReferenceName);
-    _builder.append(">>");
+    _builder.append(">>`");
     return _builder;
   }
   
@@ -78,17 +80,22 @@ public abstract class AEcoreDocGeneratorPart {
       final boolean defaultDataType = this._ecoreDocExtension.isDefaultEDataType(eDataType);
       CharSequence _xifexpression = null;
       if (defaultDataType) {
-        _xifexpression = eDataType.getName();
-      } else {
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("<<");
-        CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eDataType);
-        _builder.append(_concatAnchor);
-        _builder.append(", ");
-        CharSequence _concatReferenceName = this.concatReferenceName(eDataType);
-        _builder.append(_concatReferenceName);
-        _builder.append(">>");
+        _builder.append("`");
+        String _name = eDataType.getName();
+        _builder.append(_name);
+        _builder.append("`");
         _xifexpression = _builder;
+      } else {
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("`<<");
+        CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eDataType);
+        _builder_1.append(_concatAnchor);
+        _builder_1.append(", ");
+        CharSequence _concatReferenceName = this.concatReferenceName(eDataType);
+        _builder_1.append(_concatReferenceName);
+        _builder_1.append(">>`");
+        _xifexpression = _builder_1;
       }
       _xblockexpression = _xifexpression;
     }
@@ -108,11 +115,11 @@ public abstract class AEcoreDocGeneratorPart {
       _builder_1.append(_join_1);
       final CharSequence reference = _builder_1;
       StringConcatenation _builder_2 = new StringConcatenation();
-      _builder_2.append("<<");
+      _builder_2.append("`<<");
       _builder_2.append(anchor);
       _builder_2.append(", ");
       _builder_2.append(reference);
-      _builder_2.append(">>");
+      _builder_2.append(">>`");
       _xblockexpression = _builder_2;
     }
     return _xblockexpression;
@@ -160,7 +167,7 @@ public abstract class AEcoreDocGeneratorPart {
     }
     if (anyMatch) {
       StringConcatenation _builder = new StringConcatenation();
-      String _newline = this._ecoreDocExtension.newline();
+      String _newline = EcoreDocExtension.newline();
       _builder.append(_newline);
       _builder.newLineIfNotEmpty();
       _builder.append(".Used at");
@@ -173,6 +180,80 @@ public abstract class AEcoreDocGeneratorPart {
     }
   }
   
+  protected CharSequence defineDefaultValue(final EClassifier eClassifier) {
+    CharSequence _xblockexpression = null;
+    {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("_undefined_");
+      final String defaultValue = _builder.toString();
+      String _xifexpression = null;
+      boolean _eIsSet = eClassifier.eIsSet(EcorePackage.eINSTANCE.getEClassifier_DefaultValue());
+      if (_eIsSet) {
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("`");
+        Object _defaultValue = eClassifier.getDefaultValue();
+        _builder_1.append(_defaultValue);
+        _builder_1.append("`");
+        _xifexpression = _builder_1.toString();
+      } else {
+        _xifexpression = null;
+      }
+      final String value = _xifexpression;
+      _xblockexpression = this.concatProperty("Default Value", defaultValue, value);
+    }
+    return _xblockexpression;
+  }
+  
+  protected CharSequence defineInstanceClassName(final EClassifier eClassifier) {
+    CharSequence _xblockexpression = null;
+    {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("_undefined_");
+      final String defaultValue = _builder.toString();
+      String _xifexpression = null;
+      boolean _eIsSet = eClassifier.eIsSet(EcorePackage.eINSTANCE.getEClassifier_InstanceClassName());
+      if (_eIsSet) {
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("`");
+        String _instanceClassName = eClassifier.getInstanceClassName();
+        _builder_1.append(_instanceClassName);
+        _builder_1.append("`");
+        _xifexpression = _builder_1.toString();
+      } else {
+        _xifexpression = null;
+      }
+      final String value = _xifexpression;
+      _xblockexpression = this.concatProperty("Instance Type Name", defaultValue, value);
+    }
+    return _xblockexpression;
+  }
+  
+  protected CharSequence defineSerializable(final EDataType eDataType) {
+    CharSequence _xblockexpression = null;
+    {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("true");
+      final String defaultValue = _builder.toString();
+      final boolean value = eDataType.isSerializable();
+      _xblockexpression = this.concatProperty("Serializable", defaultValue, Boolean.valueOf(value).toString());
+    }
+    return _xblockexpression;
+  }
+  
+  protected CharSequence concatProperty(final String name, final String defaultValue, final String value) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(name);
+    _builder.append(":: ");
+    {
+      if ((value != null)) {
+        _builder.append(value);
+      } else {
+        _builder.append(defaultValue);
+      }
+    }
+    return _builder;
+  }
+  
   protected CharSequence tableFooter() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("|===");
@@ -182,6 +263,19 @@ public abstract class AEcoreDocGeneratorPart {
   
   protected Collection<EClass> collectAllEClasses() {
     return IterableExtensions.<EClass>toSet(Iterables.<EClass>filter(this.ePackages.values(), EClass.class));
+  }
+  
+  protected CharSequence writeProperties(final EDataType eDataType) {
+    StringBuilder _xblockexpression = null;
+    {
+      CharSequence _defineDefaultValue = this.defineDefaultValue(eDataType);
+      CharSequence _defineInstanceClassName = this.defineInstanceClassName(eDataType);
+      CharSequence _defineSerializable = this.defineSerializable(eDataType);
+      this.output.append(
+        IterableExtensions.join(IterableExtensions.<CharSequence>filterNull(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineDefaultValue, _defineInstanceClassName, _defineSerializable))), EcoreDocExtension.ECLASSIFIER_PROPERTY_SEPARATOR));
+      _xblockexpression = this.output.append(EcoreDocExtension.newline());
+    }
+    return _xblockexpression;
   }
   
   protected CharSequence concatLinkTo(final ENamedElement eDataType) {

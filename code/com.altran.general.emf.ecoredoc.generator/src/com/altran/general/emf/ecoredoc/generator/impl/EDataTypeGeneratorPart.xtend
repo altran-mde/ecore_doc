@@ -7,6 +7,8 @@ import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EPackage
 
+import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
+
 class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 
 	new(Multimap<EPackage, EClassifier> ePackages) {
@@ -30,9 +32,10 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def void writeEDataTypes(List<EDataType> eDataTypes) {
 		if (!eDataTypes.isEmpty) {
 			writeEDataTypesHeader()
-
+			
 			for (eDataType : eDataTypes) {
 				writeEDataTypeHeader(eDataType)
+				writeProperties(eDataType)
 				writeUseCases(eDataType)
 			}
 		}
@@ -54,6 +57,7 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 			==== «eDataType.name»
 			«newline»
 			«getDocumentation(eDataType)»
+			«newline»
 		''')
 	}
 }

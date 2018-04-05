@@ -60,17 +60,17 @@ public class EcoreDocGenerator {
     _builder.newLine();
     _builder.append(":wupt: &#9651;");
     _builder.newLine();
-    String _newline = this._ecoreDocExtension.newline();
+    String _newline = EcoreDocExtension.newline();
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append(":inherited: {wupt}{nbsp}");
     _builder.newLine();
-    String _newline_1 = this._ecoreDocExtension.newline();
+    String _newline_1 = EcoreDocExtension.newline();
     _builder.append(_newline_1);
     _builder.newLineIfNotEmpty();
     _builder.append(":table-caption!:");
     _builder.newLine();
-    String _newline_2 = this._ecoreDocExtension.newline();
+    String _newline_2 = EcoreDocExtension.newline();
     _builder.append(_newline_2);
     _builder.newLineIfNotEmpty();
     _builder.append("= Ecore Documentation");
@@ -85,10 +85,10 @@ public class EcoreDocGenerator {
   protected void writeEPackageIntro(final EPackage ePackage) {
     final String ePackageName = ePackage.getName();
     StringConcatenation _builder = new StringConcatenation();
-    String _newline = this._ecoreDocExtension.newline();
+    String _newline = EcoreDocExtension.newline();
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
-    String _newline_1 = this._ecoreDocExtension.newline();
+    String _newline_1 = EcoreDocExtension.newline();
     _builder.append(_newline_1);
     _builder.newLineIfNotEmpty();
     _builder.append("[[");
@@ -98,13 +98,32 @@ public class EcoreDocGenerator {
     _builder.append("== Contents of ");
     _builder.append(ePackageName);
     _builder.newLineIfNotEmpty();
-    String _newline_2 = this._ecoreDocExtension.newline();
+    String _newline_2 = EcoreDocExtension.newline();
     _builder.append(_newline_2);
     _builder.newLineIfNotEmpty();
     CharSequence _documentation = this._ecoreDocExtension.getDocumentation(ePackage);
     _builder.append(_documentation);
     _builder.newLineIfNotEmpty();
+    String _newline_3 = EcoreDocExtension.newline();
+    _builder.append(_newline_3);
+    _builder.newLineIfNotEmpty();
+    CharSequence _concatEPackageProperties = this.concatEPackageProperties(ePackage);
+    _builder.append(_concatEPackageProperties);
+    _builder.newLineIfNotEmpty();
     this.output.append(_builder);
+  }
+  
+  protected CharSequence concatEPackageProperties(final EPackage ePackage) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("Ns Prefix:: ");
+    String _nsPrefix = ePackage.getNsPrefix();
+    _builder.append(_nsPrefix);
+    _builder.newLineIfNotEmpty();
+    _builder.append("Ns URI:: ");
+    String _nsURI = ePackage.getNsURI();
+    _builder.append(_nsURI);
+    _builder.newLineIfNotEmpty();
+    return _builder;
   }
   
   protected void collectEPackages() {

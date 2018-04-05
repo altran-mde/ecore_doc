@@ -7,6 +7,8 @@ import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.EPackage
 
+import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
+
 class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 
 	new(Multimap<EPackage, EClassifier> ePackages) {
@@ -33,6 +35,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 
 			for (eEnum : eEnums) {
 				writeEEnumHeader(eEnum)
+				writeProperties(eEnum)
 				writeEEnumLiterals(eEnum)
 				writeUseCases(eEnum)
 			}
@@ -85,6 +88,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 			==== «eEnum.name»
 			«newline»
 			«getDocumentation(eEnum)»
+			«newline»
 		''')
 	}
 

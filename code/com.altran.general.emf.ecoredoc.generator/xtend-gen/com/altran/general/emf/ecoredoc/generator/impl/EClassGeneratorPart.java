@@ -6,6 +6,7 @@ import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -31,7 +32,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   @Extension
   private EStructuralFeaturePropertyHelper _eStructuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper();
   
-  public final static CharSequence separator = EcoreDocExtension.ANCHOR_SEPARATOR;
+  public final static String separator = EcoreDocExtension.ANCHOR_SEPARATOR;
   
   public EClassGeneratorPart(final Multimap<EPackage, EClassifier> ePackages) {
     super(ePackages);
@@ -66,7 +67,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected void writeEClassesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
-    String _newline = this._ecoreDocExtension.newline();
+    String _newline = EcoreDocExtension.newline();
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append("=== Types");
@@ -76,6 +77,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   
   protected void writeEClass(final EClass eClass) {
     this.writeEClassHeader(eClass);
+    this.writeProperties(eClass);
     this.writeSuperTypes(eClass);
     this.writeSubTypes(eClass);
     this.writeEAttributes(eClass);
@@ -124,7 +126,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected void writeEContainmentHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
-    String _newline = this._ecoreDocExtension.newline();
+    String _newline = EcoreDocExtension.newline();
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append(".Containments");
@@ -196,7 +198,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected void writeSubTypesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
-    String _newline = this._ecoreDocExtension.newline();
+    String _newline = EcoreDocExtension.newline();
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append(".Sub-types");
@@ -207,7 +209,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected void writeSuperTypesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
-    String _newline = this._ecoreDocExtension.newline();
+    String _newline = EcoreDocExtension.newline();
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append(".Super-types");
@@ -218,7 +220,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected void writeEAttributesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
-    String _newline = this._ecoreDocExtension.newline();
+    String _newline = EcoreDocExtension.newline();
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append(".Attributes");
@@ -316,12 +318,12 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     final String[] inheritedFeatureSegments = this.collectInheritedFeatureSegments(eStructuralFeature, eClass);
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
-    String _newline = this._ecoreDocExtension.newline();
+    String _newline = EcoreDocExtension.newline();
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
-    _builder.append("|");
+    _builder.append("|`");
     _builder.append(eStructuralFeatureName);
-    _builder.append("[[");
+    _builder.append("`[[");
     String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), EClassGeneratorPart.separator);
     _builder.append(_join);
     _builder.append("]]");
@@ -353,85 +355,32 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _output.append(_builder);
   }
   
-  protected CharSequence eReferencePropertiesToString(final EReference eReference) {
-    String _xblockexpression = null;
-    {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append(" ");
-      _builder.append("+");
-      String _newline = this._ecoreDocExtension.newline();
-      _builder.append(_newline, " ");
-      final CharSequence separator = _builder;
-      CharSequence _defineEKeys = this._eStructuralFeaturePropertyHelper.defineEKeys(eReference);
-      CharSequence _defineResolveProxies = this._eStructuralFeaturePropertyHelper.defineResolveProxies(eReference);
-      CharSequence _defineContainer = this._eStructuralFeaturePropertyHelper.defineContainer(eReference);
-      CharSequence _defineContainment = this._eStructuralFeaturePropertyHelper.defineContainment(eReference);
-      final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
-        return Boolean.valueOf((it != null));
-      };
-      _xblockexpression = IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineEKeys, _defineResolveProxies, _defineContainer, _defineContainment)), _function), separator);
-    }
-    return _xblockexpression;
-  }
-  
-  protected CharSequence genericPropertiesToString(final EStructuralFeature eStructuralFeature) {
+  protected CharSequence concatFeatureProperties(final EStructuralFeature eStructuralFeature) {
+    final List<CharSequence> featureProperties = this.enumerateFeatureProperties(eStructuralFeature);
+    final List<CharSequence> genericProperties = this.enumerateGenericProperties(eStructuralFeature);
     StringConcatenation _builder = new StringConcatenation();
     _builder.append(" ");
     _builder.append("+");
-    String _newline = this._ecoreDocExtension.newline();
+    String _newline = EcoreDocExtension.newline();
     _builder.append(_newline, " ");
     final CharSequence separator = _builder;
-    final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
-      return Boolean.valueOf((it != null));
-    };
-    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(this.concatGenericProperties(eStructuralFeature), _function), separator);
+    return IterableExtensions.join(IterableExtensions.<CharSequence>filterNull(Iterables.<CharSequence>concat(featureProperties, genericProperties)), separator);
   }
   
-  protected CharSequence _concatFeatureProperties(final EReference eReference) {
-    final CharSequence eReferenceProperties = this.eReferencePropertiesToString(eReference);
-    final CharSequence genericProperties = this.genericPropertiesToString(eReference);
-    boolean _notEquals = (!Objects.equal(eReferenceProperties, ""));
-    if (_notEquals) {
-      String _newline = this._ecoreDocExtension.newline();
-      String _plus = (eReferenceProperties + _newline);
-      String _newline_1 = this._ecoreDocExtension.newline();
-      String _plus_1 = (_plus + _newline_1);
-      return (_plus_1 + genericProperties);
-    } else {
-      return genericProperties;
-    }
-  }
-  
-  protected String idToString(final EAttribute eAttribute) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append(" ");
-    _builder.append("+");
-    String _newline = this._ecoreDocExtension.newline();
-    _builder.append(_newline, " ");
-    final CharSequence separator = _builder;
+  protected List<CharSequence> _enumerateFeatureProperties(final EAttribute eAttribute) {
     CharSequence _defineId = this._eStructuralFeaturePropertyHelper.defineId(eAttribute);
-    final Function1<CharSequence, Boolean> _function = (CharSequence it) -> {
-      return Boolean.valueOf((it != null));
-    };
-    return IterableExtensions.join(IterableExtensions.<CharSequence>filter(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineId)), _function), separator);
+    return Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineId));
   }
   
-  protected CharSequence _concatFeatureProperties(final EAttribute eAttribute) {
-    final CharSequence id = this.idToString(eAttribute);
-    CharSequence genericProperties = this.genericPropertiesToString(eAttribute);
-    boolean _notEquals = (!Objects.equal(id, ""));
-    if (_notEquals) {
-      String _newline = this._ecoreDocExtension.newline();
-      String _plus = (id + _newline);
-      String _newline_1 = this._ecoreDocExtension.newline();
-      String _plus_1 = (_plus + _newline_1);
-      return (_plus_1 + genericProperties);
-    } else {
-      return genericProperties;
-    }
+  protected List<CharSequence> _enumerateFeatureProperties(final EReference eReference) {
+    CharSequence _defineEKeys = this._eStructuralFeaturePropertyHelper.defineEKeys(eReference);
+    CharSequence _defineResolveProxies = this._eStructuralFeaturePropertyHelper.defineResolveProxies(eReference);
+    CharSequence _defineContainer = this._eStructuralFeaturePropertyHelper.defineContainer(eReference);
+    CharSequence _defineContainment = this._eStructuralFeaturePropertyHelper.defineContainment(eReference);
+    return Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineEKeys, _defineResolveProxies, _defineContainer, _defineContainment));
   }
   
-  protected List<CharSequence> concatGenericProperties(final EStructuralFeature eStructuralFeature) {
+  protected List<CharSequence> enumerateGenericProperties(final EStructuralFeature eStructuralFeature) {
     CharSequence _concatBounds = this._eStructuralFeaturePropertyHelper.concatBounds(eStructuralFeature);
     CharSequence _concatDefaultValue = this._eStructuralFeaturePropertyHelper.concatDefaultValue(eStructuralFeature);
     CharSequence _defineOrdered = this._eStructuralFeaturePropertyHelper.defineOrdered(eStructuralFeature);
@@ -474,17 +423,17 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
           final String eOppositeName = eOpposite.getName();
           final EClass eReferenceType = eReference.getEReferenceType();
           StringConcatenation _builder = new StringConcatenation();
-          String _newline = this._ecoreDocExtension.newline();
+          String _newline = EcoreDocExtension.newline();
           _builder.append(_newline);
           _builder.newLineIfNotEmpty();
-          _builder.append("_EOpposite:_ <<");
+          _builder.append("_EOpposite:_ `<<");
           CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eReferenceType);
           _builder.append(_concatAnchor);
           _builder.append(EClassGeneratorPart.separator);
           _builder.append(eOppositeName);
           _builder.append(", ");
           _builder.append(eOppositeName);
-          _builder.append(">>");
+          _builder.append(">>`");
           _builder.newLineIfNotEmpty();
           _xblockexpression_1 = _builder;
         }
@@ -501,13 +450,13 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       EObject _eContainer = eNamedElement.eContainer();
       final EClass eClass = ((EClass) _eContainer);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("(<<");
+      _builder.append("(`<<");
       CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eNamedElement);
       _builder.append(_concatAnchor);
       _builder.append(", {inherited}");
       CharSequence _concatReferenceName = this.concatReferenceName(eClass);
       _builder.append(_concatReferenceName);
-      _builder.append(">>)");
+      _builder.append(">>`)");
       _xblockexpression = _builder;
     }
     return _xblockexpression;
@@ -516,7 +465,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   protected void writeEReferencesHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
-    String _newline = this._ecoreDocExtension.newline();
+    String _newline = EcoreDocExtension.newline();
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append(".References");
@@ -546,7 +495,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       final boolean notInterface = (!isInterface);
       StringBuilder _output = this.getOutput();
       StringConcatenation _builder = new StringConcatenation();
-      String _newline = this._ecoreDocExtension.newline();
+      String _newline = EcoreDocExtension.newline();
       _builder.append(_newline);
       _builder.newLineIfNotEmpty();
       _builder.append("[[");
@@ -570,22 +519,44 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       _builder.append(" ");
       _builder.append(eClassName);
       _builder.newLineIfNotEmpty();
-      String _newline_1 = this._ecoreDocExtension.newline();
+      String _newline_1 = EcoreDocExtension.newline();
       _builder.append(_newline_1);
       _builder.newLineIfNotEmpty();
       CharSequence _documentation = this._ecoreDocExtension.getDocumentation(eClass);
       _builder.append(_documentation);
+      _builder.newLineIfNotEmpty();
+      String _newline_2 = EcoreDocExtension.newline();
+      _builder.append(_newline_2);
       _builder.newLineIfNotEmpty();
       _xblockexpression = _output.append(_builder);
     }
     return _xblockexpression;
   }
   
-  protected CharSequence concatFeatureProperties(final EStructuralFeature eAttribute) {
+  protected CharSequence writeProperties(final EClass eClass) {
+    StringBuilder _xblockexpression = null;
+    {
+      final ArrayList<CharSequence> properties = CollectionLiterals.<CharSequence>newArrayList();
+      boolean _isAbstract = eClass.isAbstract();
+      boolean _not = (!_isAbstract);
+      if (_not) {
+        CharSequence _defineDefaultValue = this.defineDefaultValue(eClass);
+        properties.add(_defineDefaultValue);
+      }
+      CharSequence _defineInstanceClassName = this.defineInstanceClassName(eClass);
+      properties.add(_defineInstanceClassName);
+      this.getOutput().append(
+        IterableExtensions.join(IterableExtensions.<CharSequence>filterNull(properties), EcoreDocExtension.ECLASSIFIER_PROPERTY_SEPARATOR));
+      _xblockexpression = this.getOutput().append(EcoreDocExtension.newline());
+    }
+    return _xblockexpression;
+  }
+  
+  protected List<CharSequence> enumerateFeatureProperties(final EStructuralFeature eAttribute) {
     if (eAttribute instanceof EAttribute) {
-      return _concatFeatureProperties((EAttribute)eAttribute);
+      return _enumerateFeatureProperties((EAttribute)eAttribute);
     } else if (eAttribute instanceof EReference) {
-      return _concatFeatureProperties((EReference)eAttribute);
+      return _enumerateFeatureProperties((EReference)eAttribute);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(eAttribute).toString());

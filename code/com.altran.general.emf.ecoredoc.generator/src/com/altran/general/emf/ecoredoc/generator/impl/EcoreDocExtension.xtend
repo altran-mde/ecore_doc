@@ -13,11 +13,13 @@ import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.util.EcoreUtil
 
 class EcoreDocExtension {
-	public static val CharSequence ANCHOR_SEPARATOR = '-'
+	public static val ANCHOR_SEPARATOR = '-'
 
-	public static val CharSequence REFERENCE_SEPARATOR = '.'
+	public static val REFERENCE_SEPARATOR = '.{zwsp}'
+	
+	public static val ECLASSIFIER_PROPERTY_SEPARATOR = newline
 
-	def String newline() {
+	def static String newline() {
 		System.getProperty("line.separator")
 	}
 

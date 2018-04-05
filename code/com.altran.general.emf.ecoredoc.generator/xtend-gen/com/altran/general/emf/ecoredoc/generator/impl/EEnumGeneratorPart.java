@@ -1,6 +1,7 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
 import java.util.List;
@@ -42,6 +43,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
       for (final EEnum eEnum : eEnums) {
         {
           this.writeEEnumHeader(eEnum);
+          this.writeProperties(eEnum);
           this.writeEEnumLiterals(eEnum);
           this.writeUseCases(eEnum);
         }
@@ -52,7 +54,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
   protected void writeEEnumsHeader() {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
-    String _newline = this._ecoreDocExtension.newline();
+    String _newline = EcoreDocExtension.newline();
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append("=== Enumerations");
@@ -63,7 +65,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
   protected void writeEEnumLiterals(final EEnum eEnum) {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
-    String _newline = this._ecoreDocExtension.newline();
+    String _newline = EcoreDocExtension.newline();
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append(".Literals");
@@ -89,7 +91,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
   protected void writeELiteral(final EEnumLiteral eLiteral) {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
-    String _newline = this._ecoreDocExtension.newline();
+    String _newline = EcoreDocExtension.newline();
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append("|");
@@ -114,7 +116,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
   protected CharSequence writeEEnumHeader(final EEnum eEnum) {
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
-    String _newline = this._ecoreDocExtension.newline();
+    String _newline = EcoreDocExtension.newline();
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append("[[");
@@ -126,11 +128,14 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     String _name = eEnum.getName();
     _builder.append(_name);
     _builder.newLineIfNotEmpty();
-    String _newline_1 = this._ecoreDocExtension.newline();
+    String _newline_1 = EcoreDocExtension.newline();
     _builder.append(_newline_1);
     _builder.newLineIfNotEmpty();
     CharSequence _documentation = this._ecoreDocExtension.getDocumentation(eEnum);
     _builder.append(_documentation);
+    _builder.newLineIfNotEmpty();
+    String _newline_2 = EcoreDocExtension.newline();
+    _builder.append(_newline_2);
     _builder.newLineIfNotEmpty();
     return _output.append(_builder);
   }

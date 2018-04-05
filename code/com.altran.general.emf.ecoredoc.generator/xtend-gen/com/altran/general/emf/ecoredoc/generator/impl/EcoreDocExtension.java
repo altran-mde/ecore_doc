@@ -19,18 +19,20 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class EcoreDocExtension {
-  public final static CharSequence ANCHOR_SEPARATOR = "-";
+  public final static String ANCHOR_SEPARATOR = "-";
   
-  public final static CharSequence REFERENCE_SEPARATOR = ".";
+  public final static String REFERENCE_SEPARATOR = ".{zwsp}";
   
-  public String newline() {
+  public final static String ECLASSIFIER_PROPERTY_SEPARATOR = EcoreDocExtension.newline();
+  
+  public static String newline() {
     return System.getProperty("line.separator");
   }
   
   public CharSequence getDocumentation(final EModelElement modelElement) {
     final CharSequence documentation = EcoreUtil.getDocumentation(modelElement);
     if ((documentation != null)) {
-      String _newline = this.newline();
+      String _newline = EcoreDocExtension.newline();
       return (documentation + _newline);
     } else {
       return "";

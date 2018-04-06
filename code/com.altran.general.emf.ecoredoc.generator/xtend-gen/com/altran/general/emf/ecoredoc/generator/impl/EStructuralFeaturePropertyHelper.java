@@ -206,6 +206,7 @@ public class EStructuralFeaturePropertyHelper {
       _builder.append("_EKeys:_");
       {
         if (eKeysExist) {
+          _builder.append(" ");
           final Function1<EAttribute, CharSequence> _function = (EAttribute it) -> {
             return it.getName();
           };

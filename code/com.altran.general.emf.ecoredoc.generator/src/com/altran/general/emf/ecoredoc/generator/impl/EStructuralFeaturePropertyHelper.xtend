@@ -151,7 +151,6 @@ class EStructuralFeaturePropertyHelper {
 	}
 
 	def dispatch CharSequence concatDefaultValue(EAttribute eAttribute) {
-		val CharSequence separator = EcoreDocExtension.ANCHOR_SEPARATOR
 		val EStructuralFeature defaultValueLiteral = EcorePackage.eINSTANCE.EStructuralFeature_DefaultValueLiteral
 		val boolean defaultIsSet = eAttribute.eIsSet(defaultValueLiteral)
 		var result = '''_Default:_ '''
@@ -159,9 +158,9 @@ class EStructuralFeaturePropertyHelper {
 		if (defaultIsSet) {
 			val defaultValue = eAttribute.defaultValue
 			
-			switch (defaultValue.class) {
-				case EEnumLiteralImpl:
-					result += '''`<<«concatAnchor(eAttribute.EAttributeType)»«separator»«defaultValue», «defaultValue»>>`'''
+			switch (defaultValue) {
+				EEnumLiteralImpl:
+					result += '''`<<«concatAnchor(eAttribute.EAttributeType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>`'''
 						
 				default:
 					result += '''`«defaultValue»`'''
@@ -180,19 +179,7 @@ class EStructuralFeaturePropertyHelper {
 
 		if (defaultIsSet) {
 			val defaultValue = eReference.defaultValue
-			val CharSequence separator = EcoreDocExtension.ANCHOR_SEPARATOR
-			val eReferenceType = eReference.EReferenceType
-			var result = '''_Default:_ '''
-			
-			switch (defaultValue.class) {
-				case EEnumLiteralImpl:
-					result += '''`<<«concatAnchor(eReferenceType)»«separator»«defaultValue», «defaultValue»>>`'''
-						
-				default:
-					result += '''`«defaultValue»`'''
-			}
-
-			return result
+			return '''_Default:_ `«defaultValue»`'''
 
 		} else {
 			return '''_Default:_ `-`'''

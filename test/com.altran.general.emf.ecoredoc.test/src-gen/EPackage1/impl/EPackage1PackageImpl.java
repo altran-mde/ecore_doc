@@ -438,6 +438,27 @@ public class EPackage1PackageImpl extends EPackageImpl implements EPackage1Packa
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2011/Xcore
+		createXcoreAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2011/Xcore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createXcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2011/Xcore";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "Ecore", "http://www.eclipse.org/emf/2002/Ecore",
+			 "GenModel", "http://www.eclipse.org/emf/2002/GenModel"
+		   });
 	}
 
 } //EPackage1PackageImpl

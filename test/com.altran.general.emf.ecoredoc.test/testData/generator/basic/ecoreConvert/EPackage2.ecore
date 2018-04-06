@@ -5,7 +5,7 @@
   <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
     <details key="documentation" value="Package2 documentation"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="SomeClass" eSuperTypes="EPackage1.xcore#/EPackage/EClass1 EPackage1.xcore#/EPackage/Iface">
+  <eClassifiers xsi:type="ecore:EClass" name="SomeClass" eSuperTypes="EPackage1.ecore#//EClass1 EPackage1.ecore#//Iface">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="This is&#xD;&#xA;&#xD;&#xA;my doc"/>
     </eAnnotations>

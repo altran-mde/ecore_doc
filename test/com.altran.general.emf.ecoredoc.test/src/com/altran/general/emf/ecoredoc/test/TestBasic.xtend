@@ -35,4 +35,25 @@ class TestBasic {
 		assertEquals(expected, result.toString)
 	}
 	
+	@Test
+	def testMissingReferences() {
+		val injector = new XcoreStandaloneSetup().createInjectorAndDoEMFRegistration
+		
+		val resourceSet = injector.getInstance(ResourceSet)
+		
+		val package2 = resourceSet.getResource(URI.createURI("testData/generator/basic/EPackage2.ecore"), true).contents.filter(EPackage).head
+		
+		val input = newLinkedHashSet()
+		
+		input.addAll(package2.EClassifiers)
+		
+		val generator = new EcoreDocGenerator(input)
+		
+		val result = generator.generate()
+		
+		val expected = FileUtils.readFileToString(new File("testData/generator/basic/expectedOutcomeMissingReferences/missing-references.adoc"))
+		
+		assertEquals(expected, result.toString)
+	}
+	
 }

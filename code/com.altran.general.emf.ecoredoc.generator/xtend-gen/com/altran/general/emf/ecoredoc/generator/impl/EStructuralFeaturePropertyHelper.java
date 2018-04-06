@@ -1,11 +1,9 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
-import com.google.common.base.Objects;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -223,7 +221,6 @@ public class EStructuralFeaturePropertyHelper {
   }
   
   protected CharSequence _concatDefaultValue(final EAttribute eAttribute) {
-    final CharSequence separator = EcoreDocExtension.ANCHOR_SEPARATOR;
     final EStructuralFeature defaultValueLiteral = EcorePackage.eINSTANCE.getEStructuralFeature_DefaultValueLiteral();
     final boolean defaultIsSet = eAttribute.eIsSet(defaultValueLiteral);
     StringConcatenation _builder = new StringConcatenation();
@@ -231,35 +228,34 @@ public class EStructuralFeaturePropertyHelper {
     String result = _builder.toString();
     if (defaultIsSet) {
       final Object defaultValue = eAttribute.getDefaultValue();
-      Class<?> _class = defaultValue.getClass();
       boolean _matched = false;
-      if (Objects.equal(_class, EEnumLiteralImpl.class)) {
+      if (defaultValue instanceof EEnumLiteralImpl) {
         _matched=true;
         String _result = result;
         StringConcatenation _builder_1 = new StringConcatenation();
         _builder_1.append("`<<");
         CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eAttribute.getEAttributeType());
         _builder_1.append(_concatAnchor);
-        _builder_1.append(separator);
-        _builder_1.append(defaultValue);
+        _builder_1.append(EcoreDocExtension.ANCHOR_SEPARATOR);
+        _builder_1.append(((EEnumLiteralImpl)defaultValue));
         _builder_1.append(", ");
-        _builder_1.append(defaultValue);
+        _builder_1.append(((EEnumLiteralImpl)defaultValue));
         _builder_1.append(">>`");
         result = (_result + _builder_1);
       }
       if (!_matched) {
-        String _result_1 = result;
-        StringConcatenation _builder_2 = new StringConcatenation();
-        _builder_2.append("`");
-        _builder_2.append(defaultValue);
-        _builder_2.append("`");
-        result = (_result_1 + _builder_2);
+        String _result = result;
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("`");
+        _builder_1.append(defaultValue);
+        _builder_1.append("`");
+        result = (_result + _builder_1);
       }
     } else {
-      String _result_2 = result;
-      StringConcatenation _builder_3 = new StringConcatenation();
-      _builder_3.append("`-`");
-      result = (_result_2 + _builder_3);
+      String _result_1 = result;
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("`-`");
+      result = (_result_1 + _builder_2);
     }
     return result;
   }
@@ -269,40 +265,15 @@ public class EStructuralFeaturePropertyHelper {
     final boolean defaultIsSet = eReference.eIsSet(defaultValueLiteral);
     if (defaultIsSet) {
       final Object defaultValue = eReference.getDefaultValue();
-      final CharSequence separator = EcoreDocExtension.ANCHOR_SEPARATOR;
-      final EClass eReferenceType = eReference.getEReferenceType();
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("_Default:_ ");
-      String result = _builder.toString();
-      Class<?> _class = defaultValue.getClass();
-      boolean _matched = false;
-      if (Objects.equal(_class, EEnumLiteralImpl.class)) {
-        _matched=true;
-        String _result = result;
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append("`<<");
-        CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eReferenceType);
-        _builder_1.append(_concatAnchor);
-        _builder_1.append(separator);
-        _builder_1.append(defaultValue);
-        _builder_1.append(", ");
-        _builder_1.append(defaultValue);
-        _builder_1.append(">>`");
-        result = (_result + _builder_1);
-      }
-      if (!_matched) {
-        String _result_1 = result;
-        StringConcatenation _builder_2 = new StringConcatenation();
-        _builder_2.append("`");
-        _builder_2.append(defaultValue);
-        _builder_2.append("`");
-        result = (_result_1 + _builder_2);
-      }
-      return result;
+      _builder.append("_Default:_ `");
+      _builder.append(defaultValue);
+      _builder.append("`");
+      return _builder;
     } else {
-      StringConcatenation _builder_3 = new StringConcatenation();
-      _builder_3.append("_Default:_ `-`");
-      return _builder_3;
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("_Default:_ `-`");
+      return _builder_1;
     }
   }
   

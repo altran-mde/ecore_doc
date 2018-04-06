@@ -597,6 +597,27 @@ Ns URI:: http://altran.com/general/emf/ecoredoc/test/epackage2/1.0.0
 Default Value:: _undefined_
 Instance Type Name:: _undefined_
 
+.Attributes
+[cols="<20,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`attr`[[EPackage2-Class3-attr]]
+|`EDouble`
+|`[0..1]` +
+_Default:_ `2.71` +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
+|
+|===
+
 [[EPackage2-SomeClass]]
 ==== Class SomeClass
 

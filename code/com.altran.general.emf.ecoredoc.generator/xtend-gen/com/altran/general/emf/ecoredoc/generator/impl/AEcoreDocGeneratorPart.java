@@ -59,7 +59,7 @@ public abstract class AEcoreDocGeneratorPart {
   }
   
   protected CharSequence concatReferenceName(final ENamedElement eNamedElement) {
-    return IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this._ecoreDocExtension.collectTypeSegments(eNamedElement))), EcoreDocExtension.REFERENCE_SEPARATOR);
+    return this._ecoreDocExtension.joinReference(((Collection<? extends CharSequence>)Conversions.doWrapArray(this._ecoreDocExtension.collectTypeSegments(eNamedElement))));
   }
   
   protected CharSequence _concatLinkTo(final ENamedElement eNamedElement) {
@@ -107,12 +107,12 @@ public abstract class AEcoreDocGeneratorPart {
     {
       final String[] inheritedFeatureSegments = this.collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits);
       StringConcatenation _builder = new StringConcatenation();
-      String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), EcoreDocExtension.ANCHOR_SEPARATOR);
-      _builder.append(_join);
+      CharSequence _joinAnchor = this._ecoreDocExtension.joinAnchor(((Collection<? extends CharSequence>)Conversions.doWrapArray(inheritedFeatureSegments)));
+      _builder.append(_joinAnchor);
       final CharSequence anchor = _builder;
       StringConcatenation _builder_1 = new StringConcatenation();
-      String _join_1 = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), EcoreDocExtension.REFERENCE_SEPARATOR);
-      _builder_1.append(_join_1);
+      CharSequence _joinReference = this._ecoreDocExtension.joinReference(((Collection<? extends CharSequence>)Conversions.doWrapArray(inheritedFeatureSegments)));
+      _builder_1.append(_joinReference);
       final CharSequence reference = _builder_1;
       StringConcatenation _builder_2 = new StringConcatenation();
       _builder_2.append("`<<");

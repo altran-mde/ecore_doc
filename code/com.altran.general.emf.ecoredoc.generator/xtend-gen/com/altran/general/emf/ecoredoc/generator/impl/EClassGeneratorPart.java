@@ -8,6 +8,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -31,8 +32,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   @Extension
   private EStructuralFeaturePropertyHelper _eStructuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper();
-  
-  public final static String separator = EcoreDocExtension.ANCHOR_SEPARATOR;
   
   public EClassGeneratorPart(final Multimap<EPackage, EClassifier> ePackages) {
     super(ePackages);
@@ -324,8 +323,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _builder.append("|`");
     _builder.append(eStructuralFeatureName);
     _builder.append("`[[");
-    String _join = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(inheritedFeatureSegments)), EClassGeneratorPart.separator);
-    _builder.append(_join);
+    CharSequence _joinAnchor = this._ecoreDocExtension.joinAnchor(((Collection<? extends CharSequence>)Conversions.doWrapArray(inheritedFeatureSegments)));
+    _builder.append(_joinAnchor);
     _builder.append("]]");
     {
       if (isInherited) {
@@ -429,7 +428,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
           _builder.append("_EOpposite:_ `<<");
           CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eReferenceType);
           _builder.append(_concatAnchor);
-          _builder.append(EClassGeneratorPart.separator);
+          _builder.append(EcoreDocExtension.ANCHOR_SEPARATOR);
           _builder.append(eOppositeName);
           _builder.append(", ");
           _builder.append(eOppositeName);

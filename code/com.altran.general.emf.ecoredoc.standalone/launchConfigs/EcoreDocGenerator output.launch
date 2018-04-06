@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/com.altran.general.emf.ecoredoc.standalone/src/com/altran/general/emf/ecoredoc/standalone/EcoreDocGenerator.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.altran.general.emf.ecoredoc.standalone.EcoreDocGenerator"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-o ${project_loc:/com.altran.general.emf.ecoredoc.test}/testData/generator/basic/output.adoc&#13;&#10;${project_loc:/com.altran.general.emf.ecoredoc.test}/testData/generator/basic/EPackage2.ecore"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="com.altran.general.emf.ecoredoc.standalone"/>
+</launchConfiguration>

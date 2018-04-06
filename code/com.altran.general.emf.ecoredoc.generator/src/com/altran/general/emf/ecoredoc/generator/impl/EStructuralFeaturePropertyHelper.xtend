@@ -147,7 +147,7 @@ class EStructuralFeaturePropertyHelper {
 		val eKeys = eReference.EKeys
 		val boolean eKeysExist = !eKeys.isEmpty
 
-		'''_EKeys:_«IF eKeysExist»«eKeys.join("`", ", ", "`") [name]»«ELSE» `-`«ENDIF»'''
+		'''_EKeys:_«IF eKeysExist» «eKeys.join("`", ", ", "`") [name]»«ELSE» `-`«ENDIF»'''
 	}
 
 	def dispatch CharSequence concatDefaultValue(EAttribute eAttribute) {

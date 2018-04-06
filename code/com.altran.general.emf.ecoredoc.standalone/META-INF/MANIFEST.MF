@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+Add-Opens: java.xml/com.sun.org.apache.xerces.internal.parsers

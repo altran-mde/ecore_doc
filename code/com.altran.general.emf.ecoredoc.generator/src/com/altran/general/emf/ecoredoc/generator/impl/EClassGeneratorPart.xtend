@@ -16,8 +16,6 @@ import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.n
 class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	extension EStructuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper
 	
-	public static val separator = EcoreDocExtension.ANCHOR_SEPARATOR
-	
 	new(Multimap<EPackage, EClassifier> ePackages) {
 		super(ePackages)
 	}
@@ -254,7 +252,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		output.append(
 		'''
 			«newline»
-			|`«eStructuralFeatureName»`[[«inheritedFeatureSegments.join(separator)»]]«IF isInherited» +«ENDIF»
+			|`«eStructuralFeatureName»`[[«inheritedFeatureSegments.joinAnchor»]]«IF isInherited» +«ENDIF»
 			«IF isInherited»«concatInheritedElement(eStructuralFeature)»«ENDIF»
 			|«concatFeatureType(eStructuralFeature)»
 			|«concatFeatureProperties(eStructuralFeature)»
@@ -324,7 +322,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			
 			'''
 				«newline»
-				_EOpposite:_ `<<«concatAnchor(eReferenceType)»«separator»«eOppositeName», «eOppositeName»>>`
+				_EOpposite:_ `<<«concatAnchor(eReferenceType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«eOppositeName», «eOppositeName»>>`
 			'''
 		}
 	}

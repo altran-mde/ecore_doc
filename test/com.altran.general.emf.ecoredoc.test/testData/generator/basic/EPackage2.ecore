@@ -5,11 +5,13 @@
   <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
     <details key="documentation" value="Package2 documentation"/>
   </eAnnotations>
-  <eAnnotations/>
   <eClassifiers xsi:type="ecore:EClass" name="SomeClass" eSuperTypes="EPackage1.xcore#/EPackage/EClass1 EPackage1.xcore#/EPackage/Iface">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="This is&#xD;&#xA;&#xD;&#xA;my doc"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Class3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Class3">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="2.71"/>
+  </eClassifiers>
 </ecore:EPackage>

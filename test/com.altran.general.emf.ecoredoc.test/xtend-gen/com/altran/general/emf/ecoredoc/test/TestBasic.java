@@ -38,4 +38,22 @@ public class TestBasic {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  @Test
+  public void testMissingReferences() {
+    try {
+      final Injector injector = new XcoreStandaloneSetup().createInjectorAndDoEMFRegistration();
+      final ResourceSet resourceSet = injector.<ResourceSet>getInstance(ResourceSet.class);
+      final EPackage package2 = IterableExtensions.<EPackage>head(Iterables.<EPackage>filter(resourceSet.getResource(URI.createURI("testData/generator/basic/EPackage2.ecore"), true).getContents(), EPackage.class));
+      final LinkedHashSet<EClassifier> input = CollectionLiterals.<EClassifier>newLinkedHashSet();
+      input.addAll(package2.getEClassifiers());
+      final EcoreDocGenerator generator = new EcoreDocGenerator(input);
+      final CharSequence result = generator.generate();
+      File _file = new File("testData/generator/basic/expectedOutcomeMissingReferences/missing-references.adoc");
+      final String expected = FileUtils.readFileToString(_file);
+      Assert.assertEquals(expected, result.toString());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
 }

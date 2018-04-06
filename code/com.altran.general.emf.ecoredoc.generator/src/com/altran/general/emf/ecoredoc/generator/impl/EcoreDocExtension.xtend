@@ -1,5 +1,6 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
+import java.util.Collection
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
@@ -18,11 +19,11 @@ class EcoreDocExtension {
 	public static val REFERENCE_SEPARATOR = '.{zwsp}'
 	
 	public static val ECLASSIFIER_PROPERTY_SEPARATOR = newline
-
+	
 	def static String newline() {
 		System.getProperty("line.separator")
 	}
-
+	
 	def CharSequence getDocumentation(EModelElement modelElement) {
 		val CharSequence documentation = EcoreUtil.getDocumentation(modelElement)
 
@@ -35,58 +36,84 @@ class EcoreDocExtension {
 	}
 
 	def EPackage getEPackage(EClassifier eClassifier) {
-		eClassifier.eContainer as EPackage
+		return eClassifier.eContainer as EPackage
+	}
+	
+	def CharSequence joinAnchor(Collection<? extends CharSequence> segments) {
+		segments
+			.map[toString]
+			.filter[!isNullOrEmpty]
+			.map[it.replaceAll("[^a-zA-Z0-9_-]", ":")]
+			.join(ANCHOR_SEPARATOR)
+	}
+	
+	def CharSequence joinReference(Collection<? extends CharSequence> segments) {
+		segments
+			.map[toString]
+			.filter[!isNullOrEmpty]
+			.join(REFERENCE_SEPARATOR)
 	}
 
 	def dispatch CharSequence concatAnchor(ENamedElement eNamedElement) {
-		collectTypeSegments(eNamedElement).join(ANCHOR_SEPARATOR)
+		collectTypeSegments(eNamedElement).joinAnchor
 	}
 
 	// Special handling for default EDataTypes: Don't create anchor
 	def dispatch CharSequence concatAnchor(EDataType eDataType) {
 		if (!isDefaultEDataType(eDataType)) {
-			collectTypeSegments(eDataType).join(ANCHOR_SEPARATOR)
+			collectTypeSegments(eDataType).joinAnchor
 
 		} else {
 			""
 		}
 	}
 
+	def dispatch String[] collectTypeSegments(Void voidType) {
+		#[ getAssuredName(null) ]
+	}
+	
+	def dispatch String[] collectTypeSegments(EPackage ePackage) {
+		#[ getAssuredName(ePackage) ]
+	}
+	
 	def dispatch String[] collectTypeSegments(EClass eClass) {
-		val String eClassName = eClass.name
-		val String ePackageName = getEPackage(eClass).name
+		val String eClassName = getAssuredName(eClass)
 
-		#[ePackageName, eClassName]
+		_collectTypeSegments(getEPackage(eClass)) + #[eClassName]
 
 	}
 
 	def dispatch String[] collectTypeSegments(EStructuralFeature eStructuralFeature) {
 		val EClass eClass = eStructuralFeature.eContainer as EClass
-		val String ePackageName = getEPackage(eClass).name
-		val String eClassName = eClass.name
-		val String eStructuralFeatureName = eStructuralFeature.name
+		val String eStructuralFeatureName = getAssuredName(eStructuralFeature)
 
-		#[ePackageName, eClassName, eStructuralFeatureName]
+		collectTypeSegments(eClass) + #[eStructuralFeatureName]
 	}
 
 	def dispatch String[] collectTypeSegments(EEnumLiteral eEnumLiteral) {
 		val EEnum eEnum = eEnumLiteral.eContainer as EEnum
-		val String ePackageName = getEPackage(eEnum).name
 
-		#[ePackageName, eEnum.name, eEnumLiteral.name]
+		collectTypeSegments(eEnum) + #[ getAssuredName(eEnumLiteral) ]
 	}
 
 	def dispatch String[] collectTypeSegments(EDataType eDataType) {
-		val String eDataTypeName = eDataType.name
+		val String eDataTypeName = getAssuredName(eDataType)
 		val boolean defaultEDataType = isDefaultEDataType(eDataType)
 
 		if (defaultEDataType) {
 			#[eDataTypeName]
-
 		} else {
-			val String eDataTypePackageName = getEPackage(eDataType).name
-
-			#[eDataTypePackageName, eDataTypeName]	
+			_collectTypeSegments(getEPackage(eDataType)) + #[eDataTypeName]	
+		}
+	}
+	
+	def protected String getAssuredName(ENamedElement eNamedElement) {
+		if (eNamedElement === null) {
+			""
+		}else if (eNamedElement.name.isNullOrEmpty) {
+			'''[«EcoreUtil.getURI(eNamedElement).fragment»]'''
+		} else {
+			eNamedElement.name
 		}
 	}
 

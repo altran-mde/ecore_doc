@@ -1,7 +1,10 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
@@ -14,8 +17,12 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class EcoreDocExtension {
@@ -44,77 +51,128 @@ public class EcoreDocExtension {
     return ((EPackage) _eContainer);
   }
   
+  public CharSequence joinAnchor(final Collection<? extends CharSequence> segments) {
+    final Function1<CharSequence, String> _function = (CharSequence it) -> {
+      return it.toString();
+    };
+    final Function1<String, Boolean> _function_1 = (String it) -> {
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(it);
+      return Boolean.valueOf((!_isNullOrEmpty));
+    };
+    final Function1<String, String> _function_2 = (String it) -> {
+      return it.replaceAll("[^a-zA-Z0-9_-]", ":");
+    };
+    return IterableExtensions.join(IterableExtensions.<String, String>map(IterableExtensions.<String>filter(IterableExtensions.map(segments, _function), _function_1), _function_2), EcoreDocExtension.ANCHOR_SEPARATOR);
+  }
+  
+  public CharSequence joinReference(final Collection<? extends CharSequence> segments) {
+    final Function1<CharSequence, String> _function = (CharSequence it) -> {
+      return it.toString();
+    };
+    final Function1<String, Boolean> _function_1 = (String it) -> {
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(it);
+      return Boolean.valueOf((!_isNullOrEmpty));
+    };
+    return IterableExtensions.join(IterableExtensions.<String>filter(IterableExtensions.map(segments, _function), _function_1), EcoreDocExtension.REFERENCE_SEPARATOR);
+  }
+  
   protected CharSequence _concatAnchor(final ENamedElement eNamedElement) {
-    return IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eNamedElement))), EcoreDocExtension.ANCHOR_SEPARATOR);
+    return this.joinAnchor(((Collection<? extends CharSequence>)Conversions.doWrapArray(this.collectTypeSegments(eNamedElement))));
   }
   
   protected CharSequence _concatAnchor(final EDataType eDataType) {
-    String _xifexpression = null;
+    CharSequence _xifexpression = null;
     boolean _isDefaultEDataType = this.isDefaultEDataType(eDataType);
     boolean _not = (!_isDefaultEDataType);
     if (_not) {
-      _xifexpression = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(this.collectTypeSegments(eDataType))), EcoreDocExtension.ANCHOR_SEPARATOR);
+      _xifexpression = this.joinAnchor(((Collection<? extends CharSequence>)Conversions.doWrapArray(this.collectTypeSegments(eDataType))));
     } else {
       _xifexpression = "";
     }
     return _xifexpression;
   }
   
+  protected String[] _collectTypeSegments(final Void voidType) {
+    String _assuredName = this.getAssuredName(null);
+    return new String[] { _assuredName };
+  }
+  
+  protected String[] _collectTypeSegments(final EPackage ePackage) {
+    String _assuredName = this.getAssuredName(ePackage);
+    return new String[] { _assuredName };
+  }
+  
   protected String[] _collectTypeSegments(final EClass eClass) {
-    String[] _xblockexpression = null;
+    Iterable<String> _xblockexpression = null;
     {
-      final String eClassName = eClass.getName();
-      final String ePackageName = this.getEPackage(eClass).getName();
-      _xblockexpression = new String[] { ePackageName, eClassName };
+      final String eClassName = this.getAssuredName(eClass);
+      String[] __collectTypeSegments = this._collectTypeSegments(this.getEPackage(eClass));
+      _xblockexpression = Iterables.<String>concat(((Iterable<? extends String>)Conversions.doWrapArray(__collectTypeSegments)), Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList(eClassName)));
     }
-    return _xblockexpression;
+    return ((String[])Conversions.unwrapArray(_xblockexpression, String.class));
   }
   
   protected String[] _collectTypeSegments(final EStructuralFeature eStructuralFeature) {
-    String[] _xblockexpression = null;
+    Iterable<String> _xblockexpression = null;
     {
       EObject _eContainer = eStructuralFeature.eContainer();
       final EClass eClass = ((EClass) _eContainer);
-      final String ePackageName = this.getEPackage(eClass).getName();
-      final String eClassName = eClass.getName();
-      final String eStructuralFeatureName = eStructuralFeature.getName();
-      _xblockexpression = new String[] { ePackageName, eClassName, eStructuralFeatureName };
+      final String eStructuralFeatureName = this.getAssuredName(eStructuralFeature);
+      String[] _collectTypeSegments = this.collectTypeSegments(eClass);
+      _xblockexpression = Iterables.<String>concat(((Iterable<? extends String>)Conversions.doWrapArray(_collectTypeSegments)), Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList(eStructuralFeatureName)));
     }
-    return _xblockexpression;
+    return ((String[])Conversions.unwrapArray(_xblockexpression, String.class));
   }
   
   protected String[] _collectTypeSegments(final EEnumLiteral eEnumLiteral) {
-    String[] _xblockexpression = null;
+    Iterable<String> _xblockexpression = null;
     {
       EObject _eContainer = eEnumLiteral.eContainer();
       final EEnum eEnum = ((EEnum) _eContainer);
-      final String ePackageName = this.getEPackage(eEnum).getName();
-      String _name = eEnum.getName();
-      String _name_1 = eEnumLiteral.getName();
-      _xblockexpression = new String[] { ePackageName, _name, _name_1 };
+      String[] _collectTypeSegments = this.collectTypeSegments(eEnum);
+      String _assuredName = this.getAssuredName(eEnumLiteral);
+      _xblockexpression = Iterables.<String>concat(((Iterable<? extends String>)Conversions.doWrapArray(_collectTypeSegments)), Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList(_assuredName)));
     }
-    return _xblockexpression;
+    return ((String[])Conversions.unwrapArray(_xblockexpression, String.class));
   }
   
   protected String[] _collectTypeSegments(final EDataType eDataType) {
     String[] _xblockexpression = null;
     {
-      final String eDataTypeName = eDataType.getName();
+      final String eDataTypeName = this.getAssuredName(eDataType);
       final boolean defaultEDataType = this.isDefaultEDataType(eDataType);
       String[] _xifexpression = null;
       if (defaultEDataType) {
         _xifexpression = new String[] { eDataTypeName };
       } else {
-        String[] _xblockexpression_1 = null;
-        {
-          final String eDataTypePackageName = this.getEPackage(eDataType).getName();
-          _xblockexpression_1 = new String[] { eDataTypePackageName, eDataTypeName };
-        }
-        _xifexpression = _xblockexpression_1;
+        String[] __collectTypeSegments = this._collectTypeSegments(this.getEPackage(eDataType));
+        _xifexpression = ((String[])Conversions.unwrapArray(Iterables.<String>concat(((Iterable<? extends String>)Conversions.doWrapArray(__collectTypeSegments)), Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList(eDataTypeName))), String.class));
       }
       _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
+  }
+  
+  protected String getAssuredName(final ENamedElement eNamedElement) {
+    String _xifexpression = null;
+    if ((eNamedElement == null)) {
+      _xifexpression = "";
+    } else {
+      String _xifexpression_1 = null;
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(eNamedElement.getName());
+      if (_isNullOrEmpty) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("[");
+        String _fragment = EcoreUtil.getURI(eNamedElement).fragment();
+        _builder.append(_fragment);
+        _builder.append("]");
+        _xifexpression_1 = _builder.toString();
+      } else {
+        _xifexpression_1 = eNamedElement.getName();
+      }
+      _xifexpression = _xifexpression_1;
+    }
+    return _xifexpression;
   }
   
   public boolean isDefaultEDataType(final EDataType eDataType) {
@@ -143,6 +201,10 @@ public class EcoreDocExtension {
       return _collectTypeSegments((EStructuralFeature)eClass);
     } else if (eClass instanceof EEnumLiteral) {
       return _collectTypeSegments((EEnumLiteral)eClass);
+    } else if (eClass instanceof EPackage) {
+      return _collectTypeSegments((EPackage)eClass);
+    } else if (eClass == null) {
+      return _collectTypeSegments((Void)null);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(eClass).toString());

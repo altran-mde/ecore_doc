@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project com.altran.general.emf.ecoredoc.standalone with Jar-in-Jar Loader">
+	<!--
+	To be defined externally
+	<property name="dir.plugins" value="/my/installation/of/eclipse/plugins"/>
+	-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.jarfile" value="${dir.buildfile}"/>
+	<property name="dir.gitrepo" value="${dir.buildfile}/../../../"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/EcoreDocGenerator.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="com.altran.general.emf.ecoredoc.standalone.EcoreDocGenerator"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ com.google.guava_21.0.0.v20170206-1425.jar org.eclipse.xtext.xbase.lib_2.13.0.v20171020-0659.jar org.eclipse.xtend.lib_2.13.0.v20171020-0659.jar org.eclipse.xtend.lib.macro_2.13.0.v20171020-0659.jar org.eclipse.emf.ecore_2.13.0.v20170609-0707.jar org.eclipse.emf.common_2.13.0.v20170609-0707.jar org.eclipse.emf.ecore.xmi_2.13.0.v20170609-0707.jar org.eclipse.emf.ecore.change_2.11.0.v20170609-0707.jar"/>
+                <attribute name="Add-Opens" value="java.xml/com.sun.org.apache.xerces.internal.parsers"/>
+            </manifest>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="${dir.gitrepo}/code/com.altran.general.emf.ecoredoc.standalone/bin"/>
+            <zipfileset dir="${dir.plugins}" includes="com.google.guava_21.0.0.v20170206-1425.jar"/>
+            <zipfileset dir="${dir.plugins}" includes="org.eclipse.xtext.xbase.lib_2.13.0.v20171020-0659.jar"/>
+            <zipfileset dir="${dir.plugins}" includes="org.eclipse.xtend.lib_2.13.0.v20171020-0659.jar"/>
+            <zipfileset dir="${dir.plugins}" includes="org.eclipse.xtend.lib.macro_2.13.0.v20171020-0659.jar"/>
+            <zipfileset dir="${dir.plugins}" includes="org.eclipse.emf.ecore_2.13.0.v20170609-0707.jar"/>
+            <zipfileset dir="${dir.plugins}" includes="org.eclipse.emf.common_2.13.0.v20170609-0707.jar"/>
+            <fileset dir="${dir.gitrepo}/code/com.altran.general.emf.ecoredoc.generator/bin"/>
+            <zipfileset dir="${dir.plugins}" includes="org.eclipse.emf.ecore.xmi_2.13.0.v20170609-0707.jar"/>
+            <zipfileset dir="${dir.plugins}" includes="org.eclipse.emf.ecore.change_2.11.0.v20170609-0707.jar"/>
+        </jar>
+    </target>
+</project>

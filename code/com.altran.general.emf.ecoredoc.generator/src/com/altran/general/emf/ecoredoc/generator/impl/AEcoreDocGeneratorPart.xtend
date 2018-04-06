@@ -45,7 +45,7 @@ abstract class AEcoreDocGeneratorPart {
 	}
 
 	protected def CharSequence concatReferenceName(ENamedElement eNamedElement) {
-		collectTypeSegments(eNamedElement).join(EcoreDocExtension.REFERENCE_SEPARATOR)
+		collectTypeSegments(eNamedElement).joinReference
 	}
 
 	protected def dispatch CharSequence concatLinkTo(ENamedElement eNamedElement) {
@@ -67,8 +67,8 @@ abstract class AEcoreDocGeneratorPart {
 
 	protected def CharSequence concatUsedLink(EStructuralFeature eStructuralFeature, EClass eClassThatInherits) {
 		val String[] inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits)
-		val CharSequence anchor = '''«inheritedFeatureSegments.join(EcoreDocExtension.ANCHOR_SEPARATOR)»'''
-		val CharSequence reference = '''«inheritedFeatureSegments.join(EcoreDocExtension.REFERENCE_SEPARATOR)»'''
+		val CharSequence anchor = '''«inheritedFeatureSegments.joinAnchor»'''
+		val CharSequence reference = '''«inheritedFeatureSegments.joinReference»'''
 
 		'''`<<«anchor», «reference»>>`'''
 	}

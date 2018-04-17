@@ -5,9 +5,14 @@ Bundle-SymbolicName: com.altran.general.ecoredoc.generator.integration.ui;single
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: ALTRAN
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.core.resources,
+Require-Bundle: org.eclipse.core.resources,
+ org.eclipse.core.runtime,
  org.eclipse.core.commands,
  org.eclipse.jface,
  com.altran.general.emf.ecoredoc.generator;bundle-version="0.1.0",
  org.eclipse.ui.workbench
+Import-Package: com.google.inject;version="1.3.0",
+ org.eclipse.emf.common.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.resource,
+ org.eclipse.emf.ecore.xcore

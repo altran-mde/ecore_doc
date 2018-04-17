@@ -15,7 +15,7 @@ class TestBasic {
 	@Test
 	def testBasic() {
 		val injector = new XcoreStandaloneSetup().createInjectorAndDoEMFRegistration
-		
+	
 		val resourceSet = injector.getInstance(ResourceSet)
 		
 		val package1 = resourceSet.getResource(URI.createURI("testData/generator/basic/EPackage1.xcore"), true).contents.filter(EPackage).head

@@ -15,13 +15,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import com.altran.general.emf.ecoredoc.generator.EcoreDocGenerator;
-import com.google.inject.Injector;
 
 
 public class GenerateEcoreDocHandler extends AbstractHandler {
@@ -46,23 +45,21 @@ public class GenerateEcoreDocHandler extends AbstractHandler {
 				
 				if(isIFile) {
 					IFile file = (IFile) element;
-					String fileName = file.getName();
+					String fileName = file.getFullPath().toPortableString();
 					URI uri = URI.createURI(fileName);
 				
-					XcoreStandaloneSetup xcore = new XcoreStandaloneSetup();
-					Injector injector = xcore.createInjectorAndDoEMFRegistration();
-//					ResourceSet resourceSet = injector.getInstance(ResourceSet);
-//					Resource resource = resourceSet.getResource(uri, true);
-//					List<EObject> eObjects = resource.getContents();
-//					
-//					for(EObject eObject : eObjects) {
-//						boolean isEPackage = eObject instanceof EPackage;
-//						
-//						if(isEPackage) {
-//							EPackage ePackage = (EPackage) eObject;
-//							eClassifiers.addAll(ePackage.getEClassifiers());
-//						}
-//					}
+					ResourceSet resourceSet = new ResourceSetImpl();
+					Resource resource = resourceSet.getResource(uri, true);
+					List<EObject> eObjects = resource.getContents();
+					
+					for(EObject eObject : eObjects) {
+						boolean isEPackage = eObject instanceof EPackage;
+						
+						if(isEPackage) {
+							EPackage ePackage = (EPackage) eObject;
+							eClassifiers.addAll(ePackage.getEClassifiers());
+						}
+					}
 				}
 			}
 			

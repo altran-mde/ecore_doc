@@ -177,7 +177,11 @@ public class EcoreDocExtension {
   
   public boolean isDefaultEDataType(final EDataType eDataType) {
     String _nsURI = EcorePackage.eINSTANCE.getNsURI();
-    String _nsURI_1 = this.getEPackage(eDataType).getNsURI();
+    EPackage _ePackage = this.getEPackage(eDataType);
+    String _nsURI_1 = null;
+    if (_ePackage!=null) {
+      _nsURI_1=_ePackage.getNsURI();
+    }
     return Objects.equal(_nsURI, _nsURI_1);
   }
   

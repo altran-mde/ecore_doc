@@ -141,13 +141,27 @@ public abstract class AEcoreDocGeneratorPart {
     final Collection<EClass> eClasses = this.collectAllEClasses();
     final ArrayList<String> useCaseStrings = CollectionLiterals.<String>newArrayList();
     final Function1<EClass, String> _function = (EClass it) -> {
-      return it.getName();
+      String _elvis = null;
+      String _name = it.getName();
+      if (_name != null) {
+        _elvis = _name;
+      } else {
+        _elvis = "";
+      }
+      return _elvis;
     };
     final List<EClass> sortedEClasses = IterableExtensions.<EClass, String>sortBy(eClasses, _function);
     for (final EClass eClass : sortedEClasses) {
       {
         final Function1<EStructuralFeature, String> _function_1 = (EStructuralFeature it) -> {
-          return it.getName();
+          String _elvis = null;
+          String _name = it.getName();
+          if (_name != null) {
+            _elvis = _name;
+          } else {
+            _elvis = "";
+          }
+          return _elvis;
         };
         final List<EStructuralFeature> sortedEStructuralFeatures = IterableExtensions.<EStructuralFeature, String>sortBy(eClass.getEAllStructuralFeatures(), _function_1);
         for (final EStructuralFeature feature : sortedEStructuralFeatures) {

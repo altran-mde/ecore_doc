@@ -118,6 +118,6 @@ class EcoreDocExtension {
 	}
 
 	def boolean isDefaultEDataType(EDataType eDataType) {
-		EcorePackage.eINSTANCE.nsURI == getEPackage(eDataType).nsURI
+		EcorePackage.eINSTANCE.nsURI == getEPackage(eDataType)?.nsURI
 	}
 }

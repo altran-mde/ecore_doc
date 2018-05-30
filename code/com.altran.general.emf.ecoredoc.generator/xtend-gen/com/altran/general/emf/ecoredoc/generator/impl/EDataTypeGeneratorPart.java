@@ -32,7 +32,14 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
       return Boolean.valueOf((!(it instanceof EEnum)));
     };
     final Function1<EDataType, String> _function_1 = (EDataType it) -> {
-      return it.getName();
+      String _elvis = null;
+      String _name = it.getName();
+      if (_name != null) {
+        _elvis = _name;
+      } else {
+        _elvis = "";
+      }
+      return _elvis;
     };
     return IterableExtensions.<EDataType, String>sortBy(IterableExtensions.<EDataType>filter(Iterables.<EDataType>filter(this.getEPackages().get(ePackage), EDataType.class), _function), _function_1);
   }

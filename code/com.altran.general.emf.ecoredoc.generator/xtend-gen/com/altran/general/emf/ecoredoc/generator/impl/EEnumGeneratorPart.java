@@ -30,7 +30,14 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
   
   protected List<EEnum> collectEEnums(final EPackage ePackage) {
     final Function1<EEnum, String> _function = (EEnum it) -> {
-      return it.getName();
+      String _elvis = null;
+      String _name = it.getName();
+      if (_name != null) {
+        _elvis = _name;
+      } else {
+        _elvis = "";
+      }
+      return _elvis;
     };
     return IterableExtensions.<EEnum, String>sortBy(Iterables.<EEnum>filter(this.getEPackages().get(ePackage), EEnum.class), _function);
   }

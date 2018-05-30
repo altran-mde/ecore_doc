@@ -47,7 +47,14 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   
   protected List<EClass> collectEClasses(final EPackage ePackages) {
     final Function1<EClass, String> _function = (EClass it) -> {
-      return it.getName();
+      String _elvis = null;
+      String _name = it.getName();
+      if (_name != null) {
+        _elvis = _name;
+      } else {
+        _elvis = "";
+      }
+      return _elvis;
     };
     return IterableExtensions.<EClass, String>sortBy(Iterables.<EClass>filter(this.getEPackages().get(ePackages), EClass.class), _function);
   }
@@ -175,7 +182,14 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     if (superTypesExist) {
       this.writeSuperTypesHeader();
       final Function1<EClass, String> _function = (EClass it) -> {
-        return it.getName();
+        String _elvis = null;
+        String _name = it.getName();
+        if (_name != null) {
+          _elvis = _name;
+        } else {
+          _elvis = "";
+        }
+        return _elvis;
       };
       final List<EClass> sortedSuperTypes = IterableExtensions.<EClass, String>sortBy(eClass.getEAllSuperTypes(), _function);
       for (final EClass supertype : sortedSuperTypes) {
@@ -293,14 +307,28 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   
   protected void writeEStructuralFeatures(final List<? extends EStructuralFeature> eStructuralFeatures, final EClass eClass, final Set<? extends EStructuralFeature> inheritedStructuralFeatures) {
     final Function1<EStructuralFeature, String> _function = (EStructuralFeature it) -> {
-      return it.getName();
+      String _elvis = null;
+      String _name = it.getName();
+      if (_name != null) {
+        _elvis = _name;
+      } else {
+        _elvis = "";
+      }
+      return _elvis;
     };
     List<? extends EStructuralFeature> _sortBy = IterableExtensions.sortBy(eStructuralFeatures, _function);
     for (final EStructuralFeature eStructuralFeature : _sortBy) {
       this.writeRow(eStructuralFeature, eClass);
     }
     final Function1<EStructuralFeature, String> _function_1 = (EStructuralFeature it) -> {
-      return it.getName();
+      String _elvis = null;
+      String _name = it.getName();
+      if (_name != null) {
+        _elvis = _name;
+      } else {
+        _elvis = "";
+      }
+      return _elvis;
     };
     List<? extends EStructuralFeature> _sortBy_1 = IterableExtensions.sortBy(inheritedStructuralFeatures, _function_1);
     for (final EStructuralFeature eStructuralFeature_1 : _sortBy_1) {

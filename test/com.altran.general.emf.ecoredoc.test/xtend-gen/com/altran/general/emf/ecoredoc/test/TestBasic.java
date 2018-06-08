@@ -63,6 +63,28 @@ public class TestBasic {
   }
   
   @Test
+  public void testNoDefaults() {
+    try {
+      final Injector injector = new XcoreStandaloneSetup().createInjectorAndDoEMFRegistration();
+      final ResourceSet resourceSet = injector.<ResourceSet>getInstance(ResourceSet.class);
+      final EPackage package1 = IterableExtensions.<EPackage>head(Iterables.<EPackage>filter(resourceSet.getResource(URI.createURI("testData/generator/basic/EPackage1.xcore"), true).getContents(), EPackage.class));
+      final EPackage package2 = IterableExtensions.<EPackage>head(Iterables.<EPackage>filter(resourceSet.getResource(URI.createURI("testData/generator/basic/EPackage2.ecore"), true).getContents(), EPackage.class));
+      final LinkedHashSet<EClassifier> input = CollectionLiterals.<EClassifier>newLinkedHashSet();
+      input.addAll(package1.getEClassifiers());
+      input.addAll(package2.getEClassifiers());
+      final EcoreDocGenerator generator = new EcoreDocGenerator(input);
+      EcoreDocGeneratorConfig _config = generator.getConfig();
+      _config.setRenderDefaults(false);
+      final CharSequence result = generator.generate();
+      File _file = new File("testData/generator/basic/expectedOutcomeNoDefaults/ecoredoc-example.adoc");
+      final String expected = FileUtils.readFileToString(_file);
+      Assert.assertEquals(expected, result.toString());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
   public void testMissingReferences() {
     try {
       final Injector injector = new XcoreStandaloneSetup().createInjectorAndDoEMFRegistration();

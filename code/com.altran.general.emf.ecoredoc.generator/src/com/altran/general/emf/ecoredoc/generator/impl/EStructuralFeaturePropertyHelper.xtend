@@ -25,9 +25,9 @@ class EStructuralFeaturePropertyHelper {
 		val boolean lowerNotEqualUpperBound = lowerBound != upperBound
 		
 		val isSet = if (eStructuralFeature.isMany) {
-			lowerBound === 1 && upperBound === -1
+			lowerBound !== 0 || upperBound !== -1
 		} else {
-			lowerBound === 0 && upperBound === 1
+			lowerBound !== 0 || upperBound !== 1
 		}
 		
 		if (isSet || eStructuralFeature.shouldRenderDefaults) {
@@ -45,17 +45,19 @@ class EStructuralFeaturePropertyHelper {
 		String falseLiteral, 
 		boolean defaultValue,
 		boolean currentPropertyValue) { 
+			
 		val boolean isSet = (defaultValue != currentPropertyValue)
-
-		if(isSet || eStructuralFeature.shouldRenderDefaults) {
+		val shouldRenderDefaults = eStructuralFeature.shouldRenderDefaults
+		
+		if(isSet || shouldRenderDefaults) {
 			if(currentPropertyValue) {
-				if(isSet) {
+				if(isSet && shouldRenderDefaults) {
 					return boldifyString(trueLiteral)
 				} else {
 					return trueLiteral
 				}
 			} else {
-				if(isSet) {
+				if(isSet && shouldRenderDefaults) {
 					return boldifyString(falseLiteral)
 				} else {
 					return falseLiteral

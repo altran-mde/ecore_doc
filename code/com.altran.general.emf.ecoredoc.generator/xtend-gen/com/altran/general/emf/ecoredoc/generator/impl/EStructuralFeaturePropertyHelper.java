@@ -38,9 +38,9 @@ public class EStructuralFeaturePropertyHelper {
       boolean _xifexpression = false;
       boolean _isMany = eStructuralFeature.isMany();
       if (_isMany) {
-        _xifexpression = ((lowerBound == 1) && (upperBound == (-1)));
+        _xifexpression = ((lowerBound != 0) || (upperBound != (-1)));
       } else {
-        _xifexpression = ((lowerBound == 0) && (upperBound == 1));
+        _xifexpression = ((lowerBound != 0) || (upperBound != 1));
       }
       final boolean isSet = _xifexpression;
       CharSequence _xifexpression_1 = null;
@@ -73,15 +73,16 @@ public class EStructuralFeaturePropertyHelper {
   
   public CharSequence definePropertyString(final EStructuralFeature eStructuralFeature, final String trueLiteral, final String falseLiteral, final boolean defaultValue, final boolean currentPropertyValue) {
     final boolean isSet = (defaultValue != currentPropertyValue);
-    if ((isSet || this.shouldRenderDefaults(eStructuralFeature))) {
+    final boolean shouldRenderDefaults = this.shouldRenderDefaults(eStructuralFeature);
+    if ((isSet || shouldRenderDefaults)) {
       if (currentPropertyValue) {
-        if (isSet) {
+        if ((isSet && shouldRenderDefaults)) {
           return this.boldifyString(trueLiteral);
         } else {
           return trueLiteral;
         }
       } else {
-        if (isSet) {
+        if ((isSet && shouldRenderDefaults)) {
           return this.boldifyString(falseLiteral);
         } else {
           return falseLiteral;

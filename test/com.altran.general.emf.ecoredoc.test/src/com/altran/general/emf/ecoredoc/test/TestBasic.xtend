@@ -61,6 +61,31 @@ class TestBasic {
 	}
 	
 	@Test
+	def testNoDefaults() {
+		val injector = new XcoreStandaloneSetup().createInjectorAndDoEMFRegistration
+		
+		val resourceSet = injector.getInstance(ResourceSet)
+		
+		val package1 = resourceSet.getResource(URI.createURI("testData/generator/basic/EPackage1.xcore"), true).contents.filter(EPackage).head
+		val package2 = resourceSet.getResource(URI.createURI("testData/generator/basic/EPackage2.ecore"), true).contents.filter(EPackage).head
+		
+		val input = newLinkedHashSet()
+		
+		input.addAll(package1.EClassifiers)
+		input.addAll(package2.EClassifiers)
+		
+		val generator = new EcoreDocGenerator(input)
+		
+		generator.config.renderDefaults = false
+		
+		val result = generator.generate()
+		
+		val expected = FileUtils.readFileToString(new File("testData/generator/basic/expectedOutcomeNoDefaults/ecoredoc-example.adoc"))
+		
+		assertEquals(expected, result.toString)
+	}
+	
+	@Test
 	def testMissingReferences() {
 		val injector = new XcoreStandaloneSetup().createInjectorAndDoEMFRegistration
 		

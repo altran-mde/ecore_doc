@@ -26,7 +26,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def List<EEnum> collectEEnums(EPackage ePackage) {
-		this.getEPackages.get(ePackage).filter(EEnum).sortBy[it.name]
+		this.getEPackages.get(ePackage).filter(EEnum).sortBy[it.name ?: ""]
 	}
 
 	protected def void writeEEnums(List<EEnum> eEnums) {

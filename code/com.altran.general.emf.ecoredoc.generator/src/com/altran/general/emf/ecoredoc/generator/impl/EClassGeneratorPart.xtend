@@ -31,7 +31,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def List<EClass> collectEClasses(EPackage ePackages) {
-		getEPackages.get(ePackages).filter(EClass).sortBy[it.name]
+		getEPackages.get(ePackages).filter(EClass).sortBy[it.name ?: ""]
 	}
 
 	protected def void writeEClasses(List<EClass> eClasses) {
@@ -146,7 +146,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		if (superTypesExist) {
 			writeSuperTypesHeader()
 			
-			val sortedSuperTypes = eClass.EAllSuperTypes.sortBy[it.name]
+			val sortedSuperTypes = eClass.EAllSuperTypes.sortBy[it.name ?: ""]
 
 			for (supertype : sortedSuperTypes) {
 				writeType(supertype)
@@ -231,12 +231,12 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		Set<? extends EStructuralFeature> inheritedStructuralFeatures) {
 		
 		// Iterate through non inherited eStructuralFeatures.
-		for (eStructuralFeature : eStructuralFeatures.sortBy[it.name]) {
+		for (eStructuralFeature : eStructuralFeatures.sortBy[it.name ?: ""]) {
 			writeRow(eStructuralFeature, eClass)
 		}
 
 		// Iterate through inherited eStructuralFeatures.
-		for (eStructuralFeature : inheritedStructuralFeatures.sortBy[it.name]) {
+		for (eStructuralFeature : inheritedStructuralFeatures.sortBy[it.name ?: ""]) {
 			writeRow(eStructuralFeature, eClass)
 		}
 

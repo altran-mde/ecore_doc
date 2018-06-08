@@ -86,10 +86,10 @@ abstract class AEcoreDocGeneratorPart {
 		var boolean anyMatch = false
 		val Collection<EClass> eClasses = collectAllEClasses()
 		val ArrayList<String> useCaseStrings = newArrayList()
-		val List<EClass> sortedEClasses = eClasses.sortBy[it.name]
+		val List<EClass> sortedEClasses = eClasses.sortBy[it.name ?: ""]
 
 		for (eClass : sortedEClasses) {
-			val List<EStructuralFeature> sortedEStructuralFeatures = eClass.EAllStructuralFeatures.sortBy[it.name]
+			val List<EStructuralFeature> sortedEStructuralFeatures = eClass.EAllStructuralFeatures.sortBy[it.name ?: ""]
 			
 			for (feature : sortedEStructuralFeatures) {
 				if (feature.EType == target) {

@@ -26,7 +26,7 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def List<EDataType> collectEDataTypes(EPackage ePackage) {
-		this.getEPackages.get(ePackage).filter(EDataType).filter[!(it instanceof EEnum)].sortBy[it.name]
+		this.getEPackages.get(ePackage).filter(EDataType).filter[!(it instanceof EEnum)].sortBy[it.name ?: ""]
 	}
 
 	protected def void writeEDataTypes(List<EDataType> eDataTypes) {

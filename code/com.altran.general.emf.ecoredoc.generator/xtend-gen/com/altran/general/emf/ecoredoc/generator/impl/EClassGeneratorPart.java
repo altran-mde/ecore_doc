@@ -1,16 +1,21 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
+import com.altran.general.ecoredoc.generator.config.EClassConfig;
+import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig;
+import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorPart;
 import com.altran.general.emf.ecoredoc.generator.impl.EStructuralFeaturePropertyHelper;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
@@ -26,47 +31,44 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.MapExtensions;
+import org.eclipse.xtext.xbase.lib.Pair;
 
 @SuppressWarnings("all")
 public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   @Extension
   private EStructuralFeaturePropertyHelper _eStructuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper();
   
-  public EClassGeneratorPart(final /* IEcoreDocGeneratorPartConfig */Object config, final Multimap<EPackage, EClassifier> ePackages) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe constructor AEcoreDocGeneratorPart(Object, Multimap<EPackage, EClassifier>) refers to the missing type Object");
+  public EClassGeneratorPart(final EcoreDocGeneratorConfig config, final Multimap<EPackage, EClassifier> ePackages) {
+    super(config, ePackages);
   }
   
   @Override
   public StringBuilder write(final EPackage ePackage) {
     this.clearOutput();
-    final List<EClass> eClasses = this.collectEClasses(ePackage);
-    this.writeEClasses(eClasses);
+    final List<EClass> eClasses = this._ecoreDocExtension.collectEClasses(this.getEPackages().get(ePackage));
+    final Function1<EClass, EClassConfig> _function = (EClass it) -> {
+      IEcoreDocGeneratorConfig _findConfig = this.getConfig().findConfig(it);
+      return ((EClassConfig) _findConfig);
+    };
+    final Function2<EClass, EClassConfig, Boolean> _function_1 = (EClass eClass, EClassConfig config) -> {
+      return Boolean.valueOf(config.shouldRender());
+    };
+    final Map<EClass, EClassConfig> eClassMap = MapExtensions.<EClass, EClassConfig>filter(IterableExtensions.<EClass, EClassConfig>toInvertedMap(eClasses, _function), _function_1);
+    this.writeEClasses(eClassMap);
     return this.getOutput();
   }
   
-  protected List<EClass> collectEClasses(final EPackage ePackages) {
-    final Function1<EClass, String> _function = (EClass it) -> {
-      String _elvis = null;
-      String _name = it.getName();
-      if (_name != null) {
-        _elvis = _name;
-      } else {
-        _elvis = "";
-      }
-      return _elvis;
-    };
-    return IterableExtensions.<EClass, String>sortBy(Iterables.<EClass>filter(this.getEPackages().get(ePackages), EClass.class), _function);
-  }
-  
-  protected void writeEClasses(final List<EClass> eClasses) {
-    boolean _isEmpty = eClasses.isEmpty();
+  protected void writeEClasses(final Map<EClass, EClassConfig> eClassMap) {
+    boolean _isEmpty = eClassMap.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
       this.writeEClassesHeader();
-      for (final EClass eClass : eClasses) {
-        this.writeEClass(eClass);
+      Set<Map.Entry<EClass, EClassConfig>> _entrySet = eClassMap.entrySet();
+      for (final Map.Entry<EClass, EClassConfig> entry : _entrySet) {
+        this.writeEClass(entry);
       }
     }
   }
@@ -82,18 +84,19 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _output.append(_builder);
   }
   
-  protected void writeEClass(final EClass eClass) {
-    this.writeEClassHeader(eClass);
-    this.writeProperties(eClass);
-    this.writeSuperTypes(eClass);
-    this.writeSubTypes(eClass);
-    this.writeEAttributes(eClass);
-    this.writeEContainments(eClass);
-    this.writeECrossReferences(eClass);
-    this.writeUseCases(eClass);
+  protected void writeEClass(final Map.Entry<EClass, EClassConfig> entry) {
+    this.writeEClassHeader(entry);
+    this.writeProperties(entry);
+    this.writeSuperTypes(entry);
+    this.writeSubTypes(entry);
+    this.writeEAttributes(entry);
+    this.writeEContainments(entry);
+    this.writeECrossReferences(entry);
+    this.writeUseCases(entry);
   }
   
-  protected void writeEContainments(final EClass eClass) {
+  protected void writeEContainments(final Map.Entry<EClass, EClassConfig> entry) {
+    final EClass eClass = entry.getKey();
     final Function1<EReference, Boolean> _function = (EReference it) -> {
       return Boolean.valueOf(it.isContainment());
     };
@@ -106,7 +109,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     }
   }
   
-  protected void writeECrossReferences(final EClass eClass) {
+  protected void writeECrossReferences(final Map.Entry<EClass, EClassConfig> entry) {
+    final EClass eClass = entry.getKey();
     final Function1<EReference, Boolean> _function = (EReference it) -> {
       boolean _isContainment = it.isContainment();
       return Boolean.valueOf((!_isContainment));
@@ -120,7 +124,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     }
   }
   
-  protected void writeEAttributes(final EClass eClass) {
+  protected void writeEAttributes(final Map.Entry<EClass, EClassConfig> entry) {
+    final EClass eClass = entry.getKey();
     boolean _isEmpty = eClass.getEAllAttributes().isEmpty();
     final boolean eAttributeExists = (!_isEmpty);
     if (eAttributeExists) {
@@ -154,7 +159,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _output.append(_builder);
   }
   
-  protected void writeSubTypes(final EClass currentEClass) {
+  protected void writeSubTypes(final Map.Entry<EClass, EClassConfig> entry) {
+    final EClass currentEClass = entry.getKey();
     Set<EClass> subTypes = CollectionLiterals.<EClass>newLinkedHashSet();
     final Function1<EClass, Boolean> _function = (EClass it) -> {
       EClass _eClass = it.eClass();
@@ -172,12 +178,15 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     if (_not) {
       this.writeSubTypesHeader();
       for (final EClass eClass_1 : subTypes) {
-        this.writeType(eClass_1);
+        IEcoreDocGeneratorConfig _findConfig = this.getConfig().findConfig(eClass_1);
+        Pair<EClass, IEcoreDocGeneratorConfig> _mappedTo = Pair.<EClass, IEcoreDocGeneratorConfig>of(eClass_1, _findConfig);
+        this.writeType(_mappedTo);
       }
     }
   }
   
-  protected void writeSuperTypes(final EClass eClass) {
+  protected void writeSuperTypes(final Map.Entry<EClass, EClassConfig> entry) {
+    final EClass eClass = entry.getKey();
     boolean _isEmpty = eClass.getEAllSuperTypes().isEmpty();
     final boolean superTypesExist = (!_isEmpty);
     if (superTypesExist) {
@@ -194,12 +203,22 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       };
       final List<EClass> sortedSuperTypes = IterableExtensions.<EClass, String>sortBy(eClass.getEAllSuperTypes(), _function);
       for (final EClass supertype : sortedSuperTypes) {
-        this.writeType(supertype);
+        IEcoreDocGeneratorConfig _findConfig = this.getConfig().findConfig(supertype);
+        Pair<EClass, IEcoreDocGeneratorConfig> _mappedTo = Pair.<EClass, IEcoreDocGeneratorConfig>of(supertype, _findConfig);
+        this.writeType(_mappedTo);
       }
     }
   }
   
-  protected void writeType(final EClass eClass) {
+  protected void writeType(final Pair<EClass, IEcoreDocGeneratorConfig> pair) {
+    EClass _key = pair.getKey();
+    IEcoreDocGeneratorConfig _value = pair.getValue();
+    AbstractMap.SimpleEntry<EClass, EClassConfig> _simpleEntry = new AbstractMap.SimpleEntry<EClass, EClassConfig>(_key, ((EClassConfig) _value));
+    this.writeType(_simpleEntry);
+  }
+  
+  protected void writeType(final Map.Entry<EClass, EClassConfig> entry) {
+    final EClass eClass = entry.getKey();
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("* ");
@@ -514,70 +533,64 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     _output.append(_builder);
   }
   
-  protected CharSequence writeEClassHeader(final EClass eClass) {
-    StringBuilder _xblockexpression = null;
+  protected void writeEClassHeader(final Map.Entry<EClass, EClassConfig> entry) {
+    final EClass eClass = entry.getKey();
+    final String eClassName = eClass.getName();
+    final boolean isAbstract = eClass.isAbstract();
+    final boolean isInterface = eClass.isInterface();
+    final boolean notInterface = (!isInterface);
+    StringBuilder _output = this.getOutput();
+    StringConcatenation _builder = new StringConcatenation();
+    String _newline = EcoreDocExtension.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
+    _builder.append("[[");
+    CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eClass);
+    _builder.append(_concatAnchor);
+    _builder.append("]]");
+    _builder.newLineIfNotEmpty();
+    _builder.append("==== ");
     {
-      final String eClassName = eClass.getName();
-      final boolean isAbstract = eClass.isAbstract();
-      final boolean isInterface = eClass.isInterface();
-      final boolean notInterface = (!isInterface);
-      StringBuilder _output = this.getOutput();
-      StringConcatenation _builder = new StringConcatenation();
-      String _newline = EcoreDocExtension.newline();
-      _builder.append(_newline);
-      _builder.newLineIfNotEmpty();
-      _builder.append("[[");
-      CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eClass);
-      _builder.append(_concatAnchor);
-      _builder.append("]]");
-      _builder.newLineIfNotEmpty();
-      _builder.append("==== ");
-      {
-        if ((isAbstract && notInterface)) {
-          _builder.append("Abstract ");
-        }
+      if ((isAbstract && notInterface)) {
+        _builder.append("Abstract ");
       }
-      {
-        if (isInterface) {
-          _builder.append("Interface");
-        } else {
-          _builder.append("Class");
-        }
-      }
-      _builder.append(" ");
-      _builder.append(eClassName);
-      _builder.newLineIfNotEmpty();
-      String _newline_1 = EcoreDocExtension.newline();
-      _builder.append(_newline_1);
-      _builder.newLineIfNotEmpty();
-      CharSequence _documentation = this._ecoreDocExtension.getDocumentation(eClass);
-      _builder.append(_documentation);
-      _builder.newLineIfNotEmpty();
-      String _newline_2 = EcoreDocExtension.newline();
-      _builder.append(_newline_2);
-      _builder.newLineIfNotEmpty();
-      _xblockexpression = _output.append(_builder);
     }
-    return _xblockexpression;
+    {
+      if (isInterface) {
+        _builder.append("Interface");
+      } else {
+        _builder.append("Class");
+      }
+    }
+    _builder.append(" ");
+    _builder.append(eClassName);
+    _builder.newLineIfNotEmpty();
+    String _newline_1 = EcoreDocExtension.newline();
+    _builder.append(_newline_1);
+    _builder.newLineIfNotEmpty();
+    CharSequence _documentation = this._ecoreDocExtension.getDocumentation(eClass);
+    _builder.append(_documentation);
+    _builder.newLineIfNotEmpty();
+    String _newline_2 = EcoreDocExtension.newline();
+    _builder.append(_newline_2);
+    _builder.newLineIfNotEmpty();
+    _output.append(_builder);
   }
   
-  protected CharSequence writeProperties(final EClass eClass) {
-    StringBuilder _xblockexpression = null;
-    {
-      final ArrayList<CharSequence> properties = CollectionLiterals.<CharSequence>newArrayList();
-      boolean _isAbstract = eClass.isAbstract();
-      boolean _not = (!_isAbstract);
-      if (_not) {
-        CharSequence _defineDefaultValue = this.defineDefaultValue(eClass);
-        properties.add(_defineDefaultValue);
-      }
-      CharSequence _defineInstanceClassName = this.defineInstanceClassName(eClass);
-      properties.add(_defineInstanceClassName);
-      this.getOutput().append(
-        IterableExtensions.join(IterableExtensions.<CharSequence>filterNull(properties), EcoreDocExtension.ECLASSIFIER_PROPERTY_SEPARATOR));
-      _xblockexpression = this.getOutput().append(EcoreDocExtension.newline());
+  protected void writeProperties(final Map.Entry<EClass, EClassConfig> entry) {
+    final EClass eClass = entry.getKey();
+    final ArrayList<CharSequence> properties = CollectionLiterals.<CharSequence>newArrayList();
+    boolean _isAbstract = eClass.isAbstract();
+    boolean _not = (!_isAbstract);
+    if (_not) {
+      CharSequence _defineDefaultValue = this.defineDefaultValue(eClass);
+      properties.add(_defineDefaultValue);
     }
-    return _xblockexpression;
+    CharSequence _defineInstanceClassName = this.defineInstanceClassName(eClass);
+    properties.add(_defineInstanceClassName);
+    this.getOutput().append(
+      IterableExtensions.join(IterableExtensions.<CharSequence>filterNull(properties), EcoreDocExtension.ECLASSIFIER_PROPERTY_SEPARATOR));
+    this.getOutput().append(EcoreDocExtension.newline());
   }
   
   protected List<CharSequence> enumerateFeatureProperties(final EStructuralFeature eAttribute) {

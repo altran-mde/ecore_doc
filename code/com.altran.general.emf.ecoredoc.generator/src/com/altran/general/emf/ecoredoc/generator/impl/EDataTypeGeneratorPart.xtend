@@ -1,42 +1,46 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
+import com.altran.general.ecoredoc.generator.config.EDataTypeConfig
+import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.google.common.collect.Multimap
-import java.util.List
+import java.util.Map
+import java.util.Map.Entry
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
-import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EPackage
-import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig
+
 import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
 
-class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
+class EDataTypeGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 
-	new(IEcoreDocGeneratorPartConfig config, Multimap<EPackage, EClassifier> ePackages) {
+	new(EcoreDocGeneratorConfig config, Multimap<EPackage, EClassifier> ePackages) {
 		super(config, ePackages)
 	}
 
 	override StringBuilder write(EPackage ePackage) {
 		clearOutput()
 
-		val eDataTypes = collectEDataTypes(ePackage)
+		val eDataTypes = getEPackages().get(ePackage).collectEDataTypes()
 
-		writeEDataTypes(eDataTypes)
+		val eDataTypeMap = eDataTypes
+			.toInvertedMap[getConfig().findConfig(it) as EDataTypeConfig]
+			.filter[eDataType, config|
+				config.shouldRender
+			]
+		
+		writeEDataTypes(eDataTypeMap)
 
 		return output
 	}
 
-	protected def List<EDataType> collectEDataTypes(EPackage ePackage) {
-		this.getEPackages.get(ePackage).filter(EDataType).filter[!(it instanceof EEnum)].sortBy[it.name ?: ""]
-	}
-
-	protected def void writeEDataTypes(List<EDataType> eDataTypes) {
-		if (!eDataTypes.isEmpty) {
+	protected def void writeEDataTypes(Map<EDataType, EDataTypeConfig> eDataTypeMap) {
+		if (!eDataTypeMap.isEmpty) {
 			writeEDataTypesHeader()
 
-			for (eDataType : eDataTypes) {
-				writeEDataTypeHeader(eDataType)
-				writeProperties(eDataType)
-				writeUseCases(eDataType)
+			for (entry : eDataTypeMap.entrySet) {
+				writeEDataTypeHeader(entry)
+				writeProperties(entry)
+				writeUseCases(entry)
 			}
 		}
 	}
@@ -44,20 +48,22 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def void writeEDataTypesHeader() {
 		output.append(
 		'''
-			«newline»
+			Â«newlineÂ»
 			=== Data Types
 		''')
 	}
 
-	protected def CharSequence writeEDataTypeHeader(EDataType eDataType) {
+	protected def void writeEDataTypeHeader(Entry<EDataType, EDataTypeConfig> entry) {
+		val eDataType = entry.key
+		
 		output.append(
 		'''
-			«newline»
-			[[«concatAnchor(eDataType)»]]
-			==== «eDataType.name»
-			«newline»
-			«getDocumentation(eDataType)»
-			«newline»
+			Â«newlineÂ»
+			[[Â«concatAnchor(eDataType)Â»]]
+			==== Â«eDataType.nameÂ»
+			Â«newlineÂ»
+			Â«getDocumentation(eDataType)Â»
+			Â«newlineÂ»
 		''')
 	}
 }

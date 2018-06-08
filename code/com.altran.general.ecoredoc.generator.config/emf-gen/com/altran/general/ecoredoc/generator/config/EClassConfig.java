@@ -2,6 +2,10 @@
  */
 package com.altran.general.ecoredoc.generator.config;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.ENamedElement;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -12,38 +16,116 @@ package com.altran.general.ecoredoc.generator.config;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.altran.general.ecoredoc.generator.config.EClassConfig#getEAttribute <em>EAttribute</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.EClassConfig#getTargetEClass <em>Target EClass</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.EClassConfig#getEAttributes <em>EAttributes</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.EClassConfig#getEContainments <em>EContainments</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.EClassConfig#getEReferences <em>EReferences</em>}</li>
  * </ul>
  *
  * @see com.altran.general.ecoredoc.generator.config.ConfigPackage#getEClassConfig()
  * @model
  * @generated
  */
-public interface EClassConfig extends IEcoreDocGeneratorPartConfig {
+public interface EClassConfig extends IEcoreDocGeneratorPartConfig, IEClassConfig {
 	/**
-	 * Returns the value of the '<em><b>EAttribute</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Target EClass</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>EAttribute</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Target EClass</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>EAttribute</em>' containment reference.
-	 * @see #setEAttribute(EAttributeConfig)
-	 * @see com.altran.general.ecoredoc.generator.config.ConfigPackage#getEClassConfig_EAttribute()
+	 * @return the value of the '<em>Target EClass</em>' reference.
+	 * @see #setTargetEClass(EClass)
+	 * @see com.altran.general.ecoredoc.generator.config.ConfigPackage#getEClassConfig_TargetEClass()
+	 * @model
+	 * @generated
+	 */
+	EClass getTargetEClass();
+
+	/**
+	 * Sets the value of the '{@link com.altran.general.ecoredoc.generator.config.EClassConfig#getTargetEClass <em>Target EClass</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Target EClass</em>' reference.
+	 * @see #getTargetEClass()
+	 * @generated
+	 */
+	void setTargetEClass(EClass value);
+
+	/**
+	 * Returns the value of the '<em><b>EAttributes</b></em>' containment reference list.
+	 * The list contents are of type {@link com.altran.general.ecoredoc.generator.config.EAttributeConfig}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>EAttributes</em>' map isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>EAttributes</em>' containment reference list.
+	 * @see com.altran.general.ecoredoc.generator.config.ConfigPackage#getEClassConfig_EAttributes()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EAttributeConfig getEAttribute();
+	EList<EAttributeConfig> getEAttributes();
 
 	/**
-	 * Sets the value of the '{@link com.altran.general.ecoredoc.generator.config.EClassConfig#getEAttribute <em>EAttribute</em>}' containment reference.
+	 * Returns the value of the '<em><b>EContainments</b></em>' containment reference list.
+	 * The list contents are of type {@link com.altran.general.ecoredoc.generator.config.EContainmentConfig}.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>EContainments</em>' map isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>EAttribute</em>' containment reference.
-	 * @see #getEAttribute()
+	 * @return the value of the '<em>EContainments</em>' containment reference list.
+	 * @see com.altran.general.ecoredoc.generator.config.ConfigPackage#getEClassConfig_EContainments()
+	 * @model containment="true"
 	 * @generated
 	 */
-	void setEAttribute(EAttributeConfig value);
+	EList<EContainmentConfig> getEContainments();
+
+	/**
+	 * Returns the value of the '<em><b>EReferences</b></em>' containment reference list.
+	 * The list contents are of type {@link com.altran.general.ecoredoc.generator.config.EReferenceConfig}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>EReferences</em>' map isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>EReferences</em>' containment reference list.
+	 * @see com.altran.general.ecoredoc.generator.config.ConfigPackage#getEClassConfig_EReferences()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<EReferenceConfig> getEReferences();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getTargetEClass();'"
+	 * @generated
+	 */
+	ENamedElement getTarget();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='int _xifexpression = (int) 0;\nboolean _isSetPosition = this.isSetPosition();\nif (_isSetPosition)\n{\n\t_xifexpression = ((&lt;%com.altran.general.ecoredoc.generator.config.impl.EClassConfigImpl%&gt;) this).getPosition_();\n}\nelse\n{\n\t_xifexpression = 1;\n}\nreturn _xifexpression;'"
+	 * @generated
+	 */
+	int getPosition();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _xifexpression = false;\nboolean _isSetRepeatInherited = this.isSetRepeatInherited();\nif (_isSetRepeatInherited)\n{\n\t_xifexpression = this.isRepeatInherited();\n}\nelse\n{\n\t_xifexpression = true;\n}\nreturn _xifexpression;'"
+	 * @generated
+	 */
+	boolean shouldRepeatInherited();
 
 } // EClassConfig

@@ -3,38 +3,234 @@
 )
 package com.altran.general.ecoredoc.generator.config
 
-class EcoreDocGeneratorConfig {
-	boolean renderDefaults = "true"
+import com.altran.general.ecoredoc.generator.config.impl.EClassConfigImpl
+import com.altran.general.ecoredoc.generator.config.impl.EDataTypeConfigImpl
+import com.altran.general.ecoredoc.generator.config.impl.EEnumConfigImpl
+import org.eclipse.emf.ecore.EAttribute
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EDataType
+import org.eclipse.emf.ecore.EEnum
+import org.eclipse.emf.ecore.EEnumLiteral
+import org.eclipse.emf.ecore.ENamedElement
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EReference
+
+interface IEcoreDocGeneratorConfig {
+	unsettable boolean renderDefaults
 	
-	contains EDataTypeConfig eDataType
-	contains EEnumConfig eEnum
-	contains EClassConfig eClass
-}
-
-interface IEcoreDocGeneratorPartConfig {
+	op boolean shouldRenderDefaults() {
+		if (isSetRenderDefaults) {
+			renderDefaults
+		} else {
+			(eContainer as IEcoreDocGeneratorConfig).shouldRenderDefaults()
+		}
+	}
 	
-}
-
-class EDataTypeConfig extends IEcoreDocGeneratorPartConfig {
-
-}
-
-class EEnumConfig extends IEcoreDocGeneratorPartConfig {
+	unsettable boolean render
 	
-}
-
-class EClassConfig extends IEcoreDocGeneratorPartConfig {
-	contains EAttributeConfig eAttribute	
-}
-
-abstract class EStructuralFeatureConfig {
-	boolean ordered
+	op boolean shouldRender() {
+		if (isSetRender) {
+			render
+		} else {
+			(eContainer as IEcoreDocGeneratorConfig).shouldRender()
+		}
+	}
 	
-	op boolean renderOrdered() {
-		ordered // + some logic
+	op ENamedElement getTarget()
+}
+
+class EcoreDocGeneratorConfig extends IEcoreDocGeneratorConfig {
+	op boolean shouldRenderDefaults() {
+		if (isSetRenderDefaults) {
+			renderDefaults
+		} else {
+			true
+		}
+	}
+
+	op boolean shouldRender() {
+		if (isSetRender) {
+			render
+		} else {
+			true
+		}
+	}
+
+	contains EPackageConfig[] ePackages
+	
+	op IEcoreDocGeneratorConfig findConfig(ENamedElement element) {
+		switch (element) {
+			EPackage:
+				EPackages
+			
+			EEnum:
+				EPackages
+				.flatMap[EEnums]
+				
+			EDataType:
+				EPackages
+					.flatMap[EDataTypes]
+					
+			EEnumLiteral:
+				EPackages
+					.flatMap[EEnums]
+					.flatMap[EEnumLiterals]
+							
+			EClass:
+				EPackages
+					.flatMap[EClasses]
+			
+			EAttribute:
+				EPackages
+				.flatMap[EClasses]
+				.flatMap[EAttributes]
+				
+			EReference case (element.isContainment):
+				EPackages
+					.flatMap[EClasses]
+					.flatMap[EContainments]
+					
+			EReference case (!element.isContainment):
+				EPackages
+					.flatMap[EClasses]
+					.flatMap[EReferences]
+		}.findFirst[target == element]
+	}
+	
+	op ENamedElement getTarget() {
+		null
 	}
 }
 
-class EAttributeConfig extends EStructuralFeatureConfig {
+class EPackageConfig extends IEcoreDocGeneratorConfig {
+	refers EPackage targetEPackage
 	
+	op ENamedElement getTarget() {
+		targetEPackage
+	}
+	
+	contains EDataTypeConfig[] eDataTypes
+	contains EEnumConfig[] eEnums
+	contains EClassConfig[] eClasses
+}
+
+interface IEcoreDocGeneratorPartConfig extends IEcoreDocGeneratorConfig {
+	unsettable int position
+}
+
+interface IEDataTypeConfig extends IEcoreDocGeneratorPartConfig {
+	
+}
+
+class EDataTypeConfig extends IEDataTypeConfig {
+	refers EDataType targetEDataType
+	
+	op ENamedElement getTarget() {
+		targetEDataType
+	}
+	
+	op int getPosition() {
+		if (isSetPosition) {
+			(this as EDataTypeConfigImpl).getPosition_()
+		} else {
+			3
+		}
+	}
+}
+
+class EEnumConfig extends IEDataTypeConfig {
+	refers EEnum targetEEnum
+	
+	op ENamedElement getTarget() {
+		targetEEnum
+	}
+
+	op int getPosition() {
+		if (isSetPosition) {
+			(this as EEnumConfigImpl).getPosition_()
+		} else {
+			2
+		}
+	}
+	
+	contains EEnumLiteralConfig[] eEnumLiterals
+}
+
+class EEnumLiteralConfig extends IEcoreDocGeneratorConfig {
+	refers EEnumLiteral targetEEnumLiteral
+
+	op ENamedElement getTarget() {
+		targetEEnumLiteral
+	}
+}
+
+interface IEClassConfig extends IEcoreDocGeneratorConfig {
+	unsettable boolean repeatInherited
+
+	op boolean shouldRepeatInherited() {
+		if (isSetRepeatInherited) {
+			repeatInherited
+		} else {
+			(eContainer as IEClassConfig).shouldRepeatInherited()
+		}
+	}
+}
+
+class EClassConfig extends IEcoreDocGeneratorPartConfig, IEClassConfig {
+	refers EClass targetEClass
+
+	op ENamedElement getTarget() {
+		targetEClass
+	}
+	
+	op int getPosition() {
+		if (isSetPosition) {
+			(this as EClassConfigImpl).getPosition_()
+		} else {
+			1
+		}
+	}
+	
+	op boolean shouldRepeatInherited() {
+		if (isSetRepeatInherited) {
+			repeatInherited
+		} else {
+			true
+		}
+	}
+	
+	contains EAttributeConfig[] eAttributes
+	contains EContainmentConfig[] eContainments
+	contains EReferenceConfig[] eReferences	
+}
+
+abstract class AEStructuralFeatureConfig extends IEClassConfig {
+
+}
+
+class EAttributeConfig extends AEStructuralFeatureConfig {
+	refers EAttribute targetEAttribute
+
+	op ENamedElement getTarget() {
+		targetEAttribute
+	}
+}
+
+abstract class AEReferenceConfig extends AEStructuralFeatureConfig {
+}
+
+class EContainmentConfig extends AEReferenceConfig {
+	refers EReference targetEContainment	
+
+	op ENamedElement getTarget() {
+		targetEContainment
+	}
+}
+
+class EReferenceConfig extends AEReferenceConfig {
+	refers EReference targetEReference	
+
+	op ENamedElement getTarget() {
+		targetEReference
+	}
 }

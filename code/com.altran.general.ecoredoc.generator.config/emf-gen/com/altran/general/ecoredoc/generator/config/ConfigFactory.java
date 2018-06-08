@@ -31,6 +31,15 @@ public interface ConfigFactory extends EFactory {
 	EcoreDocGeneratorConfig createEcoreDocGeneratorConfig();
 
 	/**
+	 * Returns a new object of class '<em>EPackage Config</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EPackage Config</em>'.
+	 * @generated
+	 */
+	EPackageConfig createEPackageConfig();
+
+	/**
 	 * Returns a new object of class '<em>EData Type Config</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -49,6 +58,15 @@ public interface ConfigFactory extends EFactory {
 	EEnumConfig createEEnumConfig();
 
 	/**
+	 * Returns a new object of class '<em>EEnum Literal Config</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEnum Literal Config</em>'.
+	 * @generated
+	 */
+	EEnumLiteralConfig createEEnumLiteralConfig();
+
+	/**
 	 * Returns a new object of class '<em>EClass Config</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,6 +83,24 @@ public interface ConfigFactory extends EFactory {
 	 * @generated
 	 */
 	EAttributeConfig createEAttributeConfig();
+
+	/**
+	 * Returns a new object of class '<em>EContainment Config</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EContainment Config</em>'.
+	 * @generated
+	 */
+	EContainmentConfig createEContainmentConfig();
+
+	/**
+	 * Returns a new object of class '<em>EReference Config</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EReference Config</em>'.
+	 * @generated
+	 */
+	EReferenceConfig createEReferenceConfig();
 
 	/**
 	 * Returns the package supported by this factory.

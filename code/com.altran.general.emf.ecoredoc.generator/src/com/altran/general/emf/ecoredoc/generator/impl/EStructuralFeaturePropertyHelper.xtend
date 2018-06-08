@@ -16,12 +16,12 @@ class EStructuralFeaturePropertyHelper {
 		val int upperBound = eStructuralFeature.upperBound
 		val boolean lowerNotEqualUpperBound = lowerBound != upperBound
 
-		'''`[«lowerBound»«IF lowerNotEqualUpperBound»..«defineUpperBound(upperBound)»«ENDIF»]`'''
+		'''`[Â«lowerBoundÂ»Â«IF lowerNotEqualUpperBoundÂ»..Â«defineUpperBound(upperBound)Â»Â«ENDIFÂ»]`'''
 
 	}
 
 	def CharSequence boldifyString(String string) {
-		'''«BOLD»«string»«BOLD»'''
+		'''Â«BOLDÂ»Â«stringÂ»Â«BOLDÂ»'''
 	}
 
 	def CharSequence definePropertyString(String trueLiteral, String falseLiteral, boolean defaultValue,
@@ -147,7 +147,7 @@ class EStructuralFeaturePropertyHelper {
 		val eKeys = eReference.EKeys
 		val boolean eKeysExist = !eKeys.isEmpty
 
-		'''_EKeys:_«IF eKeysExist» «eKeys.join("`", ", ", "`") [name]»«ELSE» `-`«ENDIF»'''
+		'''_EKeys:_Â«IF eKeysExistÂ» Â«eKeys.join("`", ", ", "`") [name]Â»Â«ELSEÂ» `-`Â«ENDIFÂ»'''
 	}
 
 	def dispatch CharSequence concatDefaultValue(EAttribute eAttribute) {
@@ -160,10 +160,10 @@ class EStructuralFeaturePropertyHelper {
 			
 			switch (defaultValue) {
 				EEnumLiteralImpl:
-					result += '''`<<«concatAnchor(eAttribute.EAttributeType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>`'''
+					result += '''`<<Â«concatAnchor(eAttribute.EAttributeType)Â»Â«EcoreDocExtension.ANCHOR_SEPARATORÂ»Â«defaultValueÂ», Â«defaultValueÂ»>>`'''
 						
 				default:
-					result += '''`«defaultValue»`'''
+					result += '''`Â«defaultValueÂ»`'''
 			}
 
 		} else {
@@ -179,7 +179,7 @@ class EStructuralFeaturePropertyHelper {
 
 		if (defaultIsSet) {
 			val defaultValue = eReference.defaultValue
-			return '''_Default:_ `«defaultValue»`'''
+			return '''_Default:_ `Â«defaultValueÂ»`'''
 
 		} else {
 			return '''_Default:_ `-`'''

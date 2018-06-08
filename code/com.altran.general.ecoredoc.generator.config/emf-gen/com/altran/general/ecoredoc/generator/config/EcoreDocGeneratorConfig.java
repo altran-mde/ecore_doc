@@ -2,7 +2,9 @@
  */
 package com.altran.general.ecoredoc.generator.config;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.ENamedElement;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -13,120 +15,64 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#isRenderDefaults <em>Render Defaults</em>}</li>
- *   <li>{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEDataType <em>EData Type</em>}</li>
- *   <li>{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEEnum <em>EEnum</em>}</li>
- *   <li>{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEClass <em>EClass</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEPackages <em>EPackages</em>}</li>
  * </ul>
  *
  * @see com.altran.general.ecoredoc.generator.config.ConfigPackage#getEcoreDocGeneratorConfig()
  * @model
  * @generated
  */
-public interface EcoreDocGeneratorConfig extends EObject {
+public interface EcoreDocGeneratorConfig extends IEcoreDocGeneratorConfig {
 	/**
-	 * Returns the value of the '<em><b>Render Defaults</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
+	 * Returns the value of the '<em><b>EPackages</b></em>' containment reference list.
+	 * The list contents are of type {@link com.altran.general.ecoredoc.generator.config.EPackageConfig}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Render Defaults</em>' attribute isn't clear,
+	 * If the meaning of the '<em>EPackages</em>' map isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Render Defaults</em>' attribute.
-	 * @see #setRenderDefaults(boolean)
-	 * @see com.altran.general.ecoredoc.generator.config.ConfigPackage#getEcoreDocGeneratorConfig_RenderDefaults()
-	 * @model default="true" unique="false"
-	 * @generated
-	 */
-	boolean isRenderDefaults();
-
-	/**
-	 * Sets the value of the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#isRenderDefaults <em>Render Defaults</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Render Defaults</em>' attribute.
-	 * @see #isRenderDefaults()
-	 * @generated
-	 */
-	void setRenderDefaults(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>EData Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>EData Type</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>EData Type</em>' containment reference.
-	 * @see #setEDataType(EDataTypeConfig)
-	 * @see com.altran.general.ecoredoc.generator.config.ConfigPackage#getEcoreDocGeneratorConfig_EDataType()
+	 * @return the value of the '<em>EPackages</em>' containment reference list.
+	 * @see com.altran.general.ecoredoc.generator.config.ConfigPackage#getEcoreDocGeneratorConfig_EPackages()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EDataTypeConfig getEDataType();
+	EList<EPackageConfig> getEPackages();
 
 	/**
-	 * Sets the value of the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEDataType <em>EData Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>EData Type</em>' containment reference.
-	 * @see #getEDataType()
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _xifexpression = false;\nboolean _isSetRenderDefaults = this.isSetRenderDefaults();\nif (_isSetRenderDefaults)\n{\n\t_xifexpression = this.isRenderDefaults();\n}\nelse\n{\n\t_xifexpression = true;\n}\nreturn _xifexpression;'"
 	 * @generated
 	 */
-	void setEDataType(EDataTypeConfig value);
+	boolean shouldRenderDefaults();
 
 	/**
-	 * Returns the value of the '<em><b>EEnum</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>EEnum</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>EEnum</em>' containment reference.
-	 * @see #setEEnum(EEnumConfig)
-	 * @see com.altran.general.ecoredoc.generator.config.ConfigPackage#getEcoreDocGeneratorConfig_EEnum()
-	 * @model containment="true"
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _xifexpression = false;\nboolean _isSetRender = this.isSetRender();\nif (_isSetRender)\n{\n\t_xifexpression = this.isRender();\n}\nelse\n{\n\t_xifexpression = true;\n}\nreturn _xifexpression;'"
 	 * @generated
 	 */
-	EEnumConfig getEEnum();
+	boolean shouldRender();
 
 	/**
-	 * Sets the value of the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEEnum <em>EEnum</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>EEnum</em>' containment reference.
-	 * @see #getEEnum()
+	 * @model unique="false" elementUnique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.Iterable%&gt;&lt;? extends &lt;%com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig%&gt;&gt; _switchResult = null;\nboolean _matched = false;\nif (element instanceof &lt;%org.eclipse.emf.ecore.EPackage%&gt;)\n{\n\t_matched=true;\n\t_switchResult = this.getEPackages();\n}\nif (!_matched)\n{\n\tif (element instanceof &lt;%org.eclipse.emf.ecore.EEnum%&gt;)\n\t{\n\t\t_matched=true;\n\t\tfinal &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EEnumConfig%&gt;&gt;&gt; _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EEnumConfig%&gt;&gt;&gt;()\n\t\t{\n\t\t\tpublic &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EEnumConfig%&gt;&gt; apply(final &lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt; it)\n\t\t\t{\n\t\t\t\treturn it.getEEnums();\n\t\t\t}\n\t\t};\n\t\t_switchResult = &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%com.altran.general.ecoredoc.generator.config.EEnumConfig%&gt;&gt;flatMap(this.getEPackages(), _function);\n\t}\n}\nif (!_matched)\n{\n\tif (element instanceof &lt;%org.eclipse.emf.ecore.EDataType%&gt;)\n\t{\n\t\t_matched=true;\n\t\tfinal &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EDataTypeConfig%&gt;&gt;&gt; _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EDataTypeConfig%&gt;&gt;&gt;()\n\t\t{\n\t\t\tpublic &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EDataTypeConfig%&gt;&gt; apply(final &lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt; it)\n\t\t\t{\n\t\t\t\treturn it.getEDataTypes();\n\t\t\t}\n\t\t};\n\t\t_switchResult = &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%com.altran.general.ecoredoc.generator.config.EDataTypeConfig%&gt;&gt;flatMap(this.getEPackages(), _function);\n\t}\n}\nif (!_matched)\n{\n\tif (element instanceof &lt;%org.eclipse.emf.ecore.EEnumLiteral%&gt;)\n\t{\n\t\t_matched=true;\n\t\tfinal &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EEnumConfig%&gt;&gt;&gt; _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EEnumConfig%&gt;&gt;&gt;()\n\t\t{\n\t\t\tpublic &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EEnumConfig%&gt;&gt; apply(final &lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt; it)\n\t\t\t{\n\t\t\t\treturn it.getEEnums();\n\t\t\t}\n\t\t};\n\t\tfinal &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EEnumConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EEnumLiteralConfig%&gt;&gt;&gt; _function_1 = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EEnumConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EEnumLiteralConfig%&gt;&gt;&gt;()\n\t\t{\n\t\t\tpublic &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EEnumLiteralConfig%&gt;&gt; apply(final &lt;%com.altran.general.ecoredoc.generator.config.EEnumConfig%&gt; it)\n\t\t\t{\n\t\t\t\treturn it.getEEnumLiterals();\n\t\t\t}\n\t\t};\n\t\t_switchResult = &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%com.altran.general.ecoredoc.generator.config.EEnumConfig%&gt;, &lt;%com.altran.general.ecoredoc.generator.config.EEnumLiteralConfig%&gt;&gt;flatMap(&lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%com.altran.general.ecoredoc.generator.config.EEnumConfig%&gt;&gt;flatMap(this.getEPackages(), _function), _function_1);\n\t}\n}\nif (!_matched)\n{\n\tif (element instanceof &lt;%org.eclipse.emf.ecore.EClass%&gt;)\n\t{\n\t\t_matched=true;\n\t\tfinal &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt;&gt; _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt;&gt;()\n\t\t{\n\t\t\tpublic &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt; apply(final &lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt; it)\n\t\t\t{\n\t\t\t\treturn it.getEClasses();\n\t\t\t}\n\t\t};\n\t\t_switchResult = &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt;flatMap(this.getEPackages(), _function);\n\t}\n}\nif (!_matched)\n{\n\tif (element instanceof &lt;%org.eclipse.emf.ecore.EAttribute%&gt;)\n\t{\n\t\t_matched=true;\n\t\tfinal &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt;&gt; _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt;&gt;()\n\t\t{\n\t\t\tpublic &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt; apply(final &lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt; it)\n\t\t\t{\n\t\t\t\treturn it.getEClasses();\n\t\t\t}\n\t\t};\n\t\tfinal &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EAttributeConfig%&gt;&gt;&gt; _function_1 = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EAttributeConfig%&gt;&gt;&gt;()\n\t\t{\n\t\t\tpublic &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EAttributeConfig%&gt;&gt; apply(final &lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt; it)\n\t\t\t{\n\t\t\t\treturn it.getEAttributes();\n\t\t\t}\n\t\t};\n\t\t_switchResult = &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;, &lt;%com.altran.general.ecoredoc.generator.config.EAttributeConfig%&gt;&gt;flatMap(&lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt;flatMap(this.getEPackages(), _function), _function_1);\n\t}\n}\nif (!_matched)\n{\n\tif (element instanceof &lt;%org.eclipse.emf.ecore.EReference%&gt;)\n\t{\n\t\tboolean _isContainment = ((&lt;%org.eclipse.emf.ecore.EReference%&gt;)element).isContainment();\n\t\tif (_isContainment)\n\t\t{\n\t\t\t_matched=true;\n\t\t\tfinal &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt;&gt; _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt;&gt;()\n\t\t\t{\n\t\t\t\tpublic &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt; apply(final &lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt; it)\n\t\t\t\t{\n\t\t\t\t\treturn it.getEClasses();\n\t\t\t\t}\n\t\t\t};\n\t\t\tfinal &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EContainmentConfig%&gt;&gt;&gt; _function_1 = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EContainmentConfig%&gt;&gt;&gt;()\n\t\t\t{\n\t\t\t\tpublic &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EContainmentConfig%&gt;&gt; apply(final &lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt; it)\n\t\t\t\t{\n\t\t\t\t\treturn it.getEContainments();\n\t\t\t\t}\n\t\t\t};\n\t\t\t_switchResult = &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;, &lt;%com.altran.general.ecoredoc.generator.config.EContainmentConfig%&gt;&gt;flatMap(&lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt;flatMap(this.getEPackages(), _function), _function_1);\n\t\t}\n\t}\n}\nif (!_matched)\n{\n\tif (element instanceof &lt;%org.eclipse.emf.ecore.EReference%&gt;)\n\t{\n\t\tboolean _isContainment = ((&lt;%org.eclipse.emf.ecore.EReference%&gt;)element).isContainment();\n\t\tboolean _not = (!_isContainment);\n\t\tif (_not)\n\t\t{\n\t\t\t_matched=true;\n\t\t\tfinal &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt;&gt; _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt;&gt;()\n\t\t\t{\n\t\t\t\tpublic &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt; apply(final &lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt; it)\n\t\t\t\t{\n\t\t\t\t\treturn it.getEClasses();\n\t\t\t\t}\n\t\t\t};\n\t\t\tfinal &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EReferenceConfig%&gt;&gt;&gt; _function_1 = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;, &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EReferenceConfig%&gt;&gt;&gt;()\n\t\t\t{\n\t\t\t\tpublic &lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.EReferenceConfig%&gt;&gt; apply(final &lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt; it)\n\t\t\t\t{\n\t\t\t\t\treturn it.getEReferences();\n\t\t\t\t}\n\t\t\t};\n\t\t\t_switchResult = &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;, &lt;%com.altran.general.ecoredoc.generator.config.EReferenceConfig%&gt;&gt;flatMap(&lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%com.altran.general.ecoredoc.generator.config.EPackageConfig%&gt;, &lt;%com.altran.general.ecoredoc.generator.config.EClassConfig%&gt;&gt;flatMap(this.getEPackages(), _function), _function_1);\n\t\t}\n\t}\n}\nfinal &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig%&gt;, &lt;%java.lang.Boolean%&gt;&gt; _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig%&gt;, &lt;%java.lang.Boolean%&gt;&gt;()\n{\n\tpublic &lt;%java.lang.Boolean%&gt; apply(final &lt;%com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig%&gt; it)\n\t{\n\t\t&lt;%org.eclipse.emf.ecore.ENamedElement%&gt; _target = it.getTarget();\n\t\treturn &lt;%java.lang.Boolean%&gt;.valueOf(&lt;%com.google.common.base.Objects%&gt;.equal(_target, element));\n\t}\n};\nreturn &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.findFirst(_switchResult, _function);'"
 	 * @generated
 	 */
-	void setEEnum(EEnumConfig value);
+	IEcoreDocGeneratorConfig findConfig(ENamedElement element);
 
 	/**
-	 * Returns the value of the '<em><b>EClass</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>EClass</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>EClass</em>' containment reference.
-	 * @see #setEClass(EClassConfig)
-	 * @see com.altran.general.ecoredoc.generator.config.ConfigPackage#getEcoreDocGeneratorConfig_EClass()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EClassConfig getEClass();
-
-	/**
-	 * Sets the value of the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEClass <em>EClass</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>EClass</em>' containment reference.
-	 * @see #getEClass()
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return null;'"
 	 * @generated
 	 */
-	void setEClass(EClassConfig value);
+	ENamedElement getTarget();
 
 } // EcoreDocGeneratorConfig

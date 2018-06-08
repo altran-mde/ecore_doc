@@ -1,10 +1,14 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
-import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorPart;
+import com.altran.general.ecoredoc.generator.config.EEnumConfig;
+import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig;
+import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig;
+import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorEDataTypePart;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnum;
@@ -12,48 +16,44 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.MapExtensions;
 
 @SuppressWarnings("all")
-public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
-  public EEnumGeneratorPart(final /* IEcoreDocGeneratorPartConfig */Object config, final Multimap<EPackage, EClassifier> ePackages) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe constructor AEcoreDocGeneratorPart(Object, Multimap<EPackage, EClassifier>) refers to the missing type Object");
+public class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
+  public EEnumGeneratorPart(final EcoreDocGeneratorConfig config, final Multimap<EPackage, EClassifier> ePackages) {
+    super(config, ePackages);
   }
   
   @Override
   public StringBuilder write(final EPackage ePackage) {
     this.clearOutput();
-    final List<EEnum> eEnums = this.collectEEnums(ePackage);
-    this.writeEEnums(eEnums);
+    final List<EEnum> eEnums = this._ecoreDocExtension.collectEEnums(this.getEPackages().get(ePackage));
+    final Function1<EEnum, EEnumConfig> _function = (EEnum it) -> {
+      IEcoreDocGeneratorConfig _findConfig = this.getConfig().findConfig(it);
+      return ((EEnumConfig) _findConfig);
+    };
+    final Function2<EEnum, EEnumConfig, Boolean> _function_1 = (EEnum eEnum, EEnumConfig config) -> {
+      return Boolean.valueOf(config.shouldRender());
+    };
+    final Map<EEnum, EEnumConfig> eEnumMap = MapExtensions.<EEnum, EEnumConfig>filter(IterableExtensions.<EEnum, EEnumConfig>toInvertedMap(eEnums, _function), _function_1);
+    this.writeEEnums(eEnumMap);
     return this.getOutput();
   }
   
-  protected List<EEnum> collectEEnums(final EPackage ePackage) {
-    final Function1<EEnum, String> _function = (EEnum it) -> {
-      String _elvis = null;
-      String _name = it.getName();
-      if (_name != null) {
-        _elvis = _name;
-      } else {
-        _elvis = "";
-      }
-      return _elvis;
-    };
-    return IterableExtensions.<EEnum, String>sortBy(Iterables.<EEnum>filter(this.getEPackages().get(ePackage), EEnum.class), _function);
-  }
-  
-  protected void writeEEnums(final List<EEnum> eEnums) {
-    boolean _isEmpty = eEnums.isEmpty();
+  protected void writeEEnums(final Map<EEnum, EEnumConfig> eEnumMap) {
+    boolean _isEmpty = eEnumMap.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
       this.writeEEnumsHeader();
-      for (final EEnum eEnum : eEnums) {
+      Set<Map.Entry<EEnum, EEnumConfig>> _entrySet = eEnumMap.entrySet();
+      for (final Map.Entry<EEnum, EEnumConfig> entry : _entrySet) {
         {
-          this.writeEEnumHeader(eEnum);
-          this.writeProperties(eEnum);
-          this.writeEEnumLiterals(eEnum);
-          this.writeUseCases(eEnum);
+          this.writeEEnumHeader(entry);
+          this.writeProperties(entry);
+          this.writeEEnumLiterals(entry);
+          this.writeUseCases(entry);
         }
       }
     }
@@ -70,7 +70,8 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     _output.append(_builder);
   }
   
-  protected void writeEEnumLiterals(final EEnum eEnum) {
+  protected void writeEEnumLiterals(final Map.Entry<EEnum, EEnumConfig> entry) {
+    final EEnum eEnum = entry.getKey();
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     String _newline = EcoreDocExtension.newline();
@@ -121,7 +122,8 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     _output.append(_builder);
   }
   
-  protected CharSequence writeEEnumHeader(final EEnum eEnum) {
+  protected void writeEEnumHeader(final Map.Entry<EEnum, EEnumConfig> entry) {
+    final EEnum eEnum = entry.getKey();
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     String _newline = EcoreDocExtension.newline();
@@ -145,6 +147,6 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
     String _newline_2 = EcoreDocExtension.newline();
     _builder.append(_newline_2);
     _builder.newLineIfNotEmpty();
-    return _output.append(_builder);
+    _output.append(_builder);
   }
 }

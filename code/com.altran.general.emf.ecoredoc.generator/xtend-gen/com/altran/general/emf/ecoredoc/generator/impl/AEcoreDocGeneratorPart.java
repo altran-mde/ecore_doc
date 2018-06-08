@@ -1,14 +1,18 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
+import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig;
+import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig;
+import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
@@ -22,21 +26,22 @@ import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Pair;
 
 @SuppressWarnings("all")
 public abstract class AEcoreDocGeneratorPart {
   @Extension
   protected EcoreDocExtension _ecoreDocExtension = new EcoreDocExtension();
   
-  private final /* IEcoreDocGeneratorPartConfig */Object config;
+  private final EcoreDocGeneratorConfig config;
   
   private final Multimap<EPackage, EClassifier> ePackages;
   
   private StringBuilder output;
   
-  public AEcoreDocGeneratorPart(final /* IEcoreDocGeneratorPartConfig */Object config, final Multimap<EPackage, EClassifier> ePackages) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field AEcoreDocGeneratorPart.config refers to the missing type IEcoreDocGeneratorPartConfig");
+  public AEcoreDocGeneratorPart(final EcoreDocGeneratorConfig config, final Multimap<EPackage, EClassifier> ePackages) {
+    this.config = config;
+    this.ePackages = ePackages;
   }
   
   protected abstract StringBuilder write(final EPackage ePackage);
@@ -48,6 +53,10 @@ public abstract class AEcoreDocGeneratorPart {
   
   protected Multimap<EPackage, EClassifier> getEPackages() {
     return this.ePackages;
+  }
+  
+  protected EcoreDocGeneratorConfig getConfig() {
+    return this.config;
   }
   
   protected StringBuilder getOutput() {
@@ -139,7 +148,15 @@ public abstract class AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected void writeUseCases(final EClassifier target) {
+  protected void writeUseCases(final Pair<? extends EClassifier, ? extends IEcoreDocGeneratorConfig> pair) {
+    EClassifier _key = pair.getKey();
+    IEcoreDocGeneratorConfig _value = pair.getValue();
+    AbstractMap.SimpleEntry<EClassifier, IEcoreDocGeneratorPartConfig> _simpleEntry = new AbstractMap.SimpleEntry<EClassifier, IEcoreDocGeneratorPartConfig>(_key, ((IEcoreDocGeneratorPartConfig) _value));
+    this.writeUseCases(_simpleEntry);
+  }
+  
+  protected void writeUseCases(final Map.Entry<? extends EClassifier, ? extends IEcoreDocGeneratorPartConfig> entry) {
+    final EClassifier target = entry.getKey();
     boolean anyMatch = false;
     final Collection<EClass> eClasses = this.collectAllEClasses();
     final ArrayList<String> useCaseStrings = CollectionLiterals.<String>newArrayList();
@@ -245,18 +262,6 @@ public abstract class AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected CharSequence defineSerializable(final EDataType eDataType) {
-    CharSequence _xblockexpression = null;
-    {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("true");
-      final String defaultValue = _builder.toString();
-      final boolean value = eDataType.isSerializable();
-      _xblockexpression = this.concatProperty("Serializable", defaultValue, Boolean.valueOf(value).toString());
-    }
-    return _xblockexpression;
-  }
-  
   protected CharSequence concatProperty(final String name, final String defaultValue, final String value) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append(name);
@@ -280,19 +285,6 @@ public abstract class AEcoreDocGeneratorPart {
   
   protected Collection<EClass> collectAllEClasses() {
     return IterableExtensions.<EClass>toSet(Iterables.<EClass>filter(this.ePackages.values(), EClass.class));
-  }
-  
-  protected CharSequence writeProperties(final EDataType eDataType) {
-    StringBuilder _xblockexpression = null;
-    {
-      CharSequence _defineDefaultValue = this.defineDefaultValue(eDataType);
-      CharSequence _defineInstanceClassName = this.defineInstanceClassName(eDataType);
-      CharSequence _defineSerializable = this.defineSerializable(eDataType);
-      this.output.append(
-        IterableExtensions.join(IterableExtensions.<CharSequence>filterNull(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineDefaultValue, _defineInstanceClassName, _defineSerializable))), EcoreDocExtension.ECLASSIFIER_PROPERTY_SEPARATOR));
-      _xblockexpression = this.output.append(EcoreDocExtension.newline());
-    }
-    return _xblockexpression;
   }
   
   protected CharSequence concatLinkTo(final ENamedElement eDataType) {

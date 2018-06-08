@@ -5,6 +5,7 @@ import com.google.common.collect.Iterables;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
@@ -183,6 +184,51 @@ public class EcoreDocExtension {
       _nsURI_1=_ePackage.getNsURI();
     }
     return Objects.equal(_nsURI, _nsURI_1);
+  }
+  
+  public List<EDataType> collectEDataTypes(final Collection<EClassifier> classifiers) {
+    final Function1<EDataType, Boolean> _function = (EDataType it) -> {
+      return Boolean.valueOf((!(it instanceof EEnum)));
+    };
+    final Function1<EDataType, String> _function_1 = (EDataType it) -> {
+      String _elvis = null;
+      String _name = it.getName();
+      if (_name != null) {
+        _elvis = _name;
+      } else {
+        _elvis = "";
+      }
+      return _elvis;
+    };
+    return IterableExtensions.<EDataType, String>sortBy(IterableExtensions.<EDataType>filter(Iterables.<EDataType>filter(classifiers, EDataType.class), _function), _function_1);
+  }
+  
+  public List<EEnum> collectEEnums(final Collection<EClassifier> classifiers) {
+    final Function1<EEnum, String> _function = (EEnum it) -> {
+      String _elvis = null;
+      String _name = it.getName();
+      if (_name != null) {
+        _elvis = _name;
+      } else {
+        _elvis = "";
+      }
+      return _elvis;
+    };
+    return IterableExtensions.<EEnum, String>sortBy(Iterables.<EEnum>filter(classifiers, EEnum.class), _function);
+  }
+  
+  public List<EClass> collectEClasses(final Collection<EClassifier> classifiers) {
+    final Function1<EClass, String> _function = (EClass it) -> {
+      String _elvis = null;
+      String _name = it.getName();
+      if (_name != null) {
+        _elvis = _name;
+      } else {
+        _elvis = "";
+      }
+      return _elvis;
+    };
+    return IterableExtensions.<EClass, String>sortBy(Iterables.<EClass>filter(classifiers, EClass.class), _function);
   }
   
   public CharSequence concatAnchor(final ENamedElement eDataType) {

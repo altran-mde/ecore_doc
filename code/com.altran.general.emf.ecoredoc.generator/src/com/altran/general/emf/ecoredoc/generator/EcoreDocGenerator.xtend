@@ -1,5 +1,7 @@
 package com.altran.general.emf.ecoredoc.generator
 
+import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigBuilder
 import com.altran.general.emf.ecoredoc.generator.impl.EClassGeneratorPart
 import com.altran.general.emf.ecoredoc.generator.impl.EDataTypeGeneratorPart
 import com.altran.general.emf.ecoredoc.generator.impl.EEnumGeneratorPart
@@ -9,8 +11,6 @@ import com.google.common.collect.TreeMultimap
 import java.util.Collection
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EPackage
-import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig
-import com.altran.general.ecoredoc.generator.config.ConfigFactory
 
 import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
 
@@ -38,9 +38,9 @@ class EcoreDocGenerator {
 
 		collectEPackages()
 
-		val eDataTypeGeneratorPart = new EDataTypeGeneratorPart(getConfig().EDataType, ePackages)
-		val eEnumGeneratorPart = new EEnumGeneratorPart(getConfig().EEnum, ePackages)
-		val eClassGeneratorPart = new EClassGeneratorPart(getConfig().EClass, ePackages)
+		val eDataTypeGeneratorPart = new EDataTypeGeneratorPart(getConfig(), ePackages)
+		val eEnumGeneratorPart = new EEnumGeneratorPart(getConfig(), ePackages)
+		val eClassGeneratorPart = new EClassGeneratorPart(getConfig(), ePackages)
 
 		for (ePackage : ePackages.keySet) {
 
@@ -65,11 +65,11 @@ class EcoreDocGenerator {
 		'''
 			// White Up-Pointing Triangle
 			:wupt: &#9651;
-			«newline»
+			Â«newlineÂ»
 			:inherited: {wupt}{nbsp}
-			«newline»
+			Â«newlineÂ»
 			:table-caption!:
-			«newline»
+			Â«newlineÂ»
 			= Ecore Documentation
 			:toc:
 			:toclevels: 4
@@ -80,21 +80,21 @@ class EcoreDocGenerator {
 		val ePackageName = ePackage.name
 		output.append(
 		'''
-			«newline»
-			«newline»
-			[[«ePackageName»]]
-			== Contents of «ePackageName»
-			«newline»
-			«getDocumentation(ePackage)»
-			«newline»
-			«concatEPackageProperties(ePackage)»
+			Â«newlineÂ»
+			Â«newlineÂ»
+			[[Â«ePackageNameÂ»]]
+			== Contents of Â«ePackageNameÂ»
+			Â«newlineÂ»
+			Â«getDocumentation(ePackage)Â»
+			Â«newlineÂ»
+			Â«concatEPackageProperties(ePackage)Â»
 		''')
 	}
 
 	protected def concatEPackageProperties(EPackage ePackage) {
 		'''
-			Ns Prefix:: «ePackage.nsPrefix»
-			Ns URI:: «ePackage.nsURI»
+			Ns Prefix:: Â«ePackage.nsPrefixÂ»
+			Ns URI:: Â«ePackage.nsURIÂ»
 		'''
 	}
 
@@ -106,7 +106,7 @@ class EcoreDocGenerator {
 	
 	protected def void assureConfigExists() {
 		if (this.config === null) {
-			this.config = ConfigFactory.eINSTANCE.createEcoreDocGeneratorConfig
+			this.config = new EcoreDocConfigBuilder(ePackages.keySet).build()
 		}
 	}
 }

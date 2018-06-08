@@ -1,30 +1,34 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
+import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig
+import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig
+import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig
 import com.google.common.collect.Multimap
+import java.util.AbstractMap.SimpleEntry
 import java.util.ArrayList
 import java.util.Collection
 import java.util.List
+import java.util.Map.Entry
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.ENamedElement
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.ecore.EcorePackage
 
 import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
-import org.eclipse.emf.ecore.EcorePackage
-import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig
 
 abstract class AEcoreDocGeneratorPart {
 
 	protected extension EcoreDocExtension = new EcoreDocExtension
 
-	val IEcoreDocGeneratorPartConfig config
+	val EcoreDocGeneratorConfig config
 	val Multimap<EPackage, EClassifier> ePackages
 
 	var StringBuilder output
 
-	new(IEcoreDocGeneratorPartConfig config, Multimap<EPackage, EClassifier> ePackages) {
+	new(EcoreDocGeneratorConfig config, Multimap<EPackage, EClassifier> ePackages) {
 		this.config = config
 		this.ePackages = ePackages
 	}
@@ -37,6 +41,10 @@ abstract class AEcoreDocGeneratorPart {
 
 	protected def  Multimap<EPackage, EClassifier> getEPackages() {
 		this.ePackages
+	}
+	
+	protected def getConfig() {
+		this.config
 	}
 
 	protected def StringBuilder getOutput() {
@@ -52,7 +60,7 @@ abstract class AEcoreDocGeneratorPart {
 	}
 
 	protected def dispatch CharSequence concatLinkTo(ENamedElement eNamedElement) {
-		'''`<<«concatAnchor(eNamedElement)», «concatReferenceName(eNamedElement)»>>`'''
+		'''`<<Â«concatAnchor(eNamedElement)Â», Â«concatReferenceName(eNamedElement)Â»>>`'''
 	}
 
 	// Special handling for default EDataTypes: Don't create anchor
@@ -60,20 +68,20 @@ abstract class AEcoreDocGeneratorPart {
 		val boolean defaultDataType = isDefaultEDataType(eDataType)
 		
 		if (defaultDataType) {
-			'''`«eDataType.name»`'''
+			'''`Â«eDataType.nameÂ»`'''
 
 		} else {
-			'''`<<«concatAnchor(eDataType)», «concatReferenceName(eDataType)»>>`'''
+			'''`<<Â«concatAnchor(eDataType)Â», Â«concatReferenceName(eDataType)Â»>>`'''
 			
 		}
 	}
 
 	protected def CharSequence concatUsedLink(EStructuralFeature eStructuralFeature, EClass eClassThatInherits) {
 		val String[] inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits)
-		val CharSequence anchor = '''«inheritedFeatureSegments.joinAnchor»'''
-		val CharSequence reference = '''«inheritedFeatureSegments.joinReference»'''
+		val CharSequence anchor = '''Â«inheritedFeatureSegments.joinAnchorÂ»'''
+		val CharSequence reference = '''Â«inheritedFeatureSegments.joinReferenceÂ»'''
 
-		'''`<<«anchor», «reference»>>`'''
+		'''`<<Â«anchorÂ», Â«referenceÂ»>>`'''
 	}
 
 	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature,
@@ -85,7 +93,13 @@ abstract class AEcoreDocGeneratorPart {
 		#[ePackageName, eClassName, eStructuralFeatureName]
 	}
 
-	protected def void writeUseCases(EClassifier target) {
+	protected def void writeUseCases(Pair<? extends EClassifier, ? extends IEcoreDocGeneratorConfig> pair) {
+		writeUseCases(new SimpleEntry(pair.key, pair.value as IEcoreDocGeneratorPartConfig))
+	}
+
+	protected def void writeUseCases(Entry<? extends EClassifier, ? extends IEcoreDocGeneratorPartConfig> entry) {
+		val target = entry.key
+		
 		var boolean anyMatch = false
 		val Collection<EClass> eClasses = collectAllEClasses()
 		val ArrayList<String> useCaseStrings = newArrayList()
@@ -100,7 +114,7 @@ abstract class AEcoreDocGeneratorPart {
 
 					useCaseStrings.add(
 					'''
-						* «concatUsedLink(feature, eClass)»
+						* Â«concatUsedLink(feature, eClass)Â»
 					''')
 				}
 			}
@@ -109,7 +123,7 @@ abstract class AEcoreDocGeneratorPart {
 		if (anyMatch) {
 			output.append(
 			'''
-				«newline»
+				Â«newlineÂ»
 				.Used at
 			''')
 
@@ -121,27 +135,20 @@ abstract class AEcoreDocGeneratorPart {
 	
 	protected def defineDefaultValue(EClassifier eClassifier) {
 		val defaultValue = '''_undefined_'''
-		val value = if (eClassifier.eIsSet(EcorePackage.eINSTANCE.EClassifier_DefaultValue)) '''`«eClassifier.defaultValue»`''' else null
+		val value = if (eClassifier.eIsSet(EcorePackage.eINSTANCE.EClassifier_DefaultValue)) '''`Â«eClassifier.defaultValueÂ»`''' else null
 
 		concatProperty("Default Value", defaultValue, value)
 	}
 	
 	protected def defineInstanceClassName(EClassifier eClassifier) {
 		val defaultValue = '''_undefined_'''
-		val value = if (eClassifier.eIsSet(EcorePackage.eINSTANCE.EClassifier_InstanceClassName)) '''`«eClassifier.instanceClassName»`''' else null
+		val value = if (eClassifier.eIsSet(EcorePackage.eINSTANCE.EClassifier_InstanceClassName)) '''`Â«eClassifier.instanceClassNameÂ»`''' else null
 
 		concatProperty("Instance Type Name", defaultValue, value)
 	}
 	
-	protected def defineSerializable(EDataType eDataType) {
-		val defaultValue = '''true'''
-		val value = eDataType.serializable
-
-		concatProperty("Serializable", defaultValue, value.toString)
-	}
-	
 	protected def concatProperty(String name, String defaultValue, String value) {
-		'''«name»:: «IF value !== null»«value»«ELSE»«defaultValue»«ENDIF»'''
+		'''Â«nameÂ»:: Â«IF value !== nullÂ»Â«valueÂ»Â«ELSEÂ»Â«defaultValueÂ»Â«ENDIFÂ»'''
 	}
 	
 	protected def CharSequence tableFooter() {
@@ -153,18 +160,4 @@ abstract class AEcoreDocGeneratorPart {
 	protected def Collection<EClass> collectAllEClasses() {
 		ePackages.values.filter(EClass).toSet
 	}
-	
-	protected def CharSequence writeProperties(EDataType eDataType) {
-		output.append(
-			#[
-				defineDefaultValue(eDataType),
-				defineInstanceClassName(eDataType),
-				defineSerializable(eDataType)
-			]
-			.filterNull
-			.join(EcoreDocExtension.ECLASSIFIER_PROPERTY_SEPARATOR)
-		)
-		output.append(newline)
-	}
-	
 }

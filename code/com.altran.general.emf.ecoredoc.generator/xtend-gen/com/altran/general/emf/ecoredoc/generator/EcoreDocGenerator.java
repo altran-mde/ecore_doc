@@ -1,10 +1,16 @@
 package com.altran.general.emf.ecoredoc.generator;
 
+import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigBuilder;
+import com.altran.general.emf.ecoredoc.generator.impl.EClassGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.impl.EDataTypeGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.impl.EEnumGeneratorPart;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.TreeMultimap;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Set;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -28,28 +34,36 @@ public class EcoreDocGenerator {
       return o1.getName().compareTo(o2.getName());
     }));
   
-  private /* EcoreDocGeneratorConfig */Object config;
+  private EcoreDocGeneratorConfig config;
   
   public EcoreDocGenerator(final Collection<? extends EClassifier> input) {
     this.input = input;
   }
   
   public CharSequence generate() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe constructor EDataTypeGeneratorPart(Object, Multimap<EPackage, EClassifier>) refers to the missing type Object"
-      + "\nThe method getConfig() from the type EcoreDocGenerator refers to the missing type EcoreDocGeneratorConfig"
-      + "\nThe constructor EEnumGeneratorPart(Object, Multimap<EPackage, EClassifier>) refers to the missing type Object"
-      + "\nThe method getConfig() from the type EcoreDocGenerator refers to the missing type EcoreDocGeneratorConfig"
-      + "\nThe constructor EClassGeneratorPart(Object, Multimap<EPackage, EClassifier>) refers to the missing type Object"
-      + "\nThe method getConfig() from the type EcoreDocGenerator refers to the missing type EcoreDocGeneratorConfig"
-      + "\nEDataType cannot be resolved"
-      + "\nEEnum cannot be resolved"
-      + "\nEClass cannot be resolved");
+    this.writeIntro();
+    this.collectEPackages();
+    EcoreDocGeneratorConfig _config = this.getConfig();
+    final EDataTypeGeneratorPart eDataTypeGeneratorPart = new EDataTypeGeneratorPart(_config, this.ePackages);
+    EcoreDocGeneratorConfig _config_1 = this.getConfig();
+    final EEnumGeneratorPart eEnumGeneratorPart = new EEnumGeneratorPart(_config_1, this.ePackages);
+    EcoreDocGeneratorConfig _config_2 = this.getConfig();
+    final EClassGeneratorPart eClassGeneratorPart = new EClassGeneratorPart(_config_2, this.ePackages);
+    Set<EPackage> _keySet = this.ePackages.keySet();
+    for (final EPackage ePackage : _keySet) {
+      {
+        this.writeEPackageIntro(ePackage);
+        this.output.append(eDataTypeGeneratorPart.write(ePackage));
+        this.output.append(eEnumGeneratorPart.write(ePackage));
+        this.output.append(eClassGeneratorPart.write(ePackage));
+      }
+    }
+    return this.output.toString();
   }
   
   public EcoreDocGeneratorConfig getConfig() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field EcoreDocGenerator.config refers to the missing type EcoreDocGeneratorConfig");
+    this.assureConfigExists();
+    return this.config;
   }
   
   protected StringBuilder writeIntro() {
@@ -136,12 +150,9 @@ public class EcoreDocGenerator {
   }
   
   protected void assureConfigExists() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field ConfigFactory is undefined"
-      + "\nThe field EcoreDocGenerator.config refers to the missing type EcoreDocGeneratorConfig"
-      + "\nThe field EcoreDocGenerator.config refers to the missing type EcoreDocGeneratorConfig"
-      + "\n=== cannot be resolved"
-      + "\neINSTANCE cannot be resolved"
-      + "\ncreateEcoreDocGeneratorConfig cannot be resolved");
+    if ((this.config == null)) {
+      Set<EPackage> _keySet = this.ePackages.keySet();
+      this.config = new EcoreDocConfigBuilder(_keySet).build();
+    }
   }
 }

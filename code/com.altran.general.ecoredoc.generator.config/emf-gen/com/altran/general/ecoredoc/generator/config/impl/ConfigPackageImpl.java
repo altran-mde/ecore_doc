@@ -447,6 +447,60 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getIEPackageConfig_PositionEDataTypes() {
+		return (EAttribute)iePackageConfigEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIEPackageConfig_PositionEEnums() {
+		return (EAttribute)iePackageConfigEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIEPackageConfig_PositionEClasses() {
+		return (EAttribute)iePackageConfigEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getIEPackageConfig__GetEDataTypesPosition() {
+		return iePackageConfigEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getIEPackageConfig__GetEEnumsPosition() {
+		return iePackageConfigEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getIEPackageConfig__GetEClassesPosition() {
+		return iePackageConfigEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getIEEnumLiteralConfig() {
 		return ieEnumLiteralConfigEClass;
 	}
@@ -519,7 +573,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getEcoreDocGeneratorConfig__FindConfig__ENamedElement() {
+	public EOperation getEcoreDocGeneratorConfig__GetEDataTypesPosition() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(5);
 	}
 
@@ -528,8 +582,35 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getEcoreDocGeneratorConfig__GetTarget() {
+	public EOperation getEcoreDocGeneratorConfig__GetEEnumsPosition() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEcoreDocGeneratorConfig__GetEClassesPosition() {
+		return ecoreDocGeneratorConfigEClass.getEOperations().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEcoreDocGeneratorConfig__FindConfig__ENamedElement() {
+		return ecoreDocGeneratorConfigEClass.getEOperations().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEcoreDocGeneratorConfig__GetTarget() {
+		return ecoreDocGeneratorConfigEClass.getEOperations().get(9);
 	}
 
 	/**
@@ -546,35 +627,8 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEPackageConfig_PositionEDataTypes() {
-		return (EAttribute)ePackageConfigEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getEPackageConfig_PositionEEnums() {
-		return (EAttribute)ePackageConfigEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getEPackageConfig_PositionEClasses() {
-		return (EAttribute)ePackageConfigEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getEPackageConfig_TargetEPackage() {
-		return (EReference)ePackageConfigEClass.getEStructuralFeatures().get(3);
+		return (EReference)ePackageConfigEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -583,7 +637,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * @generated
 	 */
 	public EReference getEPackageConfig_EDataTypes() {
-		return (EReference)ePackageConfigEClass.getEStructuralFeatures().get(4);
+		return (EReference)ePackageConfigEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -592,7 +646,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * @generated
 	 */
 	public EReference getEPackageConfig_EEnums() {
-		return (EReference)ePackageConfigEClass.getEStructuralFeatures().get(5);
+		return (EReference)ePackageConfigEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -601,7 +655,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * @generated
 	 */
 	public EReference getEPackageConfig_EClasses() {
-		return (EReference)ePackageConfigEClass.getEStructuralFeatures().get(6);
+		return (EReference)ePackageConfigEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -905,6 +959,12 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		ieReferenceConfigEClass = createEClass(IE_REFERENCE_CONFIG);
 
 		iePackageConfigEClass = createEClass(IE_PACKAGE_CONFIG);
+		createEAttribute(iePackageConfigEClass, IE_PACKAGE_CONFIG__POSITION_EDATA_TYPES);
+		createEAttribute(iePackageConfigEClass, IE_PACKAGE_CONFIG__POSITION_EENUMS);
+		createEAttribute(iePackageConfigEClass, IE_PACKAGE_CONFIG__POSITION_ECLASSES);
+		createEOperation(iePackageConfigEClass, IE_PACKAGE_CONFIG___GET_EDATA_TYPES_POSITION);
+		createEOperation(iePackageConfigEClass, IE_PACKAGE_CONFIG___GET_EENUMS_POSITION);
+		createEOperation(iePackageConfigEClass, IE_PACKAGE_CONFIG___GET_ECLASSES_POSITION);
 
 		ieEnumLiteralConfigEClass = createEClass(IE_ENUM_LITERAL_CONFIG);
 
@@ -915,13 +975,13 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS);
+		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___GET_EDATA_TYPES_POSITION);
+		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___GET_EENUMS_POSITION);
+		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___GET_ECLASSES_POSITION);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___GET_TARGET);
 
 		ePackageConfigEClass = createEClass(EPACKAGE_CONFIG);
-		createEAttribute(ePackageConfigEClass, EPACKAGE_CONFIG__POSITION_EDATA_TYPES);
-		createEAttribute(ePackageConfigEClass, EPACKAGE_CONFIG__POSITION_EENUMS);
-		createEAttribute(ePackageConfigEClass, EPACKAGE_CONFIG__POSITION_ECLASSES);
 		createEReference(ePackageConfigEClass, EPACKAGE_CONFIG__TARGET_EPACKAGE);
 		createEReference(ePackageConfigEClass, EPACKAGE_CONFIG__EDATA_TYPES);
 		createEReference(ePackageConfigEClass, EPACKAGE_CONFIG__EENUMS);
@@ -1066,6 +1126,15 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		initEClass(ieReferenceConfigEClass, IEReferenceConfig.class, "IEReferenceConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(iePackageConfigEClass, IEPackageConfig.class, "IEPackageConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIEPackageConfig_PositionEDataTypes(), theEcorePackage.getEInt(), "positionEDataTypes", null, 0, 1, IEPackageConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIEPackageConfig_PositionEEnums(), theEcorePackage.getEInt(), "positionEEnums", null, 0, 1, IEPackageConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIEPackageConfig_PositionEClasses(), theEcorePackage.getEInt(), "positionEClasses", null, 0, 1, IEPackageConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getIEPackageConfig__GetEDataTypesPosition(), theEcorePackage.getEInt(), "getEDataTypesPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getIEPackageConfig__GetEEnumsPosition(), theEcorePackage.getEInt(), "getEEnumsPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getIEPackageConfig__GetEClassesPosition(), theEcorePackage.getEInt(), "getEClassesPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(ieEnumLiteralConfigEClass, IEEnumLiteralConfig.class, "IEEnumLiteralConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1082,15 +1151,18 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 
 		initEOperation(getEcoreDocGeneratorConfig__ShouldRenderBounds(), theEcorePackage.getEBoolean(), "shouldRenderBounds", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
+		initEOperation(getEcoreDocGeneratorConfig__GetEDataTypesPosition(), theEcorePackage.getEInt(), "getEDataTypesPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getEcoreDocGeneratorConfig__GetEEnumsPosition(), theEcorePackage.getEInt(), "getEEnumsPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getEcoreDocGeneratorConfig__GetEClassesPosition(), theEcorePackage.getEInt(), "getEClassesPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
 		EOperation op = initEOperation(getEcoreDocGeneratorConfig__FindConfig__ENamedElement(), this.getIENamedElementConfig(), "findConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theEcorePackage.getENamedElement(), "element", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getEcoreDocGeneratorConfig__GetTarget(), theEcorePackage.getENamedElement(), "getTarget", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(ePackageConfigEClass, EPackageConfig.class, "EPackageConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEPackageConfig_PositionEDataTypes(), theEcorePackage.getEInt(), "positionEDataTypes", "1", 0, 1, EPackageConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEPackageConfig_PositionEEnums(), theEcorePackage.getEInt(), "positionEEnums", "2", 0, 1, EPackageConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEPackageConfig_PositionEClasses(), theEcorePackage.getEInt(), "positionEClasses", "3", 0, 1, EPackageConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEPackageConfig_TargetEPackage(), theEcorePackage.getEPackage(), null, "targetEPackage", null, 0, 1, EPackageConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEPackageConfig_EDataTypes(), this.getEDataTypeConfig(), null, "eDataTypes", null, 0, -1, EPackageConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEPackageConfig_EEnums(), this.getEEnumConfig(), null, "eEnums", null, 0, -1, EPackageConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

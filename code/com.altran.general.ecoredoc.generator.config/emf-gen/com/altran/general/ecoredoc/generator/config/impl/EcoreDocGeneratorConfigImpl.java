@@ -65,6 +65,9 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  * </p>
  * <ul>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRender <em>Render</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getPositionEDataTypes <em>Position EData Types</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getPositionEEnums <em>Position EEnums</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getPositionEClasses <em>Position EClasses</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRenderUseCases <em>Render Use Cases</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRepeatInherited <em>Repeat Inherited</em>}</li>
@@ -103,6 +106,93 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 * @ordered
 	 */
 	protected boolean renderESet;
+
+	/**
+	 * The default value of the '{@link #getPositionEDataTypes() <em>Position EData Types</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEDataTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int POSITION_EDATA_TYPES_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPositionEDataTypes() <em>Position EData Types</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEDataTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected int positionEDataTypes = POSITION_EDATA_TYPES_EDEFAULT;
+
+	/**
+	 * This is true if the Position EData Types attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean positionEDataTypesESet;
+
+	/**
+	 * The default value of the '{@link #getPositionEEnums() <em>Position EEnums</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEEnums()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int POSITION_EENUMS_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPositionEEnums() <em>Position EEnums</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEEnums()
+	 * @generated
+	 * @ordered
+	 */
+	protected int positionEEnums = POSITION_EENUMS_EDEFAULT;
+
+	/**
+	 * This is true if the Position EEnums attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean positionEEnumsESet;
+
+	/**
+	 * The default value of the '{@link #getPositionEClasses() <em>Position EClasses</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEClasses()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int POSITION_ECLASSES_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPositionEClasses() <em>Position EClasses</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEClasses()
+	 * @generated
+	 * @ordered
+	 */
+	protected int positionEClasses = POSITION_ECLASSES_EDEFAULT;
+
+	/**
+	 * This is true if the Position EClasses attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean positionEClassesESet;
 
 	/**
 	 * The default value of the '{@link #isRenderDefaults() <em>Render Defaults</em>}' attribute.
@@ -293,6 +383,144 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 */
 	public boolean isSetRender() {
 		return renderESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getPositionEDataTypes() {
+		return positionEDataTypes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPositionEDataTypes(int newPositionEDataTypes) {
+		int oldPositionEDataTypes = positionEDataTypes;
+		positionEDataTypes = newPositionEDataTypes;
+		boolean oldPositionEDataTypesESet = positionEDataTypesESet;
+		positionEDataTypesESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES, oldPositionEDataTypes, positionEDataTypes, !oldPositionEDataTypesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetPositionEDataTypes() {
+		int oldPositionEDataTypes = positionEDataTypes;
+		boolean oldPositionEDataTypesESet = positionEDataTypesESet;
+		positionEDataTypes = POSITION_EDATA_TYPES_EDEFAULT;
+		positionEDataTypesESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES, oldPositionEDataTypes, POSITION_EDATA_TYPES_EDEFAULT, oldPositionEDataTypesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetPositionEDataTypes() {
+		return positionEDataTypesESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getPositionEEnums() {
+		return positionEEnums;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPositionEEnums(int newPositionEEnums) {
+		int oldPositionEEnums = positionEEnums;
+		positionEEnums = newPositionEEnums;
+		boolean oldPositionEEnumsESet = positionEEnumsESet;
+		positionEEnumsESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS, oldPositionEEnums, positionEEnums, !oldPositionEEnumsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetPositionEEnums() {
+		int oldPositionEEnums = positionEEnums;
+		boolean oldPositionEEnumsESet = positionEEnumsESet;
+		positionEEnums = POSITION_EENUMS_EDEFAULT;
+		positionEEnumsESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS, oldPositionEEnums, POSITION_EENUMS_EDEFAULT, oldPositionEEnumsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetPositionEEnums() {
+		return positionEEnumsESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getPositionEClasses() {
+		return positionEClasses;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPositionEClasses(int newPositionEClasses) {
+		int oldPositionEClasses = positionEClasses;
+		positionEClasses = newPositionEClasses;
+		boolean oldPositionEClassesESet = positionEClassesESet;
+		positionEClassesESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES, oldPositionEClasses, positionEClasses, !oldPositionEClassesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetPositionEClasses() {
+		int oldPositionEClasses = positionEClasses;
+		boolean oldPositionEClassesESet = positionEClassesESet;
+		positionEClasses = POSITION_ECLASSES_EDEFAULT;
+		positionEClassesESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES, oldPositionEClasses, POSITION_ECLASSES_EDEFAULT, oldPositionEClassesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetPositionEClasses() {
+		return positionEClassesESet;
 	}
 
 	/**
@@ -698,6 +926,57 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getEDataTypesPosition() {
+		int _xifexpression = (int) 0;
+		boolean _isSetPositionEDataTypes = this.isSetPositionEDataTypes();
+		if (_isSetPositionEDataTypes) {
+			_xifexpression = this.getPositionEDataTypes();
+		}
+		else {
+			_xifexpression = 1;
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getEEnumsPosition() {
+		int _xifexpression = (int) 0;
+		boolean _isSetPositionEEnums = this.isSetPositionEEnums();
+		if (_isSetPositionEEnums) {
+			_xifexpression = this.getPositionEEnums();
+		}
+		else {
+			_xifexpression = 2;
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getEClassesPosition() {
+		int _xifexpression = (int) 0;
+		boolean _isSetPositionEClasses = this.isSetPositionEClasses();
+		if (_isSetPositionEClasses) {
+			_xifexpression = this.getPositionEClasses();
+		}
+		else {
+			_xifexpression = 3;
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean shouldRepeatInherited() {
 		boolean _xifexpression = false;
 		boolean _isSetRepeatInherited = this.isSetRepeatInherited();
@@ -734,6 +1013,12 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
 				return isRender();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
+				return getPositionEDataTypes();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
+				return getPositionEEnums();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES:
+				return getPositionEClasses();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS:
 				return isRenderDefaults();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES:
@@ -759,6 +1044,15 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
 				setRender((Boolean)newValue);
+				return;
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
+				setPositionEDataTypes((Integer)newValue);
+				return;
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
+				setPositionEEnums((Integer)newValue);
+				return;
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES:
+				setPositionEClasses((Integer)newValue);
 				return;
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS:
 				setRenderDefaults((Boolean)newValue);
@@ -791,6 +1085,15 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
 				unsetRender();
 				return;
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
+				unsetPositionEDataTypes();
+				return;
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
+				unsetPositionEEnums();
+				return;
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES:
+				unsetPositionEClasses();
+				return;
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS:
 				unsetRenderDefaults();
 				return;
@@ -820,6 +1123,12 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
 				return isSetRender();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
+				return isSetPositionEDataTypes();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
+				return isSetPositionEEnums();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES:
+				return isSetPositionEClasses();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS:
 				return isSetRenderDefaults();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES:
@@ -1029,6 +1338,12 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 				return shouldRepeatInherited();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS:
 				return shouldRenderBounds();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_EDATA_TYPES_POSITION:
+				return getEDataTypesPosition();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_EENUMS_POSITION:
+				return getEEnumsPosition();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_ECLASSES_POSITION:
+				return getEClassesPosition();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT:
 				return findConfig((ENamedElement)arguments.get(0));
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_TARGET:
@@ -1049,6 +1364,12 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (render: ");
 		if (renderESet) result.append(render); else result.append("<unset>");
+		result.append(", positionEDataTypes: ");
+		if (positionEDataTypesESet) result.append(positionEDataTypes); else result.append("<unset>");
+		result.append(", positionEEnums: ");
+		if (positionEEnumsESet) result.append(positionEEnums); else result.append("<unset>");
+		result.append(", positionEClasses: ");
+		if (positionEClassesESet) result.append(positionEClasses); else result.append("<unset>");
 		result.append(", renderDefaults: ");
 		if (renderDefaultsESet) result.append(renderDefaults); else result.append("<unset>");
 		result.append(", renderUseCases: ");

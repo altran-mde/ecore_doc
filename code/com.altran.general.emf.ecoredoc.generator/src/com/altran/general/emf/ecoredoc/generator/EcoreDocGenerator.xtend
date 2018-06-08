@@ -52,9 +52,9 @@ class EcoreDocGenerator {
 				
 				parts.sortBy[
 					switch(it) {
-						EDataTypeGeneratorPart: config.positionEDataTypes
-						EEnumGeneratorPart: config.positionEEnums
-						EClassGeneratorPart: config.positionEClasses
+						EDataTypeGeneratorPart: config.EDataTypesPosition
+						EEnumGeneratorPart: config.EEnumsPosition
+						EClassGeneratorPart: config.EClassesPosition
 					} as Integer
 				].forEach [
 					output.append(it.write(ePackage))

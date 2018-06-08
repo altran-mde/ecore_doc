@@ -15,6 +15,7 @@ import com.altran.general.ecoredoc.generator.config.IEDataTypeConfig;
 import com.altran.general.ecoredoc.generator.config.IEEnumConfig;
 import com.altran.general.ecoredoc.generator.config.IEEnumLiteralConfig;
 import com.altran.general.ecoredoc.generator.config.IENamedElementConfig;
+import com.altran.general.ecoredoc.generator.config.IEPackageConfig;
 import com.altran.general.ecoredoc.generator.config.IEReferenceConfig;
 import com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig;
 
@@ -48,13 +49,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#isRender <em>Render</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEDataTypes <em>Position EData Types</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEEnums <em>Position EEnums</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEClasses <em>Position EClasses</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#isRenderUseCases <em>Render Use Cases</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#isRepeatInherited <em>Repeat Inherited</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#isRenderBounds <em>Render Bounds</em>}</li>
- *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEDataTypes <em>Position EData Types</em>}</li>
- *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEEnums <em>Position EEnums</em>}</li>
- *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEClasses <em>Position EClasses</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getTargetEPackage <em>Target EPackage</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getEDataTypes <em>EData Types</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getEEnums <em>EEnums</em>}</li>
@@ -92,6 +93,93 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected boolean renderESet;
+
+	/**
+	 * The default value of the '{@link #getPositionEDataTypes() <em>Position EData Types</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEDataTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int POSITION_EDATA_TYPES_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPositionEDataTypes() <em>Position EData Types</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEDataTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected int positionEDataTypes = POSITION_EDATA_TYPES_EDEFAULT;
+
+	/**
+	 * This is true if the Position EData Types attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean positionEDataTypesESet;
+
+	/**
+	 * The default value of the '{@link #getPositionEEnums() <em>Position EEnums</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEEnums()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int POSITION_EENUMS_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPositionEEnums() <em>Position EEnums</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEEnums()
+	 * @generated
+	 * @ordered
+	 */
+	protected int positionEEnums = POSITION_EENUMS_EDEFAULT;
+
+	/**
+	 * This is true if the Position EEnums attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean positionEEnumsESet;
+
+	/**
+	 * The default value of the '{@link #getPositionEClasses() <em>Position EClasses</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEClasses()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int POSITION_ECLASSES_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPositionEClasses() <em>Position EClasses</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEClasses()
+	 * @generated
+	 * @ordered
+	 */
+	protected int positionEClasses = POSITION_ECLASSES_EDEFAULT;
+
+	/**
+	 * This is true if the Position EClasses attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean positionEClassesESet;
 
 	/**
 	 * The default value of the '{@link #isRenderDefaults() <em>Render Defaults</em>}' attribute.
@@ -208,93 +296,6 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected boolean renderBoundsESet;
-
-	/**
-	 * The default value of the '{@link #getPositionEDataTypes() <em>Position EData Types</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPositionEDataTypes()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int POSITION_EDATA_TYPES_EDEFAULT = 1;
-
-	/**
-	 * The cached value of the '{@link #getPositionEDataTypes() <em>Position EData Types</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPositionEDataTypes()
-	 * @generated
-	 * @ordered
-	 */
-	protected int positionEDataTypes = POSITION_EDATA_TYPES_EDEFAULT;
-
-	/**
-	 * This is true if the Position EData Types attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean positionEDataTypesESet;
-
-	/**
-	 * The default value of the '{@link #getPositionEEnums() <em>Position EEnums</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPositionEEnums()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int POSITION_EENUMS_EDEFAULT = 2;
-
-	/**
-	 * The cached value of the '{@link #getPositionEEnums() <em>Position EEnums</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPositionEEnums()
-	 * @generated
-	 * @ordered
-	 */
-	protected int positionEEnums = POSITION_EENUMS_EDEFAULT;
-
-	/**
-	 * This is true if the Position EEnums attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean positionEEnumsESet;
-
-	/**
-	 * The default value of the '{@link #getPositionEClasses() <em>Position EClasses</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPositionEClasses()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int POSITION_ECLASSES_EDEFAULT = 3;
-
-	/**
-	 * The cached value of the '{@link #getPositionEClasses() <em>Position EClasses</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPositionEClasses()
-	 * @generated
-	 * @ordered
-	 */
-	protected int positionEClasses = POSITION_ECLASSES_EDEFAULT;
-
-	/**
-	 * This is true if the Position EClasses attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean positionEClassesESet;
 
 	/**
 	 * The cached value of the '{@link #getTargetEPackage() <em>Target EPackage</em>}' reference.
@@ -847,6 +848,60 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getEDataTypesPosition() {
+		int _xifexpression = (int) 0;
+		boolean _isSetPositionEDataTypes = this.isSetPositionEDataTypes();
+		if (_isSetPositionEDataTypes) {
+			_xifexpression = this.getPositionEDataTypes();
+		}
+		else {
+			EObject _eContainer = this.eContainer();
+			_xifexpression = ((IEPackageConfig) _eContainer).getEDataTypesPosition();
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getEEnumsPosition() {
+		int _xifexpression = (int) 0;
+		boolean _isSetPositionEEnums = this.isSetPositionEEnums();
+		if (_isSetPositionEEnums) {
+			_xifexpression = this.getPositionEEnums();
+		}
+		else {
+			EObject _eContainer = this.eContainer();
+			_xifexpression = ((IEPackageConfig) _eContainer).getEEnumsPosition();
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getEClassesPosition() {
+		int _xifexpression = (int) 0;
+		boolean _isSetPositionEClasses = this.isSetPositionEClasses();
+		if (_isSetPositionEClasses) {
+			_xifexpression = this.getPositionEClasses();
+		}
+		else {
+			EObject _eContainer = this.eContainer();
+			_xifexpression = ((IEPackageConfig) _eContainer).getEClassesPosition();
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean shouldRepeatInherited() {
 		boolean _xifexpression = false;
 		boolean _isSetRepeatInherited = this.isSetRepeatInherited();
@@ -924,6 +979,12 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
 				return isRender();
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
+				return getPositionEDataTypes();
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
+				return getPositionEEnums();
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
+				return getPositionEClasses();
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
 				return isRenderDefaults();
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES:
@@ -932,12 +993,6 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				return isRepeatInherited();
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
 				return isRenderBounds();
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
-				return getPositionEDataTypes();
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
-				return getPositionEEnums();
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
-				return getPositionEClasses();
 			case ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
 				if (resolve) return getTargetEPackage();
 				return basicGetTargetEPackage();
@@ -963,6 +1018,15 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
 				setRender((Boolean)newValue);
 				return;
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
+				setPositionEDataTypes((Integer)newValue);
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
+				setPositionEEnums((Integer)newValue);
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
+				setPositionEClasses((Integer)newValue);
+				return;
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
 				setRenderDefaults((Boolean)newValue);
 				return;
@@ -974,15 +1038,6 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				return;
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
 				setRenderBounds((Boolean)newValue);
-				return;
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
-				setPositionEDataTypes((Integer)newValue);
-				return;
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
-				setPositionEEnums((Integer)newValue);
-				return;
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
-				setPositionEClasses((Integer)newValue);
 				return;
 			case ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
 				setTargetEPackage((EPackage)newValue);
@@ -1014,6 +1069,15 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
 				unsetRender();
 				return;
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
+				unsetPositionEDataTypes();
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
+				unsetPositionEEnums();
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
+				unsetPositionEClasses();
+				return;
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
 				unsetRenderDefaults();
 				return;
@@ -1025,15 +1089,6 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				return;
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
 				unsetRenderBounds();
-				return;
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
-				unsetPositionEDataTypes();
-				return;
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
-				unsetPositionEEnums();
-				return;
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
-				unsetPositionEClasses();
 				return;
 			case ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
 				setTargetEPackage((EPackage)null);
@@ -1061,6 +1116,12 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
 				return isSetRender();
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
+				return isSetPositionEDataTypes();
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
+				return isSetPositionEEnums();
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
+				return isSetPositionEClasses();
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
 				return isSetRenderDefaults();
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES:
@@ -1069,12 +1130,6 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				return isSetRepeatInherited();
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
 				return isSetRenderBounds();
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
-				return isSetPositionEDataTypes();
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
-				return isSetPositionEEnums();
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
-				return isSetPositionEClasses();
 			case ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
 				return targetEPackage != null;
 			case ConfigPackage.EPACKAGE_CONFIG__EDATA_TYPES:
@@ -1282,6 +1337,12 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				return shouldRenderUseCases();
 			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_DEFAULTS:
 				return shouldRenderDefaults();
+			case ConfigPackage.EPACKAGE_CONFIG___GET_EDATA_TYPES_POSITION:
+				return getEDataTypesPosition();
+			case ConfigPackage.EPACKAGE_CONFIG___GET_EENUMS_POSITION:
+				return getEEnumsPosition();
+			case ConfigPackage.EPACKAGE_CONFIG___GET_ECLASSES_POSITION:
+				return getEClassesPosition();
 			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER:
 				return shouldRender();
 		}
@@ -1300,6 +1361,12 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (render: ");
 		if (renderESet) result.append(render); else result.append("<unset>");
+		result.append(", positionEDataTypes: ");
+		if (positionEDataTypesESet) result.append(positionEDataTypes); else result.append("<unset>");
+		result.append(", positionEEnums: ");
+		if (positionEEnumsESet) result.append(positionEEnums); else result.append("<unset>");
+		result.append(", positionEClasses: ");
+		if (positionEClassesESet) result.append(positionEClasses); else result.append("<unset>");
 		result.append(", renderDefaults: ");
 		if (renderDefaultsESet) result.append(renderDefaults); else result.append("<unset>");
 		result.append(", renderUseCases: ");
@@ -1308,12 +1375,6 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		if (repeatInheritedESet) result.append(repeatInherited); else result.append("<unset>");
 		result.append(", renderBounds: ");
 		if (renderBoundsESet) result.append(renderBounds); else result.append("<unset>");
-		result.append(", positionEDataTypes: ");
-		if (positionEDataTypesESet) result.append(positionEDataTypes); else result.append("<unset>");
-		result.append(", positionEEnums: ");
-		if (positionEEnumsESet) result.append(positionEEnums); else result.append("<unset>");
-		result.append(", positionEClasses: ");
-		if (positionEClassesESet) result.append(positionEClasses); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}

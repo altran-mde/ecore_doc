@@ -91,7 +91,32 @@ interface IEReferenceConfig extends IEStructuralFeatureConfig {
 }
 
 interface IEPackageConfig extends IENamedElementConfig {
+	unsettable int positionEDataTypes
+	op int getEDataTypesPosition() {
+		if (isSetPositionEDataTypes) {
+			positionEDataTypes
+		} else {
+			(eContainer as IEPackageConfig).getEDataTypesPosition()
+		}
+	}
 	
+	unsettable int positionEEnums
+	op int getEEnumsPosition() {
+		if (isSetPositionEEnums) {
+			positionEEnums
+		} else {
+			(eContainer as IEPackageConfig).getEEnumsPosition()
+		}
+	}
+	
+	unsettable int positionEClasses
+	op int getEClassesPosition() {
+		if (isSetPositionEClasses) {
+			positionEClasses
+		} else {
+			(eContainer as IEPackageConfig).getEClassesPosition()
+		}
+	}
 }
 
 interface IEEnumLiteralConfig extends IENamedElementConfig {
@@ -137,6 +162,30 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 			renderBounds
 		} else {
 			shouldRenderDefaults()
+		}
+	}
+	
+	op int getEDataTypesPosition() {
+		if (isSetPositionEDataTypes) {
+			positionEDataTypes
+		} else {
+			1
+		}
+	}
+	
+	op int getEEnumsPosition() {
+		if (isSetPositionEEnums) {
+			positionEEnums
+		} else {
+			2
+		}
+	}
+	
+	op int getEClassesPosition() {
+		if (isSetPositionEClasses) {
+			positionEClasses
+		} else {
+			3
 		}
 	}
 	
@@ -187,10 +236,6 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 }
 
 class EPackageConfig extends  IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig, IEClassConfig, IEAttributeConfig, IEReferenceConfig {
-	unsettable int positionEDataTypes = '1'
-	unsettable int positionEEnums = '2'
-	unsettable int positionEClasses = '3'
-	
 	refers EPackage targetEPackage
 	
 	op ENamedElement getTarget() {

@@ -54,7 +54,7 @@ public class TestBasic {
       EcoreDocGeneratorConfig _config = generator.getConfig();
       _config.setRepeatInherited(false);
       final CharSequence result = generator.generate();
-      File _file = new File("testData/generator/basic/expectedOutcomeNoRepeatInherited/ecoredoc-example.adoc");
+      File _file = new File("testData/generator/basic/expectedOutcomeNoRepeatInherited/no-repeat-inherited.adoc");
       final String expected = FileUtils.readFileToString(_file);
       Assert.assertEquals(expected, result.toString());
     } catch (Throwable _e) {
@@ -76,7 +76,7 @@ public class TestBasic {
       EcoreDocGeneratorConfig _config = generator.getConfig();
       _config.setRenderDefaults(false);
       final CharSequence result = generator.generate();
-      File _file = new File("testData/generator/basic/expectedOutcomeNoDefaults/ecoredoc-example.adoc");
+      File _file = new File("testData/generator/basic/expectedOutcomeNoDefaults/no-defaults.adoc");
       final String expected = FileUtils.readFileToString(_file);
       Assert.assertEquals(expected, result.toString());
     } catch (Throwable _e) {
@@ -100,7 +100,35 @@ public class TestBasic {
       EcoreDocGeneratorConfig _config_1 = generator.getConfig();
       _config_1.setRenderBounds(true);
       final CharSequence result = generator.generate();
-      File _file = new File("testData/generator/basic/expectedOutcomeNoDefaultsButBounds/ecoredoc-example.adoc");
+      File _file = new File("testData/generator/basic/expectedOutcomeNoDefaultsButBounds/no-defaults-but-bounds.adoc");
+      final String expected = FileUtils.readFileToString(_file);
+      Assert.assertEquals(expected, result.toString());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testReorderNoUseCases() {
+    try {
+      final Injector injector = new XcoreStandaloneSetup().createInjectorAndDoEMFRegistration();
+      final ResourceSet resourceSet = injector.<ResourceSet>getInstance(ResourceSet.class);
+      final EPackage package1 = IterableExtensions.<EPackage>head(Iterables.<EPackage>filter(resourceSet.getResource(URI.createURI("testData/generator/basic/EPackage1.xcore"), true).getContents(), EPackage.class));
+      final EPackage package2 = IterableExtensions.<EPackage>head(Iterables.<EPackage>filter(resourceSet.getResource(URI.createURI("testData/generator/basic/EPackage2.ecore"), true).getContents(), EPackage.class));
+      final LinkedHashSet<EClassifier> input = CollectionLiterals.<EClassifier>newLinkedHashSet();
+      input.addAll(package1.getEClassifiers());
+      input.addAll(package2.getEClassifiers());
+      final EcoreDocGenerator generator = new EcoreDocGenerator(input);
+      EcoreDocGeneratorConfig _config = generator.getConfig();
+      _config.setRenderUseCases(false);
+      EcoreDocGeneratorConfig _config_1 = generator.getConfig();
+      _config_1.setPositionEClasses(1);
+      EcoreDocGeneratorConfig _config_2 = generator.getConfig();
+      _config_2.setPositionEEnums(2);
+      EcoreDocGeneratorConfig _config_3 = generator.getConfig();
+      _config_3.setPositionEDataTypes(3);
+      final CharSequence result = generator.generate();
+      File _file = new File("testData/generator/basic/expectedOutcomeReorderNoUseCases/reorder-no-usecases.adoc");
       final String expected = FileUtils.readFileToString(_file);
       Assert.assertEquals(expected, result.toString());
     } catch (Throwable _e) {

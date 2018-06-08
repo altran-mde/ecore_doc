@@ -74,18 +74,18 @@ public class EcoreDocGenerator {
             boolean _matched = false;
             if (it instanceof EDataTypeGeneratorPart) {
               _matched=true;
-              _switchResult = config.getPositionEDataTypes();
+              _switchResult = config.getEDataTypesPosition();
             }
             if (!_matched) {
               if (it instanceof EEnumGeneratorPart) {
                 _matched=true;
-                _switchResult = config.getPositionEEnums();
+                _switchResult = config.getEEnumsPosition();
               }
             }
             if (!_matched) {
               if (it instanceof EClassGeneratorPart) {
                 _matched=true;
-                _switchResult = config.getPositionEClasses();
+                _switchResult = config.getEClassesPosition();
               }
             }
             return ((Integer) Integer.valueOf(_switchResult));

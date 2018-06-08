@@ -834,13 +834,40 @@ public interface ConfigPackage extends EPackage {
 	int IE_PACKAGE_CONFIG__RENDER = IE_NAMED_ELEMENT_CONFIG__RENDER;
 
 	/**
+	 * The feature id for the '<em><b>Position EData Types</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_PACKAGE_CONFIG__POSITION_EDATA_TYPES = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Position EEnums</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_PACKAGE_CONFIG__POSITION_EENUMS = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Position EClasses</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_PACKAGE_CONFIG__POSITION_ECLASSES = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>IE Package Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IE_PACKAGE_CONFIG_FEATURE_COUNT = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 0;
+	int IE_PACKAGE_CONFIG_FEATURE_COUNT = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -861,13 +888,40 @@ public interface ConfigPackage extends EPackage {
 	int IE_PACKAGE_CONFIG___GET_TARGET = IE_NAMED_ELEMENT_CONFIG___GET_TARGET;
 
 	/**
+	 * The operation id for the '<em>Get EData Types Position</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_PACKAGE_CONFIG___GET_EDATA_TYPES_POSITION = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get EEnums Position</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_PACKAGE_CONFIG___GET_EENUMS_POSITION = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get EClasses Position</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_PACKAGE_CONFIG___GET_ECLASSES_POSITION = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>IE Package Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IE_PACKAGE_CONFIG_OPERATION_COUNT = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 0;
+	int IE_PACKAGE_CONFIG_OPERATION_COUNT = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IEEnumLiteralConfig <em>IE Enum Literal Config</em>}' class.
@@ -942,6 +996,33 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECORE_DOC_GENERATOR_CONFIG__RENDER = IE_PACKAGE_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Position EData Types</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES = IE_PACKAGE_CONFIG__POSITION_EDATA_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Position EEnums</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS = IE_PACKAGE_CONFIG__POSITION_EENUMS;
+
+	/**
+	 * The feature id for the '<em><b>Position EClasses</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES = IE_PACKAGE_CONFIG__POSITION_ECLASSES;
 
 	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
@@ -1043,13 +1124,40 @@ public interface ConfigPackage extends EPackage {
 	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 8;
 
 	/**
+	 * The operation id for the '<em>Get EData Types Position</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG___GET_EDATA_TYPES_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 9;
+
+	/**
+	 * The operation id for the '<em>Get EEnums Position</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG___GET_EENUMS_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 10;
+
+	/**
+	 * The operation id for the '<em>Get EClasses Position</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG___GET_ECLASSES_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 11;
+
+	/**
 	 * The operation id for the '<em>Find Config</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 9;
+	int ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 12;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -1058,7 +1166,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 10;
+	int ECORE_DOC_GENERATOR_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 13;
 
 	/**
 	 * The number of operations of the '<em>Ecore Doc Generator Config</em>' class.
@@ -1067,7 +1175,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 11;
+	int ECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 14;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl <em>EPackage Config</em>}' class.
@@ -1087,6 +1195,33 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int EPACKAGE_CONFIG__RENDER = IE_PACKAGE_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Position EData Types</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__POSITION_EDATA_TYPES = IE_PACKAGE_CONFIG__POSITION_EDATA_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Position EEnums</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__POSITION_EENUMS = IE_PACKAGE_CONFIG__POSITION_EENUMS;
+
+	/**
+	 * The feature id for the '<em><b>Position EClasses</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__POSITION_ECLASSES = IE_PACKAGE_CONFIG__POSITION_ECLASSES;
 
 	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
@@ -1125,40 +1260,13 @@ public interface ConfigPackage extends EPackage {
 	int EPACKAGE_CONFIG__RENDER_BOUNDS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Position EData Types</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EPACKAGE_CONFIG__POSITION_EDATA_TYPES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Position EEnums</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EPACKAGE_CONFIG__POSITION_EENUMS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Position EClasses</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EPACKAGE_CONFIG__POSITION_ECLASSES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 6;
-
-	/**
 	 * The feature id for the '<em><b>Target EPackage</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__TARGET_EPACKAGE = IE_PACKAGE_CONFIG_FEATURE_COUNT + 7;
+	int EPACKAGE_CONFIG__TARGET_EPACKAGE = IE_PACKAGE_CONFIG_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>EData Types</b></em>' containment reference list.
@@ -1167,7 +1275,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__EDATA_TYPES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 8;
+	int EPACKAGE_CONFIG__EDATA_TYPES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>EEnums</b></em>' containment reference list.
@@ -1176,7 +1284,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__EENUMS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 9;
+	int EPACKAGE_CONFIG__EENUMS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>EClasses</b></em>' containment reference list.
@@ -1185,7 +1293,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__ECLASSES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 10;
+	int EPACKAGE_CONFIG__ECLASSES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>EPackage Config</em>' class.
@@ -1194,7 +1302,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG_FEATURE_COUNT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 11;
+	int EPACKAGE_CONFIG_FEATURE_COUNT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 8;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -1204,6 +1312,33 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int EPACKAGE_CONFIG___SHOULD_RENDER = IE_PACKAGE_CONFIG___SHOULD_RENDER;
+
+	/**
+	 * The operation id for the '<em>Get EData Types Position</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG___GET_EDATA_TYPES_POSITION = IE_PACKAGE_CONFIG___GET_EDATA_TYPES_POSITION;
+
+	/**
+	 * The operation id for the '<em>Get EEnums Position</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG___GET_EENUMS_POSITION = IE_PACKAGE_CONFIG___GET_EENUMS_POSITION;
+
+	/**
+	 * The operation id for the '<em>Get EClasses Position</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG___GET_ECLASSES_POSITION = IE_PACKAGE_CONFIG___GET_ECLASSES_POSITION;
 
 	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
@@ -2303,6 +2438,69 @@ public interface ConfigPackage extends EPackage {
 	EClass getIEPackageConfig();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.IEPackageConfig#getPositionEDataTypes <em>Position EData Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position EData Types</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IEPackageConfig#getPositionEDataTypes()
+	 * @see #getIEPackageConfig()
+	 * @generated
+	 */
+	EAttribute getIEPackageConfig_PositionEDataTypes();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.IEPackageConfig#getPositionEEnums <em>Position EEnums</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position EEnums</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IEPackageConfig#getPositionEEnums()
+	 * @see #getIEPackageConfig()
+	 * @generated
+	 */
+	EAttribute getIEPackageConfig_PositionEEnums();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.IEPackageConfig#getPositionEClasses <em>Position EClasses</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position EClasses</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IEPackageConfig#getPositionEClasses()
+	 * @see #getIEPackageConfig()
+	 * @generated
+	 */
+	EAttribute getIEPackageConfig_PositionEClasses();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.IEPackageConfig#getEDataTypesPosition() <em>Get EData Types Position</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get EData Types Position</em>' operation.
+	 * @see com.altran.general.ecoredoc.generator.config.IEPackageConfig#getEDataTypesPosition()
+	 * @generated
+	 */
+	EOperation getIEPackageConfig__GetEDataTypesPosition();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.IEPackageConfig#getEEnumsPosition() <em>Get EEnums Position</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get EEnums Position</em>' operation.
+	 * @see com.altran.general.ecoredoc.generator.config.IEPackageConfig#getEEnumsPosition()
+	 * @generated
+	 */
+	EOperation getIEPackageConfig__GetEEnumsPosition();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.IEPackageConfig#getEClassesPosition() <em>Get EClasses Position</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get EClasses Position</em>' operation.
+	 * @see com.altran.general.ecoredoc.generator.config.IEPackageConfig#getEClassesPosition()
+	 * @generated
+	 */
+	EOperation getIEPackageConfig__GetEClassesPosition();
+
+	/**
 	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IEEnumLiteralConfig <em>IE Enum Literal Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2384,6 +2582,36 @@ public interface ConfigPackage extends EPackage {
 	EOperation getEcoreDocGeneratorConfig__ShouldRenderBounds();
 
 	/**
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEDataTypesPosition() <em>Get EData Types Position</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get EData Types Position</em>' operation.
+	 * @see com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEDataTypesPosition()
+	 * @generated
+	 */
+	EOperation getEcoreDocGeneratorConfig__GetEDataTypesPosition();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEEnumsPosition() <em>Get EEnums Position</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get EEnums Position</em>' operation.
+	 * @see com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEEnumsPosition()
+	 * @generated
+	 */
+	EOperation getEcoreDocGeneratorConfig__GetEEnumsPosition();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEClassesPosition() <em>Get EClasses Position</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get EClasses Position</em>' operation.
+	 * @see com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEClassesPosition()
+	 * @generated
+	 */
+	EOperation getEcoreDocGeneratorConfig__GetEClassesPosition();
+
+	/**
 	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#findConfig(org.eclipse.emf.ecore.ENamedElement) <em>Find Config</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2412,39 +2640,6 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getEPackageConfig();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.EPackageConfig#getPositionEDataTypes <em>Position EData Types</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Position EData Types</em>'.
-	 * @see com.altran.general.ecoredoc.generator.config.EPackageConfig#getPositionEDataTypes()
-	 * @see #getEPackageConfig()
-	 * @generated
-	 */
-	EAttribute getEPackageConfig_PositionEDataTypes();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.EPackageConfig#getPositionEEnums <em>Position EEnums</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Position EEnums</em>'.
-	 * @see com.altran.general.ecoredoc.generator.config.EPackageConfig#getPositionEEnums()
-	 * @see #getEPackageConfig()
-	 * @generated
-	 */
-	EAttribute getEPackageConfig_PositionEEnums();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.EPackageConfig#getPositionEClasses <em>Position EClasses</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Position EClasses</em>'.
-	 * @see com.altran.general.ecoredoc.generator.config.EPackageConfig#getPositionEClasses()
-	 * @see #getEPackageConfig()
-	 * @generated
-	 */
-	EAttribute getEPackageConfig_PositionEClasses();
 
 	/**
 	 * Returns the meta object for the reference '{@link com.altran.general.ecoredoc.generator.config.EPackageConfig#getTargetEPackage <em>Target EPackage</em>}'.
@@ -2983,6 +3178,54 @@ public interface ConfigPackage extends EPackage {
 		EClass IE_PACKAGE_CONFIG = eINSTANCE.getIEPackageConfig();
 
 		/**
+		 * The meta object literal for the '<em><b>Position EData Types</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IE_PACKAGE_CONFIG__POSITION_EDATA_TYPES = eINSTANCE.getIEPackageConfig_PositionEDataTypes();
+
+		/**
+		 * The meta object literal for the '<em><b>Position EEnums</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IE_PACKAGE_CONFIG__POSITION_EENUMS = eINSTANCE.getIEPackageConfig_PositionEEnums();
+
+		/**
+		 * The meta object literal for the '<em><b>Position EClasses</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IE_PACKAGE_CONFIG__POSITION_ECLASSES = eINSTANCE.getIEPackageConfig_PositionEClasses();
+
+		/**
+		 * The meta object literal for the '<em><b>Get EData Types Position</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation IE_PACKAGE_CONFIG___GET_EDATA_TYPES_POSITION = eINSTANCE.getIEPackageConfig__GetEDataTypesPosition();
+
+		/**
+		 * The meta object literal for the '<em><b>Get EEnums Position</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation IE_PACKAGE_CONFIG___GET_EENUMS_POSITION = eINSTANCE.getIEPackageConfig__GetEEnumsPosition();
+
+		/**
+		 * The meta object literal for the '<em><b>Get EClasses Position</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation IE_PACKAGE_CONFIG___GET_ECLASSES_POSITION = eINSTANCE.getIEPackageConfig__GetEClassesPosition();
+
+		/**
 		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IEEnumLiteralConfig <em>IE Enum Literal Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3051,6 +3294,30 @@ public interface ConfigPackage extends EPackage {
 		EOperation ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS = eINSTANCE.getEcoreDocGeneratorConfig__ShouldRenderBounds();
 
 		/**
+		 * The meta object literal for the '<em><b>Get EData Types Position</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ECORE_DOC_GENERATOR_CONFIG___GET_EDATA_TYPES_POSITION = eINSTANCE.getEcoreDocGeneratorConfig__GetEDataTypesPosition();
+
+		/**
+		 * The meta object literal for the '<em><b>Get EEnums Position</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ECORE_DOC_GENERATOR_CONFIG___GET_EENUMS_POSITION = eINSTANCE.getEcoreDocGeneratorConfig__GetEEnumsPosition();
+
+		/**
+		 * The meta object literal for the '<em><b>Get EClasses Position</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ECORE_DOC_GENERATOR_CONFIG___GET_ECLASSES_POSITION = eINSTANCE.getEcoreDocGeneratorConfig__GetEClassesPosition();
+
+		/**
 		 * The meta object literal for the '<em><b>Find Config</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3075,30 +3342,6 @@ public interface ConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EClass EPACKAGE_CONFIG = eINSTANCE.getEPackageConfig();
-
-		/**
-		 * The meta object literal for the '<em><b>Position EData Types</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute EPACKAGE_CONFIG__POSITION_EDATA_TYPES = eINSTANCE.getEPackageConfig_PositionEDataTypes();
-
-		/**
-		 * The meta object literal for the '<em><b>Position EEnums</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute EPACKAGE_CONFIG__POSITION_EENUMS = eINSTANCE.getEPackageConfig_PositionEEnums();
-
-		/**
-		 * The meta object literal for the '<em><b>Position EClasses</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute EPACKAGE_CONFIG__POSITION_ECLASSES = eINSTANCE.getEPackageConfig_PositionEClasses();
 
 		/**
 		 * The meta object literal for the '<em><b>Target EPackage</b></em>' reference feature.

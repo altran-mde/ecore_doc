@@ -4,7 +4,7 @@ package com.altran.general.ecoredoc.generator.config.impl;
 
 import com.altran.general.ecoredoc.generator.config.ConfigPackage;
 import com.altran.general.ecoredoc.generator.config.EEnumLiteralConfig;
-import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig;
+import com.altran.general.ecoredoc.generator.config.IENamedElementConfig;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EEnumLiteralConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EEnumLiteralConfigImpl#isRender <em>Render</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EEnumLiteralConfigImpl#getTargetEEnumLiteral <em>Target EEnum Literal</em>}</li>
  * </ul>
@@ -37,35 +36,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * @generated
  */
 public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container implements EEnumLiteralConfig {
-	/**
-	 * The default value of the '{@link #isRenderDefaults() <em>Render Defaults</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isRenderDefaults()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean RENDER_DEFAULTS_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isRenderDefaults() <em>Render Defaults</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isRenderDefaults()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean renderDefaults = RENDER_DEFAULTS_EDEFAULT;
-
-	/**
-	 * This is true if the Render Defaults attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean renderDefaultsESet;
-
 	/**
 	 * The default value of the '{@link #isRender() <em>Render</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -122,52 +92,6 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	protected EClass eStaticClass() {
 		return ConfigPackage.Literals.EENUM_LITERAL_CONFIG;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isRenderDefaults() {
-		return renderDefaults;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRenderDefaults(boolean newRenderDefaults) {
-		boolean oldRenderDefaults = renderDefaults;
-		renderDefaults = newRenderDefaults;
-		boolean oldRenderDefaultsESet = renderDefaultsESet;
-		renderDefaultsESet = true;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EENUM_LITERAL_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, renderDefaults, !oldRenderDefaultsESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetRenderDefaults() {
-		boolean oldRenderDefaults = renderDefaults;
-		boolean oldRenderDefaultsESet = renderDefaultsESet;
-		renderDefaults = RENDER_DEFAULTS_EDEFAULT;
-		renderDefaultsESet = false;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EENUM_LITERAL_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, RENDER_DEFAULTS_EDEFAULT, oldRenderDefaultsESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetRenderDefaults() {
-		return renderDefaultsESet;
 	}
 
 	/**
@@ -268,24 +192,6 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean shouldRenderDefaults() {
-		boolean _xifexpression = false;
-		boolean _isSetRenderDefaults = this.isSetRenderDefaults();
-		if (_isSetRenderDefaults) {
-			_xifexpression = this.isRenderDefaults();
-		}
-		else {
-			EObject _eContainer = this.eContainer();
-			_xifexpression = ((IEcoreDocGeneratorConfig) _eContainer).shouldRenderDefaults();
-		}
-		return _xifexpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean shouldRender() {
 		boolean _xifexpression = false;
 		boolean _isSetRender = this.isSetRender();
@@ -294,7 +200,7 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 		}
 		else {
 			EObject _eContainer = this.eContainer();
-			_xifexpression = ((IEcoreDocGeneratorConfig) _eContainer).shouldRender();
+			_xifexpression = ((IENamedElementConfig) _eContainer).shouldRender();
 		}
 		return _xifexpression;
 	}
@@ -307,8 +213,6 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfigPackage.EENUM_LITERAL_CONFIG__RENDER_DEFAULTS:
-				return isRenderDefaults();
 			case ConfigPackage.EENUM_LITERAL_CONFIG__RENDER:
 				return isRender();
 			case ConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL:
@@ -326,9 +230,6 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfigPackage.EENUM_LITERAL_CONFIG__RENDER_DEFAULTS:
-				setRenderDefaults((Boolean)newValue);
-				return;
 			case ConfigPackage.EENUM_LITERAL_CONFIG__RENDER:
 				setRender((Boolean)newValue);
 				return;
@@ -347,9 +248,6 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.EENUM_LITERAL_CONFIG__RENDER_DEFAULTS:
-				unsetRenderDefaults();
-				return;
 			case ConfigPackage.EENUM_LITERAL_CONFIG__RENDER:
 				unsetRender();
 				return;
@@ -368,8 +266,6 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.EENUM_LITERAL_CONFIG__RENDER_DEFAULTS:
-				return isSetRenderDefaults();
 			case ConfigPackage.EENUM_LITERAL_CONFIG__RENDER:
 				return isSetRender();
 			case ConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL:
@@ -388,8 +284,6 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 		switch (operationID) {
 			case ConfigPackage.EENUM_LITERAL_CONFIG___GET_TARGET:
 				return getTarget();
-			case ConfigPackage.EENUM_LITERAL_CONFIG___SHOULD_RENDER_DEFAULTS:
-				return shouldRenderDefaults();
 			case ConfigPackage.EENUM_LITERAL_CONFIG___SHOULD_RENDER:
 				return shouldRender();
 		}
@@ -406,9 +300,7 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (renderDefaults: ");
-		if (renderDefaultsESet) result.append(renderDefaults); else result.append("<unset>");
-		result.append(", render: ");
+		result.append(" (render: ");
 		if (renderESet) result.append(render); else result.append("<unset>");
 		result.append(')');
 		return result.toString();

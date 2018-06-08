@@ -3,6 +3,7 @@
 package com.altran.general.ecoredoc.generator.config.util;
 
 import com.altran.general.ecoredoc.generator.config.*;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -67,8 +68,48 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	protected ConfigSwitch<Adapter> modelSwitch =
 		new ConfigSwitch<Adapter>() {
 			@Override
-			public Adapter caseIEcoreDocGeneratorConfig(IEcoreDocGeneratorConfig object) {
-				return createIEcoreDocGeneratorConfigAdapter();
+			public Adapter caseIENamedElementConfig(IENamedElementConfig object) {
+				return createIENamedElementConfigAdapter();
+			}
+			@Override
+			public Adapter caseIDefaultValueConfig(IDefaultValueConfig object) {
+				return createIDefaultValueConfigAdapter();
+			}
+			@Override
+			public Adapter caseIEClassifierConfig(IEClassifierConfig object) {
+				return createIEClassifierConfigAdapter();
+			}
+			@Override
+			public Adapter caseIEDataTypeConfig(IEDataTypeConfig object) {
+				return createIEDataTypeConfigAdapter();
+			}
+			@Override
+			public Adapter caseIEEnumConfig(IEEnumConfig object) {
+				return createIEEnumConfigAdapter();
+			}
+			@Override
+			public Adapter caseIEClassConfig(IEClassConfig object) {
+				return createIEClassConfigAdapter();
+			}
+			@Override
+			public Adapter caseIEStructuralFeatureConfig(IEStructuralFeatureConfig object) {
+				return createIEStructuralFeatureConfigAdapter();
+			}
+			@Override
+			public Adapter caseIEAttributeConfig(IEAttributeConfig object) {
+				return createIEAttributeConfigAdapter();
+			}
+			@Override
+			public Adapter caseIEReferenceConfig(IEReferenceConfig object) {
+				return createIEReferenceConfigAdapter();
+			}
+			@Override
+			public Adapter caseIEPackageConfig(IEPackageConfig object) {
+				return createIEPackageConfigAdapter();
+			}
+			@Override
+			public Adapter caseIEEnumLiteralConfig(IEEnumLiteralConfig object) {
+				return createIEEnumLiteralConfigAdapter();
 			}
 			@Override
 			public Adapter caseEcoreDocGeneratorConfig(EcoreDocGeneratorConfig object) {
@@ -77,14 +118,6 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEPackageConfig(EPackageConfig object) {
 				return createEPackageConfigAdapter();
-			}
-			@Override
-			public Adapter caseIEcoreDocGeneratorPartConfig(IEcoreDocGeneratorPartConfig object) {
-				return createIEcoreDocGeneratorPartConfigAdapter();
-			}
-			@Override
-			public Adapter caseIEDataTypeConfig(IEDataTypeConfig object) {
-				return createIEDataTypeConfigAdapter();
 			}
 			@Override
 			public Adapter caseEDataTypeConfig(EDataTypeConfig object) {
@@ -99,16 +132,8 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 				return createEEnumLiteralConfigAdapter();
 			}
 			@Override
-			public Adapter caseIEClassConfig(IEClassConfig object) {
-				return createIEClassConfigAdapter();
-			}
-			@Override
 			public Adapter caseEClassConfig(EClassConfig object) {
 				return createEClassConfigAdapter();
-			}
-			@Override
-			public Adapter caseAEStructuralFeatureConfig(AEStructuralFeatureConfig object) {
-				return createAEStructuralFeatureConfigAdapter();
 			}
 			@Override
 			public Adapter caseEAttributeConfig(EAttributeConfig object) {
@@ -147,16 +172,156 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig <em>IEcore Doc Generator Config</em>}'.
+	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.IENamedElementConfig <em>IE Named Element Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig
+	 * @see com.altran.general.ecoredoc.generator.config.IENamedElementConfig
 	 * @generated
 	 */
-	public Adapter createIEcoreDocGeneratorConfigAdapter() {
+	public Adapter createIENamedElementConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.IDefaultValueConfig <em>IDefault Value Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.ecoredoc.generator.config.IDefaultValueConfig
+	 * @generated
+	 */
+	public Adapter createIDefaultValueConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.IEClassifierConfig <em>IE Classifier Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.ecoredoc.generator.config.IEClassifierConfig
+	 * @generated
+	 */
+	public Adapter createIEClassifierConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.IEDataTypeConfig <em>IE Data Type Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.ecoredoc.generator.config.IEDataTypeConfig
+	 * @generated
+	 */
+	public Adapter createIEDataTypeConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.IEEnumConfig <em>IE Enum Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.ecoredoc.generator.config.IEEnumConfig
+	 * @generated
+	 */
+	public Adapter createIEEnumConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.IEClassConfig <em>IE Class Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.ecoredoc.generator.config.IEClassConfig
+	 * @generated
+	 */
+	public Adapter createIEClassConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig <em>IE Structural Feature Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig
+	 * @generated
+	 */
+	public Adapter createIEStructuralFeatureConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.IEAttributeConfig <em>IE Attribute Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.ecoredoc.generator.config.IEAttributeConfig
+	 * @generated
+	 */
+	public Adapter createIEAttributeConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.IEReferenceConfig <em>IE Reference Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.ecoredoc.generator.config.IEReferenceConfig
+	 * @generated
+	 */
+	public Adapter createIEReferenceConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.IEPackageConfig <em>IE Package Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.ecoredoc.generator.config.IEPackageConfig
+	 * @generated
+	 */
+	public Adapter createIEPackageConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.IEEnumLiteralConfig <em>IE Enum Literal Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.ecoredoc.generator.config.IEEnumLiteralConfig
+	 * @generated
+	 */
+	public Adapter createIEEnumLiteralConfigAdapter() {
 		return null;
 	}
 
@@ -185,34 +350,6 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEPackageConfigAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig <em>IEcore Doc Generator Part Config</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig
-	 * @generated
-	 */
-	public Adapter createIEcoreDocGeneratorPartConfigAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.IEDataTypeConfig <em>IE Data Type Config</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.altran.general.ecoredoc.generator.config.IEDataTypeConfig
-	 * @generated
-	 */
-	public Adapter createIEDataTypeConfigAdapter() {
 		return null;
 	}
 
@@ -259,20 +396,6 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.IEClassConfig <em>IE Class Config</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.altran.general.ecoredoc.generator.config.IEClassConfig
-	 * @generated
-	 */
-	public Adapter createIEClassConfigAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.EClassConfig <em>EClass Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -287,16 +410,16 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.AEStructuralFeatureConfig <em>AE Structural Feature Config</em>}'.
+	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.EAttributeConfig <em>EAttribute Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see com.altran.general.ecoredoc.generator.config.AEStructuralFeatureConfig
+	 * @see com.altran.general.ecoredoc.generator.config.EAttributeConfig
 	 * @generated
 	 */
-	public Adapter createAEStructuralFeatureConfigAdapter() {
+	public Adapter createEAttributeConfigAdapter() {
 		return null;
 	}
 
@@ -311,20 +434,6 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAEReferenceConfigAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link com.altran.general.ecoredoc.generator.config.EAttributeConfig <em>EAttribute Config</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.altran.general.ecoredoc.generator.config.EAttributeConfig
-	 * @generated
-	 */
-	public Adapter createEAttributeConfigAdapter() {
 		return null;
 	}
 

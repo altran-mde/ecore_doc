@@ -3,9 +3,9 @@
 package com.altran.general.ecoredoc.generator.config;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.ENamedElement;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -24,8 +24,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  * @model
  * @generated
  */
-public interface EEnumConfig extends IEDataTypeConfig {
-
+public interface EEnumConfig extends IEEnumConfig, IEEnumLiteralConfig {
 	/**
 	 * Returns the value of the '<em><b>Target EEnum</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -57,7 +56,7 @@ public interface EEnumConfig extends IEDataTypeConfig {
 	 * The list contents are of type {@link com.altran.general.ecoredoc.generator.config.EEnumLiteralConfig}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>EEnum Literals</em>' map isn't clear,
+	 * If the meaning of the '<em>EEnum Literals</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -77,12 +76,4 @@ public interface EEnumConfig extends IEDataTypeConfig {
 	 */
 	ENamedElement getTarget();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='int _xifexpression = (int) 0;\nboolean _isSetPosition = this.isSetPosition();\nif (_isSetPosition)\n{\n\t_xifexpression = ((&lt;%com.altran.general.ecoredoc.generator.config.impl.EEnumConfigImpl%&gt;) this).getPosition_();\n}\nelse\n{\n\t_xifexpression = 2;\n}\nreturn _xifexpression;'"
-	 * @generated
-	 */
-	int getPosition();
 } // EEnumConfig

@@ -59,23 +59,14 @@ public interface ConfigPackage extends EPackage {
 	ConfigPackage eINSTANCE = com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig <em>IEcore Doc Generator Config</em>}' class.
+	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IENamedElementConfig <em>IE Named Element Config</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig
-	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEcoreDocGeneratorConfig()
+	 * @see com.altran.general.ecoredoc.generator.config.IENamedElementConfig
+	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIENamedElementConfig()
 	 * @generated
 	 */
-	int IECORE_DOC_GENERATOR_CONFIG = 0;
-
-	/**
-	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS = 0;
+	int IE_NAMED_ELEMENT_CONFIG = 0;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -84,25 +75,16 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IECORE_DOC_GENERATOR_CONFIG__RENDER = 1;
+	int IE_NAMED_ELEMENT_CONFIG__RENDER = 0;
 
 	/**
-	 * The number of structural features of the '<em>IEcore Doc Generator Config</em>' class.
+	 * The number of structural features of the '<em>IE Named Element Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT = 2;
-
-	/**
-	 * The operation id for the '<em>Should Render Defaults</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS = 0;
+	int IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT = 1;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -111,7 +93,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER = 1;
+	int IE_NAMED_ELEMENT_CONFIG___SHOULD_RENDER = 0;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -120,26 +102,26 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IECORE_DOC_GENERATOR_CONFIG___GET_TARGET = 2;
+	int IE_NAMED_ELEMENT_CONFIG___GET_TARGET = 1;
 
 	/**
-	 * The number of operations of the '<em>IEcore Doc Generator Config</em>' class.
+	 * The number of operations of the '<em>IE Named Element Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT = 3;
+	int IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl <em>Ecore Doc Generator Config</em>}' class.
+	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IDefaultValueConfig <em>IDefault Value Config</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl
-	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getEcoreDocGeneratorConfig()
+	 * @see com.altran.general.ecoredoc.generator.config.IDefaultValueConfig
+	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIDefaultValueConfig()
 	 * @generated
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG = 1;
+	int IDEFAULT_VALUE_CONFIG = 1;
 
 	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
@@ -148,34 +130,16 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS = IECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS;
+	int IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Render</b></em>' attribute.
+	 * The number of structural features of the '<em>IDefault Value Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG__RENDER = IECORE_DOC_GENERATOR_CONFIG__RENDER;
-
-	/**
-	 * The feature id for the '<em><b>EPackages</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECORE_DOC_GENERATOR_CONFIG__EPACKAGES = IECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Ecore Doc Generator Config</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT = IECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT + 1;
+	int IDEFAULT_VALUE_CONFIG_FEATURE_COUNT = 1;
 
 	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
@@ -184,53 +148,35 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS = IECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT + 0;
+	int IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS = 0;
 
 	/**
-	 * The operation id for the '<em>Should Render</em>' operation.
+	 * The number of operations of the '<em>IDefault Value Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER = IECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT + 1;
+	int IDEFAULT_VALUE_CONFIG_OPERATION_COUNT = 1;
 
 	/**
-	 * The operation id for the '<em>Find Config</em>' operation.
+	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IEClassifierConfig <em>IE Classifier Config</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.altran.general.ecoredoc.generator.config.IEClassifierConfig
+	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEClassifierConfig()
+	 * @generated
+	 */
+	int IE_CLASSIFIER_CONFIG = 2;
+
+	/**
+	 * The feature id for the '<em><b>Render</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT = IECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Get Target</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECORE_DOC_GENERATOR_CONFIG___GET_TARGET = IECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT + 3;
-
-	/**
-	 * The number of operations of the '<em>Ecore Doc Generator Config</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT = IECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT + 4;
-
-	/**
-	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl <em>EPackage Config</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl
-	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getEPackageConfig()
-	 * @generated
-	 */
-	int EPACKAGE_CONFIG = 2;
+	int IE_CLASSIFIER_CONFIG__RENDER = IE_NAMED_ELEMENT_CONFIG__RENDER;
 
 	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
@@ -239,70 +185,25 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__RENDER_DEFAULTS = IECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS;
+	int IE_CLASSIFIER_CONFIG__RENDER_DEFAULTS = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Render</b></em>' attribute.
+	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__RENDER = IECORE_DOC_GENERATOR_CONFIG__RENDER;
+	int IE_CLASSIFIER_CONFIG__RENDER_USE_CASES = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Target EPackage</b></em>' reference.
+	 * The number of structural features of the '<em>IE Classifier Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__TARGET_EPACKAGE = IECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EData Types</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EPACKAGE_CONFIG__EDATA_TYPES = IECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EEnums</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EPACKAGE_CONFIG__EENUMS = IECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>EClasses</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EPACKAGE_CONFIG__ECLASSES = IECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>EPackage Config</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EPACKAGE_CONFIG_FEATURE_COUNT = IECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT + 4;
-
-	/**
-	 * The operation id for the '<em>Should Render Defaults</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EPACKAGE_CONFIG___SHOULD_RENDER_DEFAULTS = IECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS;
+	int IE_CLASSIFIER_CONFIG_FEATURE_COUNT = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -311,7 +212,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG___SHOULD_RENDER = IECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER;
+	int IE_CLASSIFIER_CONFIG___SHOULD_RENDER = IE_NAMED_ELEMENT_CONFIG___SHOULD_RENDER;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -320,62 +221,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG___GET_TARGET = IECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>EPackage Config</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EPACKAGE_CONFIG_OPERATION_COUNT = IECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig <em>IEcore Doc Generator Part Config</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig
-	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEcoreDocGeneratorPartConfig()
-	 * @generated
-	 */
-	int IECORE_DOC_GENERATOR_PART_CONFIG = 3;
-
-	/**
-	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IECORE_DOC_GENERATOR_PART_CONFIG__RENDER_DEFAULTS = IECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS;
-
-	/**
-	 * The feature id for the '<em><b>Render</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IECORE_DOC_GENERATOR_PART_CONFIG__RENDER = IECORE_DOC_GENERATOR_CONFIG__RENDER;
-
-	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IECORE_DOC_GENERATOR_PART_CONFIG__POSITION = IECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>IEcore Doc Generator Part Config</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IECORE_DOC_GENERATOR_PART_CONFIG_FEATURE_COUNT = IECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT + 1;
+	int IE_CLASSIFIER_CONFIG___GET_TARGET = IE_NAMED_ELEMENT_CONFIG___GET_TARGET;
 
 	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
@@ -384,34 +230,25 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IECORE_DOC_GENERATOR_PART_CONFIG___SHOULD_RENDER_DEFAULTS = IECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS;
+	int IE_CLASSIFIER_CONFIG___SHOULD_RENDER_DEFAULTS = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Should Render</em>' operation.
+	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IECORE_DOC_GENERATOR_PART_CONFIG___SHOULD_RENDER = IECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER;
+	int IE_CLASSIFIER_CONFIG___SHOULD_RENDER_USE_CASES = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Get Target</em>' operation.
+	 * The number of operations of the '<em>IE Classifier Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IECORE_DOC_GENERATOR_PART_CONFIG___GET_TARGET = IECORE_DOC_GENERATOR_CONFIG___GET_TARGET;
-
-	/**
-	 * The number of operations of the '<em>IEcore Doc Generator Part Config</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IECORE_DOC_GENERATOR_PART_CONFIG_OPERATION_COUNT = IECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT + 0;
+	int IE_CLASSIFIER_CONFIG_OPERATION_COUNT = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IEDataTypeConfig <em>IE Data Type Config</em>}' class.
@@ -421,16 +258,7 @@ public interface ConfigPackage extends EPackage {
 	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEDataTypeConfig()
 	 * @generated
 	 */
-	int IE_DATA_TYPE_CONFIG = 4;
-
-	/**
-	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_DATA_TYPE_CONFIG__RENDER_DEFAULTS = IECORE_DOC_GENERATOR_PART_CONFIG__RENDER_DEFAULTS;
+	int IE_DATA_TYPE_CONFIG = 3;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -439,16 +267,25 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IE_DATA_TYPE_CONFIG__RENDER = IECORE_DOC_GENERATOR_PART_CONFIG__RENDER;
+	int IE_DATA_TYPE_CONFIG__RENDER = IE_CLASSIFIER_CONFIG__RENDER;
 
 	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IE_DATA_TYPE_CONFIG__POSITION = IECORE_DOC_GENERATOR_PART_CONFIG__POSITION;
+	int IE_DATA_TYPE_CONFIG__RENDER_DEFAULTS = IE_CLASSIFIER_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_DATA_TYPE_CONFIG__RENDER_USE_CASES = IE_CLASSIFIER_CONFIG__RENDER_USE_CASES;
 
 	/**
 	 * The number of structural features of the '<em>IE Data Type Config</em>' class.
@@ -457,16 +294,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IE_DATA_TYPE_CONFIG_FEATURE_COUNT = IECORE_DOC_GENERATOR_PART_CONFIG_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Should Render Defaults</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_DATA_TYPE_CONFIG___SHOULD_RENDER_DEFAULTS = IECORE_DOC_GENERATOR_PART_CONFIG___SHOULD_RENDER_DEFAULTS;
+	int IE_DATA_TYPE_CONFIG_FEATURE_COUNT = IE_CLASSIFIER_CONFIG_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -475,7 +303,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IE_DATA_TYPE_CONFIG___SHOULD_RENDER = IECORE_DOC_GENERATOR_PART_CONFIG___SHOULD_RENDER;
+	int IE_DATA_TYPE_CONFIG___SHOULD_RENDER = IE_CLASSIFIER_CONFIG___SHOULD_RENDER;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -484,7 +312,25 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IE_DATA_TYPE_CONFIG___GET_TARGET = IECORE_DOC_GENERATOR_PART_CONFIG___GET_TARGET;
+	int IE_DATA_TYPE_CONFIG___GET_TARGET = IE_CLASSIFIER_CONFIG___GET_TARGET;
+
+	/**
+	 * The operation id for the '<em>Should Render Defaults</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_DATA_TYPE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_CLASSIFIER_CONFIG___SHOULD_RENDER_DEFAULTS;
+
+	/**
+	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_DATA_TYPE_CONFIG___SHOULD_RENDER_USE_CASES = IE_CLASSIFIER_CONFIG___SHOULD_RENDER_USE_CASES;
 
 	/**
 	 * The number of operations of the '<em>IE Data Type Config</em>' class.
@@ -493,7 +339,835 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IE_DATA_TYPE_CONFIG_OPERATION_COUNT = IECORE_DOC_GENERATOR_PART_CONFIG_OPERATION_COUNT + 0;
+	int IE_DATA_TYPE_CONFIG_OPERATION_COUNT = IE_CLASSIFIER_CONFIG_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IEEnumConfig <em>IE Enum Config</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.altran.general.ecoredoc.generator.config.IEEnumConfig
+	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEEnumConfig()
+	 * @generated
+	 */
+	int IE_ENUM_CONFIG = 4;
+
+	/**
+	 * The feature id for the '<em><b>Render</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_CONFIG__RENDER = IE_DATA_TYPE_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_CONFIG__RENDER_DEFAULTS = IE_DATA_TYPE_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_CONFIG__RENDER_USE_CASES = IE_DATA_TYPE_CONFIG__RENDER_USE_CASES;
+
+	/**
+	 * The number of structural features of the '<em>IE Enum Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_CONFIG_FEATURE_COUNT = IE_DATA_TYPE_CONFIG_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Should Render</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_CONFIG___SHOULD_RENDER = IE_DATA_TYPE_CONFIG___SHOULD_RENDER;
+
+	/**
+	 * The operation id for the '<em>Get Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_CONFIG___GET_TARGET = IE_DATA_TYPE_CONFIG___GET_TARGET;
+
+	/**
+	 * The operation id for the '<em>Should Render Defaults</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_CONFIG___SHOULD_RENDER_DEFAULTS = IE_DATA_TYPE_CONFIG___SHOULD_RENDER_DEFAULTS;
+
+	/**
+	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_CONFIG___SHOULD_RENDER_USE_CASES = IE_DATA_TYPE_CONFIG___SHOULD_RENDER_USE_CASES;
+
+	/**
+	 * The number of operations of the '<em>IE Enum Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_CONFIG_OPERATION_COUNT = IE_DATA_TYPE_CONFIG_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IEClassConfig <em>IE Class Config</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.altran.general.ecoredoc.generator.config.IEClassConfig
+	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEClassConfig()
+	 * @generated
+	 */
+	int IE_CLASS_CONFIG = 5;
+
+	/**
+	 * The feature id for the '<em><b>Render</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG__RENDER = IE_CLASSIFIER_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG__RENDER_DEFAULTS = IE_CLASSIFIER_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG__RENDER_USE_CASES = IE_CLASSIFIER_CONFIG__RENDER_USE_CASES;
+
+	/**
+	 * The feature id for the '<em><b>Repeat Inherited</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG__REPEAT_INHERITED = IE_CLASSIFIER_CONFIG_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>IE Class Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG_FEATURE_COUNT = IE_CLASSIFIER_CONFIG_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Should Render</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG___SHOULD_RENDER = IE_CLASSIFIER_CONFIG___SHOULD_RENDER;
+
+	/**
+	 * The operation id for the '<em>Get Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG___GET_TARGET = IE_CLASSIFIER_CONFIG___GET_TARGET;
+
+	/**
+	 * The operation id for the '<em>Should Render Defaults</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG___SHOULD_RENDER_DEFAULTS = IE_CLASSIFIER_CONFIG___SHOULD_RENDER_DEFAULTS;
+
+	/**
+	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG___SHOULD_RENDER_USE_CASES = IE_CLASSIFIER_CONFIG___SHOULD_RENDER_USE_CASES;
+
+	/**
+	 * The operation id for the '<em>Should Repeat Inherited</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED = IE_CLASSIFIER_CONFIG_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>IE Class Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG_OPERATION_COUNT = IE_CLASSIFIER_CONFIG_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig <em>IE Structural Feature Config</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig
+	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEStructuralFeatureConfig()
+	 * @generated
+	 */
+	int IE_STRUCTURAL_FEATURE_CONFIG = 6;
+
+	/**
+	 * The feature id for the '<em><b>Render</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_STRUCTURAL_FEATURE_CONFIG__RENDER = IE_NAMED_ELEMENT_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_STRUCTURAL_FEATURE_CONFIG__RENDER_DEFAULTS = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>IE Structural Feature Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_STRUCTURAL_FEATURE_CONFIG_FEATURE_COUNT = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Should Render</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER = IE_NAMED_ELEMENT_CONFIG___SHOULD_RENDER;
+
+	/**
+	 * The operation id for the '<em>Get Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_STRUCTURAL_FEATURE_CONFIG___GET_TARGET = IE_NAMED_ELEMENT_CONFIG___GET_TARGET;
+
+	/**
+	 * The operation id for the '<em>Should Render Defaults</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>IE Structural Feature Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_STRUCTURAL_FEATURE_CONFIG_OPERATION_COUNT = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IEAttributeConfig <em>IE Attribute Config</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.altran.general.ecoredoc.generator.config.IEAttributeConfig
+	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEAttributeConfig()
+	 * @generated
+	 */
+	int IE_ATTRIBUTE_CONFIG = 7;
+
+	/**
+	 * The feature id for the '<em><b>Render</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ATTRIBUTE_CONFIG__RENDER = IE_STRUCTURAL_FEATURE_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ATTRIBUTE_CONFIG__RENDER_DEFAULTS = IE_STRUCTURAL_FEATURE_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The number of structural features of the '<em>IE Attribute Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ATTRIBUTE_CONFIG_FEATURE_COUNT = IE_STRUCTURAL_FEATURE_CONFIG_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Should Render</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ATTRIBUTE_CONFIG___SHOULD_RENDER = IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER;
+
+	/**
+	 * The operation id for the '<em>Get Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ATTRIBUTE_CONFIG___GET_TARGET = IE_STRUCTURAL_FEATURE_CONFIG___GET_TARGET;
+
+	/**
+	 * The operation id for the '<em>Should Render Defaults</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ATTRIBUTE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_DEFAULTS;
+
+	/**
+	 * The number of operations of the '<em>IE Attribute Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ATTRIBUTE_CONFIG_OPERATION_COUNT = IE_STRUCTURAL_FEATURE_CONFIG_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IEReferenceConfig <em>IE Reference Config</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.altran.general.ecoredoc.generator.config.IEReferenceConfig
+	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEReferenceConfig()
+	 * @generated
+	 */
+	int IE_REFERENCE_CONFIG = 8;
+
+	/**
+	 * The feature id for the '<em><b>Render</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_REFERENCE_CONFIG__RENDER = IE_STRUCTURAL_FEATURE_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_REFERENCE_CONFIG__RENDER_DEFAULTS = IE_STRUCTURAL_FEATURE_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The number of structural features of the '<em>IE Reference Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_REFERENCE_CONFIG_FEATURE_COUNT = IE_STRUCTURAL_FEATURE_CONFIG_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Should Render</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_REFERENCE_CONFIG___SHOULD_RENDER = IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER;
+
+	/**
+	 * The operation id for the '<em>Get Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_REFERENCE_CONFIG___GET_TARGET = IE_STRUCTURAL_FEATURE_CONFIG___GET_TARGET;
+
+	/**
+	 * The operation id for the '<em>Should Render Defaults</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_DEFAULTS;
+
+	/**
+	 * The number of operations of the '<em>IE Reference Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_REFERENCE_CONFIG_OPERATION_COUNT = IE_STRUCTURAL_FEATURE_CONFIG_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IEPackageConfig <em>IE Package Config</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.altran.general.ecoredoc.generator.config.IEPackageConfig
+	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEPackageConfig()
+	 * @generated
+	 */
+	int IE_PACKAGE_CONFIG = 9;
+
+	/**
+	 * The feature id for the '<em><b>Render</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_PACKAGE_CONFIG__RENDER = IE_NAMED_ELEMENT_CONFIG__RENDER;
+
+	/**
+	 * The number of structural features of the '<em>IE Package Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_PACKAGE_CONFIG_FEATURE_COUNT = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Should Render</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_PACKAGE_CONFIG___SHOULD_RENDER = IE_NAMED_ELEMENT_CONFIG___SHOULD_RENDER;
+
+	/**
+	 * The operation id for the '<em>Get Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_PACKAGE_CONFIG___GET_TARGET = IE_NAMED_ELEMENT_CONFIG___GET_TARGET;
+
+	/**
+	 * The number of operations of the '<em>IE Package Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_PACKAGE_CONFIG_OPERATION_COUNT = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IEEnumLiteralConfig <em>IE Enum Literal Config</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.altran.general.ecoredoc.generator.config.IEEnumLiteralConfig
+	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEEnumLiteralConfig()
+	 * @generated
+	 */
+	int IE_ENUM_LITERAL_CONFIG = 10;
+
+	/**
+	 * The feature id for the '<em><b>Render</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_LITERAL_CONFIG__RENDER = IE_NAMED_ELEMENT_CONFIG__RENDER;
+
+	/**
+	 * The number of structural features of the '<em>IE Enum Literal Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_LITERAL_CONFIG_FEATURE_COUNT = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Should Render</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_LITERAL_CONFIG___SHOULD_RENDER = IE_NAMED_ELEMENT_CONFIG___SHOULD_RENDER;
+
+	/**
+	 * The operation id for the '<em>Get Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_LITERAL_CONFIG___GET_TARGET = IE_NAMED_ELEMENT_CONFIG___GET_TARGET;
+
+	/**
+	 * The number of operations of the '<em>IE Enum Literal Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_LITERAL_CONFIG_OPERATION_COUNT = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl <em>Ecore Doc Generator Config</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl
+	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getEcoreDocGeneratorConfig()
+	 * @generated
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG = 11;
+
+	/**
+	 * The feature id for the '<em><b>Render</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__RENDER = IE_PACKAGE_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Repeat Inherited</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED = IE_PACKAGE_CONFIG_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>EPackages</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__EPACKAGES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Ecore Doc Generator Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Should Render</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER = IE_PACKAGE_CONFIG_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Should Render Defaults</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>Should Repeat Inherited</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED = IE_PACKAGE_CONFIG_OPERATION_COUNT + 6;
+
+	/**
+	 * The operation id for the '<em>Find Config</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 7;
+
+	/**
+	 * The operation id for the '<em>Get Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 8;
+
+	/**
+	 * The number of operations of the '<em>Ecore Doc Generator Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 9;
+
+	/**
+	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl <em>EPackage Config</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl
+	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getEPackageConfig()
+	 * @generated
+	 */
+	int EPACKAGE_CONFIG = 12;
+
+	/**
+	 * The feature id for the '<em><b>Render</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__RENDER = IE_PACKAGE_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__RENDER_DEFAULTS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__RENDER_USE_CASES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Repeat Inherited</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__REPEAT_INHERITED = IE_PACKAGE_CONFIG_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Position EData Types</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__POSITION_EDATA_TYPES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Position EEnums</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__POSITION_EENUMS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Position EClasses</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__POSITION_ECLASSES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Target EPackage</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__TARGET_EPACKAGE = IE_PACKAGE_CONFIG_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>EData Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__EDATA_TYPES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>EEnums</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__EENUMS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>EClasses</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__ECLASSES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 9;
+
+	/**
+	 * The number of structural features of the '<em>EPackage Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG_FEATURE_COUNT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 10;
+
+	/**
+	 * The operation id for the '<em>Should Render</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG___SHOULD_RENDER = IE_PACKAGE_CONFIG___SHOULD_RENDER;
+
+	/**
+	 * The operation id for the '<em>Should Render Defaults</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG___SHOULD_RENDER_USE_CASES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Should Repeat Inherited</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG___SHOULD_REPEAT_INHERITED = IE_PACKAGE_CONFIG_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>EPackage Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.EDataTypeConfigImpl <em>EData Type Config</em>}' class.
@@ -503,16 +1177,7 @@ public interface ConfigPackage extends EPackage {
 	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getEDataTypeConfig()
 	 * @generated
 	 */
-	int EDATA_TYPE_CONFIG = 5;
-
-	/**
-	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EDATA_TYPE_CONFIG__RENDER_DEFAULTS = IE_DATA_TYPE_CONFIG__RENDER_DEFAULTS;
+	int EDATA_TYPE_CONFIG = 13;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -524,13 +1189,22 @@ public interface ConfigPackage extends EPackage {
 	int EDATA_TYPE_CONFIG__RENDER = IE_DATA_TYPE_CONFIG__RENDER;
 
 	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EDATA_TYPE_CONFIG__POSITION = IE_DATA_TYPE_CONFIG__POSITION;
+	int EDATA_TYPE_CONFIG__RENDER_DEFAULTS = IE_DATA_TYPE_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDATA_TYPE_CONFIG__RENDER_USE_CASES = IE_DATA_TYPE_CONFIG__RENDER_USE_CASES;
 
 	/**
 	 * The feature id for the '<em><b>Target EData Type</b></em>' reference.
@@ -551,6 +1225,15 @@ public interface ConfigPackage extends EPackage {
 	int EDATA_TYPE_CONFIG_FEATURE_COUNT = IE_DATA_TYPE_CONFIG_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Should Render</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDATA_TYPE_CONFIG___SHOULD_RENDER = IE_DATA_TYPE_CONFIG___SHOULD_RENDER;
+
+	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -560,13 +1243,13 @@ public interface ConfigPackage extends EPackage {
 	int EDATA_TYPE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_DATA_TYPE_CONFIG___SHOULD_RENDER_DEFAULTS;
 
 	/**
-	 * The operation id for the '<em>Should Render</em>' operation.
+	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EDATA_TYPE_CONFIG___SHOULD_RENDER = IE_DATA_TYPE_CONFIG___SHOULD_RENDER;
+	int EDATA_TYPE_CONFIG___SHOULD_RENDER_USE_CASES = IE_DATA_TYPE_CONFIG___SHOULD_RENDER_USE_CASES;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -578,22 +1261,13 @@ public interface ConfigPackage extends EPackage {
 	int EDATA_TYPE_CONFIG___GET_TARGET = IE_DATA_TYPE_CONFIG_OPERATION_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Get Position</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EDATA_TYPE_CONFIG___GET_POSITION = IE_DATA_TYPE_CONFIG_OPERATION_COUNT + 1;
-
-	/**
 	 * The number of operations of the '<em>EData Type Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EDATA_TYPE_CONFIG_OPERATION_COUNT = IE_DATA_TYPE_CONFIG_OPERATION_COUNT + 2;
+	int EDATA_TYPE_CONFIG_OPERATION_COUNT = IE_DATA_TYPE_CONFIG_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.EEnumConfigImpl <em>EEnum Config</em>}' class.
@@ -603,16 +1277,7 @@ public interface ConfigPackage extends EPackage {
 	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getEEnumConfig()
 	 * @generated
 	 */
-	int EENUM_CONFIG = 6;
-
-	/**
-	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EENUM_CONFIG__RENDER_DEFAULTS = IE_DATA_TYPE_CONFIG__RENDER_DEFAULTS;
+	int EENUM_CONFIG = 14;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -621,16 +1286,25 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EENUM_CONFIG__RENDER = IE_DATA_TYPE_CONFIG__RENDER;
+	int EENUM_CONFIG__RENDER = IE_ENUM_CONFIG__RENDER;
 
 	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EENUM_CONFIG__POSITION = IE_DATA_TYPE_CONFIG__POSITION;
+	int EENUM_CONFIG__RENDER_DEFAULTS = IE_ENUM_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EENUM_CONFIG__RENDER_USE_CASES = IE_ENUM_CONFIG__RENDER_USE_CASES;
 
 	/**
 	 * The feature id for the '<em><b>Target EEnum</b></em>' reference.
@@ -639,7 +1313,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EENUM_CONFIG__TARGET_EENUM = IE_DATA_TYPE_CONFIG_FEATURE_COUNT + 0;
+	int EENUM_CONFIG__TARGET_EENUM = IE_ENUM_CONFIG_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EEnum Literals</b></em>' containment reference list.
@@ -648,7 +1322,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EENUM_CONFIG__EENUM_LITERALS = IE_DATA_TYPE_CONFIG_FEATURE_COUNT + 1;
+	int EENUM_CONFIG__EENUM_LITERALS = IE_ENUM_CONFIG_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>EEnum Config</em>' class.
@@ -657,16 +1331,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EENUM_CONFIG_FEATURE_COUNT = IE_DATA_TYPE_CONFIG_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Should Render Defaults</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EENUM_CONFIG___SHOULD_RENDER_DEFAULTS = IE_DATA_TYPE_CONFIG___SHOULD_RENDER_DEFAULTS;
+	int EENUM_CONFIG_FEATURE_COUNT = IE_ENUM_CONFIG_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -675,7 +1340,25 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EENUM_CONFIG___SHOULD_RENDER = IE_DATA_TYPE_CONFIG___SHOULD_RENDER;
+	int EENUM_CONFIG___SHOULD_RENDER = IE_ENUM_CONFIG___SHOULD_RENDER;
+
+	/**
+	 * The operation id for the '<em>Should Render Defaults</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EENUM_CONFIG___SHOULD_RENDER_DEFAULTS = IE_ENUM_CONFIG___SHOULD_RENDER_DEFAULTS;
+
+	/**
+	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EENUM_CONFIG___SHOULD_RENDER_USE_CASES = IE_ENUM_CONFIG___SHOULD_RENDER_USE_CASES;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -684,16 +1367,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EENUM_CONFIG___GET_TARGET = IE_DATA_TYPE_CONFIG_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Get Position</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EENUM_CONFIG___GET_POSITION = IE_DATA_TYPE_CONFIG_OPERATION_COUNT + 1;
+	int EENUM_CONFIG___GET_TARGET = IE_ENUM_CONFIG_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>EEnum Config</em>' class.
@@ -702,7 +1376,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EENUM_CONFIG_OPERATION_COUNT = IE_DATA_TYPE_CONFIG_OPERATION_COUNT + 2;
+	int EENUM_CONFIG_OPERATION_COUNT = IE_ENUM_CONFIG_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.EEnumLiteralConfigImpl <em>EEnum Literal Config</em>}' class.
@@ -712,16 +1386,7 @@ public interface ConfigPackage extends EPackage {
 	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getEEnumLiteralConfig()
 	 * @generated
 	 */
-	int EENUM_LITERAL_CONFIG = 7;
-
-	/**
-	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EENUM_LITERAL_CONFIG__RENDER_DEFAULTS = IECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS;
+	int EENUM_LITERAL_CONFIG = 15;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -730,7 +1395,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EENUM_LITERAL_CONFIG__RENDER = IECORE_DOC_GENERATOR_CONFIG__RENDER;
+	int EENUM_LITERAL_CONFIG__RENDER = IE_ENUM_LITERAL_CONFIG__RENDER;
 
 	/**
 	 * The feature id for the '<em><b>Target EEnum Literal</b></em>' reference.
@@ -739,7 +1404,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL = IECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT + 0;
+	int EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL = IE_ENUM_LITERAL_CONFIG_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>EEnum Literal Config</em>' class.
@@ -748,16 +1413,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EENUM_LITERAL_CONFIG_FEATURE_COUNT = IECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Should Render Defaults</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EENUM_LITERAL_CONFIG___SHOULD_RENDER_DEFAULTS = IECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS;
+	int EENUM_LITERAL_CONFIG_FEATURE_COUNT = IE_ENUM_LITERAL_CONFIG_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -766,7 +1422,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EENUM_LITERAL_CONFIG___SHOULD_RENDER = IECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER;
+	int EENUM_LITERAL_CONFIG___SHOULD_RENDER = IE_ENUM_LITERAL_CONFIG___SHOULD_RENDER;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -775,7 +1431,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EENUM_LITERAL_CONFIG___GET_TARGET = IECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT + 0;
+	int EENUM_LITERAL_CONFIG___GET_TARGET = IE_ENUM_LITERAL_CONFIG_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>EEnum Literal Config</em>' class.
@@ -784,98 +1440,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EENUM_LITERAL_CONFIG_OPERATION_COUNT = IECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IEClassConfig <em>IE Class Config</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.altran.general.ecoredoc.generator.config.IEClassConfig
-	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEClassConfig()
-	 * @generated
-	 */
-	int IE_CLASS_CONFIG = 8;
-
-	/**
-	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_CLASS_CONFIG__RENDER_DEFAULTS = IECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS;
-
-	/**
-	 * The feature id for the '<em><b>Render</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_CLASS_CONFIG__RENDER = IECORE_DOC_GENERATOR_CONFIG__RENDER;
-
-	/**
-	 * The feature id for the '<em><b>Repeat Inherited</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_CLASS_CONFIG__REPEAT_INHERITED = IECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>IE Class Config</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_CLASS_CONFIG_FEATURE_COUNT = IECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Should Render Defaults</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_CLASS_CONFIG___SHOULD_RENDER_DEFAULTS = IECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS;
-
-	/**
-	 * The operation id for the '<em>Should Render</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_CLASS_CONFIG___SHOULD_RENDER = IECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER;
-
-	/**
-	 * The operation id for the '<em>Get Target</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_CLASS_CONFIG___GET_TARGET = IECORE_DOC_GENERATOR_CONFIG___GET_TARGET;
-
-	/**
-	 * The operation id for the '<em>Should Repeat Inherited</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED = IECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>IE Class Config</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_CLASS_CONFIG_OPERATION_COUNT = IECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT + 1;
+	int EENUM_LITERAL_CONFIG_OPERATION_COUNT = IE_ENUM_LITERAL_CONFIG_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.EClassConfigImpl <em>EClass Config</em>}' class.
@@ -885,16 +1450,7 @@ public interface ConfigPackage extends EPackage {
 	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getEClassConfig()
 	 * @generated
 	 */
-	int ECLASS_CONFIG = 9;
-
-	/**
-	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECLASS_CONFIG__RENDER_DEFAULTS = IECORE_DOC_GENERATOR_PART_CONFIG__RENDER_DEFAULTS;
+	int ECLASS_CONFIG = 16;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -903,16 +1459,25 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG__RENDER = IECORE_DOC_GENERATOR_PART_CONFIG__RENDER;
+	int ECLASS_CONFIG__RENDER = IE_CLASS_CONFIG__RENDER;
 
 	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG__POSITION = IECORE_DOC_GENERATOR_PART_CONFIG__POSITION;
+	int ECLASS_CONFIG__RENDER_DEFAULTS = IE_CLASS_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS_CONFIG__RENDER_USE_CASES = IE_CLASS_CONFIG__RENDER_USE_CASES;
 
 	/**
 	 * The feature id for the '<em><b>Repeat Inherited</b></em>' attribute.
@@ -921,7 +1486,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG__REPEAT_INHERITED = IECORE_DOC_GENERATOR_PART_CONFIG_FEATURE_COUNT + 0;
+	int ECLASS_CONFIG__REPEAT_INHERITED = IE_CLASS_CONFIG__REPEAT_INHERITED;
 
 	/**
 	 * The feature id for the '<em><b>Target EClass</b></em>' reference.
@@ -930,7 +1495,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG__TARGET_ECLASS = IECORE_DOC_GENERATOR_PART_CONFIG_FEATURE_COUNT + 1;
+	int ECLASS_CONFIG__TARGET_ECLASS = IE_CLASS_CONFIG_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EAttributes</b></em>' containment reference list.
@@ -939,7 +1504,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG__EATTRIBUTES = IECORE_DOC_GENERATOR_PART_CONFIG_FEATURE_COUNT + 2;
+	int ECLASS_CONFIG__EATTRIBUTES = IE_CLASS_CONFIG_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>EContainments</b></em>' containment reference list.
@@ -948,7 +1513,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG__ECONTAINMENTS = IECORE_DOC_GENERATOR_PART_CONFIG_FEATURE_COUNT + 3;
+	int ECLASS_CONFIG__ECONTAINMENTS = IE_CLASS_CONFIG_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>EReferences</b></em>' containment reference list.
@@ -957,7 +1522,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG__EREFERENCES = IECORE_DOC_GENERATOR_PART_CONFIG_FEATURE_COUNT + 4;
+	int ECLASS_CONFIG__EREFERENCES = IE_CLASS_CONFIG_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>EClass Config</em>' class.
@@ -966,16 +1531,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG_FEATURE_COUNT = IECORE_DOC_GENERATOR_PART_CONFIG_FEATURE_COUNT + 5;
-
-	/**
-	 * The operation id for the '<em>Should Render Defaults</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECLASS_CONFIG___SHOULD_RENDER_DEFAULTS = IECORE_DOC_GENERATOR_PART_CONFIG___SHOULD_RENDER_DEFAULTS;
+	int ECLASS_CONFIG_FEATURE_COUNT = IE_CLASS_CONFIG_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -984,25 +1540,25 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG___SHOULD_RENDER = IECORE_DOC_GENERATOR_PART_CONFIG___SHOULD_RENDER;
+	int ECLASS_CONFIG___SHOULD_RENDER = IE_CLASS_CONFIG___SHOULD_RENDER;
 
 	/**
-	 * The operation id for the '<em>Get Target</em>' operation.
+	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG___GET_TARGET = IECORE_DOC_GENERATOR_PART_CONFIG_OPERATION_COUNT + 1;
+	int ECLASS_CONFIG___SHOULD_RENDER_DEFAULTS = IE_CLASS_CONFIG___SHOULD_RENDER_DEFAULTS;
 
 	/**
-	 * The operation id for the '<em>Get Position</em>' operation.
+	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG___GET_POSITION = IECORE_DOC_GENERATOR_PART_CONFIG_OPERATION_COUNT + 2;
+	int ECLASS_CONFIG___SHOULD_RENDER_USE_CASES = IE_CLASS_CONFIG___SHOULD_RENDER_USE_CASES;
 
 	/**
 	 * The operation id for the '<em>Should Repeat Inherited</em>' operation.
@@ -1011,7 +1567,16 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG___SHOULD_REPEAT_INHERITED = IECORE_DOC_GENERATOR_PART_CONFIG_OPERATION_COUNT + 3;
+	int ECLASS_CONFIG___SHOULD_REPEAT_INHERITED = IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED;
+
+	/**
+	 * The operation id for the '<em>Get Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS_CONFIG___GET_TARGET = IE_CLASS_CONFIG_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>EClass Config</em>' class.
@@ -1020,108 +1585,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG_OPERATION_COUNT = IECORE_DOC_GENERATOR_PART_CONFIG_OPERATION_COUNT + 4;
-
-	/**
-	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.AEStructuralFeatureConfigImpl <em>AE Structural Feature Config</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.altran.general.ecoredoc.generator.config.impl.AEStructuralFeatureConfigImpl
-	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getAEStructuralFeatureConfig()
-	 * @generated
-	 */
-	int AE_STRUCTURAL_FEATURE_CONFIG = 10;
-
-	/**
-	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AE_STRUCTURAL_FEATURE_CONFIG__RENDER_DEFAULTS = IE_CLASS_CONFIG__RENDER_DEFAULTS;
-
-	/**
-	 * The feature id for the '<em><b>Render</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AE_STRUCTURAL_FEATURE_CONFIG__RENDER = IE_CLASS_CONFIG__RENDER;
-
-	/**
-	 * The feature id for the '<em><b>Repeat Inherited</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AE_STRUCTURAL_FEATURE_CONFIG__REPEAT_INHERITED = IE_CLASS_CONFIG__REPEAT_INHERITED;
-
-	/**
-	 * The number of structural features of the '<em>AE Structural Feature Config</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AE_STRUCTURAL_FEATURE_CONFIG_FEATURE_COUNT = IE_CLASS_CONFIG_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Should Render Defaults</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_CLASS_CONFIG___SHOULD_RENDER_DEFAULTS;
-
-	/**
-	 * The operation id for the '<em>Should Render</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER = IE_CLASS_CONFIG___SHOULD_RENDER;
-
-	/**
-	 * The operation id for the '<em>Get Target</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AE_STRUCTURAL_FEATURE_CONFIG___GET_TARGET = IE_CLASS_CONFIG___GET_TARGET;
-
-	/**
-	 * The operation id for the '<em>Should Repeat Inherited</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AE_STRUCTURAL_FEATURE_CONFIG___SHOULD_REPEAT_INHERITED = IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED;
-
-	/**
-	 * The number of operations of the '<em>AE Structural Feature Config</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AE_STRUCTURAL_FEATURE_CONFIG_OPERATION_COUNT = IE_CLASS_CONFIG_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.AEReferenceConfigImpl <em>AE Reference Config</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.altran.general.ecoredoc.generator.config.impl.AEReferenceConfigImpl
-	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getAEReferenceConfig()
-	 * @generated
-	 */
-	int AE_REFERENCE_CONFIG = 12;
+	int ECLASS_CONFIG_OPERATION_COUNT = IE_CLASS_CONFIG_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.EAttributeConfigImpl <em>EAttribute Config</em>}' class.
@@ -1131,16 +1595,7 @@ public interface ConfigPackage extends EPackage {
 	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getEAttributeConfig()
 	 * @generated
 	 */
-	int EATTRIBUTE_CONFIG = 11;
-
-	/**
-	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EATTRIBUTE_CONFIG__RENDER_DEFAULTS = AE_STRUCTURAL_FEATURE_CONFIG__RENDER_DEFAULTS;
+	int EATTRIBUTE_CONFIG = 17;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -1149,16 +1604,16 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EATTRIBUTE_CONFIG__RENDER = AE_STRUCTURAL_FEATURE_CONFIG__RENDER;
+	int EATTRIBUTE_CONFIG__RENDER = IE_ATTRIBUTE_CONFIG__RENDER;
 
 	/**
-	 * The feature id for the '<em><b>Repeat Inherited</b></em>' attribute.
+	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EATTRIBUTE_CONFIG__REPEAT_INHERITED = AE_STRUCTURAL_FEATURE_CONFIG__REPEAT_INHERITED;
+	int EATTRIBUTE_CONFIG__RENDER_DEFAULTS = IE_ATTRIBUTE_CONFIG__RENDER_DEFAULTS;
 
 	/**
 	 * The feature id for the '<em><b>Target EAttribute</b></em>' reference.
@@ -1167,7 +1622,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EATTRIBUTE_CONFIG__TARGET_EATTRIBUTE = AE_STRUCTURAL_FEATURE_CONFIG_FEATURE_COUNT + 0;
+	int EATTRIBUTE_CONFIG__TARGET_EATTRIBUTE = IE_ATTRIBUTE_CONFIG_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>EAttribute Config</em>' class.
@@ -1176,16 +1631,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EATTRIBUTE_CONFIG_FEATURE_COUNT = AE_STRUCTURAL_FEATURE_CONFIG_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Should Render Defaults</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EATTRIBUTE_CONFIG___SHOULD_RENDER_DEFAULTS = AE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_DEFAULTS;
+	int EATTRIBUTE_CONFIG_FEATURE_COUNT = IE_ATTRIBUTE_CONFIG_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -1194,16 +1640,16 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EATTRIBUTE_CONFIG___SHOULD_RENDER = AE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER;
+	int EATTRIBUTE_CONFIG___SHOULD_RENDER = IE_ATTRIBUTE_CONFIG___SHOULD_RENDER;
 
 	/**
-	 * The operation id for the '<em>Should Repeat Inherited</em>' operation.
+	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EATTRIBUTE_CONFIG___SHOULD_REPEAT_INHERITED = AE_STRUCTURAL_FEATURE_CONFIG___SHOULD_REPEAT_INHERITED;
+	int EATTRIBUTE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_ATTRIBUTE_CONFIG___SHOULD_RENDER_DEFAULTS;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -1212,7 +1658,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EATTRIBUTE_CONFIG___GET_TARGET = AE_STRUCTURAL_FEATURE_CONFIG_OPERATION_COUNT + 0;
+	int EATTRIBUTE_CONFIG___GET_TARGET = IE_ATTRIBUTE_CONFIG_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>EAttribute Config</em>' class.
@@ -1221,16 +1667,17 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EATTRIBUTE_CONFIG_OPERATION_COUNT = AE_STRUCTURAL_FEATURE_CONFIG_OPERATION_COUNT + 1;
+	int EATTRIBUTE_CONFIG_OPERATION_COUNT = IE_ATTRIBUTE_CONFIG_OPERATION_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
+	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.AEReferenceConfigImpl <em>AE Reference Config</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see com.altran.general.ecoredoc.generator.config.impl.AEReferenceConfigImpl
+	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getAEReferenceConfig()
 	 * @generated
-	 * @ordered
 	 */
-	int AE_REFERENCE_CONFIG__RENDER_DEFAULTS = AE_STRUCTURAL_FEATURE_CONFIG__RENDER_DEFAULTS;
+	int AE_REFERENCE_CONFIG = 18;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -1239,16 +1686,16 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AE_REFERENCE_CONFIG__RENDER = AE_STRUCTURAL_FEATURE_CONFIG__RENDER;
+	int AE_REFERENCE_CONFIG__RENDER = IE_REFERENCE_CONFIG__RENDER;
 
 	/**
-	 * The feature id for the '<em><b>Repeat Inherited</b></em>' attribute.
+	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AE_REFERENCE_CONFIG__REPEAT_INHERITED = AE_STRUCTURAL_FEATURE_CONFIG__REPEAT_INHERITED;
+	int AE_REFERENCE_CONFIG__RENDER_DEFAULTS = IE_REFERENCE_CONFIG__RENDER_DEFAULTS;
 
 	/**
 	 * The number of structural features of the '<em>AE Reference Config</em>' class.
@@ -1257,16 +1704,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AE_REFERENCE_CONFIG_FEATURE_COUNT = AE_STRUCTURAL_FEATURE_CONFIG_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Should Render Defaults</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS = AE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_DEFAULTS;
+	int AE_REFERENCE_CONFIG_FEATURE_COUNT = IE_REFERENCE_CONFIG_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -1275,7 +1713,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AE_REFERENCE_CONFIG___SHOULD_RENDER = AE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER;
+	int AE_REFERENCE_CONFIG___SHOULD_RENDER = IE_REFERENCE_CONFIG___SHOULD_RENDER;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -1284,16 +1722,16 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AE_REFERENCE_CONFIG___GET_TARGET = AE_STRUCTURAL_FEATURE_CONFIG___GET_TARGET;
+	int AE_REFERENCE_CONFIG___GET_TARGET = IE_REFERENCE_CONFIG___GET_TARGET;
 
 	/**
-	 * The operation id for the '<em>Should Repeat Inherited</em>' operation.
+	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AE_REFERENCE_CONFIG___SHOULD_REPEAT_INHERITED = AE_STRUCTURAL_FEATURE_CONFIG___SHOULD_REPEAT_INHERITED;
+	int AE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS;
 
 	/**
 	 * The number of operations of the '<em>AE Reference Config</em>' class.
@@ -1302,7 +1740,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AE_REFERENCE_CONFIG_OPERATION_COUNT = AE_STRUCTURAL_FEATURE_CONFIG_OPERATION_COUNT + 0;
+	int AE_REFERENCE_CONFIG_OPERATION_COUNT = IE_REFERENCE_CONFIG_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.EContainmentConfigImpl <em>EContainment Config</em>}' class.
@@ -1312,16 +1750,7 @@ public interface ConfigPackage extends EPackage {
 	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getEContainmentConfig()
 	 * @generated
 	 */
-	int ECONTAINMENT_CONFIG = 13;
-
-	/**
-	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONTAINMENT_CONFIG__RENDER_DEFAULTS = AE_REFERENCE_CONFIG__RENDER_DEFAULTS;
+	int ECONTAINMENT_CONFIG = 19;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -1333,13 +1762,13 @@ public interface ConfigPackage extends EPackage {
 	int ECONTAINMENT_CONFIG__RENDER = AE_REFERENCE_CONFIG__RENDER;
 
 	/**
-	 * The feature id for the '<em><b>Repeat Inherited</b></em>' attribute.
+	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECONTAINMENT_CONFIG__REPEAT_INHERITED = AE_REFERENCE_CONFIG__REPEAT_INHERITED;
+	int ECONTAINMENT_CONFIG__RENDER_DEFAULTS = AE_REFERENCE_CONFIG__RENDER_DEFAULTS;
 
 	/**
 	 * The feature id for the '<em><b>Target EContainment</b></em>' reference.
@@ -1360,15 +1789,6 @@ public interface ConfigPackage extends EPackage {
 	int ECONTAINMENT_CONFIG_FEATURE_COUNT = AE_REFERENCE_CONFIG_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Should Render Defaults</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONTAINMENT_CONFIG___SHOULD_RENDER_DEFAULTS = AE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS;
-
-	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1378,13 +1798,13 @@ public interface ConfigPackage extends EPackage {
 	int ECONTAINMENT_CONFIG___SHOULD_RENDER = AE_REFERENCE_CONFIG___SHOULD_RENDER;
 
 	/**
-	 * The operation id for the '<em>Should Repeat Inherited</em>' operation.
+	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECONTAINMENT_CONFIG___SHOULD_REPEAT_INHERITED = AE_REFERENCE_CONFIG___SHOULD_REPEAT_INHERITED;
+	int ECONTAINMENT_CONFIG___SHOULD_RENDER_DEFAULTS = AE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -1412,16 +1832,7 @@ public interface ConfigPackage extends EPackage {
 	 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getEReferenceConfig()
 	 * @generated
 	 */
-	int EREFERENCE_CONFIG = 14;
-
-	/**
-	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EREFERENCE_CONFIG__RENDER_DEFAULTS = AE_REFERENCE_CONFIG__RENDER_DEFAULTS;
+	int EREFERENCE_CONFIG = 20;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -1433,13 +1844,13 @@ public interface ConfigPackage extends EPackage {
 	int EREFERENCE_CONFIG__RENDER = AE_REFERENCE_CONFIG__RENDER;
 
 	/**
-	 * The feature id for the '<em><b>Repeat Inherited</b></em>' attribute.
+	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EREFERENCE_CONFIG__REPEAT_INHERITED = AE_REFERENCE_CONFIG__REPEAT_INHERITED;
+	int EREFERENCE_CONFIG__RENDER_DEFAULTS = AE_REFERENCE_CONFIG__RENDER_DEFAULTS;
 
 	/**
 	 * The feature id for the '<em><b>Target EReference</b></em>' reference.
@@ -1460,15 +1871,6 @@ public interface ConfigPackage extends EPackage {
 	int EREFERENCE_CONFIG_FEATURE_COUNT = AE_REFERENCE_CONFIG_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Should Render Defaults</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EREFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS = AE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS;
-
-	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1478,13 +1880,13 @@ public interface ConfigPackage extends EPackage {
 	int EREFERENCE_CONFIG___SHOULD_RENDER = AE_REFERENCE_CONFIG___SHOULD_RENDER;
 
 	/**
-	 * The operation id for the '<em>Should Repeat Inherited</em>' operation.
+	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EREFERENCE_CONFIG___SHOULD_REPEAT_INHERITED = AE_REFERENCE_CONFIG___SHOULD_REPEAT_INHERITED;
+	int EREFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS = AE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -1506,66 +1908,208 @@ public interface ConfigPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig <em>IEcore Doc Generator Config</em>}'.
+	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IENamedElementConfig <em>IE Named Element Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>IEcore Doc Generator Config</em>'.
-	 * @see com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig
+	 * @return the meta object for class '<em>IE Named Element Config</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IENamedElementConfig
 	 * @generated
 	 */
-	EClass getIEcoreDocGeneratorConfig();
+	EClass getIENamedElementConfig();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig#isRenderDefaults <em>Render Defaults</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Render Defaults</em>'.
-	 * @see com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig#isRenderDefaults()
-	 * @see #getIEcoreDocGeneratorConfig()
-	 * @generated
-	 */
-	EAttribute getIEcoreDocGeneratorConfig_RenderDefaults();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig#isRender <em>Render</em>}'.
+	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.IENamedElementConfig#isRender <em>Render</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Render</em>'.
-	 * @see com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig#isRender()
-	 * @see #getIEcoreDocGeneratorConfig()
+	 * @see com.altran.general.ecoredoc.generator.config.IENamedElementConfig#isRender()
+	 * @see #getIENamedElementConfig()
 	 * @generated
 	 */
-	EAttribute getIEcoreDocGeneratorConfig_Render();
+	EAttribute getIENamedElementConfig_Render();
 
 	/**
-	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig#shouldRenderDefaults() <em>Should Render Defaults</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Should Render Defaults</em>' operation.
-	 * @see com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig#shouldRenderDefaults()
-	 * @generated
-	 */
-	EOperation getIEcoreDocGeneratorConfig__ShouldRenderDefaults();
-
-	/**
-	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig#shouldRender() <em>Should Render</em>}' operation.
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.IENamedElementConfig#shouldRender() <em>Should Render</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Should Render</em>' operation.
-	 * @see com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig#shouldRender()
+	 * @see com.altran.general.ecoredoc.generator.config.IENamedElementConfig#shouldRender()
 	 * @generated
 	 */
-	EOperation getIEcoreDocGeneratorConfig__ShouldRender();
+	EOperation getIENamedElementConfig__ShouldRender();
 
 	/**
-	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig#getTarget() <em>Get Target</em>}' operation.
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.IENamedElementConfig#getTarget() <em>Get Target</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Target</em>' operation.
-	 * @see com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig#getTarget()
+	 * @see com.altran.general.ecoredoc.generator.config.IENamedElementConfig#getTarget()
 	 * @generated
 	 */
-	EOperation getIEcoreDocGeneratorConfig__GetTarget();
+	EOperation getIENamedElementConfig__GetTarget();
+
+	/**
+	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IDefaultValueConfig <em>IDefault Value Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IDefault Value Config</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IDefaultValueConfig
+	 * @generated
+	 */
+	EClass getIDefaultValueConfig();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.IDefaultValueConfig#isRenderDefaults <em>Render Defaults</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Render Defaults</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IDefaultValueConfig#isRenderDefaults()
+	 * @see #getIDefaultValueConfig()
+	 * @generated
+	 */
+	EAttribute getIDefaultValueConfig_RenderDefaults();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.IDefaultValueConfig#shouldRenderDefaults() <em>Should Render Defaults</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Should Render Defaults</em>' operation.
+	 * @see com.altran.general.ecoredoc.generator.config.IDefaultValueConfig#shouldRenderDefaults()
+	 * @generated
+	 */
+	EOperation getIDefaultValueConfig__ShouldRenderDefaults();
+
+	/**
+	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IEClassifierConfig <em>IE Classifier Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IE Classifier Config</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IEClassifierConfig
+	 * @generated
+	 */
+	EClass getIEClassifierConfig();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.IEClassifierConfig#isRenderUseCases <em>Render Use Cases</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Render Use Cases</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IEClassifierConfig#isRenderUseCases()
+	 * @see #getIEClassifierConfig()
+	 * @generated
+	 */
+	EAttribute getIEClassifierConfig_RenderUseCases();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.IEClassifierConfig#shouldRenderUseCases() <em>Should Render Use Cases</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Should Render Use Cases</em>' operation.
+	 * @see com.altran.general.ecoredoc.generator.config.IEClassifierConfig#shouldRenderUseCases()
+	 * @generated
+	 */
+	EOperation getIEClassifierConfig__ShouldRenderUseCases();
+
+	/**
+	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IEDataTypeConfig <em>IE Data Type Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IE Data Type Config</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IEDataTypeConfig
+	 * @generated
+	 */
+	EClass getIEDataTypeConfig();
+
+	/**
+	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IEEnumConfig <em>IE Enum Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IE Enum Config</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IEEnumConfig
+	 * @generated
+	 */
+	EClass getIEEnumConfig();
+
+	/**
+	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IEClassConfig <em>IE Class Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IE Class Config</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IEClassConfig
+	 * @generated
+	 */
+	EClass getIEClassConfig();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.IEClassConfig#isRepeatInherited <em>Repeat Inherited</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Repeat Inherited</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IEClassConfig#isRepeatInherited()
+	 * @see #getIEClassConfig()
+	 * @generated
+	 */
+	EAttribute getIEClassConfig_RepeatInherited();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.IEClassConfig#shouldRepeatInherited() <em>Should Repeat Inherited</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Should Repeat Inherited</em>' operation.
+	 * @see com.altran.general.ecoredoc.generator.config.IEClassConfig#shouldRepeatInherited()
+	 * @generated
+	 */
+	EOperation getIEClassConfig__ShouldRepeatInherited();
+
+	/**
+	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig <em>IE Structural Feature Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IE Structural Feature Config</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig
+	 * @generated
+	 */
+	EClass getIEStructuralFeatureConfig();
+
+	/**
+	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IEAttributeConfig <em>IE Attribute Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IE Attribute Config</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IEAttributeConfig
+	 * @generated
+	 */
+	EClass getIEAttributeConfig();
+
+	/**
+	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IEReferenceConfig <em>IE Reference Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IE Reference Config</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IEReferenceConfig
+	 * @generated
+	 */
+	EClass getIEReferenceConfig();
+
+	/**
+	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IEPackageConfig <em>IE Package Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IE Package Config</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IEPackageConfig
+	 * @generated
+	 */
+	EClass getIEPackageConfig();
+
+	/**
+	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IEEnumLiteralConfig <em>IE Enum Literal Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IE Enum Literal Config</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IEEnumLiteralConfig
+	 * @generated
+	 */
+	EClass getIEEnumLiteralConfig();
 
 	/**
 	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig <em>Ecore Doc Generator Config</em>}'.
@@ -1589,6 +2133,16 @@ public interface ConfigPackage extends EPackage {
 	EReference getEcoreDocGeneratorConfig_EPackages();
 
 	/**
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRender() <em>Should Render</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Should Render</em>' operation.
+	 * @see com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRender()
+	 * @generated
+	 */
+	EOperation getEcoreDocGeneratorConfig__ShouldRender();
+
+	/**
 	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRenderDefaults() <em>Should Render Defaults</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1599,14 +2153,24 @@ public interface ConfigPackage extends EPackage {
 	EOperation getEcoreDocGeneratorConfig__ShouldRenderDefaults();
 
 	/**
-	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRender() <em>Should Render</em>}' operation.
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRenderUseCases() <em>Should Render Use Cases</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Should Render</em>' operation.
-	 * @see com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRender()
+	 * @return the meta object for the '<em>Should Render Use Cases</em>' operation.
+	 * @see com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRenderUseCases()
 	 * @generated
 	 */
-	EOperation getEcoreDocGeneratorConfig__ShouldRender();
+	EOperation getEcoreDocGeneratorConfig__ShouldRenderUseCases();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRepeatInherited() <em>Should Repeat Inherited</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Should Repeat Inherited</em>' operation.
+	 * @see com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRepeatInherited()
+	 * @generated
+	 */
+	EOperation getEcoreDocGeneratorConfig__ShouldRepeatInherited();
 
 	/**
 	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#findConfig(org.eclipse.emf.ecore.ENamedElement) <em>Find Config</em>}' operation.
@@ -1637,6 +2201,39 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getEPackageConfig();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.EPackageConfig#getPositionEDataTypes <em>Position EData Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position EData Types</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.EPackageConfig#getPositionEDataTypes()
+	 * @see #getEPackageConfig()
+	 * @generated
+	 */
+	EAttribute getEPackageConfig_PositionEDataTypes();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.EPackageConfig#getPositionEEnums <em>Position EEnums</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position EEnums</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.EPackageConfig#getPositionEEnums()
+	 * @see #getEPackageConfig()
+	 * @generated
+	 */
+	EAttribute getEPackageConfig_PositionEEnums();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.EPackageConfig#getPositionEClasses <em>Position EClasses</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position EClasses</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.EPackageConfig#getPositionEClasses()
+	 * @see #getEPackageConfig()
+	 * @generated
+	 */
+	EAttribute getEPackageConfig_PositionEClasses();
 
 	/**
 	 * Returns the meta object for the reference '{@link com.altran.general.ecoredoc.generator.config.EPackageConfig#getTargetEPackage <em>Target EPackage</em>}'.
@@ -1693,37 +2290,6 @@ public interface ConfigPackage extends EPackage {
 	EOperation getEPackageConfig__GetTarget();
 
 	/**
-	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig <em>IEcore Doc Generator Part Config</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>IEcore Doc Generator Part Config</em>'.
-	 * @see com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig
-	 * @generated
-	 */
-	EClass getIEcoreDocGeneratorPartConfig();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig#getPosition <em>Position</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Position</em>'.
-	 * @see com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig#getPosition()
-	 * @see #getIEcoreDocGeneratorPartConfig()
-	 * @generated
-	 */
-	EAttribute getIEcoreDocGeneratorPartConfig_Position();
-
-	/**
-	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IEDataTypeConfig <em>IE Data Type Config</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>IE Data Type Config</em>'.
-	 * @see com.altran.general.ecoredoc.generator.config.IEDataTypeConfig
-	 * @generated
-	 */
-	EClass getIEDataTypeConfig();
-
-	/**
 	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.EDataTypeConfig <em>EData Type Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1753,16 +2319,6 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getEDataTypeConfig__GetTarget();
-
-	/**
-	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EDataTypeConfig#getPosition() <em>Get Position</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Position</em>' operation.
-	 * @see com.altran.general.ecoredoc.generator.config.EDataTypeConfig#getPosition()
-	 * @generated
-	 */
-	EOperation getEDataTypeConfig__GetPosition();
 
 	/**
 	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.EEnumConfig <em>EEnum Config</em>}'.
@@ -1807,16 +2363,6 @@ public interface ConfigPackage extends EPackage {
 	EOperation getEEnumConfig__GetTarget();
 
 	/**
-	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EEnumConfig#getPosition() <em>Get Position</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Position</em>' operation.
-	 * @see com.altran.general.ecoredoc.generator.config.EEnumConfig#getPosition()
-	 * @generated
-	 */
-	EOperation getEEnumConfig__GetPosition();
-
-	/**
 	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.EEnumLiteralConfig <em>EEnum Literal Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1846,37 +2392,6 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getEEnumLiteralConfig__GetTarget();
-
-	/**
-	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IEClassConfig <em>IE Class Config</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>IE Class Config</em>'.
-	 * @see com.altran.general.ecoredoc.generator.config.IEClassConfig
-	 * @generated
-	 */
-	EClass getIEClassConfig();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.IEClassConfig#isRepeatInherited <em>Repeat Inherited</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Repeat Inherited</em>'.
-	 * @see com.altran.general.ecoredoc.generator.config.IEClassConfig#isRepeatInherited()
-	 * @see #getIEClassConfig()
-	 * @generated
-	 */
-	EAttribute getIEClassConfig_RepeatInherited();
-
-	/**
-	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.IEClassConfig#shouldRepeatInherited() <em>Should Repeat Inherited</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Should Repeat Inherited</em>' operation.
-	 * @see com.altran.general.ecoredoc.generator.config.IEClassConfig#shouldRepeatInherited()
-	 * @generated
-	 */
-	EOperation getIEClassConfig__ShouldRepeatInherited();
 
 	/**
 	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.EClassConfig <em>EClass Config</em>}'.
@@ -1943,46 +2458,6 @@ public interface ConfigPackage extends EPackage {
 	EOperation getEClassConfig__GetTarget();
 
 	/**
-	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EClassConfig#getPosition() <em>Get Position</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Position</em>' operation.
-	 * @see com.altran.general.ecoredoc.generator.config.EClassConfig#getPosition()
-	 * @generated
-	 */
-	EOperation getEClassConfig__GetPosition();
-
-	/**
-	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EClassConfig#shouldRepeatInherited() <em>Should Repeat Inherited</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Should Repeat Inherited</em>' operation.
-	 * @see com.altran.general.ecoredoc.generator.config.EClassConfig#shouldRepeatInherited()
-	 * @generated
-	 */
-	EOperation getEClassConfig__ShouldRepeatInherited();
-
-	/**
-	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.AEStructuralFeatureConfig <em>AE Structural Feature Config</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>AE Structural Feature Config</em>'.
-	 * @see com.altran.general.ecoredoc.generator.config.AEStructuralFeatureConfig
-	 * @generated
-	 */
-	EClass getAEStructuralFeatureConfig();
-
-	/**
-	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.AEReferenceConfig <em>AE Reference Config</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>AE Reference Config</em>'.
-	 * @see com.altran.general.ecoredoc.generator.config.AEReferenceConfig
-	 * @generated
-	 */
-	EClass getAEReferenceConfig();
-
-	/**
 	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.EAttributeConfig <em>EAttribute Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2012,6 +2487,16 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getEAttributeConfig__GetTarget();
+
+	/**
+	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.AEReferenceConfig <em>AE Reference Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>AE Reference Config</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.AEReferenceConfig
+	 * @generated
+	 */
+	EClass getAEReferenceConfig();
 
 	/**
 	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.EContainmentConfig <em>EContainment Config</em>}'.
@@ -2099,22 +2584,14 @@ public interface ConfigPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig <em>IEcore Doc Generator Config</em>}' class.
+		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IENamedElementConfig <em>IE Named Element Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig
-		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEcoreDocGeneratorConfig()
+		 * @see com.altran.general.ecoredoc.generator.config.IENamedElementConfig
+		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIENamedElementConfig()
 		 * @generated
 		 */
-		EClass IECORE_DOC_GENERATOR_CONFIG = eINSTANCE.getIEcoreDocGeneratorConfig();
-
-		/**
-		 * The meta object literal for the '<em><b>Render Defaults</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute IECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS = eINSTANCE.getIEcoreDocGeneratorConfig_RenderDefaults();
+		EClass IE_NAMED_ELEMENT_CONFIG = eINSTANCE.getIENamedElementConfig();
 
 		/**
 		 * The meta object literal for the '<em><b>Render</b></em>' attribute feature.
@@ -2122,15 +2599,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute IECORE_DOC_GENERATOR_CONFIG__RENDER = eINSTANCE.getIEcoreDocGeneratorConfig_Render();
-
-		/**
-		 * The meta object literal for the '<em><b>Should Render Defaults</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation IECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS = eINSTANCE.getIEcoreDocGeneratorConfig__ShouldRenderDefaults();
+		EAttribute IE_NAMED_ELEMENT_CONFIG__RENDER = eINSTANCE.getIENamedElementConfig_Render();
 
 		/**
 		 * The meta object literal for the '<em><b>Should Render</b></em>' operation.
@@ -2138,7 +2607,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation IECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER = eINSTANCE.getIEcoreDocGeneratorConfig__ShouldRender();
+		EOperation IE_NAMED_ELEMENT_CONFIG___SHOULD_RENDER = eINSTANCE.getIENamedElementConfig__ShouldRender();
 
 		/**
 		 * The meta object literal for the '<em><b>Get Target</b></em>' operation.
@@ -2146,7 +2615,155 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation IECORE_DOC_GENERATOR_CONFIG___GET_TARGET = eINSTANCE.getIEcoreDocGeneratorConfig__GetTarget();
+		EOperation IE_NAMED_ELEMENT_CONFIG___GET_TARGET = eINSTANCE.getIENamedElementConfig__GetTarget();
+
+		/**
+		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IDefaultValueConfig <em>IDefault Value Config</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.altran.general.ecoredoc.generator.config.IDefaultValueConfig
+		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIDefaultValueConfig()
+		 * @generated
+		 */
+		EClass IDEFAULT_VALUE_CONFIG = eINSTANCE.getIDefaultValueConfig();
+
+		/**
+		 * The meta object literal for the '<em><b>Render Defaults</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS = eINSTANCE.getIDefaultValueConfig_RenderDefaults();
+
+		/**
+		 * The meta object literal for the '<em><b>Should Render Defaults</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS = eINSTANCE.getIDefaultValueConfig__ShouldRenderDefaults();
+
+		/**
+		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IEClassifierConfig <em>IE Classifier Config</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.altran.general.ecoredoc.generator.config.IEClassifierConfig
+		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEClassifierConfig()
+		 * @generated
+		 */
+		EClass IE_CLASSIFIER_CONFIG = eINSTANCE.getIEClassifierConfig();
+
+		/**
+		 * The meta object literal for the '<em><b>Render Use Cases</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IE_CLASSIFIER_CONFIG__RENDER_USE_CASES = eINSTANCE.getIEClassifierConfig_RenderUseCases();
+
+		/**
+		 * The meta object literal for the '<em><b>Should Render Use Cases</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation IE_CLASSIFIER_CONFIG___SHOULD_RENDER_USE_CASES = eINSTANCE.getIEClassifierConfig__ShouldRenderUseCases();
+
+		/**
+		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IEDataTypeConfig <em>IE Data Type Config</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.altran.general.ecoredoc.generator.config.IEDataTypeConfig
+		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEDataTypeConfig()
+		 * @generated
+		 */
+		EClass IE_DATA_TYPE_CONFIG = eINSTANCE.getIEDataTypeConfig();
+
+		/**
+		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IEEnumConfig <em>IE Enum Config</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.altran.general.ecoredoc.generator.config.IEEnumConfig
+		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEEnumConfig()
+		 * @generated
+		 */
+		EClass IE_ENUM_CONFIG = eINSTANCE.getIEEnumConfig();
+
+		/**
+		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IEClassConfig <em>IE Class Config</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.altran.general.ecoredoc.generator.config.IEClassConfig
+		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEClassConfig()
+		 * @generated
+		 */
+		EClass IE_CLASS_CONFIG = eINSTANCE.getIEClassConfig();
+
+		/**
+		 * The meta object literal for the '<em><b>Repeat Inherited</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IE_CLASS_CONFIG__REPEAT_INHERITED = eINSTANCE.getIEClassConfig_RepeatInherited();
+
+		/**
+		 * The meta object literal for the '<em><b>Should Repeat Inherited</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED = eINSTANCE.getIEClassConfig__ShouldRepeatInherited();
+
+		/**
+		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig <em>IE Structural Feature Config</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig
+		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEStructuralFeatureConfig()
+		 * @generated
+		 */
+		EClass IE_STRUCTURAL_FEATURE_CONFIG = eINSTANCE.getIEStructuralFeatureConfig();
+
+		/**
+		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IEAttributeConfig <em>IE Attribute Config</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.altran.general.ecoredoc.generator.config.IEAttributeConfig
+		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEAttributeConfig()
+		 * @generated
+		 */
+		EClass IE_ATTRIBUTE_CONFIG = eINSTANCE.getIEAttributeConfig();
+
+		/**
+		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IEReferenceConfig <em>IE Reference Config</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.altran.general.ecoredoc.generator.config.IEReferenceConfig
+		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEReferenceConfig()
+		 * @generated
+		 */
+		EClass IE_REFERENCE_CONFIG = eINSTANCE.getIEReferenceConfig();
+
+		/**
+		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IEPackageConfig <em>IE Package Config</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.altran.general.ecoredoc.generator.config.IEPackageConfig
+		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEPackageConfig()
+		 * @generated
+		 */
+		EClass IE_PACKAGE_CONFIG = eINSTANCE.getIEPackageConfig();
+
+		/**
+		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IEEnumLiteralConfig <em>IE Enum Literal Config</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.altran.general.ecoredoc.generator.config.IEEnumLiteralConfig
+		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEEnumLiteralConfig()
+		 * @generated
+		 */
+		EClass IE_ENUM_LITERAL_CONFIG = eINSTANCE.getIEEnumLiteralConfig();
 
 		/**
 		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl <em>Ecore Doc Generator Config</em>}' class.
@@ -2167,6 +2784,14 @@ public interface ConfigPackage extends EPackage {
 		EReference ECORE_DOC_GENERATOR_CONFIG__EPACKAGES = eINSTANCE.getEcoreDocGeneratorConfig_EPackages();
 
 		/**
+		 * The meta object literal for the '<em><b>Should Render</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER = eINSTANCE.getEcoreDocGeneratorConfig__ShouldRender();
+
+		/**
 		 * The meta object literal for the '<em><b>Should Render Defaults</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2175,12 +2800,20 @@ public interface ConfigPackage extends EPackage {
 		EOperation ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS = eINSTANCE.getEcoreDocGeneratorConfig__ShouldRenderDefaults();
 
 		/**
-		 * The meta object literal for the '<em><b>Should Render</b></em>' operation.
+		 * The meta object literal for the '<em><b>Should Render Use Cases</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER = eINSTANCE.getEcoreDocGeneratorConfig__ShouldRender();
+		EOperation ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES = eINSTANCE.getEcoreDocGeneratorConfig__ShouldRenderUseCases();
+
+		/**
+		 * The meta object literal for the '<em><b>Should Repeat Inherited</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED = eINSTANCE.getEcoreDocGeneratorConfig__ShouldRepeatInherited();
 
 		/**
 		 * The meta object literal for the '<em><b>Find Config</b></em>' operation.
@@ -2207,6 +2840,30 @@ public interface ConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EClass EPACKAGE_CONFIG = eINSTANCE.getEPackageConfig();
+
+		/**
+		 * The meta object literal for the '<em><b>Position EData Types</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EPACKAGE_CONFIG__POSITION_EDATA_TYPES = eINSTANCE.getEPackageConfig_PositionEDataTypes();
+
+		/**
+		 * The meta object literal for the '<em><b>Position EEnums</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EPACKAGE_CONFIG__POSITION_EENUMS = eINSTANCE.getEPackageConfig_PositionEEnums();
+
+		/**
+		 * The meta object literal for the '<em><b>Position EClasses</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EPACKAGE_CONFIG__POSITION_ECLASSES = eINSTANCE.getEPackageConfig_PositionEClasses();
 
 		/**
 		 * The meta object literal for the '<em><b>Target EPackage</b></em>' reference feature.
@@ -2249,34 +2906,6 @@ public interface ConfigPackage extends EPackage {
 		EOperation EPACKAGE_CONFIG___GET_TARGET = eINSTANCE.getEPackageConfig__GetTarget();
 
 		/**
-		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig <em>IEcore Doc Generator Part Config</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig
-		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEcoreDocGeneratorPartConfig()
-		 * @generated
-		 */
-		EClass IECORE_DOC_GENERATOR_PART_CONFIG = eINSTANCE.getIEcoreDocGeneratorPartConfig();
-
-		/**
-		 * The meta object literal for the '<em><b>Position</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute IECORE_DOC_GENERATOR_PART_CONFIG__POSITION = eINSTANCE.getIEcoreDocGeneratorPartConfig_Position();
-
-		/**
-		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IEDataTypeConfig <em>IE Data Type Config</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see com.altran.general.ecoredoc.generator.config.IEDataTypeConfig
-		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEDataTypeConfig()
-		 * @generated
-		 */
-		EClass IE_DATA_TYPE_CONFIG = eINSTANCE.getIEDataTypeConfig();
-
-		/**
 		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.impl.EDataTypeConfigImpl <em>EData Type Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2301,14 +2930,6 @@ public interface ConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation EDATA_TYPE_CONFIG___GET_TARGET = eINSTANCE.getEDataTypeConfig__GetTarget();
-
-		/**
-		 * The meta object literal for the '<em><b>Get Position</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation EDATA_TYPE_CONFIG___GET_POSITION = eINSTANCE.getEDataTypeConfig__GetPosition();
 
 		/**
 		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.impl.EEnumConfigImpl <em>EEnum Config</em>}' class.
@@ -2345,14 +2966,6 @@ public interface ConfigPackage extends EPackage {
 		EOperation EENUM_CONFIG___GET_TARGET = eINSTANCE.getEEnumConfig__GetTarget();
 
 		/**
-		 * The meta object literal for the '<em><b>Get Position</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation EENUM_CONFIG___GET_POSITION = eINSTANCE.getEEnumConfig__GetPosition();
-
-		/**
 		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.impl.EEnumLiteralConfigImpl <em>EEnum Literal Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2377,32 +2990,6 @@ public interface ConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation EENUM_LITERAL_CONFIG___GET_TARGET = eINSTANCE.getEEnumLiteralConfig__GetTarget();
-
-		/**
-		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IEClassConfig <em>IE Class Config</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see com.altran.general.ecoredoc.generator.config.IEClassConfig
-		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEClassConfig()
-		 * @generated
-		 */
-		EClass IE_CLASS_CONFIG = eINSTANCE.getIEClassConfig();
-
-		/**
-		 * The meta object literal for the '<em><b>Repeat Inherited</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute IE_CLASS_CONFIG__REPEAT_INHERITED = eINSTANCE.getIEClassConfig_RepeatInherited();
-
-		/**
-		 * The meta object literal for the '<em><b>Should Repeat Inherited</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED = eINSTANCE.getIEClassConfig__ShouldRepeatInherited();
 
 		/**
 		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.impl.EClassConfigImpl <em>EClass Config</em>}' class.
@@ -2455,42 +3042,6 @@ public interface ConfigPackage extends EPackage {
 		EOperation ECLASS_CONFIG___GET_TARGET = eINSTANCE.getEClassConfig__GetTarget();
 
 		/**
-		 * The meta object literal for the '<em><b>Get Position</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation ECLASS_CONFIG___GET_POSITION = eINSTANCE.getEClassConfig__GetPosition();
-
-		/**
-		 * The meta object literal for the '<em><b>Should Repeat Inherited</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation ECLASS_CONFIG___SHOULD_REPEAT_INHERITED = eINSTANCE.getEClassConfig__ShouldRepeatInherited();
-
-		/**
-		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.impl.AEStructuralFeatureConfigImpl <em>AE Structural Feature Config</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see com.altran.general.ecoredoc.generator.config.impl.AEStructuralFeatureConfigImpl
-		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getAEStructuralFeatureConfig()
-		 * @generated
-		 */
-		EClass AE_STRUCTURAL_FEATURE_CONFIG = eINSTANCE.getAEStructuralFeatureConfig();
-
-		/**
-		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.impl.AEReferenceConfigImpl <em>AE Reference Config</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see com.altran.general.ecoredoc.generator.config.impl.AEReferenceConfigImpl
-		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getAEReferenceConfig()
-		 * @generated
-		 */
-		EClass AE_REFERENCE_CONFIG = eINSTANCE.getAEReferenceConfig();
-
-		/**
 		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.impl.EAttributeConfigImpl <em>EAttribute Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2515,6 +3066,16 @@ public interface ConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation EATTRIBUTE_CONFIG___GET_TARGET = eINSTANCE.getEAttributeConfig__GetTarget();
+
+		/**
+		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.impl.AEReferenceConfigImpl <em>AE Reference Config</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.altran.general.ecoredoc.generator.config.impl.AEReferenceConfigImpl
+		 * @see com.altran.general.ecoredoc.generator.config.impl.ConfigPackageImpl#getAEReferenceConfig()
+		 * @generated
+		 */
+		EClass AE_REFERENCE_CONFIG = eINSTANCE.getAEReferenceConfig();
 
 		/**
 		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.impl.EContainmentConfigImpl <em>EContainment Config</em>}' class.

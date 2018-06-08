@@ -3,9 +3,9 @@
 package com.altran.general.ecoredoc.generator.config;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  * @model
  * @generated
  */
-public interface EClassConfig extends IEcoreDocGeneratorPartConfig, IEClassConfig {
+public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IEReferenceConfig {
 	/**
 	 * Returns the value of the '<em><b>Target EClass</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -58,7 +58,7 @@ public interface EClassConfig extends IEcoreDocGeneratorPartConfig, IEClassConfi
 	 * The list contents are of type {@link com.altran.general.ecoredoc.generator.config.EAttributeConfig}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>EAttributes</em>' map isn't clear,
+	 * If the meaning of the '<em>EAttributes</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -74,7 +74,7 @@ public interface EClassConfig extends IEcoreDocGeneratorPartConfig, IEClassConfi
 	 * The list contents are of type {@link com.altran.general.ecoredoc.generator.config.EContainmentConfig}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>EContainments</em>' map isn't clear,
+	 * If the meaning of the '<em>EContainments</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -90,7 +90,7 @@ public interface EClassConfig extends IEcoreDocGeneratorPartConfig, IEClassConfi
 	 * The list contents are of type {@link com.altran.general.ecoredoc.generator.config.EReferenceConfig}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>EReferences</em>' map isn't clear,
+	 * If the meaning of the '<em>EReferences</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -109,23 +109,5 @@ public interface EClassConfig extends IEcoreDocGeneratorPartConfig, IEClassConfi
 	 * @generated
 	 */
 	ENamedElement getTarget();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='int _xifexpression = (int) 0;\nboolean _isSetPosition = this.isSetPosition();\nif (_isSetPosition)\n{\n\t_xifexpression = ((&lt;%com.altran.general.ecoredoc.generator.config.impl.EClassConfigImpl%&gt;) this).getPosition_();\n}\nelse\n{\n\t_xifexpression = 1;\n}\nreturn _xifexpression;'"
-	 * @generated
-	 */
-	int getPosition();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _xifexpression = false;\nboolean _isSetRepeatInherited = this.isSetRepeatInherited();\nif (_isSetRepeatInherited)\n{\n\t_xifexpression = this.isRepeatInherited();\n}\nelse\n{\n\t_xifexpression = true;\n}\nreturn _xifexpression;'"
-	 * @generated
-	 */
-	boolean shouldRepeatInherited();
 
 } // EClassConfig

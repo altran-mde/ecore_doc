@@ -2,7 +2,7 @@ package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.altran.general.ecoredoc.generator.config.EDataTypeConfig;
 import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig;
-import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig;
+import com.altran.general.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorEDataTypePart;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.collect.Multimap;
@@ -29,7 +29,7 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
     this.clearOutput();
     final List<EDataType> eDataTypes = this._ecoreDocExtension.collectEDataTypes(this.getEPackages().get(ePackage));
     final Function1<EDataType, EDataTypeConfig> _function = (EDataType it) -> {
-      IEcoreDocGeneratorConfig _findConfig = this.getConfig().findConfig(it);
+      IENamedElementConfig _findConfig = this.getConfig().findConfig(it);
       return ((EDataTypeConfig) _findConfig);
     };
     final Function2<EDataType, EDataTypeConfig, Boolean> _function_1 = (EDataType eDataType, EDataTypeConfig config) -> {

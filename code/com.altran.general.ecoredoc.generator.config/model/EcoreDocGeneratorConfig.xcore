@@ -3,9 +3,6 @@
 )
 package com.altran.general.ecoredoc.generator.config
 
-import com.altran.general.ecoredoc.generator.config.impl.EClassConfigImpl
-import com.altran.general.ecoredoc.generator.config.impl.EDataTypeConfigImpl
-import com.altran.general.ecoredoc.generator.config.impl.EEnumConfigImpl
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EDataType
@@ -15,39 +12,85 @@ import org.eclipse.emf.ecore.ENamedElement
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EReference
 
-interface IEcoreDocGeneratorConfig {
-	unsettable boolean renderDefaults
-	
-	op boolean shouldRenderDefaults() {
-		if (isSetRenderDefaults) {
-			renderDefaults
-		} else {
-			(eContainer as IEcoreDocGeneratorConfig).shouldRenderDefaults()
-		}
-	}
-	
+interface IENamedElementConfig {
 	unsettable boolean render
 	
 	op boolean shouldRender() {
 		if (isSetRender) {
 			render
 		} else {
-			(eContainer as IEcoreDocGeneratorConfig).shouldRender()
+			(eContainer as IENamedElementConfig).shouldRender()
 		}
 	}
-	
+
 	op ENamedElement getTarget()
 }
 
-class EcoreDocGeneratorConfig extends IEcoreDocGeneratorConfig {
+interface IDefaultValueConfig {
+	unsettable boolean renderDefaults
+	
 	op boolean shouldRenderDefaults() {
 		if (isSetRenderDefaults) {
 			renderDefaults
 		} else {
-			true
+			(eContainer as IDefaultValueConfig).shouldRenderDefaults()
 		}
 	}
+}
 
+interface IEClassifierConfig extends IENamedElementConfig, IDefaultValueConfig {
+	unsettable boolean renderUseCases
+
+	op boolean shouldRenderUseCases() {
+		if (isSetRenderUseCases) {
+			renderUseCases
+		} else {
+			(eContainer as IEClassifierConfig).shouldRenderUseCases()
+		}
+	}
+}
+
+interface IEDataTypeConfig extends IEClassifierConfig {
+	
+}
+
+interface IEEnumConfig extends IEDataTypeConfig {
+	
+}
+
+interface IEClassConfig extends IEClassifierConfig {
+	unsettable boolean repeatInherited
+
+	op boolean shouldRepeatInherited() {
+		if (isSetRepeatInherited) {
+			repeatInherited
+		} else {
+			(eContainer as IEClassConfig).shouldRepeatInherited()
+		}
+	}
+}
+
+interface IEStructuralFeatureConfig extends IENamedElementConfig, IDefaultValueConfig {
+}
+
+interface IEAttributeConfig extends IEStructuralFeatureConfig {
+	
+}
+
+interface IEReferenceConfig extends IEStructuralFeatureConfig {
+	
+}
+
+interface IEPackageConfig extends IENamedElementConfig {
+	
+}
+
+interface IEEnumLiteralConfig extends IENamedElementConfig {
+	
+}
+
+
+class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig, IEClassConfig, IEAttributeConfig, IEReferenceConfig {
 	op boolean shouldRender() {
 		if (isSetRender) {
 			render
@@ -56,9 +99,33 @@ class EcoreDocGeneratorConfig extends IEcoreDocGeneratorConfig {
 		}
 	}
 
+	op boolean shouldRenderDefaults() {
+		if (isSetRenderDefaults) {
+			renderDefaults
+		} else {
+			true
+		}
+	}
+
+	op boolean shouldRenderUseCases() {
+		if (isSetRenderUseCases) {
+			renderUseCases
+		} else {
+			true
+		}
+	}
+	
+	op boolean shouldRepeatInherited() {
+		if (isSetRepeatInherited) {
+			repeatInherited
+		} else {
+			true
+		}
+	}
+	
 	contains EPackageConfig[] ePackages
 	
-	op IEcoreDocGeneratorConfig findConfig(ENamedElement element) {
+	op IENamedElementConfig findConfig(ENamedElement element) {
 		switch (element) {
 			EPackage:
 				EPackages
@@ -102,7 +169,11 @@ class EcoreDocGeneratorConfig extends IEcoreDocGeneratorConfig {
 	}
 }
 
-class EPackageConfig extends IEcoreDocGeneratorConfig {
+class EPackageConfig extends  IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig, IEClassConfig, IEAttributeConfig, IEReferenceConfig {
+	unsettable int positionEDataTypes = '1'
+	unsettable int positionEEnums = '2'
+	unsettable int positionEClasses = '3'
+	
 	refers EPackage targetEPackage
 	
 	op ENamedElement getTarget() {
@@ -114,49 +185,25 @@ class EPackageConfig extends IEcoreDocGeneratorConfig {
 	contains EClassConfig[] eClasses
 }
 
-interface IEcoreDocGeneratorPartConfig extends IEcoreDocGeneratorConfig {
-	unsettable int position
-}
-
-interface IEDataTypeConfig extends IEcoreDocGeneratorPartConfig {
-	
-}
-
-class EDataTypeConfig extends IEDataTypeConfig {
+class EDataTypeConfig extends  IEDataTypeConfig {
 	refers EDataType targetEDataType
 	
 	op ENamedElement getTarget() {
 		targetEDataType
 	}
-	
-	op int getPosition() {
-		if (isSetPosition) {
-			(this as EDataTypeConfigImpl).getPosition_()
-		} else {
-			3
-		}
-	}
 }
 
-class EEnumConfig extends IEDataTypeConfig {
+class EEnumConfig extends IEEnumConfig, IEEnumLiteralConfig {
 	refers EEnum targetEEnum
 	
 	op ENamedElement getTarget() {
 		targetEEnum
 	}
-
-	op int getPosition() {
-		if (isSetPosition) {
-			(this as EEnumConfigImpl).getPosition_()
-		} else {
-			2
-		}
-	}
 	
 	contains EEnumLiteralConfig[] eEnumLiterals
 }
 
-class EEnumLiteralConfig extends IEcoreDocGeneratorConfig {
+class EEnumLiteralConfig extends IEEnumLiteralConfig {
 	refers EEnumLiteral targetEEnumLiteral
 
 	op ENamedElement getTarget() {
@@ -164,39 +211,11 @@ class EEnumLiteralConfig extends IEcoreDocGeneratorConfig {
 	}
 }
 
-interface IEClassConfig extends IEcoreDocGeneratorConfig {
-	unsettable boolean repeatInherited
-
-	op boolean shouldRepeatInherited() {
-		if (isSetRepeatInherited) {
-			repeatInherited
-		} else {
-			(eContainer as IEClassConfig).shouldRepeatInherited()
-		}
-	}
-}
-
-class EClassConfig extends IEcoreDocGeneratorPartConfig, IEClassConfig {
+class EClassConfig extends IEClassConfig, IEAttributeConfig, IEReferenceConfig {
 	refers EClass targetEClass
 
 	op ENamedElement getTarget() {
 		targetEClass
-	}
-	
-	op int getPosition() {
-		if (isSetPosition) {
-			(this as EClassConfigImpl).getPosition_()
-		} else {
-			1
-		}
-	}
-	
-	op boolean shouldRepeatInherited() {
-		if (isSetRepeatInherited) {
-			repeatInherited
-		} else {
-			true
-		}
 	}
 	
 	contains EAttributeConfig[] eAttributes
@@ -204,11 +223,7 @@ class EClassConfig extends IEcoreDocGeneratorPartConfig, IEClassConfig {
 	contains EReferenceConfig[] eReferences	
 }
 
-abstract class AEStructuralFeatureConfig extends IEClassConfig {
-
-}
-
-class EAttributeConfig extends AEStructuralFeatureConfig {
+class EAttributeConfig extends IEAttributeConfig {
 	refers EAttribute targetEAttribute
 
 	op ENamedElement getTarget() {
@@ -216,7 +231,7 @@ class EAttributeConfig extends AEStructuralFeatureConfig {
 	}
 }
 
-abstract class AEReferenceConfig extends AEStructuralFeatureConfig {
+abstract class AEReferenceConfig extends IEReferenceConfig {
 }
 
 class EContainmentConfig extends AEReferenceConfig {

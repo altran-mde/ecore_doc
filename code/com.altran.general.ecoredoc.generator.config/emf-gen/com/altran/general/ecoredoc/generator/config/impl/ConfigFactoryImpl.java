@@ -3,6 +3,7 @@
 package com.altran.general.ecoredoc.generator.config.impl;
 
 import com.altran.general.ecoredoc.generator.config.*;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;

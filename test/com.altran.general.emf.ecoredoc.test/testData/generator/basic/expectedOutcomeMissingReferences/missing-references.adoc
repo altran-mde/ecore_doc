@@ -42,7 +42,7 @@ _Default:_ `2.71` +
 changeable +
 underived +
 non-transient +
-unique +
+**unique** +
 settable +
 non-volatile
 |
@@ -57,7 +57,3 @@ my doc
 
 Default Value:: _undefined_
 Instance Type Name:: _undefined_
-
-.Super-types
-* `<<::EPackage:EClass1:, [/EPackage/EClass1]>>`
-* `<<::EPackage:Iface:, [/EPackage/Iface]>>`

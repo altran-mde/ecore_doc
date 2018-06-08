@@ -19,7 +19,7 @@ package com.altran.general.ecoredoc.generator.config;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface IEClassConfig extends IEcoreDocGeneratorConfig {
+public interface IEClassConfig extends IEClassifierConfig {
 	/**
 	 * Returns the value of the '<em><b>Repeat Inherited</b></em>' attribute.
 	 * <!-- begin-user-doc -->

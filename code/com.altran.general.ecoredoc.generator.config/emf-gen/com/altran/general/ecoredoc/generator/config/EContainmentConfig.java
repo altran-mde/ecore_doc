@@ -5,7 +5,6 @@ package com.altran.general.ecoredoc.generator.config;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EReference;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>EContainment Config</b></em>'.
@@ -23,7 +22,6 @@ import org.eclipse.emf.ecore.EReference;
  * @generated
  */
 public interface EContainmentConfig extends AEReferenceConfig {
-
 	/**
 	 * Returns the value of the '<em><b>Target EContainment</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -58,4 +56,5 @@ public interface EContainmentConfig extends AEReferenceConfig {
 	 * @generated
 	 */
 	ENamedElement getTarget();
+
 } // EContainmentConfig

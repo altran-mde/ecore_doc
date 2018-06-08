@@ -7,15 +7,26 @@ import com.altran.general.ecoredoc.generator.config.EClassConfig;
 import com.altran.general.ecoredoc.generator.config.EDataTypeConfig;
 import com.altran.general.ecoredoc.generator.config.EEnumConfig;
 import com.altran.general.ecoredoc.generator.config.EPackageConfig;
-import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig;
+import com.altran.general.ecoredoc.generator.config.IDefaultValueConfig;
+import com.altran.general.ecoredoc.generator.config.IEAttributeConfig;
+import com.altran.general.ecoredoc.generator.config.IEClassConfig;
+import com.altran.general.ecoredoc.generator.config.IEClassifierConfig;
+import com.altran.general.ecoredoc.generator.config.IEDataTypeConfig;
+import com.altran.general.ecoredoc.generator.config.IEEnumConfig;
+import com.altran.general.ecoredoc.generator.config.IEEnumLiteralConfig;
+import com.altran.general.ecoredoc.generator.config.IENamedElementConfig;
+import com.altran.general.ecoredoc.generator.config.IEReferenceConfig;
+import com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig;
 
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
@@ -24,6 +35,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -35,8 +47,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#isRender <em>Render</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#isRenderUseCases <em>Render Use Cases</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#isRepeatInherited <em>Repeat Inherited</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEDataTypes <em>Position EData Types</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEEnums <em>Position EEnums</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEClasses <em>Position EClasses</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getTargetEPackage <em>Target EPackage</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getEDataTypes <em>EData Types</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getEEnums <em>EEnums</em>}</li>
@@ -46,6 +63,35 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements EPackageConfig {
+	/**
+	 * The default value of the '{@link #isRender() <em>Render</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRender()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RENDER_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRender() <em>Render</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRender()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean render = RENDER_EDEFAULT;
+
+	/**
+	 * This is true if the Render attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderESet;
+
 	/**
 	 * The default value of the '{@link #isRenderDefaults() <em>Render Defaults</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -76,33 +122,149 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	protected boolean renderDefaultsESet;
 
 	/**
-	 * The default value of the '{@link #isRender() <em>Render</em>}' attribute.
+	 * The default value of the '{@link #isRenderUseCases() <em>Render Use Cases</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isRender()
+	 * @see #isRenderUseCases()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean RENDER_EDEFAULT = false;
+	protected static final boolean RENDER_USE_CASES_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isRender() <em>Render</em>}' attribute.
+	 * The cached value of the '{@link #isRenderUseCases() <em>Render Use Cases</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isRender()
+	 * @see #isRenderUseCases()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean render = RENDER_EDEFAULT;
+	protected boolean renderUseCases = RENDER_USE_CASES_EDEFAULT;
 
 	/**
-	 * This is true if the Render attribute has been set.
+	 * This is true if the Render Use Cases attribute has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean renderESet;
+	protected boolean renderUseCasesESet;
+
+	/**
+	 * The default value of the '{@link #isRepeatInherited() <em>Repeat Inherited</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRepeatInherited()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean REPEAT_INHERITED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRepeatInherited() <em>Repeat Inherited</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRepeatInherited()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean repeatInherited = REPEAT_INHERITED_EDEFAULT;
+
+	/**
+	 * This is true if the Repeat Inherited attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean repeatInheritedESet;
+
+	/**
+	 * The default value of the '{@link #getPositionEDataTypes() <em>Position EData Types</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEDataTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int POSITION_EDATA_TYPES_EDEFAULT = 1;
+
+	/**
+	 * The cached value of the '{@link #getPositionEDataTypes() <em>Position EData Types</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEDataTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected int positionEDataTypes = POSITION_EDATA_TYPES_EDEFAULT;
+
+	/**
+	 * This is true if the Position EData Types attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean positionEDataTypesESet;
+
+	/**
+	 * The default value of the '{@link #getPositionEEnums() <em>Position EEnums</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEEnums()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int POSITION_EENUMS_EDEFAULT = 2;
+
+	/**
+	 * The cached value of the '{@link #getPositionEEnums() <em>Position EEnums</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEEnums()
+	 * @generated
+	 * @ordered
+	 */
+	protected int positionEEnums = POSITION_EENUMS_EDEFAULT;
+
+	/**
+	 * This is true if the Position EEnums attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean positionEEnumsESet;
+
+	/**
+	 * The default value of the '{@link #getPositionEClasses() <em>Position EClasses</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEClasses()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int POSITION_ECLASSES_EDEFAULT = 3;
+
+	/**
+	 * The cached value of the '{@link #getPositionEClasses() <em>Position EClasses</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionEClasses()
+	 * @generated
+	 * @ordered
+	 */
+	protected int positionEClasses = POSITION_ECLASSES_EDEFAULT;
+
+	/**
+	 * This is true if the Position EClasses attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean positionEClassesESet;
 
 	/**
 	 * The cached value of the '{@link #getTargetEPackage() <em>Target EPackage</em>}' reference.
@@ -168,6 +330,144 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isRender() {
+		return render;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRender(boolean newRender) {
+		boolean oldRender = render;
+		render = newRender;
+		boolean oldRenderESet = renderESet;
+		renderESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__RENDER, oldRender, render, !oldRenderESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetRender() {
+		boolean oldRender = render;
+		boolean oldRenderESet = renderESet;
+		render = RENDER_EDEFAULT;
+		renderESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__RENDER, oldRender, RENDER_EDEFAULT, oldRenderESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRender() {
+		return renderESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRenderUseCases() {
+		return renderUseCases;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRenderUseCases(boolean newRenderUseCases) {
+		boolean oldRenderUseCases = renderUseCases;
+		renderUseCases = newRenderUseCases;
+		boolean oldRenderUseCasesESet = renderUseCasesESet;
+		renderUseCasesESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES, oldRenderUseCases, renderUseCases, !oldRenderUseCasesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetRenderUseCases() {
+		boolean oldRenderUseCases = renderUseCases;
+		boolean oldRenderUseCasesESet = renderUseCasesESet;
+		renderUseCases = RENDER_USE_CASES_EDEFAULT;
+		renderUseCasesESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES, oldRenderUseCases, RENDER_USE_CASES_EDEFAULT, oldRenderUseCasesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRenderUseCases() {
+		return renderUseCasesESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRepeatInherited() {
+		return repeatInherited;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRepeatInherited(boolean newRepeatInherited) {
+		boolean oldRepeatInherited = repeatInherited;
+		repeatInherited = newRepeatInherited;
+		boolean oldRepeatInheritedESet = repeatInheritedESet;
+		repeatInheritedESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED, oldRepeatInherited, repeatInherited, !oldRepeatInheritedESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetRepeatInherited() {
+		boolean oldRepeatInherited = repeatInherited;
+		boolean oldRepeatInheritedESet = repeatInheritedESet;
+		repeatInherited = REPEAT_INHERITED_EDEFAULT;
+		repeatInheritedESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED, oldRepeatInherited, REPEAT_INHERITED_EDEFAULT, oldRepeatInheritedESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRepeatInherited() {
+		return repeatInheritedESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isRenderDefaults() {
 		return renderDefaults;
 	}
@@ -214,8 +514,8 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRender() {
-		return render;
+	public int getPositionEDataTypes() {
+		return positionEDataTypes;
 	}
 
 	/**
@@ -223,13 +523,13 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRender(boolean newRender) {
-		boolean oldRender = render;
-		render = newRender;
-		boolean oldRenderESet = renderESet;
-		renderESet = true;
+	public void setPositionEDataTypes(int newPositionEDataTypes) {
+		int oldPositionEDataTypes = positionEDataTypes;
+		positionEDataTypes = newPositionEDataTypes;
+		boolean oldPositionEDataTypesESet = positionEDataTypesESet;
+		positionEDataTypesESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__RENDER, oldRender, render, !oldRenderESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES, oldPositionEDataTypes, positionEDataTypes, !oldPositionEDataTypesESet));
 	}
 
 	/**
@@ -237,13 +537,13 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void unsetRender() {
-		boolean oldRender = render;
-		boolean oldRenderESet = renderESet;
-		render = RENDER_EDEFAULT;
-		renderESet = false;
+	public void unsetPositionEDataTypes() {
+		int oldPositionEDataTypes = positionEDataTypes;
+		boolean oldPositionEDataTypesESet = positionEDataTypesESet;
+		positionEDataTypes = POSITION_EDATA_TYPES_EDEFAULT;
+		positionEDataTypesESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__RENDER, oldRender, RENDER_EDEFAULT, oldRenderESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES, oldPositionEDataTypes, POSITION_EDATA_TYPES_EDEFAULT, oldPositionEDataTypesESet));
 	}
 
 	/**
@@ -251,8 +551,100 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetRender() {
-		return renderESet;
+	public boolean isSetPositionEDataTypes() {
+		return positionEDataTypesESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getPositionEEnums() {
+		return positionEEnums;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPositionEEnums(int newPositionEEnums) {
+		int oldPositionEEnums = positionEEnums;
+		positionEEnums = newPositionEEnums;
+		boolean oldPositionEEnumsESet = positionEEnumsESet;
+		positionEEnumsESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS, oldPositionEEnums, positionEEnums, !oldPositionEEnumsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetPositionEEnums() {
+		int oldPositionEEnums = positionEEnums;
+		boolean oldPositionEEnumsESet = positionEEnumsESet;
+		positionEEnums = POSITION_EENUMS_EDEFAULT;
+		positionEEnumsESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS, oldPositionEEnums, POSITION_EENUMS_EDEFAULT, oldPositionEEnumsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetPositionEEnums() {
+		return positionEEnumsESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getPositionEClasses() {
+		return positionEClasses;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPositionEClasses(int newPositionEClasses) {
+		int oldPositionEClasses = positionEClasses;
+		positionEClasses = newPositionEClasses;
+		boolean oldPositionEClassesESet = positionEClassesESet;
+		positionEClassesESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES, oldPositionEClasses, positionEClasses, !oldPositionEClassesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetPositionEClasses() {
+		int oldPositionEClasses = positionEClasses;
+		boolean oldPositionEClassesESet = positionEClassesESet;
+		positionEClasses = POSITION_ECLASSES_EDEFAULT;
+		positionEClassesESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES, oldPositionEClasses, POSITION_ECLASSES_EDEFAULT, oldPositionEClassesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetPositionEClasses() {
+		return positionEClassesESet;
 	}
 
 	/**
@@ -351,7 +743,43 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		}
 		else {
 			EObject _eContainer = this.eContainer();
-			_xifexpression = ((IEcoreDocGeneratorConfig) _eContainer).shouldRenderDefaults();
+			_xifexpression = ((IDefaultValueConfig) _eContainer).shouldRenderDefaults();
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean shouldRepeatInherited() {
+		boolean _xifexpression = false;
+		boolean _isSetRepeatInherited = this.isSetRepeatInherited();
+		if (_isSetRepeatInherited) {
+			_xifexpression = this.isRepeatInherited();
+		}
+		else {
+			EObject _eContainer = this.eContainer();
+			_xifexpression = ((IEClassConfig) _eContainer).shouldRepeatInherited();
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean shouldRenderUseCases() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderUseCases = this.isSetRenderUseCases();
+		if (_isSetRenderUseCases) {
+			_xifexpression = this.isRenderUseCases();
+		}
+		else {
+			EObject _eContainer = this.eContainer();
+			_xifexpression = ((IEClassifierConfig) _eContainer).shouldRenderUseCases();
 		}
 		return _xifexpression;
 	}
@@ -369,7 +797,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		}
 		else {
 			EObject _eContainer = this.eContainer();
-			_xifexpression = ((IEcoreDocGeneratorConfig) _eContainer).shouldRender();
+			_xifexpression = ((IENamedElementConfig) _eContainer).shouldRender();
 		}
 		return _xifexpression;
 	}
@@ -400,10 +828,20 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
-				return isRenderDefaults();
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
 				return isRender();
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
+				return isRenderDefaults();
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES:
+				return isRenderUseCases();
+			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
+				return isRepeatInherited();
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
+				return getPositionEDataTypes();
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
+				return getPositionEEnums();
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
+				return getPositionEClasses();
 			case ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
 				if (resolve) return getTargetEPackage();
 				return basicGetTargetEPackage();
@@ -426,11 +864,26 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
+				setRender((Boolean)newValue);
+				return;
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
 				setRenderDefaults((Boolean)newValue);
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
-				setRender((Boolean)newValue);
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES:
+				setRenderUseCases((Boolean)newValue);
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
+				setRepeatInherited((Boolean)newValue);
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
+				setPositionEDataTypes((Integer)newValue);
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
+				setPositionEEnums((Integer)newValue);
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
+				setPositionEClasses((Integer)newValue);
 				return;
 			case ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
 				setTargetEPackage((EPackage)newValue);
@@ -459,11 +912,26 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
+				unsetRender();
+				return;
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
 				unsetRenderDefaults();
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
-				unsetRender();
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES:
+				unsetRenderUseCases();
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
+				unsetRepeatInherited();
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
+				unsetPositionEDataTypes();
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
+				unsetPositionEEnums();
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
+				unsetPositionEClasses();
 				return;
 			case ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
 				setTargetEPackage((EPackage)null);
@@ -489,10 +957,20 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
-				return isSetRenderDefaults();
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
 				return isSetRender();
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
+				return isSetRenderDefaults();
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES:
+				return isSetRenderUseCases();
+			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
+				return isSetRepeatInherited();
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
+				return isSetPositionEDataTypes();
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
+				return isSetPositionEEnums();
+			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
+				return isSetPositionEClasses();
 			case ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
 				return targetEPackage != null;
 			case ConfigPackage.EPACKAGE_CONFIG__EDATA_TYPES:
@@ -511,10 +989,188 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == IDefaultValueConfig.class) {
+			switch (derivedFeatureID) {
+				case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS: return ConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == IEClassifierConfig.class) {
+			switch (derivedFeatureID) {
+				case ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES: return ConfigPackage.IE_CLASSIFIER_CONFIG__RENDER_USE_CASES;
+				default: return -1;
+			}
+		}
+		if (baseClass == IEDataTypeConfig.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEEnumConfig.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEEnumLiteralConfig.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEClassConfig.class) {
+			switch (derivedFeatureID) {
+				case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED: return ConfigPackage.IE_CLASS_CONFIG__REPEAT_INHERITED;
+				default: return -1;
+			}
+		}
+		if (baseClass == IEStructuralFeatureConfig.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEAttributeConfig.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEReferenceConfig.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == IDefaultValueConfig.class) {
+			switch (baseFeatureID) {
+				case ConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS: return ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == IEClassifierConfig.class) {
+			switch (baseFeatureID) {
+				case ConfigPackage.IE_CLASSIFIER_CONFIG__RENDER_USE_CASES: return ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES;
+				default: return -1;
+			}
+		}
+		if (baseClass == IEDataTypeConfig.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEEnumConfig.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEEnumLiteralConfig.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEClassConfig.class) {
+			switch (baseFeatureID) {
+				case ConfigPackage.IE_CLASS_CONFIG__REPEAT_INHERITED: return ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED;
+				default: return -1;
+			}
+		}
+		if (baseClass == IEStructuralFeatureConfig.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEAttributeConfig.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEReferenceConfig.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == IDefaultValueConfig.class) {
+			switch (baseOperationID) {
+				case ConfigPackage.IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS: return ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_DEFAULTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == IEClassifierConfig.class) {
+			switch (baseOperationID) {
+				case ConfigPackage.IE_CLASSIFIER_CONFIG___SHOULD_RENDER_USE_CASES: return ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_USE_CASES;
+				default: return -1;
+			}
+		}
+		if (baseClass == IEDataTypeConfig.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEEnumConfig.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEEnumLiteralConfig.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEClassConfig.class) {
+			switch (baseOperationID) {
+				case ConfigPackage.IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED: return ConfigPackage.EPACKAGE_CONFIG___SHOULD_REPEAT_INHERITED;
+				default: return -1;
+			}
+		}
+		if (baseClass == IEStructuralFeatureConfig.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEAttributeConfig.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEReferenceConfig.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case ConfigPackage.EPACKAGE_CONFIG___GET_TARGET:
 				return getTarget();
+			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_REPEAT_INHERITED:
+				return shouldRepeatInherited();
+			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_USE_CASES:
+				return shouldRenderUseCases();
 			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_DEFAULTS:
 				return shouldRenderDefaults();
 			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER:
@@ -533,10 +1189,20 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (renderDefaults: ");
-		if (renderDefaultsESet) result.append(renderDefaults); else result.append("<unset>");
-		result.append(", render: ");
+		result.append(" (render: ");
 		if (renderESet) result.append(render); else result.append("<unset>");
+		result.append(", renderDefaults: ");
+		if (renderDefaultsESet) result.append(renderDefaults); else result.append("<unset>");
+		result.append(", renderUseCases: ");
+		if (renderUseCasesESet) result.append(renderUseCases); else result.append("<unset>");
+		result.append(", repeatInherited: ");
+		if (repeatInheritedESet) result.append(repeatInherited); else result.append("<unset>");
+		result.append(", positionEDataTypes: ");
+		if (positionEDataTypesESet) result.append(positionEDataTypes); else result.append("<unset>");
+		result.append(", positionEEnums: ");
+		if (positionEEnumsESet) result.append(positionEEnums); else result.append("<unset>");
+		result.append(", positionEClasses: ");
+		if (positionEClassesESet) result.append(positionEClasses); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}

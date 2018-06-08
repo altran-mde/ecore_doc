@@ -17,13 +17,11 @@ abstract class AEcoreDocGeneratorEDataTypePart extends AEcoreDocGeneratorPart {
 	}
 	
 	protected def void writeProperties(Entry<? extends EDataType, ? extends IEDataTypeConfig> entry) {
-		val eDataType = entry.key
-		
 		output.append(
 			#[
-				defineDefaultValue(eDataType),
-				defineInstanceClassName(eDataType),
-				defineSerializable(eDataType)
+				defineDefaultValue(entry),
+				defineInstanceClassName(entry),
+				defineSerializable(entry)
 			]
 			.filterNull
 			.join(EcoreDocExtension.ECLASSIFIER_PROPERTY_SEPARATOR)
@@ -31,11 +29,13 @@ abstract class AEcoreDocGeneratorEDataTypePart extends AEcoreDocGeneratorPart {
 		output.append(newline)
 	}
 	
-	protected def defineSerializable(EDataType eDataType) {
+	protected def defineSerializable(Entry<? extends EDataType, ? extends IEDataTypeConfig> entry) {
+		val eDataType = entry.key
+		
 		val defaultValue = '''true'''
 		val value = eDataType.serializable
 
-		concatProperty("Serializable", defaultValue, value.toString)
+		concatProperty("Serializable", defaultValue, value.toString, entry)
 	}
 	
 }

@@ -1,8 +1,9 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.altran.general.ecoredoc.generator.config.EEnumConfig;
+import com.altran.general.ecoredoc.generator.config.EEnumLiteralConfig;
 import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig;
-import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig;
+import com.altran.general.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorEDataTypePart;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.collect.Multimap;
@@ -31,7 +32,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
     this.clearOutput();
     final List<EEnum> eEnums = this._ecoreDocExtension.collectEEnums(this.getEPackages().get(ePackage));
     final Function1<EEnum, EEnumConfig> _function = (EEnum it) -> {
-      IEcoreDocGeneratorConfig _findConfig = this.getConfig().findConfig(it);
+      IENamedElementConfig _findConfig = this.getConfig().findConfig(it);
       return ((EEnumConfig) _findConfig);
     };
     final Function2<EEnum, EEnumConfig, Boolean> _function_1 = (EEnum eEnum, EEnumConfig config) -> {
@@ -70,34 +71,48 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
     _output.append(_builder);
   }
   
-  protected void writeEEnumLiterals(final Map.Entry<EEnum, EEnumConfig> entry) {
-    final EEnum eEnum = entry.getKey();
-    StringBuilder _output = this.getOutput();
-    StringConcatenation _builder = new StringConcatenation();
-    String _newline = EcoreDocExtension.newline();
-    _builder.append(_newline);
-    _builder.newLineIfNotEmpty();
-    _builder.append(".Literals");
-    _builder.newLine();
-    _builder.append("[cols=\"<20m,>10m,<70a\",options=\"header\"]");
-    _builder.newLine();
-    _builder.append("|===");
-    _builder.newLine();
-    _builder.append("|Symbol");
-    _builder.newLine();
-    _builder.append("|Value");
-    _builder.newLine();
-    _builder.append("|Description");
-    _builder.newLine();
-    _output.append(_builder);
-    EList<EEnumLiteral> _eLiterals = eEnum.getELiterals();
-    for (final EEnumLiteral eLiteral : _eLiterals) {
-      this.writeELiteral(eLiteral);
+  protected void writeEEnumLiterals(final Map.Entry<EEnum, EEnumConfig> eEnumEntry) {
+    final EEnum eEnum = eEnumEntry.getKey();
+    final EList<EEnumLiteral> eLiterals = eEnum.getELiterals();
+    final Function1<EEnumLiteral, EEnumLiteralConfig> _function = (EEnumLiteral it) -> {
+      IENamedElementConfig _findConfig = this.getConfig().findConfig(it);
+      return ((EEnumLiteralConfig) _findConfig);
+    };
+    final Function2<EEnumLiteral, EEnumLiteralConfig, Boolean> _function_1 = (EEnumLiteral eLiteral, EEnumLiteralConfig config) -> {
+      return Boolean.valueOf(config.shouldRender());
+    };
+    final Map<EEnumLiteral, EEnumLiteralConfig> eLiteralsMap = MapExtensions.<EEnumLiteral, EEnumLiteralConfig>filter(IterableExtensions.<EEnumLiteral, EEnumLiteralConfig>toInvertedMap(eLiterals, _function), _function_1);
+    boolean _isEmpty = eLiteralsMap.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      StringBuilder _output = this.getOutput();
+      StringConcatenation _builder = new StringConcatenation();
+      String _newline = EcoreDocExtension.newline();
+      _builder.append(_newline);
+      _builder.newLineIfNotEmpty();
+      _builder.append(".Literals");
+      _builder.newLine();
+      _builder.append("[cols=\"<20m,>10m,<70a\",options=\"header\"]");
+      _builder.newLine();
+      _builder.append("|===");
+      _builder.newLine();
+      _builder.append("|Symbol");
+      _builder.newLine();
+      _builder.append("|Value");
+      _builder.newLine();
+      _builder.append("|Description");
+      _builder.newLine();
+      _output.append(_builder);
+      Set<Map.Entry<EEnumLiteral, EEnumLiteralConfig>> _entrySet = eLiteralsMap.entrySet();
+      for (final Map.Entry<EEnumLiteral, EEnumLiteralConfig> entry : _entrySet) {
+        this.writeELiteral(entry);
+      }
+      this.getOutput().append(this.tableFooter());
     }
-    this.getOutput().append(this.tableFooter());
   }
   
-  protected void writeELiteral(final EEnumLiteral eLiteral) {
+  protected void writeELiteral(final Map.Entry<EEnumLiteral, EEnumLiteralConfig> entry) {
+    final EEnumLiteral eLiteral = entry.getKey();
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     String _newline = EcoreDocExtension.newline();

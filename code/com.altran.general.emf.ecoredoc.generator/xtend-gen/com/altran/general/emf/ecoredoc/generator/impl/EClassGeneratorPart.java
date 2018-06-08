@@ -1,8 +1,9 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
+import com.altran.general.ecoredoc.generator.config.EAttributeConfig;
 import com.altran.general.ecoredoc.generator.config.EClassConfig;
 import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig;
-import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig;
+import com.altran.general.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorPart;
 import com.altran.general.emf.ecoredoc.generator.impl.EStructuralFeaturePropertyHelper;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
@@ -39,10 +40,12 @@ import org.eclipse.xtext.xbase.lib.Pair;
 @SuppressWarnings("all")
 public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   @Extension
-  private EStructuralFeaturePropertyHelper _eStructuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper();
+  private EStructuralFeaturePropertyHelper structuralFeaturePropertyHelper;
   
   public EClassGeneratorPart(final EcoreDocGeneratorConfig config, final Multimap<EPackage, EClassifier> ePackages) {
     super(config, ePackages);
+    EStructuralFeaturePropertyHelper _eStructuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper(config);
+    this.structuralFeaturePropertyHelper = _eStructuralFeaturePropertyHelper;
   }
   
   @Override
@@ -50,7 +53,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     this.clearOutput();
     final List<EClass> eClasses = this._ecoreDocExtension.collectEClasses(this.getEPackages().get(ePackage));
     final Function1<EClass, EClassConfig> _function = (EClass it) -> {
-      IEcoreDocGeneratorConfig _findConfig = this.getConfig().findConfig(it);
+      IENamedElementConfig _findConfig = this.getConfig().findConfig(it);
       return ((EClassConfig) _findConfig);
     };
     final Function2<EClass, EClassConfig, Boolean> _function_1 = (EClass eClass, EClassConfig config) -> {
@@ -104,7 +107,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     if (containmentExists) {
       this.writeEContainmentHeader();
       List<EReference> eContainments = this.collectEContainments(eClass);
-      Set<? extends EStructuralFeature> inheritedEContainments = this.collectInheritedEContainments(eClass);
+      Set<? extends EStructuralFeature> inheritedEContainments = this.collectInheritedEContainments(entry);
       this.writeEStructuralFeatures(eContainments, eClass, inheritedEContainments);
     }
   }
@@ -119,18 +122,26 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     if (eCrossReferenceExists) {
       this.writeEReferencesHeader();
       List<EReference> crossReferences = this.collectECrossReferences(eClass);
-      Set<? extends EStructuralFeature> inheritedECrossReferences = this.collectInheritedECrossReferences(eClass);
+      Set<? extends EStructuralFeature> inheritedECrossReferences = this.collectInheritedECrossReferences(entry);
       this.writeEStructuralFeatures(crossReferences, eClass, inheritedECrossReferences);
     }
   }
   
   protected void writeEAttributes(final Map.Entry<EClass, EClassConfig> entry) {
     final EClass eClass = entry.getKey();
-    boolean _isEmpty = eClass.getEAllAttributes().isEmpty();
-    final boolean eAttributeExists = (!_isEmpty);
-    if (eAttributeExists) {
+    final Function1<EAttribute, EAttributeConfig> _function = (EAttribute it) -> {
+      IENamedElementConfig _findConfig = this.getConfig().findConfig(it);
+      return ((EAttributeConfig) _findConfig);
+    };
+    final Function2<EAttribute, EAttributeConfig, Boolean> _function_1 = (EAttribute eAttribute, EAttributeConfig config) -> {
+      return Boolean.valueOf(config.shouldRender());
+    };
+    final Map<EAttribute, EAttributeConfig> eAttributesMap = MapExtensions.<EAttribute, EAttributeConfig>filter(IterableExtensions.<EAttribute, EAttributeConfig>toInvertedMap(eClass.getEAllAttributes(), _function), _function_1);
+    boolean _isEmpty = eAttributesMap.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
       this.writeEAttributesHeader();
-      Set<EStructuralFeature> inheritedEAttributes = this.collectInheritedEAttributes(eClass);
+      Set<EStructuralFeature> inheritedEAttributes = this.collectInheritedEAttributes(entry);
       this.writeEStructuralFeatures(eClass.getEAttributes(), eClass, inheritedEAttributes);
     }
   }
@@ -178,8 +189,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     if (_not) {
       this.writeSubTypesHeader();
       for (final EClass eClass_1 : subTypes) {
-        IEcoreDocGeneratorConfig _findConfig = this.getConfig().findConfig(eClass_1);
-        Pair<EClass, IEcoreDocGeneratorConfig> _mappedTo = Pair.<EClass, IEcoreDocGeneratorConfig>of(eClass_1, _findConfig);
+        IENamedElementConfig _findConfig = this.getConfig().findConfig(eClass_1);
+        Pair<EClass, IENamedElementConfig> _mappedTo = Pair.<EClass, IENamedElementConfig>of(eClass_1, _findConfig);
         this.writeType(_mappedTo);
       }
     }
@@ -187,11 +198,16 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   
   protected void writeSuperTypes(final Map.Entry<EClass, EClassConfig> entry) {
     final EClass eClass = entry.getKey();
-    boolean _isEmpty = eClass.getEAllSuperTypes().isEmpty();
+    final EList<EClass> tmp = eClass.getEAllSuperTypes();
+    final Function1<EClass, Boolean> _function = (EClass it) -> {
+      return Boolean.valueOf(tmp.contains(it));
+    };
+    final Iterable<EClass> superTypes = IterableExtensions.<EClass>filter(this.collectAllEClasses(), _function);
+    boolean _isEmpty = IterableExtensions.isEmpty(superTypes);
     final boolean superTypesExist = (!_isEmpty);
     if (superTypesExist) {
       this.writeSuperTypesHeader();
-      final Function1<EClass, String> _function = (EClass it) -> {
+      final Function1<EClass, String> _function_1 = (EClass it) -> {
         String _elvis = null;
         String _name = it.getName();
         if (_name != null) {
@@ -201,23 +217,28 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
         }
         return _elvis;
       };
-      final List<EClass> sortedSuperTypes = IterableExtensions.<EClass, String>sortBy(eClass.getEAllSuperTypes(), _function);
+      final List<EClass> sortedSuperTypes = IterableExtensions.<EClass, String>sortBy(superTypes, _function_1);
       for (final EClass supertype : sortedSuperTypes) {
-        IEcoreDocGeneratorConfig _findConfig = this.getConfig().findConfig(supertype);
-        Pair<EClass, IEcoreDocGeneratorConfig> _mappedTo = Pair.<EClass, IEcoreDocGeneratorConfig>of(supertype, _findConfig);
+        IENamedElementConfig _findConfig = this.getConfig().findConfig(supertype);
+        Pair<EClass, IENamedElementConfig> _mappedTo = Pair.<EClass, IENamedElementConfig>of(supertype, _findConfig);
         this.writeType(_mappedTo);
       }
     }
   }
   
-  protected void writeType(final Pair<EClass, IEcoreDocGeneratorConfig> pair) {
+  protected void writeType(final Pair<EClass, IENamedElementConfig> pair) {
     EClass _key = pair.getKey();
-    IEcoreDocGeneratorConfig _value = pair.getValue();
+    IENamedElementConfig _value = pair.getValue();
     AbstractMap.SimpleEntry<EClass, EClassConfig> _simpleEntry = new AbstractMap.SimpleEntry<EClass, EClassConfig>(_key, ((EClassConfig) _value));
     this.writeType(_simpleEntry);
   }
   
   protected void writeType(final Map.Entry<EClass, EClassConfig> entry) {
+    boolean _shouldRender = entry.getValue().shouldRender();
+    boolean _not = (!_shouldRender);
+    if (_not) {
+      return;
+    }
     final EClass eClass = entry.getKey();
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
@@ -287,14 +308,26 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return IterableExtensions.<EReference>toList(IterableExtensions.<EReference>filter(eClass.getEReferences(), _function));
   }
   
-  protected Set<? extends EStructuralFeature> collectInheritedEContainments(final EClass eClass) {
-    final Function1<EReference, Boolean> _function = (EReference it) -> {
-      return Boolean.valueOf(it.isContainment());
-    };
-    final Function1<EReference, Boolean> _function_1 = (EReference it) -> {
-      return Boolean.valueOf(eClass.getEReferences().contains(it));
-    };
-    return IterableExtensions.<EReference>toSet(IterableExtensions.<EReference>reject(IterableExtensions.<EReference>filter(eClass.getEAllReferences(), _function), _function_1));
+  protected Set<? extends EStructuralFeature> collectInheritedEContainments(final Map.Entry<EClass, EClassConfig> entry) {
+    Set<? extends EStructuralFeature> _xifexpression = null;
+    boolean _shouldRepeatInherited = entry.getValue().shouldRepeatInherited();
+    if (_shouldRepeatInherited) {
+      Set<EReference> _xblockexpression = null;
+      {
+        final EClass eClass = entry.getKey();
+        final Function1<EReference, Boolean> _function = (EReference it) -> {
+          return Boolean.valueOf(it.isContainment());
+        };
+        final Function1<EReference, Boolean> _function_1 = (EReference it) -> {
+          return Boolean.valueOf(eClass.getEReferences().contains(it));
+        };
+        _xblockexpression = IterableExtensions.<EReference>toSet(IterableExtensions.<EReference>reject(IterableExtensions.<EReference>filter(eClass.getEAllReferences(), _function), _function_1));
+      }
+      _xifexpression = _xblockexpression;
+    } else {
+      _xifexpression = CollectionLiterals.<EStructuralFeature>emptySet();
+    }
+    return _xifexpression;
   }
   
   protected List<EReference> collectECrossReferences(final EClass eClass) {
@@ -305,22 +338,37 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return IterableExtensions.<EReference>toList(IterableExtensions.<EReference>filter(eClass.getEReferences(), _function));
   }
   
-  protected Set<? extends EStructuralFeature> collectInheritedECrossReferences(final EClass eClass) {
-    final Function1<EReference, Boolean> _function = (EReference it) -> {
-      boolean _isContainment = it.isContainment();
-      return Boolean.valueOf((!_isContainment));
-    };
-    final Function1<EReference, Boolean> _function_1 = (EReference it) -> {
-      return Boolean.valueOf(eClass.getEReferences().contains(it));
-    };
-    return IterableExtensions.<EReference>toSet(IterableExtensions.<EReference>reject(IterableExtensions.<EReference>filter(eClass.getEAllReferences(), _function), _function_1));
+  protected Set<? extends EStructuralFeature> collectInheritedECrossReferences(final Map.Entry<EClass, EClassConfig> entry) {
+    Set<? extends EStructuralFeature> _xifexpression = null;
+    boolean _shouldRepeatInherited = entry.getValue().shouldRepeatInherited();
+    if (_shouldRepeatInherited) {
+      Set<EReference> _xblockexpression = null;
+      {
+        final EClass eClass = entry.getKey();
+        final Function1<EReference, Boolean> _function = (EReference it) -> {
+          boolean _isContainment = it.isContainment();
+          return Boolean.valueOf((!_isContainment));
+        };
+        final Function1<EReference, Boolean> _function_1 = (EReference it) -> {
+          return Boolean.valueOf(eClass.getEReferences().contains(it));
+        };
+        _xblockexpression = IterableExtensions.<EReference>toSet(IterableExtensions.<EReference>reject(IterableExtensions.<EReference>filter(eClass.getEAllReferences(), _function), _function_1));
+      }
+      _xifexpression = _xblockexpression;
+    } else {
+      _xifexpression = CollectionLiterals.<EStructuralFeature>emptySet();
+    }
+    return _xifexpression;
   }
   
-  protected Set<EStructuralFeature> collectInheritedEAttributes(final EClass eClass) {
+  protected Set<EStructuralFeature> collectInheritedEAttributes(final Map.Entry<EClass, EClassConfig> entry) {
     final Set<EStructuralFeature> inheritedEAttributes = CollectionLiterals.<EStructuralFeature>newLinkedHashSet();
-    EList<EClass> _eAllSuperTypes = eClass.getEAllSuperTypes();
-    for (final EClass superclass : _eAllSuperTypes) {
-      inheritedEAttributes.addAll(superclass.getEAllAttributes());
+    boolean _shouldRepeatInherited = entry.getValue().shouldRepeatInherited();
+    if (_shouldRepeatInherited) {
+      EList<EClass> _eAllSuperTypes = entry.getKey().getEAllSuperTypes();
+      for (final EClass superclass : _eAllSuperTypes) {
+        inheritedEAttributes.addAll(superclass.getEAllAttributes());
+      }
     }
     return inheritedEAttributes;
   }
@@ -415,28 +463,27 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   }
   
   protected List<CharSequence> _enumerateFeatureProperties(final EAttribute eAttribute) {
-    CharSequence _defineId = this._eStructuralFeaturePropertyHelper.defineId(eAttribute);
+    CharSequence _defineId = this.structuralFeaturePropertyHelper.defineId(eAttribute);
     return Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineId));
   }
   
   protected List<CharSequence> _enumerateFeatureProperties(final EReference eReference) {
-    CharSequence _defineEKeys = this._eStructuralFeaturePropertyHelper.defineEKeys(eReference);
-    CharSequence _defineResolveProxies = this._eStructuralFeaturePropertyHelper.defineResolveProxies(eReference);
-    CharSequence _defineContainer = this._eStructuralFeaturePropertyHelper.defineContainer(eReference);
-    CharSequence _defineContainment = this._eStructuralFeaturePropertyHelper.defineContainment(eReference);
-    return Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineEKeys, _defineResolveProxies, _defineContainer, _defineContainment));
+    CharSequence _defineEKeys = this.structuralFeaturePropertyHelper.defineEKeys(eReference);
+    CharSequence _defineResolveProxies = this.structuralFeaturePropertyHelper.defineResolveProxies(eReference);
+    CharSequence _defineContainer = this.structuralFeaturePropertyHelper.defineContainer(eReference);
+    return Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineEKeys, _defineResolveProxies, _defineContainer));
   }
   
   protected List<CharSequence> enumerateGenericProperties(final EStructuralFeature eStructuralFeature) {
-    CharSequence _concatBounds = this._eStructuralFeaturePropertyHelper.concatBounds(eStructuralFeature);
-    CharSequence _concatDefaultValue = this._eStructuralFeaturePropertyHelper.concatDefaultValue(eStructuralFeature);
-    CharSequence _defineOrdered = this._eStructuralFeaturePropertyHelper.defineOrdered(eStructuralFeature);
-    CharSequence _defineChangeable = this._eStructuralFeaturePropertyHelper.defineChangeable(eStructuralFeature);
-    CharSequence _defineDerived = this._eStructuralFeaturePropertyHelper.defineDerived(eStructuralFeature);
-    CharSequence _defineTransient = this._eStructuralFeaturePropertyHelper.defineTransient(eStructuralFeature);
-    CharSequence _defineUnique = this._eStructuralFeaturePropertyHelper.defineUnique(eStructuralFeature);
-    CharSequence _defineUnsettable = this._eStructuralFeaturePropertyHelper.defineUnsettable(eStructuralFeature);
-    CharSequence _defineVolatile = this._eStructuralFeaturePropertyHelper.defineVolatile(eStructuralFeature);
+    CharSequence _concatBounds = this.structuralFeaturePropertyHelper.concatBounds(eStructuralFeature);
+    CharSequence _concatDefaultValue = this.structuralFeaturePropertyHelper.concatDefaultValue(eStructuralFeature);
+    CharSequence _defineOrdered = this.structuralFeaturePropertyHelper.defineOrdered(eStructuralFeature);
+    CharSequence _defineChangeable = this.structuralFeaturePropertyHelper.defineChangeable(eStructuralFeature);
+    CharSequence _defineDerived = this.structuralFeaturePropertyHelper.defineDerived(eStructuralFeature);
+    CharSequence _defineTransient = this.structuralFeaturePropertyHelper.defineTransient(eStructuralFeature);
+    CharSequence _defineUnique = this.structuralFeaturePropertyHelper.defineUnique(eStructuralFeature);
+    CharSequence _defineUnsettable = this.structuralFeaturePropertyHelper.defineUnsettable(eStructuralFeature);
+    CharSequence _defineVolatile = this.structuralFeaturePropertyHelper.defineVolatile(eStructuralFeature);
     return Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_concatBounds, _concatDefaultValue, _defineOrdered, _defineChangeable, _defineDerived, _defineTransient, _defineUnique, _defineUnsettable, _defineVolatile));
   }
   
@@ -583,10 +630,10 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     boolean _isAbstract = eClass.isAbstract();
     boolean _not = (!_isAbstract);
     if (_not) {
-      CharSequence _defineDefaultValue = this.defineDefaultValue(eClass);
+      CharSequence _defineDefaultValue = this.defineDefaultValue(entry);
       properties.add(_defineDefaultValue);
     }
-    CharSequence _defineInstanceClassName = this.defineInstanceClassName(eClass);
+    CharSequence _defineInstanceClassName = this.defineInstanceClassName(entry);
     properties.add(_defineInstanceClassName);
     this.getOutput().append(
       IterableExtensions.join(IterableExtensions.<CharSequence>filterNull(properties), EcoreDocExtension.ECLASSIFIER_PROPERTY_SEPARATOR));

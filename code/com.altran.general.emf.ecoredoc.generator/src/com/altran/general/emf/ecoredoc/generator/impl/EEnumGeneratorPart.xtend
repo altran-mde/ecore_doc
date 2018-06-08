@@ -1,6 +1,7 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
 import com.altran.general.ecoredoc.generator.config.EEnumConfig
+import com.altran.general.ecoredoc.generator.config.EEnumLiteralConfig
 import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.google.common.collect.Multimap
 import java.util.Map
@@ -55,29 +56,42 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 		''')
 	}
 
-	protected def void writeEEnumLiterals(Entry<EEnum, EEnumConfig> entry) {
-		val eEnum = entry.key
+	protected def void writeEEnumLiterals(Entry<EEnum, EEnumConfig> eEnumEntry) {
+		val eEnum = eEnumEntry.key
 
-		output.append(
-			'''
-				«newline»
-				.Literals
-				[cols="<20m,>10m,<70a",options="header"]
-				|===
-				|Symbol
-				|Value
-				|Description
-			'''
-		)
+		val eLiterals = eEnum.ELiterals
 		
-		for (eLiteral : eEnum.ELiterals) {
-			writeELiteral(eLiteral)
+		val eLiteralsMap = eLiterals
+			.toInvertedMap[getConfig().findConfig(it) as EEnumLiteralConfig]
+			.filter[eLiteral, config|
+				config.shouldRender
+			]
+			
+		if (!eLiteralsMap.isEmpty) {
+			output.append(
+				'''
+					«newline»
+					.Literals
+					[cols="<20m,>10m,<70a",options="header"]
+					|===
+					|Symbol
+					|Value
+					|Description
+				'''
+			)
+			
+			for (entry : eLiteralsMap.entrySet) {
+				writeELiteral(entry)
+			}
+			
+			output.append(tableFooter())
 		}
 		
-		output.append(tableFooter())
 	}
 
-	protected def void writeELiteral(EEnumLiteral eLiteral) {
+	protected def void writeELiteral(Entry<EEnumLiteral, EEnumLiteralConfig> entry) {
+		val eLiteral = entry.key
+		
 		output.append(
 		'''
 			«newline»

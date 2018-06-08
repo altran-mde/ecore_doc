@@ -2,6 +2,7 @@
  */
 package com.altran.general.ecoredoc.generator.config;
 
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>AE Reference Config</b></em>'.
@@ -12,5 +13,5 @@ package com.altran.general.ecoredoc.generator.config;
  * @model abstract="true"
  * @generated
  */
-public interface AEReferenceConfig extends AEStructuralFeatureConfig {
+public interface AEReferenceConfig extends IEReferenceConfig {
 } // AEReferenceConfig

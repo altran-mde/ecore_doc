@@ -5,7 +5,6 @@ package com.altran.general.ecoredoc.generator.config;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.ENamedElement;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>EAttribute Config</b></em>'.
@@ -22,8 +21,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  * @model
  * @generated
  */
-public interface EAttributeConfig extends AEStructuralFeatureConfig {
-
+public interface EAttributeConfig extends IEAttributeConfig {
 	/**
 	 * Returns the value of the '<em><b>Target EAttribute</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -58,4 +56,5 @@ public interface EAttributeConfig extends AEStructuralFeatureConfig {
 	 * @generated
 	 */
 	ENamedElement getTarget();
+
 } // EAttributeConfig

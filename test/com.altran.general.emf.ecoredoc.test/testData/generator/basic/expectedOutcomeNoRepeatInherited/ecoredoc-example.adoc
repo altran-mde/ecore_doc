@@ -101,73 +101,6 @@ non-unique +
 settable +
 non-volatile
 |Something.
-
-|`d`[[EPackage1-Class3-d]] +
-(`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`EDouble`
-|`[0..1]` +
-_Default:_ `3.141592` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
-|
-
-|`id`[[EPackage1-Class3-id]] +
-(`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`EInt`
-|*is id* +
-`[1]` +
-_Default:_ `-` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
-|Description of id.
-
-|`name`[[EPackage1-Class3-name]] +
-(`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`EString`
-|`[3..5]` +
-_Default:_ `-` +
-ordered +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
-|Name desc.
-
-|`someStringAttr`[[EPackage1-Class3-someStringAttr]] +
-(`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`EString`
-|`[0..1]` +
-_Default:_ `Hello, World!` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
-|
-
-|`specialNumber`[[EPackage1-Class3-specialNumber]] +
-(`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`EInt`
-|`[0..1]` +
-_Default:_ `23` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
-|
 |===
 
 .References
@@ -194,25 +127,6 @@ unique +
 settable +
 non-volatile
 |Bla
-
-|`myRelation`[[EPackage1-Class3-myRelation]] +
-(`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
-
-_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
-|_EKeys:_ `-` +
-resolveProxies +
-non-container +
-`[0..*]` +
-_Default:_ `-` +
-**unordered** +
-changeable +
-underived +
-non-transient +
-unique +
-settable +
-non-volatile
-|Description.
 |===
 
 .Used at
@@ -390,73 +304,6 @@ non-unique +
 settable +
 non-volatile
 |Deschkriptschion.
-
-|`d`[[EPackage1-MyEClass-d]] +
-(`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`EDouble`
-|`[0..1]` +
-_Default:_ `3.141592` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
-|
-
-|`id`[[EPackage1-MyEClass-id]] +
-(`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`EInt`
-|*is id* +
-`[1]` +
-_Default:_ `-` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
-|Description of id.
-
-|`name`[[EPackage1-MyEClass-name]] +
-(`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`EString`
-|`[3..5]` +
-_Default:_ `-` +
-ordered +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
-|Name desc.
-
-|`someStringAttr`[[EPackage1-MyEClass-someStringAttr]] +
-(`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`EString`
-|`[0..1]` +
-_Default:_ `Hello, World!` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
-|
-
-|`specialNumber`[[EPackage1-MyEClass-specialNumber]] +
-(`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`EInt`
-|`[0..1]` +
-_Default:_ `23` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
-|
 |===
 
 .Containments
@@ -543,25 +390,6 @@ unique +
 settable +
 non-volatile
 |Whatever.
-
-|`myRelation`[[EPackage1-MyEClass-myRelation]] +
-(`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
-
-_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
-|_EKeys:_ `-` +
-resolveProxies +
-non-container +
-`[0..*]` +
-_Default:_ `-` +
-**unordered** +
-changeable +
-underived +
-non-transient +
-unique +
-settable +
-non-volatile
-|Description.
 |===
 
 .Used at
@@ -631,73 +459,6 @@ Instance Type Name:: _undefined_
 |Type
 |Properties
 |Description
-
-|`d`[[EPackage2-SomeClass-d]] +
-(`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`EDouble`
-|`[0..1]` +
-_Default:_ `3.141592` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
-|
-
-|`id`[[EPackage2-SomeClass-id]] +
-(`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`EInt`
-|*is id* +
-`[1]` +
-_Default:_ `-` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
-|Description of id.
-
-|`name`[[EPackage2-SomeClass-name]] +
-(`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`EString`
-|`[3..5]` +
-_Default:_ `-` +
-ordered +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
-|Name desc.
-
-|`someStringAttr`[[EPackage2-SomeClass-someStringAttr]] +
-(`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`EString`
-|`[0..1]` +
-_Default:_ `Hello, World!` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
-|
-
-|`specialNumber`[[EPackage2-SomeClass-specialNumber]] +
-(`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`EInt`
-|`[0..1]` +
-_Default:_ `23` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
-|
 |===
 
 .References
@@ -707,23 +468,4 @@ non-volatile
 |Type
 |Properties
 |Description
-
-|`myRelation`[[EPackage2-SomeClass-myRelation]] +
-(`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1>>`)
-|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
-
-_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
-|_EKeys:_ `-` +
-resolveProxies +
-non-container +
-`[0..*]` +
-_Default:_ `-` +
-**unordered** +
-changeable +
-underived +
-non-transient +
-unique +
-settable +
-non-volatile
-|Description.
 |===

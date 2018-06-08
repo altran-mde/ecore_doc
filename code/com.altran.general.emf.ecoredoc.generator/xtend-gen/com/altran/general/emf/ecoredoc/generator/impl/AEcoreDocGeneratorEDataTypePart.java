@@ -21,23 +21,23 @@ public abstract class AEcoreDocGeneratorEDataTypePart extends AEcoreDocGenerator
   }
   
   protected void writeProperties(final Map.Entry<? extends EDataType, ? extends IEDataTypeConfig> entry) {
-    final EDataType eDataType = entry.getKey();
-    CharSequence _defineDefaultValue = this.defineDefaultValue(eDataType);
-    CharSequence _defineInstanceClassName = this.defineInstanceClassName(eDataType);
-    CharSequence _defineSerializable = this.defineSerializable(eDataType);
+    CharSequence _defineDefaultValue = this.defineDefaultValue(entry);
+    CharSequence _defineInstanceClassName = this.defineInstanceClassName(entry);
+    CharSequence _defineSerializable = this.defineSerializable(entry);
     this.getOutput().append(
       IterableExtensions.join(IterableExtensions.<CharSequence>filterNull(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineDefaultValue, _defineInstanceClassName, _defineSerializable))), EcoreDocExtension.ECLASSIFIER_PROPERTY_SEPARATOR));
     this.getOutput().append(EcoreDocExtension.newline());
   }
   
-  protected CharSequence defineSerializable(final EDataType eDataType) {
+  protected CharSequence defineSerializable(final Map.Entry<? extends EDataType, ? extends IEDataTypeConfig> entry) {
     CharSequence _xblockexpression = null;
     {
+      final EDataType eDataType = entry.getKey();
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("true");
       final String defaultValue = _builder.toString();
       final boolean value = eDataType.isSerializable();
-      _xblockexpression = this.concatProperty("Serializable", defaultValue, Boolean.valueOf(value).toString());
+      _xblockexpression = this.concatProperty("Serializable", defaultValue, Boolean.valueOf(value).toString(), entry);
     }
     return _xblockexpression;
   }

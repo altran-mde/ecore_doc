@@ -5,53 +5,62 @@ import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.impl.EEnumLiteralImpl
+import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig
+import com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig
 
 class EStructuralFeaturePropertyHelper {
-	extension EcoreDocExtension = new EcoreDocExtension
-
 	val static String BOLD = "**"
+	
+	extension EcoreDocExtension = new EcoreDocExtension
+	
+	val EcoreDocGeneratorConfig config
+	
+	new(EcoreDocGeneratorConfig config) {
+		this.config = config
+	}
 
 	def CharSequence concatBounds(EStructuralFeature eStructuralFeature) {
 		val int lowerBound = eStructuralFeature.lowerBound
 		val int upperBound = eStructuralFeature.upperBound
 		val boolean lowerNotEqualUpperBound = lowerBound != upperBound
-
-		'''`[«lowerBound»«IF lowerNotEqualUpperBound»..«defineUpperBound(upperBound)»«ENDIF»]`'''
-
+		
+		val isSet = if (eStructuralFeature.isMany) {
+			lowerBound === 1 && upperBound === -1
+		} else {
+			lowerBound === 0 && upperBound === 1
+		}
+		
+		if (isSet || eStructuralFeature.shouldRenderDefaults) {
+			'''`[«lowerBound»«IF lowerNotEqualUpperBound»..«defineUpperBound(upperBound)»«ENDIF»]`'''
+		}
 	}
 
 	def CharSequence boldifyString(String string) {
 		'''«BOLD»«string»«BOLD»'''
 	}
 
-	def CharSequence definePropertyString(String trueLiteral, String falseLiteral, boolean defaultValue,
+	def CharSequence definePropertyString(
+		EStructuralFeature eStructuralFeature, 
+		String trueLiteral, 
+		String falseLiteral, 
+		boolean defaultValue,
 		boolean currentPropertyValue) { 
-		val boolean boldify = (defaultValue != currentPropertyValue)
+		val boolean isSet = (defaultValue != currentPropertyValue)
 
-		if (currentPropertyValue) {
-			if(boldify){
-				return boldifyString(trueLiteral)
-				
-			}else{
-				return trueLiteral
+		if(isSet || eStructuralFeature.shouldRenderDefaults) {
+			if(currentPropertyValue) {
+				if(isSet) {
+					return boldifyString(trueLiteral)
+				} else {
+					return trueLiteral
+				}
+			} else {
+				if(isSet) {
+					return boldifyString(falseLiteral)
+				} else {
+					return falseLiteral
+				}
 			}
-
-		} else {
-			if(boldify){
-				return boldifyString(falseLiteral)
-				
-			}else{
-				return falseLiteral
-			}	
-		}
-	}
-
-	def CharSequence definePropertyString(String trueLiteral, String falseLiteral, boolean currentPropertyValue) {
-		if (currentPropertyValue) {
-			return trueLiteral
-
-		} else {
-			return falseLiteral
 		}
 	}
 
@@ -59,16 +68,14 @@ class EStructuralFeaturePropertyHelper {
 		val boolean defaultValue = true
 		val boolean isChangeable = eStructuralFeature.changeable
 
-		definePropertyString("changeable", "unchangeable", defaultValue, isChangeable)
-
+		eStructuralFeature.definePropertyString("changeable", "unchangeable", defaultValue, isChangeable)
 	}
 
 	def CharSequence defineDerived(EStructuralFeature eStructuralFeature) {
 		val boolean defaultValue = false
 		val boolean isDerived = eStructuralFeature.derived
 
-		definePropertyString("derived", "underived", defaultValue, isDerived)
-
+		eStructuralFeature.definePropertyString("derived", "underived", defaultValue, isDerived)
 	}
 
 	def CharSequence defineOrdered(EStructuralFeature eStructuralFeature) {
@@ -77,8 +84,7 @@ class EStructuralFeaturePropertyHelper {
 		val boolean isOrdered = eStructuralFeature.ordered
 
 		if (upperBound != 1) {
-			definePropertyString("ordered", "unordered", defaultValue, isOrdered)
-
+			eStructuralFeature.definePropertyString("ordered", "unordered", defaultValue, isOrdered)
 		} else {
 			null
 		}
@@ -88,28 +94,28 @@ class EStructuralFeaturePropertyHelper {
 		val boolean defaultValue = false
 		val boolean isTransient = eStructuralFeature.transient
 
-		definePropertyString("transient", "non-transient", defaultValue, isTransient)
+		eStructuralFeature.definePropertyString("transient", "non-transient", defaultValue, isTransient)
 	}
 
 	def CharSequence defineUnique(EStructuralFeature eStructuralFeature) {
+		val boolean defaultValue = eStructuralFeature instanceof EReference
 		val boolean isUnique = eStructuralFeature.unique
 
-		definePropertyString("unique", "non-unique", isUnique)
+		eStructuralFeature.definePropertyString("unique", "non-unique", defaultValue, isUnique)
 	}
 
 	def CharSequence defineUnsettable(EStructuralFeature eStructuralFeature) {
 		val boolean defaultValue = false
 		val boolean isUnsettable = eStructuralFeature.unsettable
 
-		definePropertyString("unsettable", "settable", defaultValue, isUnsettable)
-
+		eStructuralFeature.definePropertyString("unsettable", "settable", defaultValue, isUnsettable)
 	}
 
 	def CharSequence defineVolatile(EStructuralFeature eStructuralFeature) {
 		val boolean defaultValue = false
 		val boolean isVolatile = eStructuralFeature.volatile
 
-		definePropertyString("volatile", "non-volatile", defaultValue, isVolatile)
+		eStructuralFeature.definePropertyString("volatile", "non-volatile", defaultValue, isVolatile)
 	}
 
 	def CharSequence defineResolveProxies(EReference eReference) {
@@ -117,19 +123,14 @@ class EStructuralFeaturePropertyHelper {
 		val boolean defaultValue = true
 		val boolean resolveProxies = eReference.resolveProxies
 
-		definePropertyString("resolveProxies", "non-resolveProxies", defaultValue, resolveProxies)
+		eReference.definePropertyString("resolveProxies", "non-resolveProxies", defaultValue, resolveProxies)
 	}
 	
 	def CharSequence defineContainer(EReference eReference){
+		val boolean defaultValue = false
 		val boolean isContainer = eReference.isContainer
 		
-		definePropertyString("container", "non-container", isContainer)
-	}
-	
-	def CharSequence defineContainment(EReference eReference) {
-		val boolean isContainment = eReference.isContainment
-		
-		definePropertyString("containment", "non-containment", isContainment)
+		eReference.definePropertyString("container", "non-container", defaultValue, isContainer)
 	}
 	
 	def CharSequence defineId(EAttribute eAttribute) {
@@ -145,32 +146,34 @@ class EStructuralFeaturePropertyHelper {
 
 	def CharSequence defineEKeys(EReference eReference) {
 		val eKeys = eReference.EKeys
+		
 		val boolean eKeysExist = !eKeys.isEmpty
-
-		'''_EKeys:_«IF eKeysExist» «eKeys.join("`", ", ", "`") [name]»«ELSE» `-`«ENDIF»'''
+		
+		if (eKeysExist || eReference.shouldRenderDefaults) {
+			'''_EKeys:_«IF eKeysExist» «eKeys.join("`", ", ", "`") [name]»«ELSE» `-`«ENDIF»'''
+		}
 	}
 
 	def dispatch CharSequence concatDefaultValue(EAttribute eAttribute) {
 		val EStructuralFeature defaultValueLiteral = EcorePackage.eINSTANCE.EStructuralFeature_DefaultValueLiteral
 		val boolean defaultIsSet = eAttribute.eIsSet(defaultValueLiteral)
-		var result = '''_Default:_ '''
 		
 		if (defaultIsSet) {
 			val defaultValue = eAttribute.defaultValue
 			
 			switch (defaultValue) {
 				EEnumLiteralImpl:
-					result += '''`<<«concatAnchor(eAttribute.EAttributeType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>`'''
+					return '''_Default:_ `<<«concatAnchor(eAttribute.EAttributeType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>`'''
 						
 				default:
-					result += '''`«defaultValue»`'''
+					return '''_Default:_ `«defaultValue»`'''
 			}
 
+		} else if (eAttribute.shouldRenderDefaults) {
+			return '''_Default:_ `-`'''
 		} else {
-			result += '''`-`'''
+			return null
 		}
-
-		return result 
 	}
 
 	def dispatch CharSequence concatDefaultValue(EReference eReference) {
@@ -181,8 +184,10 @@ class EStructuralFeaturePropertyHelper {
 			val defaultValue = eReference.defaultValue
 			return '''_Default:_ `«defaultValue»`'''
 
-		} else {
+		} else if (eReference.shouldRenderDefaults) {
 			return '''_Default:_ `-`'''
+		} else {
+			return null
 		}
 	}
 
@@ -195,5 +200,13 @@ class EStructuralFeaturePropertyHelper {
 		} else {
 			'''*'''
 		}
+	}
+	
+	protected def shouldRenderDefaults(EStructuralFeature eStructuralFeature) {
+		(getConfig().findConfig(eStructuralFeature) as IEStructuralFeatureConfig).shouldRenderDefaults
+	}
+	
+	protected def getConfig() {
+		this.config
 	}
 }

@@ -13,5 +13,5 @@ package com.altran.general.ecoredoc.generator.config;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface IEDataTypeConfig extends IEcoreDocGeneratorPartConfig {
+public interface IEDataTypeConfig extends IEClassifierConfig {
 } // IEDataTypeConfig

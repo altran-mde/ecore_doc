@@ -4,7 +4,9 @@ package com.altran.general.ecoredoc.generator.config.impl;
 
 import com.altran.general.ecoredoc.generator.config.ConfigPackage;
 import com.altran.general.ecoredoc.generator.config.EDataTypeConfig;
-import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig;
+import com.altran.general.ecoredoc.generator.config.IDefaultValueConfig;
+import com.altran.general.ecoredoc.generator.config.IEClassifierConfig;
+import com.altran.general.ecoredoc.generator.config.IENamedElementConfig;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -16,8 +18,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -29,44 +31,15 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EDataTypeConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EDataTypeConfigImpl#isRender <em>Render</em>}</li>
- *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EDataTypeConfigImpl#getPosition <em>Position</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EDataTypeConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EDataTypeConfigImpl#isRenderUseCases <em>Render Use Cases</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EDataTypeConfigImpl#getTargetEDataType <em>Target EData Type</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements EDataTypeConfig {
-	/**
-	 * The default value of the '{@link #isRenderDefaults() <em>Render Defaults</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isRenderDefaults()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean RENDER_DEFAULTS_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isRenderDefaults() <em>Render Defaults</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isRenderDefaults()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean renderDefaults = RENDER_DEFAULTS_EDEFAULT;
-
-	/**
-	 * This is true if the Render Defaults attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean renderDefaultsESet;
-
 	/**
 	 * The default value of the '{@link #isRender() <em>Render</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -97,33 +70,62 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 	protected boolean renderESet;
 
 	/**
-	 * The default value of the '{@link #getPosition() <em>Position</em>}' attribute.
+	 * The default value of the '{@link #isRenderDefaults() <em>Render Defaults</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPosition()
+	 * @see #isRenderDefaults()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int POSITION_EDEFAULT = 0;
+	protected static final boolean RENDER_DEFAULTS_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #getPosition() <em>Position</em>}' attribute.
+	 * The cached value of the '{@link #isRenderDefaults() <em>Render Defaults</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPosition()
+	 * @see #isRenderDefaults()
 	 * @generated
 	 * @ordered
 	 */
-	protected int position = POSITION_EDEFAULT;
+	protected boolean renderDefaults = RENDER_DEFAULTS_EDEFAULT;
 
 	/**
-	 * This is true if the Position attribute has been set.
+	 * This is true if the Render Defaults attribute has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean positionESet;
+	protected boolean renderDefaultsESet;
+
+	/**
+	 * The default value of the '{@link #isRenderUseCases() <em>Render Use Cases</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderUseCases()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RENDER_USE_CASES_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRenderUseCases() <em>Render Use Cases</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderUseCases()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderUseCases = RENDER_USE_CASES_EDEFAULT;
+
+	/**
+	 * This is true if the Render Use Cases attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderUseCasesESet;
 
 	/**
 	 * The cached value of the '{@link #getTargetEDataType() <em>Target EData Type</em>}' reference.
@@ -152,52 +154,6 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	protected EClass eStaticClass() {
 		return ConfigPackage.Literals.EDATA_TYPE_CONFIG;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isRenderDefaults() {
-		return renderDefaults;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRenderDefaults(boolean newRenderDefaults) {
-		boolean oldRenderDefaults = renderDefaults;
-		renderDefaults = newRenderDefaults;
-		boolean oldRenderDefaultsESet = renderDefaultsESet;
-		renderDefaultsESet = true;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, renderDefaults, !oldRenderDefaultsESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetRenderDefaults() {
-		boolean oldRenderDefaults = renderDefaults;
-		boolean oldRenderDefaultsESet = renderDefaultsESet;
-		renderDefaults = RENDER_DEFAULTS_EDEFAULT;
-		renderDefaultsESet = false;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, RENDER_DEFAULTS_EDEFAULT, oldRenderDefaultsESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetRenderDefaults() {
-		return renderDefaultsESet;
 	}
 
 	/**
@@ -251,8 +207,8 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getPosition_() {
-		return position;
+	public boolean isRenderDefaults() {
+		return renderDefaults;
 	}
 
 	/**
@@ -260,8 +216,82 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetPosition() {
-		return positionESet;
+	public void setRenderDefaults(boolean newRenderDefaults) {
+		boolean oldRenderDefaults = renderDefaults;
+		renderDefaults = newRenderDefaults;
+		boolean oldRenderDefaultsESet = renderDefaultsESet;
+		renderDefaultsESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, renderDefaults, !oldRenderDefaultsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetRenderDefaults() {
+		boolean oldRenderDefaults = renderDefaults;
+		boolean oldRenderDefaultsESet = renderDefaultsESet;
+		renderDefaults = RENDER_DEFAULTS_EDEFAULT;
+		renderDefaultsESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, RENDER_DEFAULTS_EDEFAULT, oldRenderDefaultsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRenderDefaults() {
+		return renderDefaultsESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRenderUseCases() {
+		return renderUseCases;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRenderUseCases(boolean newRenderUseCases) {
+		boolean oldRenderUseCases = renderUseCases;
+		renderUseCases = newRenderUseCases;
+		boolean oldRenderUseCasesESet = renderUseCasesESet;
+		renderUseCasesESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EDATA_TYPE_CONFIG__RENDER_USE_CASES, oldRenderUseCases, renderUseCases, !oldRenderUseCasesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetRenderUseCases() {
+		boolean oldRenderUseCases = renderUseCases;
+		boolean oldRenderUseCasesESet = renderUseCasesESet;
+		renderUseCases = RENDER_USE_CASES_EDEFAULT;
+		renderUseCasesESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EDATA_TYPE_CONFIG__RENDER_USE_CASES, oldRenderUseCases, RENDER_USE_CASES_EDEFAULT, oldRenderUseCasesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRenderUseCases() {
+		return renderUseCasesESet;
 	}
 
 	/**
@@ -316,44 +346,17 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getPosition() {
-		int _xifexpression = (int) 0;
-		boolean _isSetPosition = this.isSetPosition();
-		if (_isSetPosition) {
-			_xifexpression = ((EDataTypeConfigImpl) this).getPosition_();
+	public boolean shouldRenderUseCases() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderUseCases = this.isSetRenderUseCases();
+		if (_isSetRenderUseCases) {
+			_xifexpression = this.isRenderUseCases();
 		}
 		else {
-			_xifexpression = 3;
+			EObject _eContainer = this.eContainer();
+			_xifexpression = ((IEClassifierConfig) _eContainer).shouldRenderUseCases();
 		}
 		return _xifexpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPosition(int newPosition) {
-		int oldPosition = position;
-		position = newPosition;
-		boolean oldPositionESet = positionESet;
-		positionESet = true;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EDATA_TYPE_CONFIG__POSITION, oldPosition, position, !oldPositionESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetPosition() {
-		int oldPosition = position;
-		boolean oldPositionESet = positionESet;
-		position = POSITION_EDEFAULT;
-		positionESet = false;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EDATA_TYPE_CONFIG__POSITION, oldPosition, POSITION_EDEFAULT, oldPositionESet));
 	}
 
 	/**
@@ -369,7 +372,7 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 		}
 		else {
 			EObject _eContainer = this.eContainer();
-			_xifexpression = ((IEcoreDocGeneratorConfig) _eContainer).shouldRenderDefaults();
+			_xifexpression = ((IDefaultValueConfig) _eContainer).shouldRenderDefaults();
 		}
 		return _xifexpression;
 	}
@@ -387,7 +390,7 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 		}
 		else {
 			EObject _eContainer = this.eContainer();
-			_xifexpression = ((IEcoreDocGeneratorConfig) _eContainer).shouldRender();
+			_xifexpression = ((IENamedElementConfig) _eContainer).shouldRender();
 		}
 		return _xifexpression;
 	}
@@ -400,12 +403,12 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS:
-				return isRenderDefaults();
 			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER:
 				return isRender();
-			case ConfigPackage.EDATA_TYPE_CONFIG__POSITION:
-				return getPosition();
+			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS:
+				return isRenderDefaults();
+			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_USE_CASES:
+				return isRenderUseCases();
 			case ConfigPackage.EDATA_TYPE_CONFIG__TARGET_EDATA_TYPE:
 				if (resolve) return getTargetEDataType();
 				return basicGetTargetEDataType();
@@ -421,14 +424,14 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS:
-				setRenderDefaults((Boolean)newValue);
-				return;
 			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER:
 				setRender((Boolean)newValue);
 				return;
-			case ConfigPackage.EDATA_TYPE_CONFIG__POSITION:
-				setPosition((Integer)newValue);
+			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS:
+				setRenderDefaults((Boolean)newValue);
+				return;
+			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_USE_CASES:
+				setRenderUseCases((Boolean)newValue);
 				return;
 			case ConfigPackage.EDATA_TYPE_CONFIG__TARGET_EDATA_TYPE:
 				setTargetEDataType((EDataType)newValue);
@@ -445,14 +448,14 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS:
-				unsetRenderDefaults();
-				return;
 			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER:
 				unsetRender();
 				return;
-			case ConfigPackage.EDATA_TYPE_CONFIG__POSITION:
-				unsetPosition();
+			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS:
+				unsetRenderDefaults();
+				return;
+			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_USE_CASES:
+				unsetRenderUseCases();
 				return;
 			case ConfigPackage.EDATA_TYPE_CONFIG__TARGET_EDATA_TYPE:
 				setTargetEDataType((EDataType)null);
@@ -469,12 +472,12 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS:
-				return isSetRenderDefaults();
 			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER:
 				return isSetRender();
-			case ConfigPackage.EDATA_TYPE_CONFIG__POSITION:
-				return isSetPosition();
+			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS:
+				return isSetRenderDefaults();
+			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_USE_CASES:
+				return isSetRenderUseCases();
 			case ConfigPackage.EDATA_TYPE_CONFIG__TARGET_EDATA_TYPE:
 				return targetEDataType != null;
 		}
@@ -487,12 +490,60 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 */
 	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == IDefaultValueConfig.class) {
+			switch (derivedFeatureID) {
+				case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS: return ConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == IDefaultValueConfig.class) {
+			switch (baseFeatureID) {
+				case ConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS: return ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == IDefaultValueConfig.class) {
+			switch (baseOperationID) {
+				case ConfigPackage.IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS: return ConfigPackage.EDATA_TYPE_CONFIG___SHOULD_RENDER_DEFAULTS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case ConfigPackage.EDATA_TYPE_CONFIG___GET_TARGET:
 				return getTarget();
-			case ConfigPackage.EDATA_TYPE_CONFIG___GET_POSITION:
-				return getPosition();
+			case ConfigPackage.EDATA_TYPE_CONFIG___SHOULD_RENDER_USE_CASES:
+				return shouldRenderUseCases();
 			case ConfigPackage.EDATA_TYPE_CONFIG___SHOULD_RENDER_DEFAULTS:
 				return shouldRenderDefaults();
 			case ConfigPackage.EDATA_TYPE_CONFIG___SHOULD_RENDER:
@@ -511,12 +562,12 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (renderDefaults: ");
-		if (renderDefaultsESet) result.append(renderDefaults); else result.append("<unset>");
-		result.append(", render: ");
+		result.append(" (render: ");
 		if (renderESet) result.append(render); else result.append("<unset>");
-		result.append(", position: ");
-		if (positionESet) result.append(position); else result.append("<unset>");
+		result.append(", renderDefaults: ");
+		if (renderDefaultsESet) result.append(renderDefaults); else result.append("<unset>");
+		result.append(", renderUseCases: ");
+		if (renderUseCasesESet) result.append(renderUseCases); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}

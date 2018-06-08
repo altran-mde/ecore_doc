@@ -5,7 +5,6 @@ package com.altran.general.ecoredoc.generator.config;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.ENamedElement;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>EData Type Config</b></em>'.
@@ -23,7 +22,6 @@ import org.eclipse.emf.ecore.ENamedElement;
  * @generated
  */
 public interface EDataTypeConfig extends IEDataTypeConfig {
-
 	/**
 	 * Returns the value of the '<em><b>Target EData Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -59,12 +57,4 @@ public interface EDataTypeConfig extends IEDataTypeConfig {
 	 */
 	ENamedElement getTarget();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='int _xifexpression = (int) 0;\nboolean _isSetPosition = this.isSetPosition();\nif (_isSetPosition)\n{\n\t_xifexpression = ((&lt;%com.altran.general.ecoredoc.generator.config.impl.EDataTypeConfigImpl%&gt;) this).getPosition_();\n}\nelse\n{\n\t_xifexpression = 3;\n}\nreturn _xifexpression;'"
-	 * @generated
-	 */
-	int getPosition();
 } // EDataTypeConfig

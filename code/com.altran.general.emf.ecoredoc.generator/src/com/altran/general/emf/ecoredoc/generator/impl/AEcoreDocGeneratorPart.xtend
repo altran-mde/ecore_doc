@@ -1,8 +1,7 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
 import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig
-import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorConfig
-import com.altran.general.ecoredoc.generator.config.IEcoreDocGeneratorPartConfig
+import com.altran.general.ecoredoc.generator.config.IEClassifierConfig
 import com.google.common.collect.Multimap
 import java.util.AbstractMap.SimpleEntry
 import java.util.ArrayList
@@ -33,7 +32,7 @@ abstract class AEcoreDocGeneratorPart {
 		this.ePackages = ePackages
 	}
 
-	protected def abstract StringBuilder write(EPackage ePackage)
+	def abstract StringBuilder write(EPackage ePackage)
 
 	protected def void clearOutput() {
 		this.output = new StringBuilder()
@@ -93,11 +92,15 @@ abstract class AEcoreDocGeneratorPart {
 		#[ePackageName, eClassName, eStructuralFeatureName]
 	}
 
-	protected def void writeUseCases(Pair<? extends EClassifier, ? extends IEcoreDocGeneratorConfig> pair) {
-		writeUseCases(new SimpleEntry(pair.key, pair.value as IEcoreDocGeneratorPartConfig))
+	protected def void writeUseCases(Pair<? extends EClassifier, ? extends IEClassifierConfig> pair) {
+		writeUseCases(new SimpleEntry(pair.key, pair.value as IEClassifierConfig))
 	}
 
-	protected def void writeUseCases(Entry<? extends EClassifier, ? extends IEcoreDocGeneratorPartConfig> entry) {
+	protected def void writeUseCases(Entry<? extends EClassifier, ? extends IEClassifierConfig> entry) {
+		if (!entry.value.shouldRenderUseCases) {
+			return
+		}
+
 		val target = entry.key
 		
 		var boolean anyMatch = false
@@ -133,22 +136,28 @@ abstract class AEcoreDocGeneratorPart {
 		}
 	}
 	
-	protected def defineDefaultValue(EClassifier eClassifier) {
+	protected def defineDefaultValue(Entry<? extends EClassifier, ? extends IEClassifierConfig> entry) {
+		val eClassifier = entry.key
+		
 		val defaultValue = '''_undefined_'''
 		val value = if (eClassifier.eIsSet(EcorePackage.eINSTANCE.EClassifier_DefaultValue)) '''`«eClassifier.defaultValue»`''' else null
 
-		concatProperty("Default Value", defaultValue, value)
+		concatProperty("Default Value", defaultValue, value, entry)
 	}
 	
-	protected def defineInstanceClassName(EClassifier eClassifier) {
+	protected def defineInstanceClassName(Entry<? extends EClassifier, ? extends IEClassifierConfig> entry) {
+		val eClassifier = entry.key
+		
 		val defaultValue = '''_undefined_'''
 		val value = if (eClassifier.eIsSet(EcorePackage.eINSTANCE.EClassifier_InstanceClassName)) '''`«eClassifier.instanceClassName»`''' else null
 
-		concatProperty("Instance Type Name", defaultValue, value)
+		concatProperty("Instance Type Name", defaultValue, value, entry)
 	}
 	
-	protected def concatProperty(String name, String defaultValue, String value) {
-		'''«name»:: «IF value !== null»«value»«ELSE»«defaultValue»«ENDIF»'''
+	protected def concatProperty(String name, String defaultValue, String value, Entry<? extends EClassifier, ? extends IEClassifierConfig> entry) {
+		if (value !== null || entry.value.shouldRenderDefaults) {
+			'''«name»:: «IF value !== null»«value»«ELSE»«defaultValue»«ENDIF»'''
+		}
 	}
 	
 	protected def CharSequence tableFooter() {
@@ -158,6 +167,9 @@ abstract class AEcoreDocGeneratorPart {
 	}
 
 	protected def Collection<EClass> collectAllEClasses() {
-		ePackages.values.filter(EClass).toSet
+		ePackages.values
+			.filter(EClass)
+			.filter[getConfig().findConfig(it).shouldRender]
+			.toSet
 	}
 }

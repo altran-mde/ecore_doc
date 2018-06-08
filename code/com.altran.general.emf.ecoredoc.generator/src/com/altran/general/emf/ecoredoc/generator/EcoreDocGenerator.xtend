@@ -1,5 +1,6 @@
 package com.altran.general.emf.ecoredoc.generator
 
+import com.altran.general.ecoredoc.generator.config.EPackageConfig
 import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigBuilder
 import com.altran.general.emf.ecoredoc.generator.impl.EClassGeneratorPart
@@ -36,19 +37,29 @@ class EcoreDocGenerator {
 	def CharSequence generate() {
 		writeIntro()
 
-		collectEPackages()
-
-		val eDataTypeGeneratorPart = new EDataTypeGeneratorPart(getConfig(), ePackages)
-		val eEnumGeneratorPart = new EEnumGeneratorPart(getConfig(), ePackages)
-		val eClassGeneratorPart = new EClassGeneratorPart(getConfig(), ePackages)
-
-		for (ePackage : ePackages.keySet) {
-
-			writeEPackageIntro(ePackage)
-
-			output.append(eDataTypeGeneratorPart.write(ePackage))
-			output.append(eEnumGeneratorPart.write(ePackage))
-			output.append(eClassGeneratorPart.write(ePackage))
+		val parts = #[
+			new EDataTypeGeneratorPart(getConfig(), getEPackages()),
+			new EEnumGeneratorPart(getConfig(), getEPackages()),
+			new EClassGeneratorPart(getConfig(), getEPackages())
+		]
+		
+		for (ePackage : getEPackages().keySet) {
+			
+			val config = getConfig().findConfig(ePackage) as EPackageConfig
+			
+			if (config.shouldRender) {
+				writeEPackageIntro(ePackage)
+				
+				parts.sortBy[
+					switch(it) {
+						EDataTypeGeneratorPart: config.positionEDataTypes
+						EEnumGeneratorPart: config.positionEEnums
+						EClassGeneratorPart: config.positionEClasses
+					} as Integer
+				].forEach [
+					output.append(it.write(ePackage))
+				]
+			}
 		}
 
 		return output.toString
@@ -97,16 +108,24 @@ class EcoreDocGenerator {
 			Ns URI:: «ePackage.nsURI»
 		'''
 	}
+	
+	protected def getEPackages() {
+		if (this.ePackages.isEmpty) {
+			collectEPackages()
+		}
+		
+		return this.ePackages
+	}
 
 	protected def void collectEPackages() {
 		for (eclassifier : input) {
-			ePackages.put(eclassifier.eContainer as EPackage, eclassifier)
+			this.ePackages.put(eclassifier.eContainer as EPackage, eclassifier)
 		}
 	}
 	
 	protected def void assureConfigExists() {
 		if (this.config === null) {
-			this.config = new EcoreDocConfigBuilder(ePackages.keySet).build()
+			this.config = new EcoreDocConfigBuilder(getEPackages().keySet).build()
 		}
 	}
 }

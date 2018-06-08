@@ -44,7 +44,7 @@ public class EStructuralFeaturePropertyHelper {
       }
       final boolean isSet = _xifexpression;
       CharSequence _xifexpression_1 = null;
-      if ((isSet || this.shouldRenderDefaults(eStructuralFeature))) {
+      if ((isSet || ((IEStructuralFeatureConfig) this.getConfig().findConfig(eStructuralFeature)).shouldRenderBounds())) {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("`[");
         _builder.append(lowerBound);
@@ -180,13 +180,25 @@ public class EStructuralFeaturePropertyHelper {
   }
   
   public CharSequence defineContainer(final EReference eReference) {
-    CharSequence _xblockexpression = null;
-    {
-      final boolean defaultValue = false;
-      final boolean isContainer = eReference.isContainer();
-      _xblockexpression = this.definePropertyString(eReference, "container", "non-container", defaultValue, isContainer);
+    CharSequence _xifexpression = null;
+    boolean _isContainer = eReference.isContainer();
+    if (_isContainer) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("*container*");
+      _xifexpression = _builder;
+    } else {
+      CharSequence _xifexpression_1 = null;
+      boolean _shouldRenderDefaults = this.shouldRenderDefaults(eReference);
+      if (_shouldRenderDefaults) {
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("non-container");
+        _xifexpression_1 = _builder_1;
+      } else {
+        _xifexpression_1 = null;
+      }
+      _xifexpression = _xifexpression_1;
     }
-    return _xblockexpression;
+    return _xifexpression;
   }
   
   public CharSequence defineId(final EAttribute eAttribute) {

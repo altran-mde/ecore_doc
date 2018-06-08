@@ -402,6 +402,24 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getIEStructuralFeatureConfig_RenderBounds() {
+		return (EAttribute)ieStructuralFeatureConfigEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getIEStructuralFeatureConfig__ShouldRenderBounds() {
+		return ieStructuralFeatureConfigEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getIEAttributeConfig() {
 		return ieAttributeConfigEClass;
 	}
@@ -492,7 +510,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getEcoreDocGeneratorConfig__FindConfig__ENamedElement() {
+	public EOperation getEcoreDocGeneratorConfig__ShouldRenderBounds() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(4);
 	}
 
@@ -501,8 +519,17 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getEcoreDocGeneratorConfig__GetTarget() {
+	public EOperation getEcoreDocGeneratorConfig__FindConfig__ENamedElement() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEcoreDocGeneratorConfig__GetTarget() {
+		return ecoreDocGeneratorConfigEClass.getEOperations().get(6);
 	}
 
 	/**
@@ -870,6 +897,8 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		createEOperation(ieClassConfigEClass, IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED);
 
 		ieStructuralFeatureConfigEClass = createEClass(IE_STRUCTURAL_FEATURE_CONFIG);
+		createEAttribute(ieStructuralFeatureConfigEClass, IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS);
+		createEOperation(ieStructuralFeatureConfigEClass, IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_BOUNDS);
 
 		ieAttributeConfigEClass = createEClass(IE_ATTRIBUTE_CONFIG);
 
@@ -885,6 +914,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED);
+		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___GET_TARGET);
 
@@ -1027,6 +1057,9 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		initEOperation(getIEClassConfig__ShouldRepeatInherited(), theEcorePackage.getEBoolean(), "shouldRepeatInherited", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(ieStructuralFeatureConfigEClass, IEStructuralFeatureConfig.class, "IEStructuralFeatureConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIEStructuralFeatureConfig_RenderBounds(), theEcorePackage.getEBoolean(), "renderBounds", null, 0, 1, IEStructuralFeatureConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getIEStructuralFeatureConfig__ShouldRenderBounds(), theEcorePackage.getEBoolean(), "shouldRenderBounds", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(ieAttributeConfigEClass, IEAttributeConfig.class, "IEAttributeConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1046,6 +1079,8 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		initEOperation(getEcoreDocGeneratorConfig__ShouldRenderUseCases(), theEcorePackage.getEBoolean(), "shouldRenderUseCases", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getEcoreDocGeneratorConfig__ShouldRepeatInherited(), theEcorePackage.getEBoolean(), "shouldRepeatInherited", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getEcoreDocGeneratorConfig__ShouldRenderBounds(), theEcorePackage.getEBoolean(), "shouldRenderBounds", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		EOperation op = initEOperation(getEcoreDocGeneratorConfig__FindConfig__ENamedElement(), this.getIENamedElementConfig(), "findConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theEcorePackage.getENamedElement(), "element", 0, 1, !IS_UNIQUE, IS_ORDERED);

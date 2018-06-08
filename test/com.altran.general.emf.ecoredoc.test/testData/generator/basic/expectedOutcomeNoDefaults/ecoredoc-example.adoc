@@ -135,7 +135,7 @@ Description
 |`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
 
 _EOpposite:_ `<<EPackage1-MyEClass-clazzes, clazzes>>`
-|container
+|*container*
 |Bla
 
 |`myRelation`[[EPackage1-Class3-myRelation]] +

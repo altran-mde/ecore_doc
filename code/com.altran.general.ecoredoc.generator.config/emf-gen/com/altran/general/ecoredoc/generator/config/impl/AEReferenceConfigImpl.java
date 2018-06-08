@@ -6,6 +6,7 @@ import com.altran.general.ecoredoc.generator.config.AEReferenceConfig;
 import com.altran.general.ecoredoc.generator.config.ConfigPackage;
 import com.altran.general.ecoredoc.generator.config.IDefaultValueConfig;
 import com.altran.general.ecoredoc.generator.config.IENamedElementConfig;
+import com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.AEReferenceConfigImpl#isRender <em>Render</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.AEReferenceConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.AEReferenceConfigImpl#isRenderBounds <em>Render Bounds</em>}</li>
  * </ul>
  *
  * @generated
@@ -91,6 +93,35 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	 * @ordered
 	 */
 	protected boolean renderDefaultsESet;
+
+	/**
+	 * The default value of the '{@link #isRenderBounds() <em>Render Bounds</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderBounds()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RENDER_BOUNDS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRenderBounds() <em>Render Bounds</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderBounds()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderBounds = RENDER_BOUNDS_EDEFAULT;
+
+	/**
+	 * This is true if the Render Bounds attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderBoundsESet;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -208,6 +239,70 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isRenderBounds() {
+		return renderBounds;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRenderBounds(boolean newRenderBounds) {
+		boolean oldRenderBounds = renderBounds;
+		renderBounds = newRenderBounds;
+		boolean oldRenderBoundsESet = renderBoundsESet;
+		renderBoundsESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS, oldRenderBounds, renderBounds, !oldRenderBoundsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetRenderBounds() {
+		boolean oldRenderBounds = renderBounds;
+		boolean oldRenderBoundsESet = renderBoundsESet;
+		renderBounds = RENDER_BOUNDS_EDEFAULT;
+		renderBoundsESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS, oldRenderBounds, RENDER_BOUNDS_EDEFAULT, oldRenderBoundsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRenderBounds() {
+		return renderBoundsESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean shouldRenderBounds() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderBounds = this.isSetRenderBounds();
+		if (_isSetRenderBounds) {
+			_xifexpression = this.isRenderBounds();
+		}
+		else {
+			EObject _eContainer = this.eContainer();
+			_xifexpression = ((IEStructuralFeatureConfig) _eContainer).shouldRenderBounds();
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean shouldRenderDefaults() {
 		boolean _xifexpression = false;
 		boolean _isSetRenderDefaults = this.isSetRenderDefaults();
@@ -262,6 +357,8 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 				return isRender();
 			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS:
 				return isRenderDefaults();
+			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS:
+				return isRenderBounds();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -279,6 +376,9 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 				return;
 			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS:
 				setRenderDefaults((Boolean)newValue);
+				return;
+			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS:
+				setRenderBounds((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -298,6 +398,9 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS:
 				unsetRenderDefaults();
 				return;
+			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS:
+				unsetRenderBounds();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -314,6 +417,8 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 				return isSetRender();
 			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS:
 				return isSetRenderDefaults();
+			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS:
+				return isSetRenderBounds();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -374,6 +479,8 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
+			case ConfigPackage.AE_REFERENCE_CONFIG___SHOULD_RENDER_BOUNDS:
+				return shouldRenderBounds();
 			case ConfigPackage.AE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS:
 				return shouldRenderDefaults();
 			case ConfigPackage.AE_REFERENCE_CONFIG___SHOULD_RENDER:
@@ -398,6 +505,8 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 		if (renderESet) result.append(render); else result.append("<unset>");
 		result.append(", renderDefaults: ");
 		if (renderDefaultsESet) result.append(renderDefaults); else result.append("<unset>");
+		result.append(", renderBounds: ");
+		if (renderBoundsESet) result.append(renderBounds); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}

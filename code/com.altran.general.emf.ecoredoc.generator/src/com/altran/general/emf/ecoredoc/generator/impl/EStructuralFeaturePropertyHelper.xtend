@@ -30,7 +30,7 @@ class EStructuralFeaturePropertyHelper {
 			lowerBound !== 0 || upperBound !== 1
 		}
 		
-		if (isSet || eStructuralFeature.shouldRenderDefaults) {
+		if (isSet || (getConfig().findConfig(eStructuralFeature) as IEStructuralFeatureConfig).shouldRenderBounds) {
 			'''`[«lowerBound»«IF lowerNotEqualUpperBound»..«defineUpperBound(upperBound)»«ENDIF»]`'''
 		}
 	}
@@ -129,10 +129,14 @@ class EStructuralFeaturePropertyHelper {
 	}
 	
 	def CharSequence defineContainer(EReference eReference){
-		val boolean defaultValue = false
-		val boolean isContainer = eReference.isContainer
-		
-		eReference.definePropertyString("container", "non-container", defaultValue, isContainer)
+		if (eReference.isContainer) {
+			'''*container*'''
+
+		} else if(eReference.shouldRenderDefaults) {
+			'''non-container'''
+		} else {
+			null
+		}
 	}
 	
 	def CharSequence defineId(EAttribute eAttribute) {

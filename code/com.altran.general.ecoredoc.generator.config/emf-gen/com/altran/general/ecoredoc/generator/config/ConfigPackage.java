@@ -570,13 +570,22 @@ public interface ConfigPackage extends EPackage {
 	int IE_STRUCTURAL_FEATURE_CONFIG__RENDER_DEFAULTS = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Render Bounds</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>IE Structural Feature Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IE_STRUCTURAL_FEATURE_CONFIG_FEATURE_COUNT = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 1;
+	int IE_STRUCTURAL_FEATURE_CONFIG_FEATURE_COUNT = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -606,13 +615,22 @@ public interface ConfigPackage extends EPackage {
 	int IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Should Render Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_BOUNDS = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>IE Structural Feature Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IE_STRUCTURAL_FEATURE_CONFIG_OPERATION_COUNT = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 1;
+	int IE_STRUCTURAL_FEATURE_CONFIG_OPERATION_COUNT = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.IEAttributeConfig <em>IE Attribute Config</em>}' class.
@@ -641,6 +659,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int IE_ATTRIBUTE_CONFIG__RENDER_DEFAULTS = IE_STRUCTURAL_FEATURE_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Render Bounds</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ATTRIBUTE_CONFIG__RENDER_BOUNDS = IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS;
 
 	/**
 	 * The number of structural features of the '<em>IE Attribute Config</em>' class.
@@ -677,6 +704,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int IE_ATTRIBUTE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_DEFAULTS;
+
+	/**
+	 * The operation id for the '<em>Should Render Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ATTRIBUTE_CONFIG___SHOULD_RENDER_BOUNDS = IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_BOUNDS;
 
 	/**
 	 * The number of operations of the '<em>IE Attribute Config</em>' class.
@@ -716,6 +752,15 @@ public interface ConfigPackage extends EPackage {
 	int IE_REFERENCE_CONFIG__RENDER_DEFAULTS = IE_STRUCTURAL_FEATURE_CONFIG__RENDER_DEFAULTS;
 
 	/**
+	 * The feature id for the '<em><b>Render Bounds</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_REFERENCE_CONFIG__RENDER_BOUNDS = IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS;
+
+	/**
 	 * The number of structural features of the '<em>IE Reference Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -750,6 +795,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int IE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_DEFAULTS;
+
+	/**
+	 * The operation id for the '<em>Should Render Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_REFERENCE_CONFIG___SHOULD_RENDER_BOUNDS = IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_BOUNDS;
 
 	/**
 	 * The number of operations of the '<em>IE Reference Config</em>' class.
@@ -917,13 +971,22 @@ public interface ConfigPackage extends EPackage {
 	int ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED = IE_PACKAGE_CONFIG_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Render Bounds</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>EPackages</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG__EPACKAGES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 3;
+	int ECORE_DOC_GENERATOR_CONFIG__EPACKAGES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Ecore Doc Generator Config</em>' class.
@@ -932,7 +995,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 4;
+	int ECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -941,7 +1004,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER = IE_PACKAGE_CONFIG_OPERATION_COUNT + 3;
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER = IE_PACKAGE_CONFIG_OPERATION_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
@@ -950,7 +1013,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 4;
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
@@ -959,7 +1022,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 5;
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>Should Repeat Inherited</em>' operation.
@@ -968,7 +1031,16 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED = IE_PACKAGE_CONFIG_OPERATION_COUNT + 6;
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED = IE_PACKAGE_CONFIG_OPERATION_COUNT + 7;
+
+	/**
+	 * The operation id for the '<em>Should Render Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 8;
 
 	/**
 	 * The operation id for the '<em>Find Config</em>' operation.
@@ -977,7 +1049,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 7;
+	int ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 9;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -986,7 +1058,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 8;
+	int ECORE_DOC_GENERATOR_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 10;
 
 	/**
 	 * The number of operations of the '<em>Ecore Doc Generator Config</em>' class.
@@ -995,7 +1067,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 9;
+	int ECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl <em>EPackage Config</em>}' class.
@@ -1044,13 +1116,22 @@ public interface ConfigPackage extends EPackage {
 	int EPACKAGE_CONFIG__REPEAT_INHERITED = IE_PACKAGE_CONFIG_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Render Bounds</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__RENDER_BOUNDS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Position EData Types</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__POSITION_EDATA_TYPES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 3;
+	int EPACKAGE_CONFIG__POSITION_EDATA_TYPES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Position EEnums</b></em>' attribute.
@@ -1059,7 +1140,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__POSITION_EENUMS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 4;
+	int EPACKAGE_CONFIG__POSITION_EENUMS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Position EClasses</b></em>' attribute.
@@ -1068,7 +1149,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__POSITION_ECLASSES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 5;
+	int EPACKAGE_CONFIG__POSITION_ECLASSES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Target EPackage</b></em>' reference.
@@ -1077,7 +1158,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__TARGET_EPACKAGE = IE_PACKAGE_CONFIG_FEATURE_COUNT + 6;
+	int EPACKAGE_CONFIG__TARGET_EPACKAGE = IE_PACKAGE_CONFIG_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>EData Types</b></em>' containment reference list.
@@ -1086,7 +1167,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__EDATA_TYPES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 7;
+	int EPACKAGE_CONFIG__EDATA_TYPES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>EEnums</b></em>' containment reference list.
@@ -1095,7 +1176,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__EENUMS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 8;
+	int EPACKAGE_CONFIG__EENUMS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>EClasses</b></em>' containment reference list.
@@ -1104,7 +1185,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__ECLASSES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 9;
+	int EPACKAGE_CONFIG__ECLASSES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>EPackage Config</em>' class.
@@ -1113,7 +1194,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG_FEATURE_COUNT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 10;
+	int EPACKAGE_CONFIG_FEATURE_COUNT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 11;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -1152,13 +1233,22 @@ public interface ConfigPackage extends EPackage {
 	int EPACKAGE_CONFIG___SHOULD_REPEAT_INHERITED = IE_PACKAGE_CONFIG_OPERATION_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Should Render Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG___SHOULD_RENDER_BOUNDS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 3;
+
+	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 3;
+	int EPACKAGE_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>EPackage Config</em>' class.
@@ -1167,7 +1257,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 4;
+	int EPACKAGE_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.EDataTypeConfigImpl <em>EData Type Config</em>}' class.
@@ -1489,13 +1579,22 @@ public interface ConfigPackage extends EPackage {
 	int ECLASS_CONFIG__REPEAT_INHERITED = IE_CLASS_CONFIG__REPEAT_INHERITED;
 
 	/**
+	 * The feature id for the '<em><b>Render Bounds</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS_CONFIG__RENDER_BOUNDS = IE_CLASS_CONFIG_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Target EClass</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG__TARGET_ECLASS = IE_CLASS_CONFIG_FEATURE_COUNT + 0;
+	int ECLASS_CONFIG__TARGET_ECLASS = IE_CLASS_CONFIG_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>EAttributes</b></em>' containment reference list.
@@ -1504,7 +1603,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG__EATTRIBUTES = IE_CLASS_CONFIG_FEATURE_COUNT + 1;
+	int ECLASS_CONFIG__EATTRIBUTES = IE_CLASS_CONFIG_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>EContainments</b></em>' containment reference list.
@@ -1513,7 +1612,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG__ECONTAINMENTS = IE_CLASS_CONFIG_FEATURE_COUNT + 2;
+	int ECLASS_CONFIG__ECONTAINMENTS = IE_CLASS_CONFIG_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>EReferences</b></em>' containment reference list.
@@ -1522,7 +1621,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG__EREFERENCES = IE_CLASS_CONFIG_FEATURE_COUNT + 3;
+	int ECLASS_CONFIG__EREFERENCES = IE_CLASS_CONFIG_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>EClass Config</em>' class.
@@ -1531,7 +1630,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG_FEATURE_COUNT = IE_CLASS_CONFIG_FEATURE_COUNT + 4;
+	int ECLASS_CONFIG_FEATURE_COUNT = IE_CLASS_CONFIG_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -1570,13 +1669,22 @@ public interface ConfigPackage extends EPackage {
 	int ECLASS_CONFIG___SHOULD_REPEAT_INHERITED = IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED;
 
 	/**
+	 * The operation id for the '<em>Should Render Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS_CONFIG___SHOULD_RENDER_BOUNDS = IE_CLASS_CONFIG_OPERATION_COUNT + 0;
+
+	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG___GET_TARGET = IE_CLASS_CONFIG_OPERATION_COUNT + 0;
+	int ECLASS_CONFIG___GET_TARGET = IE_CLASS_CONFIG_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>EClass Config</em>' class.
@@ -1585,7 +1693,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG_OPERATION_COUNT = IE_CLASS_CONFIG_OPERATION_COUNT + 1;
+	int ECLASS_CONFIG_OPERATION_COUNT = IE_CLASS_CONFIG_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.ecoredoc.generator.config.impl.EAttributeConfigImpl <em>EAttribute Config</em>}' class.
@@ -1614,6 +1722,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int EATTRIBUTE_CONFIG__RENDER_DEFAULTS = IE_ATTRIBUTE_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Render Bounds</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EATTRIBUTE_CONFIG__RENDER_BOUNDS = IE_ATTRIBUTE_CONFIG__RENDER_BOUNDS;
 
 	/**
 	 * The feature id for the '<em><b>Target EAttribute</b></em>' reference.
@@ -1650,6 +1767,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int EATTRIBUTE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_ATTRIBUTE_CONFIG___SHOULD_RENDER_DEFAULTS;
+
+	/**
+	 * The operation id for the '<em>Should Render Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EATTRIBUTE_CONFIG___SHOULD_RENDER_BOUNDS = IE_ATTRIBUTE_CONFIG___SHOULD_RENDER_BOUNDS;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -1698,6 +1824,15 @@ public interface ConfigPackage extends EPackage {
 	int AE_REFERENCE_CONFIG__RENDER_DEFAULTS = IE_REFERENCE_CONFIG__RENDER_DEFAULTS;
 
 	/**
+	 * The feature id for the '<em><b>Render Bounds</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AE_REFERENCE_CONFIG__RENDER_BOUNDS = IE_REFERENCE_CONFIG__RENDER_BOUNDS;
+
+	/**
 	 * The number of structural features of the '<em>AE Reference Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1732,6 +1867,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int AE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS;
+
+	/**
+	 * The operation id for the '<em>Should Render Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AE_REFERENCE_CONFIG___SHOULD_RENDER_BOUNDS = IE_REFERENCE_CONFIG___SHOULD_RENDER_BOUNDS;
 
 	/**
 	 * The number of operations of the '<em>AE Reference Config</em>' class.
@@ -1771,6 +1915,15 @@ public interface ConfigPackage extends EPackage {
 	int ECONTAINMENT_CONFIG__RENDER_DEFAULTS = AE_REFERENCE_CONFIG__RENDER_DEFAULTS;
 
 	/**
+	 * The feature id for the '<em><b>Render Bounds</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECONTAINMENT_CONFIG__RENDER_BOUNDS = AE_REFERENCE_CONFIG__RENDER_BOUNDS;
+
+	/**
 	 * The feature id for the '<em><b>Target EContainment</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1805,6 +1958,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECONTAINMENT_CONFIG___SHOULD_RENDER_DEFAULTS = AE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS;
+
+	/**
+	 * The operation id for the '<em>Should Render Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECONTAINMENT_CONFIG___SHOULD_RENDER_BOUNDS = AE_REFERENCE_CONFIG___SHOULD_RENDER_BOUNDS;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -1853,6 +2015,15 @@ public interface ConfigPackage extends EPackage {
 	int EREFERENCE_CONFIG__RENDER_DEFAULTS = AE_REFERENCE_CONFIG__RENDER_DEFAULTS;
 
 	/**
+	 * The feature id for the '<em><b>Render Bounds</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EREFERENCE_CONFIG__RENDER_BOUNDS = AE_REFERENCE_CONFIG__RENDER_BOUNDS;
+
+	/**
 	 * The feature id for the '<em><b>Target EReference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1887,6 +2058,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int EREFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS = AE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS;
+
+	/**
+	 * The operation id for the '<em>Should Render Bounds</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EREFERENCE_CONFIG___SHOULD_RENDER_BOUNDS = AE_REFERENCE_CONFIG___SHOULD_RENDER_BOUNDS;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -2072,6 +2252,27 @@ public interface ConfigPackage extends EPackage {
 	EClass getIEStructuralFeatureConfig();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig#isRenderBounds <em>Render Bounds</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Render Bounds</em>'.
+	 * @see com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig#isRenderBounds()
+	 * @see #getIEStructuralFeatureConfig()
+	 * @generated
+	 */
+	EAttribute getIEStructuralFeatureConfig_RenderBounds();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig#shouldRenderBounds() <em>Should Render Bounds</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Should Render Bounds</em>' operation.
+	 * @see com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig#shouldRenderBounds()
+	 * @generated
+	 */
+	EOperation getIEStructuralFeatureConfig__ShouldRenderBounds();
+
+	/**
 	 * Returns the meta object for class '{@link com.altran.general.ecoredoc.generator.config.IEAttributeConfig <em>IE Attribute Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2171,6 +2372,16 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getEcoreDocGeneratorConfig__ShouldRepeatInherited();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRenderBounds() <em>Should Render Bounds</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Should Render Bounds</em>' operation.
+	 * @see com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRenderBounds()
+	 * @generated
+	 */
+	EOperation getEcoreDocGeneratorConfig__ShouldRenderBounds();
 
 	/**
 	 * Returns the meta object for the '{@link com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig#findConfig(org.eclipse.emf.ecore.ENamedElement) <em>Find Config</em>}' operation.
@@ -2726,6 +2937,22 @@ public interface ConfigPackage extends EPackage {
 		EClass IE_STRUCTURAL_FEATURE_CONFIG = eINSTANCE.getIEStructuralFeatureConfig();
 
 		/**
+		 * The meta object literal for the '<em><b>Render Bounds</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS = eINSTANCE.getIEStructuralFeatureConfig_RenderBounds();
+
+		/**
+		 * The meta object literal for the '<em><b>Should Render Bounds</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_BOUNDS = eINSTANCE.getIEStructuralFeatureConfig__ShouldRenderBounds();
+
+		/**
 		 * The meta object literal for the '{@link com.altran.general.ecoredoc.generator.config.IEAttributeConfig <em>IE Attribute Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2814,6 +3041,14 @@ public interface ConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED = eINSTANCE.getEcoreDocGeneratorConfig__ShouldRepeatInherited();
+
+		/**
+		 * The meta object literal for the '<em><b>Should Render Bounds</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS = eINSTANCE.getEcoreDocGeneratorConfig__ShouldRenderBounds();
 
 		/**
 		 * The meta object literal for the '<em><b>Find Config</b></em>' operation.

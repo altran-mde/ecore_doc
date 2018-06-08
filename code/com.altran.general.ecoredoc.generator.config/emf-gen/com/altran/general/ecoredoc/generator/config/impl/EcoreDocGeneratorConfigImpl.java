@@ -68,6 +68,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRenderUseCases <em>Render Use Cases</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRepeatInherited <em>Repeat Inherited</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRenderBounds <em>Render Bounds</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getEPackages <em>EPackages</em>}</li>
  * </ul>
  *
@@ -189,6 +190,35 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 * @ordered
 	 */
 	protected boolean repeatInheritedESet;
+
+	/**
+	 * The default value of the '{@link #isRenderBounds() <em>Render Bounds</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderBounds()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RENDER_BOUNDS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRenderBounds() <em>Render Bounds</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderBounds()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderBounds = RENDER_BOUNDS_EDEFAULT;
+
+	/**
+	 * This is true if the Render Bounds attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderBoundsESet;
 
 	/**
 	 * The cached value of the '{@link #getEPackages() <em>EPackages</em>}' containment reference list.
@@ -355,6 +385,52 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 */
 	public boolean isSetRepeatInherited() {
 		return repeatInheritedESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRenderBounds() {
+		return renderBounds;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRenderBounds(boolean newRenderBounds) {
+		boolean oldRenderBounds = renderBounds;
+		renderBounds = newRenderBounds;
+		boolean oldRenderBoundsESet = renderBoundsESet;
+		renderBoundsESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS, oldRenderBounds, renderBounds, !oldRenderBoundsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetRenderBounds() {
+		boolean oldRenderBounds = renderBounds;
+		boolean oldRenderBoundsESet = renderBoundsESet;
+		renderBounds = RENDER_BOUNDS_EDEFAULT;
+		renderBoundsESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS, oldRenderBounds, RENDER_BOUNDS_EDEFAULT, oldRenderBoundsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRenderBounds() {
+		return renderBoundsESet;
 	}
 
 	/**
@@ -605,6 +681,23 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean shouldRenderBounds() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderBounds = this.isSetRenderBounds();
+		if (_isSetRenderBounds) {
+			_xifexpression = this.isRenderBounds();
+		}
+		else {
+			_xifexpression = this.shouldRenderDefaults();
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean shouldRepeatInherited() {
 		boolean _xifexpression = false;
 		boolean _isSetRepeatInherited = this.isSetRepeatInherited();
@@ -647,6 +740,8 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 				return isRenderUseCases();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
 				return isRepeatInherited();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
+				return isRenderBounds();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				return getEPackages();
 		}
@@ -673,6 +768,9 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 				return;
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
 				setRepeatInherited((Boolean)newValue);
+				return;
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
+				setRenderBounds((Boolean)newValue);
 				return;
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				getEPackages().clear();
@@ -702,6 +800,9 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
 				unsetRepeatInherited();
 				return;
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
+				unsetRenderBounds();
+				return;
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				getEPackages().clear();
 				return;
@@ -725,6 +826,8 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 				return isSetRenderUseCases();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
 				return isSetRepeatInherited();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
+				return isSetRenderBounds();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				return ePackages != null && !ePackages.isEmpty();
 		}
@@ -773,6 +876,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (derivedFeatureID) {
+				case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS: return ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -831,6 +935,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (baseFeatureID) {
+				case ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -889,6 +994,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (baseOperationID) {
+				case ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_BOUNDS: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -921,6 +1027,8 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 				return shouldRenderUseCases();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED:
 				return shouldRepeatInherited();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS:
+				return shouldRenderBounds();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT:
 				return findConfig((ENamedElement)arguments.get(0));
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_TARGET:
@@ -947,6 +1055,8 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		if (renderUseCasesESet) result.append(renderUseCases); else result.append("<unset>");
 		result.append(", repeatInherited: ");
 		if (repeatInheritedESet) result.append(repeatInherited); else result.append("<unset>");
+		result.append(", renderBounds: ");
+		if (renderBoundsESet) result.append(renderBounds); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}

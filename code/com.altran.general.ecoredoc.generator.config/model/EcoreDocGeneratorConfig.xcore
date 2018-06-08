@@ -71,6 +71,15 @@ interface IEClassConfig extends IEClassifierConfig {
 }
 
 interface IEStructuralFeatureConfig extends IENamedElementConfig, IDefaultValueConfig {
+	unsettable boolean renderBounds
+	
+	op boolean shouldRenderBounds() {
+		if (isSetRenderBounds) {
+			renderBounds
+		} else {
+			(eContainer as IEStructuralFeatureConfig).shouldRenderBounds()
+		}
+	}
 }
 
 interface IEAttributeConfig extends IEStructuralFeatureConfig {
@@ -120,6 +129,14 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 			repeatInherited
 		} else {
 			true
+		}
+	}
+	
+	op boolean shouldRenderBounds() {
+		if (isSetRenderBounds) {
+			renderBounds
+		} else {
+			shouldRenderDefaults()
 		}
 	}
 	

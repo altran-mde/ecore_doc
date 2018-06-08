@@ -24,7 +24,6 @@ Ns URI:: EPackage1
 
 Special documentation for special data type
 
-Default Value:: _undefined_
 Instance Type Name:: `java.lang.Number`
 Serializable:: true
 
@@ -39,7 +38,6 @@ Serializable:: true
 Enum1 Description
 
 Default Value:: `Literal1`
-Instance Type Name:: _undefined_
 Serializable:: true
 
 .Literals
@@ -75,8 +73,7 @@ Second sentence of Literal1 Description.
 
 Description
 
-Default Value:: _undefined_
-Instance Type Name:: _undefined_
+
 
 .Super-types
 * `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
@@ -91,16 +88,42 @@ Instance Type Name:: _undefined_
 
 |`something`[[EPackage1-Class3-something]]
 |`<<EPackage1-Enum1, EPackage1.{zwsp}Enum1>>`
-|`[0..6]` +
-_Default:_ `-` +
-ordered +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
+|`[0..6]`
 |Something.
+
+|`d`[[EPackage1-Class3-d]] +
+(`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EDouble`
+|`[0..1]` +
+_Default:_ `3.141592`
+|
+
+|`id`[[EPackage1-Class3-id]] +
+(`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EInt`
+|*is id* +
+`[1]`
+|Description of id.
+
+|`name`[[EPackage1-Class3-name]] +
+(`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EString`
+|`[3..5]`
+|Name desc.
+
+|`someStringAttr`[[EPackage1-Class3-someStringAttr]] +
+(`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EString`
+|`[0..1]` +
+_Default:_ `Hello, World!`
+|
+
+|`specialNumber`[[EPackage1-Class3-specialNumber]] +
+(`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EInt`
+|`[0..1]` +
+_Default:_ `23`
+|
 |===
 
 .References
@@ -115,18 +138,18 @@ non-volatile
 |`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
 
 _EOpposite:_ `<<EPackage1-MyEClass-clazzes, clazzes>>`
-|_EKeys:_ `-` +
-resolveProxies +
-*container* +
-`[0..1]` +
-_Default:_ `-` +
-changeable +
-underived +
-non-transient +
-unique +
-settable +
-non-volatile
+|*container* +
+`[0..1]`
 |Bla
+
+|`myRelation`[[EPackage1-Class3-myRelation]] +
+(`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
+|`[0..*]` +
+unordered
+|Description.
 |===
 
 .Used at
@@ -140,7 +163,7 @@ TODO: Find a good way to show class attributes like abstract.
 
 Description of EClass1
 
-Instance Type Name:: _undefined_
+
 
 .Sub-types
 * `<<EPackage1-Class3, EPackage1.{zwsp}Class3>>`
@@ -158,63 +181,30 @@ Instance Type Name:: _undefined_
 |`d`[[EPackage1-EClass1-d]]
 |`EDouble`
 |`[0..1]` +
-_Default:_ `3.141592` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
+_Default:_ `3.141592`
 |
 
 |`id`[[EPackage1-EClass1-id]]
 |`EInt`
 |*is id* +
-`[1]` +
-_Default:_ `-` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
+`[1]`
 |Description of id.
 
 |`name`[[EPackage1-EClass1-name]]
 |`EString`
-|`[3..5]` +
-_Default:_ `-` +
-ordered +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
+|`[3..5]`
 |Name desc.
 
 |`someStringAttr`[[EPackage1-EClass1-someStringAttr]]
 |`EString`
 |`[0..1]` +
-_Default:_ `Hello, World!` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
+_Default:_ `Hello, World!`
 |
 
 |`specialNumber`[[EPackage1-EClass1-specialNumber]]
 |`EInt`
 |`[0..1]` +
-_Default:_ `23` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
+_Default:_ `23`
 |
 |===
 
@@ -230,18 +220,8 @@ non-volatile
 |`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
 
 _EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
-|_EKeys:_ `-` +
-resolveProxies +
-non-container +
-`[0..*]` +
-_Default:_ `-` +
-**unordered** +
-changeable +
-underived +
-non-transient +
-unique +
-settable +
-non-volatile
+|`[0..*]` +
+unordered
 |Description.
 |===
 
@@ -254,7 +234,7 @@ non-volatile
 
 Description
 
-Instance Type Name:: _undefined_
+
 
 .Sub-types
 * `<<EPackage2-SomeClass, EPackage2.{zwsp}SomeClass>>`
@@ -264,8 +244,7 @@ Instance Type Name:: _undefined_
 
 Description
 
-Default Value:: _undefined_
-Instance Type Name:: _undefined_
+
 
 .Super-types
 * `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
@@ -280,14 +259,7 @@ Instance Type Name:: _undefined_
 
 |`attr`[[EPackage1-MyEClass-attr]]
 |`<<EPackage1-SpecialDataType, EPackage1.{zwsp}SpecialDataType>>`
-|`[0..1]` +
-_Default:_ `-` +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
+|`[0..1]`
 |Description.
 
 Second sentence.
@@ -295,15 +267,42 @@ Second sentence.
 |`eeeenum`[[EPackage1-MyEClass-eeeenum]]
 |`<<EPackage1-Enum1, EPackage1.{zwsp}Enum1>>`
 |`[0..6]` +
-_Default:_ `<<EPackage1-Enum1-Literal1, Literal1>>` +
-ordered +
-changeable +
-underived +
-non-transient +
-non-unique +
-settable +
-non-volatile
+_Default:_ `<<EPackage1-Enum1-Literal1, Literal1>>`
 |Deschkriptschion.
+
+|`d`[[EPackage1-MyEClass-d]] +
+(`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EDouble`
+|`[0..1]` +
+_Default:_ `3.141592`
+|
+
+|`id`[[EPackage1-MyEClass-id]] +
+(`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EInt`
+|*is id* +
+`[1]`
+|Description of id.
+
+|`name`[[EPackage1-MyEClass-name]] +
+(`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EString`
+|`[3..5]`
+|Name desc.
+
+|`someStringAttr`[[EPackage1-MyEClass-someStringAttr]] +
+(`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EString`
+|`[0..1]` +
+_Default:_ `Hello, World!`
+|
+
+|`specialNumber`[[EPackage1-MyEClass-specialNumber]] +
+(`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EInt`
+|`[0..1]` +
+_Default:_ `23`
+|
 |===
 
 .Containments
@@ -318,34 +317,15 @@ non-volatile
 |`<<EPackage1-Class3, EPackage1.{zwsp}Class3>>`
 
 _EOpposite:_ `<<EPackage1-Class3-specialParent, specialParent>>`
-|_EKeys:_ `-` +
-**non-resolveProxies** +
-non-container +
+|non-resolveProxies +
 `[1..*]` +
-_Default:_ `-` +
-**unordered** +
-changeable +
-underived +
-non-transient +
-unique +
-settable +
-non-volatile
+unordered
 |Desc.
 
 |`otherClasses`[[EPackage1-MyEClass-otherClasses]]
 |`<<EPackage1-Class3, EPackage1.{zwsp}Class3>>`
-|_EKeys:_ `-` +
-**non-resolveProxies** +
-non-container +
-`[0..*]` +
-_Default:_ `-` +
-ordered +
-changeable +
-underived +
-non-transient +
-unique +
-settable +
-non-volatile
+|non-resolveProxies +
+`[0..*]`
 |Desc.
 
 Containments could also be inherited.
@@ -363,33 +343,22 @@ Containments could also be inherited.
 |`<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
 
 _EOpposite:_ `<<EPackage1-EClass1-myRelation, myRelation>>`
-|_EKeys:_ `-` +
-resolveProxies +
-non-container +
-`[1]` +
-_Default:_ `-` +
-changeable +
-underived +
-non-transient +
-unique +
-settable +
-non-volatile
+|`[1]`
 |
 
 |`ref`[[EPackage1-MyEClass-ref]]
 |`<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
-|_EKeys:_ `-` +
-resolveProxies +
-non-container +
-`[0..1]` +
-_Default:_ `-` +
-changeable +
-underived +
-non-transient +
-unique +
-settable +
-non-volatile
+|`[0..1]`
 |Whatever.
+
+|`myRelation`[[EPackage1-MyEClass-myRelation]] +
+(`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
+|`[0..*]` +
+unordered
+|Description.
 |===
 
 .Used at
@@ -414,8 +383,7 @@ Ns URI:: http://altran.com/general/emf/ecoredoc/test/epackage2/1.0.0
 ==== Class Class3
 
 
-Default Value:: _undefined_
-Instance Type Name:: _undefined_
+
 
 .Attributes
 [cols="<20,<20,<20,<40a",options="header"]
@@ -429,12 +397,7 @@ Instance Type Name:: _undefined_
 |`EDouble`
 |`[0..1]` +
 _Default:_ `2.71` +
-changeable +
-underived +
-non-transient +
-**unique** +
-settable +
-non-volatile
+unique
 |
 |===
 
@@ -445,8 +408,7 @@ This is
 
 my doc
 
-Default Value:: _undefined_
-Instance Type Name:: _undefined_
+
 
 .Super-types
 * `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
@@ -459,6 +421,40 @@ Instance Type Name:: _undefined_
 |Type
 |Properties
 |Description
+
+|`d`[[EPackage2-SomeClass-d]] +
+(`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EDouble`
+|`[0..1]` +
+_Default:_ `3.141592`
+|
+
+|`id`[[EPackage2-SomeClass-id]] +
+(`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EInt`
+|*is id* +
+`[1]`
+|Description of id.
+
+|`name`[[EPackage2-SomeClass-name]] +
+(`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EString`
+|`[3..5]`
+|Name desc.
+
+|`someStringAttr`[[EPackage2-SomeClass-someStringAttr]] +
+(`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EString`
+|`[0..1]` +
+_Default:_ `Hello, World!`
+|
+
+|`specialNumber`[[EPackage2-SomeClass-specialNumber]] +
+(`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`EInt`
+|`[0..1]` +
+_Default:_ `23`
+|
 |===
 
 .References
@@ -468,4 +464,13 @@ Instance Type Name:: _undefined_
 |Type
 |Properties
 |Description
+
+|`myRelation`[[EPackage2-SomeClass-myRelation]] +
+(`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
+|`[0..*]` +
+unordered
+|Description.
 |===

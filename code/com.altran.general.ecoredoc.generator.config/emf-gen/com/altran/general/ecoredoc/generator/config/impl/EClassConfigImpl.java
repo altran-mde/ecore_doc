@@ -47,6 +47,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EClassConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EClassConfigImpl#isRenderUseCases <em>Render Use Cases</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EClassConfigImpl#isRepeatInherited <em>Repeat Inherited</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EClassConfigImpl#isRenderBounds <em>Render Bounds</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EClassConfigImpl#getTargetEClass <em>Target EClass</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EClassConfigImpl#getEAttributes <em>EAttributes</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EClassConfigImpl#getEContainments <em>EContainments</em>}</li>
@@ -171,6 +172,35 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 	 * @ordered
 	 */
 	protected boolean repeatInheritedESet;
+
+	/**
+	 * The default value of the '{@link #isRenderBounds() <em>Render Bounds</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderBounds()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RENDER_BOUNDS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRenderBounds() <em>Render Bounds</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderBounds()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderBounds = RENDER_BOUNDS_EDEFAULT;
+
+	/**
+	 * This is true if the Render Bounds attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderBoundsESet;
 
 	/**
 	 * The cached value of the '{@link #getTargetEClass() <em>Target EClass</em>}' reference.
@@ -374,6 +404,52 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isRenderBounds() {
+		return renderBounds;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRenderBounds(boolean newRenderBounds) {
+		boolean oldRenderBounds = renderBounds;
+		renderBounds = newRenderBounds;
+		boolean oldRenderBoundsESet = renderBoundsESet;
+		renderBoundsESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECLASS_CONFIG__RENDER_BOUNDS, oldRenderBounds, renderBounds, !oldRenderBoundsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetRenderBounds() {
+		boolean oldRenderBounds = renderBounds;
+		boolean oldRenderBoundsESet = renderBoundsESet;
+		renderBounds = RENDER_BOUNDS_EDEFAULT;
+		renderBoundsESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECLASS_CONFIG__RENDER_BOUNDS, oldRenderBounds, RENDER_BOUNDS_EDEFAULT, oldRenderBoundsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRenderBounds() {
+		return renderBoundsESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isRenderDefaults() {
 		return renderDefaults;
 	}
@@ -503,6 +579,24 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean shouldRenderBounds() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderBounds = this.isSetRenderBounds();
+		if (_isSetRenderBounds) {
+			_xifexpression = this.isRenderBounds();
+		}
+		else {
+			EObject _eContainer = this.eContainer();
+			_xifexpression = ((IEStructuralFeatureConfig) _eContainer).shouldRenderBounds();
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean shouldRenderDefaults() {
 		boolean _xifexpression = false;
 		boolean _isSetRenderDefaults = this.isSetRenderDefaults();
@@ -604,6 +698,8 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 				return isRenderUseCases();
 			case ConfigPackage.ECLASS_CONFIG__REPEAT_INHERITED:
 				return isRepeatInherited();
+			case ConfigPackage.ECLASS_CONFIG__RENDER_BOUNDS:
+				return isRenderBounds();
 			case ConfigPackage.ECLASS_CONFIG__TARGET_ECLASS:
 				if (resolve) return getTargetEClass();
 				return basicGetTargetEClass();
@@ -637,6 +733,9 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 				return;
 			case ConfigPackage.ECLASS_CONFIG__REPEAT_INHERITED:
 				setRepeatInherited((Boolean)newValue);
+				return;
+			case ConfigPackage.ECLASS_CONFIG__RENDER_BOUNDS:
+				setRenderBounds((Boolean)newValue);
 				return;
 			case ConfigPackage.ECLASS_CONFIG__TARGET_ECLASS:
 				setTargetEClass((EClass)newValue);
@@ -677,6 +776,9 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 			case ConfigPackage.ECLASS_CONFIG__REPEAT_INHERITED:
 				unsetRepeatInherited();
 				return;
+			case ConfigPackage.ECLASS_CONFIG__RENDER_BOUNDS:
+				unsetRenderBounds();
+				return;
 			case ConfigPackage.ECLASS_CONFIG__TARGET_ECLASS:
 				setTargetEClass((EClass)null);
 				return;
@@ -709,6 +811,8 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 				return isSetRenderUseCases();
 			case ConfigPackage.ECLASS_CONFIG__REPEAT_INHERITED:
 				return isSetRepeatInherited();
+			case ConfigPackage.ECLASS_CONFIG__RENDER_BOUNDS:
+				return isSetRenderBounds();
 			case ConfigPackage.ECLASS_CONFIG__TARGET_ECLASS:
 				return targetEClass != null;
 			case ConfigPackage.ECLASS_CONFIG__EATTRIBUTES:
@@ -736,6 +840,7 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (derivedFeatureID) {
+				case ConfigPackage.ECLASS_CONFIG__RENDER_BOUNDS: return ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -767,6 +872,7 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (baseFeatureID) {
+				case ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS: return ConfigPackage.ECLASS_CONFIG__RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -798,6 +904,7 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (baseOperationID) {
+				case ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_BOUNDS: return ConfigPackage.ECLASS_CONFIG___SHOULD_RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -824,6 +931,8 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 		switch (operationID) {
 			case ConfigPackage.ECLASS_CONFIG___GET_TARGET:
 				return getTarget();
+			case ConfigPackage.ECLASS_CONFIG___SHOULD_RENDER_BOUNDS:
+				return shouldRenderBounds();
 			case ConfigPackage.ECLASS_CONFIG___SHOULD_REPEAT_INHERITED:
 				return shouldRepeatInherited();
 			case ConfigPackage.ECLASS_CONFIG___SHOULD_RENDER_USE_CASES:
@@ -854,6 +963,8 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 		if (renderUseCasesESet) result.append(renderUseCases); else result.append("<unset>");
 		result.append(", repeatInherited: ");
 		if (repeatInheritedESet) result.append(repeatInherited); else result.append("<unset>");
+		result.append(", renderBounds: ");
+		if (renderBoundsESet) result.append(renderBounds); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}

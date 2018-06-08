@@ -51,6 +51,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#isRenderUseCases <em>Render Use Cases</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#isRepeatInherited <em>Repeat Inherited</em>}</li>
+ *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#isRenderBounds <em>Render Bounds</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEDataTypes <em>Position EData Types</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEEnums <em>Position EEnums</em>}</li>
  *   <li>{@link com.altran.general.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEClasses <em>Position EClasses</em>}</li>
@@ -178,6 +179,35 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected boolean repeatInheritedESet;
+
+	/**
+	 * The default value of the '{@link #isRenderBounds() <em>Render Bounds</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderBounds()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RENDER_BOUNDS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRenderBounds() <em>Render Bounds</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderBounds()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderBounds = RENDER_BOUNDS_EDEFAULT;
+
+	/**
+	 * This is true if the Render Bounds attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderBoundsESet;
 
 	/**
 	 * The default value of the '{@link #getPositionEDataTypes() <em>Position EData Types</em>}' attribute.
@@ -468,6 +498,52 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isRenderBounds() {
+		return renderBounds;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRenderBounds(boolean newRenderBounds) {
+		boolean oldRenderBounds = renderBounds;
+		renderBounds = newRenderBounds;
+		boolean oldRenderBoundsESet = renderBoundsESet;
+		renderBoundsESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS, oldRenderBounds, renderBounds, !oldRenderBoundsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetRenderBounds() {
+		boolean oldRenderBounds = renderBounds;
+		boolean oldRenderBoundsESet = renderBoundsESet;
+		renderBounds = RENDER_BOUNDS_EDEFAULT;
+		renderBoundsESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS, oldRenderBounds, RENDER_BOUNDS_EDEFAULT, oldRenderBoundsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRenderBounds() {
+		return renderBoundsESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isRenderDefaults() {
 		return renderDefaults;
 	}
@@ -735,6 +811,24 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean shouldRenderBounds() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderBounds = this.isSetRenderBounds();
+		if (_isSetRenderBounds) {
+			_xifexpression = this.isRenderBounds();
+		}
+		else {
+			EObject _eContainer = this.eContainer();
+			_xifexpression = ((IEStructuralFeatureConfig) _eContainer).shouldRenderBounds();
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean shouldRenderDefaults() {
 		boolean _xifexpression = false;
 		boolean _isSetRenderDefaults = this.isSetRenderDefaults();
@@ -836,6 +930,8 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				return isRenderUseCases();
 			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
 				return isRepeatInherited();
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
+				return isRenderBounds();
 			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
 				return getPositionEDataTypes();
 			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
@@ -875,6 +971,9 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				return;
 			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
 				setRepeatInherited((Boolean)newValue);
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
+				setRenderBounds((Boolean)newValue);
 				return;
 			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
 				setPositionEDataTypes((Integer)newValue);
@@ -924,6 +1023,9 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
 				unsetRepeatInherited();
 				return;
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
+				unsetRenderBounds();
+				return;
 			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
 				unsetPositionEDataTypes();
 				return;
@@ -965,6 +1067,8 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				return isSetRenderUseCases();
 			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
 				return isSetRepeatInherited();
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
+				return isSetRenderBounds();
 			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
 				return isSetPositionEDataTypes();
 			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
@@ -1025,6 +1129,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (derivedFeatureID) {
+				case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS: return ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -1083,6 +1188,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (baseFeatureID) {
+				case ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS: return ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -1141,6 +1247,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (baseOperationID) {
+				case ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_BOUNDS: return ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -1167,6 +1274,8 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		switch (operationID) {
 			case ConfigPackage.EPACKAGE_CONFIG___GET_TARGET:
 				return getTarget();
+			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_BOUNDS:
+				return shouldRenderBounds();
 			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_REPEAT_INHERITED:
 				return shouldRepeatInherited();
 			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_USE_CASES:
@@ -1197,6 +1306,8 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		if (renderUseCasesESet) result.append(renderUseCases); else result.append("<unset>");
 		result.append(", repeatInherited: ");
 		if (repeatInheritedESet) result.append(repeatInherited); else result.append("<unset>");
+		result.append(", renderBounds: ");
+		if (renderBoundsESet) result.append(renderBounds); else result.append("<unset>");
 		result.append(", positionEDataTypes: ");
 		if (positionEDataTypesESet) result.append(positionEDataTypes); else result.append("<unset>");
 		result.append(", positionEEnums: ");

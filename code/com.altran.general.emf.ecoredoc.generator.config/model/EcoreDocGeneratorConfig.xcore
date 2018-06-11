@@ -198,35 +198,46 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 			
 			EEnum:
 				EPackages
-				.flatMap[EEnums]
+				.map[EEnums]
+				.flatten
 				
 			EDataType:
 				EPackages
-					.flatMap[EDataTypes]
+					.map[EDataTypes]
+					.flatten
 					
 			EEnumLiteral:
 				EPackages
-					.flatMap[EEnums]
-					.flatMap[EEnumLiterals]
+					.map[EEnums]
+					.flatten
+					.map[EEnumLiterals]
+					.flatten
 							
 			EClass:
 				EPackages
-					.flatMap[EClasses]
+					.map[EClasses]
+					.flatten
 			
 			EAttribute:
 				EPackages
-				.flatMap[EClasses]
-				.flatMap[EAttributes]
+				.map[EClasses]
+				.flatten
+				.map[EAttributes]
+				.flatten
 				
 			EReference case (element.isContainment):
 				EPackages
-					.flatMap[EClasses]
-					.flatMap[EContainments]
+					.map[EClasses]
+					.flatten
+					.map[EContainments]
+					.flatten
 					
 			EReference case (!element.isContainment):
 				EPackages
-					.flatMap[EClasses]
-					.flatMap[EReferences]
+					.map[EClasses]
+					.flatten
+					.map[EReferences]
+					.flatten
 		}.findFirst[target == element]
 	}
 	

@@ -22,11 +22,9 @@ import com.altran.general.emf.ecoredoc.generator.config.IEEnumLiteralConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
-
 import com.google.common.base.Objects;
-
+import com.google.common.collect.Iterables;
 import java.lang.Iterable;
-
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
@@ -35,7 +33,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -51,9 +48,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
+import org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
@@ -875,7 +871,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 						return it.getEEnums();
 					}
 				};
-				_switchResult = IterableExtensions.<EPackageConfig, EEnumConfig>flatMap(this.getEPackages(), _function);
+				_switchResult = Iterables.<EEnumConfig>concat(XcoreEListExtensions.<EPackageConfig, EList<EEnumConfig>>map(this.getEPackages(), _function));
 			}
 		}
 		if (!_matched) {
@@ -886,7 +882,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 						return it.getEDataTypes();
 					}
 				};
-				_switchResult = IterableExtensions.<EPackageConfig, EDataTypeConfig>flatMap(this.getEPackages(), _function);
+				_switchResult = Iterables.<EDataTypeConfig>concat(XcoreEListExtensions.<EPackageConfig, EList<EDataTypeConfig>>map(this.getEPackages(), _function));
 			}
 		}
 		if (!_matched) {
@@ -902,7 +898,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 						return it.getEEnumLiterals();
 					}
 				};
-				_switchResult = IterableExtensions.<EEnumConfig, EEnumLiteralConfig>flatMap(IterableExtensions.<EPackageConfig, EEnumConfig>flatMap(this.getEPackages(), _function), _function_1);
+				_switchResult = Iterables.<EEnumLiteralConfig>concat(IterableExtensions.<EEnumConfig, EList<EEnumLiteralConfig>>map(Iterables.<EEnumConfig>concat(XcoreEListExtensions.<EPackageConfig, EList<EEnumConfig>>map(this.getEPackages(), _function)), _function_1));
 			}
 		}
 		if (!_matched) {
@@ -913,7 +909,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 						return it.getEClasses();
 					}
 				};
-				_switchResult = IterableExtensions.<EPackageConfig, EClassConfig>flatMap(this.getEPackages(), _function);
+				_switchResult = Iterables.<EClassConfig>concat(XcoreEListExtensions.<EPackageConfig, EList<EClassConfig>>map(this.getEPackages(), _function));
 			}
 		}
 		if (!_matched) {
@@ -929,7 +925,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 						return it.getEAttributes();
 					}
 				};
-				_switchResult = IterableExtensions.<EClassConfig, EAttributeConfig>flatMap(IterableExtensions.<EPackageConfig, EClassConfig>flatMap(this.getEPackages(), _function), _function_1);
+				_switchResult = Iterables.<EAttributeConfig>concat(IterableExtensions.<EClassConfig, EList<EAttributeConfig>>map(Iterables.<EClassConfig>concat(XcoreEListExtensions.<EPackageConfig, EList<EClassConfig>>map(this.getEPackages(), _function)), _function_1));
 			}
 		}
 		if (!_matched) {
@@ -947,7 +943,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 							return it.getEContainments();
 						}
 					};
-					_switchResult = IterableExtensions.<EClassConfig, EContainmentConfig>flatMap(IterableExtensions.<EPackageConfig, EClassConfig>flatMap(this.getEPackages(), _function), _function_1);
+					_switchResult = Iterables.<EContainmentConfig>concat(IterableExtensions.<EClassConfig, EList<EContainmentConfig>>map(Iterables.<EClassConfig>concat(XcoreEListExtensions.<EPackageConfig, EList<EClassConfig>>map(this.getEPackages(), _function)), _function_1));
 				}
 			}
 		}
@@ -967,7 +963,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 							return it.getEReferences();
 						}
 					};
-					_switchResult = IterableExtensions.<EClassConfig, EReferenceConfig>flatMap(IterableExtensions.<EPackageConfig, EClassConfig>flatMap(this.getEPackages(), _function), _function_1);
+					_switchResult = Iterables.<EReferenceConfig>concat(IterableExtensions.<EClassConfig, EList<EReferenceConfig>>map(Iterables.<EClassConfig>concat(XcoreEListExtensions.<EPackageConfig, EList<EClassConfig>>map(this.getEPackages(), _function)), _function_1));
 				}
 			}
 		}

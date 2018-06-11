@@ -6,27 +6,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import java.util.Spliterator;
-import java.util.Spliterators;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EPackage.Registry;
-import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.change.ChangePackage;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import com.altran.general.emf.ecoredoc.util.EcoreDocUtils;
 
@@ -38,15 +22,15 @@ public class EcoreDocGenerator {
 
 	private File outputFile;
 
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		if (args.length > 0) {
-			List<File> files = new ArrayList<>();
+			final List<File> files = new ArrayList<>();
 
 			Boolean resolve = null;
 			File output = null;
 
 			for (int i = 0; i < args.length; i++) {
-				String arg = args[i];
+				final String arg = args[i];
 				switch (arg.toLowerCase()) {
 				case "-r":
 				case "--resolve":
@@ -66,7 +50,7 @@ public class EcoreDocGenerator {
 					break;
 
 				default:
-					File file = new File(arg);
+					final File file = new File(arg);
 					if (file.canRead() && file.isFile()) {
 						files.add(file);
 					} else {
@@ -90,7 +74,7 @@ public class EcoreDocGenerator {
 
 					final File result = ecoreDocGenerator.generate();
 					System.out.println("Generated " + result);
-				} catch (IOException e) {
+				} catch (final IOException e) {
 					e.printStackTrace();
 				}
 			} else {
@@ -140,11 +124,11 @@ public class EcoreDocGenerator {
 				"  Generates the documentation of my.ecore and other.ecore into output.adoc\n");
 	}
 
-	public EcoreDocGenerator(File... inputFiles) {
+	public EcoreDocGenerator(final File... inputFiles) {
 		this(Arrays.asList(inputFiles));
 	}
 
-	public EcoreDocGenerator(Collection<File> inputFiles) {
+	public EcoreDocGenerator(final Collection<File> inputFiles) {
 		this.inputFiles = inputFiles;
 	}
 
@@ -184,23 +168,23 @@ public class EcoreDocGenerator {
 	}
 
 	public boolean shouldResolve() {
-		return resolve;
+		return this.resolve;
 	}
 
-	public void setResolve(boolean resolve) {
+	public void setResolve(final boolean resolve) {
 		this.resolve = resolve;
 	}
 
 	public File getOutputFile() {
 		if (this.outputFile != null) {
-			return outputFile;
+			return this.outputFile;
 		} else {
-			File firstInputFile = this.inputFiles.iterator().next();
+			final File firstInputFile = this.inputFiles.iterator().next();
 			return new File(firstInputFile.getParentFile(), firstInputFile.getName() + ".adoc");
 		}
 	}
 
-	public void setOutputFile(File outputFile) {
+	public void setOutputFile(final File outputFile) {
 		this.outputFile = outputFile;
 	}
 }

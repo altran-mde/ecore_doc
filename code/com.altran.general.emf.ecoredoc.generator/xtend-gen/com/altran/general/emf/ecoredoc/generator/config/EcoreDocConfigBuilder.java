@@ -1,15 +1,15 @@
 package com.altran.general.emf.ecoredoc.generator.config;
 
-import com.altran.general.ecoredoc.generator.config.ConfigFactory;
-import com.altran.general.ecoredoc.generator.config.EAttributeConfig;
-import com.altran.general.ecoredoc.generator.config.EClassConfig;
-import com.altran.general.ecoredoc.generator.config.EContainmentConfig;
-import com.altran.general.ecoredoc.generator.config.EDataTypeConfig;
-import com.altran.general.ecoredoc.generator.config.EEnumConfig;
-import com.altran.general.ecoredoc.generator.config.EEnumLiteralConfig;
-import com.altran.general.ecoredoc.generator.config.EPackageConfig;
-import com.altran.general.ecoredoc.generator.config.EReferenceConfig;
-import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig;
+import com.altran.general.emf.ecoredoc.generator.config.ConfigFactory;
+import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EClassConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EPackageConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import java.util.Collection;
 import java.util.function.Consumer;

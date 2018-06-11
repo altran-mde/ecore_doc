@@ -10,5 +10,5 @@ Require-Bundle: com.google.guava,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro,
  org.eclipse.emf.ecore,
- com.altran.general.ecoredoc.generator.config
+ com.altran.general.emf.ecoredoc.generator.config
 Export-Package: com.altran.general.emf.ecoredoc.generator

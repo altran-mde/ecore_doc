@@ -1,7 +1,7 @@
 package com.altran.general.emf.ecoredoc.generator
 
-import com.altran.general.ecoredoc.generator.config.EPackageConfig
-import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig
+import com.altran.general.emf.ecoredoc.generator.config.EPackageConfig
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigBuilder
 import com.altran.general.emf.ecoredoc.generator.impl.EClassGeneratorPart
 import com.altran.general.emf.ecoredoc.generator.impl.EDataTypeGeneratorPart

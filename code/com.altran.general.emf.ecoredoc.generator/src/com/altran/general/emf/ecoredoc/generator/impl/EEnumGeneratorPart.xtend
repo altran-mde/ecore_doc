@@ -1,8 +1,8 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
-import com.altran.general.ecoredoc.generator.config.EEnumConfig
-import com.altran.general.ecoredoc.generator.config.EEnumLiteralConfig
-import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig
+import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig
+import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.google.common.collect.Multimap
 import java.util.Map
 import java.util.Map.Entry

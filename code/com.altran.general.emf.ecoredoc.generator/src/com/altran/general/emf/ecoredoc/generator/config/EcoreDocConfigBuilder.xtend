@@ -1,7 +1,7 @@
 package com.altran.general.emf.ecoredoc.generator.config
 
-import com.altran.general.ecoredoc.generator.config.ConfigFactory
-import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig
+import com.altran.general.emf.ecoredoc.generator.config.ConfigFactory
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension
 import java.util.Collection
 import org.eclipse.emf.ecore.EAttribute

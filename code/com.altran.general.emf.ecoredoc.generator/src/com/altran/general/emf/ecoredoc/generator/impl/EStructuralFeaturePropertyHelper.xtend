@@ -5,8 +5,8 @@ import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.impl.EEnumLiteralImpl
-import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig
-import com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
+import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig
 
 class EStructuralFeaturePropertyHelper {
 	val static String BOLD = "**"

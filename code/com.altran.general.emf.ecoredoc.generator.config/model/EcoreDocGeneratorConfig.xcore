@@ -1,0 +1,313 @@
+@GenModel(
+	modelDirectory="/com.altran.general.emf.ecoredoc.generator.config/emf-gen"
+)
+package com.altran.general.emf.ecoredoc.generator.config
+
+import org.eclipse.emf.ecore.EAttribute
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EDataType
+import org.eclipse.emf.ecore.EEnum
+import org.eclipse.emf.ecore.EEnumLiteral
+import org.eclipse.emf.ecore.ENamedElement
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EReference
+
+interface IENamedElementConfig {
+	unsettable boolean render
+	
+	op boolean shouldRender() {
+		if (isSetRender) {
+			render
+		} else {
+			(eContainer as IENamedElementConfig).shouldRender()
+		}
+	}
+
+	op ENamedElement getTarget()
+}
+
+interface IDefaultValueConfig {
+	unsettable boolean renderDefaults
+	
+	op boolean shouldRenderDefaults() {
+		if (isSetRenderDefaults) {
+			renderDefaults
+		} else {
+			(eContainer as IDefaultValueConfig).shouldRenderDefaults()
+		}
+	}
+}
+
+interface IEClassifierConfig extends IENamedElementConfig, IDefaultValueConfig {
+	unsettable boolean renderUseCases
+
+	op boolean shouldRenderUseCases() {
+		if (isSetRenderUseCases) {
+			renderUseCases
+		} else {
+			(eContainer as IEClassifierConfig).shouldRenderUseCases()
+		}
+	}
+}
+
+interface IEDataTypeConfig extends IEClassifierConfig {
+	
+}
+
+interface IEEnumConfig extends IEDataTypeConfig {
+	
+}
+
+interface IEClassConfig extends IEClassifierConfig {
+	unsettable boolean repeatInherited
+
+	op boolean shouldRepeatInherited() {
+		if (isSetRepeatInherited) {
+			repeatInherited
+		} else {
+			(eContainer as IEClassConfig).shouldRepeatInherited()
+		}
+	}
+}
+
+interface IEStructuralFeatureConfig extends IENamedElementConfig, IDefaultValueConfig {
+	unsettable boolean renderBounds
+	
+	op boolean shouldRenderBounds() {
+		if (isSetRenderBounds) {
+			renderBounds
+		} else {
+			(eContainer as IEStructuralFeatureConfig).shouldRenderBounds()
+		}
+	}
+}
+
+interface IEAttributeConfig extends IEStructuralFeatureConfig {
+	
+}
+
+interface IEReferenceConfig extends IEStructuralFeatureConfig {
+	
+}
+
+interface IEPackageConfig extends IENamedElementConfig {
+	unsettable int positionEDataTypes
+	op int getEDataTypesPosition() {
+		if (isSetPositionEDataTypes) {
+			positionEDataTypes
+		} else {
+			(eContainer as IEPackageConfig).getEDataTypesPosition()
+		}
+	}
+	
+	unsettable int positionEEnums
+	op int getEEnumsPosition() {
+		if (isSetPositionEEnums) {
+			positionEEnums
+		} else {
+			(eContainer as IEPackageConfig).getEEnumsPosition()
+		}
+	}
+	
+	unsettable int positionEClasses
+	op int getEClassesPosition() {
+		if (isSetPositionEClasses) {
+			positionEClasses
+		} else {
+			(eContainer as IEPackageConfig).getEClassesPosition()
+		}
+	}
+}
+
+interface IEEnumLiteralConfig extends IENamedElementConfig {
+	
+}
+
+
+class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig, IEClassConfig, IEAttributeConfig, IEReferenceConfig {
+	op boolean shouldRender() {
+		if (isSetRender) {
+			render
+		} else {
+			true
+		}
+	}
+
+	op boolean shouldRenderDefaults() {
+		if (isSetRenderDefaults) {
+			renderDefaults
+		} else {
+			true
+		}
+	}
+
+	op boolean shouldRenderUseCases() {
+		if (isSetRenderUseCases) {
+			renderUseCases
+		} else {
+			true
+		}
+	}
+	
+	op boolean shouldRepeatInherited() {
+		if (isSetRepeatInherited) {
+			repeatInherited
+		} else {
+			true
+		}
+	}
+	
+	op boolean shouldRenderBounds() {
+		if (isSetRenderBounds) {
+			renderBounds
+		} else {
+			shouldRenderDefaults()
+		}
+	}
+	
+	op int getEDataTypesPosition() {
+		if (isSetPositionEDataTypes) {
+			positionEDataTypes
+		} else {
+			1
+		}
+	}
+	
+	op int getEEnumsPosition() {
+		if (isSetPositionEEnums) {
+			positionEEnums
+		} else {
+			2
+		}
+	}
+	
+	op int getEClassesPosition() {
+		if (isSetPositionEClasses) {
+			positionEClasses
+		} else {
+			3
+		}
+	}
+	
+	contains EPackageConfig[] ePackages
+	
+	op IENamedElementConfig findConfig(ENamedElement element) {
+		switch (element) {
+			EPackage:
+				EPackages
+			
+			EEnum:
+				EPackages
+				.flatMap[EEnums]
+				
+			EDataType:
+				EPackages
+					.flatMap[EDataTypes]
+					
+			EEnumLiteral:
+				EPackages
+					.flatMap[EEnums]
+					.flatMap[EEnumLiterals]
+							
+			EClass:
+				EPackages
+					.flatMap[EClasses]
+			
+			EAttribute:
+				EPackages
+				.flatMap[EClasses]
+				.flatMap[EAttributes]
+				
+			EReference case (element.isContainment):
+				EPackages
+					.flatMap[EClasses]
+					.flatMap[EContainments]
+					
+			EReference case (!element.isContainment):
+				EPackages
+					.flatMap[EClasses]
+					.flatMap[EReferences]
+		}.findFirst[target == element]
+	}
+	
+	op ENamedElement getTarget() {
+		null
+	}
+}
+
+class EPackageConfig extends  IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig, IEClassConfig, IEAttributeConfig, IEReferenceConfig {
+	refers EPackage targetEPackage
+	
+	op ENamedElement getTarget() {
+		targetEPackage
+	}
+	
+	contains EDataTypeConfig[] eDataTypes
+	contains EEnumConfig[] eEnums
+	contains EClassConfig[] eClasses
+}
+
+class EDataTypeConfig extends  IEDataTypeConfig {
+	refers EDataType targetEDataType
+	
+	op ENamedElement getTarget() {
+		targetEDataType
+	}
+}
+
+class EEnumConfig extends IEEnumConfig, IEEnumLiteralConfig {
+	refers EEnum targetEEnum
+	
+	op ENamedElement getTarget() {
+		targetEEnum
+	}
+	
+	contains EEnumLiteralConfig[] eEnumLiterals
+}
+
+class EEnumLiteralConfig extends IEEnumLiteralConfig {
+	refers EEnumLiteral targetEEnumLiteral
+
+	op ENamedElement getTarget() {
+		targetEEnumLiteral
+	}
+}
+
+class EClassConfig extends IEClassConfig, IEAttributeConfig, IEReferenceConfig {
+	refers EClass targetEClass
+
+	op ENamedElement getTarget() {
+		targetEClass
+	}
+	
+	contains EAttributeConfig[] eAttributes
+	contains EContainmentConfig[] eContainments
+	contains EReferenceConfig[] eReferences	
+}
+
+class EAttributeConfig extends IEAttributeConfig {
+	refers EAttribute targetEAttribute
+
+	op ENamedElement getTarget() {
+		targetEAttribute
+	}
+}
+
+abstract class AEReferenceConfig extends IEReferenceConfig {
+}
+
+class EContainmentConfig extends AEReferenceConfig {
+	refers EReference targetEContainment	
+
+	op ENamedElement getTarget() {
+		targetEContainment
+	}
+}
+
+class EReferenceConfig extends AEReferenceConfig {
+	refers EReference targetEReference	
+
+	op ENamedElement getTarget() {
+		targetEReference
+	}
+}

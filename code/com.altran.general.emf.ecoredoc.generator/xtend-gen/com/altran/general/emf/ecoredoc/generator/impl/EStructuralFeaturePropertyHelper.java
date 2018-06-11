@@ -1,8 +1,8 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
-import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig;
-import com.altran.general.ecoredoc.generator.config.IENamedElementConfig;
-import com.altran.general.ecoredoc.generator.config.IEStructuralFeatureConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;

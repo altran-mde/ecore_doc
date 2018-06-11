@@ -1,7 +1,7 @@
 package com.altran.general.emf.ecoredoc.test;
 
-import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.EcoreDocGenerator;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.google.common.collect.Iterables;
 import com.google.inject.Injector;
 import java.io.File;

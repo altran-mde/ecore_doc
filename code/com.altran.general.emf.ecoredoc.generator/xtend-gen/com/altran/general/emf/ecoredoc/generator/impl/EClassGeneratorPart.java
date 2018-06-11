@@ -1,9 +1,9 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
-import com.altran.general.ecoredoc.generator.config.EAttributeConfig;
-import com.altran.general.ecoredoc.generator.config.EClassConfig;
-import com.altran.general.ecoredoc.generator.config.EcoreDocGeneratorConfig;
-import com.altran.general.ecoredoc.generator.config.IENamedElementConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EClassConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorPart;
 import com.altran.general.emf.ecoredoc.generator.impl.EStructuralFeaturePropertyHelper;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;

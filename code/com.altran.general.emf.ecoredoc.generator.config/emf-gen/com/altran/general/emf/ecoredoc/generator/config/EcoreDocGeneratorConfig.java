@@ -3,7 +3,6 @@
 package com.altran.general.emf.ecoredoc.generator.config;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.ENamedElement;
 
 /**

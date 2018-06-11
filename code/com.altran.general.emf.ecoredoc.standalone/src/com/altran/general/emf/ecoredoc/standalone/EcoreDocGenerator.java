@@ -28,6 +28,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import com.altran.general.emf.ecoredoc.util.EcoreDocUtils;
+
 public class EcoreDocGenerator {
 
 	private final Collection<File> inputFiles;
@@ -148,15 +150,15 @@ public class EcoreDocGenerator {
 
 	public File generate() throws IOException {
 
-		setupEcoreStandalone();
+		EcoreDocUtils.getInstance().setupEcoreStandalone();
 
-		final ResourceSetImpl resourceSet = createResourceSet();
+		final ResourceSetImpl resourceSet = EcoreDocUtils.getInstance().createResourceSet();
 
-		loadInputModels(resourceSet);
+		EcoreDocUtils.getInstance().loadInputModels(resourceSet, this.inputFiles);
 		
-		resolve(resourceSet);
+		EcoreDocUtils.getInstance().resolve(resourceSet, shouldResolve());
 
-		final Set<EClassifier> classifiers = collectInput(resourceSet);
+		final Set<EClassifier> classifiers = EcoreDocUtils.getInstance().collectInput(resourceSet);
 
 		final CharSequence result = generate(classifiers);
 
@@ -179,59 +181,6 @@ public class EcoreDocGenerator {
 
 		final CharSequence result = generator.generate();
 		return result;
-	}
-
-	private Set<EClassifier> collectInput(final ResourceSetImpl resourceSet) {
-		final TreeIterator<Object> allContents = EcoreUtil.getAllContents(resourceSet, true);
-
-		final Set<EClassifier> classifiers = StreamSupport
-				.stream(Spliterators.spliteratorUnknownSize(allContents, Spliterator.NONNULL), false)
-				.filter(EClassifier.class::isInstance)
-				.map(EClassifier.class::cast)
-				.collect(Collectors.toSet());
-		return classifiers;
-	}
-
-	private void resolve(final ResourceSetImpl resourceSet) {
-		if (shouldResolve()) {
-			EcoreUtil.resolveAll(resourceSet);
-		}
-	}
-
-	private void loadInputModels(final ResourceSetImpl resourceSet) throws IOException {
-		for (File inputFile : this.inputFiles) {
-			final URI uri = URI.createFileURI(inputFile.getAbsolutePath());
-
-			final Resource resource = resourceSet.getResource(uri, true);
-
-			resource.load(Collections.emptyMap());
-
-		}
-	}
-
-	private ResourceSetImpl createResourceSet() {
-		final ResourceSetImpl resourceSet = new ResourceSetImpl();
-
-//		final Map<URI, URI> computePlatformURIMap = EcorePlugin.computePlatformURIMap(true);
-//		final Map<URI, URI> uriMap = resourceSet.getURIConverter().getURIMap();
-//		uriMap.putAll(computePlatformURIMap);
-		return resourceSet;
-	}
-
-	private void setupEcoreStandalone() {
-		final Registry packageRegistry = EPackage.Registry.INSTANCE;
-		packageRegistry.put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
-
-		EcoreResourceFactoryImpl resourceFactory = new EcoreResourceFactoryImpl();
-		final org.eclipse.emf.ecore.resource.Resource.Factory.Registry factoryRegistry = Resource.Factory.Registry.INSTANCE;
-		factoryRegistry.getExtensionToFactoryMap().put("ecore", resourceFactory);
-		factoryRegistry.getExtensionToFactoryMap().put("genmodel", resourceFactory);
-		factoryRegistry.getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
-
-		EcorePackage.eINSTANCE.getClass();
-		EcoreFactory.eINSTANCE.getClass();
-
-		ChangePackage.eINSTANCE.getClass();
 	}
 
 	public boolean shouldResolve() {

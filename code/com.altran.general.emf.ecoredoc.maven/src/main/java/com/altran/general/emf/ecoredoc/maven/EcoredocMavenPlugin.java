@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 import com.altran.general.emf.ecoredoc.generator.EcoreDocGenerator;
+import com.altran.general.emf.ecoredoc.generator.config.ConfigFactory;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.util.EcoreDocUtils;
 
 @Mojo(name = "ecoredoc", defaultPhase = LifecyclePhase.PROCESS_SOURCES)
@@ -27,7 +29,10 @@ public class EcoredocMavenPlugin extends AbstractMojo {
 	private File outputFile;
 	
 	@Parameter
-	private final boolean resolve = true;
+	private boolean resolve = true;
+	
+	@Parameter(property = "config")
+	EcoreDocGeneratorConfig config = ConfigFactory.eINSTANCE.createEcoreDocGeneratorConfig();
 	
 	@Override
 	public void execute() throws MojoExecutionException {
@@ -104,6 +109,8 @@ public class EcoredocMavenPlugin extends AbstractMojo {
 	
 	private CharSequence generate(final Set<EClassifier> classifiers) {
 		final EcoreDocGenerator generator = new EcoreDocGenerator(classifiers);
+
+		generator.getConfig().setRepeatInherited(this.config.isRepeatInherited());
 
 		final CharSequence result = generator.generate();
 		return result;

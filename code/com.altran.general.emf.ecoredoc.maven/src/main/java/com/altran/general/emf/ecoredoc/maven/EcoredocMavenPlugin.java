@@ -1,6 +1,7 @@
 package com.altran.general.emf.ecoredoc.maven;
 
 
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,46 +20,47 @@ import com.altran.general.emf.ecoredoc.generator.EcoreDocGenerator;
 import com.altran.general.emf.ecoredoc.generator.config.ConfigFactory;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.util.EcoreDocUtils;
+import com.altran.general.emf.ecoredoc.util.EcoreMerger;
 
 @Mojo(name = "ecoredoc", defaultPhase = LifecyclePhase.PROCESS_SOURCES)
 public class EcoredocMavenPlugin extends AbstractMojo {
 	@Parameter(property = "inputFiles", required = true)
 	private Set<File> inputFiles;
-	
+
 	@Parameter(property = "outputFile", required = true)
 	private File outputFile;
-	
+
 	@Parameter
 	private boolean resolve = true;
-	
+
 	@Parameter(property = "config")
 	EcoreDocGeneratorConfig config = ConfigFactory.eINSTANCE.createEcoreDocGeneratorConfig();
-	
+
 	@Override
 	public void execute() throws MojoExecutionException {
 		if (!checkParameters()) {
 			return;
 		}
-		
+
 		EcoreDocUtils.getInstance().setupEcoreStandalone();
-		
+
 		final ResourceSetImpl resourceSet = EcoreDocUtils.getInstance().createResourceSet();
-		
+
 		try {
 			EcoreDocUtils.getInstance().loadInputModels(resourceSet, this.inputFiles);
 		} catch (final IOException e) {
 			throw new MojoExecutionException("Exception while loading input models", e);
 		}
-
+		
 		EcoreDocUtils.getInstance().resolve(resourceSet, this.resolve);
-		
+
 		final Set<EClassifier> classifiers = EcoreDocUtils.getInstance().collectInput(resourceSet);
-		
+
 		final CharSequence result = generate(classifiers);
-		
+
 		writeOutput(result);
 	}
-
+	
 	private boolean checkParameters() throws MojoExecutionException {
 		if (this.outputFile == null) {
 			throw new MojoExecutionException("outputFile not set.");
@@ -73,7 +75,7 @@ public class EcoredocMavenPlugin extends AbstractMojo {
 				}
 			}
 		}
-		
+
 		if (this.inputFiles == null || this.inputFiles.isEmpty()) {
 			getLog().warn("inputFiles is empty, will not create any output.");
 			return false;
@@ -95,10 +97,10 @@ public class EcoredocMavenPlugin extends AbstractMojo {
 				}
 			}
 		}
-		
+
 		return true;
 	}
-
+	
 	private void writeOutput(final CharSequence result) throws MojoExecutionException {
 		try (final FileWriter outputWriter = new FileWriter(this.outputFile)) {
 			outputWriter.append(result);
@@ -106,12 +108,12 @@ public class EcoredocMavenPlugin extends AbstractMojo {
 			throw new MojoExecutionException("Error creating output file '" + this.outputFile + "'", e);
 		}
 	}
-	
+
 	private CharSequence generate(final Set<EClassifier> classifiers) {
 		final EcoreDocGenerator generator = new EcoreDocGenerator(classifiers);
-
-		generator.getConfig().setRepeatInherited(this.config.isRepeatInherited());
-
+		
+		new EcoreMerger<EcoreDocGeneratorConfig>(generator.getConfig()).merge(this.config);
+		
 		final CharSequence result = generator.generate();
 		return result;
 	}

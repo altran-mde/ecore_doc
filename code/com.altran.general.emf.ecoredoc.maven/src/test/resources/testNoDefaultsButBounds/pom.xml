@@ -26,14 +26,15 @@
 	    <version>0.1.0-SNAPSHOT</version>
         
         <configuration>
-          <config>
-            <repeatInherited>false</repeatInherited>
+           <config>
+            <renderDefaults>false</renderDefaults>
+            <renderBounds>true</renderBounds>
           </config>
           <inputFiles>
-            <inputFile>EPackage1.ecore</inputFile>
-            <inputFile>EPackage2.ecore</inputFile>
+            <inputFile>../EPackage1.ecore</inputFile>
+            <inputFile>../EPackage2.ecore</inputFile>
           </inputFiles>
-          <outputFile>target/test-harness/project-to-test/output.adoc</outputFile>
+          <outputFile>target/test-harness/testBasic/output.adoc</outputFile>
         </configuration>
       </plugin>
     </plugins>

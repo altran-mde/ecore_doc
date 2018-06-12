@@ -23,7 +23,7 @@ public class EcoredocMavenPlugin extends AbstractMojo {
 	@Parameter(property = "inputFiles", required = true)
 	private Set<File> inputFiles;
 	
-	@Parameter(defaultValue = "${project.build.directory}", property = "outputFile", required = true)
+	@Parameter(property = "outputFile", required = true)
 	private File outputFile;
 	
 	@Parameter
@@ -31,9 +31,7 @@ public class EcoredocMavenPlugin extends AbstractMojo {
 	
 	@Override
 	public void execute() throws MojoExecutionException {
-		checkParameters();
-		
-		if (this.inputFiles == null || this.inputFiles.isEmpty()) {
+		if (!checkParameters()) {
 			return;
 		}
 		
@@ -56,7 +54,7 @@ public class EcoredocMavenPlugin extends AbstractMojo {
 		writeOutput(result);
 	}
 
-	private void checkParameters() throws MojoExecutionException {
+	private boolean checkParameters() throws MojoExecutionException {
 		if (this.outputFile == null) {
 			throw new MojoExecutionException("outputFile not set.");
 		} else {
@@ -73,6 +71,7 @@ public class EcoredocMavenPlugin extends AbstractMojo {
 		
 		if (this.inputFiles == null || this.inputFiles.isEmpty()) {
 			getLog().warn("inputFiles is empty, will not create any output.");
+			return false;
 		} else {
 			final Iterator<File> iter = this.inputFiles.iterator();
 			while (iter.hasNext()) {
@@ -91,6 +90,8 @@ public class EcoredocMavenPlugin extends AbstractMojo {
 				}
 			}
 		}
+		
+		return true;
 	}
 
 	private void writeOutput(final CharSequence result) throws MojoExecutionException {

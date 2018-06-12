@@ -41,9 +41,35 @@
     </dependency>
     <dependency>
     	<groupId>com.altran.general.emf.ecoredoc</groupId>
+    	<artifactId>com.altran.general.emf.ecoredoc.generator.config</artifactId>
+    	<version>0.1.0-SNAPSHOT</version>
+    	<type>eclipse-plugin</type>
+    </dependency>
+    <dependency>
+    	<groupId>com.altran.general.emf.ecoredoc</groupId>
     	<artifactId>com.altran.general.emf.ecoredoc.util</artifactId>
     	<version>0.1.0-SNAPSHOT</version>
     	<type>eclipse-plugin</type>
+    </dependency>
+    <dependency>
+    	<groupId>org.eclipse.emf</groupId>
+    	<artifactId>org.eclipse.emf.ecore</artifactId>
+    	<version>2.12.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.eclipse.emf</groupId>
+    	<artifactId>org.eclipse.emf.common</artifactId>
+    	<version>2.12.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.eclipse.emf</groupId>
+    	<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+    	<version>2.12.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.eclipse.emf</groupId>
+    	<artifactId>org.eclipse.emf.ecore.change</artifactId>
+    	<version>2.11.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.maven</groupId>
@@ -86,26 +112,6 @@
       <artifactId>maven-plugin-testing-harness</artifactId>
       <version>3.3.0</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-    	<groupId>org.eclipse.emf</groupId>
-    	<artifactId>org.eclipse.emf.ecore</artifactId>
-    	<version>2.12.0</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.eclipse.emf</groupId>
-    	<artifactId>org.eclipse.emf.common</artifactId>
-    	<version>2.12.0</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.eclipse.emf</groupId>
-    	<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
-    	<version>2.12.0</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.eclipse.emf</groupId>
-    	<artifactId>org.eclipse.emf.ecore.change</artifactId>
-    	<version>2.11.0</version>
     </dependency>
   </dependencies>
 
@@ -151,6 +157,32 @@
         </plugin>
       </plugins>
     </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-plugin-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <!-- <goalPrefix>maven-archetype-plugin</goalPrefix> -->
+          <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+        </configuration>
+        <executions>
+          <execution>
+            <id>mojo-descriptor</id>
+            <goals>
+              <goal>descriptor</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>help-goal</id>
+            <goals>
+              <goal>helpmojo</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 
   <profiles>

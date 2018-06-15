@@ -9,6 +9,8 @@
     <tycho-version>1.0.0</tycho-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
     
   <modules>
@@ -18,21 +20,45 @@
     <module>../../code/com.altran.general.emf.ecoredoc.standalone</module>
     <module>../../code/com.altran.general.emf.ecoredoc.util</module>
     <module>../../test/com.altran.general.emf.ecoredoc.test</module>
-    <module>../com.altran.general.emf.ecoredoc.target</module>
+<!--     <module>../com.altran.general.emf.ecoredoc.target</module> -->
   </modules>
   
   <repositories>
-   <repository>
+   <!--repository>
       <id>eclipse-oxygen</id>
       <layout>p2</layout>
       <url>http://download.eclipse.org/releases/oxygen</url>
-   </repository>
+   </repository-->
   </repositories>
   
   <packaging>pom</packaging>
   
   <build>
+  	<sourceDirectory>src</sourceDirectory>
+  	
+  	
       <plugins>
+ <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.9.1</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${basedir}/xtend-gen</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+         <!--
          <plugin>
             <groupId>org.eclipse.tycho</groupId>
             <artifactId>tycho-maven-plugin</artifactId>
@@ -59,7 +85,7 @@
 	              <ws>win32</ws>
 	              <arch>x86</arch>
 	            </environment>
-	            <!-- environment>
+	            <environment>
 	              <os>linux</os>
 	              <ws>gtk</ws>
 	              <arch>x86_64</arch>
@@ -68,7 +94,7 @@
 	              <os>macosx</os>
 	              <ws>cocoa</ws>
 	              <arch>x86_64</arch>
-	            </environment-->
+	            </environment>
 	          </environments>
             </configuration>
           </plugin>
@@ -86,6 +112,7 @@
 	          </execution>
 	        </executions>
 	      </plugin>
+	      -->
       </plugins>
    </build>
 </project>

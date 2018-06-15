@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup
 import org.junit.Test
 
 import static org.junit.Assert.assertEquals
+import org.junit.Ignore
 
 class TestBasic {
 	@Test

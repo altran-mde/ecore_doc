@@ -22,13 +22,9 @@ import com.altran.general.emf.ecoredoc.generator.config.IEEnumLiteralConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
-
 import com.google.common.base.Objects;
-
 import com.google.common.collect.Iterables;
-
 import java.lang.Iterable;
-
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
@@ -37,7 +33,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -53,11 +48,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions;
-
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**

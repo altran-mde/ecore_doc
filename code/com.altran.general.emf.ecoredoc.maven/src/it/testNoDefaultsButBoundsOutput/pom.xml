@@ -1,132 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.altran.general.ecoredoc</groupId>
-  <artifactId>simple-it</artifactId>
-  <version>1.0-SNAPSHOT</version>
+	<groupId>com.altran.general.ecoredoc</groupId>
+	<artifactId>simple-it</artifactId>
+	<version>1.0-SNAPSHOT</version>
 
-  <description>EcoreDoc Maven Integration Test</description>
+	<description>EcoreDoc Maven Integration Test</description>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  
-  <!--repositories>
-    <repository>
-      <id>local.central</id>
-      <url>file:///c/users/nstotz/.m2/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <id>central</id>
-      <name>Central Repository</name>
-      <url>https://repo.maven.apache.org/maven2</url>
-    </repository>
-  </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>local.central</id>
-      <url>file://c/users/nstotz/.m2/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-    <pluginRepository>
-      <releases>
-        <updatePolicy>never</updatePolicy>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <id>central</id>
-      <name>Central Repository</name>
-      <url>https://repo.maven.apache.org/maven2</url>
-    </pluginRepository>
-  </pluginRepositories-->
-  
-  <build>
-    <plugins>
-      <plugin>
-	    <groupId>com.altran.general.emf.ecoredoc</groupId>
-        <artifactId>ecoredoc-maven-plugin</artifactId>
-	    <version>0.1.0-SNAPSHOT</version>
-        
-  <dependencies>
-    <dependency>
-    	<groupId>com.altran.general.emf.ecoredoc</groupId>
-    	<artifactId>com.altran.general.emf.ecoredoc.generator</artifactId>
-    	<version>0.1.0-SNAPSHOT</version>
-    	<type>eclipse-plugin</type>
-    </dependency>
-    <dependency>
-    	<groupId>com.altran.general.emf.ecoredoc</groupId>
-    	<artifactId>com.altran.general.emf.ecoredoc.generator.config</artifactId>
-    	<version>0.1.0-SNAPSHOT</version>
-    	<type>eclipse-plugin</type>
-    </dependency>
-    <dependency>
-    	<groupId>com.altran.general.emf.ecoredoc</groupId>
-    	<artifactId>com.altran.general.emf.ecoredoc.util</artifactId>
-    	<version>0.1.0-SNAPSHOT</version>
-    	<type>eclipse-plugin</type>
-    </dependency>
-    <dependency>
-    	<groupId>org.eclipse.emf</groupId>
-    	<artifactId>org.eclipse.emf.ecore</artifactId>
-    	<version>2.12.0</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.eclipse.emf</groupId>
-    	<artifactId>org.eclipse.emf.common</artifactId>
-    	<version>2.12.0</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.eclipse.emf</groupId>
-    	<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
-    	<version>2.12.0</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.eclipse.emf</groupId>
-    	<artifactId>org.eclipse.emf.ecore.change</artifactId>
-    	<version>2.11.0</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.eclipse.xtext</groupId>
-    	<artifactId>org.eclipse.xtext.xbase.lib</artifactId>
-    	<version>2.12.0</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.eclipse.emf</groupId>
-    	<artifactId>org.eclipse.emf.ecore.xcore.lib</artifactId>
-    	<version>1.1.100</version>
-    	<type>eclipse-plugin</type>
-    </dependency>
-  </dependencies>
-        <configuration>
-           <config>
-            <renderDefaults>false</renderDefaults>
-            <renderBounds>true</renderBounds>
-          </config>
-          <inputFiles>
-            <inputFile>EPackage1.ecore</inputFile>
-            <inputFile>EPackage2.ecore</inputFile>
-          </inputFiles>
-          <outputFile>target/output.adoc</outputFile>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.altran.general.emf.ecoredoc</groupId>
+				<artifactId>ecoredoc-maven-plugin</artifactId>
+				<version>${ecoredoc-maven-version}</version>
+				<configuration>
+					<config>
+						<renderDefaults>false</renderDefaults>
+						<renderBounds>true</renderBounds>
+					</config>
+					<inputFiles>
+						<inputFile>EPackage1.ecore</inputFile>
+						<inputFile>EPackage2.ecore</inputFile>
+					</inputFiles>
+					<outputFile>target/output.adoc</outputFile>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

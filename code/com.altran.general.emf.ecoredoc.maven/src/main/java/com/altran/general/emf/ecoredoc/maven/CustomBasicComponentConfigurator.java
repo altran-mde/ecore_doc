@@ -8,13 +8,22 @@ import org.codehaus.plexus.personality.plexus.lifecycle.phase.InitializationExce
 
 import com.altran.general.emf.ecoredoc.util.EcoreDocUtils;
 
+/**
+ * Registers {@link EcoreDocGeneratorConfigConverter} to Maven.
+ *
+ * <p>
+ * Requires <tt>plexus-component-metadata</tt> plugin to create the appropriate
+ * <tt>content.xml</tt> file.
+ * </p>
+ *
+ */
 @Component(role = ComponentConfigurator.class, hint = "basic")
 public class CustomBasicComponentConfigurator extends BasicComponentConfigurator implements Initializable {
 	@Override
 	public void initialize() throws InitializationException {
 		EcoreDocUtils.getInstance().setupEcoreStandalone();
-		
+
 		this.converterLookup.registerConverter(new EcoreDocGeneratorConfigConverter());
 	}
-	
+
 }

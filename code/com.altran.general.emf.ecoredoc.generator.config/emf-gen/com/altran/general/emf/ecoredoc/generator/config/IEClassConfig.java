@@ -28,6 +28,19 @@ public interface IEClassConfig extends IEClassifierConfig {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Whether inherited features should be repeated.
+	 * 
+	 * <p>
+	 * Example:
+	 * <tt>EClass1</tt> has an <tt>EAttribute name=attr1</tt>.
+	 * <tt>EClass2 extends EClass1</tt>.
+	 * If <tt>repeatInherited = true</tt> for <i>EClass2</i>,
+	 * <i>attr1</i> will be listed in the section of <i>EClass1</i> and <i>EClass2</i>.
+	 * Otherwise, <i>attr1</i> will only be listed in the section of <i>EClass1</i>.
+	 * </p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Repeat Inherited</em>' attribute.
 	 * @see #isSetRepeatInherited()
 	 * @see #unsetRepeatInherited()
@@ -76,6 +89,10 @@ public interface IEClassConfig extends IEClassifierConfig {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Traverses the tree to find the most specific <tt>repeatInherited</tt> setting.
+	 * <!-- end-model-doc -->
 	 * @model unique="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _xifexpression = false;\nboolean _isSetRepeatInherited = this.isSetRepeatInherited();\nif (_isSetRepeatInherited)\n{\n\t_xifexpression = this.isRepeatInherited();\n}\nelse\n{\n\t&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n\t_xifexpression = ((&lt;%com.altran.general.emf.ecoredoc.generator.config.IEClassConfig%&gt;) _eContainer).shouldRepeatInherited();\n}\nreturn _xifexpression;'"
 	 * @generated

@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EAttributeConfigImpl#isRender <em>Render</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EAttributeConfigImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EAttributeConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EAttributeConfigImpl#isRenderBounds <em>Render Bounds</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EAttributeConfigImpl#getTargetEAttribute <em>Target EAttribute</em>}</li>
@@ -66,6 +67,16 @@ public class EAttributeConfigImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected boolean renderESet;
+
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #isRenderDefaults() <em>Render Defaults</em>}' attribute.
@@ -198,6 +209,20 @@ public class EAttributeConfigImpl extends MinimalEObjectImpl.Container implement
 	 */
 	public boolean isSetRender() {
 		return renderESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getId() {
+		ENamedElement _target = this.getTarget();
+		String _name = null;
+		if (_target!=null) {
+			_name=_target.getName();
+		}
+		return _name;
 	}
 
 	/**
@@ -403,6 +428,8 @@ public class EAttributeConfigImpl extends MinimalEObjectImpl.Container implement
 		switch (featureID) {
 			case ConfigPackage.EATTRIBUTE_CONFIG__RENDER:
 				return isRender();
+			case ConfigPackage.EATTRIBUTE_CONFIG__ID:
+				return getId();
 			case ConfigPackage.EATTRIBUTE_CONFIG__RENDER_DEFAULTS:
 				return isRenderDefaults();
 			case ConfigPackage.EATTRIBUTE_CONFIG__RENDER_BOUNDS:
@@ -472,6 +499,8 @@ public class EAttributeConfigImpl extends MinimalEObjectImpl.Container implement
 		switch (featureID) {
 			case ConfigPackage.EATTRIBUTE_CONFIG__RENDER:
 				return isSetRender();
+			case ConfigPackage.EATTRIBUTE_CONFIG__ID:
+				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
 			case ConfigPackage.EATTRIBUTE_CONFIG__RENDER_DEFAULTS:
 				return isSetRenderDefaults();
 			case ConfigPackage.EATTRIBUTE_CONFIG__RENDER_BOUNDS:

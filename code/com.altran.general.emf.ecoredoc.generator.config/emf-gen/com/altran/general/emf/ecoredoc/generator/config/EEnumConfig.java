@@ -2,6 +2,7 @@
  */
 package com.altran.general.emf.ecoredoc.generator.config;
 
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.ENamedElement;
@@ -74,5 +75,18 @@ public interface EEnumConfig extends IEEnumConfig, IEEnumLiteralConfig {
 	 * @generated
 	 */
 	ENamedElement getTarget();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+	 * <!-- end-model-doc -->
+	 * @model eEnumLiteralConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig&gt;" eEnumLiteralConfigUnique="false" eEnumLiteralConfigMany="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig%&gt;&gt; _eEnumLiterals = this.getEEnumLiterals();\n&lt;%com.google.common.collect.Iterables%&gt;.&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig%&gt;&gt;addAll(_eEnumLiterals, eEnumLiteralConfig);'"
+	 * @generated
+	 */
+	void addEEnumLiterals(List<EEnumLiteralConfig> eEnumLiteralConfig);
 
 } // EEnumConfig

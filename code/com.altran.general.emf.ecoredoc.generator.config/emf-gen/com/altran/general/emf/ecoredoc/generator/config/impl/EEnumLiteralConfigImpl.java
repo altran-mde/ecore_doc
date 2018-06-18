@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumLiteralConfigImpl#isRender <em>Render</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumLiteralConfigImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumLiteralConfigImpl#getTargetEEnumLiteral <em>Target EEnum Literal</em>}</li>
  * </ul>
  *
@@ -63,6 +64,16 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	 * @ordered
 	 */
 	protected boolean renderESet;
+
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getTargetEEnumLiteral() <em>Target EEnum Literal</em>}' reference.
@@ -144,6 +155,20 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getId() {
+		ENamedElement _target = this.getTarget();
+		String _name = null;
+		if (_target!=null) {
+			_name=_target.getName();
+		}
+		return _name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnumLiteral getTargetEEnumLiteral() {
 		if (targetEEnumLiteral != null && targetEEnumLiteral.eIsProxy()) {
 			InternalEObject oldTargetEEnumLiteral = (InternalEObject)targetEEnumLiteral;
@@ -214,6 +239,8 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 		switch (featureID) {
 			case ConfigPackage.EENUM_LITERAL_CONFIG__RENDER:
 				return isRender();
+			case ConfigPackage.EENUM_LITERAL_CONFIG__ID:
+				return getId();
 			case ConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL:
 				if (resolve) return getTargetEEnumLiteral();
 				return basicGetTargetEEnumLiteral();
@@ -267,6 +294,8 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 		switch (featureID) {
 			case ConfigPackage.EENUM_LITERAL_CONFIG__RENDER:
 				return isSetRender();
+			case ConfigPackage.EENUM_LITERAL_CONFIG__ID:
+				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
 			case ConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL:
 				return targetEEnumLiteral != null;
 		}

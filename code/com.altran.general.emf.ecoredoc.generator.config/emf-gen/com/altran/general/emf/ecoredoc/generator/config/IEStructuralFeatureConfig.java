@@ -28,6 +28,11 @@ public interface IEStructuralFeatureConfig extends IENamedElementConfig, IDefaul
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Whether multiplicity bounds should be rendered,
+	 * even if they are at their default values and <tt>renderDefaults = false</tt>.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Render Bounds</em>' attribute.
 	 * @see #isSetRenderBounds()
 	 * @see #unsetRenderBounds()
@@ -76,6 +81,10 @@ public interface IEStructuralFeatureConfig extends IENamedElementConfig, IDefaul
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Traverses the tree to find the most specific <tt>renderBounds</tt> setting.
+	 * <!-- end-model-doc -->
 	 * @model unique="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _xifexpression = false;\nboolean _isSetRenderBounds = this.isSetRenderBounds();\nif (_isSetRenderBounds)\n{\n\t_xifexpression = this.isRenderBounds();\n}\nelse\n{\n\t&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n\t_xifexpression = ((&lt;%com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig%&gt;) _eContainer).shouldRenderBounds();\n}\nreturn _xifexpression;'"
 	 * @generated

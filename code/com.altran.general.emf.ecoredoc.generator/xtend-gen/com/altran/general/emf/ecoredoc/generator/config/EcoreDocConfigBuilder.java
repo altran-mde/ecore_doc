@@ -27,6 +27,9 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
+/**
+ * Builds a fully populated config hierarchy for all input {@link EPackage}s.
+ */
 @SuppressWarnings("all")
 public class EcoreDocConfigBuilder {
   @Extension

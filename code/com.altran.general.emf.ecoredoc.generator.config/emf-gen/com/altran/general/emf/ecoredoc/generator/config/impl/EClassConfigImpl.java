@@ -15,10 +15,12 @@ import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
 
+import com.google.common.collect.Iterables;
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
 
+import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -44,6 +46,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EClassConfigImpl#isRender <em>Render</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EClassConfigImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EClassConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EClassConfigImpl#isRenderUseCases <em>Render Use Cases</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EClassConfigImpl#isRepeatInherited <em>Repeat Inherited</em>}</li>
@@ -85,6 +88,16 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 	 * @ordered
 	 */
 	protected boolean renderESet;
+
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #isRenderDefaults() <em>Render Defaults</em>}' attribute.
@@ -305,6 +318,20 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 	 */
 	public boolean isSetRender() {
 		return renderESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getId() {
+		ENamedElement _target = this.getTarget();
+		String _name = null;
+		if (_target!=null) {
+			_name=_target.getName();
+		}
+		return _name;
 	}
 
 	/**
@@ -579,6 +606,36 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void addEAttributes(final List<EAttributeConfig> eAttributeConfig) {
+		EList<EAttributeConfig> _eAttributes = this.getEAttributes();
+		Iterables.<EAttributeConfig>addAll(_eAttributes, eAttributeConfig);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void addEContainments(final List<EContainmentConfig> eContainmentConfig) {
+		EList<EContainmentConfig> _eContainments = this.getEContainments();
+		Iterables.<EContainmentConfig>addAll(_eContainments, eContainmentConfig);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void addEReferences(final List<EReferenceConfig> eReferenceConfig) {
+		EList<EReferenceConfig> _eReferences = this.getEReferences();
+		Iterables.<EReferenceConfig>addAll(_eReferences, eReferenceConfig);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean shouldRenderBounds() {
 		boolean _xifexpression = false;
 		boolean _isSetRenderBounds = this.isSetRenderBounds();
@@ -692,6 +749,8 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 		switch (featureID) {
 			case ConfigPackage.ECLASS_CONFIG__RENDER:
 				return isRender();
+			case ConfigPackage.ECLASS_CONFIG__ID:
+				return getId();
 			case ConfigPackage.ECLASS_CONFIG__RENDER_DEFAULTS:
 				return isRenderDefaults();
 			case ConfigPackage.ECLASS_CONFIG__RENDER_USE_CASES:
@@ -805,6 +864,8 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 		switch (featureID) {
 			case ConfigPackage.ECLASS_CONFIG__RENDER:
 				return isSetRender();
+			case ConfigPackage.ECLASS_CONFIG__ID:
+				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
 			case ConfigPackage.ECLASS_CONFIG__RENDER_DEFAULTS:
 				return isSetRenderDefaults();
 			case ConfigPackage.ECLASS_CONFIG__RENDER_USE_CASES:
@@ -927,10 +988,20 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case ConfigPackage.ECLASS_CONFIG___GET_TARGET:
 				return getTarget();
+			case ConfigPackage.ECLASS_CONFIG___ADD_EATTRIBUTES__LIST:
+				addEAttributes((List<EAttributeConfig>)arguments.get(0));
+				return null;
+			case ConfigPackage.ECLASS_CONFIG___ADD_ECONTAINMENTS__LIST:
+				addEContainments((List<EContainmentConfig>)arguments.get(0));
+				return null;
+			case ConfigPackage.ECLASS_CONFIG___ADD_EREFERENCES__LIST:
+				addEReferences((List<EReferenceConfig>)arguments.get(0));
+				return null;
 			case ConfigPackage.ECLASS_CONFIG___SHOULD_RENDER_BOUNDS:
 				return shouldRenderBounds();
 			case ConfigPackage.ECLASS_CONFIG___SHOULD_REPEAT_INHERITED:

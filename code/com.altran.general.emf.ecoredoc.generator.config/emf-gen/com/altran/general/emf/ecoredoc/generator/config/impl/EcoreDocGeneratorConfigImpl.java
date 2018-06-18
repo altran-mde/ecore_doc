@@ -29,6 +29,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
 
+import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -61,6 +62,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  * </p>
  * <ul>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRender <em>Render</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getPositionEDataTypes <em>Position EData Types</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getPositionEEnums <em>Position EEnums</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getPositionEClasses <em>Position EClasses</em>}</li>
@@ -102,6 +104,16 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 * @ordered
 	 */
 	protected boolean renderESet;
+
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #getPositionEDataTypes() <em>Position EData Types</em>}' attribute.
@@ -379,6 +391,20 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 */
 	public boolean isSetRender() {
 		return renderESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getId() {
+		ENamedElement _target = this.getTarget();
+		String _name = null;
+		if (_target!=null) {
+			_name=_target.getName();
+		}
+		return _name;
 	}
 
 	/**
@@ -856,6 +882,16 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void addEPackages(final List<EPackageConfig> ePackageConfig) {
+		EList<EPackageConfig> _ePackages = this.getEPackages();
+		Iterables.<EPackageConfig>addAll(_ePackages, ePackageConfig);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public IENamedElementConfig findConfig(final ENamedElement element) {
 		Iterable<? extends IENamedElementConfig> _switchResult = null;
 		boolean _matched = false;
@@ -1009,6 +1045,8 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
 				return isRender();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__ID:
+				return getId();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
 				return getPositionEDataTypes();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
@@ -1119,6 +1157,8 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
 				return isSetRender();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__ID:
+				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
 				return isSetPositionEDataTypes();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
@@ -1322,6 +1362,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER:
@@ -1340,6 +1381,9 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 				return getEEnumsPosition();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_ECLASSES_POSITION:
 				return getEClassesPosition();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___ADD_EPACKAGES__LIST:
+				addEPackages((List<EPackageConfig>)arguments.get(0));
+				return null;
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT:
 				return findConfig((ENamedElement)arguments.get(0));
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_TARGET:

@@ -11,6 +11,27 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+/**
+ * Recursively merges an Ecore tree into another Ecore tree.
+ *
+ * <ul>
+ * <li>Considers only features that are already present in the base tree.</li>
+ * <li>For single-valued EAttributes, the overwrite value replaced the base
+ * value.</li>
+ * <li>For multi-valued EAttributes, all overwrite values that are not present
+ * in the base values are added to the base values.</li>
+ * <li>Non-containment EReferences are not considered.</li>
+ * <li>For single-valued containment EReferences, the merge continues
+ * recursively.</li>
+ * <li>For multi-valued containment EReferences, elements that exist on both
+ * sides and are {@linkplain EcoreUtil#equals(EObject, EObject) deep-equal} are
+ * not considered. Overwrite elements that have
+ * {@linkplain EcoreUtil#getID(EObject) an ID} and the same ID can be found in
+ * the base elements, these two are merged recursively. Other overwrite elements
+ * are added to the base elements list.</li>
+ * </ul>
+ *
+ */
 public class EcoreMerger<T extends EObject> {
 	private final T base;
 

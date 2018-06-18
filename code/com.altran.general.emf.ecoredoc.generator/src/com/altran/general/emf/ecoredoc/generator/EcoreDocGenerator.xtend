@@ -15,6 +15,22 @@ import org.eclipse.emf.ecore.EPackage
 
 import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
 
+/**
+ * Creates JavaDoc-like documents for Ecore metamodels in AsciiDoctor format.
+ *
+ * @see <a href=
+ *      "http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html">JavaDoc
+ *      Homepage</a>
+ * @see <a href="https://wiki.eclipse.org/Ecore">Ecore Wiki entry</a>
+ * @see <a href="https://asciidoctor.org/">AsciiDoctor Homepage</a>
+ *
+ */
+/*
+ * Naming conventions:
+ *  - Ecore names are written in full, i.e. including the leading "E".
+ *  - "writeX()" returns void and writes directly to the output.
+ *  - "defineX()" produces the output text for a property, or null if no output is required.
+ */
 class EcoreDocGenerator {
 
 	extension EcoreDocExtension = new EcoreDocExtension
@@ -34,6 +50,9 @@ class EcoreDocGenerator {
 		this.input = input
 	}
 
+	/**
+	 * Generates the AsciiDoctor contents.
+	 */
 	def CharSequence generate() {
 		writeIntro()
 
@@ -65,13 +84,16 @@ class EcoreDocGenerator {
 		return output.toString
 	}
 	
+	/**
+	 * Returns a fully populated configuration.
+	 */
 	def getConfig() {
-		assureConfigExists()
+		ensureConfigExists()
 		
 		return this.config
 	}
 
-	protected def writeIntro() {
+	protected def void writeIntro() {
 		output.append(
 		'''
 			// White Up-Pointing Triangle
@@ -87,7 +109,7 @@ class EcoreDocGenerator {
 		''')
 	}
 
-	protected def writeEPackageIntro(EPackage ePackage) {
+	protected def void writeEPackageIntro(EPackage ePackage) {
 		val ePackageName = ePackage.name
 		output.append(
 		'''
@@ -123,7 +145,7 @@ class EcoreDocGenerator {
 		}
 	}
 	
-	protected def void assureConfigExists() {
+	protected def void ensureConfigExists() {
 		if (this.config === null) {
 			this.config = new EcoreDocConfigBuilder(getEPackages().keySet).build()
 		}

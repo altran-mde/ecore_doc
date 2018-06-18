@@ -26,6 +26,12 @@ import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
+/**
+ * Naming conventions:
+ *  - Ecore names are written in full, i.e. including the leading "E".
+ *  - "writeX()" returns void and writes directly to the output.
+ *  - "defineX()" produces the output text for a property, or null if no output is required.
+ */
 @SuppressWarnings("all")
 public class EcoreDocGenerator {
   @Extension
@@ -49,6 +55,9 @@ public class EcoreDocGenerator {
     this.input = input;
   }
   
+  /**
+   * Generates the AsciiDoctor contents.
+   */
   public CharSequence generate() {
     this.writeIntro();
     EcoreDocGeneratorConfig _config = this.getConfig();
@@ -100,12 +109,15 @@ public class EcoreDocGenerator {
     return this.output.toString();
   }
   
+  /**
+   * Returns a fully populated configuration.
+   */
   public EcoreDocGeneratorConfig getConfig() {
-    this.assureConfigExists();
+    this.ensureConfigExists();
     return this.config;
   }
   
-  protected StringBuilder writeIntro() {
+  protected void writeIntro() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("// White Up-Pointing Triangle");
     _builder.newLine();
@@ -130,42 +142,38 @@ public class EcoreDocGenerator {
     _builder.newLine();
     _builder.append(":toclevels: 4");
     _builder.newLine();
-    return this.output.append(_builder);
+    this.output.append(_builder);
   }
   
-  protected StringBuilder writeEPackageIntro(final EPackage ePackage) {
-    StringBuilder _xblockexpression = null;
-    {
-      final String ePackageName = ePackage.getName();
-      StringConcatenation _builder = new StringConcatenation();
-      String _newline = EcoreDocExtension.newline();
-      _builder.append(_newline);
-      _builder.newLineIfNotEmpty();
-      String _newline_1 = EcoreDocExtension.newline();
-      _builder.append(_newline_1);
-      _builder.newLineIfNotEmpty();
-      _builder.append("[[");
-      _builder.append(ePackageName);
-      _builder.append("]]");
-      _builder.newLineIfNotEmpty();
-      _builder.append("== Contents of ");
-      _builder.append(ePackageName);
-      _builder.newLineIfNotEmpty();
-      String _newline_2 = EcoreDocExtension.newline();
-      _builder.append(_newline_2);
-      _builder.newLineIfNotEmpty();
-      CharSequence _documentation = this._ecoreDocExtension.getDocumentation(ePackage);
-      _builder.append(_documentation);
-      _builder.newLineIfNotEmpty();
-      String _newline_3 = EcoreDocExtension.newline();
-      _builder.append(_newline_3);
-      _builder.newLineIfNotEmpty();
-      CharSequence _concatEPackageProperties = this.concatEPackageProperties(ePackage);
-      _builder.append(_concatEPackageProperties);
-      _builder.newLineIfNotEmpty();
-      _xblockexpression = this.output.append(_builder);
-    }
-    return _xblockexpression;
+  protected void writeEPackageIntro(final EPackage ePackage) {
+    final String ePackageName = ePackage.getName();
+    StringConcatenation _builder = new StringConcatenation();
+    String _newline = EcoreDocExtension.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
+    String _newline_1 = EcoreDocExtension.newline();
+    _builder.append(_newline_1);
+    _builder.newLineIfNotEmpty();
+    _builder.append("[[");
+    _builder.append(ePackageName);
+    _builder.append("]]");
+    _builder.newLineIfNotEmpty();
+    _builder.append("== Contents of ");
+    _builder.append(ePackageName);
+    _builder.newLineIfNotEmpty();
+    String _newline_2 = EcoreDocExtension.newline();
+    _builder.append(_newline_2);
+    _builder.newLineIfNotEmpty();
+    CharSequence _documentation = this._ecoreDocExtension.getDocumentation(ePackage);
+    _builder.append(_documentation);
+    _builder.newLineIfNotEmpty();
+    String _newline_3 = EcoreDocExtension.newline();
+    _builder.append(_newline_3);
+    _builder.newLineIfNotEmpty();
+    CharSequence _concatEPackageProperties = this.concatEPackageProperties(ePackage);
+    _builder.append(_concatEPackageProperties);
+    _builder.newLineIfNotEmpty();
+    this.output.append(_builder);
   }
   
   protected CharSequence concatEPackageProperties(final EPackage ePackage) {
@@ -196,7 +204,7 @@ public class EcoreDocGenerator {
     }
   }
   
-  protected void assureConfigExists() {
+  protected void ensureConfigExists() {
     if ((this.config == null)) {
       Set<EPackage> _keySet = this.getEPackages().keySet();
       this.config = new EcoreDocConfigBuilder(_keySet).build();

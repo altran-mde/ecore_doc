@@ -12,6 +12,9 @@ import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EReference
 
+/**
+ * Builds a fully populated config hierarchy for all input {@link EPackage}s.
+ */
 class EcoreDocConfigBuilder {
 	extension ConfigFactory config = ConfigFactory.eINSTANCE
 	extension EcoreDocExtension = new EcoreDocExtension

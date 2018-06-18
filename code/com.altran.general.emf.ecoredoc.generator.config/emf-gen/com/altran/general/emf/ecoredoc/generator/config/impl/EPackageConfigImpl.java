@@ -19,10 +19,12 @@ import com.altran.general.emf.ecoredoc.generator.config.IEPackageConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
 
+import com.google.common.collect.Iterables;
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
 
+import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -49,6 +51,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#isRender <em>Render</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEDataTypes <em>Position EData Types</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEEnums <em>Position EEnums</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEClasses <em>Position EClasses</em>}</li>
@@ -93,6 +96,16 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected boolean renderESet;
+
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #getPositionEDataTypes() <em>Position EData Types</em>}' attribute.
@@ -400,6 +413,20 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	public boolean isSetRender() {
 		return renderESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getId() {
+		ENamedElement _target = this.getTarget();
+		String _name = null;
+		if (_target!=null) {
+			_name=_target.getName();
+		}
+		return _name;
 	}
 
 	/**
@@ -812,6 +839,36 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void addEDataTypes(final List<EDataTypeConfig> eDataTypeConfig) {
+		EList<EDataTypeConfig> _eDataTypes = this.getEDataTypes();
+		Iterables.<EDataTypeConfig>addAll(_eDataTypes, eDataTypeConfig);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void addEEnums(final List<EEnumConfig> eEnumConfig) {
+		EList<EEnumConfig> _eEnums = this.getEEnums();
+		Iterables.<EEnumConfig>addAll(_eEnums, eEnumConfig);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void addEClasses(final List<EClassConfig> eClassConfig) {
+		EList<EClassConfig> _eClasses = this.getEClasses();
+		Iterables.<EClassConfig>addAll(_eClasses, eClassConfig);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean shouldRenderBounds() {
 		boolean _xifexpression = false;
 		boolean _isSetRenderBounds = this.isSetRenderBounds();
@@ -979,6 +1036,8 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
 				return isRender();
+			case ConfigPackage.EPACKAGE_CONFIG__ID:
+				return getId();
 			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
 				return getPositionEDataTypes();
 			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
@@ -1116,6 +1175,8 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
 				return isSetRender();
+			case ConfigPackage.EPACKAGE_CONFIG__ID:
+				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
 			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
 				return isSetPositionEDataTypes();
 			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
@@ -1325,10 +1386,20 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case ConfigPackage.EPACKAGE_CONFIG___GET_TARGET:
 				return getTarget();
+			case ConfigPackage.EPACKAGE_CONFIG___ADD_EDATA_TYPES__LIST:
+				addEDataTypes((List<EDataTypeConfig>)arguments.get(0));
+				return null;
+			case ConfigPackage.EPACKAGE_CONFIG___ADD_EENUMS__LIST:
+				addEEnums((List<EEnumConfig>)arguments.get(0));
+				return null;
+			case ConfigPackage.EPACKAGE_CONFIG___ADD_ECLASSES__LIST:
+				addEClasses((List<EClassConfig>)arguments.get(0));
+				return null;
 			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_BOUNDS:
 				return shouldRenderBounds();
 			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_REPEAT_INHERITED:

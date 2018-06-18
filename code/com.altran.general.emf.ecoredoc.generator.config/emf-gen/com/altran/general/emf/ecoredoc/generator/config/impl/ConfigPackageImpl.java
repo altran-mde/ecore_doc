@@ -26,8 +26,10 @@ import com.altran.general.emf.ecoredoc.generator.config.IEPackageConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
 
+import java.util.List;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -42,6 +44,13 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass listEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -258,6 +267,15 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getList() {
+		return listEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getIENamedElementConfig() {
 		return ieNamedElementConfigEClass;
 	}
@@ -269,6 +287,15 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 */
 	public EAttribute getIENamedElementConfig_Render() {
 		return (EAttribute)ieNamedElementConfigEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIENamedElementConfig_Id() {
+		return (EAttribute)ieNamedElementConfigEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -600,7 +627,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getEcoreDocGeneratorConfig__FindConfig__ENamedElement() {
+	public EOperation getEcoreDocGeneratorConfig__AddEPackages__List() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(8);
 	}
 
@@ -609,8 +636,17 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getEcoreDocGeneratorConfig__GetTarget() {
+	public EOperation getEcoreDocGeneratorConfig__FindConfig__ENamedElement() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEcoreDocGeneratorConfig__GetTarget() {
+		return ecoreDocGeneratorConfigEClass.getEOperations().get(10);
 	}
 
 	/**
@@ -665,6 +701,33 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 */
 	public EOperation getEPackageConfig__GetTarget() {
 		return ePackageConfigEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEPackageConfig__AddEDataTypes__List() {
+		return ePackageConfigEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEPackageConfig__AddEEnums__List() {
+		return ePackageConfigEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEPackageConfig__AddEClasses__List() {
+		return ePackageConfigEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -728,6 +791,15 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 */
 	public EOperation getEEnumConfig__GetTarget() {
 		return eEnumConfigEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEEnumConfig__AddEEnumLiterals__List() {
+		return eEnumConfigEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -809,6 +881,33 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 */
 	public EOperation getEClassConfig__GetTarget() {
 		return eClassConfigEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEClassConfig__AddEAttributes__List() {
+		return eClassConfigEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEClassConfig__AddEContainments__List() {
+		return eClassConfigEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEClassConfig__AddEReferences__List() {
+		return eClassConfigEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -931,6 +1030,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		// Create classes and their features
 		ieNamedElementConfigEClass = createEClass(IE_NAMED_ELEMENT_CONFIG);
 		createEAttribute(ieNamedElementConfigEClass, IE_NAMED_ELEMENT_CONFIG__RENDER);
+		createEAttribute(ieNamedElementConfigEClass, IE_NAMED_ELEMENT_CONFIG__ID);
 		createEOperation(ieNamedElementConfigEClass, IE_NAMED_ELEMENT_CONFIG___SHOULD_RENDER);
 		createEOperation(ieNamedElementConfigEClass, IE_NAMED_ELEMENT_CONFIG___GET_TARGET);
 
@@ -978,6 +1078,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___GET_EDATA_TYPES_POSITION);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___GET_EENUMS_POSITION);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___GET_ECLASSES_POSITION);
+		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___ADD_EPACKAGES__LIST);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___GET_TARGET);
 
@@ -987,6 +1088,9 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		createEReference(ePackageConfigEClass, EPACKAGE_CONFIG__EENUMS);
 		createEReference(ePackageConfigEClass, EPACKAGE_CONFIG__ECLASSES);
 		createEOperation(ePackageConfigEClass, EPACKAGE_CONFIG___GET_TARGET);
+		createEOperation(ePackageConfigEClass, EPACKAGE_CONFIG___ADD_EDATA_TYPES__LIST);
+		createEOperation(ePackageConfigEClass, EPACKAGE_CONFIG___ADD_EENUMS__LIST);
+		createEOperation(ePackageConfigEClass, EPACKAGE_CONFIG___ADD_ECLASSES__LIST);
 
 		eDataTypeConfigEClass = createEClass(EDATA_TYPE_CONFIG);
 		createEReference(eDataTypeConfigEClass, EDATA_TYPE_CONFIG__TARGET_EDATA_TYPE);
@@ -996,6 +1100,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		createEReference(eEnumConfigEClass, EENUM_CONFIG__TARGET_EENUM);
 		createEReference(eEnumConfigEClass, EENUM_CONFIG__EENUM_LITERALS);
 		createEOperation(eEnumConfigEClass, EENUM_CONFIG___GET_TARGET);
+		createEOperation(eEnumConfigEClass, EENUM_CONFIG___ADD_EENUM_LITERALS__LIST);
 
 		eEnumLiteralConfigEClass = createEClass(EENUM_LITERAL_CONFIG);
 		createEReference(eEnumLiteralConfigEClass, EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL);
@@ -1007,6 +1112,9 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		createEReference(eClassConfigEClass, ECLASS_CONFIG__ECONTAINMENTS);
 		createEReference(eClassConfigEClass, ECLASS_CONFIG__EREFERENCES);
 		createEOperation(eClassConfigEClass, ECLASS_CONFIG___GET_TARGET);
+		createEOperation(eClassConfigEClass, ECLASS_CONFIG___ADD_EATTRIBUTES__LIST);
+		createEOperation(eClassConfigEClass, ECLASS_CONFIG___ADD_ECONTAINMENTS__LIST);
+		createEOperation(eClassConfigEClass, ECLASS_CONFIG___ADD_EREFERENCES__LIST);
 
 		eAttributeConfigEClass = createEClass(EATTRIBUTE_CONFIG);
 		createEReference(eAttributeConfigEClass, EATTRIBUTE_CONFIG__TARGET_EATTRIBUTE);
@@ -1021,6 +1129,8 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		eReferenceConfigEClass = createEClass(EREFERENCE_CONFIG);
 		createEReference(eReferenceConfigEClass, EREFERENCE_CONFIG__TARGET_EREFERENCE);
 		createEOperation(eReferenceConfigEClass, EREFERENCE_CONFIG___GET_TARGET);
+
+		listEClass = createEClass(LIST);
 	}
 
 	/**
@@ -1050,6 +1160,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
+		addETypeParameter(listEClass, "T");
 
 		// Set bounds for type parameters
 
@@ -1092,6 +1203,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		// Initialize classes, features, and operations; add parameters
 		initEClass(ieNamedElementConfigEClass, IENamedElementConfig.class, "IENamedElementConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIENamedElementConfig_Render(), theEcorePackage.getEBoolean(), "render", null, 0, 1, IENamedElementConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIENamedElementConfig_Id(), theEcorePackage.getEString(), "id", null, 0, 1, IENamedElementConfig.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getIENamedElementConfig__ShouldRender(), theEcorePackage.getEBoolean(), "shouldRender", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -1157,7 +1269,13 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 
 		initEOperation(getEcoreDocGeneratorConfig__GetEClassesPosition(), theEcorePackage.getEInt(), "getEClassesPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		EOperation op = initEOperation(getEcoreDocGeneratorConfig__FindConfig__ENamedElement(), this.getIENamedElementConfig(), "findConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getEcoreDocGeneratorConfig__AddEPackages__List(), null, "addEPackages", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		EGenericType g1 = createEGenericType(this.getList());
+		EGenericType g2 = createEGenericType(this.getEPackageConfig());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "ePackageConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getEcoreDocGeneratorConfig__FindConfig__ENamedElement(), this.getIENamedElementConfig(), "findConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theEcorePackage.getENamedElement(), "element", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getEcoreDocGeneratorConfig__GetTarget(), theEcorePackage.getENamedElement(), "getTarget", 0, 1, !IS_UNIQUE, IS_ORDERED);
@@ -1170,6 +1288,24 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 
 		initEOperation(getEPackageConfig__GetTarget(), theEcorePackage.getENamedElement(), "getTarget", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
+		op = initEOperation(getEPackageConfig__AddEDataTypes__List(), null, "addEDataTypes", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getList());
+		g2 = createEGenericType(this.getEDataTypeConfig());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "eDataTypeConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getEPackageConfig__AddEEnums__List(), null, "addEEnums", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getList());
+		g2 = createEGenericType(this.getEEnumConfig());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "eEnumConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getEPackageConfig__AddEClasses__List(), null, "addEClasses", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getList());
+		g2 = createEGenericType(this.getEClassConfig());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "eClassConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(eDataTypeConfigEClass, EDataTypeConfig.class, "EDataTypeConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEDataTypeConfig_TargetEDataType(), theEcorePackage.getEDataType(), null, "targetEDataType", null, 0, 1, EDataTypeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1180,6 +1316,12 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		initEReference(getEEnumConfig_EEnumLiterals(), this.getEEnumLiteralConfig(), null, "eEnumLiterals", null, 0, -1, EEnumConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getEEnumConfig__GetTarget(), theEcorePackage.getENamedElement(), "getTarget", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getEEnumConfig__AddEEnumLiterals__List(), null, "addEEnumLiterals", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getList());
+		g2 = createEGenericType(this.getEEnumLiteralConfig());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "eEnumLiteralConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(eEnumLiteralConfigEClass, EEnumLiteralConfig.class, "EEnumLiteralConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEEnumLiteralConfig_TargetEEnumLiteral(), theEcorePackage.getEEnumLiteral(), null, "targetEEnumLiteral", null, 0, 1, EEnumLiteralConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1193,6 +1335,24 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		initEReference(getEClassConfig_EReferences(), this.getEReferenceConfig(), null, "eReferences", null, 0, -1, EClassConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getEClassConfig__GetTarget(), theEcorePackage.getENamedElement(), "getTarget", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getEClassConfig__AddEAttributes__List(), null, "addEAttributes", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getList());
+		g2 = createEGenericType(this.getEAttributeConfig());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "eAttributeConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getEClassConfig__AddEContainments__List(), null, "addEContainments", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getList());
+		g2 = createEGenericType(this.getEContainmentConfig());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "eContainmentConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getEClassConfig__AddEReferences__List(), null, "addEReferences", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getList());
+		g2 = createEGenericType(this.getEReferenceConfig());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "eReferenceConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(eAttributeConfigEClass, EAttributeConfig.class, "EAttributeConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEAttributeConfig_TargetEAttribute(), theEcorePackage.getEAttribute(), null, "targetEAttribute", null, 0, 1, EAttributeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1210,6 +1370,8 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		initEReference(getEReferenceConfig_TargetEReference(), theEcorePackage.getEReference(), null, "targetEReference", null, 0, 1, EReferenceConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getEReferenceConfig__GetTarget(), theEcorePackage.getENamedElement(), "getTarget", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(listEClass, List.class, "List", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

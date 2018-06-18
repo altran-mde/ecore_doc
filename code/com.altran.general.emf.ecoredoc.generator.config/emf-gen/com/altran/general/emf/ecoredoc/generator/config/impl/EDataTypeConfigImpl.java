@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl#isRender <em>Render</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl#isRenderUseCases <em>Render Use Cases</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl#getTargetEDataType <em>Target EData Type</em>}</li>
@@ -67,6 +68,16 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected boolean renderESet;
+
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #isRenderDefaults() <em>Render Defaults</em>}' attribute.
@@ -199,6 +210,20 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 	 */
 	public boolean isSetRender() {
 		return renderESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getId() {
+		ENamedElement _target = this.getTarget();
+		String _name = null;
+		if (_target!=null) {
+			_name=_target.getName();
+		}
+		return _name;
 	}
 
 	/**
@@ -404,6 +429,8 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 		switch (featureID) {
 			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER:
 				return isRender();
+			case ConfigPackage.EDATA_TYPE_CONFIG__ID:
+				return getId();
 			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS:
 				return isRenderDefaults();
 			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_USE_CASES:
@@ -473,6 +500,8 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 		switch (featureID) {
 			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER:
 				return isSetRender();
+			case ConfigPackage.EDATA_TYPE_CONFIG__ID:
+				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
 			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS:
 				return isSetRenderDefaults();
 			case ConfigPackage.EDATA_TYPE_CONFIG__RENDER_USE_CASES:

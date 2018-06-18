@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see com.altran.general.emf.ecoredoc.generator.config.ConfigFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/com.altran.general.emf.ecoredoc.generator.config/emf-gen' basePackage='com.altran.general.emf.ecoredoc.generator'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/com.altran.general.emf.ecoredoc.generator.config/emf-gen' bundleManifest='false' modelPluginID='' modelPluginVariables='' updateClasspath='false' basePackage='com.altran.general.emf.ecoredoc.generator'"
  * @generated
  */
 public interface ConfigPackage extends EPackage {
@@ -59,6 +59,16 @@ public interface ConfigPackage extends EPackage {
 	ConfigPackage eINSTANCE = com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link java.util.List <em>List</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.List
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getList()
+	 * @generated
+	 */
+	int LIST = 21;
+
+	/**
 	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig <em>IE Named Element Config</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,13 +88,22 @@ public interface ConfigPackage extends EPackage {
 	int IE_NAMED_ELEMENT_CONFIG__RENDER = 0;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_NAMED_ELEMENT_CONFIG__ID = 1;
+
+	/**
 	 * The number of structural features of the '<em>IE Named Element Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT = 1;
+	int IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT = 2;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -179,6 +198,15 @@ public interface ConfigPackage extends EPackage {
 	int IE_CLASSIFIER_CONFIG__RENDER = IE_NAMED_ELEMENT_CONFIG__RENDER;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASSIFIER_CONFIG__ID = IE_NAMED_ELEMENT_CONFIG__ID;
+
+	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -268,6 +296,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int IE_DATA_TYPE_CONFIG__RENDER = IE_CLASSIFIER_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_DATA_TYPE_CONFIG__ID = IE_CLASSIFIER_CONFIG__ID;
 
 	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
@@ -361,6 +398,15 @@ public interface ConfigPackage extends EPackage {
 	int IE_ENUM_CONFIG__RENDER = IE_DATA_TYPE_CONFIG__RENDER;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_CONFIG__ID = IE_DATA_TYPE_CONFIG__ID;
+
+	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -450,6 +496,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int IE_CLASS_CONFIG__RENDER = IE_CLASSIFIER_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG__ID = IE_CLASSIFIER_CONFIG__ID;
 
 	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
@@ -561,6 +616,15 @@ public interface ConfigPackage extends EPackage {
 	int IE_STRUCTURAL_FEATURE_CONFIG__RENDER = IE_NAMED_ELEMENT_CONFIG__RENDER;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_STRUCTURAL_FEATURE_CONFIG__ID = IE_NAMED_ELEMENT_CONFIG__ID;
+
+	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -650,6 +714,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int IE_ATTRIBUTE_CONFIG__RENDER = IE_STRUCTURAL_FEATURE_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ATTRIBUTE_CONFIG__ID = IE_STRUCTURAL_FEATURE_CONFIG__ID;
 
 	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
@@ -743,6 +816,15 @@ public interface ConfigPackage extends EPackage {
 	int IE_REFERENCE_CONFIG__RENDER = IE_STRUCTURAL_FEATURE_CONFIG__RENDER;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_REFERENCE_CONFIG__ID = IE_STRUCTURAL_FEATURE_CONFIG__ID;
+
+	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -832,6 +914,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int IE_PACKAGE_CONFIG__RENDER = IE_NAMED_ELEMENT_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_PACKAGE_CONFIG__ID = IE_NAMED_ELEMENT_CONFIG__ID;
 
 	/**
 	 * The feature id for the '<em><b>Position EData Types</b></em>' attribute.
@@ -943,6 +1034,15 @@ public interface ConfigPackage extends EPackage {
 	int IE_ENUM_LITERAL_CONFIG__RENDER = IE_NAMED_ELEMENT_CONFIG__RENDER;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_LITERAL_CONFIG__ID = IE_NAMED_ELEMENT_CONFIG__ID;
+
+	/**
 	 * The number of structural features of the '<em>IE Enum Literal Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -996,6 +1096,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECORE_DOC_GENERATOR_CONFIG__RENDER = IE_PACKAGE_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__ID = IE_PACKAGE_CONFIG__ID;
 
 	/**
 	 * The feature id for the '<em><b>Position EData Types</b></em>' attribute.
@@ -1151,13 +1260,22 @@ public interface ConfigPackage extends EPackage {
 	int ECORE_DOC_GENERATOR_CONFIG___GET_ECLASSES_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 11;
 
 	/**
+	 * The operation id for the '<em>Add EPackages</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG___ADD_EPACKAGES__LIST = IE_PACKAGE_CONFIG_OPERATION_COUNT + 12;
+
+	/**
 	 * The operation id for the '<em>Find Config</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 12;
+	int ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 13;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -1166,7 +1284,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 13;
+	int ECORE_DOC_GENERATOR_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 14;
 
 	/**
 	 * The number of operations of the '<em>Ecore Doc Generator Config</em>' class.
@@ -1175,7 +1293,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 14;
+	int ECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 15;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl <em>EPackage Config</em>}' class.
@@ -1195,6 +1313,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int EPACKAGE_CONFIG__RENDER = IE_PACKAGE_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__ID = IE_PACKAGE_CONFIG__ID;
 
 	/**
 	 * The feature id for the '<em><b>Position EData Types</b></em>' attribute.
@@ -1386,13 +1513,40 @@ public interface ConfigPackage extends EPackage {
 	int EPACKAGE_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Add EData Types</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG___ADD_EDATA_TYPES__LIST = IE_PACKAGE_CONFIG_OPERATION_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>Add EEnums</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG___ADD_EENUMS__LIST = IE_PACKAGE_CONFIG_OPERATION_COUNT + 6;
+
+	/**
+	 * The operation id for the '<em>Add EClasses</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG___ADD_ECLASSES__LIST = IE_PACKAGE_CONFIG_OPERATION_COUNT + 7;
+
+	/**
 	 * The number of operations of the '<em>EPackage Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 5;
+	int EPACKAGE_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl <em>EData Type Config</em>}' class.
@@ -1412,6 +1566,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int EDATA_TYPE_CONFIG__RENDER = IE_DATA_TYPE_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDATA_TYPE_CONFIG__ID = IE_DATA_TYPE_CONFIG__ID;
 
 	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
@@ -1514,6 +1677,15 @@ public interface ConfigPackage extends EPackage {
 	int EENUM_CONFIG__RENDER = IE_ENUM_CONFIG__RENDER;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EENUM_CONFIG__ID = IE_ENUM_CONFIG__ID;
+
+	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1595,13 +1767,22 @@ public interface ConfigPackage extends EPackage {
 	int EENUM_CONFIG___GET_TARGET = IE_ENUM_CONFIG_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Add EEnum Literals</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EENUM_CONFIG___ADD_EENUM_LITERALS__LIST = IE_ENUM_CONFIG_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>EEnum Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EENUM_CONFIG_OPERATION_COUNT = IE_ENUM_CONFIG_OPERATION_COUNT + 1;
+	int EENUM_CONFIG_OPERATION_COUNT = IE_ENUM_CONFIG_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumLiteralConfigImpl <em>EEnum Literal Config</em>}' class.
@@ -1621,6 +1802,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int EENUM_LITERAL_CONFIG__RENDER = IE_ENUM_LITERAL_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EENUM_LITERAL_CONFIG__ID = IE_ENUM_LITERAL_CONFIG__ID;
 
 	/**
 	 * The feature id for the '<em><b>Target EEnum Literal</b></em>' reference.
@@ -1685,6 +1875,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECLASS_CONFIG__RENDER = IE_CLASS_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS_CONFIG__ID = IE_CLASS_CONFIG__ID;
 
 	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
@@ -1822,13 +2021,40 @@ public interface ConfigPackage extends EPackage {
 	int ECLASS_CONFIG___GET_TARGET = IE_CLASS_CONFIG_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Add EAttributes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS_CONFIG___ADD_EATTRIBUTES__LIST = IE_CLASS_CONFIG_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Add EContainments</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS_CONFIG___ADD_ECONTAINMENTS__LIST = IE_CLASS_CONFIG_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Add EReferences</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS_CONFIG___ADD_EREFERENCES__LIST = IE_CLASS_CONFIG_OPERATION_COUNT + 4;
+
+	/**
 	 * The number of operations of the '<em>EClass Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECLASS_CONFIG_OPERATION_COUNT = IE_CLASS_CONFIG_OPERATION_COUNT + 2;
+	int ECLASS_CONFIG_OPERATION_COUNT = IE_CLASS_CONFIG_OPERATION_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.impl.EAttributeConfigImpl <em>EAttribute Config</em>}' class.
@@ -1848,6 +2074,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int EATTRIBUTE_CONFIG__RENDER = IE_ATTRIBUTE_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EATTRIBUTE_CONFIG__ID = IE_ATTRIBUTE_CONFIG__ID;
 
 	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
@@ -1950,6 +2185,15 @@ public interface ConfigPackage extends EPackage {
 	int AE_REFERENCE_CONFIG__RENDER = IE_REFERENCE_CONFIG__RENDER;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AE_REFERENCE_CONFIG__ID = IE_REFERENCE_CONFIG__ID;
+
+	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2039,6 +2283,15 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECONTAINMENT_CONFIG__RENDER = AE_REFERENCE_CONFIG__RENDER;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECONTAINMENT_CONFIG__ID = AE_REFERENCE_CONFIG__ID;
 
 	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
@@ -2141,6 +2394,15 @@ public interface ConfigPackage extends EPackage {
 	int EREFERENCE_CONFIG__RENDER = AE_REFERENCE_CONFIG__RENDER;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EREFERENCE_CONFIG__ID = AE_REFERENCE_CONFIG__ID;
+
+	/**
 	 * The feature id for the '<em><b>Render Defaults</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2221,6 +2483,35 @@ public interface ConfigPackage extends EPackage {
 	 */
 	int EREFERENCE_CONFIG_OPERATION_COUNT = AE_REFERENCE_CONFIG_OPERATION_COUNT + 1;
 
+	/**
+	 * The number of structural features of the '<em>List</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>List</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_OPERATION_COUNT = 0;
+
+
+	/**
+	 * Returns the meta object for class '{@link java.util.List <em>List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>List</em>'.
+	 * @see java.util.List
+	 * @model instanceClass="java.util.List" typeParameters="T"
+	 * @generated
+	 */
+	EClass getList();
 
 	/**
 	 * Returns the meta object for class '{@link com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig <em>IE Named Element Config</em>}'.
@@ -2242,6 +2533,17 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getIENamedElementConfig_Render();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig#getId()
+	 * @see #getIENamedElementConfig()
+	 * @generated
+	 */
+	EAttribute getIENamedElementConfig_Id();
 
 	/**
 	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig#shouldRender() <em>Should Render</em>}' operation.
@@ -2612,6 +2914,16 @@ public interface ConfigPackage extends EPackage {
 	EOperation getEcoreDocGeneratorConfig__GetEClassesPosition();
 
 	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#addEPackages(java.util.List) <em>Add EPackages</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add EPackages</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#addEPackages(java.util.List)
+	 * @generated
+	 */
+	EOperation getEcoreDocGeneratorConfig__AddEPackages__List();
+
+	/**
 	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#findConfig(org.eclipse.emf.ecore.ENamedElement) <em>Find Config</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2696,6 +3008,36 @@ public interface ConfigPackage extends EPackage {
 	EOperation getEPackageConfig__GetTarget();
 
 	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EPackageConfig#addEDataTypes(java.util.List) <em>Add EData Types</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add EData Types</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EPackageConfig#addEDataTypes(java.util.List)
+	 * @generated
+	 */
+	EOperation getEPackageConfig__AddEDataTypes__List();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EPackageConfig#addEEnums(java.util.List) <em>Add EEnums</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add EEnums</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EPackageConfig#addEEnums(java.util.List)
+	 * @generated
+	 */
+	EOperation getEPackageConfig__AddEEnums__List();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EPackageConfig#addEClasses(java.util.List) <em>Add EClasses</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add EClasses</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EPackageConfig#addEClasses(java.util.List)
+	 * @generated
+	 */
+	EOperation getEPackageConfig__AddEClasses__List();
+
+	/**
 	 * Returns the meta object for class '{@link com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfig <em>EData Type Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2767,6 +3109,16 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getEEnumConfig__GetTarget();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EEnumConfig#addEEnumLiterals(java.util.List) <em>Add EEnum Literals</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add EEnum Literals</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EEnumConfig#addEEnumLiterals(java.util.List)
+	 * @generated
+	 */
+	EOperation getEEnumConfig__AddEEnumLiterals__List();
 
 	/**
 	 * Returns the meta object for class '{@link com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig <em>EEnum Literal Config</em>}'.
@@ -2862,6 +3214,36 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getEClassConfig__GetTarget();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EClassConfig#addEAttributes(java.util.List) <em>Add EAttributes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add EAttributes</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EClassConfig#addEAttributes(java.util.List)
+	 * @generated
+	 */
+	EOperation getEClassConfig__AddEAttributes__List();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EClassConfig#addEContainments(java.util.List) <em>Add EContainments</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add EContainments</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EClassConfig#addEContainments(java.util.List)
+	 * @generated
+	 */
+	EOperation getEClassConfig__AddEContainments__List();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EClassConfig#addEReferences(java.util.List) <em>Add EReferences</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add EReferences</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EClassConfig#addEReferences(java.util.List)
+	 * @generated
+	 */
+	EOperation getEClassConfig__AddEReferences__List();
 
 	/**
 	 * Returns the meta object for class '{@link com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig <em>EAttribute Config</em>}'.
@@ -2990,6 +3372,16 @@ public interface ConfigPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
+		 * The meta object literal for the '{@link java.util.List <em>List</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.List
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getList()
+		 * @generated
+		 */
+		EClass LIST = eINSTANCE.getList();
+
+		/**
 		 * The meta object literal for the '{@link com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig <em>IE Named Element Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3006,6 +3398,14 @@ public interface ConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute IE_NAMED_ELEMENT_CONFIG__RENDER = eINSTANCE.getIENamedElementConfig_Render();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IE_NAMED_ELEMENT_CONFIG__ID = eINSTANCE.getIENamedElementConfig_Id();
 
 		/**
 		 * The meta object literal for the '<em><b>Should Render</b></em>' operation.
@@ -3318,6 +3718,14 @@ public interface ConfigPackage extends EPackage {
 		EOperation ECORE_DOC_GENERATOR_CONFIG___GET_ECLASSES_POSITION = eINSTANCE.getEcoreDocGeneratorConfig__GetEClassesPosition();
 
 		/**
+		 * The meta object literal for the '<em><b>Add EPackages</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ECORE_DOC_GENERATOR_CONFIG___ADD_EPACKAGES__LIST = eINSTANCE.getEcoreDocGeneratorConfig__AddEPackages__List();
+
+		/**
 		 * The meta object literal for the '<em><b>Find Config</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3384,6 +3792,30 @@ public interface ConfigPackage extends EPackage {
 		EOperation EPACKAGE_CONFIG___GET_TARGET = eINSTANCE.getEPackageConfig__GetTarget();
 
 		/**
+		 * The meta object literal for the '<em><b>Add EData Types</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EPACKAGE_CONFIG___ADD_EDATA_TYPES__LIST = eINSTANCE.getEPackageConfig__AddEDataTypes__List();
+
+		/**
+		 * The meta object literal for the '<em><b>Add EEnums</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EPACKAGE_CONFIG___ADD_EENUMS__LIST = eINSTANCE.getEPackageConfig__AddEEnums__List();
+
+		/**
+		 * The meta object literal for the '<em><b>Add EClasses</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EPACKAGE_CONFIG___ADD_ECLASSES__LIST = eINSTANCE.getEPackageConfig__AddEClasses__List();
+
+		/**
 		 * The meta object literal for the '{@link com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl <em>EData Type Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3442,6 +3874,14 @@ public interface ConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation EENUM_CONFIG___GET_TARGET = eINSTANCE.getEEnumConfig__GetTarget();
+
+		/**
+		 * The meta object literal for the '<em><b>Add EEnum Literals</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EENUM_CONFIG___ADD_EENUM_LITERALS__LIST = eINSTANCE.getEEnumConfig__AddEEnumLiterals__List();
 
 		/**
 		 * The meta object literal for the '{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumLiteralConfigImpl <em>EEnum Literal Config</em>}' class.
@@ -3518,6 +3958,30 @@ public interface ConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation ECLASS_CONFIG___GET_TARGET = eINSTANCE.getEClassConfig__GetTarget();
+
+		/**
+		 * The meta object literal for the '<em><b>Add EAttributes</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ECLASS_CONFIG___ADD_EATTRIBUTES__LIST = eINSTANCE.getEClassConfig__AddEAttributes__List();
+
+		/**
+		 * The meta object literal for the '<em><b>Add EContainments</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ECLASS_CONFIG___ADD_ECONTAINMENTS__LIST = eINSTANCE.getEClassConfig__AddEContainments__List();
+
+		/**
+		 * The meta object literal for the '<em><b>Add EReferences</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ECLASS_CONFIG___ADD_EREFERENCES__LIST = eINSTANCE.getEClassConfig__AddEReferences__List();
 
 		/**
 		 * The meta object literal for the '{@link com.altran.general.emf.ecoredoc.generator.config.impl.EAttributeConfigImpl <em>EAttribute Config</em>}' class.

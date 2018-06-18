@@ -38,7 +38,7 @@ abstract class AEcoreDocGeneratorPart {
 		this.output = new StringBuilder()
 	}
 
-	protected def  Multimap<EPackage, EClassifier> getEPackages() {
+	protected def Multimap<EPackage, EClassifier> getEPackages() {
 		this.ePackages
 	}
 	

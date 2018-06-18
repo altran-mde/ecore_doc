@@ -2,6 +2,7 @@
  */
 package com.altran.general.emf.ecoredoc.generator.config;
 
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
@@ -108,5 +109,44 @@ public interface EPackageConfig extends IEPackageConfig, IEEnumConfig, IEEnumLit
 	 * @generated
 	 */
 	ENamedElement getTarget();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+	 * <!-- end-model-doc -->
+	 * @model eDataTypeConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfig&gt;" eDataTypeConfigUnique="false" eDataTypeConfigMany="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfig%&gt;&gt; _eDataTypes = this.getEDataTypes();\n&lt;%com.google.common.collect.Iterables%&gt;.&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfig%&gt;&gt;addAll(_eDataTypes, eDataTypeConfig);'"
+	 * @generated
+	 */
+	void addEDataTypes(List<EDataTypeConfig> eDataTypeConfig);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+	 * <!-- end-model-doc -->
+	 * @model eEnumConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EEnumConfig&gt;" eEnumConfigUnique="false" eEnumConfigMany="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EEnumConfig%&gt;&gt; _eEnums = this.getEEnums();\n&lt;%com.google.common.collect.Iterables%&gt;.&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EEnumConfig%&gt;&gt;addAll(_eEnums, eEnumConfig);'"
+	 * @generated
+	 */
+	void addEEnums(List<EEnumConfig> eEnumConfig);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+	 * <!-- end-model-doc -->
+	 * @model eClassConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EClassConfig&gt;" eClassConfigUnique="false" eClassConfigMany="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EClassConfig%&gt;&gt; _eClasses = this.getEClasses();\n&lt;%com.google.common.collect.Iterables%&gt;.&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EClassConfig%&gt;&gt;addAll(_eClasses, eClassConfig);'"
+	 * @generated
+	 */
+	void addEClasses(List<EClassConfig> eClassConfig);
 
 } // EPackageConfig

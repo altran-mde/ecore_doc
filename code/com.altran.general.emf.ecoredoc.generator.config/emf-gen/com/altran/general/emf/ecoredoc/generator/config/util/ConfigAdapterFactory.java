@@ -4,6 +4,7 @@ package com.altran.general.emf.ecoredoc.generator.config.util;
 
 import com.altran.general.emf.ecoredoc.generator.config.*;
 
+import java.util.List;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -152,6 +153,10 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 				return createEReferenceConfigAdapter();
 			}
 			@Override
+			public <T> Adapter caseList(List<T> object) {
+				return createListAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -170,6 +175,20 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.List <em>List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.List
+	 * @generated
+	 */
+	public Adapter createListAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig <em>IE Named Element Config</em>}'.

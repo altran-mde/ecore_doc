@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.AEReferenceConfigImpl#isRender <em>Render</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.AEReferenceConfigImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.AEReferenceConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.AEReferenceConfigImpl#isRenderBounds <em>Render Bounds</em>}</li>
  * </ul>
@@ -63,6 +64,16 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	 * @ordered
 	 */
 	protected boolean renderESet;
+
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #isRenderDefaults() <em>Render Defaults</em>}' attribute.
@@ -185,6 +196,20 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	 */
 	public boolean isSetRender() {
 		return renderESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getId() {
+		ENamedElement _target = this.getTarget();
+		String _name = null;
+		if (_target!=null) {
+			_name=_target.getName();
+		}
+		return _name;
 	}
 
 	/**
@@ -354,6 +379,8 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 		switch (featureID) {
 			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER:
 				return isRender();
+			case ConfigPackage.AE_REFERENCE_CONFIG__ID:
+				return getId();
 			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS:
 				return isRenderDefaults();
 			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS:
@@ -414,6 +441,8 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 		switch (featureID) {
 			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER:
 				return isSetRender();
+			case ConfigPackage.AE_REFERENCE_CONFIG__ID:
+				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
 			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS:
 				return isSetRenderDefaults();
 			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS:

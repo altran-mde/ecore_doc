@@ -9,10 +9,12 @@ import com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEEnumLiteralConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
+import com.google.common.collect.Iterables;
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
 
+import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -39,6 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumConfigImpl#isRender <em>Render</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumConfigImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumConfigImpl#isRenderUseCases <em>Render Use Cases</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumConfigImpl#getTargetEEnum <em>Target EEnum</em>}</li>
@@ -76,6 +79,16 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	 * @ordered
 	 */
 	protected boolean renderESet;
+
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #isRenderDefaults() <em>Render Defaults</em>}' attribute.
@@ -218,6 +231,20 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	 */
 	public boolean isSetRender() {
 		return renderESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getId() {
+		ENamedElement _target = this.getTarget();
+		String _name = null;
+		if (_target!=null) {
+			_name=_target.getName();
+		}
+		return _name;
 	}
 
 	/**
@@ -376,6 +403,16 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void addEEnumLiterals(final List<EEnumLiteralConfig> eEnumLiteralConfig) {
+		EList<EEnumLiteralConfig> _eEnumLiterals = this.getEEnumLiterals();
+		Iterables.<EEnumLiteralConfig>addAll(_eEnumLiterals, eEnumLiteralConfig);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean shouldRenderUseCases() {
 		boolean _xifexpression = false;
 		boolean _isSetRenderUseCases = this.isSetRenderUseCases();
@@ -449,6 +486,8 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 		switch (featureID) {
 			case ConfigPackage.EENUM_CONFIG__RENDER:
 				return isRender();
+			case ConfigPackage.EENUM_CONFIG__ID:
+				return getId();
 			case ConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS:
 				return isRenderDefaults();
 			case ConfigPackage.EENUM_CONFIG__RENDER_USE_CASES:
@@ -528,6 +567,8 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 		switch (featureID) {
 			case ConfigPackage.EENUM_CONFIG__RENDER:
 				return isSetRender();
+			case ConfigPackage.EENUM_CONFIG__ID:
+				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
 			case ConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS:
 				return isSetRenderDefaults();
 			case ConfigPackage.EENUM_CONFIG__RENDER_USE_CASES:
@@ -609,10 +650,14 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case ConfigPackage.EENUM_CONFIG___GET_TARGET:
 				return getTarget();
+			case ConfigPackage.EENUM_CONFIG___ADD_EENUM_LITERALS__LIST:
+				addEEnumLiterals((List<EEnumLiteralConfig>)arguments.get(0));
+				return null;
 			case ConfigPackage.EENUM_CONFIG___SHOULD_RENDER_USE_CASES:
 				return shouldRenderUseCases();
 			case ConfigPackage.EENUM_CONFIG___SHOULD_RENDER_DEFAULTS:

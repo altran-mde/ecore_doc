@@ -29,6 +29,16 @@ public interface IDefaultValueConfig extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Whether properties should be rendered at their default values.
+	 * 
+	 * <p>
+	 * Example: If <tt>EReference.ordered = true</tt> (the default value),
+	 * the <i>ordered</i> property of that <tt>EReference</tt> will not be rendered
+	 * if <tt>renderDefaults = false</tt>.
+	 * </p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Render Defaults</em>' attribute.
 	 * @see #isSetRenderDefaults()
 	 * @see #unsetRenderDefaults()
@@ -77,6 +87,10 @@ public interface IDefaultValueConfig extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Traverses the tree to find the most specific <tt>renderDefaults</tt> setting.
+	 * <!-- end-model-doc -->
 	 * @model unique="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _xifexpression = false;\nboolean _isSetRenderDefaults = this.isSetRenderDefaults();\nif (_isSetRenderDefaults)\n{\n\t_xifexpression = this.isRenderDefaults();\n}\nelse\n{\n\t&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n\t_xifexpression = ((&lt;%com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig%&gt;) _eContainer).shouldRenderDefaults();\n}\nreturn _xifexpression;'"
 	 * @generated

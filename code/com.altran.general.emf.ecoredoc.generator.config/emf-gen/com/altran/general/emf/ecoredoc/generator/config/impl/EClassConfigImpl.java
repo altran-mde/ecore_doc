@@ -643,8 +643,16 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 			_xifexpression = this.isRenderBounds();
 		}
 		else {
-			EObject _eContainer = this.eContainer();
-			_xifexpression = ((IEStructuralFeatureConfig) _eContainer).shouldRenderBounds();
+			boolean _xifexpression_1 = false;
+			boolean _isSetRenderDefaults = this.isSetRenderDefaults();
+			if (_isSetRenderDefaults) {
+				_xifexpression_1 = this.isRenderDefaults();
+			}
+			else {
+				EObject _eContainer = this.eContainer();
+				_xifexpression_1 = ((IEStructuralFeatureConfig) _eContainer).shouldRenderBounds();
+			}
+			_xifexpression = _xifexpression_1;
 		}
 		return _xifexpression;
 	}

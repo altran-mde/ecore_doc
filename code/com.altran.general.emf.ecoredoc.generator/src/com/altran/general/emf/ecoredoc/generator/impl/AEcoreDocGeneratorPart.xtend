@@ -1,13 +1,11 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
-import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig
+import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfigPair
 import com.google.common.collect.Multimap
-import java.util.AbstractMap.SimpleEntry
 import java.util.ArrayList
 import java.util.Collection
 import java.util.List
-import java.util.Map.Entry
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
@@ -92,16 +90,12 @@ abstract class AEcoreDocGeneratorPart {
 		#[ePackageName, eClassName, eStructuralFeatureName]
 	}
 
-	protected def void writeUseCases(Pair<? extends EClassifier, ? extends IEClassifierConfig> pair) {
-		writeUseCases(new SimpleEntry(pair.key, pair.value as IEClassifierConfig))
-	}
-
-	protected def void writeUseCases(Entry<? extends EClassifier, ? extends IEClassifierConfig> entry) {
-		if (!entry.value.shouldRenderUseCases) {
+	protected def void writeUseCases(IEClassifierConfigPair<?, ?> pair) {
+		if (!pair.config.shouldRenderUseCases) {
 			return
 		}
 
-		val target = entry.key
+		val target = pair.element
 		
 		var boolean anyMatch = false
 		val Collection<EClass> eClasses = collectAllEClasses()
@@ -136,26 +130,26 @@ abstract class AEcoreDocGeneratorPart {
 		}
 	}
 	
-	protected def defineDefaultValue(Entry<? extends EClassifier, ? extends IEClassifierConfig> entry) {
-		val eClassifier = entry.key
+	protected def defineDefaultValue(IEClassifierConfigPair<?,?> pair) {
+		val eClassifier = pair.element
 		
 		val defaultValue = '''_undefined_'''
 		val value = if (eClassifier.eIsSet(EcorePackage.eINSTANCE.EClassifier_DefaultValue)) '''`«eClassifier.defaultValue»`''' else null
 
-		concatProperty("Default Value", defaultValue, value, entry)
+		concatProperty("Default Value", defaultValue, value, pair)
 	}
 	
-	protected def defineInstanceClassName(Entry<? extends EClassifier, ? extends IEClassifierConfig> entry) {
-		val eClassifier = entry.key
+	protected def defineInstanceClassName(IEClassifierConfigPair<?,?> pair) {
+		val eClassifier = pair.element
 		
 		val defaultValue = '''_undefined_'''
 		val value = if (eClassifier.eIsSet(EcorePackage.eINSTANCE.EClassifier_InstanceClassName)) '''`«eClassifier.instanceClassName»`''' else null
 
-		concatProperty("Instance Type Name", defaultValue, value, entry)
+		concatProperty("Instance Type Name", defaultValue, value, pair)
 	}
 	
-	protected def concatProperty(String name, String defaultValue, String value, Entry<? extends EClassifier, ? extends IEClassifierConfig> entry) {
-		if (value !== null || entry.value.shouldRenderDefaults) {
+	protected def concatProperty(String name, String defaultValue, String value, IEClassifierConfigPair<?,?> pair) {
+		if (value !== null || pair.config.shouldRenderDefaults) {
 			'''«name»:: «IF value !== null»«value»«ELSE»«defaultValue»«ENDIF»'''
 		}
 	}

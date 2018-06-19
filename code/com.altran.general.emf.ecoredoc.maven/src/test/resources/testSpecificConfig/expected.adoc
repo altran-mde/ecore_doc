@@ -25,7 +25,6 @@ Ns URI:: EPackage1
 Special documentation for special data type
 
 Instance Type Name:: `java.lang.Number`
-Serializable:: true
 
 .Used at
 * `<<EPackage1-MyEClass-attr, EPackage1.{zwsp}MyEClass.{zwsp}attr>>`

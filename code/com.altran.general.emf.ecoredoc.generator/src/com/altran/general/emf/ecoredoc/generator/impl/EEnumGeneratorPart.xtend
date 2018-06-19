@@ -1,14 +1,14 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
 import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig
+import com.altran.general.emf.ecoredoc.generator.config.EEnumConfigPair
 import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig
+import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfigPair
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.google.common.collect.Multimap
 import java.util.Map
-import java.util.Map.Entry
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EEnum
-import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.EPackage
 
 import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
@@ -40,10 +40,11 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 			writeEEnumsHeader()
 
 			for (entry : eEnumMap.entrySet) {
-				writeEEnumHeader(entry)
-				writeProperties(entry)
-				writeEEnumLiterals(entry)
-				writeUseCases(entry)
+				val pair = new EEnumConfigPair(entry)
+				writeEEnumHeader(pair)
+				writeProperties(pair)
+				writeEEnumLiterals(pair)
+				writeUseCases(pair)
 			}
 		}
 	}
@@ -56,8 +57,8 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 		''')
 	}
 
-	protected def void writeEEnumLiterals(Entry<EEnum, EEnumConfig> eEnumEntry) {
-		val eEnum = eEnumEntry.key
+	protected def void writeEEnumLiterals(EEnumConfigPair pair) {
+		val eEnum = pair.element
 
 		val eLiterals = eEnum.ELiterals
 		
@@ -81,7 +82,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 			)
 			
 			for (entry : eLiteralsMap.entrySet) {
-				writeELiteral(entry)
+				writeELiteral(new EEnumLiteralConfigPair(entry))
 			}
 			
 			output.append(tableFooter())
@@ -89,8 +90,8 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 		
 	}
 
-	protected def void writeELiteral(Entry<EEnumLiteral, EEnumLiteralConfig> entry) {
-		val eLiteral = entry.key
+	protected def void writeELiteral(EEnumLiteralConfigPair pair) {
+		val eLiteral = pair.element
 		
 		output.append(
 		'''
@@ -101,8 +102,8 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 		''')
 	}
 
-	def protected void writeEEnumHeader(Entry<EEnum, EEnumConfig> entry) {
-		val eEnum = entry.key
+	def protected void writeEEnumHeader(EEnumConfigPair pair) {
+		val eEnum = pair.element
 
 		output.append(
 		'''

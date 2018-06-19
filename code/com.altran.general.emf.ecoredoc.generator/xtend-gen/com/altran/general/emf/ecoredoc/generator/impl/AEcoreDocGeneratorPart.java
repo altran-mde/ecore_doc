@@ -1,17 +1,15 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
-import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfigPair;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
-import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
@@ -25,7 +23,6 @@ import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.Pair;
 
 @SuppressWarnings("all")
 public abstract class AEcoreDocGeneratorPart {
@@ -147,20 +144,13 @@ public abstract class AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected void writeUseCases(final Pair<? extends EClassifier, ? extends IEClassifierConfig> pair) {
-    EClassifier _key = pair.getKey();
-    IEClassifierConfig _value = pair.getValue();
-    AbstractMap.SimpleEntry<EClassifier, IEClassifierConfig> _simpleEntry = new AbstractMap.SimpleEntry<EClassifier, IEClassifierConfig>(_key, ((IEClassifierConfig) _value));
-    this.writeUseCases(_simpleEntry);
-  }
-  
-  protected void writeUseCases(final Map.Entry<? extends EClassifier, ? extends IEClassifierConfig> entry) {
-    boolean _shouldRenderUseCases = entry.getValue().shouldRenderUseCases();
+  protected void writeUseCases(final IEClassifierConfigPair<?, ?> pair) {
+    boolean _shouldRenderUseCases = pair.getConfig().shouldRenderUseCases();
     boolean _not = (!_shouldRenderUseCases);
     if (_not) {
       return;
     }
-    final EClassifier target = entry.getKey();
+    final EClassifier target = pair.getElement();
     boolean anyMatch = false;
     final Collection<EClass> eClasses = this.collectAllEClasses();
     final ArrayList<String> useCaseStrings = CollectionLiterals.<String>newArrayList();
@@ -218,10 +208,10 @@ public abstract class AEcoreDocGeneratorPart {
     }
   }
   
-  protected CharSequence defineDefaultValue(final Map.Entry<? extends EClassifier, ? extends IEClassifierConfig> entry) {
+  protected CharSequence defineDefaultValue(final IEClassifierConfigPair<?, ?> pair) {
     CharSequence _xblockexpression = null;
     {
-      final EClassifier eClassifier = entry.getKey();
+      final EClassifier eClassifier = pair.getElement();
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("_undefined_");
       final String defaultValue = _builder.toString();
@@ -238,15 +228,15 @@ public abstract class AEcoreDocGeneratorPart {
         _xifexpression = null;
       }
       final String value = _xifexpression;
-      _xblockexpression = this.concatProperty("Default Value", defaultValue, value, entry);
+      _xblockexpression = this.concatProperty("Default Value", defaultValue, value, pair);
     }
     return _xblockexpression;
   }
   
-  protected CharSequence defineInstanceClassName(final Map.Entry<? extends EClassifier, ? extends IEClassifierConfig> entry) {
+  protected CharSequence defineInstanceClassName(final IEClassifierConfigPair<?, ?> pair) {
     CharSequence _xblockexpression = null;
     {
-      final EClassifier eClassifier = entry.getKey();
+      final EClassifier eClassifier = pair.getElement();
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("_undefined_");
       final String defaultValue = _builder.toString();
@@ -263,14 +253,14 @@ public abstract class AEcoreDocGeneratorPart {
         _xifexpression = null;
       }
       final String value = _xifexpression;
-      _xblockexpression = this.concatProperty("Instance Type Name", defaultValue, value, entry);
+      _xblockexpression = this.concatProperty("Instance Type Name", defaultValue, value, pair);
     }
     return _xblockexpression;
   }
   
-  protected CharSequence concatProperty(final String name, final String defaultValue, final String value, final Map.Entry<? extends EClassifier, ? extends IEClassifierConfig> entry) {
+  protected CharSequence concatProperty(final String name, final String defaultValue, final String value, final IEClassifierConfigPair<?, ?> pair) {
     CharSequence _xifexpression = null;
-    if (((value != null) || entry.getValue().shouldRenderDefaults())) {
+    if (((value != null) || pair.getConfig().shouldRenderDefaults())) {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append(name);
       _builder.append(":: ");

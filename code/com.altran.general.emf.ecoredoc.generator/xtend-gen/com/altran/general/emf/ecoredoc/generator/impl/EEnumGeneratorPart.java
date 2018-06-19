@@ -1,7 +1,9 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EEnumConfigPair;
 import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfigPair;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorEDataTypePart;
@@ -51,10 +53,11 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
       Set<Map.Entry<EEnum, EEnumConfig>> _entrySet = eEnumMap.entrySet();
       for (final Map.Entry<EEnum, EEnumConfig> entry : _entrySet) {
         {
-          this.writeEEnumHeader(entry);
-          this.writeProperties(entry);
-          this.writeEEnumLiterals(entry);
-          this.writeUseCases(entry);
+          final EEnumConfigPair pair = new EEnumConfigPair(entry);
+          this.writeEEnumHeader(pair);
+          this.writeProperties(pair);
+          this.writeEEnumLiterals(pair);
+          this.writeUseCases(pair);
         }
       }
     }
@@ -71,8 +74,8 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
     _output.append(_builder);
   }
   
-  protected void writeEEnumLiterals(final Map.Entry<EEnum, EEnumConfig> eEnumEntry) {
-    final EEnum eEnum = eEnumEntry.getKey();
+  protected void writeEEnumLiterals(final EEnumConfigPair pair) {
+    final EEnum eEnum = pair.getElement();
     final EList<EEnumLiteral> eLiterals = eEnum.getELiterals();
     final Function1<EEnumLiteral, EEnumLiteralConfig> _function = (EEnumLiteral it) -> {
       IENamedElementConfig _findConfig = this.getConfig().findConfig(it);
@@ -105,14 +108,15 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
       _output.append(_builder);
       Set<Map.Entry<EEnumLiteral, EEnumLiteralConfig>> _entrySet = eLiteralsMap.entrySet();
       for (final Map.Entry<EEnumLiteral, EEnumLiteralConfig> entry : _entrySet) {
-        this.writeELiteral(entry);
+        EEnumLiteralConfigPair _eEnumLiteralConfigPair = new EEnumLiteralConfigPair(entry);
+        this.writeELiteral(_eEnumLiteralConfigPair);
       }
       this.getOutput().append(this.tableFooter());
     }
   }
   
-  protected void writeELiteral(final Map.Entry<EEnumLiteral, EEnumLiteralConfig> entry) {
-    final EEnumLiteral eLiteral = entry.getKey();
+  protected void writeELiteral(final EEnumLiteralConfigPair pair) {
+    final EEnumLiteral eLiteral = pair.getElement();
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     String _newline = EcoreDocExtension.newline();
@@ -137,8 +141,8 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
     _output.append(_builder);
   }
   
-  protected void writeEEnumHeader(final Map.Entry<EEnum, EEnumConfig> entry) {
-    final EEnum eEnum = entry.getKey();
+  protected void writeEEnumHeader(final EEnumConfigPair pair) {
+    final EEnum eEnum = pair.getElement();
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     String _newline = EcoreDocExtension.newline();

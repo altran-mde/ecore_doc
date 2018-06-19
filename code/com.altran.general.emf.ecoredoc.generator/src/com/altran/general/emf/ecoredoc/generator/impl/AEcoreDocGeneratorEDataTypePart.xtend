@@ -1,12 +1,11 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
-import com.altran.general.emf.ecoredoc.generator.config.IEDataTypeConfig
+import com.altran.general.emf.ecoredoc.generator.config.IEDataTypeConfigPair
 import com.google.common.collect.Multimap
-import java.util.Map.Entry
 import org.eclipse.emf.ecore.EClassifier
-import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EcorePackage
 
 import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
 
@@ -16,12 +15,12 @@ abstract class AEcoreDocGeneratorEDataTypePart extends AEcoreDocGeneratorPart {
 		super(config, ePackages)
 	}
 	
-	protected def void writeProperties(Entry<? extends EDataType, ? extends IEDataTypeConfig> entry) {
+	protected def void writeProperties(IEDataTypeConfigPair<?,?> pair) {
 		output.append(
 			#[
-				defineDefaultValue(entry),
-				defineInstanceClassName(entry),
-				defineSerializable(entry)
+				defineDefaultValue(pair),
+				defineInstanceClassName(pair),
+				defineSerializable(pair)
 			]
 			.filterNull
 			.join(EcoreDocExtension.ECLASSIFIER_PROPERTY_SEPARATOR)
@@ -29,13 +28,13 @@ abstract class AEcoreDocGeneratorEDataTypePart extends AEcoreDocGeneratorPart {
 		output.append(newline)
 	}
 	
-	protected def defineSerializable(Entry<? extends EDataType, ? extends IEDataTypeConfig> entry) {
-		val eDataType = entry.key
+	protected def defineSerializable(IEDataTypeConfigPair<?,?> pair) {
+		val eDataType = pair.element
 		
 		val defaultValue = '''true'''
-		val value = eDataType.serializable
+		val value = if (eDataType.eIsSet(EcorePackage.eINSTANCE.EDataType_Serializable)) eDataType.serializable.toString else null
 
-		concatProperty("Serializable", defaultValue, value.toString, entry)
+		concatProperty("Serializable", defaultValue, value, pair)
 	}
 	
 }

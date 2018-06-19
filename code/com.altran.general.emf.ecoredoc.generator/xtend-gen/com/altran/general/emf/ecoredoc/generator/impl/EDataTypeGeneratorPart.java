@@ -1,6 +1,7 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfigPair;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorEDataTypePart;
@@ -48,9 +49,10 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
       Set<Map.Entry<EDataType, EDataTypeConfig>> _entrySet = eDataTypeMap.entrySet();
       for (final Map.Entry<EDataType, EDataTypeConfig> entry : _entrySet) {
         {
-          this.writeEDataTypeHeader(entry);
-          this.writeProperties(entry);
-          this.writeUseCases(entry);
+          final EDataTypeConfigPair pair = new EDataTypeConfigPair(entry);
+          this.writeEDataTypeHeader(pair);
+          this.writeProperties(pair);
+          this.writeUseCases(pair);
         }
       }
     }
@@ -67,8 +69,8 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
     _output.append(_builder);
   }
   
-  protected void writeEDataTypeHeader(final Map.Entry<EDataType, EDataTypeConfig> entry) {
-    final EDataType eDataType = entry.getKey();
+  protected void writeEDataTypeHeader(final EDataTypeConfigPair pair) {
+    final EDataType eDataType = pair.getElement();
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     String _newline = EcoreDocExtension.newline();

@@ -1,8 +1,9 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
+import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfigPair;
+import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfigPair;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
-import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
-import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfigPair;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
@@ -29,9 +30,10 @@ public class EStructuralFeaturePropertyHelper {
     this.config = config;
   }
   
-  public CharSequence concatBounds(final EStructuralFeature eStructuralFeature) {
+  public CharSequence concatBounds(final IEStructuralFeatureConfigPair<?, ?> pair) {
     CharSequence _xblockexpression = null;
     {
+      final EStructuralFeature eStructuralFeature = pair.getElement();
       final int lowerBound = eStructuralFeature.getLowerBound();
       final int upperBound = eStructuralFeature.getUpperBound();
       final boolean lowerNotEqualUpperBound = (lowerBound != upperBound);
@@ -44,7 +46,7 @@ public class EStructuralFeaturePropertyHelper {
       }
       final boolean isSet = _xifexpression;
       CharSequence _xifexpression_1 = null;
-      if ((isSet || ((IEStructuralFeatureConfig) this.getConfig().findConfig(eStructuralFeature)).shouldRenderBounds())) {
+      if ((isSet || pair.getConfig().shouldRenderBounds())) {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("`[");
         _builder.append(lowerBound);
@@ -71,9 +73,9 @@ public class EStructuralFeaturePropertyHelper {
     return _builder;
   }
   
-  public CharSequence definePropertyString(final EStructuralFeature eStructuralFeature, final String trueLiteral, final String falseLiteral, final boolean defaultValue, final boolean currentPropertyValue) {
+  public CharSequence definePropertyString(final IEStructuralFeatureConfigPair<?, ?> pair, final String trueLiteral, final String falseLiteral, final boolean defaultValue, final boolean currentPropertyValue) {
     final boolean isSet = (defaultValue != currentPropertyValue);
-    final boolean shouldRenderDefaults = this.shouldRenderDefaults(eStructuralFeature);
+    final boolean shouldRenderDefaults = pair.getConfig().shouldRenderDefaults();
     if ((isSet || shouldRenderDefaults)) {
       if (currentPropertyValue) {
         if ((isSet && shouldRenderDefaults)) {
@@ -92,103 +94,57 @@ public class EStructuralFeaturePropertyHelper {
     return null;
   }
   
-  public CharSequence defineChangeable(final EStructuralFeature eStructuralFeature) {
-    CharSequence _xblockexpression = null;
-    {
-      final boolean defaultValue = true;
-      final boolean isChangeable = eStructuralFeature.isChangeable();
-      _xblockexpression = this.definePropertyString(eStructuralFeature, "changeable", "unchangeable", defaultValue, isChangeable);
-    }
-    return _xblockexpression;
+  public CharSequence defineChangeable(final IEStructuralFeatureConfigPair<?, ?> pair) {
+    return this.definePropertyString(pair, "changeable", "unchangeable", true, pair.getElement().isChangeable());
   }
   
-  public CharSequence defineDerived(final EStructuralFeature eStructuralFeature) {
-    CharSequence _xblockexpression = null;
-    {
-      final boolean defaultValue = false;
-      final boolean isDerived = eStructuralFeature.isDerived();
-      _xblockexpression = this.definePropertyString(eStructuralFeature, "derived", "underived", defaultValue, isDerived);
-    }
-    return _xblockexpression;
+  public CharSequence defineDerived(final IEStructuralFeatureConfigPair<?, ?> pair) {
+    return this.definePropertyString(pair, "derived", "underived", false, pair.getElement().isDerived());
   }
   
-  public CharSequence defineOrdered(final EStructuralFeature eStructuralFeature) {
-    CharSequence _xblockexpression = null;
-    {
-      final boolean defaultValue = true;
-      final int upperBound = eStructuralFeature.getUpperBound();
-      final boolean isOrdered = eStructuralFeature.isOrdered();
-      CharSequence _xifexpression = null;
-      if ((upperBound != 1)) {
-        _xifexpression = this.definePropertyString(eStructuralFeature, "ordered", "unordered", defaultValue, isOrdered);
-      } else {
-        _xifexpression = null;
-      }
-      _xblockexpression = _xifexpression;
-    }
-    return _xblockexpression;
-  }
-  
-  public CharSequence defineTransient(final EStructuralFeature eStructuralFeature) {
-    CharSequence _xblockexpression = null;
-    {
-      final boolean defaultValue = false;
-      final boolean isTransient = eStructuralFeature.isTransient();
-      _xblockexpression = this.definePropertyString(eStructuralFeature, "transient", "non-transient", defaultValue, isTransient);
-    }
-    return _xblockexpression;
-  }
-  
-  public CharSequence defineUnique(final EStructuralFeature eStructuralFeature) {
-    CharSequence _xblockexpression = null;
-    {
-      final boolean defaultValue = (eStructuralFeature instanceof EReference);
-      final boolean isUnique = eStructuralFeature.isUnique();
-      _xblockexpression = this.definePropertyString(eStructuralFeature, "unique", "non-unique", defaultValue, isUnique);
-    }
-    return _xblockexpression;
-  }
-  
-  public CharSequence defineUnsettable(final EStructuralFeature eStructuralFeature) {
-    CharSequence _xblockexpression = null;
-    {
-      final boolean defaultValue = false;
-      final boolean isUnsettable = eStructuralFeature.isUnsettable();
-      _xblockexpression = this.definePropertyString(eStructuralFeature, "unsettable", "settable", defaultValue, isUnsettable);
-    }
-    return _xblockexpression;
-  }
-  
-  public CharSequence defineVolatile(final EStructuralFeature eStructuralFeature) {
-    CharSequence _xblockexpression = null;
-    {
-      final boolean defaultValue = false;
-      final boolean isVolatile = eStructuralFeature.isVolatile();
-      _xblockexpression = this.definePropertyString(eStructuralFeature, "volatile", "non-volatile", defaultValue, isVolatile);
-    }
-    return _xblockexpression;
-  }
-  
-  public CharSequence defineResolveProxies(final EReference eReference) {
-    CharSequence _xblockexpression = null;
-    {
-      final boolean defaultValue = true;
-      final boolean resolveProxies = eReference.isResolveProxies();
-      _xblockexpression = this.definePropertyString(eReference, "resolveProxies", "non-resolveProxies", defaultValue, resolveProxies);
-    }
-    return _xblockexpression;
-  }
-  
-  public CharSequence defineContainer(final EReference eReference) {
+  public CharSequence defineOrdered(final IEStructuralFeatureConfigPair<?, ?> pair) {
     CharSequence _xifexpression = null;
-    boolean _isContainer = eReference.isContainer();
+    int _upperBound = pair.getElement().getUpperBound();
+    boolean _notEquals = (_upperBound != 1);
+    if (_notEquals) {
+      _xifexpression = this.definePropertyString(pair, "ordered", "unordered", true, pair.getElement().isOrdered());
+    } else {
+      _xifexpression = null;
+    }
+    return _xifexpression;
+  }
+  
+  public CharSequence defineTransient(final IEStructuralFeatureConfigPair<?, ?> pair) {
+    return this.definePropertyString(pair, "transient", "non-transient", false, pair.getElement().isTransient());
+  }
+  
+  public CharSequence defineUnique(final IEStructuralFeatureConfigPair<?, ?> pair) {
+    EStructuralFeature _element = pair.getElement();
+    return this.definePropertyString(pair, "unique", "non-unique", (_element instanceof EReference), pair.getElement().isUnique());
+  }
+  
+  public CharSequence defineUnsettable(final IEStructuralFeatureConfigPair<?, ?> pair) {
+    return this.definePropertyString(pair, "unsettable", "settable", false, pair.getElement().isUnsettable());
+  }
+  
+  public CharSequence defineVolatile(final IEStructuralFeatureConfigPair<?, ?> pair) {
+    return this.definePropertyString(pair, "volatile", "non-volatile", false, pair.getElement().isVolatile());
+  }
+  
+  public CharSequence defineResolveProxies(final EReferenceConfigPair pair) {
+    return this.definePropertyString(pair, "resolveProxies", "non-resolveProxies", true, pair.getElement().isResolveProxies());
+  }
+  
+  public CharSequence defineContainer(final EReferenceConfigPair pair) {
+    CharSequence _xifexpression = null;
+    boolean _isContainer = pair.getElement().isContainer();
     if (_isContainer) {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("*container*");
       _xifexpression = _builder;
     } else {
       CharSequence _xifexpression_1 = null;
-      boolean _shouldRenderDefaults = this.shouldRenderDefaults(eReference);
+      boolean _shouldRenderDefaults = pair.getConfig().shouldRenderDefaults();
       if (_shouldRenderDefaults) {
         StringConcatenation _builder_1 = new StringConcatenation();
         _builder_1.append("non-container");
@@ -201,10 +157,10 @@ public class EStructuralFeaturePropertyHelper {
     return _xifexpression;
   }
   
-  public CharSequence defineId(final EAttribute eAttribute) {
+  public CharSequence defineId(final EAttributeConfigPair pair) {
     CharSequence _xblockexpression = null;
     {
-      final boolean isID = eAttribute.isID();
+      final boolean isID = pair.getElement().isID();
       CharSequence _xifexpression = null;
       if (isID) {
         StringConcatenation _builder = new StringConcatenation();
@@ -218,14 +174,14 @@ public class EStructuralFeaturePropertyHelper {
     return _xblockexpression;
   }
   
-  public CharSequence defineEKeys(final EReference eReference) {
+  public CharSequence defineEKeys(final EReferenceConfigPair pair) {
     CharSequence _xblockexpression = null;
     {
-      final EList<EAttribute> eKeys = eReference.getEKeys();
+      final EList<EAttribute> eKeys = pair.getElement().getEKeys();
       boolean _isEmpty = eKeys.isEmpty();
       final boolean eKeysExist = (!_isEmpty);
       CharSequence _xifexpression = null;
-      if ((eKeysExist || this.shouldRenderDefaults(eReference))) {
+      if ((eKeysExist || this.shouldRenderDefaults(pair))) {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("_EKeys:_");
         {
@@ -247,7 +203,12 @@ public class EStructuralFeaturePropertyHelper {
     return _xblockexpression;
   }
   
-  protected CharSequence _concatDefaultValue(final EAttribute eAttribute) {
+  protected CharSequence _concatDefaultValue(final IEStructuralFeatureConfigPair<?, ?> pair) {
+    return null;
+  }
+  
+  protected CharSequence _concatDefaultValue(final EAttributeConfigPair pair) {
+    final EAttribute eAttribute = pair.getElement();
     final EStructuralFeature defaultValueLiteral = EcorePackage.eINSTANCE.getEStructuralFeature_DefaultValueLiteral();
     final boolean defaultIsSet = eAttribute.eIsSet(defaultValueLiteral);
     if (defaultIsSet) {
@@ -272,7 +233,7 @@ public class EStructuralFeaturePropertyHelper {
       _builder.append("`");
       return _builder;
     } else {
-      boolean _shouldRenderDefaults = this.shouldRenderDefaults(eAttribute);
+      boolean _shouldRenderDefaults = this.shouldRenderDefaults(pair);
       if (_shouldRenderDefaults) {
         StringConcatenation _builder_1 = new StringConcatenation();
         _builder_1.append("_Default:_ `-`");
@@ -283,7 +244,8 @@ public class EStructuralFeaturePropertyHelper {
     }
   }
   
-  protected CharSequence _concatDefaultValue(final EReference eReference) {
+  protected CharSequence _concatDefaultValue(final EReferenceConfigPair pair) {
+    final EReference eReference = pair.getElement();
     final EStructuralFeature defaultValueLiteral = EcorePackage.eINSTANCE.getEStructuralFeature_DefaultValueLiteral();
     final boolean defaultIsSet = eReference.eIsSet(defaultValueLiteral);
     if (defaultIsSet) {
@@ -294,7 +256,7 @@ public class EStructuralFeaturePropertyHelper {
       _builder.append("`");
       return _builder;
     } else {
-      boolean _shouldRenderDefaults = this.shouldRenderDefaults(eReference);
+      boolean _shouldRenderDefaults = this.shouldRenderDefaults(pair);
       if (_shouldRenderDefaults) {
         StringConcatenation _builder_1 = new StringConcatenation();
         _builder_1.append("_Default:_ `-`");
@@ -322,23 +284,24 @@ public class EStructuralFeaturePropertyHelper {
     return _xblockexpression;
   }
   
-  protected boolean shouldRenderDefaults(final EStructuralFeature eStructuralFeature) {
-    IENamedElementConfig _findConfig = this.getConfig().findConfig(eStructuralFeature);
-    return ((IEStructuralFeatureConfig) _findConfig).shouldRenderDefaults();
+  protected boolean shouldRenderDefaults(final IEStructuralFeatureConfigPair<?, ?> pair) {
+    return pair.getConfig().shouldRenderDefaults();
   }
   
   protected EcoreDocGeneratorConfig getConfig() {
     return this.config;
   }
   
-  public CharSequence concatDefaultValue(final EStructuralFeature eAttribute) {
-    if (eAttribute instanceof EAttribute) {
-      return _concatDefaultValue((EAttribute)eAttribute);
-    } else if (eAttribute instanceof EReference) {
-      return _concatDefaultValue((EReference)eAttribute);
+  public CharSequence concatDefaultValue(final IEStructuralFeatureConfigPair<?, ?> pair) {
+    if (pair instanceof EAttributeConfigPair) {
+      return _concatDefaultValue((EAttributeConfigPair)pair);
+    } else if (pair instanceof EReferenceConfigPair) {
+      return _concatDefaultValue((EReferenceConfigPair)pair);
+    } else if (pair != null) {
+      return _concatDefaultValue(pair);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(eAttribute).toString());
+        Arrays.<Object>asList(pair).toString());
     }
   }
 }

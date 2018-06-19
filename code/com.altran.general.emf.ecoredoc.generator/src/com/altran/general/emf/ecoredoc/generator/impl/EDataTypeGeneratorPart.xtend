@@ -1,10 +1,10 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
 import com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfig
+import com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfigPair
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.google.common.collect.Multimap
 import java.util.Map
-import java.util.Map.Entry
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.EPackage
@@ -38,9 +38,10 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 			writeEDataTypesHeader()
 
 			for (entry : eDataTypeMap.entrySet) {
-				writeEDataTypeHeader(entry)
-				writeProperties(entry)
-				writeUseCases(entry)
+				val pair = new EDataTypeConfigPair(entry)
+				writeEDataTypeHeader(pair)
+				writeProperties(pair)
+				writeUseCases(pair)
 			}
 		}
 	}
@@ -53,8 +54,8 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 		''')
 	}
 
-	protected def void writeEDataTypeHeader(Entry<EDataType, EDataTypeConfig> entry) {
-		val eDataType = entry.key
+	protected def void writeEDataTypeHeader(EDataTypeConfigPair pair) {
+		val eDataType = pair.element
 		
 		output.append(
 		'''

@@ -1,5 +1,7 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfigPair;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
@@ -7,7 +9,6 @@ import com.google.common.collect.Multimap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -28,15 +29,18 @@ public abstract class AEcoreDocGeneratorPart {
   @Extension
   protected EcoreDocExtension _ecoreDocExtension = new EcoreDocExtension();
   
+  private final EcoreDocGeneratorConfig config;
+  
   private final Multimap<EPackage, EClassifier> ePackages;
   
   private StringBuilder output;
   
-  public AEcoreDocGeneratorPart(final Multimap<EPackage, EClassifier> ePackages) {
+  public AEcoreDocGeneratorPart(final EcoreDocGeneratorConfig config, final Multimap<EPackage, EClassifier> ePackages) {
+    this.config = config;
     this.ePackages = ePackages;
   }
   
-  protected abstract StringBuilder write(final EPackage ePackage);
+  public abstract StringBuilder write(final EPackage ePackage);
   
   protected void clearOutput() {
     StringBuilder _stringBuilder = new StringBuilder();
@@ -45,6 +49,10 @@ public abstract class AEcoreDocGeneratorPart {
   
   protected Multimap<EPackage, EClassifier> getEPackages() {
     return this.ePackages;
+  }
+  
+  protected EcoreDocGeneratorConfig getConfig() {
+    return this.config;
   }
   
   protected StringBuilder getOutput() {
@@ -136,7 +144,13 @@ public abstract class AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected void writeUseCases(final EClassifier target) {
+  protected void writeUseCases(final IEClassifierConfigPair<?, ?> pair) {
+    boolean _shouldRenderUseCases = pair.getConfig().shouldRenderUseCases();
+    boolean _not = (!_shouldRenderUseCases);
+    if (_not) {
+      return;
+    }
+    final EClassifier target = pair.getElement();
     boolean anyMatch = false;
     final Collection<EClass> eClasses = this.collectAllEClasses();
     final ArrayList<String> useCaseStrings = CollectionLiterals.<String>newArrayList();
@@ -194,9 +208,10 @@ public abstract class AEcoreDocGeneratorPart {
     }
   }
   
-  protected CharSequence defineDefaultValue(final EClassifier eClassifier) {
+  protected CharSequence defineDefaultValue(final IEClassifierConfigPair<?, ?> pair) {
     CharSequence _xblockexpression = null;
     {
+      final EClassifier eClassifier = pair.getElement();
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("_undefined_");
       final String defaultValue = _builder.toString();
@@ -213,14 +228,15 @@ public abstract class AEcoreDocGeneratorPart {
         _xifexpression = null;
       }
       final String value = _xifexpression;
-      _xblockexpression = this.concatProperty("Default Value", defaultValue, value);
+      _xblockexpression = this.concatProperty("Default Value", defaultValue, value, pair);
     }
     return _xblockexpression;
   }
   
-  protected CharSequence defineInstanceClassName(final EClassifier eClassifier) {
+  protected CharSequence defineInstanceClassName(final IEClassifierConfigPair<?, ?> pair) {
     CharSequence _xblockexpression = null;
     {
+      final EClassifier eClassifier = pair.getElement();
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("_undefined_");
       final String defaultValue = _builder.toString();
@@ -237,35 +253,27 @@ public abstract class AEcoreDocGeneratorPart {
         _xifexpression = null;
       }
       final String value = _xifexpression;
-      _xblockexpression = this.concatProperty("Instance Type Name", defaultValue, value);
+      _xblockexpression = this.concatProperty("Instance Type Name", defaultValue, value, pair);
     }
     return _xblockexpression;
   }
   
-  protected CharSequence defineSerializable(final EDataType eDataType) {
-    CharSequence _xblockexpression = null;
-    {
+  protected CharSequence concatProperty(final String name, final String defaultValue, final String value, final IEClassifierConfigPair<?, ?> pair) {
+    CharSequence _xifexpression = null;
+    if (((value != null) || pair.getConfig().shouldRenderDefaults())) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("true");
-      final String defaultValue = _builder.toString();
-      final boolean value = eDataType.isSerializable();
-      _xblockexpression = this.concatProperty("Serializable", defaultValue, Boolean.valueOf(value).toString());
-    }
-    return _xblockexpression;
-  }
-  
-  protected CharSequence concatProperty(final String name, final String defaultValue, final String value) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append(name);
-    _builder.append(":: ");
-    {
-      if ((value != null)) {
-        _builder.append(value);
-      } else {
-        _builder.append(defaultValue);
+      _builder.append(name);
+      _builder.append(":: ");
+      {
+        if ((value != null)) {
+          _builder.append(value);
+        } else {
+          _builder.append(defaultValue);
+        }
       }
+      _xifexpression = _builder;
     }
-    return _builder;
+    return _xifexpression;
   }
   
   protected CharSequence tableFooter() {
@@ -276,20 +284,10 @@ public abstract class AEcoreDocGeneratorPart {
   }
   
   protected Collection<EClass> collectAllEClasses() {
-    return IterableExtensions.<EClass>toSet(Iterables.<EClass>filter(this.ePackages.values(), EClass.class));
-  }
-  
-  protected CharSequence writeProperties(final EDataType eDataType) {
-    StringBuilder _xblockexpression = null;
-    {
-      CharSequence _defineDefaultValue = this.defineDefaultValue(eDataType);
-      CharSequence _defineInstanceClassName = this.defineInstanceClassName(eDataType);
-      CharSequence _defineSerializable = this.defineSerializable(eDataType);
-      this.output.append(
-        IterableExtensions.join(IterableExtensions.<CharSequence>filterNull(Collections.<CharSequence>unmodifiableList(CollectionLiterals.<CharSequence>newArrayList(_defineDefaultValue, _defineInstanceClassName, _defineSerializable))), EcoreDocExtension.ECLASSIFIER_PROPERTY_SEPARATOR));
-      _xblockexpression = this.output.append(EcoreDocExtension.newline());
-    }
-    return _xblockexpression;
+    final Function1<EClass, Boolean> _function = (EClass it) -> {
+      return Boolean.valueOf(this.getConfig().findConfig(it).shouldRender());
+    };
+    return IterableExtensions.<EClass>toSet(IterableExtensions.<EClass>filter(Iterables.<EClass>filter(this.ePackages.values(), EClass.class), _function));
   }
   
   protected CharSequence concatLinkTo(final ENamedElement eDataType) {

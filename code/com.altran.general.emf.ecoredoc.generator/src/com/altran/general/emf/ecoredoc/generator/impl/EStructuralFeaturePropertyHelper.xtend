@@ -1,139 +1,123 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
-import org.eclipse.emf.ecore.EAttribute
+import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfigPair
+import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfigPair
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
+import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfigPair
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.impl.EEnumLiteralImpl
 
 class EStructuralFeaturePropertyHelper {
-	extension EcoreDocExtension = new EcoreDocExtension
-
 	val static String BOLD = "**"
+	
+	extension EcoreDocExtension = new EcoreDocExtension
+	
+	val EcoreDocGeneratorConfig config
+	
+	new(EcoreDocGeneratorConfig config) {
+		this.config = config
+	}
 
-	def CharSequence concatBounds(EStructuralFeature eStructuralFeature) {
-		val int lowerBound = eStructuralFeature.lowerBound
-		val int upperBound = eStructuralFeature.upperBound
-		val boolean lowerNotEqualUpperBound = lowerBound != upperBound
-
-		'''`[«lowerBound»«IF lowerNotEqualUpperBound»..«defineUpperBound(upperBound)»«ENDIF»]`'''
-
+	def CharSequence concatBounds(IEStructuralFeatureConfigPair<?,?> pair) {
+		val eStructuralFeature = pair.element
+		
+		val lowerBound = eStructuralFeature.lowerBound
+		val upperBound = eStructuralFeature.upperBound
+		val lowerNotEqualUpperBound = lowerBound != upperBound
+		
+		val isSet = if (eStructuralFeature.isMany) {
+			lowerBound !== 0 || upperBound !== -1
+		} else {
+			lowerBound !== 0 || upperBound !== 1
+		}
+		
+		if (isSet || pair.config.shouldRenderBounds) {
+			'''`[Â«lowerBoundÂ»Â«IF lowerNotEqualUpperBoundÂ»..Â«defineUpperBound(upperBound)Â»Â«ENDIFÂ»]`'''
+		}
 	}
 
 	def CharSequence boldifyString(String string) {
-		'''«BOLD»«string»«BOLD»'''
+		'''Â«BOLDÂ»Â«stringÂ»Â«BOLDÂ»'''
 	}
 
-	def CharSequence definePropertyString(String trueLiteral, String falseLiteral, boolean defaultValue,
+	def CharSequence definePropertyString(
+		IEStructuralFeatureConfigPair<?,?> pair, 
+		String trueLiteral, 
+		String falseLiteral, 
+		boolean defaultValue,
 		boolean currentPropertyValue) { 
-		val boolean boldify = (defaultValue != currentPropertyValue)
-
-		if (currentPropertyValue) {
-			if(boldify){
-				return boldifyString(trueLiteral)
-				
-			}else{
-				return trueLiteral
+			
+		val isSet = (defaultValue != currentPropertyValue)
+		val shouldRenderDefaults = pair.config.shouldRenderDefaults
+		
+		if(isSet || shouldRenderDefaults) {
+			if(currentPropertyValue) {
+				if(isSet && shouldRenderDefaults) {
+					return boldifyString(trueLiteral)
+				} else {
+					return trueLiteral
+				}
+			} else {
+				if(isSet && shouldRenderDefaults) {
+					return boldifyString(falseLiteral)
+				} else {
+					return falseLiteral
+				}
 			}
-
-		} else {
-			if(boldify){
-				return boldifyString(falseLiteral)
-				
-			}else{
-				return falseLiteral
-			}	
 		}
 	}
 
-	def CharSequence definePropertyString(String trueLiteral, String falseLiteral, boolean currentPropertyValue) {
-		if (currentPropertyValue) {
-			return trueLiteral
-
-		} else {
-			return falseLiteral
-		}
+	def CharSequence defineChangeable(IEStructuralFeatureConfigPair<?,?> pair) {
+		pair.definePropertyString("changeable", "unchangeable", true, pair.element.changeable)
 	}
 
-	def CharSequence defineChangeable(EStructuralFeature eStructuralFeature) {
-		val boolean defaultValue = true
-		val boolean isChangeable = eStructuralFeature.changeable
-
-		definePropertyString("changeable", "unchangeable", defaultValue, isChangeable)
-
+	def CharSequence defineDerived(IEStructuralFeatureConfigPair<?,?> pair) {
+		pair.definePropertyString("derived", "underived", false, pair.element.derived)
 	}
 
-	def CharSequence defineDerived(EStructuralFeature eStructuralFeature) {
-		val boolean defaultValue = false
-		val boolean isDerived = eStructuralFeature.derived
-
-		definePropertyString("derived", "underived", defaultValue, isDerived)
-
-	}
-
-	def CharSequence defineOrdered(EStructuralFeature eStructuralFeature) {
-		val boolean defaultValue = true
-		val int upperBound = eStructuralFeature.upperBound
-		val boolean isOrdered = eStructuralFeature.ordered
-
-		if (upperBound != 1) {
-			definePropertyString("ordered", "unordered", defaultValue, isOrdered)
-
+	def CharSequence defineOrdered(IEStructuralFeatureConfigPair<?,?> pair) {
+		if (pair.element.upperBound != 1) {
+			pair.definePropertyString("ordered", "unordered", true, pair.element.ordered)
 		} else {
 			null
 		}
 	}
 
-	def CharSequence defineTransient(EStructuralFeature eStructuralFeature) {
-		val boolean defaultValue = false
-		val boolean isTransient = eStructuralFeature.transient
-
-		definePropertyString("transient", "non-transient", defaultValue, isTransient)
+	def CharSequence defineTransient(IEStructuralFeatureConfigPair<?,?> pair) {
+		pair.definePropertyString("transient", "non-transient", false, pair.element.transient)
 	}
 
-	def CharSequence defineUnique(EStructuralFeature eStructuralFeature) {
-		val boolean isUnique = eStructuralFeature.unique
-
-		definePropertyString("unique", "non-unique", isUnique)
+	def CharSequence defineUnique(IEStructuralFeatureConfigPair<?,?> pair) {
+		pair.definePropertyString("unique", "non-unique", pair.element instanceof EReference, pair.element.unique)
 	}
 
-	def CharSequence defineUnsettable(EStructuralFeature eStructuralFeature) {
-		val boolean defaultValue = false
-		val boolean isUnsettable = eStructuralFeature.unsettable
-
-		definePropertyString("unsettable", "settable", defaultValue, isUnsettable)
-
+	def CharSequence defineUnsettable(IEStructuralFeatureConfigPair<?,?> pair) {
+		pair.definePropertyString("unsettable", "settable", false, pair.element.unsettable)
 	}
 
-	def CharSequence defineVolatile(EStructuralFeature eStructuralFeature) {
-		val boolean defaultValue = false
-		val boolean isVolatile = eStructuralFeature.volatile
-
-		definePropertyString("volatile", "non-volatile", defaultValue, isVolatile)
+	def CharSequence defineVolatile(IEStructuralFeatureConfigPair<?,?> pair) {
+		pair.definePropertyString("volatile", "non-volatile", false, pair.element.volatile)
 	}
 
-	def CharSequence defineResolveProxies(EReference eReference) {
-		//val isDefault = eReference.eIsSet(EcorePackage.eINSTANCE.EReference_ResolveProxies)
-		val boolean defaultValue = true
-		val boolean resolveProxies = eReference.resolveProxies
-
-		definePropertyString("resolveProxies", "non-resolveProxies", defaultValue, resolveProxies)
+	def CharSequence defineResolveProxies(EReferenceConfigPair pair) {
+		pair.definePropertyString("resolveProxies", "non-resolveProxies", true, pair.element.resolveProxies)
 	}
 	
-	def CharSequence defineContainer(EReference eReference){
-		val boolean isContainer = eReference.isContainer
-		
-		definePropertyString("container", "non-container", isContainer)
+	def CharSequence defineContainer(EReferenceConfigPair pair){
+		if (pair.element.isContainer) {
+			'''*container*'''
+
+		} else if(pair.config.shouldRenderDefaults) {
+			'''non-container'''
+		} else {
+			null
+		}
 	}
 	
-	def CharSequence defineContainment(EReference eReference) {
-		val boolean isContainment = eReference.isContainment
-		
-		definePropertyString("containment", "non-containment", isContainment)
-	}
-	
-	def CharSequence defineId(EAttribute eAttribute) {
-		val boolean isID = eAttribute.isID
+	def CharSequence defineId(EAttributeConfigPair pair) {
+		val boolean isID = pair.element.isID
 
 		if (isID) {
 			'''*is id*'''
@@ -143,46 +127,56 @@ class EStructuralFeaturePropertyHelper {
 		}
 	}
 
-	def CharSequence defineEKeys(EReference eReference) {
-		val eKeys = eReference.EKeys
+	def CharSequence defineEKeys(EReferenceConfigPair pair) {
+		val eKeys = pair.element.EKeys
+		
 		val boolean eKeysExist = !eKeys.isEmpty
-
-		'''_EKeys:_«IF eKeysExist» «eKeys.join("`", ", ", "`") [name]»«ELSE» `-`«ENDIF»'''
+		
+		if (eKeysExist || pair.shouldRenderDefaults) {
+			'''_EKeys:_Â«IF eKeysExistÂ» Â«eKeys.join("`", ", ", "`") [name]Â»Â«ELSEÂ» `-`Â«ENDIFÂ»'''
+		}
 	}
 
-	def dispatch CharSequence concatDefaultValue(EAttribute eAttribute) {
+	def dispatch CharSequence concatDefaultValue(IEStructuralFeatureConfigPair<?,?> pair) {
+		// dummy to satisfy Xtend
+	}
+
+	def dispatch CharSequence concatDefaultValue(EAttributeConfigPair pair) {
+		val eAttribute = pair.element
 		val EStructuralFeature defaultValueLiteral = EcorePackage.eINSTANCE.EStructuralFeature_DefaultValueLiteral
 		val boolean defaultIsSet = eAttribute.eIsSet(defaultValueLiteral)
-		var result = '''_Default:_ '''
 		
 		if (defaultIsSet) {
 			val defaultValue = eAttribute.defaultValue
 			
 			switch (defaultValue) {
 				EEnumLiteralImpl:
-					result += '''`<<«concatAnchor(eAttribute.EAttributeType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>`'''
+					return '''_Default:_ `<<Â«concatAnchor(eAttribute.EAttributeType)Â»Â«EcoreDocExtension.ANCHOR_SEPARATORÂ»Â«defaultValueÂ», Â«defaultValueÂ»>>`'''
 						
 				default:
-					result += '''`«defaultValue»`'''
+					return '''_Default:_ `Â«defaultValueÂ»`'''
 			}
 
+		} else if (pair.shouldRenderDefaults) {
+			return '''_Default:_ `-`'''
 		} else {
-			result += '''`-`'''
+			return null
 		}
-
-		return result 
 	}
 
-	def dispatch CharSequence concatDefaultValue(EReference eReference) {
+	def dispatch CharSequence concatDefaultValue(EReferenceConfigPair pair) {
+		val eReference = pair.element
 		val EStructuralFeature defaultValueLiteral = EcorePackage.eINSTANCE.EStructuralFeature_DefaultValueLiteral
 		val boolean defaultIsSet = eReference.eIsSet(defaultValueLiteral)
 
 		if (defaultIsSet) {
 			val defaultValue = eReference.defaultValue
-			return '''_Default:_ `«defaultValue»`'''
+			return '''_Default:_ `Â«defaultValueÂ»`'''
 
-		} else {
+		} else if (pair.shouldRenderDefaults) {
 			return '''_Default:_ `-`'''
+		} else {
+			return null
 		}
 	}
 
@@ -195,5 +189,13 @@ class EStructuralFeaturePropertyHelper {
 		} else {
 			'''*'''
 		}
+	}
+	
+	protected def shouldRenderDefaults(IEStructuralFeatureConfigPair<?,?> pair) {
+		pair.config.shouldRenderDefaults
+	}
+	
+	protected def getConfig() {
+		this.config
 	}
 }

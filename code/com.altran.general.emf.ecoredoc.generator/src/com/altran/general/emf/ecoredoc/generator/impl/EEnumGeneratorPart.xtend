@@ -1,43 +1,50 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
+import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig
+import com.altran.general.emf.ecoredoc.generator.config.EEnumConfigPair
+import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig
+import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfigPair
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.google.common.collect.Multimap
-import java.util.List
+import java.util.Map
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EEnum
-import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.EPackage
 
 import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
 
-class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
+class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 
-	new(Multimap<EPackage, EClassifier> ePackages) {
-		super(ePackages)
+	new(EcoreDocGeneratorConfig config, Multimap<EPackage, EClassifier> ePackages) {
+		super(config, ePackages)
 	}
 
 	override StringBuilder write(EPackage ePackage) {
 		clearOutput()
 
-		val List<EEnum> eEnums = collectEEnums(ePackage)
+		val eEnums = getEPackages().get(ePackage).collectEEnums()
 
-		writeEEnums(eEnums)
+		val eEnumMap = eEnums
+			.toInvertedMap[getConfig().findConfig(it) as EEnumConfig]
+			.filter[eEnum, config|
+				config.shouldRender
+			]
+			
+		writeEEnums(eEnumMap)
 
 		return output
 	}
 
-	protected def List<EEnum> collectEEnums(EPackage ePackage) {
-		this.getEPackages.get(ePackage).filter(EEnum).sortBy[it.name ?: ""]
-	}
-
-	protected def void writeEEnums(List<EEnum> eEnums) {
-		if (!eEnums.isEmpty) {
+	protected def void writeEEnums(Map<EEnum, EEnumConfig> eEnumMap) {
+		if (!eEnumMap.isEmpty) {
 			writeEEnumsHeader()
 
-			for (eEnum : eEnums) {
-				writeEEnumHeader(eEnum)
-				writeProperties(eEnum)
-				writeEEnumLiterals(eEnum)
-				writeUseCases(eEnum)
+			for (entry : eEnumMap.entrySet) {
+				val pair = new EEnumConfigPair(entry)
+				writeEEnumHeader(pair)
+				writeProperties(pair)
+				writeEEnumLiterals(pair)
+				writeUseCases(pair)
 			}
 		}
 	}
@@ -45,50 +52,67 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def void writeEEnumsHeader() {
 		output.append(
 		'''
-			«newline»
+			Â«newlineÂ»
 			=== Enumerations
 		''')
 	}
 
-	protected def void writeEEnumLiterals(EEnum eEnum) {
-		output.append(
-			'''
-				«newline»
-				.Literals
-				[cols="<20m,>10m,<70a",options="header"]
-				|===
-				|Symbol
-				|Value
-				|Description
-			'''
-		)
+	protected def void writeEEnumLiterals(EEnumConfigPair pair) {
+		val eEnum = pair.element
 
-		for (eLiteral : eEnum.ELiterals) {
-			writeELiteral(eLiteral)
+		val eLiterals = eEnum.ELiterals
+		
+		val eLiteralsMap = eLiterals
+			.toInvertedMap[getConfig().findConfig(it) as EEnumLiteralConfig]
+			.filter[eLiteral, config|
+				config.shouldRender
+			]
+			
+		if (!eLiteralsMap.isEmpty) {
+			output.append(
+				'''
+					Â«newlineÂ»
+					.Literals
+					[cols="<20m,>10m,<70a",options="header"]
+					|===
+					|Symbol
+					|Value
+					|Description
+				'''
+			)
+			
+			for (entry : eLiteralsMap.entrySet) {
+				writeELiteral(new EEnumLiteralConfigPair(entry))
+			}
+			
+			output.append(tableFooter())
 		}
-
-		output.append(tableFooter())
+		
 	}
 
-	protected def void writeELiteral(EEnumLiteral eLiteral) {
+	protected def void writeELiteral(EEnumLiteralConfigPair pair) {
+		val eLiteral = pair.element
+		
 		output.append(
 		'''
-			«newline»
-			|«eLiteral.name»[[«concatAnchor(eLiteral)»]]
-			|«eLiteral.value»
-			|«getDocumentation(eLiteral)»
+			Â«newlineÂ»
+			|Â«eLiteral.nameÂ»[[Â«concatAnchor(eLiteral)Â»]]
+			|Â«eLiteral.valueÂ»
+			|Â«getDocumentation(eLiteral)Â»
 		''')
 	}
 
-	def protected CharSequence writeEEnumHeader(EEnum eEnum) {
+	def protected void writeEEnumHeader(EEnumConfigPair pair) {
+		val eEnum = pair.element
+
 		output.append(
 		'''
-			«newline»
-			[[«concatAnchor(eEnum)»]]
-			==== «eEnum.name»
-			«newline»
-			«getDocumentation(eEnum)»
-			«newline»
+			Â«newlineÂ»
+			[[Â«concatAnchor(eEnum)Â»]]
+			==== Â«eEnum.nameÂ»
+			Â«newlineÂ»
+			Â«getDocumentation(eEnum)Â»
+			Â«newlineÂ»
 		''')
 	}
 

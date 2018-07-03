@@ -1,59 +1,58 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
-import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfigPair;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
+import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorEDataTypePart;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.MapExtensions;
 
 @SuppressWarnings("all")
-public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
-  public EDataTypeGeneratorPart(final Multimap<EPackage, EClassifier> ePackages) {
-    super(ePackages);
+public class EDataTypeGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
+  public EDataTypeGeneratorPart(final EcoreDocGeneratorConfig config, final Multimap<EPackage, EClassifier> ePackages) {
+    super(config, ePackages);
   }
   
   @Override
   public StringBuilder write(final EPackage ePackage) {
     this.clearOutput();
-    final List<EDataType> eDataTypes = this.collectEDataTypes(ePackage);
-    this.writeEDataTypes(eDataTypes);
+    final List<EDataType> eDataTypes = this._ecoreDocExtension.collectEDataTypes(this.getEPackages().get(ePackage));
+    final Function1<EDataType, EDataTypeConfig> _function = (EDataType it) -> {
+      IENamedElementConfig _findConfig = this.getConfig().findConfig(it);
+      return ((EDataTypeConfig) _findConfig);
+    };
+    final Function2<EDataType, EDataTypeConfig, Boolean> _function_1 = (EDataType eDataType, EDataTypeConfig config) -> {
+      return Boolean.valueOf(config.shouldRender());
+    };
+    final Map<EDataType, EDataTypeConfig> eDataTypeMap = MapExtensions.<EDataType, EDataTypeConfig>filter(IterableExtensions.<EDataType, EDataTypeConfig>toInvertedMap(eDataTypes, _function), _function_1);
+    this.writeEDataTypes(eDataTypeMap);
     return this.getOutput();
   }
   
-  protected List<EDataType> collectEDataTypes(final EPackage ePackage) {
-    final Function1<EDataType, Boolean> _function = (EDataType it) -> {
-      return Boolean.valueOf((!(it instanceof EEnum)));
-    };
-    final Function1<EDataType, String> _function_1 = (EDataType it) -> {
-      String _elvis = null;
-      String _name = it.getName();
-      if (_name != null) {
-        _elvis = _name;
-      } else {
-        _elvis = "";
-      }
-      return _elvis;
-    };
-    return IterableExtensions.<EDataType, String>sortBy(IterableExtensions.<EDataType>filter(Iterables.<EDataType>filter(this.getEPackages().get(ePackage), EDataType.class), _function), _function_1);
-  }
-  
-  protected void writeEDataTypes(final List<EDataType> eDataTypes) {
-    boolean _isEmpty = eDataTypes.isEmpty();
+  protected void writeEDataTypes(final Map<EDataType, EDataTypeConfig> eDataTypeMap) {
+    boolean _isEmpty = eDataTypeMap.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
       this.writeEDataTypesHeader();
-      for (final EDataType eDataType : eDataTypes) {
+      Set<Map.Entry<EDataType, EDataTypeConfig>> _entrySet = eDataTypeMap.entrySet();
+      for (final Map.Entry<EDataType, EDataTypeConfig> entry : _entrySet) {
         {
-          this.writeEDataTypeHeader(eDataType);
-          this.writeProperties(eDataType);
-          this.writeUseCases(eDataType);
+          final EDataTypeConfigPair pair = new EDataTypeConfigPair(entry);
+          this.writeEDataTypeHeader(pair);
+          this.writeProperties(pair);
+          this.writeUseCases(pair);
         }
       }
     }
@@ -70,7 +69,8 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
     _output.append(_builder);
   }
   
-  protected CharSequence writeEDataTypeHeader(final EDataType eDataType) {
+  protected void writeEDataTypeHeader(final EDataTypeConfigPair pair) {
+    final EDataType eDataType = pair.getElement();
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     String _newline = EcoreDocExtension.newline();
@@ -94,6 +94,6 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorPart {
     String _newline_2 = EcoreDocExtension.newline();
     _builder.append(_newline_2);
     _builder.newLineIfNotEmpty();
-    return _output.append(_builder);
+    _output.append(_builder);
   }
 }

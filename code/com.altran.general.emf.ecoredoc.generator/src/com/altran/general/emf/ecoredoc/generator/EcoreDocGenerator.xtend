@@ -1,5 +1,8 @@
 package com.altran.general.emf.ecoredoc.generator
 
+import com.altran.general.emf.ecoredoc.generator.config.EPackageConfig
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigBuilder
 import com.altran.general.emf.ecoredoc.generator.impl.EClassGeneratorPart
 import com.altran.general.emf.ecoredoc.generator.impl.EDataTypeGeneratorPart
 import com.altran.general.emf.ecoredoc.generator.impl.EEnumGeneratorPart
@@ -12,41 +15,82 @@ import org.eclipse.emf.ecore.EPackage
 
 import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
 
+/**
+ * Creates JavaDoc-like documents for Ecore metamodels in AsciiDoctor format.
+ *
+ * @see <a href=
+ *      "http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html">JavaDoc
+ *      Homepage</a>
+ * @see <a href="https://wiki.eclipse.org/Ecore">Ecore Wiki entry</a>
+ * @see <a href="https://asciidoctor.org/">AsciiDoctor Homepage</a>
+ *
+ */
+/*
+ * Naming conventions:
+ *  - Ecore names are written in full, i.e. including the leading "E".
+ *  - "writeX()" returns void and writes directly to the output.
+ *  - "defineX()" produces the output text for a property, or null if no output is required.
+ */
 class EcoreDocGenerator {
 
 	extension EcoreDocExtension = new EcoreDocExtension
 
 	val Collection<? extends EClassifier> input
 
-	val StringBuilder output = new StringBuilder
+	val output = new StringBuilder
 
 	val Multimap<EPackage, EClassifier> ePackages = TreeMultimap.create(
 		[o1, o2|o1.name.compareTo(o2.name)],
 		[o1, o2|o1.name.compareTo(o2.name)]
 	);
+	
+	var EcoreDocGeneratorConfig config
 
 	new(Collection<? extends EClassifier> input) {
 		this.input = input
 	}
 
+	/**
+	 * Generates the AsciiDoctor contents.
+	 */
 	def CharSequence generate() {
 		writeIntro()
 
-		collectEPackages()
-
-		val EDataTypeGeneratorPart eDataTypeGeneratorPart = new EDataTypeGeneratorPart(ePackages)
-		val EEnumGeneratorPart eEnumGeneratorPart = new EEnumGeneratorPart(ePackages)
-		val EClassGeneratorPart eClassGeneratorPart = new EClassGeneratorPart(ePackages)
-
-		for (ePackage : ePackages.keySet) {
-			writeEPackageIntro(ePackage)
-
-			output.append(eDataTypeGeneratorPart.write(ePackage))
-			output.append(eEnumGeneratorPart.write(ePackage))
-			output.append(eClassGeneratorPart.write(ePackage))
+		val parts = #[
+			new EDataTypeGeneratorPart(getConfig(), getEPackages()),
+			new EEnumGeneratorPart(getConfig(), getEPackages()),
+			new EClassGeneratorPart(getConfig(), getEPackages())
+		]
+		
+		for (ePackage : getEPackages().keySet) {
+			
+			val config = getConfig().findConfig(ePackage) as EPackageConfig
+			
+			if (config.shouldRender) {
+				writeEPackageIntro(ePackage)
+				
+				parts.sortBy[
+					switch(it) {
+						EDataTypeGeneratorPart: config.EDataTypesPosition
+						EEnumGeneratorPart: config.EEnumsPosition
+						EClassGeneratorPart: config.EClassesPosition
+					} as Integer
+				].forEach [
+					output.append(it.write(ePackage))
+				]
+			}
 		}
 
 		return output.toString
+	}
+	
+	/**
+	 * Returns a fully populated configuration.
+	 */
+	def getConfig() {
+		ensureConfigExists()
+		
+		return this.config
 	}
 
 	protected def void writeIntro() {
@@ -54,11 +98,11 @@ class EcoreDocGenerator {
 		'''
 			// White Up-Pointing Triangle
 			:wupt: &#9651;
-			«newline»
+			Â«newlineÂ»
 			:inherited: {wupt}{nbsp}
-			«newline»
+			Â«newlineÂ»
 			:table-caption!:
-			«newline»
+			Â«newlineÂ»
 			= Ecore Documentation
 			:toc:
 			:toclevels: 4
@@ -66,31 +110,44 @@ class EcoreDocGenerator {
 	}
 
 	protected def void writeEPackageIntro(EPackage ePackage) {
-		val String ePackageName = ePackage.name
-
+		val ePackageName = ePackage.name
 		output.append(
 		'''
-			«newline»
-			«newline»
-			[[«ePackageName»]]
-			== Contents of «ePackageName»
-			«newline»
-			«getDocumentation(ePackage)»
-			«newline»
-			«concatEPackageProperties(ePackage)»
+			Â«newlineÂ»
+			Â«newlineÂ»
+			[[Â«ePackageNameÂ»]]
+			== Contents of Â«ePackageNameÂ»
+			Â«newlineÂ»
+			Â«getDocumentation(ePackage)Â»
+			Â«newlineÂ»
+			Â«concatEPackageProperties(ePackage)Â»
 		''')
 	}
-	
+
 	protected def concatEPackageProperties(EPackage ePackage) {
 		'''
-			Ns Prefix:: «ePackage.nsPrefix»
-			Ns URI:: «ePackage.nsURI»
+			Ns Prefix:: Â«ePackage.nsPrefixÂ»
+			Ns URI:: Â«ePackage.nsURIÂ»
 		'''
+	}
+	
+	protected def getEPackages() {
+		if (this.ePackages.isEmpty) {
+			collectEPackages()
+		}
+		
+		return this.ePackages
 	}
 
 	protected def void collectEPackages() {
 		for (eclassifier : input) {
-			ePackages.put(eclassifier.eContainer as EPackage, eclassifier)
+			this.ePackages.put(eclassifier.eContainer as EPackage, eclassifier)
+		}
+	}
+	
+	protected def void ensureConfigExists() {
+		if (this.config === null) {
+			this.config = new EcoreDocConfigBuilder(getEPackages().keySet).build()
 		}
 	}
 }

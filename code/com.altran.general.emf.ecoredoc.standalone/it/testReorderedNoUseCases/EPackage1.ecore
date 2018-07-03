@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="EPackage1" nsURI="EPackage1" nsPrefix="EPackage1">
+  <eAnnotations source="http://www.eclipse.org/emf/2011/Xcore">
+    <details key="Ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+    <details key="GenModel" value="http://www.eclipse.org/emf/2002/GenModel"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EDataType" name="SpecialDataType" instanceClassName="java.lang.Number">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Special documentation for special data type"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Enum1">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Enum1 Description"/>
+    </eAnnotations>
+    <eLiterals name="Literal1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Literal1 Description&#xA;&#xA;Second sentence of Literal1 Description."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="Literal2" value="1"/>
+    <eLiterals name="Literal3" value="5">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Literal3 Description"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass1" abstract="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="TODO: Find a good way to show class attributes like abstract.&#xA;&#xA;Description of EClass1"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" lowerBound="3"
+        upperBound="5" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Name desc."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" unique="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" iD="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Description of id."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="specialNumber" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="23"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="someStringAttr" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="Hello, World!"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="d" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="3.141592"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myRelation" ordered="false"
+        upperBound="-1" eType="#//MyEClass" eOpposite="#//MyEClass/backwards">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Description."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MyEClass" eSuperTypes="#//EClass1">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Description"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr" unique="false" eType="#//SpecialDataType">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Description.&#xA;&#xA;Second sentence."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//EClass1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Whatever."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clazzes" ordered="false"
+        lowerBound="1" upperBound="-1" eType="#//Class3" containment="true" resolveProxies="false"
+        eOpposite="#//Class3/specialParent">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Desc."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eeeenum" unique="false"
+        upperBound="6" eType="#//Enum1" defaultValueLiteral="Literal1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Deschkriptschion."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="otherClasses" upperBound="-1"
+        eType="#//Class3" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Desc.&#xA;&#xA;Containments could also be inherited."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="backwards" lowerBound="1"
+        eType="#//EClass1" eOpposite="#//EClass1/myRelation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Class3" eSuperTypes="#//EClass1">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Description"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="something" unique="false"
+        upperBound="6" eType="#//Enum1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Something."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="specialParent" eType="#//MyEClass"
+        eOpposite="#//MyEClass/clazzes">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Bla"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Iface" abstract="true" interface="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Description"/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

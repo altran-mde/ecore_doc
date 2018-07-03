@@ -1,0 +1,52 @@
+// White Up-Pointing Triangle
+:wupt: &#9651;
+
+:inherited: {wupt}{nbsp}
+
+:table-caption!:
+
+= Ecore Documentation
+:toc:
+:toclevels: 4
+
+
+[[EPackage2]]
+== Contents of EPackage2
+
+Package2 documentation
+
+Ns Prefix:: ep2
+Ns URI:: http://altran.com/general/emf/ecoredoc/test/epackage2/1.0.0
+
+=== Types
+
+[[EPackage2-Class3]]
+==== Class Class3
+
+
+
+
+.Attributes
+[cols="<20,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`attr`[[EPackage2-Class3-attr]]
+|`EDouble`
+|`[0..1]` +
+_Default:_ `2.71` +
+unique
+|
+|===
+
+[[EPackage2-SomeClass]]
+==== Class SomeClass
+
+This is
+
+my doc
+
+

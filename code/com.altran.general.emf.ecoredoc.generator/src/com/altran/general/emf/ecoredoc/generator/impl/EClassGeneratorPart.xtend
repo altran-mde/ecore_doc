@@ -1,7 +1,17 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
+import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig
+import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfigPair
+import com.altran.general.emf.ecoredoc.generator.config.EClassConfig
+import com.altran.general.emf.ecoredoc.generator.config.EClassConfigPair
+import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfigPair
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
+import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfigPair
+import com.google.common.collect.Maps
 import com.google.common.collect.Multimap
+import java.util.Collection
 import java.util.List
+import java.util.Map
 import java.util.Set
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EClass
@@ -14,32 +24,36 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
 
 class EClassGeneratorPart extends AEcoreDocGeneratorPart {
-	extension EStructuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper
+	extension EStructuralFeaturePropertyHelper structuralFeaturePropertyHelper
 	
-	new(Multimap<EPackage, EClassifier> ePackages) {
-		super(ePackages)
+	new(EcoreDocGeneratorConfig config, Multimap<EPackage, EClassifier> ePackages) {
+		super(config, ePackages)
+		
+		this.structuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper(config)
 	}
 
 	override StringBuilder write(EPackage ePackage) {
 		clearOutput()
 
-		val List<EClass> eClasses = collectEClasses(ePackage)
+		val List<EClass> eClasses = getEPackages().get(ePackage).collectEClasses()
 
-		writeEClasses(eClasses)
+		val eClassMap = eClasses
+			.toInvertedMap[getConfig().findConfig(it) as EClassConfig]
+			.filter[eClass, config|
+				config.shouldRender
+			]
+		
+		writeEClasses(eClassMap)
 
 		return output
 	}
 
-	protected def List<EClass> collectEClasses(EPackage ePackages) {
-		getEPackages.get(ePackages).filter(EClass).sortBy[it.name ?: ""]
-	}
-
-	protected def void writeEClasses(List<EClass> eClasses) {
-		if (!eClasses.isEmpty) {
+	protected def void writeEClasses(Map<EClass, EClassConfig> eClassMap) {
+		if (!eClassMap.isEmpty) {
 			writeEClassesHeader()
 
-			for (eClass : eClasses) {
-				writeEClass(eClass)
+			for (entry : eClassMap.entrySet) {
+				writeEClass(new EClassConfigPair(entry))
 			}
 		}
 	}
@@ -47,73 +61,99 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def void writeEClassesHeader() {
 		output.append(
 		'''
-			«newline»
+			Â«newlineÂ»
 			=== Types
 		''')
 	}
 
-	protected def void writeEClass(EClass eClass) {
-		writeEClassHeader(eClass)
+	protected def void writeEClass(EClassConfigPair pair) {
+		writeEClassHeader(pair)
 		
-		writeProperties(eClass)
+		writeProperties(pair)
 
-		writeSuperTypes(eClass)
+		writeSuperTypes(pair)
 
-		writeSubTypes(eClass)
+		writeSubTypes(pair)
 
-		writeEAttributes(eClass)
+		writeEAttributes(pair)
 
-		writeEContainments(eClass)
+		writeEContainments(pair)
 
-		writeECrossReferences(eClass)
+		writeECrossReferences(pair)
 
-		writeUseCases(eClass)
+		writeUseCases(pair)
 	}
 
-	protected def void writeEContainments(EClass eClass) {
+	protected def void writeEContainments(EClassConfigPair pair) {
+		val eClass = pair.element
+		
 		val boolean containmentExists = eClass.EAllReferences.exists[isContainment]
 
 		if (containmentExists) {
 			writeEContainmentHeader()
 
 			var List<EReference> eContainments = collectEContainments(eClass)
-			var Set<? extends EStructuralFeature> inheritedEContainments = collectInheritedEContainments(eClass)
+			var Set<? extends EStructuralFeature> inheritedEContainments = collectInheritedEContainments(pair)
 
-			writeEStructuralFeatures(eContainments, eClass, inheritedEContainments)
+			writeEStructuralFeatures(eContainments.combineConfigPairs(pair.config), eClass, inheritedEContainments.combineConfigPairs(pair.config))
 		}
 	}
 
-	protected def void writeECrossReferences(EClass eClass) {
+	protected def void writeECrossReferences(EClassConfigPair pair) {
+		val eClass = pair.element
+		
 		val boolean eCrossReferenceExists = eClass.EAllReferences.exists[!isContainment]
 
 		if (eCrossReferenceExists) {
 			writeEReferencesHeader()
 
 			var List<EReference> crossReferences = collectECrossReferences(eClass)
-			var Set<? extends EStructuralFeature> inheritedECrossReferences = collectInheritedECrossReferences(eClass)
+			var Set<? extends EStructuralFeature> inheritedECrossReferences = collectInheritedECrossReferences(pair)
 
-			writeEStructuralFeatures(crossReferences, eClass, inheritedECrossReferences)
+			writeEStructuralFeatures(crossReferences.combineConfigPairs(pair.config), eClass, inheritedECrossReferences.combineConfigPairs(pair.config))
 		}
 	}
 
-	protected def void writeEAttributes(EClass eClass) {
-		val boolean eAttributeExists = !eClass.EAllAttributes.isEmpty
-
-		if (eAttributeExists) {
+	protected def void writeEAttributes(EClassConfigPair pair) {
+		val eClass = pair.element
+		
+		val eAttributesMap = Maps::newLinkedHashMap(eClass.EAllAttributes
+			.toInvertedMap[eAttribute | pair.config.EAttributes.findFirst[id == eAttribute.name] as EAttributeConfig]
+			.filter[eAttribute, config|
+				config.shouldRender
+			])
+			
+		if (!eAttributesMap.isEmpty) {
 			writeEAttributesHeader()
 
-			var Set<EStructuralFeature> inheritedEAttributes = collectInheritedEAttributes(eClass)
-
-			writeEStructuralFeatures(eClass.EAttributes, eClass, inheritedEAttributes)
+			val inheritedEAttributes = collectInheritedEAttributes(pair)
+				
+			val eAttributes = eClass.EAttributes
+			
+			writeEStructuralFeatures(eAttributes.combineConfigPairs(pair.config), eClass, inheritedEAttributes.combineConfigPairs(pair.config))
 		}
+	}
+	
+	protected def List<IEStructuralFeatureConfigPair<?,?>> combineConfigPairs(Collection<? extends EStructuralFeature> eStructuralFeatures, EClassConfig classConfig) {
+		eStructuralFeatures
+			.map[combineConfigPair(classConfig) as IEStructuralFeatureConfigPair<?,?>]
+			.toList
+	}
+	
+	protected def dispatch combineConfigPair(EAttribute eAttribute, EClassConfig classConfig) {
+		new EAttributeConfigPair(eAttribute, classConfig.EAttributes.findFirst[id == eAttribute.name])
+	}
+
+	protected def dispatch combineConfigPair(EReference eReference, EClassConfig classConfig) {
+		new EReferenceConfigPair(eReference, (classConfig.EContainments + classConfig.EReferences).findFirst[id == eReference.name])
 	}
 
 	protected def void writeEContainmentHeader() {
 		output.append(
 		'''
-			«newline»
+			Â«newlineÂ»
 			.Containments
-			«tableHeader»
+			Â«tableHeaderÂ»
 			|===
 			|Name
 			|Type
@@ -122,7 +162,8 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		''')
 	}
 
-	protected def void writeSubTypes(EClass currentEClass) {
+	protected def void writeSubTypes(EClassConfigPair pair) {
+		val currentEClass = pair.element
 		var Set<EClass> subTypes = newLinkedHashSet()
 
 		for (eClass : collectAllEClasses.reject[eClass == currentEClass]) {
@@ -134,37 +175,49 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		if (!subTypes.isEmpty) {
 			writeSubTypesHeader()
 
-			for (eClass : subTypes) {
-				writeType(eClass)
+			for (subType : subTypes) {
+				writeType(new EClassConfigPair(subType, getConfig().findConfig(subType) as EClassConfig))
 			}
 		}
 	}
 
-	protected def void writeSuperTypes(EClass eClass) {
-		val boolean superTypesExist = !eClass.EAllSuperTypes.isEmpty
+	protected def void writeSuperTypes(EClassConfigPair pair) {
+		val eClass = pair.element
+		
+		val tmp = eClass.EAllSuperTypes
+		
+		val superTypes = collectAllEClasses.filter[tmp.contains(it)]
+		
+		val boolean superTypesExist = !superTypes.isEmpty
 
 		if (superTypesExist) {
 			writeSuperTypesHeader()
 			
-			val sortedSuperTypes = eClass.EAllSuperTypes.sortBy[it.name ?: ""]
+			val sortedSuperTypes = superTypes.sortBy[it.name ?: ""]
 
 			for (supertype : sortedSuperTypes) {
-				writeType(supertype)
+				writeType(new EClassConfigPair(supertype, getConfig().findConfig(supertype) as EClassConfig))
 			}
 		}
 	}
 
-	protected def void writeType(EClass eClass) {
+	protected def void writeType(EClassConfigPair pair) {
+		if (!pair.config.shouldRender) {
+			return
+		}
+		
+		val eClass = pair.element
+		
 		output.append(
 		'''
-			* «concatLinkTo(eClass)»
+			* Â«concatLinkTo(eClass)Â»
 		''')
 	}
 
 	protected def void writeSubTypesHeader() {
 		output.append(
 		'''
-			«newline»
+			Â«newlineÂ»
 			.Sub-types
 		''')
 	}
@@ -172,7 +225,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def void writeSuperTypesHeader() {
 		output.append(
 		'''
-			«newline»
+			Â«newlineÂ»
 			.Super-types
 		''')
 	}
@@ -180,9 +233,9 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def void writeEAttributesHeader() {
 		output.append(
 		'''
-			«newline»
+			Â«newlineÂ»
 			.Attributes
-			«tableHeader»
+			Â«tableHeaderÂ»
 			|===
 			|Name
 			|Type
@@ -200,10 +253,16 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 						  .toList
 	}
 
-	protected def Set<? extends EStructuralFeature> collectInheritedEContainments(EClass eClass) {
-		eClass.EAllReferences.filter[isContainment]
-							 .reject[eClass.EReferences.contains(it)]
-							 .toSet
+	protected def Set<? extends EStructuralFeature> collectInheritedEContainments(EClassConfigPair pair) {
+		if (pair.config.shouldRepeatInherited) {
+			val eClass = pair.element
+			
+			eClass.EAllReferences.filter[isContainment]
+								 .reject[eClass.EReferences.contains(it)]
+								 .toSet
+	 	} else {
+	 		emptySet
+	 	}
 	}
 
 	protected def List<EReference> collectECrossReferences(EClass eClass) {
@@ -211,105 +270,120 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 						  .toList
 	}
 
-	protected def Set<? extends EStructuralFeature> collectInheritedECrossReferences(EClass eClass) {
-		eClass.EAllReferences.filter[!isContainment]
-							 .reject[eClass.EReferences.contains(it)]
-							 .toSet
+	protected def Set<? extends EStructuralFeature> collectInheritedECrossReferences(EClassConfigPair pair) {
+		if (pair.config.shouldRepeatInherited) {
+			val eClass = pair.element
+			eClass.EAllReferences.filter[!isContainment]
+								 .reject[eClass.EReferences.contains(it)]
+								 .toSet
+	 	} else {
+	 		emptySet
+	 	}
 	}
 
-	protected def Set<EStructuralFeature> collectInheritedEAttributes(EClass eClass) {
+	protected def Set<EStructuralFeature> collectInheritedEAttributes(EClassConfigPair pair) {
 		val Set<EStructuralFeature> inheritedEAttributes = newLinkedHashSet()
 
-		for (superclass : eClass.EAllSuperTypes) {
-			inheritedEAttributes.addAll(superclass.EAllAttributes)
+		if (pair.config.shouldRepeatInherited) {
+			for (superclass : pair.element.EAllSuperTypes) {
+				inheritedEAttributes.addAll(superclass.EAllAttributes)
+			}
 		}
 
 		return inheritedEAttributes
 	}
 
-	protected def void writeEStructuralFeatures(List<? extends EStructuralFeature> eStructuralFeatures, EClass eClass,
-		Set<? extends EStructuralFeature> inheritedStructuralFeatures) {
+	protected def void writeEStructuralFeatures(
+		Collection<IEStructuralFeatureConfigPair<?,?>> ownEStructuralFeatures, 
+		EClass eClass,
+		Collection<IEStructuralFeatureConfigPair<?,?>> inheritedEStructuralFeatures) {
 		
 		// Iterate through non inherited eStructuralFeatures.
-		for (eStructuralFeature : eStructuralFeatures.sortBy[it.name ?: ""]) {
-			writeRow(eStructuralFeature, eClass)
+		for (entry: ownEStructuralFeatures.sortBy[it.element.name ?: ""]) {
+			writeRow(entry, eClass, false)
 		}
 
 		// Iterate through inherited eStructuralFeatures.
-		for (eStructuralFeature : inheritedStructuralFeatures.sortBy[it.name ?: ""]) {
-			writeRow(eStructuralFeature, eClass)
+		for (entry : inheritedEStructuralFeatures.sortBy[it.element.name ?: ""]) {
+			writeRow(entry, eClass, true)
 		}
 
 		output.append(tableFooter())
 	}
 
-	protected def void writeRow(EStructuralFeature eStructuralFeature, EClass eClass) {
-		val EClass eStructuralFeatureClass = eStructuralFeature.eContainer as EClass
-		val boolean isInherited = (eClass != eStructuralFeatureClass)
+	protected def void writeRow(IEStructuralFeatureConfigPair<?,?> pair, EClass eClass, boolean inherited) {
+		if (!pair.config.shouldRender) {
+			return
+		}
+		
+		val eStructuralFeature = pair.element
 		val String eStructuralFeatureName = eStructuralFeature.name
 		val String[] inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClass) 
 
 		output.append(
 		'''
-			«newline»
-			|`«eStructuralFeatureName»`[[«inheritedFeatureSegments.joinAnchor»]]«IF isInherited» +«ENDIF»
-			«IF isInherited»«concatInheritedElement(eStructuralFeature)»«ENDIF»
-			|«concatFeatureType(eStructuralFeature)»
-			|«concatFeatureProperties(eStructuralFeature)»
-			|«getDocumentation(eStructuralFeature)»
+			Â«newlineÂ»
+			|`Â«eStructuralFeatureNameÂ»`[[Â«inheritedFeatureSegments.joinAnchorÂ»]]Â«IF inheritedÂ» +Â«ENDIFÂ»
+			Â«IF inheritedÂ»Â«concatInheritedElement(eStructuralFeature)Â»Â«ENDIFÂ»
+			|Â«concatFeatureType(eStructuralFeature)Â»
+			|Â«concatFeatureProperties(pair)Â»
+			|Â«getDocumentation(eStructuralFeature)Â»
 		''')
 	}
 	
-	protected def CharSequence concatFeatureProperties(EStructuralFeature eStructuralFeature) {
-		val featureProperties = enumerateFeatureProperties(eStructuralFeature)
-		val genericProperties = enumerateGenericProperties(eStructuralFeature)
+	protected def CharSequence concatFeatureProperties(IEStructuralFeatureConfigPair<?,?> pair) {
+		val featureProperties = enumerateFeatureProperties(pair)
+		val genericProperties = enumerateGenericProperties(pair)
 		
-		val CharSequence separator = ''' +«newline»'''
+		val CharSequence separator = ''' +Â«newlineÂ»'''
 		
 		return (featureProperties + genericProperties)
 			.filterNull
 			.join(separator)
 	}
 	
-	protected def dispatch List<CharSequence> enumerateFeatureProperties(EAttribute eAttribute){
+	def dispatch List<CharSequence> enumerateFeatureProperties(IEStructuralFeatureConfigPair<?,?> pair) {
+		// dummy to satisfy Xtend
+	}
+
+	protected def dispatch List<CharSequence> enumerateFeatureProperties(EAttributeConfigPair pair) {
 		 #[
-		 	defineId(eAttribute)
+		 	defineId(pair)
 		 ]
 	 }
 		 
-	protected def dispatch List<CharSequence> enumerateFeatureProperties(EReference eReference){
+	protected def dispatch List<CharSequence> enumerateFeatureProperties(EReferenceConfigPair pair) {
 		 #[
-			defineEKeys(eReference),
-			defineResolveProxies(eReference),
-			defineContainer(eReference),
-			defineContainment(eReference)
+			defineEKeys(pair),
+			defineResolveProxies(pair),
+			defineContainer(pair)
 		]
 	}
 	
-	protected def List<CharSequence> enumerateGenericProperties(EStructuralFeature eStructuralFeature) {
+	protected def List<CharSequence> enumerateGenericProperties(IEStructuralFeatureConfigPair<?,?> pair) {
 		#[
-			concatBounds(eStructuralFeature),
-			concatDefaultValue(eStructuralFeature),
-			defineOrdered(eStructuralFeature),
-			defineChangeable(eStructuralFeature),
-			defineDerived(eStructuralFeature),
-			defineTransient(eStructuralFeature),
-			defineUnique(eStructuralFeature),
-			defineUnsettable(eStructuralFeature),
-			defineVolatile(eStructuralFeature)
+			concatBounds(pair),
+			concatDefaultValue(pair),
+			defineOrdered(pair),
+			defineChangeable(pair),
+			defineDerived(pair),
+			defineTransient(pair),
+			defineUnique(pair),
+			defineUnsettable(pair),
+			defineVolatile(pair)
 		]
 	}
 
 	protected def dispatch CharSequence concatFeatureType(EReference eReference) {
 		'''
-			«concatLinkTo(eReference.EType)»
-			«getOpposite(eReference)»
+			Â«concatLinkTo(eReference.EType)Â»
+			Â«getOpposite(eReference)Â»
 		'''
 	}
 
 	protected def dispatch CharSequence concatFeatureType(EAttribute eAttribute) {
 		'''
-			«concatLinkTo(eAttribute.EType)»
+			Â«concatLinkTo(eAttribute.EType)Â»
 		'''
 	}
 
@@ -321,8 +395,8 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 			val eReferenceType = eReference.EReferenceType
 			
 			'''
-				«newline»
-				_EOpposite:_ `<<«concatAnchor(eReferenceType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«eOppositeName», «eOppositeName»>>`
+				Â«newlineÂ»
+				_EOpposite:_ `<<Â«concatAnchor(eReferenceType)Â»Â«EcoreDocExtension.ANCHOR_SEPARATORÂ»Â«eOppositeNameÂ», Â«eOppositeNameÂ»>>`
 			'''
 		}
 	}
@@ -330,15 +404,15 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def CharSequence concatInheritedElement(ENamedElement eNamedElement) {
 		val eClass = eNamedElement.eContainer as EClass
 		
-		'''(`<<«concatAnchor(eNamedElement)», {inherited}«concatReferenceName(eClass)»>>`)'''
+		'''(`<<Â«concatAnchor(eNamedElement)Â», {inherited}Â«concatReferenceName(eClass)Â»>>`)'''
 	}
 
 	protected def void writeEReferencesHeader() {
 		output.append(
 		'''
-			«newline»
+			Â«newlineÂ»
 			.References
-			«tableHeader»
+			Â«tableHeaderÂ»
 			|===
 			|Name
 			|Type
@@ -347,7 +421,9 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		''')
 	}
 
-	protected def CharSequence writeEClassHeader(EClass eClass) {
+	protected def void writeEClassHeader(EClassConfigPair pair) {
+		val eClass = pair.element
+		
 		val String eClassName = eClass.name
 		val boolean isAbstract = eClass.isAbstract
 		val boolean isInterface = eClass.isInterface
@@ -355,23 +431,25 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 		output.append(
 		'''
-			«newline»
-			[[«concatAnchor(eClass)»]]
-			==== «IF isAbstract && notInterface»Abstract «ENDIF»«IF isInterface»Interface«ELSE»Class«ENDIF» «eClassName»
-			«newline»
-			«getDocumentation(eClass)»
-			«newline»
+			Â«newlineÂ»
+			[[Â«concatAnchor(eClass)Â»]]
+			==== Â«IF isAbstract && notInterfaceÂ»Abstract Â«ENDIFÂ»Â«IF isInterfaceÂ»InterfaceÂ«ELSEÂ»ClassÂ«ENDIFÂ» Â«eClassNameÂ»
+			Â«newlineÂ»
+			Â«getDocumentation(eClass)Â»
+			Â«newlineÂ»
 		''')
 	}
 	
-	protected def CharSequence writeProperties(EClass eClass) {
+	protected def void writeProperties(EClassConfigPair pair) {
+		val eClass = pair.element
+		
 		val properties = newArrayList
 		
 		if (!eClass.isAbstract) {
-			properties += defineDefaultValue(eClass)
+			properties += defineDefaultValue(pair)
 		}
 		
-		properties += defineInstanceClassName(eClass)
+		properties += defineInstanceClassName(pair)
 		
 		output.append(
 			properties

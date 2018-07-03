@@ -1,6 +1,7 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
 import java.util.Collection
+import java.util.List
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
@@ -111,7 +112,7 @@ class EcoreDocExtension {
 		if (eNamedElement === null) {
 			""
 		}else if (eNamedElement.name.isNullOrEmpty) {
-			'''[«EcoreUtil.getURI(eNamedElement).fragment»]'''
+			'''[Â«EcoreUtil.getURI(eNamedElement).fragmentÂ»]'''
 		} else {
 			eNamedElement.name
 		}
@@ -119,5 +120,17 @@ class EcoreDocExtension {
 
 	def boolean isDefaultEDataType(EDataType eDataType) {
 		EcorePackage.eINSTANCE.nsURI == getEPackage(eDataType)?.nsURI
+	}
+
+	def List<EDataType> collectEDataTypes(Collection<EClassifier> classifiers) {
+		classifiers.filter(EDataType).filter[!(it instanceof EEnum)].sortBy[it.name ?: ""]
+	}
+	
+	def List<EEnum> collectEEnums(Collection<EClassifier> classifiers) {
+		classifiers.filter(EEnum).sortBy[it.name ?: ""]
+	}
+
+	def List<EClass> collectEClasses(Collection<EClassifier> classifiers) {
+		classifiers.filter(EClass).sortBy[it.name ?: ""]
 	}
 }

@@ -3,7 +3,7 @@
 <plugin>
 	<extension point="org.eclipse.ui.commands">
 		<command 
-			id="com.altran.general.ecoredoc.generator.integration.ui.generateEcoreDoc"
+			id="com.altran.general.emf.ecoredoc.generator.integration.ui.generateEcoreDoc"
 			name="Generate documentation">
 			
 			
@@ -14,15 +14,15 @@
 		<menuContribution
         	locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=additions">
         	<command 
-        		commandId="com.altran.general.ecoredoc.generator.integration.ui.generateEcoreDoc"
+        		commandId="com.altran.general.emf.ecoredoc.generator.integration.ui.generateEcoreDoc"
         	/>
 		</menuContribution>
 	</extension>
    
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			commandId="com.altran.general.ecoredoc.generator.integration.ui.generateEcoreDoc"
-			class="com.altran.general.ecoredoc.generator.integration.ui.GenerateEcoreDocHandler">
+			commandId="com.altran.general.emf.ecoredoc.generator.integration.ui.generateEcoreDoc"
+			class="com.altran.general.emf.ecoredoc.generator.integration.ui.GenerateEcoreDocHandler">
 			
 		</handler>
 	</extension>

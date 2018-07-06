@@ -154,30 +154,10 @@ public abstract class AEcoreDocGeneratorPart {
     boolean anyMatch = false;
     final Collection<EClass> eClasses = this.collectAllEClasses();
     final ArrayList<String> useCaseStrings = CollectionLiterals.<String>newArrayList();
-    final Function1<EClass, String> _function = (EClass it) -> {
-      String _elvis = null;
-      String _name = it.getName();
-      if (_name != null) {
-        _elvis = _name;
-      } else {
-        _elvis = "";
-      }
-      return _elvis;
-    };
-    final List<EClass> sortedEClasses = IterableExtensions.<EClass, String>sortBy(eClasses, _function);
+    final List<EClass> sortedEClasses = IterableExtensions.<EClass, String>sortBy(eClasses, EcoreDocExtension.eClassifierSorter);
     for (final EClass eClass : sortedEClasses) {
       {
-        final Function1<EStructuralFeature, String> _function_1 = (EStructuralFeature it) -> {
-          String _elvis = null;
-          String _name = it.getName();
-          if (_name != null) {
-            _elvis = _name;
-          } else {
-            _elvis = "";
-          }
-          return _elvis;
-        };
-        final List<EStructuralFeature> sortedEStructuralFeatures = IterableExtensions.<EStructuralFeature, String>sortBy(eClass.getEAllStructuralFeatures(), _function_1);
+        final List<EStructuralFeature> sortedEStructuralFeatures = IterableExtensions.<EStructuralFeature, String>sortBy(eClass.getEAllStructuralFeatures(), EcoreDocExtension.eStructuralFeatureSorter);
         for (final EStructuralFeature feature : sortedEStructuralFeatures) {
           EClassifier _eType = feature.getEType();
           boolean _equals = Objects.equal(_eType, target);

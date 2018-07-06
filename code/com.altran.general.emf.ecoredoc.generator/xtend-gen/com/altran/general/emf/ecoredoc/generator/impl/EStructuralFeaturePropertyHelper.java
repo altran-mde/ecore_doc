@@ -132,7 +132,9 @@ public class EStructuralFeaturePropertyHelper {
   }
   
   public CharSequence defineResolveProxies(final EReferenceConfigPair pair) {
-    return this.definePropertyString(pair, "resolveProxies", "non-resolveProxies", true, pair.getElement().isResolveProxies());
+    boolean _isContainment = pair.getElement().isContainment();
+    boolean _not = (!_isContainment);
+    return this.definePropertyString(pair, "resolveProxies", "non-resolveProxies", _not, pair.getElement().isResolveProxies());
   }
   
   public CharSequence defineContainer(final EReferenceConfigPair pair) {

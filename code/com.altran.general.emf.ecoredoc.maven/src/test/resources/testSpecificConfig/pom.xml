@@ -26,6 +26,8 @@
 				<version>0.1.0-SNAPSHOT</version>
 
 				<configuration>
+					<resolve>true</resolve>
+					
 					<config>
 						<renderDefaults>false</renderDefaults>
 						<ePackages>

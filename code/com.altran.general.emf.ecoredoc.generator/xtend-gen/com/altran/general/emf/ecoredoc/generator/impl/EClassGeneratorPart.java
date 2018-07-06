@@ -18,13 +18,11 @@ import com.altran.general.emf.ecoredoc.generator.impl.EStructuralFeatureProperty
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -110,57 +108,45 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   
   protected void writeEContainments(final EClassConfigPair pair) {
     final EClass eClass = pair.getElement();
-    final Function1<EReference, Boolean> _function = (EReference it) -> {
-      return Boolean.valueOf(it.isContainment());
-    };
-    final boolean containmentExists = IterableExtensions.<EReference>exists(eClass.getEAllReferences(), _function);
-    if (containmentExists) {
+    final List<IEStructuralFeatureConfigPair<?, ?>> containments = this.combineConfigPairs(this.collectEContainments(eClass), pair.getConfig());
+    final List<IEStructuralFeatureConfigPair<?, ?>> inheritedContainments = this.combineConfigPairs(this.collectInheritedEContainments(pair), pair.getConfig());
+    boolean _hasRenderedEntries = this.hasRenderedEntries(pair.getConfig(), containments, inheritedContainments);
+    if (_hasRenderedEntries) {
       this.writeEContainmentHeader();
-      List<EReference> eContainments = this.collectEContainments(eClass);
-      Set<? extends EStructuralFeature> inheritedEContainments = this.collectInheritedEContainments(pair);
-      this.writeEStructuralFeatures(this.combineConfigPairs(eContainments, pair.getConfig()), eClass, this.combineConfigPairs(inheritedEContainments, pair.getConfig()));
+      this.writeEStructuralFeatures(containments, eClass, inheritedContainments);
     }
   }
   
   protected void writeECrossReferences(final EClassConfigPair pair) {
     final EClass eClass = pair.getElement();
-    final Function1<EReference, Boolean> _function = (EReference it) -> {
-      boolean _isContainment = it.isContainment();
-      return Boolean.valueOf((!_isContainment));
-    };
-    final boolean eCrossReferenceExists = IterableExtensions.<EReference>exists(eClass.getEAllReferences(), _function);
-    if (eCrossReferenceExists) {
+    final List<IEStructuralFeatureConfigPair<?, ?>> crossReferences = this.combineConfigPairs(this.collectECrossReferences(eClass), pair.getConfig());
+    final List<IEStructuralFeatureConfigPair<?, ?>> inheritedCrossReferences = this.combineConfigPairs(this.collectInheritedECrossReferences(pair), pair.getConfig());
+    boolean _hasRenderedEntries = this.hasRenderedEntries(pair.getConfig(), crossReferences, inheritedCrossReferences);
+    if (_hasRenderedEntries) {
       this.writeEReferencesHeader();
-      List<EReference> crossReferences = this.collectECrossReferences(eClass);
-      Set<? extends EStructuralFeature> inheritedECrossReferences = this.collectInheritedECrossReferences(pair);
-      this.writeEStructuralFeatures(this.combineConfigPairs(crossReferences, pair.getConfig()), eClass, this.combineConfigPairs(inheritedECrossReferences, pair.getConfig()));
+      this.writeEStructuralFeatures(crossReferences, eClass, inheritedCrossReferences);
     }
   }
   
   protected void writeEAttributes(final EClassConfigPair pair) {
     final EClass eClass = pair.getElement();
-    final Function1<EAttribute, EAttributeConfig> _function = (EAttribute eAttribute) -> {
-      final Function1<EAttributeConfig, Boolean> _function_1 = (EAttributeConfig it) -> {
-        String _id = it.getId();
-        String _name = eAttribute.getName();
-        return Boolean.valueOf(Objects.equal(_id, _name));
-      };
-      EAttributeConfig _findFirst = IterableExtensions.<EAttributeConfig>findFirst(pair.getConfig().getEAttributes(), _function_1);
-      return ((EAttributeConfig) _findFirst);
-    };
-    final Function2<EAttribute, EAttributeConfig, Boolean> _function_1 = (EAttribute eAttribute, EAttributeConfig config) -> {
-      return Boolean.valueOf(config.shouldRender());
-    };
-    final LinkedHashMap<EAttribute, EAttributeConfig> eAttributesMap = Maps.<EAttribute, EAttributeConfig>newLinkedHashMap(
-      MapExtensions.<EAttribute, EAttributeConfig>filter(IterableExtensions.<EAttribute, EAttributeConfig>toInvertedMap(eClass.getEAllAttributes(), _function), _function_1));
-    boolean _isEmpty = eAttributesMap.isEmpty();
-    boolean _not = (!_isEmpty);
-    if (_not) {
+    final List<IEStructuralFeatureConfigPair<?, ?>> eAttributes = this.combineConfigPairs(eClass.getEAttributes(), pair.getConfig());
+    final List<IEStructuralFeatureConfigPair<?, ?>> inheritedEAttributes = this.combineConfigPairs(this.collectInheritedEAttributes(pair), pair.getConfig());
+    boolean _hasRenderedEntries = this.hasRenderedEntries(pair.getConfig(), eAttributes, inheritedEAttributes);
+    if (_hasRenderedEntries) {
       this.writeEAttributesHeader();
-      final Set<EStructuralFeature> inheritedEAttributes = this.collectInheritedEAttributes(pair);
-      final EList<EAttribute> eAttributes = eClass.getEAttributes();
-      this.writeEStructuralFeatures(this.combineConfigPairs(eAttributes, pair.getConfig()), eClass, this.combineConfigPairs(inheritedEAttributes, pair.getConfig()));
+      this.writeEStructuralFeatures(eAttributes, eClass, inheritedEAttributes);
     }
+  }
+  
+  protected boolean hasRenderedEntries(final EClassConfig classConfig, final Collection<IEStructuralFeatureConfigPair<?, ?>> eStructuralFeatures, final Collection<IEStructuralFeatureConfigPair<?, ?>> inheritedEStructuralFeatures) {
+    return (IterableExtensions.<IEStructuralFeatureConfigPair<?, ?>>exists(eStructuralFeatures, ((Function1<IEStructuralFeatureConfigPair<?, ?>, Boolean>) (IEStructuralFeatureConfigPair<?, ?> it) -> {
+      return Boolean.valueOf(it.getConfig().shouldRender());
+    })) || 
+      (classConfig.shouldRepeatInherited() && 
+        IterableExtensions.<IEStructuralFeatureConfigPair<?, ?>>exists(inheritedEStructuralFeatures, ((Function1<IEStructuralFeatureConfigPair<?, ?>, Boolean>) (IEStructuralFeatureConfigPair<?, ?> it) -> {
+          return Boolean.valueOf(it.getConfig().shouldRender());
+        }))));
   }
   
   protected List<IEStructuralFeatureConfigPair<?, ?>> combineConfigPairs(final Collection<? extends EStructuralFeature> eStructuralFeatures, final EClassConfig classConfig) {
@@ -218,6 +204,11 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   }
   
   protected void writeSubTypes(final EClassConfigPair pair) {
+    boolean _shouldRenderSubTypes = pair.getConfig().shouldRenderSubTypes();
+    boolean _not = (!_shouldRenderSubTypes);
+    if (_not) {
+      return;
+    }
     final EClass currentEClass = pair.getElement();
     Set<EClass> subTypes = CollectionLiterals.<EClass>newLinkedHashSet();
     final Function1<EClass, Boolean> _function = (EClass it) -> {
@@ -232,10 +223,11 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       }
     }
     boolean _isEmpty = subTypes.isEmpty();
-    boolean _not = (!_isEmpty);
-    if (_not) {
+    boolean _not_1 = (!_isEmpty);
+    if (_not_1) {
       this.writeSubTypesHeader();
-      for (final EClass subType : subTypes) {
+      List<EClass> _sortBy = IterableExtensions.<EClass, String>sortBy(subTypes, EcoreDocExtension.eClassifierSorter);
+      for (final EClass subType : _sortBy) {
         IENamedElementConfig _findConfig = this.getConfig().findConfig(subType);
         EClassConfigPair _eClassConfigPair = new EClassConfigPair(subType, ((EClassConfig) _findConfig));
         this.writeType(_eClassConfigPair);
@@ -244,6 +236,11 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   }
   
   protected void writeSuperTypes(final EClassConfigPair pair) {
+    boolean _shouldRenderSuperTypes = pair.getConfig().shouldRenderSuperTypes();
+    boolean _not = (!_shouldRenderSuperTypes);
+    if (_not) {
+      return;
+    }
     final EClass eClass = pair.getElement();
     final EList<EClass> tmp = eClass.getEAllSuperTypes();
     final Function1<EClass, Boolean> _function = (EClass it) -> {
@@ -254,17 +251,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     final boolean superTypesExist = (!_isEmpty);
     if (superTypesExist) {
       this.writeSuperTypesHeader();
-      final Function1<EClass, String> _function_1 = (EClass it) -> {
-        String _elvis = null;
-        String _name = it.getName();
-        if (_name != null) {
-          _elvis = _name;
-        } else {
-          _elvis = "";
-        }
-        return _elvis;
-      };
-      final List<EClass> sortedSuperTypes = IterableExtensions.<EClass, String>sortBy(superTypes, _function_1);
+      final List<EClass> sortedSuperTypes = IterableExtensions.<EClass, String>sortBy(superTypes, EcoreDocExtension.eClassifierSorter);
       for (final EClass supertype : sortedSuperTypes) {
         IENamedElementConfig _findConfig = this.getConfig().findConfig(supertype);
         EClassConfigPair _eClassConfigPair = new EClassConfigPair(supertype, ((EClassConfig) _findConfig));
@@ -341,15 +328,15 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     return _builder;
   }
   
-  protected List<EReference> collectEContainments(final EClass eClass) {
+  protected Set<EReference> collectEContainments(final EClass eClass) {
     final Function1<EReference, Boolean> _function = (EReference it) -> {
       return Boolean.valueOf(it.isContainment());
     };
-    return IterableExtensions.<EReference>toList(IterableExtensions.<EReference>filter(eClass.getEReferences(), _function));
+    return IterableExtensions.<EReference>toSet(IterableExtensions.<EReference>filter(eClass.getEReferences(), _function));
   }
   
-  protected Set<? extends EStructuralFeature> collectInheritedEContainments(final EClassConfigPair pair) {
-    Set<? extends EStructuralFeature> _xifexpression = null;
+  protected Set<EReference> collectInheritedEContainments(final EClassConfigPair pair) {
+    Set<EReference> _xifexpression = null;
     boolean _shouldRepeatInherited = pair.getConfig().shouldRepeatInherited();
     if (_shouldRepeatInherited) {
       Set<EReference> _xblockexpression = null;
@@ -365,21 +352,21 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       }
       _xifexpression = _xblockexpression;
     } else {
-      _xifexpression = CollectionLiterals.<EStructuralFeature>emptySet();
+      _xifexpression = CollectionLiterals.<EReference>emptySet();
     }
     return _xifexpression;
   }
   
-  protected List<EReference> collectECrossReferences(final EClass eClass) {
+  protected Set<EReference> collectECrossReferences(final EClass eClass) {
     final Function1<EReference, Boolean> _function = (EReference it) -> {
       boolean _isContainment = it.isContainment();
       return Boolean.valueOf((!_isContainment));
     };
-    return IterableExtensions.<EReference>toList(IterableExtensions.<EReference>filter(eClass.getEReferences(), _function));
+    return IterableExtensions.<EReference>toSet(IterableExtensions.<EReference>filter(eClass.getEReferences(), _function));
   }
   
-  protected Set<? extends EStructuralFeature> collectInheritedECrossReferences(final EClassConfigPair pair) {
-    Set<? extends EStructuralFeature> _xifexpression = null;
+  protected Set<EReference> collectInheritedECrossReferences(final EClassConfigPair pair) {
+    Set<EReference> _xifexpression = null;
     boolean _shouldRepeatInherited = pair.getConfig().shouldRepeatInherited();
     if (_shouldRepeatInherited) {
       Set<EReference> _xblockexpression = null;
@@ -396,47 +383,40 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
       }
       _xifexpression = _xblockexpression;
     } else {
-      _xifexpression = CollectionLiterals.<EStructuralFeature>emptySet();
+      _xifexpression = CollectionLiterals.<EReference>emptySet();
     }
     return _xifexpression;
   }
   
-  protected Set<EStructuralFeature> collectInheritedEAttributes(final EClassConfigPair pair) {
-    final Set<EStructuralFeature> inheritedEAttributes = CollectionLiterals.<EStructuralFeature>newLinkedHashSet();
+  protected Set<EAttribute> collectInheritedEAttributes(final EClassConfigPair pair) {
+    Set<EAttribute> _xifexpression = null;
     boolean _shouldRepeatInherited = pair.getConfig().shouldRepeatInherited();
     if (_shouldRepeatInherited) {
-      EList<EClass> _eAllSuperTypes = pair.getElement().getEAllSuperTypes();
-      for (final EClass superclass : _eAllSuperTypes) {
-        inheritedEAttributes.addAll(superclass.getEAllAttributes());
+      Set<EAttribute> _xblockexpression = null;
+      {
+        final EClass eClass = pair.getElement();
+        final Function1<EAttribute, Boolean> _function = (EAttribute it) -> {
+          return Boolean.valueOf(eClass.getEAttributes().contains(it));
+        };
+        _xblockexpression = IterableExtensions.<EAttribute>toSet(IterableExtensions.<EAttribute>reject(eClass.getEAllAttributes(), _function));
       }
+      _xifexpression = _xblockexpression;
+    } else {
+      _xifexpression = CollectionLiterals.<EAttribute>emptySet();
     }
-    return inheritedEAttributes;
+    return _xifexpression;
   }
   
   protected void writeEStructuralFeatures(final Collection<IEStructuralFeatureConfigPair<?, ?>> ownEStructuralFeatures, final EClass eClass, final Collection<IEStructuralFeatureConfigPair<?, ?>> inheritedEStructuralFeatures) {
     final Function1<IEStructuralFeatureConfigPair<?, ?>, String> _function = (IEStructuralFeatureConfigPair<?, ?> it) -> {
-      String _elvis = null;
-      String _name = it.getElement().getName();
-      if (_name != null) {
-        _elvis = _name;
-      } else {
-        _elvis = "";
-      }
-      return _elvis;
+      return EcoreDocExtension.eStructuralFeatureSorter.apply(it.getElement());
     };
     List<IEStructuralFeatureConfigPair<?, ?>> _sortBy = IterableExtensions.<IEStructuralFeatureConfigPair<?, ?>, String>sortBy(ownEStructuralFeatures, _function);
     for (final IEStructuralFeatureConfigPair<?, ?> entry : _sortBy) {
       this.writeRow(entry, eClass, false);
     }
     final Function1<IEStructuralFeatureConfigPair<?, ?>, String> _function_1 = (IEStructuralFeatureConfigPair<?, ?> it) -> {
-      String _elvis = null;
-      String _name = it.getElement().getName();
-      if (_name != null) {
-        _elvis = _name;
-      } else {
-        _elvis = "";
-      }
-      return _elvis;
+      return EcoreDocExtension.eStructuralFeatureSorter.apply(it.getElement());
     };
     List<IEStructuralFeatureConfigPair<?, ?>> _sortBy_1 = IterableExtensions.<IEStructuralFeatureConfigPair<?, ?>, String>sortBy(inheritedEStructuralFeatures, _function_1);
     for (final IEStructuralFeatureConfigPair<?, ?> entry_1 : _sortBy_1) {

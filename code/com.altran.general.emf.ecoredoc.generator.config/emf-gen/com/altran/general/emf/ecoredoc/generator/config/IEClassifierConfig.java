@@ -29,7 +29,6 @@ public interface IEClassifierConfig extends IENamedElementConfig, IDefaultValueC
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Whether use cases (references to other usages of this element) should be rendered.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Render Use Cases</em>' attribute.
@@ -81,7 +80,6 @@ public interface IEClassifierConfig extends IENamedElementConfig, IDefaultValueC
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Traverses the tree to find the most specific <tt>renderUseCases</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model unique="false"

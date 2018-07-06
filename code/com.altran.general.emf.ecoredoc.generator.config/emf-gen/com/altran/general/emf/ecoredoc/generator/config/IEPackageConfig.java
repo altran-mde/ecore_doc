@@ -31,7 +31,6 @@ public interface IEPackageConfig extends IENamedElementConfig {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Rendering position of all EDataTypes within an EPackage.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Position EData Types</em>' attribute.
@@ -88,7 +87,6 @@ public interface IEPackageConfig extends IENamedElementConfig {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Rendering position of all EEnums within an EPackage.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Position EEnums</em>' attribute.
@@ -145,7 +143,6 @@ public interface IEPackageConfig extends IENamedElementConfig {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Rendering position of all EClasses within an EPackage.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Position EClasses</em>' attribute.
@@ -197,7 +194,6 @@ public interface IEPackageConfig extends IENamedElementConfig {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Traverses the tree to find the most specific <tt>positionEDataTypes</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" unique="false"
@@ -210,7 +206,6 @@ public interface IEPackageConfig extends IENamedElementConfig {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Traverses the tree to find the most specific <tt>positionEEnums</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" unique="false"
@@ -223,7 +218,6 @@ public interface IEPackageConfig extends IENamedElementConfig {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Traverses the tree to find the most specific <tt>positionEClasses</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" unique="false"

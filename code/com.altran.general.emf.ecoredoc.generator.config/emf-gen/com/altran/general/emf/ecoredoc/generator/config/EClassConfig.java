@@ -114,7 +114,6 @@ public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IERefere
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 * <!-- end-model-doc -->
 	 * @model eAttributeConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig&gt;" eAttributeConfigUnique="false" eAttributeConfigMany="false"
@@ -127,7 +126,6 @@ public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IERefere
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 * <!-- end-model-doc -->
 	 * @model eContainmentConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig&gt;" eContainmentConfigUnique="false" eContainmentConfigMany="false"
@@ -140,7 +138,6 @@ public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IERefere
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 * <!-- end-model-doc -->
 	 * @model eReferenceConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig&gt;" eReferenceConfigUnique="false" eReferenceConfigMany="false"

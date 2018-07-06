@@ -29,7 +29,6 @@ public interface IEStructuralFeatureConfig extends IENamedElementConfig, IDefaul
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Whether multiplicity bounds should be rendered,
 	 * even if they are at their default values and <tt>renderDefaults = false</tt>.
 	 * <!-- end-model-doc -->
@@ -82,7 +81,6 @@ public interface IEStructuralFeatureConfig extends IENamedElementConfig, IDefaul
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Traverses the tree to find the most specific <tt>renderBounds</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model unique="false"

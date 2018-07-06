@@ -21,6 +21,9 @@ class EcoreDocExtension {
 	
 	public static val ECLASSIFIER_PROPERTY_SEPARATOR = newline
 	
+	public static val eClassifierSorter = [EClassifier it | it.EPackage.name + it.name ?: ""]
+	public static val eStructuralFeatureSorter = [EStructuralFeature it | it.name ?: ""]
+
 	def static String newline() {
 		System.getProperty("line.separator")
 	}
@@ -29,10 +32,24 @@ class EcoreDocExtension {
 		val CharSequence documentation = EcoreUtil.getDocumentation(modelElement)
 
 		if (documentation !== null) {
-			return documentation + newline
-
+			val stripped = documentation.toString.replaceAll("<[^>]+>", "")
+			if (stripped == documentation) {
+				documentation + newline
+			} else {
+				'''
+					«newline»
+					ifdef::backend-html5[]
+					++++
+					«documentation»
+					++++
+					endif::[]
+					ifndef::backend-html5[]
+					«»
+					endif::[]
+				'''
+			}
 		} else {
-			return ""
+			""
 		}
 	}
 
@@ -123,14 +140,14 @@ class EcoreDocExtension {
 	}
 
 	def List<EDataType> collectEDataTypes(Collection<EClassifier> classifiers) {
-		classifiers.filter(EDataType).filter[!(it instanceof EEnum)].sortBy[it.name ?: ""]
+		classifiers.filter(EDataType).filter[!(it instanceof EEnum)].sortBy(eClassifierSorter)
 	}
 	
 	def List<EEnum> collectEEnums(Collection<EClassifier> classifiers) {
-		classifiers.filter(EEnum).sortBy[it.name ?: ""]
+		classifiers.filter(EEnum).sortBy(eClassifierSorter)
 	}
 
 	def List<EClass> collectEClasses(Collection<EClassifier> classifiers) {
-		classifiers.filter(EClass).sortBy[it.name ?: ""]
+		classifiers.filter(EClass).sortBy(eClassifierSorter)
 	}
 }

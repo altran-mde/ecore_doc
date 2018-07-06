@@ -38,13 +38,39 @@ public class EcoreDocExtension {
   }
   
   public CharSequence getDocumentation(final EModelElement modelElement) {
-    final CharSequence documentation = EcoreUtil.getDocumentation(modelElement);
-    if ((documentation != null)) {
-      String _newline = EcoreDocExtension.newline();
-      return (documentation + _newline);
-    } else {
-      return "";
+    CharSequence _xblockexpression = null;
+    {
+      final CharSequence documentation = EcoreUtil.getDocumentation(modelElement);
+      CharSequence _xifexpression = null;
+      if ((documentation != null)) {
+        StringConcatenation _builder = new StringConcatenation();
+        String _newline = EcoreDocExtension.newline();
+        _builder.append(_newline);
+        _builder.newLineIfNotEmpty();
+        _builder.append("ifdef::backend-html5[]");
+        _builder.newLine();
+        _builder.append("++++");
+        _builder.newLine();
+        _builder.append(documentation);
+        _builder.newLineIfNotEmpty();
+        _builder.append("++++");
+        _builder.newLine();
+        _builder.append("endif::[]");
+        _builder.newLine();
+        _builder.append("ifndef::backend-html5[]");
+        _builder.newLine();
+        String _replaceAll = documentation.toString().replaceAll("<[^>]+>", "");
+        _builder.append(_replaceAll);
+        _builder.newLineIfNotEmpty();
+        _builder.append("endif::[]");
+        _builder.newLine();
+        _xifexpression = _builder;
+      } else {
+        _xifexpression = "";
+      }
+      _xblockexpression = _xifexpression;
     }
+    return _xblockexpression;
   }
   
   public EPackage getEPackage(final EClassifier eClassifier) {

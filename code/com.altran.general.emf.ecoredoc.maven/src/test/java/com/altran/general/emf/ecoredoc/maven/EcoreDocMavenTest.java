@@ -12,6 +12,8 @@ import java.lang.reflect.Field;
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.plugin.testing.MojoRule;
 import org.eclipse.emf.common.util.EList;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -21,6 +23,7 @@ import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EPackageConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
+import com.altran.general.emf.ecoredoc.util.EcoreDocUtils;
 
 public class EcoreDocMavenTest {
 	@Rule
@@ -62,6 +65,7 @@ public class EcoreDocMavenTest {
 				"target/test-classes/testReorderNoUseCases/expected.adoc");
 	}
 	
+	@Ignore
 	@Test
 	public void testSpecificConfig() throws Exception {
 		final File pom = new File("target/test-classes/testSpecificConfig/");

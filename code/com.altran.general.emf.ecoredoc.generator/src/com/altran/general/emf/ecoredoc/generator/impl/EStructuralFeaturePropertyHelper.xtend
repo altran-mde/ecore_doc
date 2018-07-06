@@ -102,7 +102,7 @@ class EStructuralFeaturePropertyHelper {
 	}
 
 	def CharSequence defineResolveProxies(EReferenceConfigPair pair) {
-		pair.definePropertyString("resolveProxies", "non-resolveProxies", true, pair.element.resolveProxies)
+		pair.definePropertyString("resolveProxies", "non-resolveProxies", !pair.element.containment, pair.element.resolveProxies)
 	}
 	
 	def CharSequence defineContainer(EReferenceConfigPair pair){

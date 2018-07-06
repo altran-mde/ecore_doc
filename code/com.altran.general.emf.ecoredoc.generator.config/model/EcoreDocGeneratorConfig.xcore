@@ -17,12 +17,12 @@ import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EReference
 
 interface IENamedElementConfig {
-	/**
+	/*
 	 * Whether this element should be rendered at all.
 	 */
 	unsettable boolean render
 	
-	/**
+	/*
 	 * Traverses the tree to find the most specific <tt>render</tt> setting.
 	 */
 	op boolean shouldRender() {
@@ -33,12 +33,12 @@ interface IENamedElementConfig {
 		}
 	}
 
-	/**
+	/*
 	 * Link to the configured element.
 	 */
 	op ENamedElement getTarget()
 	
-	/**
+	/*
 	 * Enables proper merging in {@link com.altran.general.emf.ecoredoc.util.EcoreMerger}.
 	 */
 	readonly derived transient id String ^id get {
@@ -47,7 +47,7 @@ interface IENamedElementConfig {
 }
 
 interface IDefaultValueConfig {
-	/**
+	/*
 	 * Whether properties should be rendered at their default values.
 	 * 
 	 * <p>
@@ -58,7 +58,7 @@ interface IDefaultValueConfig {
 	 */
 	unsettable boolean renderDefaults
 	
-	/**
+	/*
 	 * Traverses the tree to find the most specific <tt>renderDefaults</tt> setting.
 	 */
 	op boolean shouldRenderDefaults() {
@@ -71,12 +71,12 @@ interface IDefaultValueConfig {
 }
 
 interface IEClassifierConfig extends IENamedElementConfig, IDefaultValueConfig {
-	/**
+	/*
 	 * Whether use cases (references to other usages of this element) should be rendered.
 	 */
 	unsettable boolean renderUseCases
 
-	/**
+	/*
 	 * Traverses the tree to find the most specific <tt>renderUseCases</tt> setting.
 	 */
 	op boolean shouldRenderUseCases() {
@@ -97,7 +97,7 @@ interface IEEnumConfig extends IEDataTypeConfig {
 }
 
 interface IEClassConfig extends IEClassifierConfig {
-	/**
+	/*
 	 * Whether inherited features should be repeated.
 	 * 
 	 * <p>
@@ -110,8 +110,7 @@ interface IEClassConfig extends IEClassifierConfig {
 	 * </p>
 	 */
 	unsettable boolean repeatInherited
-
-	/**
+	/*
 	 * Traverses the tree to find the most specific <tt>repeatInherited</tt> setting.
 	 */
 	op boolean shouldRepeatInherited() {
@@ -121,16 +120,47 @@ interface IEClassConfig extends IEClassifierConfig {
 			(eContainer as IEClassConfig).shouldRepeatInherited()
 		}
 	}
+	
+	/*
+	 * Whether the list of sub-types should be rendered.
+	 */
+	unsettable boolean renderSubTypes
+	/*
+	 * Traverses the tree to find the most specific <tt>renderSubTypes</tt> setting.
+	 */
+	op boolean shouldRenderSubTypes() {
+		if (isSetRenderSubTypes) {
+			renderSubTypes
+		} else {
+			(eContainer as IEClassConfig).shouldRenderSubTypes()
+		}
+	}
+	
+	/*
+	 * Whether the list of super-types should be rendered.
+	 */
+	unsettable boolean renderSuperTypes
+	/*
+	 * Traverses the tree to find the most specific <tt>renderSuperTypes</tt> setting.
+	 */
+	op boolean shouldRenderSuperTypes() {
+		if (isSetRenderSuperTypes) {
+			renderSuperTypes
+		} else {
+			(eContainer as IEClassConfig).shouldRenderSuperTypes()
+		}
+	}
+	
 }
 
 interface IEStructuralFeatureConfig extends IENamedElementConfig, IDefaultValueConfig {
-	/**
+	/*
 	 * Whether multiplicity bounds should be rendered,
 	 * even if they are at their default values and <tt>renderDefaults = false</tt>.
 	 */
 	unsettable boolean renderBounds
 	
-	/**
+	/*
 	 * Traverses the tree to find the most specific <tt>renderBounds</tt> setting.
 	 */
 	op boolean shouldRenderBounds() {
@@ -153,11 +183,11 @@ interface IEReferenceConfig extends IEStructuralFeatureConfig {
 }
 
 interface IEPackageConfig extends IENamedElementConfig {
-	/**
+	/*
 	 * Rendering position of all EDataTypes within an EPackage.
 	 */
 	unsettable int positionEDataTypes
-	/**
+	/*
 	 * Traverses the tree to find the most specific <tt>positionEDataTypes</tt> setting.
 	 */
 	op int getEDataTypesPosition() {
@@ -168,11 +198,11 @@ interface IEPackageConfig extends IENamedElementConfig {
 		}
 	}
 	
-	/**
+	/*
 	 * Rendering position of all EEnums within an EPackage.
 	 */
 	unsettable int positionEEnums
-	/**
+	/*
 	 * Traverses the tree to find the most specific <tt>positionEEnums</tt> setting.
 	 */
 	op int getEEnumsPosition() {
@@ -183,11 +213,11 @@ interface IEPackageConfig extends IENamedElementConfig {
 		}
 	}
 	
-	/**
+	/*
 	 * Rendering position of all EClasses within an EPackage.
 	 */
 	unsettable int positionEClasses
-	/**
+	/*
 	 * Traverses the tree to find the most specific <tt>positionEClasses</tt> setting.
 	 */
 	op int getEClassesPosition() {
@@ -204,7 +234,7 @@ interface IEEnumLiteralConfig extends IENamedElementConfig {
 }
 
 
-/**
+/*
  * Root for the detailed EcoreDocGenerator configuration.
  * 
  * <p>
@@ -305,6 +335,13 @@ interface IEEnumLiteralConfig extends IENamedElementConfig {
  */
 class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig, IEClassConfig, IEAttributeConfig, IEReferenceConfig {
 	/**
+	 * Title of the generated document.
+	 * 
+	 * <p>defaults to <b>Ecore Documentation</b>.</p>
+	 */
+	String documentTitle = "Ecore Documentation"
+	
+	/*
 	 * Sets default for <tt>render = true</tt>.
 	 */
 	op boolean shouldRender() {
@@ -315,7 +352,7 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 		}
 	}
 
-	/**
+	/*
 	 * Sets default for <tt>renderDefaults = true</tt>.
 	 */
 	op boolean shouldRenderDefaults() {
@@ -326,7 +363,7 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 		}
 	}
 
-	/**
+	/*
 	 * Sets default for <tt>renderUseCases = true</tt>.
 	 */
 	op boolean shouldRenderUseCases() {
@@ -337,7 +374,7 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 		}
 	}
 	
-	/**
+	/*
 	 * Sets default for <tt>repeatInherited = true</tt>.
 	 */
 	op boolean shouldRepeatInherited() {
@@ -348,7 +385,29 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 		}
 	}
 	
-	/**
+	/*
+	 * Sets default for <tt>renderSubTypes = true</tt>.
+	 */
+	op boolean shouldRenderSubTypes() {
+		if (isSetRenderSubTypes) {
+			renderSubTypes
+		} else {
+			true
+		}
+	}
+	
+	/*
+	 * Sets default for <tt>RenderSuperTypes = true</tt>.
+	 */
+	op boolean shouldRenderSuperTypes() {
+		if (isSetRenderSuperTypes) {
+			renderSuperTypes
+		} else {
+			true
+		}
+	}
+	
+	/*
 	 * Sets default for <tt>renderBounds = shouldRenderDefaults()</tt>.
 	 */
 	op boolean shouldRenderBounds() {
@@ -359,7 +418,7 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 		}
 	}
 	
-	/**
+	/*
 	 * Sets default for <tt>positionEDataTypes = 1</tt>.
 	 */
 	op int getEDataTypesPosition() {
@@ -370,7 +429,7 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 		}
 	}
 	
-	/**
+	/*
 	 * Sets default for <tt>positionEEnums = 2</tt>.
 	 */
 	op int getEEnumsPosition() {
@@ -381,7 +440,7 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 		}
 	}
 	
-	/**
+	/*
 	 * Sets default for <tt>positionEClasses = 3</tt>.
 	 */
 	op int getEClassesPosition() {
@@ -393,14 +452,14 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 	}
 	
 	contains EPackageConfig[] ePackages
-	/**
+	/*
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 */
 	op void addEPackages(List<EPackageConfig> ePackageConfig) {
 		EPackages += ePackageConfig
 	}
 	
-	/**
+	/*
 	 * Convenience method to map ENamedElement -> config.
 	 */
 	op IENamedElementConfig findConfig(ENamedElement element) {
@@ -466,7 +525,7 @@ class EPackageConfig extends  IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig
 	}
 	
 	contains EDataTypeConfig[] eDataTypes
-	/**
+	/*
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 */
 	op void addEDataTypes(List<EDataTypeConfig> eDataTypeConfig) {
@@ -474,7 +533,7 @@ class EPackageConfig extends  IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig
 	}
 
 	contains EEnumConfig[] eEnums
-	/**
+	/*
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 */
 	op void addEEnums(List<EEnumConfig> eEnumConfig) {
@@ -482,7 +541,7 @@ class EPackageConfig extends  IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig
 	}
 
 	contains EClassConfig[] eClasses
-	/**
+	/*
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 */
 	op void addEClasses(List<EClassConfig> eClassConfig) {
@@ -506,7 +565,7 @@ class EEnumConfig extends IEEnumConfig, IEEnumLiteralConfig {
 	}
 	
 	contains EEnumLiteralConfig[] eEnumLiterals
-	/**
+	/*
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 */
 	op void addEEnumLiterals(List<EEnumLiteralConfig> eEnumLiteralConfig) {
@@ -530,7 +589,7 @@ class EClassConfig extends IEClassConfig, IEAttributeConfig, IEReferenceConfig {
 	}
 	
 	contains EAttributeConfig[] eAttributes
-	/**
+	/*
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 */
 	op void addEAttributes(List<EAttributeConfig> eAttributeConfig) {
@@ -538,7 +597,7 @@ class EClassConfig extends IEClassConfig, IEAttributeConfig, IEReferenceConfig {
 	}
 
 	contains EContainmentConfig[] eContainments
-	/**
+	/*
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 */
 	op void addEContainments(List<EContainmentConfig> eContainmentConfig) {
@@ -546,7 +605,7 @@ class EClassConfig extends IEClassConfig, IEAttributeConfig, IEReferenceConfig {
 	}
 
 	contains EReferenceConfig[] eReferences	
-	/**
+	/*
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 */
 	op void addEReferences(List<EReferenceConfig> eReferenceConfig) {

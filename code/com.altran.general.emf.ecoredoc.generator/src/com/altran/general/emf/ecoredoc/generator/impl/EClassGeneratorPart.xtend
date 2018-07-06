@@ -1,13 +1,11 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
-import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig
 import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfigPair
 import com.altran.general.emf.ecoredoc.generator.config.EClassConfig
 import com.altran.general.emf.ecoredoc.generator.config.EClassConfigPair
 import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfigPair
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfigPair
-import com.google.common.collect.Maps
 import com.google.common.collect.Multimap
 import java.util.Collection
 import java.util.List
@@ -87,51 +85,50 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def void writeEContainments(EClassConfigPair pair) {
 		val eClass = pair.element
 		
-		val boolean containmentExists = eClass.EAllReferences.exists[isContainment]
-
-		if (containmentExists) {
+		val containments = collectEContainments(eClass).combineConfigPairs(pair.config)
+		val inheritedContainments = collectInheritedEContainments(pair).combineConfigPairs(pair.config)
+		
+		if (pair.config.hasRenderedEntries(containments, inheritedContainments)) {
 			writeEContainmentHeader()
 
-			var List<EReference> eContainments = collectEContainments(eClass)
-			var Set<? extends EStructuralFeature> inheritedEContainments = collectInheritedEContainments(pair)
-
-			writeEStructuralFeatures(eContainments.combineConfigPairs(pair.config), eClass, inheritedEContainments.combineConfigPairs(pair.config))
+			writeEStructuralFeatures(containments, eClass, inheritedContainments)
 		}
 	}
 
 	protected def void writeECrossReferences(EClassConfigPair pair) {
 		val eClass = pair.element
 		
-		val boolean eCrossReferenceExists = eClass.EAllReferences.exists[!isContainment]
-
-		if (eCrossReferenceExists) {
+		val crossReferences = collectECrossReferences(eClass).combineConfigPairs(pair.config)
+		val inheritedCrossReferences = collectInheritedECrossReferences(pair).combineConfigPairs(pair.config)
+		
+		if (pair.config.hasRenderedEntries(crossReferences, inheritedCrossReferences)) {
 			writeEReferencesHeader()
 
-			var List<EReference> crossReferences = collectECrossReferences(eClass)
-			var Set<? extends EStructuralFeature> inheritedECrossReferences = collectInheritedECrossReferences(pair)
-
-			writeEStructuralFeatures(crossReferences.combineConfigPairs(pair.config), eClass, inheritedECrossReferences.combineConfigPairs(pair.config))
+			writeEStructuralFeatures(crossReferences, eClass, inheritedCrossReferences)
 		}
 	}
 
 	protected def void writeEAttributes(EClassConfigPair pair) {
 		val eClass = pair.element
 		
-		val eAttributesMap = Maps::newLinkedHashMap(eClass.EAllAttributes
-			.toInvertedMap[eAttribute | pair.config.EAttributes.findFirst[id == eAttribute.name] as EAttributeConfig]
-			.filter[eAttribute, config|
-				config.shouldRender
-			])
-			
-		if (!eAttributesMap.isEmpty) {
+		val eAttributes = eClass.EAttributes.combineConfigPairs(pair.config)
+		val inheritedEAttributes = collectInheritedEAttributes(pair).combineConfigPairs(pair.config)
+		
+		if (pair.config.hasRenderedEntries(eAttributes, inheritedEAttributes)) {
 			writeEAttributesHeader()
-
-			val inheritedEAttributes = collectInheritedEAttributes(pair)
-				
-			val eAttributes = eClass.EAttributes
 			
-			writeEStructuralFeatures(eAttributes.combineConfigPairs(pair.config), eClass, inheritedEAttributes.combineConfigPairs(pair.config))
+			writeEStructuralFeatures(eAttributes, eClass, inheritedEAttributes)
 		}
+	}
+	
+	protected def hasRenderedEntries(EClassConfig classConfig, Collection<IEStructuralFeatureConfigPair<?,?>> eStructuralFeatures, Collection<IEStructuralFeatureConfigPair<?,?>> inheritedEStructuralFeatures) {
+		eStructuralFeatures.exists[it.config.shouldRender]
+		||
+		(
+			classConfig.shouldRepeatInherited
+			&&
+			inheritedEStructuralFeatures.exists[it.config.shouldRender]
+		)
 	}
 	
 	protected def List<IEStructuralFeatureConfigPair<?,?>> combineConfigPairs(Collection<? extends EStructuralFeature> eStructuralFeatures, EClassConfig classConfig) {
@@ -163,6 +160,10 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def void writeSubTypes(EClassConfigPair pair) {
+		if (!pair.config.shouldRenderSubTypes()) {
+			return
+		}
+		
 		val currentEClass = pair.element
 		var Set<EClass> subTypes = newLinkedHashSet()
 
@@ -182,6 +183,10 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	}
 
 	protected def void writeSuperTypes(EClassConfigPair pair) {
+		if (!pair.config.shouldRenderSuperTypes()) {
+			return
+		}
+		
 		val eClass = pair.element
 		
 		val tmp = eClass.EAllSuperTypes
@@ -248,12 +253,12 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		'''[cols="<20,<20,<20,<40a",options="header"]'''
 	}
 
-	protected def List<EReference> collectEContainments(EClass eClass) {
+	protected def Set<EReference> collectEContainments(EClass eClass) {
 		eClass.EReferences.filter[isContainment]
-						  .toList
+						  .toSet
 	}
 
-	protected def Set<? extends EStructuralFeature> collectInheritedEContainments(EClassConfigPair pair) {
+	protected def Set<EReference> collectInheritedEContainments(EClassConfigPair pair) {
 		if (pair.config.shouldRepeatInherited) {
 			val eClass = pair.element
 			
@@ -265,14 +270,15 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	 	}
 	}
 
-	protected def List<EReference> collectECrossReferences(EClass eClass) {
+	protected def Set<EReference> collectECrossReferences(EClass eClass) {
 		eClass.EReferences.filter[!isContainment]
-						  .toList
+						  .toSet
 	}
 
-	protected def Set<? extends EStructuralFeature> collectInheritedECrossReferences(EClassConfigPair pair) {
+	protected def Set<EReference> collectInheritedECrossReferences(EClassConfigPair pair) {
 		if (pair.config.shouldRepeatInherited) {
 			val eClass = pair.element
+			
 			eClass.EAllReferences.filter[!isContainment]
 								 .reject[eClass.EReferences.contains(it)]
 								 .toSet
@@ -281,16 +287,15 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	 	}
 	}
 
-	protected def Set<EStructuralFeature> collectInheritedEAttributes(EClassConfigPair pair) {
-		val Set<EStructuralFeature> inheritedEAttributes = newLinkedHashSet()
-
+	protected def Set<EAttribute> collectInheritedEAttributes(EClassConfigPair pair) {
 		if (pair.config.shouldRepeatInherited) {
-			for (superclass : pair.element.EAllSuperTypes) {
-				inheritedEAttributes.addAll(superclass.EAllAttributes)
-			}
-		}
-
-		return inheritedEAttributes
+			val eClass = pair.element
+			
+			eClass.EAllAttributes.reject[eClass.EAttributes.contains(it)]
+								 .toSet
+	 	} else {
+	 		emptySet
+	 	}
 	}
 
 	protected def void writeEStructuralFeatures(

@@ -67,28 +67,39 @@ public class EcoreDocExtension {
       final CharSequence documentation = EcoreUtil.getDocumentation(modelElement);
       CharSequence _xifexpression = null;
       if ((documentation != null)) {
-        StringConcatenation _builder = new StringConcatenation();
-        String _newline = EcoreDocExtension.newline();
-        _builder.append(_newline);
-        _builder.newLineIfNotEmpty();
-        _builder.append("ifdef::backend-html5[]");
-        _builder.newLine();
-        _builder.append("++++");
-        _builder.newLine();
-        _builder.append(documentation);
-        _builder.newLineIfNotEmpty();
-        _builder.append("++++");
-        _builder.newLine();
-        _builder.append("endif::[]");
-        _builder.newLine();
-        _builder.append("ifndef::backend-html5[]");
-        _builder.newLine();
-        String _replaceAll = documentation.toString().replaceAll("<[^>]+>", "");
-        _builder.append(_replaceAll);
-        _builder.newLineIfNotEmpty();
-        _builder.append("endif::[]");
-        _builder.newLine();
-        _xifexpression = _builder;
+        CharSequence _xblockexpression_1 = null;
+        {
+          final String stripped = documentation.toString().replaceAll("<[^>]+>", "");
+          CharSequence _xifexpression_1 = null;
+          boolean _equals = Objects.equal(stripped, documentation);
+          if (_equals) {
+            String _newline = EcoreDocExtension.newline();
+            _xifexpression_1 = (documentation + _newline);
+          } else {
+            StringConcatenation _builder = new StringConcatenation();
+            String _newline_1 = EcoreDocExtension.newline();
+            _builder.append(_newline_1);
+            _builder.newLineIfNotEmpty();
+            _builder.append("ifdef::backend-html5[]");
+            _builder.newLine();
+            _builder.append("++++");
+            _builder.newLine();
+            _builder.append(documentation);
+            _builder.newLineIfNotEmpty();
+            _builder.append("++++");
+            _builder.newLine();
+            _builder.append("endif::[]");
+            _builder.newLine();
+            _builder.append("ifndef::backend-html5[]");
+            _builder.newLine();
+            _builder.newLine();
+            _builder.append("endif::[]");
+            _builder.newLine();
+            _xifexpression_1 = _builder;
+          }
+          _xblockexpression_1 = _xifexpression_1;
+        }
+        _xifexpression = _xblockexpression_1;
       } else {
         _xifexpression = "";
       }

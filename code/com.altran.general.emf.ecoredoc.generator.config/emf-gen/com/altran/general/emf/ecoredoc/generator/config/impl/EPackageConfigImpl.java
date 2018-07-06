@@ -58,6 +58,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#isRenderUseCases <em>Render Use Cases</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#isRepeatInherited <em>Repeat Inherited</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#isRenderSubTypes <em>Render Sub Types</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#isRenderSuperTypes <em>Render Super Types</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#isRenderBounds <em>Render Bounds</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#getTargetEPackage <em>Target EPackage</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#getEDataTypes <em>EData Types</em>}</li>
@@ -280,6 +282,64 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected boolean repeatInheritedESet;
+
+	/**
+	 * The default value of the '{@link #isRenderSubTypes() <em>Render Sub Types</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderSubTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RENDER_SUB_TYPES_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRenderSubTypes() <em>Render Sub Types</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderSubTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderSubTypes = RENDER_SUB_TYPES_EDEFAULT;
+
+	/**
+	 * This is true if the Render Sub Types attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderSubTypesESet;
+
+	/**
+	 * The default value of the '{@link #isRenderSuperTypes() <em>Render Super Types</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderSuperTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RENDER_SUPER_TYPES_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRenderSuperTypes() <em>Render Super Types</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderSuperTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderSuperTypes = RENDER_SUPER_TYPES_EDEFAULT;
+
+	/**
+	 * This is true if the Render Super Types attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderSuperTypesESet;
 
 	/**
 	 * The default value of the '{@link #isRenderBounds() <em>Render Bounds</em>}' attribute.
@@ -710,6 +770,98 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isRenderSubTypes() {
+		return renderSubTypes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRenderSubTypes(boolean newRenderSubTypes) {
+		boolean oldRenderSubTypes = renderSubTypes;
+		renderSubTypes = newRenderSubTypes;
+		boolean oldRenderSubTypesESet = renderSubTypesESet;
+		renderSubTypesESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES, oldRenderSubTypes, renderSubTypes, !oldRenderSubTypesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetRenderSubTypes() {
+		boolean oldRenderSubTypes = renderSubTypes;
+		boolean oldRenderSubTypesESet = renderSubTypesESet;
+		renderSubTypes = RENDER_SUB_TYPES_EDEFAULT;
+		renderSubTypesESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES, oldRenderSubTypes, RENDER_SUB_TYPES_EDEFAULT, oldRenderSubTypesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRenderSubTypes() {
+		return renderSubTypesESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRenderSuperTypes() {
+		return renderSuperTypes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRenderSuperTypes(boolean newRenderSuperTypes) {
+		boolean oldRenderSuperTypes = renderSuperTypes;
+		renderSuperTypes = newRenderSuperTypes;
+		boolean oldRenderSuperTypesESet = renderSuperTypesESet;
+		renderSuperTypesESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES, oldRenderSuperTypes, renderSuperTypes, !oldRenderSuperTypesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetRenderSuperTypes() {
+		boolean oldRenderSuperTypes = renderSuperTypes;
+		boolean oldRenderSuperTypesESet = renderSuperTypesESet;
+		renderSuperTypes = RENDER_SUPER_TYPES_EDEFAULT;
+		renderSuperTypesESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES, oldRenderSuperTypes, RENDER_SUPER_TYPES_EDEFAULT, oldRenderSuperTypesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRenderSuperTypes() {
+		return renderSuperTypesESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isRenderBounds() {
 		return renderBounds;
 	}
@@ -913,6 +1065,42 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean shouldRenderSubTypes() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderSubTypes = this.isSetRenderSubTypes();
+		if (_isSetRenderSubTypes) {
+			_xifexpression = this.isRenderSubTypes();
+		}
+		else {
+			EObject _eContainer = this.eContainer();
+			_xifexpression = ((IEClassConfig) _eContainer).shouldRenderSubTypes();
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean shouldRenderSuperTypes() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderSuperTypes = this.isSetRenderSuperTypes();
+		if (_isSetRenderSuperTypes) {
+			_xifexpression = this.isRenderSuperTypes();
+		}
+		else {
+			EObject _eContainer = this.eContainer();
+			_xifexpression = ((IEClassConfig) _eContainer).shouldRenderSuperTypes();
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean shouldRenderUseCases() {
 		boolean _xifexpression = false;
 		boolean _isSetRenderUseCases = this.isSetRenderUseCases();
@@ -1058,6 +1246,10 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				return isRenderUseCases();
 			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
 				return isRepeatInherited();
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES:
+				return isRenderSubTypes();
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES:
+				return isRenderSuperTypes();
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
 				return isRenderBounds();
 			case ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
@@ -1102,6 +1294,12 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				return;
 			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
 				setRepeatInherited((Boolean)newValue);
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES:
+				setRenderSubTypes((Boolean)newValue);
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES:
+				setRenderSuperTypes((Boolean)newValue);
 				return;
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
 				setRenderBounds((Boolean)newValue);
@@ -1154,6 +1352,12 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
 				unsetRepeatInherited();
 				return;
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES:
+				unsetRenderSubTypes();
+				return;
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES:
+				unsetRenderSuperTypes();
+				return;
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
 				unsetRenderBounds();
 				return;
@@ -1197,6 +1401,10 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				return isSetRenderUseCases();
 			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
 				return isSetRepeatInherited();
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES:
+				return isSetRenderSubTypes();
+			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES:
+				return isSetRenderSuperTypes();
 			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
 				return isSetRenderBounds();
 			case ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
@@ -1248,6 +1456,8 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		if (baseClass == IEClassConfig.class) {
 			switch (derivedFeatureID) {
 				case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED: return ConfigPackage.IE_CLASS_CONFIG__REPEAT_INHERITED;
+				case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES: return ConfigPackage.IE_CLASS_CONFIG__RENDER_SUB_TYPES;
+				case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES: return ConfigPackage.IE_CLASS_CONFIG__RENDER_SUPER_TYPES;
 				default: return -1;
 			}
 		}
@@ -1307,6 +1517,8 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		if (baseClass == IEClassConfig.class) {
 			switch (baseFeatureID) {
 				case ConfigPackage.IE_CLASS_CONFIG__REPEAT_INHERITED: return ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED;
+				case ConfigPackage.IE_CLASS_CONFIG__RENDER_SUB_TYPES: return ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES;
+				case ConfigPackage.IE_CLASS_CONFIG__RENDER_SUPER_TYPES: return ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES;
 				default: return -1;
 			}
 		}
@@ -1366,6 +1578,8 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		if (baseClass == IEClassConfig.class) {
 			switch (baseOperationID) {
 				case ConfigPackage.IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED: return ConfigPackage.EPACKAGE_CONFIG___SHOULD_REPEAT_INHERITED;
+				case ConfigPackage.IE_CLASS_CONFIG___SHOULD_RENDER_SUB_TYPES: return ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_SUB_TYPES;
+				case ConfigPackage.IE_CLASS_CONFIG___SHOULD_RENDER_SUPER_TYPES: return ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_SUPER_TYPES;
 				default: return -1;
 			}
 		}
@@ -1412,6 +1626,10 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				return shouldRenderBounds();
 			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_REPEAT_INHERITED:
 				return shouldRepeatInherited();
+			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_SUB_TYPES:
+				return shouldRenderSubTypes();
+			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_SUPER_TYPES:
+				return shouldRenderSuperTypes();
 			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_USE_CASES:
 				return shouldRenderUseCases();
 			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_DEFAULTS:
@@ -1452,6 +1670,10 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		if (renderUseCasesESet) result.append(renderUseCases); else result.append("<unset>");
 		result.append(", repeatInherited: ");
 		if (repeatInheritedESet) result.append(repeatInherited); else result.append("<unset>");
+		result.append(", renderSubTypes: ");
+		if (renderSubTypesESet) result.append(renderSubTypes); else result.append("<unset>");
+		result.append(", renderSuperTypes: ");
+		if (renderSuperTypesESet) result.append(renderSuperTypes); else result.append("<unset>");
 		result.append(", renderBounds: ");
 		if (renderBoundsESet) result.append(renderBounds); else result.append("<unset>");
 		result.append(')');

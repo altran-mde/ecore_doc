@@ -114,7 +114,6 @@ public interface EPackageConfig extends IEPackageConfig, IEEnumConfig, IEEnumLit
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 * <!-- end-model-doc -->
 	 * @model eDataTypeConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfig&gt;" eDataTypeConfigUnique="false" eDataTypeConfigMany="false"
@@ -127,7 +126,6 @@ public interface EPackageConfig extends IEPackageConfig, IEEnumConfig, IEEnumLit
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 * <!-- end-model-doc -->
 	 * @model eEnumConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EEnumConfig&gt;" eEnumConfigUnique="false" eEnumConfigMany="false"
@@ -140,7 +138,6 @@ public interface EPackageConfig extends IEPackageConfig, IEEnumConfig, IEEnumLit
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 * <!-- end-model-doc -->
 	 * @model eClassConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EClassConfig&gt;" eClassConfigUnique="false" eClassConfigMany="false"

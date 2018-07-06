@@ -268,14 +268,13 @@ _Default:_ `<<EPackage1-Enum1-Literal1, Literal1>>`
 |`<<EPackage1-Class3, EPackage1.{zwsp}Class3>>`
 
 _EOpposite:_ `<<EPackage1-Class3-specialParent, specialParent>>`
-|non-resolveProxies +
-`[1..*]` +
+|`[1..*]` +
 unordered
 |Desc.
 
 |`otherClasses`[[EPackage1-MyEClass-otherClasses]]
 |`<<EPackage1-Class3, EPackage1.{zwsp}Class3>>`
-|non-resolveProxies
+|
 |Desc.
 
 Containments could also be inherited.

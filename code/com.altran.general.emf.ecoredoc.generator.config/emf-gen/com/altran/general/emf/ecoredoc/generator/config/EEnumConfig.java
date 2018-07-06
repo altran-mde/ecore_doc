@@ -80,7 +80,6 @@ public interface EEnumConfig extends IEEnumConfig, IEEnumLiteralConfig {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 * <!-- end-model-doc -->
 	 * @model eEnumLiteralConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig&gt;" eEnumLiteralConfigUnique="false" eEnumLiteralConfigMany="false"

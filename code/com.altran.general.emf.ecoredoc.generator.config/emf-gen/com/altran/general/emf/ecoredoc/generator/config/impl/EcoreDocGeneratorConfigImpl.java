@@ -69,7 +69,10 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRenderUseCases <em>Render Use Cases</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRepeatInherited <em>Repeat Inherited</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRenderSubTypes <em>Render Sub Types</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRenderSuperTypes <em>Render Super Types</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRenderBounds <em>Render Bounds</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getDocumentTitle <em>Document Title</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getEPackages <em>EPackages</em>}</li>
  * </ul>
  *
@@ -290,6 +293,64 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	protected boolean repeatInheritedESet;
 
 	/**
+	 * The default value of the '{@link #isRenderSubTypes() <em>Render Sub Types</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderSubTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RENDER_SUB_TYPES_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRenderSubTypes() <em>Render Sub Types</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderSubTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderSubTypes = RENDER_SUB_TYPES_EDEFAULT;
+
+	/**
+	 * This is true if the Render Sub Types attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderSubTypesESet;
+
+	/**
+	 * The default value of the '{@link #isRenderSuperTypes() <em>Render Super Types</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderSuperTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RENDER_SUPER_TYPES_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRenderSuperTypes() <em>Render Super Types</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderSuperTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderSuperTypes = RENDER_SUPER_TYPES_EDEFAULT;
+
+	/**
+	 * This is true if the Render Super Types attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderSuperTypesESet;
+
+	/**
 	 * The default value of the '{@link #isRenderBounds() <em>Render Bounds</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -317,6 +378,26 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 * @ordered
 	 */
 	protected boolean renderBoundsESet;
+
+	/**
+	 * The default value of the '{@link #getDocumentTitle() <em>Document Title</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDocumentTitle()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DOCUMENT_TITLE_EDEFAULT = "Ecore Documentation";
+
+	/**
+	 * The cached value of the '{@link #getDocumentTitle() <em>Document Title</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDocumentTitle()
+	 * @generated
+	 * @ordered
+	 */
+	protected String documentTitle = DOCUMENT_TITLE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getEPackages() <em>EPackages</em>}' containment reference list.
@@ -688,6 +769,98 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isRenderSubTypes() {
+		return renderSubTypes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRenderSubTypes(boolean newRenderSubTypes) {
+		boolean oldRenderSubTypes = renderSubTypes;
+		renderSubTypes = newRenderSubTypes;
+		boolean oldRenderSubTypesESet = renderSubTypesESet;
+		renderSubTypesESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES, oldRenderSubTypes, renderSubTypes, !oldRenderSubTypesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetRenderSubTypes() {
+		boolean oldRenderSubTypes = renderSubTypes;
+		boolean oldRenderSubTypesESet = renderSubTypesESet;
+		renderSubTypes = RENDER_SUB_TYPES_EDEFAULT;
+		renderSubTypesESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES, oldRenderSubTypes, RENDER_SUB_TYPES_EDEFAULT, oldRenderSubTypesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRenderSubTypes() {
+		return renderSubTypesESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRenderSuperTypes() {
+		return renderSuperTypes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRenderSuperTypes(boolean newRenderSuperTypes) {
+		boolean oldRenderSuperTypes = renderSuperTypes;
+		renderSuperTypes = newRenderSuperTypes;
+		boolean oldRenderSuperTypesESet = renderSuperTypesESet;
+		renderSuperTypesESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES, oldRenderSuperTypes, renderSuperTypes, !oldRenderSuperTypesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetRenderSuperTypes() {
+		boolean oldRenderSuperTypes = renderSuperTypes;
+		boolean oldRenderSuperTypesESet = renderSuperTypesESet;
+		renderSuperTypes = RENDER_SUPER_TYPES_EDEFAULT;
+		renderSuperTypesESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES, oldRenderSuperTypes, RENDER_SUPER_TYPES_EDEFAULT, oldRenderSuperTypesESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRenderSuperTypes() {
+		return renderSuperTypesESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isRenderBounds() {
 		return renderBounds;
 	}
@@ -727,6 +900,27 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 */
 	public boolean isSetRenderBounds() {
 		return renderBoundsESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getDocumentTitle() {
+		return documentTitle;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDocumentTitle(String newDocumentTitle) {
+		String oldDocumentTitle = documentTitle;
+		documentTitle = newDocumentTitle;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE, oldDocumentTitle, documentTitle));
 	}
 
 	/**
@@ -1026,6 +1220,40 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean shouldRenderSubTypes() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderSubTypes = this.isSetRenderSubTypes();
+		if (_isSetRenderSubTypes) {
+			_xifexpression = this.isRenderSubTypes();
+		}
+		else {
+			_xifexpression = true;
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean shouldRenderSuperTypes() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderSuperTypes = this.isSetRenderSuperTypes();
+		if (_isSetRenderSuperTypes) {
+			_xifexpression = this.isRenderSuperTypes();
+		}
+		else {
+			_xifexpression = true;
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -1059,8 +1287,14 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 				return isRenderUseCases();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
 				return isRepeatInherited();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES:
+				return isRenderSubTypes();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES:
+				return isRenderSuperTypes();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
 				return isRenderBounds();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
+				return getDocumentTitle();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				return getEPackages();
 		}
@@ -1097,8 +1331,17 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
 				setRepeatInherited((Boolean)newValue);
 				return;
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES:
+				setRenderSubTypes((Boolean)newValue);
+				return;
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES:
+				setRenderSuperTypes((Boolean)newValue);
+				return;
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
 				setRenderBounds((Boolean)newValue);
+				return;
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
+				setDocumentTitle((String)newValue);
 				return;
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				getEPackages().clear();
@@ -1137,8 +1380,17 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
 				unsetRepeatInherited();
 				return;
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES:
+				unsetRenderSubTypes();
+				return;
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES:
+				unsetRenderSuperTypes();
+				return;
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
 				unsetRenderBounds();
+				return;
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
+				setDocumentTitle(DOCUMENT_TITLE_EDEFAULT);
 				return;
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				getEPackages().clear();
@@ -1171,8 +1423,14 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 				return isSetRenderUseCases();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
 				return isSetRepeatInherited();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES:
+				return isSetRenderSubTypes();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES:
+				return isSetRenderSuperTypes();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
 				return isSetRenderBounds();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
+				return DOCUMENT_TITLE_EDEFAULT == null ? documentTitle != null : !DOCUMENT_TITLE_EDEFAULT.equals(documentTitle);
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				return ePackages != null && !ePackages.isEmpty();
 		}
@@ -1216,6 +1474,8 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		if (baseClass == IEClassConfig.class) {
 			switch (derivedFeatureID) {
 				case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED: return ConfigPackage.IE_CLASS_CONFIG__REPEAT_INHERITED;
+				case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES: return ConfigPackage.IE_CLASS_CONFIG__RENDER_SUB_TYPES;
+				case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES: return ConfigPackage.IE_CLASS_CONFIG__RENDER_SUPER_TYPES;
 				default: return -1;
 			}
 		}
@@ -1275,6 +1535,8 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		if (baseClass == IEClassConfig.class) {
 			switch (baseFeatureID) {
 				case ConfigPackage.IE_CLASS_CONFIG__REPEAT_INHERITED: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED;
+				case ConfigPackage.IE_CLASS_CONFIG__RENDER_SUB_TYPES: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES;
+				case ConfigPackage.IE_CLASS_CONFIG__RENDER_SUPER_TYPES: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES;
 				default: return -1;
 			}
 		}
@@ -1334,6 +1596,8 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		if (baseClass == IEClassConfig.class) {
 			switch (baseOperationID) {
 				case ConfigPackage.IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED;
+				case ConfigPackage.IE_CLASS_CONFIG___SHOULD_RENDER_SUB_TYPES: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUB_TYPES;
+				case ConfigPackage.IE_CLASS_CONFIG___SHOULD_RENDER_SUPER_TYPES: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUPER_TYPES;
 				default: return -1;
 			}
 		}
@@ -1373,6 +1637,10 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 				return shouldRenderUseCases();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED:
 				return shouldRepeatInherited();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUB_TYPES:
+				return shouldRenderSubTypes();
+			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUPER_TYPES:
+				return shouldRenderSuperTypes();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS:
 				return shouldRenderBounds();
 			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_EDATA_TYPES_POSITION:
@@ -1416,8 +1684,14 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		if (renderUseCasesESet) result.append(renderUseCases); else result.append("<unset>");
 		result.append(", repeatInherited: ");
 		if (repeatInheritedESet) result.append(repeatInherited); else result.append("<unset>");
+		result.append(", renderSubTypes: ");
+		if (renderSubTypesESet) result.append(renderSubTypes); else result.append("<unset>");
+		result.append(", renderSuperTypes: ");
+		if (renderSuperTypesESet) result.append(renderSuperTypes); else result.append("<unset>");
 		result.append(", renderBounds: ");
 		if (renderBoundsESet) result.append(renderBounds); else result.append("<unset>");
+		result.append(", documentTitle: ");
+		result.append(documentTitle);
 		result.append(')');
 		return result.toString();
 	}

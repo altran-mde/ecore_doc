@@ -85,6 +85,20 @@ public class EcoreDocGenerator {
 						cfg.setRenderUseCases(true);
 						break;
 
+					case "-subtypes":
+						cfg.setRenderSubTypes(false);
+						break;
+					case "+subtypes":
+						cfg.setRenderSubTypes(true);
+						break;
+
+					case "-supertypes":
+						cfg.setRenderSuperTypes(false);
+						break;
+					case "+supertypes":
+						cfg.setRenderSuperTypes(true);
+						break;
+
 					case "--positionedatatypes":
 						i = setInt(args, i, pos -> cfg.setPositionEDataTypes(pos));
 						break;
@@ -182,15 +196,19 @@ public class EcoreDocGenerator {
 				"  \n" +
 				"  --positionEClasses <pos>:   Set rendering position of all EClasses within EPackage\n" +
 				"  \n" +
-				"  [+|-]defaults:  [Enable|disable] rendering of default values\n" +
+				"  [+|-]defaults:   [Enable|disable] rendering of default values\n" +
 				"  \n" +
-				"  [+|-]bounds:    [Enable|disable] rendering of multiplicity bounds (overwrites defaults parameter)\n"
+				"  [+|-]bounds:     [Enable|disable] rendering of multiplicity bounds (overwrites defaults parameter)\n"
 				+
 				"  \n" +
-				"  [+|-]inherited: [Enable|disable] repetition of inherited features\n" +
+				"  [+|-]inherited:  [Enable|disable] repetition of inherited features\n" +
 				"  \n" +
-				"  [+|-]useCases:  [Enable|disable] rendering of use cases (references to other usages of this element)\n"
+				"  [+|-]useCases:   [Enable|disable] rendering of use cases (references to other usages of this element)\n"
 				+
+				"  \n" +
+				"  [+|-]subTypes:   [Enable|disable] rendering of sub-types\n" +
+				"  \n" +
+				"  [+|-]superTypes: [Enable|disable] rendering of super-types\n" +
 				"\n" +
 				"\n" +
 				"Examples:\n" +
@@ -237,7 +255,7 @@ public class EcoreDocGenerator {
 
 		EcoreDocUtils.getInstance().resolve(resourceSet, shouldResolve());
 
-		final Set<EClassifier> classifiers = EcoreDocUtils.getInstance().collectInput(resourceSet);
+		final Set<EClassifier> classifiers = EcoreDocUtils.getInstance().collectInput(resourceSet, this.inputFiles);
 
 		final CharSequence result = generate(classifiers);
 

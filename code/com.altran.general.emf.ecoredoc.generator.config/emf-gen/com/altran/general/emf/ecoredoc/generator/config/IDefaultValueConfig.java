@@ -30,7 +30,6 @@ public interface IDefaultValueConfig extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Whether properties should be rendered at their default values.
 	 * 
 	 * <p>
@@ -88,7 +87,6 @@ public interface IDefaultValueConfig extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Traverses the tree to find the most specific <tt>renderDefaults</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model unique="false"

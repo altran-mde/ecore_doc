@@ -26,46 +26,37 @@
 				<version>0.1.0-SNAPSHOT</version>
 
 				<configuration>
-					<resolve>true</resolve>
-					
 					<config>
 						<renderDefaults>false</renderDefaults>
+						<renderBounds>true</renderBounds>
+						<repeatInherited>false</repeatInherited>
+						<renderSubTypes>false</renderSubTypes>
+						<documentTitle>EcoreDoc Config Model</documentTitle>
 						<ePackages>
 							<ePackage>
-								<targetEPackage>EPackage1</targetEPackage>
+								<targetEPackage>config</targetEPackage>
 								<eClasses>
 									<eClass>
-										<targetEClass>MyEClass</targetEClass>
-										<repeatInherited>false</repeatInherited>
-									</eClass>
-									<eClass>
-										<targetEClass>Class3</targetEClass>
+										<targetEClass>IENamedElementConfig</targetEClass>
 										<eAttributes>
 											<eAttribute>
-												<targetEAttribute>specialNumber</targetEAttribute>
+												<targetEAttribute>id</targetEAttribute>
 												<render>false</render>
 											</eAttribute>
 										</eAttributes>
 									</eClass>
+									<eClass>
+										<targetEClass>List</targetEClass>
+										<render>false</render>
+									</eClass>
 								</eClasses>
-								<eEnums>
-									<eEnum>
-										<targetEEnum>Enum1</targetEEnum>
-										<renderDefaults>true</renderDefaults>
-									</eEnum>
-								</eEnums>
-							</ePackage>
-							<ePackage>
-							  <targetEPackage>EPackage2</targetEPackage>
-							  <renderDefaults>true</renderDefaults>
 							</ePackage>
 						</ePackages>
 					</config>
 					<inputFiles>
-						<inputFile>../EPackage1.ecore</inputFile>
-						<inputFile>../EPackage2.ecore</inputFile>
+						<inputFile>../../../../com.altran.general.emf.ecoredoc.generator.config/model/EcoreDocGeneratorConfig.xcore</inputFile>
 					</inputFiles>
-					<outputFile>target/test-harness/testBasic/output.adoc</outputFile>
+					<outputFile>target/test-harness/testGeneratorConfig/output.adoc</outputFile>
 				</configuration>
 			</plugin>
 		</plugins>

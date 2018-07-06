@@ -534,13 +534,31 @@ public interface ConfigPackage extends EPackage {
 	int IE_CLASS_CONFIG__REPEAT_INHERITED = IE_CLASSIFIER_CONFIG_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Render Sub Types</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG__RENDER_SUB_TYPES = IE_CLASSIFIER_CONFIG_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Render Super Types</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG__RENDER_SUPER_TYPES = IE_CLASSIFIER_CONFIG_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>IE Class Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IE_CLASS_CONFIG_FEATURE_COUNT = IE_CLASSIFIER_CONFIG_FEATURE_COUNT + 1;
+	int IE_CLASS_CONFIG_FEATURE_COUNT = IE_CLASSIFIER_CONFIG_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -588,13 +606,31 @@ public interface ConfigPackage extends EPackage {
 	int IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED = IE_CLASSIFIER_CONFIG_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Should Render Sub Types</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG___SHOULD_RENDER_SUB_TYPES = IE_CLASSIFIER_CONFIG_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Should Render Super Types</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG___SHOULD_RENDER_SUPER_TYPES = IE_CLASSIFIER_CONFIG_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>IE Class Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IE_CLASS_CONFIG_OPERATION_COUNT = IE_CLASSIFIER_CONFIG_OPERATION_COUNT + 1;
+	int IE_CLASS_CONFIG_OPERATION_COUNT = IE_CLASSIFIER_CONFIG_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig <em>IE Structural Feature Config</em>}' class.
@@ -1161,13 +1197,40 @@ public interface ConfigPackage extends EPackage {
 	int ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED = IE_PACKAGE_CONFIG_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Render Sub Types</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Render Super Types</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 4;
+
+	/**
 	 * The feature id for the '<em><b>Render Bounds</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 3;
+	int ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Document Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE = IE_PACKAGE_CONFIG_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>EPackages</b></em>' containment reference list.
@@ -1176,7 +1239,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG__EPACKAGES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 4;
+	int ECORE_DOC_GENERATOR_CONFIG__EPACKAGES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Ecore Doc Generator Config</em>' class.
@@ -1185,7 +1248,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 5;
+	int ECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 8;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -1194,7 +1257,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER = IE_PACKAGE_CONFIG_OPERATION_COUNT + 4;
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER = IE_PACKAGE_CONFIG_OPERATION_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
@@ -1203,7 +1266,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 5;
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 7;
 
 	/**
 	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
@@ -1212,7 +1275,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 6;
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 8;
 
 	/**
 	 * The operation id for the '<em>Should Repeat Inherited</em>' operation.
@@ -1221,7 +1284,25 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED = IE_PACKAGE_CONFIG_OPERATION_COUNT + 7;
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED = IE_PACKAGE_CONFIG_OPERATION_COUNT + 9;
+
+	/**
+	 * The operation id for the '<em>Should Render Sub Types</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUB_TYPES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 10;
+
+	/**
+	 * The operation id for the '<em>Should Render Super Types</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUPER_TYPES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 11;
 
 	/**
 	 * The operation id for the '<em>Should Render Bounds</em>' operation.
@@ -1230,7 +1311,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 8;
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 12;
 
 	/**
 	 * The operation id for the '<em>Get EData Types Position</em>' operation.
@@ -1239,7 +1320,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___GET_EDATA_TYPES_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 9;
+	int ECORE_DOC_GENERATOR_CONFIG___GET_EDATA_TYPES_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 13;
 
 	/**
 	 * The operation id for the '<em>Get EEnums Position</em>' operation.
@@ -1248,7 +1329,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___GET_EENUMS_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 10;
+	int ECORE_DOC_GENERATOR_CONFIG___GET_EENUMS_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 14;
 
 	/**
 	 * The operation id for the '<em>Get EClasses Position</em>' operation.
@@ -1257,7 +1338,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___GET_ECLASSES_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 11;
+	int ECORE_DOC_GENERATOR_CONFIG___GET_ECLASSES_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 15;
 
 	/**
 	 * The operation id for the '<em>Add EPackages</em>' operation.
@@ -1266,7 +1347,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___ADD_EPACKAGES__LIST = IE_PACKAGE_CONFIG_OPERATION_COUNT + 12;
+	int ECORE_DOC_GENERATOR_CONFIG___ADD_EPACKAGES__LIST = IE_PACKAGE_CONFIG_OPERATION_COUNT + 16;
 
 	/**
 	 * The operation id for the '<em>Find Config</em>' operation.
@@ -1275,7 +1356,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 13;
+	int ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 17;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -1284,7 +1365,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 14;
+	int ECORE_DOC_GENERATOR_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 18;
 
 	/**
 	 * The number of operations of the '<em>Ecore Doc Generator Config</em>' class.
@@ -1293,7 +1374,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 15;
+	int ECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 19;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl <em>EPackage Config</em>}' class.
@@ -1378,13 +1459,31 @@ public interface ConfigPackage extends EPackage {
 	int EPACKAGE_CONFIG__REPEAT_INHERITED = IE_PACKAGE_CONFIG_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Render Sub Types</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__RENDER_SUB_TYPES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Render Super Types</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__RENDER_SUPER_TYPES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 4;
+
+	/**
 	 * The feature id for the '<em><b>Render Bounds</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__RENDER_BOUNDS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 3;
+	int EPACKAGE_CONFIG__RENDER_BOUNDS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Target EPackage</b></em>' reference.
@@ -1393,7 +1492,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__TARGET_EPACKAGE = IE_PACKAGE_CONFIG_FEATURE_COUNT + 4;
+	int EPACKAGE_CONFIG__TARGET_EPACKAGE = IE_PACKAGE_CONFIG_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>EData Types</b></em>' containment reference list.
@@ -1402,7 +1501,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__EDATA_TYPES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 5;
+	int EPACKAGE_CONFIG__EDATA_TYPES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>EEnums</b></em>' containment reference list.
@@ -1411,7 +1510,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__EENUMS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 6;
+	int EPACKAGE_CONFIG__EENUMS = IE_PACKAGE_CONFIG_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>EClasses</b></em>' containment reference list.
@@ -1420,7 +1519,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG__ECLASSES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 7;
+	int EPACKAGE_CONFIG__ECLASSES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>EPackage Config</em>' class.
@@ -1429,7 +1528,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG_FEATURE_COUNT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 8;
+	int EPACKAGE_CONFIG_FEATURE_COUNT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 10;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -1495,13 +1594,31 @@ public interface ConfigPackage extends EPackage {
 	int EPACKAGE_CONFIG___SHOULD_REPEAT_INHERITED = IE_PACKAGE_CONFIG_OPERATION_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Should Render Sub Types</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG___SHOULD_RENDER_SUB_TYPES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Should Render Super Types</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG___SHOULD_RENDER_SUPER_TYPES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 4;
+
+	/**
 	 * The operation id for the '<em>Should Render Bounds</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG___SHOULD_RENDER_BOUNDS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 3;
+	int EPACKAGE_CONFIG___SHOULD_RENDER_BOUNDS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -1510,7 +1627,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 4;
+	int EPACKAGE_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>Add EData Types</em>' operation.
@@ -1519,7 +1636,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG___ADD_EDATA_TYPES__LIST = IE_PACKAGE_CONFIG_OPERATION_COUNT + 5;
+	int EPACKAGE_CONFIG___ADD_EDATA_TYPES__LIST = IE_PACKAGE_CONFIG_OPERATION_COUNT + 7;
 
 	/**
 	 * The operation id for the '<em>Add EEnums</em>' operation.
@@ -1528,7 +1645,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG___ADD_EENUMS__LIST = IE_PACKAGE_CONFIG_OPERATION_COUNT + 6;
+	int EPACKAGE_CONFIG___ADD_EENUMS__LIST = IE_PACKAGE_CONFIG_OPERATION_COUNT + 8;
 
 	/**
 	 * The operation id for the '<em>Add EClasses</em>' operation.
@@ -1537,7 +1654,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG___ADD_ECLASSES__LIST = IE_PACKAGE_CONFIG_OPERATION_COUNT + 7;
+	int EPACKAGE_CONFIG___ADD_ECLASSES__LIST = IE_PACKAGE_CONFIG_OPERATION_COUNT + 9;
 
 	/**
 	 * The number of operations of the '<em>EPackage Config</em>' class.
@@ -1546,7 +1663,7 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPACKAGE_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 8;
+	int EPACKAGE_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl <em>EData Type Config</em>}' class.
@@ -1913,6 +2030,24 @@ public interface ConfigPackage extends EPackage {
 	int ECLASS_CONFIG__REPEAT_INHERITED = IE_CLASS_CONFIG__REPEAT_INHERITED;
 
 	/**
+	 * The feature id for the '<em><b>Render Sub Types</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS_CONFIG__RENDER_SUB_TYPES = IE_CLASS_CONFIG__RENDER_SUB_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Render Super Types</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS_CONFIG__RENDER_SUPER_TYPES = IE_CLASS_CONFIG__RENDER_SUPER_TYPES;
+
+	/**
 	 * The feature id for the '<em><b>Render Bounds</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2001,6 +2136,24 @@ public interface ConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECLASS_CONFIG___SHOULD_REPEAT_INHERITED = IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED;
+
+	/**
+	 * The operation id for the '<em>Should Render Sub Types</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS_CONFIG___SHOULD_RENDER_SUB_TYPES = IE_CLASS_CONFIG___SHOULD_RENDER_SUB_TYPES;
+
+	/**
+	 * The operation id for the '<em>Should Render Super Types</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS_CONFIG___SHOULD_RENDER_SUPER_TYPES = IE_CLASS_CONFIG___SHOULD_RENDER_SUPER_TYPES;
 
 	/**
 	 * The operation id for the '<em>Should Render Bounds</em>' operation.
@@ -2669,6 +2822,28 @@ public interface ConfigPackage extends EPackage {
 	EAttribute getIEClassConfig_RepeatInherited();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.emf.ecoredoc.generator.config.IEClassConfig#isRenderSubTypes <em>Render Sub Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Render Sub Types</em>'.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.IEClassConfig#isRenderSubTypes()
+	 * @see #getIEClassConfig()
+	 * @generated
+	 */
+	EAttribute getIEClassConfig_RenderSubTypes();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.emf.ecoredoc.generator.config.IEClassConfig#isRenderSuperTypes <em>Render Super Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Render Super Types</em>'.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.IEClassConfig#isRenderSuperTypes()
+	 * @see #getIEClassConfig()
+	 * @generated
+	 */
+	EAttribute getIEClassConfig_RenderSuperTypes();
+
+	/**
 	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.IEClassConfig#shouldRepeatInherited() <em>Should Repeat Inherited</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2677,6 +2852,26 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getIEClassConfig__ShouldRepeatInherited();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.IEClassConfig#shouldRenderSubTypes() <em>Should Render Sub Types</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Should Render Sub Types</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.IEClassConfig#shouldRenderSubTypes()
+	 * @generated
+	 */
+	EOperation getIEClassConfig__ShouldRenderSubTypes();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.IEClassConfig#shouldRenderSuperTypes() <em>Should Render Super Types</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Should Render Super Types</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.IEClassConfig#shouldRenderSuperTypes()
+	 * @generated
+	 */
+	EOperation getIEClassConfig__ShouldRenderSuperTypes();
 
 	/**
 	 * Returns the meta object for class '{@link com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig <em>IE Structural Feature Config</em>}'.
@@ -2823,6 +3018,17 @@ public interface ConfigPackage extends EPackage {
 	EClass getEcoreDocGeneratorConfig();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getDocumentTitle <em>Document Title</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Document Title</em>'.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getDocumentTitle()
+	 * @see #getEcoreDocGeneratorConfig()
+	 * @generated
+	 */
+	EAttribute getEcoreDocGeneratorConfig_DocumentTitle();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEPackages <em>EPackages</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2872,6 +3078,26 @@ public interface ConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getEcoreDocGeneratorConfig__ShouldRepeatInherited();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRenderSubTypes() <em>Should Render Sub Types</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Should Render Sub Types</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRenderSubTypes()
+	 * @generated
+	 */
+	EOperation getEcoreDocGeneratorConfig__ShouldRenderSubTypes();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRenderSuperTypes() <em>Should Render Super Types</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Should Render Super Types</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRenderSuperTypes()
+	 * @generated
+	 */
+	EOperation getEcoreDocGeneratorConfig__ShouldRenderSuperTypes();
 
 	/**
 	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRenderBounds() <em>Should Render Bounds</em>}' operation.
@@ -3514,12 +3740,44 @@ public interface ConfigPackage extends EPackage {
 		EAttribute IE_CLASS_CONFIG__REPEAT_INHERITED = eINSTANCE.getIEClassConfig_RepeatInherited();
 
 		/**
+		 * The meta object literal for the '<em><b>Render Sub Types</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IE_CLASS_CONFIG__RENDER_SUB_TYPES = eINSTANCE.getIEClassConfig_RenderSubTypes();
+
+		/**
+		 * The meta object literal for the '<em><b>Render Super Types</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IE_CLASS_CONFIG__RENDER_SUPER_TYPES = eINSTANCE.getIEClassConfig_RenderSuperTypes();
+
+		/**
 		 * The meta object literal for the '<em><b>Should Repeat Inherited</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EOperation IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED = eINSTANCE.getIEClassConfig__ShouldRepeatInherited();
+
+		/**
+		 * The meta object literal for the '<em><b>Should Render Sub Types</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation IE_CLASS_CONFIG___SHOULD_RENDER_SUB_TYPES = eINSTANCE.getIEClassConfig__ShouldRenderSubTypes();
+
+		/**
+		 * The meta object literal for the '<em><b>Should Render Super Types</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation IE_CLASS_CONFIG___SHOULD_RENDER_SUPER_TYPES = eINSTANCE.getIEClassConfig__ShouldRenderSuperTypes();
 
 		/**
 		 * The meta object literal for the '{@link com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig <em>IE Structural Feature Config</em>}' class.
@@ -3646,6 +3904,14 @@ public interface ConfigPackage extends EPackage {
 		EClass ECORE_DOC_GENERATOR_CONFIG = eINSTANCE.getEcoreDocGeneratorConfig();
 
 		/**
+		 * The meta object literal for the '<em><b>Document Title</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE = eINSTANCE.getEcoreDocGeneratorConfig_DocumentTitle();
+
+		/**
 		 * The meta object literal for the '<em><b>EPackages</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3684,6 +3950,22 @@ public interface ConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED = eINSTANCE.getEcoreDocGeneratorConfig__ShouldRepeatInherited();
+
+		/**
+		 * The meta object literal for the '<em><b>Should Render Sub Types</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUB_TYPES = eINSTANCE.getEcoreDocGeneratorConfig__ShouldRenderSubTypes();
+
+		/**
+		 * The meta object literal for the '<em><b>Should Render Super Types</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUPER_TYPES = eINSTANCE.getEcoreDocGeneratorConfig__ShouldRenderSuperTypes();
 
 		/**
 		 * The meta object literal for the '<em><b>Should Render Bounds</b></em>' operation.

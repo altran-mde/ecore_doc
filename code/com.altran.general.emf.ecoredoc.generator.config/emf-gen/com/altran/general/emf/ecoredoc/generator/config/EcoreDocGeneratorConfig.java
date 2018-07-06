@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.ENamedElement;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * *
  * Root for the detailed EcoreDocGenerator configuration.
  * 
  * <p>
@@ -116,6 +115,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getDocumentTitle <em>Document Title</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEPackages <em>EPackages</em>}</li>
  * </ul>
  *
@@ -124,6 +124,35 @@ import org.eclipse.emf.ecore.ENamedElement;
  * @generated
  */
 public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig, IEClassConfig, IEAttributeConfig, IEReferenceConfig {
+	/**
+	 * Returns the value of the '<em><b>Document Title</b></em>' attribute.
+	 * The default value is <code>"Ecore Documentation"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Title of the generated document.
+	 * 
+	 * <p>defaults to <b>Ecore Documentation</b>.</p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Document Title</em>' attribute.
+	 * @see #setDocumentTitle(String)
+	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEcoreDocGeneratorConfig_DocumentTitle()
+	 * @model default="Ecore Documentation" unique="false"
+	 * @generated
+	 */
+	String getDocumentTitle();
+
+	/**
+	 * Sets the value of the '{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getDocumentTitle <em>Document Title</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Document Title</em>' attribute.
+	 * @see #getDocumentTitle()
+	 * @generated
+	 */
+	void setDocumentTitle(String value);
+
 	/**
 	 * Returns the value of the '<em><b>EPackages</b></em>' containment reference list.
 	 * The list contents are of type {@link com.altran.general.emf.ecoredoc.generator.config.EPackageConfig}.
@@ -144,7 +173,6 @@ public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Sets default for <tt>render = true</tt>.
 	 * <!-- end-model-doc -->
 	 * @model unique="false"
@@ -157,7 +185,6 @@ public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Sets default for <tt>renderDefaults = true</tt>.
 	 * <!-- end-model-doc -->
 	 * @model unique="false"
@@ -170,7 +197,6 @@ public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Sets default for <tt>renderUseCases = true</tt>.
 	 * <!-- end-model-doc -->
 	 * @model unique="false"
@@ -183,7 +209,6 @@ public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Sets default for <tt>repeatInherited = true</tt>.
 	 * <!-- end-model-doc -->
 	 * @model unique="false"
@@ -196,7 +221,30 @@ public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
+	 * Sets default for <tt>renderSubTypes = true</tt>.
+	 * <!-- end-model-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _xifexpression = false;\nboolean _isSetRenderSubTypes = this.isSetRenderSubTypes();\nif (_isSetRenderSubTypes)\n{\n\t_xifexpression = this.isRenderSubTypes();\n}\nelse\n{\n\t_xifexpression = true;\n}\nreturn _xifexpression;'"
+	 * @generated
+	 */
+	boolean shouldRenderSubTypes();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets default for <tt>RenderSuperTypes = true</tt>.
+	 * <!-- end-model-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _xifexpression = false;\nboolean _isSetRenderSuperTypes = this.isSetRenderSuperTypes();\nif (_isSetRenderSuperTypes)\n{\n\t_xifexpression = this.isRenderSuperTypes();\n}\nelse\n{\n\t_xifexpression = true;\n}\nreturn _xifexpression;'"
+	 * @generated
+	 */
+	boolean shouldRenderSuperTypes();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * Sets default for <tt>renderBounds = shouldRenderDefaults()</tt>.
 	 * <!-- end-model-doc -->
 	 * @model unique="false"
@@ -209,7 +257,6 @@ public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Sets default for <tt>positionEDataTypes = 1</tt>.
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" unique="false"
@@ -222,7 +269,6 @@ public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Sets default for <tt>positionEEnums = 2</tt>.
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" unique="false"
@@ -235,7 +281,6 @@ public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Sets default for <tt>positionEClasses = 3</tt>.
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" unique="false"
@@ -248,7 +293,6 @@ public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 * <!-- end-model-doc -->
 	 * @model ePackageConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EPackageConfig&gt;" ePackageConfigUnique="false" ePackageConfigMany="false"
@@ -261,7 +305,6 @@ public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Convenience method to map ENamedElement -> config.
 	 * <!-- end-model-doc -->
 	 * @model unique="false" elementUnique="false"

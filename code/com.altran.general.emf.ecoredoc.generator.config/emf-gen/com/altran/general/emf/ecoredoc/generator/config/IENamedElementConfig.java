@@ -32,7 +32,6 @@ public interface IENamedElementConfig extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Whether this element should be rendered at all.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Render</em>' attribute.
@@ -89,7 +88,6 @@ public interface IENamedElementConfig extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Enables proper merging in {@link com.altran.general.emf.ecoredoc.util.EcoreMerger}.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
@@ -104,7 +102,6 @@ public interface IENamedElementConfig extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Traverses the tree to find the most specific <tt>render</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model unique="false"
@@ -117,7 +114,6 @@ public interface IENamedElementConfig extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Link to the configured element.
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" unique="false"

@@ -103,7 +103,7 @@ class EcoreDocGenerator {
 			«newline»
 			:table-caption!:
 			«newline»
-			= Ecore Documentation
+			= «getConfig().documentTitle»
 			:toc:
 			:toclevels: 4
 		''')

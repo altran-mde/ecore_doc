@@ -472,7 +472,7 @@ non-volatile
 
 _EOpposite:_ `<<EPackage1-Class3-specialParent, specialParent>>`
 |_EKeys:_ `-` +
-**non-resolveProxies** +
+non-resolveProxies +
 non-container +
 `[1..*]` +
 _Default:_ `-` +
@@ -488,7 +488,7 @@ non-volatile
 |`otherClasses`[[EPackage1-MyEClass-otherClasses]]
 |`<<EPackage1-Class3, EPackage1.{zwsp}Class3>>`
 |_EKeys:_ `-` +
-**non-resolveProxies** +
+non-resolveProxies +
 non-container +
 `[0..*]` +
 _Default:_ `-` +

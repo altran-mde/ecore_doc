@@ -32,17 +32,22 @@ class EcoreDocExtension {
 		val CharSequence documentation = EcoreUtil.getDocumentation(modelElement)
 
 		if (documentation !== null) {
-			'''
-				«newline»
-				ifdef::backend-html5[]
-				++++
-				«documentation»
-				++++
-				endif::[]
-				ifndef::backend-html5[]
-				«documentation.toString.replaceAll("<[^>]+>", "")»
-				endif::[]
-			'''
+			val stripped = documentation.toString.replaceAll("<[^>]+>", "")
+			if (stripped == documentation) {
+				documentation + newline
+			} else {
+				'''
+					«newline»
+					ifdef::backend-html5[]
+					++++
+					«documentation»
+					++++
+					endif::[]
+					ifndef::backend-html5[]
+					«»
+					endif::[]
+				'''
+			}
 		} else {
 			""
 		}

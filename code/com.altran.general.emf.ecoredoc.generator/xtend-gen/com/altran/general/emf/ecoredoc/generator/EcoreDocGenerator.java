@@ -136,8 +136,10 @@ public class EcoreDocGenerator {
     String _newline_2 = EcoreDocExtension.newline();
     _builder.append(_newline_2);
     _builder.newLineIfNotEmpty();
-    _builder.append("= Ecore Documentation");
-    _builder.newLine();
+    _builder.append("= ");
+    String _documentTitle = this.getConfig().getDocumentTitle();
+    _builder.append(_documentTitle);
+    _builder.newLineIfNotEmpty();
     _builder.append(":toc:");
     _builder.newLine();
     _builder.append(":toclevels: 4");

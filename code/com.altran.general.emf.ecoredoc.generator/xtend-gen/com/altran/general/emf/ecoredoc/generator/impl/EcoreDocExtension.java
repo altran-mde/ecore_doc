@@ -33,6 +33,30 @@ public class EcoreDocExtension {
   
   public final static String ECLASSIFIER_PROPERTY_SEPARATOR = EcoreDocExtension.newline();
   
+  public final static Function1<EClassifier, String> eClassifierSorter = ((Function1<EClassifier, String>) (EClassifier it) -> {
+    String _elvis = null;
+    String _name = it.getEPackage().getName();
+    String _name_1 = it.getName();
+    String _plus = (_name + _name_1);
+    if (_plus != null) {
+      _elvis = _plus;
+    } else {
+      _elvis = "";
+    }
+    return _elvis;
+  });
+  
+  public final static Function1<EStructuralFeature, String> eStructuralFeatureSorter = ((Function1<EStructuralFeature, String>) (EStructuralFeature it) -> {
+    String _elvis = null;
+    String _name = it.getName();
+    if (_name != null) {
+      _elvis = _name;
+    } else {
+      _elvis = "";
+    }
+    return _elvis;
+  });
+  
   public static String newline() {
     return System.getProperty("line.separator");
   }
@@ -216,45 +240,15 @@ public class EcoreDocExtension {
     final Function1<EDataType, Boolean> _function = (EDataType it) -> {
       return Boolean.valueOf((!(it instanceof EEnum)));
     };
-    final Function1<EDataType, String> _function_1 = (EDataType it) -> {
-      String _elvis = null;
-      String _name = it.getName();
-      if (_name != null) {
-        _elvis = _name;
-      } else {
-        _elvis = "";
-      }
-      return _elvis;
-    };
-    return IterableExtensions.<EDataType, String>sortBy(IterableExtensions.<EDataType>filter(Iterables.<EDataType>filter(classifiers, EDataType.class), _function), _function_1);
+    return IterableExtensions.<EDataType, String>sortBy(IterableExtensions.<EDataType>filter(Iterables.<EDataType>filter(classifiers, EDataType.class), _function), EcoreDocExtension.eClassifierSorter);
   }
   
   public List<EEnum> collectEEnums(final Collection<EClassifier> classifiers) {
-    final Function1<EEnum, String> _function = (EEnum it) -> {
-      String _elvis = null;
-      String _name = it.getName();
-      if (_name != null) {
-        _elvis = _name;
-      } else {
-        _elvis = "";
-      }
-      return _elvis;
-    };
-    return IterableExtensions.<EEnum, String>sortBy(Iterables.<EEnum>filter(classifiers, EEnum.class), _function);
+    return IterableExtensions.<EEnum, String>sortBy(Iterables.<EEnum>filter(classifiers, EEnum.class), EcoreDocExtension.eClassifierSorter);
   }
   
   public List<EClass> collectEClasses(final Collection<EClassifier> classifiers) {
-    final Function1<EClass, String> _function = (EClass it) -> {
-      String _elvis = null;
-      String _name = it.getName();
-      if (_name != null) {
-        _elvis = _name;
-      } else {
-        _elvis = "";
-      }
-      return _elvis;
-    };
-    return IterableExtensions.<EClass, String>sortBy(Iterables.<EClass>filter(classifiers, EClass.class), _function);
+    return IterableExtensions.<EClass, String>sortBy(Iterables.<EClass>filter(classifiers, EClass.class), EcoreDocExtension.eClassifierSorter);
   }
   
   public CharSequence concatAnchor(final ENamedElement eDataType) {

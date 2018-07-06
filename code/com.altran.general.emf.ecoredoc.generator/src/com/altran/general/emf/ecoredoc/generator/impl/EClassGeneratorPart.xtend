@@ -175,7 +175,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		if (!subTypes.isEmpty) {
 			writeSubTypesHeader()
 
-			for (subType : subTypes) {
+			for (subType : subTypes.sortBy(EcoreDocExtension::eClassifierSorter)) {
 				writeType(new EClassConfigPair(subType, getConfig().findConfig(subType) as EClassConfig))
 			}
 		}
@@ -193,14 +193,14 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		if (superTypesExist) {
 			writeSuperTypesHeader()
 			
-			val sortedSuperTypes = superTypes.sortBy[it.name ?: ""]
+			val sortedSuperTypes = superTypes.sortBy(EcoreDocExtension::eClassifierSorter)
 
 			for (supertype : sortedSuperTypes) {
 				writeType(new EClassConfigPair(supertype, getConfig().findConfig(supertype) as EClassConfig))
 			}
 		}
 	}
-
+	
 	protected def void writeType(EClassConfigPair pair) {
 		if (!pair.config.shouldRender) {
 			return
@@ -299,12 +299,12 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		Collection<IEStructuralFeatureConfigPair<?,?>> inheritedEStructuralFeatures) {
 		
 		// Iterate through non inherited eStructuralFeatures.
-		for (entry: ownEStructuralFeatures.sortBy[it.element.name ?: ""]) {
+		for (entry: ownEStructuralFeatures.sortBy[EcoreDocExtension::eStructuralFeatureSorter.apply(element)]) {
 			writeRow(entry, eClass, false)
 		}
 
 		// Iterate through inherited eStructuralFeatures.
-		for (entry : inheritedEStructuralFeatures.sortBy[it.element.name ?: ""]) {
+		for (entry : inheritedEStructuralFeatures.sortBy[EcoreDocExtension::eStructuralFeatureSorter.apply(element)]) {
 			writeRow(entry, eClass, true)
 		}
 

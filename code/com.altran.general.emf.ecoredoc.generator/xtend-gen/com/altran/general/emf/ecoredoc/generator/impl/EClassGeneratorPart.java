@@ -235,7 +235,8 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     boolean _not = (!_isEmpty);
     if (_not) {
       this.writeSubTypesHeader();
-      for (final EClass subType : subTypes) {
+      List<EClass> _sortBy = IterableExtensions.<EClass, String>sortBy(subTypes, EcoreDocExtension.eClassifierSorter);
+      for (final EClass subType : _sortBy) {
         IENamedElementConfig _findConfig = this.getConfig().findConfig(subType);
         EClassConfigPair _eClassConfigPair = new EClassConfigPair(subType, ((EClassConfig) _findConfig));
         this.writeType(_eClassConfigPair);
@@ -254,17 +255,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
     final boolean superTypesExist = (!_isEmpty);
     if (superTypesExist) {
       this.writeSuperTypesHeader();
-      final Function1<EClass, String> _function_1 = (EClass it) -> {
-        String _elvis = null;
-        String _name = it.getName();
-        if (_name != null) {
-          _elvis = _name;
-        } else {
-          _elvis = "";
-        }
-        return _elvis;
-      };
-      final List<EClass> sortedSuperTypes = IterableExtensions.<EClass, String>sortBy(superTypes, _function_1);
+      final List<EClass> sortedSuperTypes = IterableExtensions.<EClass, String>sortBy(superTypes, EcoreDocExtension.eClassifierSorter);
       for (final EClass supertype : sortedSuperTypes) {
         IENamedElementConfig _findConfig = this.getConfig().findConfig(supertype);
         EClassConfigPair _eClassConfigPair = new EClassConfigPair(supertype, ((EClassConfig) _findConfig));
@@ -415,28 +406,14 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   
   protected void writeEStructuralFeatures(final Collection<IEStructuralFeatureConfigPair<?, ?>> ownEStructuralFeatures, final EClass eClass, final Collection<IEStructuralFeatureConfigPair<?, ?>> inheritedEStructuralFeatures) {
     final Function1<IEStructuralFeatureConfigPair<?, ?>, String> _function = (IEStructuralFeatureConfigPair<?, ?> it) -> {
-      String _elvis = null;
-      String _name = it.getElement().getName();
-      if (_name != null) {
-        _elvis = _name;
-      } else {
-        _elvis = "";
-      }
-      return _elvis;
+      return EcoreDocExtension.eStructuralFeatureSorter.apply(it.getElement());
     };
     List<IEStructuralFeatureConfigPair<?, ?>> _sortBy = IterableExtensions.<IEStructuralFeatureConfigPair<?, ?>, String>sortBy(ownEStructuralFeatures, _function);
     for (final IEStructuralFeatureConfigPair<?, ?> entry : _sortBy) {
       this.writeRow(entry, eClass, false);
     }
     final Function1<IEStructuralFeatureConfigPair<?, ?>, String> _function_1 = (IEStructuralFeatureConfigPair<?, ?> it) -> {
-      String _elvis = null;
-      String _name = it.getElement().getName();
-      if (_name != null) {
-        _elvis = _name;
-      } else {
-        _elvis = "";
-      }
-      return _elvis;
+      return EcoreDocExtension.eStructuralFeatureSorter.apply(it.getElement());
     };
     List<IEStructuralFeatureConfigPair<?, ?>> _sortBy_1 = IterableExtensions.<IEStructuralFeatureConfigPair<?, ?>, String>sortBy(inheritedEStructuralFeatures, _function_1);
     for (final IEStructuralFeatureConfigPair<?, ?> entry_1 : _sortBy_1) {

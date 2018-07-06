@@ -21,6 +21,9 @@ class EcoreDocExtension {
 	
 	public static val ECLASSIFIER_PROPERTY_SEPARATOR = newline
 	
+	public static val eClassifierSorter = [EClassifier it | it.EPackage.name + it.name ?: ""]
+	public static val eStructuralFeatureSorter = [EStructuralFeature it | it.name ?: ""]
+
 	def static String newline() {
 		System.getProperty("line.separator")
 	}
@@ -132,14 +135,14 @@ class EcoreDocExtension {
 	}
 
 	def List<EDataType> collectEDataTypes(Collection<EClassifier> classifiers) {
-		classifiers.filter(EDataType).filter[!(it instanceof EEnum)].sortBy[it.name ?: ""]
+		classifiers.filter(EDataType).filter[!(it instanceof EEnum)].sortBy(eClassifierSorter)
 	}
 	
 	def List<EEnum> collectEEnums(Collection<EClassifier> classifiers) {
-		classifiers.filter(EEnum).sortBy[it.name ?: ""]
+		classifiers.filter(EEnum).sortBy(eClassifierSorter)
 	}
 
 	def List<EClass> collectEClasses(Collection<EClassifier> classifiers) {
-		classifiers.filter(EClass).sortBy[it.name ?: ""]
+		classifiers.filter(EClass).sortBy(eClassifierSorter)
 	}
 }

@@ -2,9 +2,9 @@
  */
 package com.altran.general.emf.ecoredoc.generator.config.impl;
 
-import com.altran.general.emf.ecoredoc.generator.config.ConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig;
 
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -58,7 +58,7 @@ public class EReferenceConfigImpl extends AEReferenceConfigImpl implements ERefe
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ConfigPackage.Literals.EREFERENCE_CONFIG;
+		return EcoreDocConfigPackage.Literals.EREFERENCE_CONFIG;
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class EReferenceConfigImpl extends AEReferenceConfigImpl implements ERefe
 			targetEReference = (EReference)eResolveProxy(oldTargetEReference);
 			if (targetEReference != oldTargetEReference) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigPackage.EREFERENCE_CONFIG__TARGET_EREFERENCE, oldTargetEReference, targetEReference));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcoreDocConfigPackage.EREFERENCE_CONFIG__TARGET_EREFERENCE, oldTargetEReference, targetEReference));
 			}
 		}
 		return targetEReference;
@@ -96,7 +96,7 @@ public class EReferenceConfigImpl extends AEReferenceConfigImpl implements ERefe
 		EReference oldTargetEReference = targetEReference;
 		targetEReference = newTargetEReference;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EREFERENCE_CONFIG__TARGET_EREFERENCE, oldTargetEReference, targetEReference));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EREFERENCE_CONFIG__TARGET_EREFERENCE, oldTargetEReference, targetEReference));
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class EReferenceConfigImpl extends AEReferenceConfigImpl implements ERefe
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfigPackage.EREFERENCE_CONFIG__TARGET_EREFERENCE:
+			case EcoreDocConfigPackage.EREFERENCE_CONFIG__TARGET_EREFERENCE:
 				if (resolve) return getTargetEReference();
 				return basicGetTargetEReference();
 		}
@@ -131,7 +131,7 @@ public class EReferenceConfigImpl extends AEReferenceConfigImpl implements ERefe
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfigPackage.EREFERENCE_CONFIG__TARGET_EREFERENCE:
+			case EcoreDocConfigPackage.EREFERENCE_CONFIG__TARGET_EREFERENCE:
 				setTargetEReference((EReference)newValue);
 				return;
 		}
@@ -146,7 +146,7 @@ public class EReferenceConfigImpl extends AEReferenceConfigImpl implements ERefe
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.EREFERENCE_CONFIG__TARGET_EREFERENCE:
+			case EcoreDocConfigPackage.EREFERENCE_CONFIG__TARGET_EREFERENCE:
 				setTargetEReference((EReference)null);
 				return;
 		}
@@ -161,7 +161,7 @@ public class EReferenceConfigImpl extends AEReferenceConfigImpl implements ERefe
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.EREFERENCE_CONFIG__TARGET_EREFERENCE:
+			case EcoreDocConfigPackage.EREFERENCE_CONFIG__TARGET_EREFERENCE:
 				return targetEReference != null;
 		}
 		return super.eIsSet(featureID);
@@ -175,7 +175,7 @@ public class EReferenceConfigImpl extends AEReferenceConfigImpl implements ERefe
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ConfigPackage.EREFERENCE_CONFIG___GET_TARGET:
+			case EcoreDocConfigPackage.EREFERENCE_CONFIG___GET_TARGET:
 				return getTarget();
 		}
 		return super.eInvoke(operationID, arguments);

@@ -3,7 +3,7 @@
 package com.altran.general.emf.ecoredoc.generator.config.impl;
 
 import com.altran.general.emf.ecoredoc.generator.config.AEReferenceConfig;
-import com.altran.general.emf.ecoredoc.generator.config.ConfigPackage;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
@@ -149,7 +149,7 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ConfigPackage.Literals.AE_REFERENCE_CONFIG;
+		return EcoreDocConfigPackage.Literals.AE_REFERENCE_CONFIG;
 	}
 
 	/**
@@ -172,7 +172,7 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 		boolean oldRenderESet = renderESet;
 		renderESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.AE_REFERENCE_CONFIG__RENDER, oldRender, render, !oldRenderESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER, oldRender, render, !oldRenderESet));
 	}
 
 	/**
@@ -186,7 +186,7 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 		render = RENDER_EDEFAULT;
 		renderESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.AE_REFERENCE_CONFIG__RENDER, oldRender, RENDER_EDEFAULT, oldRenderESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER, oldRender, RENDER_EDEFAULT, oldRenderESet));
 	}
 
 	/**
@@ -232,7 +232,7 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 		boolean oldRenderDefaultsESet = renderDefaultsESet;
 		renderDefaultsESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, renderDefaults, !oldRenderDefaultsESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, renderDefaults, !oldRenderDefaultsESet));
 	}
 
 	/**
@@ -246,7 +246,7 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 		renderDefaults = RENDER_DEFAULTS_EDEFAULT;
 		renderDefaultsESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, RENDER_DEFAULTS_EDEFAULT, oldRenderDefaultsESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, RENDER_DEFAULTS_EDEFAULT, oldRenderDefaultsESet));
 	}
 
 	/**
@@ -278,7 +278,7 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 		boolean oldRenderBoundsESet = renderBoundsESet;
 		renderBoundsESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS, oldRenderBounds, renderBounds, !oldRenderBoundsESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS, oldRenderBounds, renderBounds, !oldRenderBoundsESet));
 	}
 
 	/**
@@ -292,7 +292,7 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 		renderBounds = RENDER_BOUNDS_EDEFAULT;
 		renderBoundsESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS, oldRenderBounds, RENDER_BOUNDS_EDEFAULT, oldRenderBoundsESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS, oldRenderBounds, RENDER_BOUNDS_EDEFAULT, oldRenderBoundsESet));
 	}
 
 	/**
@@ -385,13 +385,13 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER:
 				return isRender();
-			case ConfigPackage.AE_REFERENCE_CONFIG__ID:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG__ID:
 				return getId();
-			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS:
 				return isRenderDefaults();
-			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS:
 				return isRenderBounds();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -405,13 +405,13 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER:
 				setRender((Boolean)newValue);
 				return;
-			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS:
 				setRenderDefaults((Boolean)newValue);
 				return;
-			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS:
 				setRenderBounds((Boolean)newValue);
 				return;
 		}
@@ -426,13 +426,13 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER:
 				unsetRender();
 				return;
-			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS:
 				unsetRenderDefaults();
 				return;
-			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS:
 				unsetRenderBounds();
 				return;
 		}
@@ -447,13 +447,13 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER:
 				return isSetRender();
-			case ConfigPackage.AE_REFERENCE_CONFIG__ID:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG__ID:
 				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
-			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS:
 				return isSetRenderDefaults();
-			case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER_BOUNDS:
 				return isSetRenderBounds();
 		}
 		return super.eIsSet(featureID);
@@ -468,7 +468,7 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (derivedFeatureID) {
-				case ConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS: return ConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS;
+				case EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS: return EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS;
 				default: return -1;
 			}
 		}
@@ -484,7 +484,7 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (baseFeatureID) {
-				case ConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS: return ConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS;
+				case EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS: return EcoreDocConfigPackage.AE_REFERENCE_CONFIG__RENDER_DEFAULTS;
 				default: return -1;
 			}
 		}
@@ -500,7 +500,7 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (baseOperationID) {
-				case ConfigPackage.IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS: return ConfigPackage.AE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS;
+				case EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS: return EcoreDocConfigPackage.AE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS;
 				default: return -1;
 			}
 		}
@@ -515,13 +515,13 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ConfigPackage.AE_REFERENCE_CONFIG___SHOULD_RENDER_BOUNDS:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG___SHOULD_RENDER_BOUNDS:
 				return shouldRenderBounds();
-			case ConfigPackage.AE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG___SHOULD_RENDER_DEFAULTS:
 				return shouldRenderDefaults();
-			case ConfigPackage.AE_REFERENCE_CONFIG___SHOULD_RENDER:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG___SHOULD_RENDER:
 				return shouldRender();
-			case ConfigPackage.AE_REFERENCE_CONFIG___GET_TARGET:
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG___GET_TARGET:
 				return getTarget();
 		}
 		return super.eInvoke(operationID, arguments);

@@ -17,7 +17,7 @@ package com.altran.general.emf.ecoredoc.generator.config;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.IEClassConfig#isRenderSuperTypes <em>Render Super Types</em>}</li>
  * </ul>
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIEClassConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIEClassConfig()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -46,7 +46,7 @@ public interface IEClassConfig extends IEClassifierConfig {
 	 * @see #isSetRepeatInherited()
 	 * @see #unsetRepeatInherited()
 	 * @see #setRepeatInherited(boolean)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIEClassConfig_RepeatInherited()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIEClassConfig_RepeatInherited()
 	 * @model unique="false" unsettable="true"
 	 * @generated
 	 */
@@ -98,7 +98,7 @@ public interface IEClassConfig extends IEClassifierConfig {
 	 * @see #isSetRenderSubTypes()
 	 * @see #unsetRenderSubTypes()
 	 * @see #setRenderSubTypes(boolean)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIEClassConfig_RenderSubTypes()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIEClassConfig_RenderSubTypes()
 	 * @model unique="false" unsettable="true"
 	 * @generated
 	 */
@@ -150,7 +150,7 @@ public interface IEClassConfig extends IEClassifierConfig {
 	 * @see #isSetRenderSuperTypes()
 	 * @see #unsetRenderSuperTypes()
 	 * @see #setRenderSuperTypes(boolean)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIEClassConfig_RenderSuperTypes()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIEClassConfig_RenderSuperTypes()
 	 * @model unique="false" unsettable="true"
 	 * @generated
 	 */

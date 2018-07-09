@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EPackage;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EPackageConfig#getEClasses <em>EClasses</em>}</li>
  * </ul>
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEPackageConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEPackageConfig()
  * @model
  * @generated
  */
@@ -37,7 +37,7 @@ public interface EPackageConfig extends IEPackageConfig, IEEnumConfig, IEEnumLit
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target EPackage</em>' reference.
 	 * @see #setTargetEPackage(EPackage)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEPackageConfig_TargetEPackage()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEPackageConfig_TargetEPackage()
 	 * @model
 	 * @generated
 	 */
@@ -63,7 +63,7 @@ public interface EPackageConfig extends IEPackageConfig, IEEnumConfig, IEEnumLit
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>EData Types</em>' containment reference list.
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEPackageConfig_EDataTypes()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEPackageConfig_EDataTypes()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -79,7 +79,7 @@ public interface EPackageConfig extends IEPackageConfig, IEEnumConfig, IEEnumLit
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>EEnums</em>' containment reference list.
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEPackageConfig_EEnums()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEPackageConfig_EEnums()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -95,7 +95,7 @@ public interface EPackageConfig extends IEPackageConfig, IEEnumConfig, IEEnumLit
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>EClasses</em>' containment reference list.
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEPackageConfig_EClasses()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEPackageConfig_EClasses()
 	 * @model containment="true"
 	 * @generated
 	 */

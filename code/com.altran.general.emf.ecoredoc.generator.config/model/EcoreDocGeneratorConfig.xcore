@@ -3,6 +3,7 @@
 	nsPrefix="EcoreDocConfigNs"
 )
 @GenModel(
+	prefix="EcoreDocConfig",
 	modelDirectory="/com.altran.general.emf.ecoredoc.generator.config/emf-gen",
 	bundleManifest="false",
 	modelPluginID="",

@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfig#getTargetEDataType <em>Target EData Type</em>}</li>
  * </ul>
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEDataTypeConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEDataTypeConfig()
  * @model
  * @generated
  */
@@ -32,7 +32,7 @@ public interface EDataTypeConfig extends IEDataTypeConfig {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target EData Type</em>' reference.
 	 * @see #setTargetEDataType(EDataType)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEDataTypeConfig_TargetEDataType()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEDataTypeConfig_TargetEDataType()
 	 * @model
 	 * @generated
 	 */

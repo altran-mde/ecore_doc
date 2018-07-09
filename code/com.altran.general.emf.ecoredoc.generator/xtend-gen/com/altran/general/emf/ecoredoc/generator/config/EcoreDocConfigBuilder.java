@@ -1,7 +1,5 @@
 package com.altran.general.emf.ecoredoc.generator.config;
 
-import com.altran.general.emf.ecoredoc.generator.config.ConfigFactory;
-import com.altran.general.emf.ecoredoc.generator.config.ConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EClassConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig;
@@ -10,6 +8,8 @@ import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EPackageConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigFactory;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
@@ -44,7 +44,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 @SuppressWarnings("all")
 public class EcoreDocConfigBuilder {
   @Extension
-  private ConfigFactory config = ConfigFactory.eINSTANCE;
+  private EcoreDocConfigFactory config = EcoreDocConfigFactory.eINSTANCE;
   
   @Extension
   private EcoreDocExtension _ecoreDocExtension = new EcoreDocExtension();
@@ -188,7 +188,7 @@ public class EcoreDocConfigBuilder {
   public <T extends IENamedElementConfig> T parseAnnotations(final T config) {
     final Function1<EAnnotation, Boolean> _function = (EAnnotation it) -> {
       String _source = it.getSource();
-      String _nsURI = ConfigPackage.eINSTANCE.getNsURI();
+      String _nsURI = EcoreDocConfigPackage.eINSTANCE.getNsURI();
       return Boolean.valueOf(Objects.equal(_source, _nsURI));
     };
     final Function1<EAnnotation, EMap<String, String>> _function_1 = (EAnnotation it) -> {

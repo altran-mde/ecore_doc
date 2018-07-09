@@ -18,24 +18,24 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
+public class EcoreDocConfigFactoryImpl extends EFactoryImpl implements EcoreDocConfigFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static ConfigFactory init() {
+	public static EcoreDocConfigFactory init() {
 		try {
-			ConfigFactory theConfigFactory = (ConfigFactory)EPackage.Registry.INSTANCE.getEFactory(ConfigPackage.eNS_URI);
-			if (theConfigFactory != null) {
-				return theConfigFactory;
+			EcoreDocConfigFactory theEcoreDocConfigFactory = (EcoreDocConfigFactory)EPackage.Registry.INSTANCE.getEFactory(EcoreDocConfigPackage.eNS_URI);
+			if (theEcoreDocConfigFactory != null) {
+				return theEcoreDocConfigFactory;
 			}
 		}
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new ConfigFactoryImpl();
+		return new EcoreDocConfigFactoryImpl();
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConfigFactoryImpl() {
+	public EcoreDocConfigFactoryImpl() {
 		super();
 	}
 
@@ -56,15 +56,15 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG: return createEcoreDocGeneratorConfig();
-			case ConfigPackage.EPACKAGE_CONFIG: return createEPackageConfig();
-			case ConfigPackage.EDATA_TYPE_CONFIG: return createEDataTypeConfig();
-			case ConfigPackage.EENUM_CONFIG: return createEEnumConfig();
-			case ConfigPackage.EENUM_LITERAL_CONFIG: return createEEnumLiteralConfig();
-			case ConfigPackage.ECLASS_CONFIG: return createEClassConfig();
-			case ConfigPackage.EATTRIBUTE_CONFIG: return createEAttributeConfig();
-			case ConfigPackage.ECONTAINMENT_CONFIG: return createEContainmentConfig();
-			case ConfigPackage.EREFERENCE_CONFIG: return createEReferenceConfig();
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG: return createEcoreDocGeneratorConfig();
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG: return createEPackageConfig();
+			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG: return createEDataTypeConfig();
+			case EcoreDocConfigPackage.EENUM_CONFIG: return createEEnumConfig();
+			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG: return createEEnumLiteralConfig();
+			case EcoreDocConfigPackage.ECLASS_CONFIG: return createEClassConfig();
+			case EcoreDocConfigPackage.EATTRIBUTE_CONFIG: return createEAttributeConfig();
+			case EcoreDocConfigPackage.ECONTAINMENT_CONFIG: return createEContainmentConfig();
+			case EcoreDocConfigPackage.EREFERENCE_CONFIG: return createEReferenceConfig();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -165,8 +165,8 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConfigPackage getConfigPackage() {
-		return (ConfigPackage)getEPackage();
+	public EcoreDocConfigPackage getEcoreDocConfigPackage() {
+		return (EcoreDocConfigPackage)getEPackage();
 	}
 
 	/**
@@ -176,8 +176,8 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	 * @generated
 	 */
 	@Deprecated
-	public static ConfigPackage getPackage() {
-		return ConfigPackage.eINSTANCE;
+	public static EcoreDocConfigPackage getPackage() {
+		return EcoreDocConfigPackage.eINSTANCE;
 	}
 
-} //ConfigFactoryImpl
+} //EcoreDocConfigFactoryImpl

@@ -2,11 +2,11 @@
  */
 package com.altran.general.emf.ecoredoc.generator.config.impl;
 
-import com.altran.general.emf.ecoredoc.generator.config.ConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.EClassConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EPackageConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEAttributeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEClassConfig;
@@ -426,7 +426,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ConfigPackage.Literals.EPACKAGE_CONFIG;
+		return EcoreDocConfigPackage.Literals.EPACKAGE_CONFIG;
 	}
 
 	/**
@@ -449,7 +449,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		boolean oldRenderESet = renderESet;
 		renderESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__RENDER, oldRender, render, !oldRenderESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER, oldRender, render, !oldRenderESet));
 	}
 
 	/**
@@ -463,7 +463,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		render = RENDER_EDEFAULT;
 		renderESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__RENDER, oldRender, RENDER_EDEFAULT, oldRenderESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER, oldRender, RENDER_EDEFAULT, oldRenderESet));
 	}
 
 	/**
@@ -509,7 +509,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		boolean oldPositionEDataTypesESet = positionEDataTypesESet;
 		positionEDataTypesESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES, oldPositionEDataTypes, positionEDataTypes, !oldPositionEDataTypesESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES, oldPositionEDataTypes, positionEDataTypes, !oldPositionEDataTypesESet));
 	}
 
 	/**
@@ -523,7 +523,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		positionEDataTypes = POSITION_EDATA_TYPES_EDEFAULT;
 		positionEDataTypesESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES, oldPositionEDataTypes, POSITION_EDATA_TYPES_EDEFAULT, oldPositionEDataTypesESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES, oldPositionEDataTypes, POSITION_EDATA_TYPES_EDEFAULT, oldPositionEDataTypesESet));
 	}
 
 	/**
@@ -555,7 +555,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		boolean oldPositionEEnumsESet = positionEEnumsESet;
 		positionEEnumsESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS, oldPositionEEnums, positionEEnums, !oldPositionEEnumsESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS, oldPositionEEnums, positionEEnums, !oldPositionEEnumsESet));
 	}
 
 	/**
@@ -569,7 +569,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		positionEEnums = POSITION_EENUMS_EDEFAULT;
 		positionEEnumsESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS, oldPositionEEnums, POSITION_EENUMS_EDEFAULT, oldPositionEEnumsESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS, oldPositionEEnums, POSITION_EENUMS_EDEFAULT, oldPositionEEnumsESet));
 	}
 
 	/**
@@ -601,7 +601,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		boolean oldPositionEClassesESet = positionEClassesESet;
 		positionEClassesESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES, oldPositionEClasses, positionEClasses, !oldPositionEClassesESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES, oldPositionEClasses, positionEClasses, !oldPositionEClassesESet));
 	}
 
 	/**
@@ -615,7 +615,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		positionEClasses = POSITION_ECLASSES_EDEFAULT;
 		positionEClassesESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES, oldPositionEClasses, POSITION_ECLASSES_EDEFAULT, oldPositionEClassesESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES, oldPositionEClasses, POSITION_ECLASSES_EDEFAULT, oldPositionEClassesESet));
 	}
 
 	/**
@@ -647,7 +647,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		boolean oldRenderDefaultsESet = renderDefaultsESet;
 		renderDefaultsESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, renderDefaults, !oldRenderDefaultsESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, renderDefaults, !oldRenderDefaultsESet));
 	}
 
 	/**
@@ -661,7 +661,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		renderDefaults = RENDER_DEFAULTS_EDEFAULT;
 		renderDefaultsESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, RENDER_DEFAULTS_EDEFAULT, oldRenderDefaultsESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, RENDER_DEFAULTS_EDEFAULT, oldRenderDefaultsESet));
 	}
 
 	/**
@@ -693,7 +693,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		boolean oldRenderUseCasesESet = renderUseCasesESet;
 		renderUseCasesESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES, oldRenderUseCases, renderUseCases, !oldRenderUseCasesESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES, oldRenderUseCases, renderUseCases, !oldRenderUseCasesESet));
 	}
 
 	/**
@@ -707,7 +707,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		renderUseCases = RENDER_USE_CASES_EDEFAULT;
 		renderUseCasesESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES, oldRenderUseCases, RENDER_USE_CASES_EDEFAULT, oldRenderUseCasesESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES, oldRenderUseCases, RENDER_USE_CASES_EDEFAULT, oldRenderUseCasesESet));
 	}
 
 	/**
@@ -739,7 +739,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		boolean oldRepeatInheritedESet = repeatInheritedESet;
 		repeatInheritedESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED, oldRepeatInherited, repeatInherited, !oldRepeatInheritedESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED, oldRepeatInherited, repeatInherited, !oldRepeatInheritedESet));
 	}
 
 	/**
@@ -753,7 +753,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		repeatInherited = REPEAT_INHERITED_EDEFAULT;
 		repeatInheritedESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED, oldRepeatInherited, REPEAT_INHERITED_EDEFAULT, oldRepeatInheritedESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED, oldRepeatInherited, REPEAT_INHERITED_EDEFAULT, oldRepeatInheritedESet));
 	}
 
 	/**
@@ -785,7 +785,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		boolean oldRenderSubTypesESet = renderSubTypesESet;
 		renderSubTypesESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES, oldRenderSubTypes, renderSubTypes, !oldRenderSubTypesESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES, oldRenderSubTypes, renderSubTypes, !oldRenderSubTypesESet));
 	}
 
 	/**
@@ -799,7 +799,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		renderSubTypes = RENDER_SUB_TYPES_EDEFAULT;
 		renderSubTypesESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES, oldRenderSubTypes, RENDER_SUB_TYPES_EDEFAULT, oldRenderSubTypesESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES, oldRenderSubTypes, RENDER_SUB_TYPES_EDEFAULT, oldRenderSubTypesESet));
 	}
 
 	/**
@@ -831,7 +831,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		boolean oldRenderSuperTypesESet = renderSuperTypesESet;
 		renderSuperTypesESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES, oldRenderSuperTypes, renderSuperTypes, !oldRenderSuperTypesESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES, oldRenderSuperTypes, renderSuperTypes, !oldRenderSuperTypesESet));
 	}
 
 	/**
@@ -845,7 +845,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		renderSuperTypes = RENDER_SUPER_TYPES_EDEFAULT;
 		renderSuperTypesESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES, oldRenderSuperTypes, RENDER_SUPER_TYPES_EDEFAULT, oldRenderSuperTypesESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES, oldRenderSuperTypes, RENDER_SUPER_TYPES_EDEFAULT, oldRenderSuperTypesESet));
 	}
 
 	/**
@@ -877,7 +877,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		boolean oldRenderBoundsESet = renderBoundsESet;
 		renderBoundsESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS, oldRenderBounds, renderBounds, !oldRenderBoundsESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS, oldRenderBounds, renderBounds, !oldRenderBoundsESet));
 	}
 
 	/**
@@ -891,7 +891,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		renderBounds = RENDER_BOUNDS_EDEFAULT;
 		renderBoundsESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS, oldRenderBounds, RENDER_BOUNDS_EDEFAULT, oldRenderBoundsESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS, oldRenderBounds, RENDER_BOUNDS_EDEFAULT, oldRenderBoundsESet));
 	}
 
 	/**
@@ -914,7 +914,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 			targetEPackage = (EPackage)eResolveProxy(oldTargetEPackage);
 			if (targetEPackage != oldTargetEPackage) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE, oldTargetEPackage, targetEPackage));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcoreDocConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE, oldTargetEPackage, targetEPackage));
 			}
 		}
 		return targetEPackage;
@@ -938,7 +938,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		EPackage oldTargetEPackage = targetEPackage;
 		targetEPackage = newTargetEPackage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE, oldTargetEPackage, targetEPackage));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE, oldTargetEPackage, targetEPackage));
 	}
 
 	/**
@@ -948,7 +948,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	public EList<EDataTypeConfig> getEDataTypes() {
 		if (eDataTypes == null) {
-			eDataTypes = new EObjectContainmentEList<EDataTypeConfig>(EDataTypeConfig.class, this, ConfigPackage.EPACKAGE_CONFIG__EDATA_TYPES);
+			eDataTypes = new EObjectContainmentEList<EDataTypeConfig>(EDataTypeConfig.class, this, EcoreDocConfigPackage.EPACKAGE_CONFIG__EDATA_TYPES);
 		}
 		return eDataTypes;
 	}
@@ -960,7 +960,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	public EList<EEnumConfig> getEEnums() {
 		if (eEnums == null) {
-			eEnums = new EObjectContainmentEList<EEnumConfig>(EEnumConfig.class, this, ConfigPackage.EPACKAGE_CONFIG__EENUMS);
+			eEnums = new EObjectContainmentEList<EEnumConfig>(EEnumConfig.class, this, EcoreDocConfigPackage.EPACKAGE_CONFIG__EENUMS);
 		}
 		return eEnums;
 	}
@@ -972,7 +972,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	public EList<EClassConfig> getEClasses() {
 		if (eClasses == null) {
-			eClasses = new EObjectContainmentEList<EClassConfig>(EClassConfig.class, this, ConfigPackage.EPACKAGE_CONFIG__ECLASSES);
+			eClasses = new EObjectContainmentEList<EClassConfig>(EClassConfig.class, this, EcoreDocConfigPackage.EPACKAGE_CONFIG__ECLASSES);
 		}
 		return eClasses;
 	}
@@ -1212,11 +1212,11 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ConfigPackage.EPACKAGE_CONFIG__EDATA_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__EDATA_TYPES:
 				return ((InternalEList<?>)getEDataTypes()).basicRemove(otherEnd, msgs);
-			case ConfigPackage.EPACKAGE_CONFIG__EENUMS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__EENUMS:
 				return ((InternalEList<?>)getEEnums()).basicRemove(otherEnd, msgs);
-			case ConfigPackage.EPACKAGE_CONFIG__ECLASSES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__ECLASSES:
 				return ((InternalEList<?>)getEClasses()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -1230,36 +1230,36 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER:
 				return isRender();
-			case ConfigPackage.EPACKAGE_CONFIG__ID:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__ID:
 				return getId();
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
 				return getPositionEDataTypes();
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
 				return getPositionEEnums();
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
 				return getPositionEClasses();
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
 				return isRenderDefaults();
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES:
 				return isRenderUseCases();
-			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
 				return isRepeatInherited();
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES:
 				return isRenderSubTypes();
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES:
 				return isRenderSuperTypes();
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
 				return isRenderBounds();
-			case ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
 				if (resolve) return getTargetEPackage();
 				return basicGetTargetEPackage();
-			case ConfigPackage.EPACKAGE_CONFIG__EDATA_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__EDATA_TYPES:
 				return getEDataTypes();
-			case ConfigPackage.EPACKAGE_CONFIG__EENUMS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__EENUMS:
 				return getEEnums();
-			case ConfigPackage.EPACKAGE_CONFIG__ECLASSES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__ECLASSES:
 				return getEClasses();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -1274,48 +1274,48 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER:
 				setRender((Boolean)newValue);
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
 				setPositionEDataTypes((Integer)newValue);
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
 				setPositionEEnums((Integer)newValue);
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
 				setPositionEClasses((Integer)newValue);
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
 				setRenderDefaults((Boolean)newValue);
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES:
 				setRenderUseCases((Boolean)newValue);
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
 				setRepeatInherited((Boolean)newValue);
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES:
 				setRenderSubTypes((Boolean)newValue);
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES:
 				setRenderSuperTypes((Boolean)newValue);
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
 				setRenderBounds((Boolean)newValue);
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
 				setTargetEPackage((EPackage)newValue);
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__EDATA_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__EDATA_TYPES:
 				getEDataTypes().clear();
 				getEDataTypes().addAll((Collection<? extends EDataTypeConfig>)newValue);
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__EENUMS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__EENUMS:
 				getEEnums().clear();
 				getEEnums().addAll((Collection<? extends EEnumConfig>)newValue);
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__ECLASSES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__ECLASSES:
 				getEClasses().clear();
 				getEClasses().addAll((Collection<? extends EClassConfig>)newValue);
 				return;
@@ -1331,46 +1331,46 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER:
 				unsetRender();
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
 				unsetPositionEDataTypes();
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
 				unsetPositionEEnums();
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
 				unsetPositionEClasses();
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
 				unsetRenderDefaults();
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES:
 				unsetRenderUseCases();
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
 				unsetRepeatInherited();
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES:
 				unsetRenderSubTypes();
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES:
 				unsetRenderSuperTypes();
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
 				unsetRenderBounds();
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
 				setTargetEPackage((EPackage)null);
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__EDATA_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__EDATA_TYPES:
 				getEDataTypes().clear();
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__EENUMS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__EENUMS:
 				getEEnums().clear();
 				return;
-			case ConfigPackage.EPACKAGE_CONFIG__ECLASSES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__ECLASSES:
 				getEClasses().clear();
 				return;
 		}
@@ -1385,35 +1385,35 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER:
 				return isSetRender();
-			case ConfigPackage.EPACKAGE_CONFIG__ID:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__ID:
 				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
 				return isSetPositionEDataTypes();
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
 				return isSetPositionEEnums();
-			case ConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_ECLASSES:
 				return isSetPositionEClasses();
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS:
 				return isSetRenderDefaults();
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES:
 				return isSetRenderUseCases();
-			case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED:
 				return isSetRepeatInherited();
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES:
 				return isSetRenderSubTypes();
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES:
 				return isSetRenderSuperTypes();
-			case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS:
 				return isSetRenderBounds();
-			case ConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__TARGET_EPACKAGE:
 				return targetEPackage != null;
-			case ConfigPackage.EPACKAGE_CONFIG__EDATA_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__EDATA_TYPES:
 				return eDataTypes != null && !eDataTypes.isEmpty();
-			case ConfigPackage.EPACKAGE_CONFIG__EENUMS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__EENUMS:
 				return eEnums != null && !eEnums.isEmpty();
-			case ConfigPackage.EPACKAGE_CONFIG__ECLASSES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__ECLASSES:
 				return eClasses != null && !eClasses.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -1428,13 +1428,13 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (derivedFeatureID) {
-				case ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS: return ConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS;
+				case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS: return EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS;
 				default: return -1;
 			}
 		}
 		if (baseClass == IEClassifierConfig.class) {
 			switch (derivedFeatureID) {
-				case ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES: return ConfigPackage.IE_CLASSIFIER_CONFIG__RENDER_USE_CASES;
+				case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES: return EcoreDocConfigPackage.IE_CLASSIFIER_CONFIG__RENDER_USE_CASES;
 				default: return -1;
 			}
 		}
@@ -1455,15 +1455,15 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		}
 		if (baseClass == IEClassConfig.class) {
 			switch (derivedFeatureID) {
-				case ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED: return ConfigPackage.IE_CLASS_CONFIG__REPEAT_INHERITED;
-				case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES: return ConfigPackage.IE_CLASS_CONFIG__RENDER_SUB_TYPES;
-				case ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES: return ConfigPackage.IE_CLASS_CONFIG__RENDER_SUPER_TYPES;
+				case EcoreDocConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED: return EcoreDocConfigPackage.IE_CLASS_CONFIG__REPEAT_INHERITED;
+				case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES: return EcoreDocConfigPackage.IE_CLASS_CONFIG__RENDER_SUB_TYPES;
+				case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES: return EcoreDocConfigPackage.IE_CLASS_CONFIG__RENDER_SUPER_TYPES;
 				default: return -1;
 			}
 		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (derivedFeatureID) {
-				case ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS: return ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS;
+				case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS: return EcoreDocConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -1489,13 +1489,13 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (baseFeatureID) {
-				case ConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS: return ConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS;
+				case EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS: return EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS;
 				default: return -1;
 			}
 		}
 		if (baseClass == IEClassifierConfig.class) {
 			switch (baseFeatureID) {
-				case ConfigPackage.IE_CLASSIFIER_CONFIG__RENDER_USE_CASES: return ConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES;
+				case EcoreDocConfigPackage.IE_CLASSIFIER_CONFIG__RENDER_USE_CASES: return EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_USE_CASES;
 				default: return -1;
 			}
 		}
@@ -1516,15 +1516,15 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		}
 		if (baseClass == IEClassConfig.class) {
 			switch (baseFeatureID) {
-				case ConfigPackage.IE_CLASS_CONFIG__REPEAT_INHERITED: return ConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED;
-				case ConfigPackage.IE_CLASS_CONFIG__RENDER_SUB_TYPES: return ConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES;
-				case ConfigPackage.IE_CLASS_CONFIG__RENDER_SUPER_TYPES: return ConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES;
+				case EcoreDocConfigPackage.IE_CLASS_CONFIG__REPEAT_INHERITED: return EcoreDocConfigPackage.EPACKAGE_CONFIG__REPEAT_INHERITED;
+				case EcoreDocConfigPackage.IE_CLASS_CONFIG__RENDER_SUB_TYPES: return EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUB_TYPES;
+				case EcoreDocConfigPackage.IE_CLASS_CONFIG__RENDER_SUPER_TYPES: return EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_SUPER_TYPES;
 				default: return -1;
 			}
 		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (baseFeatureID) {
-				case ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS: return ConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS;
+				case EcoreDocConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS: return EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -1550,13 +1550,13 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (baseOperationID) {
-				case ConfigPackage.IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS: return ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_DEFAULTS;
+				case EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS: return EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_DEFAULTS;
 				default: return -1;
 			}
 		}
 		if (baseClass == IEClassifierConfig.class) {
 			switch (baseOperationID) {
-				case ConfigPackage.IE_CLASSIFIER_CONFIG___SHOULD_RENDER_USE_CASES: return ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_USE_CASES;
+				case EcoreDocConfigPackage.IE_CLASSIFIER_CONFIG___SHOULD_RENDER_USE_CASES: return EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_USE_CASES;
 				default: return -1;
 			}
 		}
@@ -1577,15 +1577,15 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		}
 		if (baseClass == IEClassConfig.class) {
 			switch (baseOperationID) {
-				case ConfigPackage.IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED: return ConfigPackage.EPACKAGE_CONFIG___SHOULD_REPEAT_INHERITED;
-				case ConfigPackage.IE_CLASS_CONFIG___SHOULD_RENDER_SUB_TYPES: return ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_SUB_TYPES;
-				case ConfigPackage.IE_CLASS_CONFIG___SHOULD_RENDER_SUPER_TYPES: return ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_SUPER_TYPES;
+				case EcoreDocConfigPackage.IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED: return EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_REPEAT_INHERITED;
+				case EcoreDocConfigPackage.IE_CLASS_CONFIG___SHOULD_RENDER_SUB_TYPES: return EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_SUB_TYPES;
+				case EcoreDocConfigPackage.IE_CLASS_CONFIG___SHOULD_RENDER_SUPER_TYPES: return EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_SUPER_TYPES;
 				default: return -1;
 			}
 		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (baseOperationID) {
-				case ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_BOUNDS: return ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_BOUNDS;
+				case EcoreDocConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_BOUNDS: return EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -1611,36 +1611,36 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ConfigPackage.EPACKAGE_CONFIG___GET_TARGET:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG___GET_TARGET:
 				return getTarget();
-			case ConfigPackage.EPACKAGE_CONFIG___ADD_EDATA_TYPES__LIST:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG___ADD_EDATA_TYPES__LIST:
 				addEDataTypes((List<EDataTypeConfig>)arguments.get(0));
 				return null;
-			case ConfigPackage.EPACKAGE_CONFIG___ADD_EENUMS__LIST:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG___ADD_EENUMS__LIST:
 				addEEnums((List<EEnumConfig>)arguments.get(0));
 				return null;
-			case ConfigPackage.EPACKAGE_CONFIG___ADD_ECLASSES__LIST:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG___ADD_ECLASSES__LIST:
 				addEClasses((List<EClassConfig>)arguments.get(0));
 				return null;
-			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_BOUNDS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_BOUNDS:
 				return shouldRenderBounds();
-			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_REPEAT_INHERITED:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_REPEAT_INHERITED:
 				return shouldRepeatInherited();
-			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_SUB_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_SUB_TYPES:
 				return shouldRenderSubTypes();
-			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_SUPER_TYPES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_SUPER_TYPES:
 				return shouldRenderSuperTypes();
-			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_USE_CASES:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_USE_CASES:
 				return shouldRenderUseCases();
-			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_DEFAULTS:
 				return shouldRenderDefaults();
-			case ConfigPackage.EPACKAGE_CONFIG___GET_EDATA_TYPES_POSITION:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG___GET_EDATA_TYPES_POSITION:
 				return getEDataTypesPosition();
-			case ConfigPackage.EPACKAGE_CONFIG___GET_EENUMS_POSITION:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG___GET_EENUMS_POSITION:
 				return getEEnumsPosition();
-			case ConfigPackage.EPACKAGE_CONFIG___GET_ECLASSES_POSITION:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG___GET_ECLASSES_POSITION:
 				return getEClassesPosition();
-			case ConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER:
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER:
 				return shouldRender();
 		}
 		return super.eInvoke(operationID, arguments);

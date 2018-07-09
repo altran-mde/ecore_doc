@@ -20,13 +20,13 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigFactory
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/com.altran.general.emf.ecoredoc.generator.config/emf-gen' bundleManifest='false' modelPluginID='' modelPluginVariables='' updateClasspath='false' basePackage='com.altran.general.emf.ecoredoc.generator'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel prefix='EcoreDocConfig' modelDirectory='/com.altran.general.emf.ecoredoc.generator.config/emf-gen' bundleManifest='false' modelPluginID='' modelPluginVariables='' updateClasspath='false' basePackage='com.altran.general.emf.ecoredoc.generator'"
  *        annotation="http://www.eclipse.org/emf/2011/Xcore Ecore='http://www.eclipse.org/emf/2002/Ecore' GenModel='http://www.eclipse.org/emf/2002/GenModel' EcoreDoc='http://altran.com/general/emf/ecoredoc/generator/config/0.1'"
  * @generated
  */
-public interface ConfigPackage extends EPackage {
+public interface EcoreDocConfigPackage extends EPackage {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
@@ -57,24 +57,14 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ConfigPackage eINSTANCE = com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl.init();
-
-	/**
-	 * The meta object id for the '{@link java.util.List <em>List</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.util.List
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getList()
-	 * @generated
-	 */
-	int LIST = 21;
+	EcoreDocConfigPackage eINSTANCE = com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig <em>IE Named Element Config</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIENamedElementConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIENamedElementConfig()
 	 * @generated
 	 */
 	int IE_NAMED_ELEMENT_CONFIG = 0;
@@ -138,7 +128,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIDefaultValueConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIDefaultValueConfig()
 	 * @generated
 	 */
 	int IDEFAULT_VALUE_CONFIG = 1;
@@ -184,7 +174,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEClassifierConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEClassifierConfig()
 	 * @generated
 	 */
 	int IE_CLASSIFIER_CONFIG = 2;
@@ -284,7 +274,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.IEDataTypeConfig
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEDataTypeConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEDataTypeConfig()
 	 * @generated
 	 */
 	int IE_DATA_TYPE_CONFIG = 3;
@@ -384,7 +374,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.IEEnumConfig
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEEnumConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEEnumConfig()
 	 * @generated
 	 */
 	int IE_ENUM_CONFIG = 4;
@@ -484,7 +474,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.IEClassConfig
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEClassConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEClassConfig()
 	 * @generated
 	 */
 	int IE_CLASS_CONFIG = 5;
@@ -638,7 +628,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEStructuralFeatureConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEStructuralFeatureConfig()
 	 * @generated
 	 */
 	int IE_STRUCTURAL_FEATURE_CONFIG = 6;
@@ -738,7 +728,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.IEAttributeConfig
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEAttributeConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEAttributeConfig()
 	 * @generated
 	 */
 	int IE_ATTRIBUTE_CONFIG = 7;
@@ -838,7 +828,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.IEReferenceConfig
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEReferenceConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEReferenceConfig()
 	 * @generated
 	 */
 	int IE_REFERENCE_CONFIG = 8;
@@ -938,7 +928,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.IEPackageConfig
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEPackageConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEPackageConfig()
 	 * @generated
 	 */
 	int IE_PACKAGE_CONFIG = 9;
@@ -1056,7 +1046,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.IEEnumLiteralConfig
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEEnumLiteralConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEEnumLiteralConfig()
 	 * @generated
 	 */
 	int IE_ENUM_LITERAL_CONFIG = 10;
@@ -1120,7 +1110,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEcoreDocGeneratorConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEcoreDocGeneratorConfig()
 	 * @generated
 	 */
 	int ECORE_DOC_GENERATOR_CONFIG = 11;
@@ -1382,7 +1372,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEPackageConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEPackageConfig()
 	 * @generated
 	 */
 	int EPACKAGE_CONFIG = 12;
@@ -1671,7 +1661,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEDataTypeConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEDataTypeConfig()
 	 * @generated
 	 */
 	int EDATA_TYPE_CONFIG = 13;
@@ -1780,7 +1770,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EEnumConfigImpl
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEEnumConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEEnumConfig()
 	 * @generated
 	 */
 	int EENUM_CONFIG = 14;
@@ -1907,7 +1897,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EEnumLiteralConfigImpl
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEEnumLiteralConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEEnumLiteralConfig()
 	 * @generated
 	 */
 	int EENUM_LITERAL_CONFIG = 15;
@@ -1980,7 +1970,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EClassConfigImpl
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEClassConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEClassConfig()
 	 * @generated
 	 */
 	int ECLASS_CONFIG = 16;
@@ -2215,7 +2205,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EAttributeConfigImpl
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEAttributeConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEAttributeConfig()
 	 * @generated
 	 */
 	int EATTRIBUTE_CONFIG = 17;
@@ -2324,7 +2314,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.AEReferenceConfigImpl
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getAEReferenceConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getAEReferenceConfig()
 	 * @generated
 	 */
 	int AE_REFERENCE_CONFIG = 18;
@@ -2424,7 +2414,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EContainmentConfigImpl
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEContainmentConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEContainmentConfig()
 	 * @generated
 	 */
 	int ECONTAINMENT_CONFIG = 19;
@@ -2533,7 +2523,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EReferenceConfigImpl
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEReferenceConfig()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEReferenceConfig()
 	 * @generated
 	 */
 	int EREFERENCE_CONFIG = 20;
@@ -2638,6 +2628,16 @@ public interface ConfigPackage extends EPackage {
 	int EREFERENCE_CONFIG_OPERATION_COUNT = AE_REFERENCE_CONFIG_OPERATION_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link java.util.List <em>List</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.List
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getList()
+	 * @generated
+	 */
+	int LIST = 21;
+
+	/**
 	 * The number of structural features of the '<em>List</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2655,18 +2655,6 @@ public interface ConfigPackage extends EPackage {
 	 */
 	int LIST_OPERATION_COUNT = 0;
 
-
-	/**
-	 * Returns the meta object for class '{@link java.util.List <em>List</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>List</em>'.
-	 * @see java.util.List
-	 * @model instanceClass="java.util.List" typeParameters="T"
-	 *        annotation="http://altran.com/general/emf/ecoredoc/generator/config/0.1 render='false'"
-	 * @generated
-	 */
-	EClass getList();
 
 	/**
 	 * Returns the meta object for class '{@link com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig <em>IE Named Element Config</em>}'.
@@ -3577,13 +3565,25 @@ public interface ConfigPackage extends EPackage {
 	EOperation getEReferenceConfig__GetTarget();
 
 	/**
+	 * Returns the meta object for class '{@link java.util.List <em>List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>List</em>'.
+	 * @see java.util.List
+	 * @model instanceClass="java.util.List" typeParameters="T"
+	 *        annotation="http://altran.com/general/emf/ecoredoc/generator/config/0.1 render='false'"
+	 * @generated
+	 */
+	EClass getList();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	ConfigFactory getConfigFactory();
+	EcoreDocConfigFactory getEcoreDocConfigFactory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3600,21 +3600,11 @@ public interface ConfigPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link java.util.List <em>List</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see java.util.List
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getList()
-		 * @generated
-		 */
-		EClass LIST = eINSTANCE.getList();
-
-		/**
 		 * The meta object literal for the '{@link com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig <em>IE Named Element Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIENamedElementConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIENamedElementConfig()
 		 * @generated
 		 */
 		EClass IE_NAMED_ELEMENT_CONFIG = eINSTANCE.getIENamedElementConfig();
@@ -3656,7 +3646,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIDefaultValueConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIDefaultValueConfig()
 		 * @generated
 		 */
 		EClass IDEFAULT_VALUE_CONFIG = eINSTANCE.getIDefaultValueConfig();
@@ -3682,7 +3672,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEClassifierConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEClassifierConfig()
 		 * @generated
 		 */
 		EClass IE_CLASSIFIER_CONFIG = eINSTANCE.getIEClassifierConfig();
@@ -3708,7 +3698,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.IEDataTypeConfig
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEDataTypeConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEDataTypeConfig()
 		 * @generated
 		 */
 		EClass IE_DATA_TYPE_CONFIG = eINSTANCE.getIEDataTypeConfig();
@@ -3718,7 +3708,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.IEEnumConfig
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEEnumConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEEnumConfig()
 		 * @generated
 		 */
 		EClass IE_ENUM_CONFIG = eINSTANCE.getIEEnumConfig();
@@ -3728,7 +3718,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.IEClassConfig
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEClassConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEClassConfig()
 		 * @generated
 		 */
 		EClass IE_CLASS_CONFIG = eINSTANCE.getIEClassConfig();
@@ -3786,7 +3776,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEStructuralFeatureConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEStructuralFeatureConfig()
 		 * @generated
 		 */
 		EClass IE_STRUCTURAL_FEATURE_CONFIG = eINSTANCE.getIEStructuralFeatureConfig();
@@ -3812,7 +3802,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.IEAttributeConfig
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEAttributeConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEAttributeConfig()
 		 * @generated
 		 */
 		EClass IE_ATTRIBUTE_CONFIG = eINSTANCE.getIEAttributeConfig();
@@ -3822,7 +3812,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.IEReferenceConfig
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEReferenceConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEReferenceConfig()
 		 * @generated
 		 */
 		EClass IE_REFERENCE_CONFIG = eINSTANCE.getIEReferenceConfig();
@@ -3832,7 +3822,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.IEPackageConfig
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEPackageConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEPackageConfig()
 		 * @generated
 		 */
 		EClass IE_PACKAGE_CONFIG = eINSTANCE.getIEPackageConfig();
@@ -3890,7 +3880,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.IEEnumLiteralConfig
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getIEEnumLiteralConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEEnumLiteralConfig()
 		 * @generated
 		 */
 		EClass IE_ENUM_LITERAL_CONFIG = eINSTANCE.getIEEnumLiteralConfig();
@@ -3900,7 +3890,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEcoreDocGeneratorConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEcoreDocGeneratorConfig()
 		 * @generated
 		 */
 		EClass ECORE_DOC_GENERATOR_CONFIG = eINSTANCE.getEcoreDocGeneratorConfig();
@@ -4030,7 +4020,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEPackageConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEPackageConfig()
 		 * @generated
 		 */
 		EClass EPACKAGE_CONFIG = eINSTANCE.getEPackageConfig();
@@ -4104,7 +4094,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEDataTypeConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEDataTypeConfig()
 		 * @generated
 		 */
 		EClass EDATA_TYPE_CONFIG = eINSTANCE.getEDataTypeConfig();
@@ -4130,7 +4120,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EEnumConfigImpl
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEEnumConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEEnumConfig()
 		 * @generated
 		 */
 		EClass EENUM_CONFIG = eINSTANCE.getEEnumConfig();
@@ -4172,7 +4162,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EEnumLiteralConfigImpl
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEEnumLiteralConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEEnumLiteralConfig()
 		 * @generated
 		 */
 		EClass EENUM_LITERAL_CONFIG = eINSTANCE.getEEnumLiteralConfig();
@@ -4198,7 +4188,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EClassConfigImpl
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEClassConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEClassConfig()
 		 * @generated
 		 */
 		EClass ECLASS_CONFIG = eINSTANCE.getEClassConfig();
@@ -4272,7 +4262,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EAttributeConfigImpl
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEAttributeConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEAttributeConfig()
 		 * @generated
 		 */
 		EClass EATTRIBUTE_CONFIG = eINSTANCE.getEAttributeConfig();
@@ -4298,7 +4288,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.AEReferenceConfigImpl
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getAEReferenceConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getAEReferenceConfig()
 		 * @generated
 		 */
 		EClass AE_REFERENCE_CONFIG = eINSTANCE.getAEReferenceConfig();
@@ -4308,7 +4298,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EContainmentConfigImpl
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEContainmentConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEContainmentConfig()
 		 * @generated
 		 */
 		EClass ECONTAINMENT_CONFIG = eINSTANCE.getEContainmentConfig();
@@ -4334,7 +4324,7 @@ public interface ConfigPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EReferenceConfigImpl
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.ConfigPackageImpl#getEReferenceConfig()
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEReferenceConfig()
 		 * @generated
 		 */
 		EClass EREFERENCE_CONFIG = eINSTANCE.getEReferenceConfig();
@@ -4355,6 +4345,16 @@ public interface ConfigPackage extends EPackage {
 		 */
 		EOperation EREFERENCE_CONFIG___GET_TARGET = eINSTANCE.getEReferenceConfig__GetTarget();
 
+		/**
+		 * The meta object literal for the '{@link java.util.List <em>List</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.List
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getList()
+		 * @generated
+		 */
+		EClass LIST = eINSTANCE.getList();
+
 	}
 
-} //ConfigPackage
+} //EcoreDocConfigPackage

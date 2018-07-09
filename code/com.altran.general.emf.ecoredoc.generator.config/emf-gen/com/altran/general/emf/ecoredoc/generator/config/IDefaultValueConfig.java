@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig#isRenderDefaults <em>Render Defaults</em>}</li>
  * </ul>
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIDefaultValueConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIDefaultValueConfig()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -42,7 +42,7 @@ public interface IDefaultValueConfig extends EObject {
 	 * @see #isSetRenderDefaults()
 	 * @see #unsetRenderDefaults()
 	 * @see #setRenderDefaults(boolean)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIDefaultValueConfig_RenderDefaults()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIDefaultValueConfig_RenderDefaults()
 	 * @model unique="false" unsettable="true"
 	 * @generated
 	 */

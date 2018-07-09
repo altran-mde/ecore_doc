@@ -5,6 +5,7 @@ package com.altran.general.emf.ecoredoc.generator.config.util;
 import com.altran.general.emf.ecoredoc.generator.config.*;
 
 import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -20,17 +21,17 @@ import org.eclipse.emf.ecore.util.Switch;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage
  * @generated
  */
-public class ConfigSwitch<T1> extends Switch<T1> {
+public class EcoreDocConfigSwitch<T1> extends Switch<T1> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static ConfigPackage modelPackage;
+	protected static EcoreDocConfigPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -38,9 +39,9 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConfigSwitch() {
+	public EcoreDocConfigSwitch() {
 		if (modelPackage == null) {
-			modelPackage = ConfigPackage.eINSTANCE;
+			modelPackage = EcoreDocConfigPackage.eINSTANCE;
 		}
 	}
 
@@ -67,19 +68,19 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 	@Override
 	protected T1 doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ConfigPackage.IE_NAMED_ELEMENT_CONFIG: {
+			case EcoreDocConfigPackage.IE_NAMED_ELEMENT_CONFIG: {
 				IENamedElementConfig ieNamedElementConfig = (IENamedElementConfig)theEObject;
 				T1 result = caseIENamedElementConfig(ieNamedElementConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.IDEFAULT_VALUE_CONFIG: {
+			case EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG: {
 				IDefaultValueConfig iDefaultValueConfig = (IDefaultValueConfig)theEObject;
 				T1 result = caseIDefaultValueConfig(iDefaultValueConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.IE_CLASSIFIER_CONFIG: {
+			case EcoreDocConfigPackage.IE_CLASSIFIER_CONFIG: {
 				IEClassifierConfig ieClassifierConfig = (IEClassifierConfig)theEObject;
 				T1 result = caseIEClassifierConfig(ieClassifierConfig);
 				if (result == null) result = caseIENamedElementConfig(ieClassifierConfig);
@@ -87,7 +88,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.IE_DATA_TYPE_CONFIG: {
+			case EcoreDocConfigPackage.IE_DATA_TYPE_CONFIG: {
 				IEDataTypeConfig ieDataTypeConfig = (IEDataTypeConfig)theEObject;
 				T1 result = caseIEDataTypeConfig(ieDataTypeConfig);
 				if (result == null) result = caseIEClassifierConfig(ieDataTypeConfig);
@@ -96,7 +97,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.IE_ENUM_CONFIG: {
+			case EcoreDocConfigPackage.IE_ENUM_CONFIG: {
 				IEEnumConfig ieEnumConfig = (IEEnumConfig)theEObject;
 				T1 result = caseIEEnumConfig(ieEnumConfig);
 				if (result == null) result = caseIEDataTypeConfig(ieEnumConfig);
@@ -106,7 +107,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.IE_CLASS_CONFIG: {
+			case EcoreDocConfigPackage.IE_CLASS_CONFIG: {
 				IEClassConfig ieClassConfig = (IEClassConfig)theEObject;
 				T1 result = caseIEClassConfig(ieClassConfig);
 				if (result == null) result = caseIEClassifierConfig(ieClassConfig);
@@ -115,7 +116,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG: {
+			case EcoreDocConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG: {
 				IEStructuralFeatureConfig ieStructuralFeatureConfig = (IEStructuralFeatureConfig)theEObject;
 				T1 result = caseIEStructuralFeatureConfig(ieStructuralFeatureConfig);
 				if (result == null) result = caseIENamedElementConfig(ieStructuralFeatureConfig);
@@ -123,7 +124,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.IE_ATTRIBUTE_CONFIG: {
+			case EcoreDocConfigPackage.IE_ATTRIBUTE_CONFIG: {
 				IEAttributeConfig ieAttributeConfig = (IEAttributeConfig)theEObject;
 				T1 result = caseIEAttributeConfig(ieAttributeConfig);
 				if (result == null) result = caseIEStructuralFeatureConfig(ieAttributeConfig);
@@ -132,7 +133,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.IE_REFERENCE_CONFIG: {
+			case EcoreDocConfigPackage.IE_REFERENCE_CONFIG: {
 				IEReferenceConfig ieReferenceConfig = (IEReferenceConfig)theEObject;
 				T1 result = caseIEReferenceConfig(ieReferenceConfig);
 				if (result == null) result = caseIEStructuralFeatureConfig(ieReferenceConfig);
@@ -141,21 +142,21 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.IE_PACKAGE_CONFIG: {
+			case EcoreDocConfigPackage.IE_PACKAGE_CONFIG: {
 				IEPackageConfig iePackageConfig = (IEPackageConfig)theEObject;
 				T1 result = caseIEPackageConfig(iePackageConfig);
 				if (result == null) result = caseIENamedElementConfig(iePackageConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.IE_ENUM_LITERAL_CONFIG: {
+			case EcoreDocConfigPackage.IE_ENUM_LITERAL_CONFIG: {
 				IEEnumLiteralConfig ieEnumLiteralConfig = (IEEnumLiteralConfig)theEObject;
 				T1 result = caseIEEnumLiteralConfig(ieEnumLiteralConfig);
 				if (result == null) result = caseIENamedElementConfig(ieEnumLiteralConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG: {
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG: {
 				EcoreDocGeneratorConfig ecoreDocGeneratorConfig = (EcoreDocGeneratorConfig)theEObject;
 				T1 result = caseEcoreDocGeneratorConfig(ecoreDocGeneratorConfig);
 				if (result == null) result = caseIEPackageConfig(ecoreDocGeneratorConfig);
@@ -172,7 +173,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.EPACKAGE_CONFIG: {
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG: {
 				EPackageConfig ePackageConfig = (EPackageConfig)theEObject;
 				T1 result = caseEPackageConfig(ePackageConfig);
 				if (result == null) result = caseIEPackageConfig(ePackageConfig);
@@ -189,7 +190,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.EDATA_TYPE_CONFIG: {
+			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG: {
 				EDataTypeConfig eDataTypeConfig = (EDataTypeConfig)theEObject;
 				T1 result = caseEDataTypeConfig(eDataTypeConfig);
 				if (result == null) result = caseIEDataTypeConfig(eDataTypeConfig);
@@ -199,7 +200,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.EENUM_CONFIG: {
+			case EcoreDocConfigPackage.EENUM_CONFIG: {
 				EEnumConfig eEnumConfig = (EEnumConfig)theEObject;
 				T1 result = caseEEnumConfig(eEnumConfig);
 				if (result == null) result = caseIEEnumConfig(eEnumConfig);
@@ -211,7 +212,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.EENUM_LITERAL_CONFIG: {
+			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG: {
 				EEnumLiteralConfig eEnumLiteralConfig = (EEnumLiteralConfig)theEObject;
 				T1 result = caseEEnumLiteralConfig(eEnumLiteralConfig);
 				if (result == null) result = caseIEEnumLiteralConfig(eEnumLiteralConfig);
@@ -219,7 +220,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.ECLASS_CONFIG: {
+			case EcoreDocConfigPackage.ECLASS_CONFIG: {
 				EClassConfig eClassConfig = (EClassConfig)theEObject;
 				T1 result = caseEClassConfig(eClassConfig);
 				if (result == null) result = caseIEClassConfig(eClassConfig);
@@ -232,7 +233,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.EATTRIBUTE_CONFIG: {
+			case EcoreDocConfigPackage.EATTRIBUTE_CONFIG: {
 				EAttributeConfig eAttributeConfig = (EAttributeConfig)theEObject;
 				T1 result = caseEAttributeConfig(eAttributeConfig);
 				if (result == null) result = caseIEAttributeConfig(eAttributeConfig);
@@ -242,7 +243,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.AE_REFERENCE_CONFIG: {
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG: {
 				AEReferenceConfig aeReferenceConfig = (AEReferenceConfig)theEObject;
 				T1 result = caseAEReferenceConfig(aeReferenceConfig);
 				if (result == null) result = caseIEReferenceConfig(aeReferenceConfig);
@@ -252,7 +253,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.ECONTAINMENT_CONFIG: {
+			case EcoreDocConfigPackage.ECONTAINMENT_CONFIG: {
 				EContainmentConfig eContainmentConfig = (EContainmentConfig)theEObject;
 				T1 result = caseEContainmentConfig(eContainmentConfig);
 				if (result == null) result = caseAEReferenceConfig(eContainmentConfig);
@@ -263,7 +264,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.EREFERENCE_CONFIG: {
+			case EcoreDocConfigPackage.EREFERENCE_CONFIG: {
 				EReferenceConfig eReferenceConfig = (EReferenceConfig)theEObject;
 				T1 result = caseEReferenceConfig(eReferenceConfig);
 				if (result == null) result = caseAEReferenceConfig(eReferenceConfig);
@@ -274,7 +275,7 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfigPackage.LIST: {
+			case EcoreDocConfigPackage.LIST: {
 				List<?> list = (List<?>)theEObject;
 				T1 result = caseList(list);
 				if (result == null) result = defaultCase(theEObject);
@@ -282,21 +283,6 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 			}
 			default: return defaultCase(theEObject);
 		}
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>List</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>List</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <T> T1 caseList(List<T> object) {
-		return null;
 	}
 
 	/**
@@ -615,6 +601,21 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>List</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>List</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public <T> T1 caseList(List<T> object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -630,4 +631,4 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 		return null;
 	}
 
-} //ConfigSwitch
+} //EcoreDocConfigSwitch

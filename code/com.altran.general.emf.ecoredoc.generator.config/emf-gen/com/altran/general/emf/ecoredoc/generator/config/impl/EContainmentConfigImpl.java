@@ -2,9 +2,9 @@
  */
 package com.altran.general.emf.ecoredoc.generator.config.impl;
 
-import com.altran.general.emf.ecoredoc.generator.config.ConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig;
 
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -58,7 +58,7 @@ public class EContainmentConfigImpl extends AEReferenceConfigImpl implements ECo
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ConfigPackage.Literals.ECONTAINMENT_CONFIG;
+		return EcoreDocConfigPackage.Literals.ECONTAINMENT_CONFIG;
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class EContainmentConfigImpl extends AEReferenceConfigImpl implements ECo
 			targetEContainment = (EReference)eResolveProxy(oldTargetEContainment);
 			if (targetEContainment != oldTargetEContainment) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigPackage.ECONTAINMENT_CONFIG__TARGET_ECONTAINMENT, oldTargetEContainment, targetEContainment));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcoreDocConfigPackage.ECONTAINMENT_CONFIG__TARGET_ECONTAINMENT, oldTargetEContainment, targetEContainment));
 			}
 		}
 		return targetEContainment;
@@ -96,7 +96,7 @@ public class EContainmentConfigImpl extends AEReferenceConfigImpl implements ECo
 		EReference oldTargetEContainment = targetEContainment;
 		targetEContainment = newTargetEContainment;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECONTAINMENT_CONFIG__TARGET_ECONTAINMENT, oldTargetEContainment, targetEContainment));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.ECONTAINMENT_CONFIG__TARGET_ECONTAINMENT, oldTargetEContainment, targetEContainment));
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class EContainmentConfigImpl extends AEReferenceConfigImpl implements ECo
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfigPackage.ECONTAINMENT_CONFIG__TARGET_ECONTAINMENT:
+			case EcoreDocConfigPackage.ECONTAINMENT_CONFIG__TARGET_ECONTAINMENT:
 				if (resolve) return getTargetEContainment();
 				return basicGetTargetEContainment();
 		}
@@ -131,7 +131,7 @@ public class EContainmentConfigImpl extends AEReferenceConfigImpl implements ECo
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfigPackage.ECONTAINMENT_CONFIG__TARGET_ECONTAINMENT:
+			case EcoreDocConfigPackage.ECONTAINMENT_CONFIG__TARGET_ECONTAINMENT:
 				setTargetEContainment((EReference)newValue);
 				return;
 		}
@@ -146,7 +146,7 @@ public class EContainmentConfigImpl extends AEReferenceConfigImpl implements ECo
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.ECONTAINMENT_CONFIG__TARGET_ECONTAINMENT:
+			case EcoreDocConfigPackage.ECONTAINMENT_CONFIG__TARGET_ECONTAINMENT:
 				setTargetEContainment((EReference)null);
 				return;
 		}
@@ -161,7 +161,7 @@ public class EContainmentConfigImpl extends AEReferenceConfigImpl implements ECo
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.ECONTAINMENT_CONFIG__TARGET_ECONTAINMENT:
+			case EcoreDocConfigPackage.ECONTAINMENT_CONFIG__TARGET_ECONTAINMENT:
 				return targetEContainment != null;
 		}
 		return super.eIsSet(featureID);
@@ -175,7 +175,7 @@ public class EContainmentConfigImpl extends AEReferenceConfigImpl implements ECo
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ConfigPackage.ECONTAINMENT_CONFIG___GET_TARGET:
+			case EcoreDocConfigPackage.ECONTAINMENT_CONFIG___GET_TARGET:
 				return getTarget();
 		}
 		return super.eInvoke(operationID, arguments);

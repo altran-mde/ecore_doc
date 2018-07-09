@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig#getId <em>Id</em>}</li>
  * </ul>
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIENamedElementConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIENamedElementConfig()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -38,7 +38,7 @@ public interface IENamedElementConfig extends EObject {
 	 * @see #isSetRender()
 	 * @see #unsetRender()
 	 * @see #setRender(boolean)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIENamedElementConfig_Render()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIENamedElementConfig_Render()
 	 * @model unique="false" unsettable="true"
 	 * @generated
 	 */
@@ -91,7 +91,7 @@ public interface IENamedElementConfig extends EObject {
 	 * Enables proper merging in {@link com.altran.general.emf.ecoredoc.util.EcoreMerger}.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIENamedElementConfig_Id()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIENamedElementConfig_Id()
 	 * @model unique="false" id="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='&lt;%org.eclipse.emf.ecore.ENamedElement%&gt; _target = this.getTarget();\n&lt;%java.lang.String%&gt; _name = null;\nif (_target!=null)\n{\n\t_name=_target.getName();\n}\nreturn _name;'"
 	 *        annotation="http://altran.com/general/emf/ecoredoc/generator/config/0.1 render='false'"

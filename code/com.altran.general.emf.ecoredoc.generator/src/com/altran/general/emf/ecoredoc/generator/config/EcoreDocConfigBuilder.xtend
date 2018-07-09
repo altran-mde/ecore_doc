@@ -1,7 +1,5 @@
 package com.altran.general.emf.ecoredoc.generator.config
 
-import com.altran.general.emf.ecoredoc.generator.config.ConfigFactory
-import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension
 import java.util.Collection
 import org.eclipse.emf.ecore.EAttribute
@@ -17,7 +15,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil
  * Builds a fully populated config hierarchy for all input {@link EPackage}s.
  */
 class EcoreDocConfigBuilder {
-	extension ConfigFactory config = ConfigFactory.eINSTANCE
+	extension EcoreDocConfigFactory config = EcoreDocConfigFactory.eINSTANCE
 	extension EcoreDocExtension = new EcoreDocExtension
 	
 	val result = createEcoreDocGeneratorConfig
@@ -112,7 +110,7 @@ class EcoreDocConfigBuilder {
 	
 	def <T extends IENamedElementConfig> T parseAnnotations(T config) {
 		config.target.EAnnotations
-			.filter[source == ConfigPackage.eINSTANCE.nsURI]
+			.filter[source == EcoreDocConfigPackage.eINSTANCE.nsURI]
 			.map[details]
 			.flatten
 			.forEach[

@@ -9,7 +9,7 @@ package com.altran.general.emf.ecoredoc.generator.config;
  * <!-- end-user-doc -->
  *
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIEDataTypeConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIEDataTypeConfig()
  * @model interface="true" abstract="true"
  * @generated
  */

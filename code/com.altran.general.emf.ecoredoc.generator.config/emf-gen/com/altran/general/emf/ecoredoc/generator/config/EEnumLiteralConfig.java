@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig#getTargetEEnumLiteral <em>Target EEnum Literal</em>}</li>
  * </ul>
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEEnumLiteralConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEEnumLiteralConfig()
  * @model
  * @generated
  */
@@ -32,7 +32,7 @@ public interface EEnumLiteralConfig extends IEEnumLiteralConfig {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target EEnum Literal</em>' reference.
 	 * @see #setTargetEEnumLiteral(EEnumLiteral)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEEnumLiteralConfig_TargetEEnumLiteral()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEEnumLiteralConfig_TargetEEnumLiteral()
 	 * @model
 	 * @generated
 	 */

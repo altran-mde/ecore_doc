@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EEnumConfig#getEEnumLiterals <em>EEnum Literals</em>}</li>
  * </ul>
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEEnumConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEEnumConfig()
  * @model
  * @generated
  */
@@ -35,7 +35,7 @@ public interface EEnumConfig extends IEEnumConfig, IEEnumLiteralConfig {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target EEnum</em>' reference.
 	 * @see #setTargetEEnum(EEnum)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEEnumConfig_TargetEEnum()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEEnumConfig_TargetEEnum()
 	 * @model
 	 * @generated
 	 */
@@ -61,7 +61,7 @@ public interface EEnumConfig extends IEEnumConfig, IEEnumLiteralConfig {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>EEnum Literals</em>' containment reference list.
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEEnumConfig_EEnumLiterals()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEEnumConfig_EEnumLiterals()
 	 * @model containment="true"
 	 * @generated
 	 */

@@ -2,9 +2,9 @@
  */
 package com.altran.general.emf.ecoredoc.generator.config.impl;
 
-import com.altran.general.emf.ecoredoc.generator.config.ConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEEnumLiteralConfig;
@@ -184,7 +184,7 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ConfigPackage.Literals.EENUM_CONFIG;
+		return EcoreDocConfigPackage.Literals.EENUM_CONFIG;
 	}
 
 	/**
@@ -207,7 +207,7 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 		boolean oldRenderESet = renderESet;
 		renderESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EENUM_CONFIG__RENDER, oldRender, render, !oldRenderESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EENUM_CONFIG__RENDER, oldRender, render, !oldRenderESet));
 	}
 
 	/**
@@ -221,7 +221,7 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 		render = RENDER_EDEFAULT;
 		renderESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EENUM_CONFIG__RENDER, oldRender, RENDER_EDEFAULT, oldRenderESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EENUM_CONFIG__RENDER, oldRender, RENDER_EDEFAULT, oldRenderESet));
 	}
 
 	/**
@@ -267,7 +267,7 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 		boolean oldRenderDefaultsESet = renderDefaultsESet;
 		renderDefaultsESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, renderDefaults, !oldRenderDefaultsESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, renderDefaults, !oldRenderDefaultsESet));
 	}
 
 	/**
@@ -281,7 +281,7 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 		renderDefaults = RENDER_DEFAULTS_EDEFAULT;
 		renderDefaultsESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, RENDER_DEFAULTS_EDEFAULT, oldRenderDefaultsESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, RENDER_DEFAULTS_EDEFAULT, oldRenderDefaultsESet));
 	}
 
 	/**
@@ -313,7 +313,7 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 		boolean oldRenderUseCasesESet = renderUseCasesESet;
 		renderUseCasesESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EENUM_CONFIG__RENDER_USE_CASES, oldRenderUseCases, renderUseCases, !oldRenderUseCasesESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EENUM_CONFIG__RENDER_USE_CASES, oldRenderUseCases, renderUseCases, !oldRenderUseCasesESet));
 	}
 
 	/**
@@ -327,7 +327,7 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 		renderUseCases = RENDER_USE_CASES_EDEFAULT;
 		renderUseCasesESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EENUM_CONFIG__RENDER_USE_CASES, oldRenderUseCases, RENDER_USE_CASES_EDEFAULT, oldRenderUseCasesESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EENUM_CONFIG__RENDER_USE_CASES, oldRenderUseCases, RENDER_USE_CASES_EDEFAULT, oldRenderUseCasesESet));
 	}
 
 	/**
@@ -350,7 +350,7 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 			targetEEnum = (EEnum)eResolveProxy(oldTargetEEnum);
 			if (targetEEnum != oldTargetEEnum) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigPackage.EENUM_CONFIG__TARGET_EENUM, oldTargetEEnum, targetEEnum));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcoreDocConfigPackage.EENUM_CONFIG__TARGET_EENUM, oldTargetEEnum, targetEEnum));
 			}
 		}
 		return targetEEnum;
@@ -374,7 +374,7 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 		EEnum oldTargetEEnum = targetEEnum;
 		targetEEnum = newTargetEEnum;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EENUM_CONFIG__TARGET_EENUM, oldTargetEEnum, targetEEnum));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EENUM_CONFIG__TARGET_EENUM, oldTargetEEnum, targetEEnum));
 	}
 
 	/**
@@ -384,7 +384,7 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	 */
 	public EList<EEnumLiteralConfig> getEEnumLiterals() {
 		if (eEnumLiterals == null) {
-			eEnumLiterals = new EObjectContainmentEList<EEnumLiteralConfig>(EEnumLiteralConfig.class, this, ConfigPackage.EENUM_CONFIG__EENUM_LITERALS);
+			eEnumLiterals = new EObjectContainmentEList<EEnumLiteralConfig>(EEnumLiteralConfig.class, this, EcoreDocConfigPackage.EENUM_CONFIG__EENUM_LITERALS);
 		}
 		return eEnumLiterals;
 	}
@@ -470,7 +470,7 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ConfigPackage.EENUM_CONFIG__EENUM_LITERALS:
+			case EcoreDocConfigPackage.EENUM_CONFIG__EENUM_LITERALS:
 				return ((InternalEList<?>)getEEnumLiterals()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -484,18 +484,18 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfigPackage.EENUM_CONFIG__RENDER:
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER:
 				return isRender();
-			case ConfigPackage.EENUM_CONFIG__ID:
+			case EcoreDocConfigPackage.EENUM_CONFIG__ID:
 				return getId();
-			case ConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS:
 				return isRenderDefaults();
-			case ConfigPackage.EENUM_CONFIG__RENDER_USE_CASES:
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_USE_CASES:
 				return isRenderUseCases();
-			case ConfigPackage.EENUM_CONFIG__TARGET_EENUM:
+			case EcoreDocConfigPackage.EENUM_CONFIG__TARGET_EENUM:
 				if (resolve) return getTargetEEnum();
 				return basicGetTargetEEnum();
-			case ConfigPackage.EENUM_CONFIG__EENUM_LITERALS:
+			case EcoreDocConfigPackage.EENUM_CONFIG__EENUM_LITERALS:
 				return getEEnumLiterals();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -510,19 +510,19 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfigPackage.EENUM_CONFIG__RENDER:
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER:
 				setRender((Boolean)newValue);
 				return;
-			case ConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS:
 				setRenderDefaults((Boolean)newValue);
 				return;
-			case ConfigPackage.EENUM_CONFIG__RENDER_USE_CASES:
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_USE_CASES:
 				setRenderUseCases((Boolean)newValue);
 				return;
-			case ConfigPackage.EENUM_CONFIG__TARGET_EENUM:
+			case EcoreDocConfigPackage.EENUM_CONFIG__TARGET_EENUM:
 				setTargetEEnum((EEnum)newValue);
 				return;
-			case ConfigPackage.EENUM_CONFIG__EENUM_LITERALS:
+			case EcoreDocConfigPackage.EENUM_CONFIG__EENUM_LITERALS:
 				getEEnumLiterals().clear();
 				getEEnumLiterals().addAll((Collection<? extends EEnumLiteralConfig>)newValue);
 				return;
@@ -538,19 +538,19 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.EENUM_CONFIG__RENDER:
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER:
 				unsetRender();
 				return;
-			case ConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS:
 				unsetRenderDefaults();
 				return;
-			case ConfigPackage.EENUM_CONFIG__RENDER_USE_CASES:
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_USE_CASES:
 				unsetRenderUseCases();
 				return;
-			case ConfigPackage.EENUM_CONFIG__TARGET_EENUM:
+			case EcoreDocConfigPackage.EENUM_CONFIG__TARGET_EENUM:
 				setTargetEEnum((EEnum)null);
 				return;
-			case ConfigPackage.EENUM_CONFIG__EENUM_LITERALS:
+			case EcoreDocConfigPackage.EENUM_CONFIG__EENUM_LITERALS:
 				getEEnumLiterals().clear();
 				return;
 		}
@@ -565,17 +565,17 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.EENUM_CONFIG__RENDER:
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER:
 				return isSetRender();
-			case ConfigPackage.EENUM_CONFIG__ID:
+			case EcoreDocConfigPackage.EENUM_CONFIG__ID:
 				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
-			case ConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS:
 				return isSetRenderDefaults();
-			case ConfigPackage.EENUM_CONFIG__RENDER_USE_CASES:
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_USE_CASES:
 				return isSetRenderUseCases();
-			case ConfigPackage.EENUM_CONFIG__TARGET_EENUM:
+			case EcoreDocConfigPackage.EENUM_CONFIG__TARGET_EENUM:
 				return targetEEnum != null;
-			case ConfigPackage.EENUM_CONFIG__EENUM_LITERALS:
+			case EcoreDocConfigPackage.EENUM_CONFIG__EENUM_LITERALS:
 				return eEnumLiterals != null && !eEnumLiterals.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -590,7 +590,7 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (derivedFeatureID) {
-				case ConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS: return ConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS;
+				case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS: return EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS;
 				default: return -1;
 			}
 		}
@@ -611,7 +611,7 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (baseFeatureID) {
-				case ConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS: return ConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS;
+				case EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS: return EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS;
 				default: return -1;
 			}
 		}
@@ -632,7 +632,7 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (baseOperationID) {
-				case ConfigPackage.IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS: return ConfigPackage.EENUM_CONFIG___SHOULD_RENDER_DEFAULTS;
+				case EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS: return EcoreDocConfigPackage.EENUM_CONFIG___SHOULD_RENDER_DEFAULTS;
 				default: return -1;
 			}
 		}
@@ -653,16 +653,16 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ConfigPackage.EENUM_CONFIG___GET_TARGET:
+			case EcoreDocConfigPackage.EENUM_CONFIG___GET_TARGET:
 				return getTarget();
-			case ConfigPackage.EENUM_CONFIG___ADD_EENUM_LITERALS__LIST:
+			case EcoreDocConfigPackage.EENUM_CONFIG___ADD_EENUM_LITERALS__LIST:
 				addEEnumLiterals((List<EEnumLiteralConfig>)arguments.get(0));
 				return null;
-			case ConfigPackage.EENUM_CONFIG___SHOULD_RENDER_USE_CASES:
+			case EcoreDocConfigPackage.EENUM_CONFIG___SHOULD_RENDER_USE_CASES:
 				return shouldRenderUseCases();
-			case ConfigPackage.EENUM_CONFIG___SHOULD_RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.EENUM_CONFIG___SHOULD_RENDER_DEFAULTS:
 				return shouldRenderDefaults();
-			case ConfigPackage.EENUM_CONFIG___SHOULD_RENDER:
+			case EcoreDocConfigPackage.EENUM_CONFIG___SHOULD_RENDER:
 				return shouldRender();
 		}
 		return super.eInvoke(operationID, arguments);

@@ -119,7 +119,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEPackages <em>EPackages</em>}</li>
  * </ul>
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEcoreDocGeneratorConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEcoreDocGeneratorConfig()
  * @model
  * @generated
  */
@@ -137,7 +137,7 @@ public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Document Title</em>' attribute.
 	 * @see #setDocumentTitle(String)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEcoreDocGeneratorConfig_DocumentTitle()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEcoreDocGeneratorConfig_DocumentTitle()
 	 * @model default="Ecore Documentation" unique="false"
 	 * @generated
 	 */
@@ -163,7 +163,7 @@ public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, 
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>EPackages</em>' containment reference list.
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEcoreDocGeneratorConfig_EPackages()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEcoreDocGeneratorConfig_EPackages()
 	 * @model containment="true"
 	 * @generated
 	 */

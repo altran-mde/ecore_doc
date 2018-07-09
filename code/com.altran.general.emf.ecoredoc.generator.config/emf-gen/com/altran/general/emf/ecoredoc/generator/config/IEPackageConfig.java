@@ -17,7 +17,7 @@ package com.altran.general.emf.ecoredoc.generator.config;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.IEPackageConfig#getPositionEClasses <em>Position EClasses</em>}</li>
  * </ul>
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIEPackageConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIEPackageConfig()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -37,7 +37,7 @@ public interface IEPackageConfig extends IENamedElementConfig {
 	 * @see #isSetPositionEDataTypes()
 	 * @see #unsetPositionEDataTypes()
 	 * @see #setPositionEDataTypes(int)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIEPackageConfig_PositionEDataTypes()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIEPackageConfig_PositionEDataTypes()
 	 * @model unique="false" unsettable="true"
 	 * @generated
 	 */
@@ -93,7 +93,7 @@ public interface IEPackageConfig extends IENamedElementConfig {
 	 * @see #isSetPositionEEnums()
 	 * @see #unsetPositionEEnums()
 	 * @see #setPositionEEnums(int)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIEPackageConfig_PositionEEnums()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIEPackageConfig_PositionEEnums()
 	 * @model unique="false" unsettable="true"
 	 * @generated
 	 */
@@ -149,7 +149,7 @@ public interface IEPackageConfig extends IENamedElementConfig {
 	 * @see #isSetPositionEClasses()
 	 * @see #unsetPositionEClasses()
 	 * @see #setPositionEClasses(int)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIEPackageConfig_PositionEClasses()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIEPackageConfig_PositionEClasses()
 	 * @model unique="false" unsettable="true"
 	 * @generated
 	 */

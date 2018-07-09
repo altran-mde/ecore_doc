@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig#getTargetEContainment <em>Target EContainment</em>}</li>
  * </ul>
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEContainmentConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEContainmentConfig()
  * @model
  * @generated
  */
@@ -32,7 +32,7 @@ public interface EContainmentConfig extends AEReferenceConfig {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target EContainment</em>' reference.
 	 * @see #setTargetEContainment(EReference)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEContainmentConfig_TargetEContainment()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEContainmentConfig_TargetEContainment()
 	 * @model
 	 * @generated
 	 */

@@ -5,6 +5,7 @@ package com.altran.general.emf.ecoredoc.generator.config.util;
 import com.altran.general.emf.ecoredoc.generator.config.*;
 
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -17,17 +18,17 @@ import org.eclipse.emf.ecore.EObject;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage
  * @generated
  */
-public class ConfigAdapterFactory extends AdapterFactoryImpl {
+public class EcoreDocConfigAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static ConfigPackage modelPackage;
+	protected static EcoreDocConfigPackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -35,9 +36,9 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConfigAdapterFactory() {
+	public EcoreDocConfigAdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = ConfigPackage.eINSTANCE;
+			modelPackage = EcoreDocConfigPackage.eINSTANCE;
 		}
 	}
 
@@ -66,8 +67,8 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConfigSwitch<Adapter> modelSwitch =
-		new ConfigSwitch<Adapter>() {
+	protected EcoreDocConfigSwitch<Adapter> modelSwitch =
+		new EcoreDocConfigSwitch<Adapter>() {
 			@Override
 			public Adapter caseIENamedElementConfig(IENamedElementConfig object) {
 				return createIENamedElementConfigAdapter();
@@ -175,20 +176,6 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
-
-	/**
-	 * Creates a new adapter for an object of class '{@link java.util.List <em>List</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see java.util.List
-	 * @generated
-	 */
-	public Adapter createListAdapter() {
-		return null;
-	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig <em>IE Named Element Config</em>}'.
@@ -485,6 +472,20 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link java.util.List <em>List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.List
+	 * @generated
+	 */
+	public Adapter createListAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for the default case.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null.
@@ -496,4 +497,4 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //ConfigAdapterFactory
+} //EcoreDocConfigAdapterFactory

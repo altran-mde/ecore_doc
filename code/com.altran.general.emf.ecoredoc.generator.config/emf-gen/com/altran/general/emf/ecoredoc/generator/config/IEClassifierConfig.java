@@ -15,7 +15,7 @@ package com.altran.general.emf.ecoredoc.generator.config;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig#isRenderUseCases <em>Render Use Cases</em>}</li>
  * </ul>
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIEClassifierConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIEClassifierConfig()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -35,7 +35,7 @@ public interface IEClassifierConfig extends IENamedElementConfig, IDefaultValueC
 	 * @see #isSetRenderUseCases()
 	 * @see #unsetRenderUseCases()
 	 * @see #setRenderUseCases(boolean)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIEClassifierConfig_RenderUseCases()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIEClassifierConfig_RenderUseCases()
 	 * @model unique="false" unsettable="true"
 	 * @generated
 	 */

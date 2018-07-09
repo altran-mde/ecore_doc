@@ -2,8 +2,8 @@
  */
 package com.altran.general.emf.ecoredoc.generator.config.impl;
 
-import com.altran.general.emf.ecoredoc.generator.config.ConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import java.lang.reflect.InvocationTargetException;
 
@@ -101,7 +101,7 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ConfigPackage.Literals.EENUM_LITERAL_CONFIG;
+		return EcoreDocConfigPackage.Literals.EENUM_LITERAL_CONFIG;
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 		boolean oldRenderESet = renderESet;
 		renderESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EENUM_LITERAL_CONFIG__RENDER, oldRender, render, !oldRenderESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EENUM_LITERAL_CONFIG__RENDER, oldRender, render, !oldRenderESet));
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 		render = RENDER_EDEFAULT;
 		renderESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.EENUM_LITERAL_CONFIG__RENDER, oldRender, RENDER_EDEFAULT, oldRenderESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EENUM_LITERAL_CONFIG__RENDER, oldRender, RENDER_EDEFAULT, oldRenderESet));
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 			targetEEnumLiteral = (EEnumLiteral)eResolveProxy(oldTargetEEnumLiteral);
 			if (targetEEnumLiteral != oldTargetEEnumLiteral) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL, oldTargetEEnumLiteral, targetEEnumLiteral));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcoreDocConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL, oldTargetEEnumLiteral, targetEEnumLiteral));
 			}
 		}
 		return targetEEnumLiteral;
@@ -199,7 +199,7 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 		EEnumLiteral oldTargetEEnumLiteral = targetEEnumLiteral;
 		targetEEnumLiteral = newTargetEEnumLiteral;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL, oldTargetEEnumLiteral, targetEEnumLiteral));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL, oldTargetEEnumLiteral, targetEEnumLiteral));
 	}
 
 	/**
@@ -237,11 +237,11 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfigPackage.EENUM_LITERAL_CONFIG__RENDER:
+			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG__RENDER:
 				return isRender();
-			case ConfigPackage.EENUM_LITERAL_CONFIG__ID:
+			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG__ID:
 				return getId();
-			case ConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL:
+			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL:
 				if (resolve) return getTargetEEnumLiteral();
 				return basicGetTargetEEnumLiteral();
 		}
@@ -256,10 +256,10 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfigPackage.EENUM_LITERAL_CONFIG__RENDER:
+			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG__RENDER:
 				setRender((Boolean)newValue);
 				return;
-			case ConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL:
+			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL:
 				setTargetEEnumLiteral((EEnumLiteral)newValue);
 				return;
 		}
@@ -274,10 +274,10 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.EENUM_LITERAL_CONFIG__RENDER:
+			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG__RENDER:
 				unsetRender();
 				return;
-			case ConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL:
+			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL:
 				setTargetEEnumLiteral((EEnumLiteral)null);
 				return;
 		}
@@ -292,11 +292,11 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.EENUM_LITERAL_CONFIG__RENDER:
+			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG__RENDER:
 				return isSetRender();
-			case ConfigPackage.EENUM_LITERAL_CONFIG__ID:
+			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG__ID:
 				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
-			case ConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL:
+			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG__TARGET_EENUM_LITERAL:
 				return targetEEnumLiteral != null;
 		}
 		return super.eIsSet(featureID);
@@ -310,9 +310,9 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ConfigPackage.EENUM_LITERAL_CONFIG___GET_TARGET:
+			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG___GET_TARGET:
 				return getTarget();
-			case ConfigPackage.EENUM_LITERAL_CONFIG___SHOULD_RENDER:
+			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG___SHOULD_RENDER:
 				return shouldRender();
 		}
 		return super.eInvoke(operationID, arguments);

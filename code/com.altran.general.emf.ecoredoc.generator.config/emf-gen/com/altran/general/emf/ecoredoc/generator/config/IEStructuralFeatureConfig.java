@@ -15,7 +15,7 @@ package com.altran.general.emf.ecoredoc.generator.config;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig#isRenderBounds <em>Render Bounds</em>}</li>
  * </ul>
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIEStructuralFeatureConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIEStructuralFeatureConfig()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -36,7 +36,7 @@ public interface IEStructuralFeatureConfig extends IENamedElementConfig, IDefaul
 	 * @see #isSetRenderBounds()
 	 * @see #unsetRenderBounds()
 	 * @see #setRenderBounds(boolean)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIEStructuralFeatureConfig_RenderBounds()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIEStructuralFeatureConfig_RenderBounds()
 	 * @model unique="false" unsettable="true"
 	 * @generated
 	 */

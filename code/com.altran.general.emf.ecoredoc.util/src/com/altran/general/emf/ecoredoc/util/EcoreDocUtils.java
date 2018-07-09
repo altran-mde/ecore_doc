@@ -21,13 +21,14 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.change.ChangePackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import com.altran.general.emf.ecoredoc.generator.config.ConfigPackage;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 
 public class EcoreDocUtils {
 	private static EcoreDocUtils instance;
@@ -68,7 +69,7 @@ public class EcoreDocUtils {
 	/**
 	 * Fix for https://bugs.eclipse.org/bugs/show_bug.cgi?id=536644
 	 */
-	protected void loadEcoreGenmodelForXcorePrimitiveTypes(final ResourceSetImpl resourceSet) {
+	protected void loadEcoreGenmodelForXcorePrimitiveTypes(final ResourceSet resourceSet) {
 		try {
 			final ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
 			final URL resource = contextClassLoader.getResource("model/Ecore.genmodel");
@@ -95,7 +96,7 @@ public class EcoreDocUtils {
 
 		ChangePackage.eINSTANCE.getClass();
 		
-		ConfigPackage.eINSTANCE.getClass();
+		EcoreDocConfigPackage.eINSTANCE.getClass();
 	}
 	
 	public void setupXcoreStandalone() {

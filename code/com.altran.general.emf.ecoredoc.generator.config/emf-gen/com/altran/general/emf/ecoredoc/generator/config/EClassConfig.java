@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EClassConfig#getEReferences <em>EReferences</em>}</li>
  * </ul>
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEClassConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEClassConfig()
  * @model
  * @generated
  */
@@ -37,7 +37,7 @@ public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IERefere
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target EClass</em>' reference.
 	 * @see #setTargetEClass(EClass)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEClassConfig_TargetEClass()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEClassConfig_TargetEClass()
 	 * @model
 	 * @generated
 	 */
@@ -63,7 +63,7 @@ public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IERefere
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>EAttributes</em>' containment reference list.
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEClassConfig_EAttributes()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEClassConfig_EAttributes()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -79,7 +79,7 @@ public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IERefere
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>EContainments</em>' containment reference list.
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEClassConfig_EContainments()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEClassConfig_EContainments()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -95,7 +95,7 @@ public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IERefere
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>EReferences</em>' containment reference list.
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEClassConfig_EReferences()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEClassConfig_EReferences()
 	 * @model containment="true"
 	 * @generated
 	 */

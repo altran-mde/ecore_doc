@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig#getTargetEReference <em>Target EReference</em>}</li>
  * </ul>
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEReferenceConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEReferenceConfig()
  * @model
  * @generated
  */
@@ -32,7 +32,7 @@ public interface EReferenceConfig extends AEReferenceConfig {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target EReference</em>' reference.
 	 * @see #setTargetEReference(EReference)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEReferenceConfig_TargetEReference()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEReferenceConfig_TargetEReference()
 	 * @model
 	 * @generated
 	 */

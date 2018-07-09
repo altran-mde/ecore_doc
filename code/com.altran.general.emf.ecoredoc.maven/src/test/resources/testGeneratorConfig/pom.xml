@@ -32,26 +32,6 @@
 						<repeatInherited>false</repeatInherited>
 						<renderSubTypes>false</renderSubTypes>
 						<documentTitle>EcoreDoc Config Model</documentTitle>
-						<ePackages>
-							<ePackage>
-								<targetEPackage>config</targetEPackage>
-								<eClasses>
-									<eClass>
-										<targetEClass>IENamedElementConfig</targetEClass>
-										<eAttributes>
-											<eAttribute>
-												<targetEAttribute>id</targetEAttribute>
-												<render>false</render>
-											</eAttribute>
-										</eAttributes>
-									</eClass>
-									<eClass>
-										<targetEClass>List</targetEClass>
-										<render>false</render>
-									</eClass>
-								</eClasses>
-							</ePackage>
-						</ePackages>
 					</config>
 					<inputFiles>
 						<inputFile>../../../../com.altran.general.emf.ecoredoc.generator.config/model/EcoreDocGeneratorConfig.xcore</inputFile>

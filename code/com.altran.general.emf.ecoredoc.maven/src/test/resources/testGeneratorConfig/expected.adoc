@@ -14,8 +14,8 @@
 == Contents of config
 
 
-Ns Prefix:: config
-Ns URI:: com.altran.general.emf.ecoredoc.generator.config
+Ns Prefix:: EcoreDocConfigNs
+Ns URI:: http://altran.com/general/emf/ecoredoc/generator/config/0.1
 
 === Types
 

@@ -9,7 +9,7 @@ package com.altran.general.emf.ecoredoc.generator.config;
  * <!-- end-user-doc -->
  *
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getAEReferenceConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getAEReferenceConfig()
  * @model abstract="true"
  * @generated
  */

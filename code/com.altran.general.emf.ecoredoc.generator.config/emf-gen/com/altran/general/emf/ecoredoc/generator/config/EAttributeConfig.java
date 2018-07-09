@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig#getTargetEAttribute <em>Target EAttribute</em>}</li>
  * </ul>
  *
- * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEAttributeConfig()
+ * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEAttributeConfig()
  * @model
  * @generated
  */
@@ -32,7 +32,7 @@ public interface EAttributeConfig extends IEAttributeConfig {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target EAttribute</em>' reference.
 	 * @see #setTargetEAttribute(EAttribute)
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getEAttributeConfig_TargetEAttribute()
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEAttributeConfig_TargetEAttribute()
 	 * @model
 	 * @generated
 	 */

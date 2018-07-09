@@ -2,7 +2,6 @@
  */
 package com.altran.general.emf.ecoredoc.generator.config.impl;
 
-import com.altran.general.emf.ecoredoc.generator.config.ConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EClassConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig;
@@ -11,6 +10,7 @@ import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EPackageConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEAttributeConfig;
@@ -425,7 +425,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ConfigPackage.Literals.ECORE_DOC_GENERATOR_CONFIG;
+		return EcoreDocConfigPackage.Literals.ECORE_DOC_GENERATOR_CONFIG;
 	}
 
 	/**
@@ -448,7 +448,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		boolean oldRenderESet = renderESet;
 		renderESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER, oldRender, render, !oldRenderESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER, oldRender, render, !oldRenderESet));
 	}
 
 	/**
@@ -462,7 +462,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		render = RENDER_EDEFAULT;
 		renderESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER, oldRender, RENDER_EDEFAULT, oldRenderESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER, oldRender, RENDER_EDEFAULT, oldRenderESet));
 	}
 
 	/**
@@ -508,7 +508,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		boolean oldPositionEDataTypesESet = positionEDataTypesESet;
 		positionEDataTypesESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES, oldPositionEDataTypes, positionEDataTypes, !oldPositionEDataTypesESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES, oldPositionEDataTypes, positionEDataTypes, !oldPositionEDataTypesESet));
 	}
 
 	/**
@@ -522,7 +522,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		positionEDataTypes = POSITION_EDATA_TYPES_EDEFAULT;
 		positionEDataTypesESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES, oldPositionEDataTypes, POSITION_EDATA_TYPES_EDEFAULT, oldPositionEDataTypesESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES, oldPositionEDataTypes, POSITION_EDATA_TYPES_EDEFAULT, oldPositionEDataTypesESet));
 	}
 
 	/**
@@ -554,7 +554,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		boolean oldPositionEEnumsESet = positionEEnumsESet;
 		positionEEnumsESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS, oldPositionEEnums, positionEEnums, !oldPositionEEnumsESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS, oldPositionEEnums, positionEEnums, !oldPositionEEnumsESet));
 	}
 
 	/**
@@ -568,7 +568,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		positionEEnums = POSITION_EENUMS_EDEFAULT;
 		positionEEnumsESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS, oldPositionEEnums, POSITION_EENUMS_EDEFAULT, oldPositionEEnumsESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS, oldPositionEEnums, POSITION_EENUMS_EDEFAULT, oldPositionEEnumsESet));
 	}
 
 	/**
@@ -600,7 +600,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		boolean oldPositionEClassesESet = positionEClassesESet;
 		positionEClassesESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES, oldPositionEClasses, positionEClasses, !oldPositionEClassesESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES, oldPositionEClasses, positionEClasses, !oldPositionEClassesESet));
 	}
 
 	/**
@@ -614,7 +614,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		positionEClasses = POSITION_ECLASSES_EDEFAULT;
 		positionEClassesESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES, oldPositionEClasses, POSITION_ECLASSES_EDEFAULT, oldPositionEClassesESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES, oldPositionEClasses, POSITION_ECLASSES_EDEFAULT, oldPositionEClassesESet));
 	}
 
 	/**
@@ -646,7 +646,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		boolean oldRenderDefaultsESet = renderDefaultsESet;
 		renderDefaultsESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, renderDefaults, !oldRenderDefaultsESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, renderDefaults, !oldRenderDefaultsESet));
 	}
 
 	/**
@@ -660,7 +660,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		renderDefaults = RENDER_DEFAULTS_EDEFAULT;
 		renderDefaultsESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, RENDER_DEFAULTS_EDEFAULT, oldRenderDefaultsESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS, oldRenderDefaults, RENDER_DEFAULTS_EDEFAULT, oldRenderDefaultsESet));
 	}
 
 	/**
@@ -692,7 +692,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		boolean oldRenderUseCasesESet = renderUseCasesESet;
 		renderUseCasesESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES, oldRenderUseCases, renderUseCases, !oldRenderUseCasesESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES, oldRenderUseCases, renderUseCases, !oldRenderUseCasesESet));
 	}
 
 	/**
@@ -706,7 +706,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		renderUseCases = RENDER_USE_CASES_EDEFAULT;
 		renderUseCasesESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES, oldRenderUseCases, RENDER_USE_CASES_EDEFAULT, oldRenderUseCasesESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES, oldRenderUseCases, RENDER_USE_CASES_EDEFAULT, oldRenderUseCasesESet));
 	}
 
 	/**
@@ -738,7 +738,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		boolean oldRepeatInheritedESet = repeatInheritedESet;
 		repeatInheritedESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED, oldRepeatInherited, repeatInherited, !oldRepeatInheritedESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED, oldRepeatInherited, repeatInherited, !oldRepeatInheritedESet));
 	}
 
 	/**
@@ -752,7 +752,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		repeatInherited = REPEAT_INHERITED_EDEFAULT;
 		repeatInheritedESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED, oldRepeatInherited, REPEAT_INHERITED_EDEFAULT, oldRepeatInheritedESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED, oldRepeatInherited, REPEAT_INHERITED_EDEFAULT, oldRepeatInheritedESet));
 	}
 
 	/**
@@ -784,7 +784,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		boolean oldRenderSubTypesESet = renderSubTypesESet;
 		renderSubTypesESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES, oldRenderSubTypes, renderSubTypes, !oldRenderSubTypesESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES, oldRenderSubTypes, renderSubTypes, !oldRenderSubTypesESet));
 	}
 
 	/**
@@ -798,7 +798,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		renderSubTypes = RENDER_SUB_TYPES_EDEFAULT;
 		renderSubTypesESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES, oldRenderSubTypes, RENDER_SUB_TYPES_EDEFAULT, oldRenderSubTypesESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES, oldRenderSubTypes, RENDER_SUB_TYPES_EDEFAULT, oldRenderSubTypesESet));
 	}
 
 	/**
@@ -830,7 +830,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		boolean oldRenderSuperTypesESet = renderSuperTypesESet;
 		renderSuperTypesESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES, oldRenderSuperTypes, renderSuperTypes, !oldRenderSuperTypesESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES, oldRenderSuperTypes, renderSuperTypes, !oldRenderSuperTypesESet));
 	}
 
 	/**
@@ -844,7 +844,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		renderSuperTypes = RENDER_SUPER_TYPES_EDEFAULT;
 		renderSuperTypesESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES, oldRenderSuperTypes, RENDER_SUPER_TYPES_EDEFAULT, oldRenderSuperTypesESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES, oldRenderSuperTypes, RENDER_SUPER_TYPES_EDEFAULT, oldRenderSuperTypesESet));
 	}
 
 	/**
@@ -876,7 +876,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		boolean oldRenderBoundsESet = renderBoundsESet;
 		renderBoundsESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS, oldRenderBounds, renderBounds, !oldRenderBoundsESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS, oldRenderBounds, renderBounds, !oldRenderBoundsESet));
 	}
 
 	/**
@@ -890,7 +890,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		renderBounds = RENDER_BOUNDS_EDEFAULT;
 		renderBoundsESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS, oldRenderBounds, RENDER_BOUNDS_EDEFAULT, oldRenderBoundsESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS, oldRenderBounds, RENDER_BOUNDS_EDEFAULT, oldRenderBoundsESet));
 	}
 
 	/**
@@ -920,7 +920,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		String oldDocumentTitle = documentTitle;
 		documentTitle = newDocumentTitle;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE, oldDocumentTitle, documentTitle));
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE, oldDocumentTitle, documentTitle));
 	}
 
 	/**
@@ -930,7 +930,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 */
 	public EList<EPackageConfig> getEPackages() {
 		if (ePackages == null) {
-			ePackages = new EObjectContainmentEList<EPackageConfig>(EPackageConfig.class, this, ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES);
+			ePackages = new EObjectContainmentEList<EPackageConfig>(EPackageConfig.class, this, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES);
 		}
 		return ePackages;
 	}
@@ -1257,7 +1257,7 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				return ((InternalEList<?>)getEPackages()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -1271,31 +1271,31 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
 				return isRender();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__ID:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__ID:
 				return getId();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
 				return getPositionEDataTypes();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
 				return getPositionEEnums();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES:
 				return getPositionEClasses();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS:
 				return isRenderDefaults();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES:
 				return isRenderUseCases();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
 				return isRepeatInherited();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES:
 				return isRenderSubTypes();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES:
 				return isRenderSuperTypes();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
 				return isRenderBounds();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
 				return getDocumentTitle();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				return getEPackages();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -1310,40 +1310,40 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
 				setRender((Boolean)newValue);
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
 				setPositionEDataTypes((Integer)newValue);
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
 				setPositionEEnums((Integer)newValue);
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES:
 				setPositionEClasses((Integer)newValue);
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS:
 				setRenderDefaults((Boolean)newValue);
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES:
 				setRenderUseCases((Boolean)newValue);
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
 				setRepeatInherited((Boolean)newValue);
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES:
 				setRenderSubTypes((Boolean)newValue);
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES:
 				setRenderSuperTypes((Boolean)newValue);
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
 				setRenderBounds((Boolean)newValue);
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
 				setDocumentTitle((String)newValue);
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				getEPackages().clear();
 				getEPackages().addAll((Collection<? extends EPackageConfig>)newValue);
 				return;
@@ -1359,40 +1359,40 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
 				unsetRender();
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
 				unsetPositionEDataTypes();
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
 				unsetPositionEEnums();
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES:
 				unsetPositionEClasses();
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS:
 				unsetRenderDefaults();
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES:
 				unsetRenderUseCases();
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
 				unsetRepeatInherited();
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES:
 				unsetRenderSubTypes();
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES:
 				unsetRenderSuperTypes();
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
 				unsetRenderBounds();
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
 				setDocumentTitle(DOCUMENT_TITLE_EDEFAULT);
 				return;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				getEPackages().clear();
 				return;
 		}
@@ -1407,31 +1407,31 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
 				return isSetRender();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__ID:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__ID:
 				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
 				return isSetPositionEDataTypes();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
 				return isSetPositionEEnums();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_ECLASSES:
 				return isSetPositionEClasses();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS:
 				return isSetRenderDefaults();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES:
 				return isSetRenderUseCases();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED:
 				return isSetRepeatInherited();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES:
 				return isSetRenderSubTypes();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES:
 				return isSetRenderSuperTypes();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS:
 				return isSetRenderBounds();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
 				return DOCUMENT_TITLE_EDEFAULT == null ? documentTitle != null : !DOCUMENT_TITLE_EDEFAULT.equals(documentTitle);
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				return ePackages != null && !ePackages.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -1446,13 +1446,13 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (derivedFeatureID) {
-				case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS: return ConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS;
+				case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS: return EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS;
 				default: return -1;
 			}
 		}
 		if (baseClass == IEClassifierConfig.class) {
 			switch (derivedFeatureID) {
-				case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES: return ConfigPackage.IE_CLASSIFIER_CONFIG__RENDER_USE_CASES;
+				case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES: return EcoreDocConfigPackage.IE_CLASSIFIER_CONFIG__RENDER_USE_CASES;
 				default: return -1;
 			}
 		}
@@ -1473,15 +1473,15 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		}
 		if (baseClass == IEClassConfig.class) {
 			switch (derivedFeatureID) {
-				case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED: return ConfigPackage.IE_CLASS_CONFIG__REPEAT_INHERITED;
-				case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES: return ConfigPackage.IE_CLASS_CONFIG__RENDER_SUB_TYPES;
-				case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES: return ConfigPackage.IE_CLASS_CONFIG__RENDER_SUPER_TYPES;
+				case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED: return EcoreDocConfigPackage.IE_CLASS_CONFIG__REPEAT_INHERITED;
+				case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES: return EcoreDocConfigPackage.IE_CLASS_CONFIG__RENDER_SUB_TYPES;
+				case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES: return EcoreDocConfigPackage.IE_CLASS_CONFIG__RENDER_SUPER_TYPES;
 				default: return -1;
 			}
 		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (derivedFeatureID) {
-				case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS: return ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS;
+				case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS: return EcoreDocConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -1507,13 +1507,13 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (baseFeatureID) {
-				case ConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS;
+				case EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS;
 				default: return -1;
 			}
 		}
 		if (baseClass == IEClassifierConfig.class) {
 			switch (baseFeatureID) {
-				case ConfigPackage.IE_CLASSIFIER_CONFIG__RENDER_USE_CASES: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES;
+				case EcoreDocConfigPackage.IE_CLASSIFIER_CONFIG__RENDER_USE_CASES: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_USE_CASES;
 				default: return -1;
 			}
 		}
@@ -1534,15 +1534,15 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		}
 		if (baseClass == IEClassConfig.class) {
 			switch (baseFeatureID) {
-				case ConfigPackage.IE_CLASS_CONFIG__REPEAT_INHERITED: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED;
-				case ConfigPackage.IE_CLASS_CONFIG__RENDER_SUB_TYPES: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES;
-				case ConfigPackage.IE_CLASS_CONFIG__RENDER_SUPER_TYPES: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES;
+				case EcoreDocConfigPackage.IE_CLASS_CONFIG__REPEAT_INHERITED: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__REPEAT_INHERITED;
+				case EcoreDocConfigPackage.IE_CLASS_CONFIG__RENDER_SUB_TYPES: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUB_TYPES;
+				case EcoreDocConfigPackage.IE_CLASS_CONFIG__RENDER_SUPER_TYPES: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_SUPER_TYPES;
 				default: return -1;
 			}
 		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (baseFeatureID) {
-				case ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS;
+				case EcoreDocConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -1568,13 +1568,13 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (baseOperationID) {
-				case ConfigPackage.IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS;
+				case EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS;
 				default: return -1;
 			}
 		}
 		if (baseClass == IEClassifierConfig.class) {
 			switch (baseOperationID) {
-				case ConfigPackage.IE_CLASSIFIER_CONFIG___SHOULD_RENDER_USE_CASES: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES;
+				case EcoreDocConfigPackage.IE_CLASSIFIER_CONFIG___SHOULD_RENDER_USE_CASES: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES;
 				default: return -1;
 			}
 		}
@@ -1595,15 +1595,15 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		}
 		if (baseClass == IEClassConfig.class) {
 			switch (baseOperationID) {
-				case ConfigPackage.IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED;
-				case ConfigPackage.IE_CLASS_CONFIG___SHOULD_RENDER_SUB_TYPES: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUB_TYPES;
-				case ConfigPackage.IE_CLASS_CONFIG___SHOULD_RENDER_SUPER_TYPES: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUPER_TYPES;
+				case EcoreDocConfigPackage.IE_CLASS_CONFIG___SHOULD_REPEAT_INHERITED: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED;
+				case EcoreDocConfigPackage.IE_CLASS_CONFIG___SHOULD_RENDER_SUB_TYPES: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUB_TYPES;
+				case EcoreDocConfigPackage.IE_CLASS_CONFIG___SHOULD_RENDER_SUPER_TYPES: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUPER_TYPES;
 				default: return -1;
 			}
 		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (baseOperationID) {
-				case ConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_BOUNDS: return ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS;
+				case EcoreDocConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_BOUNDS: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -1629,32 +1629,32 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER:
 				return shouldRender();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS:
 				return shouldRenderDefaults();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES:
 				return shouldRenderUseCases();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED:
 				return shouldRepeatInherited();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUB_TYPES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUB_TYPES:
 				return shouldRenderSubTypes();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUPER_TYPES:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUPER_TYPES:
 				return shouldRenderSuperTypes();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS:
 				return shouldRenderBounds();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_EDATA_TYPES_POSITION:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_EDATA_TYPES_POSITION:
 				return getEDataTypesPosition();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_EENUMS_POSITION:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_EENUMS_POSITION:
 				return getEEnumsPosition();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_ECLASSES_POSITION:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_ECLASSES_POSITION:
 				return getEClassesPosition();
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___ADD_EPACKAGES__LIST:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___ADD_EPACKAGES__LIST:
 				addEPackages((List<EPackageConfig>)arguments.get(0));
 				return null;
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT:
 				return findConfig((ENamedElement)arguments.get(0));
-			case ConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_TARGET:
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_TARGET:
 				return getTarget();
 		}
 		return super.eInvoke(operationID, arguments);

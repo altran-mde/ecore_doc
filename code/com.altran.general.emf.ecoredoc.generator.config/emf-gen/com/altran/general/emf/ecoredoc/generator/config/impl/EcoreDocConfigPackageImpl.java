@@ -3,8 +3,6 @@
 package com.altran.general.emf.ecoredoc.generator.config.impl;
 
 import com.altran.general.emf.ecoredoc.generator.config.AEReferenceConfig;
-import com.altran.general.emf.ecoredoc.generator.config.ConfigFactory;
-import com.altran.general.emf.ecoredoc.generator.config.ConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EClassConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig;
@@ -13,6 +11,8 @@ import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EPackageConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigFactory;
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEAttributeConfig;
@@ -27,6 +27,7 @@ import com.altran.general.emf.ecoredoc.generator.config.IEReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
 
 import java.util.List;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EGenericType;
@@ -43,14 +44,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass listEClass = null;
-
+public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -199,6 +193,13 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	private EClass eReferenceConfigEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass listEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -209,12 +210,12 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#eNS_URI
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private ConfigPackageImpl() {
-		super(eNS_URI, ConfigFactory.eINSTANCE);
+	private EcoreDocConfigPackageImpl() {
+		super(eNS_URI, EcoreDocConfigFactory.eINSTANCE);
 	}
 
 	/**
@@ -227,7 +228,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link ConfigPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link EcoreDocConfigPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -236,11 +237,11 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static ConfigPackage init() {
-		if (isInited) return (ConfigPackage)EPackage.Registry.INSTANCE.getEPackage(ConfigPackage.eNS_URI);
+	public static EcoreDocConfigPackage init() {
+		if (isInited) return (EcoreDocConfigPackage)EPackage.Registry.INSTANCE.getEPackage(EcoreDocConfigPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ConfigPackageImpl theConfigPackage = (ConfigPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ConfigPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ConfigPackageImpl());
+		EcoreDocConfigPackageImpl theEcoreDocConfigPackage = (EcoreDocConfigPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof EcoreDocConfigPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new EcoreDocConfigPackageImpl());
 
 		isInited = true;
 
@@ -248,27 +249,18 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
-		theConfigPackage.createPackageContents();
+		theEcoreDocConfigPackage.createPackageContents();
 
 		// Initialize created meta-data
-		theConfigPackage.initializePackageContents();
+		theEcoreDocConfigPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theConfigPackage.freeze();
+		theEcoreDocConfigPackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(ConfigPackage.eNS_URI, theConfigPackage);
-		return theConfigPackage;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getList() {
-		return listEClass;
+		EPackage.Registry.INSTANCE.put(EcoreDocConfigPackage.eNS_URI, theEcoreDocConfigPackage);
+		return theEcoreDocConfigPackage;
 	}
 
 	/**
@@ -1068,8 +1060,17 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConfigFactory getConfigFactory() {
-		return (ConfigFactory)getEFactoryInstance();
+	public EClass getList() {
+		return listEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EcoreDocConfigFactory getEcoreDocConfigFactory() {
+		return (EcoreDocConfigFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -1456,6 +1457,52 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2011/Xcore
+		createXcoreAnnotations();
+		// http://altran.com/general/emf/ecoredoc/generator/config/0.1
+		create_0Annotations();
 	}
 
-} //ConfigPackageImpl
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2011/Xcore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createXcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2011/Xcore";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "Ecore", "http://www.eclipse.org/emf/2002/Ecore",
+			 "GenModel", "http://www.eclipse.org/emf/2002/GenModel",
+			 "EcoreDoc", "http://altran.com/general/emf/ecoredoc/generator/config/0.1"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://altran.com/general/emf/ecoredoc/generator/config/0.1</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void create_0Annotations() {
+		String source = "http://altran.com/general/emf/ecoredoc/generator/config/0.1";	
+		addAnnotation
+		  (getIENamedElementConfig_Id(), 
+		   source, 
+		   new String[] {
+			 "render", "false"
+		   });	
+		addAnnotation
+		  (listEClass, 
+		   source, 
+		   new String[] {
+			 "render", "false"
+		   });
+	}
+
+} //EcoreDocConfigPackageImpl

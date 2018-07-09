@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.ecore.util.EcoreUtil
 
 /**
  * Builds a fully populated config hierarchy for all input {@link EPackage}s.
@@ -34,7 +35,7 @@ class EcoreDocConfigBuilder {
 	}
 	
 	def createConfig(EPackage ePackage) {
-		createEPackageConfig => [
+		parseAnnotations(createEPackageConfig => [
 			targetEPackage = ePackage
 			
 			ePackage.EClassifiers.collectEDataTypes.forEach[eDataType |
@@ -48,33 +49,33 @@ class EcoreDocConfigBuilder {
 			ePackage.EClassifiers.collectEClasses.forEach[eClass |
 				EClasses += eClass.createConfig
 			]
-		]
+		])
 	}
 	
 	def createConfig(EDataType eDataType) {
-		createEDataTypeConfig => [
+		parseAnnotations(createEDataTypeConfig => [
 			targetEDataType = eDataType
-		]
+		])
 	}
 	
 	def createConfig(EEnum eEnum) {
-		createEEnumConfig => [
+		parseAnnotations(createEEnumConfig => [
 			targetEEnum = eEnum
 			
 			eEnum.ELiterals.forEach[eEnumLiteral |
 				EEnumLiterals += eEnumLiteral.createConfig
 			]
-		]
+		])
 	}
 	
 	def createConfig(EEnumLiteral eEnumLiteral) {
-		createEEnumLiteralConfig => [
+		parseAnnotations(createEEnumLiteralConfig => [
 			targetEEnumLiteral = eEnumLiteral
-		]
+		])
 	}
 	
 	def createConfig(EClass eClass) {
-		createEClassConfig => [
+		parseAnnotations(createEClassConfig => [
 			targetEClass = eClass
 			
 			eClass.EAllAttributes.forEach[eAttribute |
@@ -88,28 +89,46 @@ class EcoreDocConfigBuilder {
 			eClass.EAllReferences.filter[!isContainment].forEach[eReference |
 				EReferences += eReference.createReferenceConfig
 			]
-		]
+		])
 	}
 	
 	def createConfig(EAttribute eAttribute) {
-		createEAttributeConfig => [
+		parseAnnotations(createEAttributeConfig => [
 			targetEAttribute = eAttribute
-		]
+		])
 	}
 	
 	def createContainmentConfig(EReference eContainment) {
-		createEContainmentConfig => [
+		parseAnnotations(createEContainmentConfig => [
 			targetEContainment = eContainment	
-		]
+		])
 	}
 	
 	def createReferenceConfig(EReference eReference) {
-		createEReferenceConfig => [
+		parseAnnotations(createEReferenceConfig => [
 			targetEReference = eReference
-		]
+		])
+	}
+	
+	def <T extends IENamedElementConfig> T parseAnnotations(T config) {
+		config.target.EAnnotations
+			.filter[source == ConfigPackage.eINSTANCE.nsURI]
+			.map[details]
+			.flatten
+			.forEach[
+				val feature = config.eClass.getEStructuralFeature(key)
+				if (feature instanceof EAttribute) {
+					val convertedValue = EcoreUtil.createFromString(feature.EAttributeType, value)
+					config.eSet(feature, convertedValue)
+				} else {
+					throw new IllegalArgumentException('''invalid EcoreDoc annotation "«key»" at «config.target»''')
+				}
+			]
+			
+		return config
 	}
 	
 	def EcoreDocGeneratorConfig build() {
 		result
-	}	
+	}
 }

@@ -1,6 +1,7 @@
 package com.altran.general.emf.ecoredoc.generator.config;
 
 import com.altran.general.emf.ecoredoc.generator.config.ConfigFactory;
+import com.altran.general.emf.ecoredoc.generator.config.ConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EClassConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig;
@@ -10,17 +11,27 @@ import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EPackageConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import java.util.Collection;
+import java.util.Map;
 import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -79,7 +90,8 @@ public class EcoreDocConfigBuilder {
       };
       this._ecoreDocExtension.collectEClasses(ePackage.getEClassifiers()).forEach(_function_3);
     };
-    return ObjectExtensions.<EPackageConfig>operator_doubleArrow(_createEPackageConfig, _function);
+    EPackageConfig _doubleArrow = ObjectExtensions.<EPackageConfig>operator_doubleArrow(_createEPackageConfig, _function);
+    return this.<EPackageConfig>parseAnnotations(_doubleArrow);
   }
   
   public EDataTypeConfig createConfig(final EDataType eDataType) {
@@ -87,7 +99,8 @@ public class EcoreDocConfigBuilder {
     final Procedure1<EDataTypeConfig> _function = (EDataTypeConfig it) -> {
       it.setTargetEDataType(eDataType);
     };
-    return ObjectExtensions.<EDataTypeConfig>operator_doubleArrow(_createEDataTypeConfig, _function);
+    EDataTypeConfig _doubleArrow = ObjectExtensions.<EDataTypeConfig>operator_doubleArrow(_createEDataTypeConfig, _function);
+    return this.<EDataTypeConfig>parseAnnotations(_doubleArrow);
   }
   
   public EEnumConfig createConfig(final EEnum eEnum) {
@@ -101,7 +114,8 @@ public class EcoreDocConfigBuilder {
       };
       eEnum.getELiterals().forEach(_function_1);
     };
-    return ObjectExtensions.<EEnumConfig>operator_doubleArrow(_createEEnumConfig, _function);
+    EEnumConfig _doubleArrow = ObjectExtensions.<EEnumConfig>operator_doubleArrow(_createEEnumConfig, _function);
+    return this.<EEnumConfig>parseAnnotations(_doubleArrow);
   }
   
   public EEnumLiteralConfig createConfig(final EEnumLiteral eEnumLiteral) {
@@ -109,7 +123,8 @@ public class EcoreDocConfigBuilder {
     final Procedure1<EEnumLiteralConfig> _function = (EEnumLiteralConfig it) -> {
       it.setTargetEEnumLiteral(eEnumLiteral);
     };
-    return ObjectExtensions.<EEnumLiteralConfig>operator_doubleArrow(_createEEnumLiteralConfig, _function);
+    EEnumLiteralConfig _doubleArrow = ObjectExtensions.<EEnumLiteralConfig>operator_doubleArrow(_createEEnumLiteralConfig, _function);
+    return this.<EEnumLiteralConfig>parseAnnotations(_doubleArrow);
   }
   
   public EClassConfig createConfig(final EClass eClass) {
@@ -139,7 +154,8 @@ public class EcoreDocConfigBuilder {
       };
       IterableExtensions.<EReference>filter(eClass.getEAllReferences(), _function_3).forEach(_function_4);
     };
-    return ObjectExtensions.<EClassConfig>operator_doubleArrow(_createEClassConfig, _function);
+    EClassConfig _doubleArrow = ObjectExtensions.<EClassConfig>operator_doubleArrow(_createEClassConfig, _function);
+    return this.<EClassConfig>parseAnnotations(_doubleArrow);
   }
   
   public EAttributeConfig createConfig(final EAttribute eAttribute) {
@@ -147,7 +163,8 @@ public class EcoreDocConfigBuilder {
     final Procedure1<EAttributeConfig> _function = (EAttributeConfig it) -> {
       it.setTargetEAttribute(eAttribute);
     };
-    return ObjectExtensions.<EAttributeConfig>operator_doubleArrow(_createEAttributeConfig, _function);
+    EAttributeConfig _doubleArrow = ObjectExtensions.<EAttributeConfig>operator_doubleArrow(_createEAttributeConfig, _function);
+    return this.<EAttributeConfig>parseAnnotations(_doubleArrow);
   }
   
   public EContainmentConfig createContainmentConfig(final EReference eContainment) {
@@ -155,7 +172,8 @@ public class EcoreDocConfigBuilder {
     final Procedure1<EContainmentConfig> _function = (EContainmentConfig it) -> {
       it.setTargetEContainment(eContainment);
     };
-    return ObjectExtensions.<EContainmentConfig>operator_doubleArrow(_createEContainmentConfig, _function);
+    EContainmentConfig _doubleArrow = ObjectExtensions.<EContainmentConfig>operator_doubleArrow(_createEContainmentConfig, _function);
+    return this.<EContainmentConfig>parseAnnotations(_doubleArrow);
   }
   
   public EReferenceConfig createReferenceConfig(final EReference eReference) {
@@ -163,7 +181,37 @@ public class EcoreDocConfigBuilder {
     final Procedure1<EReferenceConfig> _function = (EReferenceConfig it) -> {
       it.setTargetEReference(eReference);
     };
-    return ObjectExtensions.<EReferenceConfig>operator_doubleArrow(_createEReferenceConfig, _function);
+    EReferenceConfig _doubleArrow = ObjectExtensions.<EReferenceConfig>operator_doubleArrow(_createEReferenceConfig, _function);
+    return this.<EReferenceConfig>parseAnnotations(_doubleArrow);
+  }
+  
+  public <T extends IENamedElementConfig> T parseAnnotations(final T config) {
+    final Function1<EAnnotation, Boolean> _function = (EAnnotation it) -> {
+      String _source = it.getSource();
+      String _nsURI = ConfigPackage.eINSTANCE.getNsURI();
+      return Boolean.valueOf(Objects.equal(_source, _nsURI));
+    };
+    final Function1<EAnnotation, EMap<String, String>> _function_1 = (EAnnotation it) -> {
+      return it.getDetails();
+    };
+    final Consumer<Map.Entry<String, String>> _function_2 = (Map.Entry<String, String> it) -> {
+      final EStructuralFeature feature = config.eClass().getEStructuralFeature(it.getKey());
+      if ((feature instanceof EAttribute)) {
+        final Object convertedValue = EcoreUtil.createFromString(((EAttribute)feature).getEAttributeType(), it.getValue());
+        config.eSet(feature, convertedValue);
+      } else {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("invalid EcoreDoc annotation \"");
+        String _key = it.getKey();
+        _builder.append(_key);
+        _builder.append("\" at ");
+        ENamedElement _target = config.getTarget();
+        _builder.append(_target);
+        throw new IllegalArgumentException(_builder.toString());
+      }
+    };
+    Iterables.<Map.Entry<String, String>>concat(IterableExtensions.<EAnnotation, EMap<String, String>>map(IterableExtensions.<EAnnotation>filter(config.getTarget().getEAnnotations(), _function), _function_1)).forEach(_function_2);
+    return config;
   }
   
   public EcoreDocGeneratorConfig build() {

@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EReference;
  * @see com.altran.general.emf.ecoredoc.generator.config.ConfigFactory
  * @model kind="package"
  *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/com.altran.general.emf.ecoredoc.generator.config/emf-gen' bundleManifest='false' modelPluginID='' modelPluginVariables='' updateClasspath='false' basePackage='com.altran.general.emf.ecoredoc.generator'"
+ *        annotation="http://www.eclipse.org/emf/2011/Xcore Ecore='http://www.eclipse.org/emf/2002/Ecore' GenModel='http://www.eclipse.org/emf/2002/GenModel' EcoreDoc='http://altran.com/general/emf/ecoredoc/generator/config/0.1'"
  * @generated
  */
 public interface ConfigPackage extends EPackage {
@@ -40,7 +41,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "com.altran.general.emf.ecoredoc.generator.config";
+	String eNS_URI = "http://altran.com/general/emf/ecoredoc/generator/config/0.1";
 
 	/**
 	 * The package namespace name.
@@ -48,7 +49,7 @@ public interface ConfigPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "config";
+	String eNS_PREFIX = "EcoreDocConfigNs";
 
 	/**
 	 * The singleton instance of the package.
@@ -2662,6 +2663,7 @@ public interface ConfigPackage extends EPackage {
 	 * @return the meta object for class '<em>List</em>'.
 	 * @see java.util.List
 	 * @model instanceClass="java.util.List" typeParameters="T"
+	 *        annotation="http://altran.com/general/emf/ecoredoc/generator/config/0.1 render='false'"
 	 * @generated
 	 */
 	EClass getList();

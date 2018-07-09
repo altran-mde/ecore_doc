@@ -1456,6 +1456,52 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2011/Xcore
+		createXcoreAnnotations();
+		// http://altran.com/general/emf/ecoredoc/generator/config/0.1
+		create_0Annotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2011/Xcore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createXcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2011/Xcore";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "Ecore", "http://www.eclipse.org/emf/2002/Ecore",
+			 "GenModel", "http://www.eclipse.org/emf/2002/GenModel",
+			 "EcoreDoc", "http://altran.com/general/emf/ecoredoc/generator/config/0.1"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://altran.com/general/emf/ecoredoc/generator/config/0.1</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void create_0Annotations() {
+		String source = "http://altran.com/general/emf/ecoredoc/generator/config/0.1";	
+		addAnnotation
+		  (getIENamedElementConfig_Id(), 
+		   source, 
+		   new String[] {
+			 "render", "false"
+		   });	
+		addAnnotation
+		  (listEClass, 
+		   source, 
+		   new String[] {
+			 "render", "false"
+		   });
 	}
 
 } //ConfigPackageImpl

@@ -94,6 +94,7 @@ public interface IENamedElementConfig extends EObject {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.ConfigPackage#getIENamedElementConfig_Id()
 	 * @model unique="false" id="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='&lt;%org.eclipse.emf.ecore.ENamedElement%&gt; _target = this.getTarget();\n&lt;%java.lang.String%&gt; _name = null;\nif (_target!=null)\n{\n\t_name=_target.getName();\n}\nreturn _name;'"
+	 *        annotation="http://altran.com/general/emf/ecoredoc/generator/config/0.1 render='false'"
 	 * @generated
 	 */
 	String getId();

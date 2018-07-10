@@ -4,13 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.altran.general.emf.ecoredoc</groupId>
 	<artifactId>com.altran.general.emf.ecoredoc.generator</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.7.0-SNAPSHOT</version>
 	<name>EcoreDoc Generator</name>
 
 	<parent>
 		<groupId>com.altran.general.emf.ecoredoc</groupId>
 		<artifactId>com.altran.general.emf.ecoredoc.parent</artifactId>
-		<version>0.1.0-SNAPSHOT</version>
+		<version>0.7.0-SNAPSHOT</version>
 		<relativePath>../../releng/com.altran.general.emf.ecoredoc.parent</relativePath>
 	</parent>
 
@@ -35,6 +35,11 @@
 			<groupId>org.eclipse.xtext</groupId>
 			<artifactId>org.eclipse.xtext.xbase.lib</artifactId>
 			<version>${xbase-lib-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${google-guava-version}</version>
 		</dependency>
 	</dependencies>
 </project>

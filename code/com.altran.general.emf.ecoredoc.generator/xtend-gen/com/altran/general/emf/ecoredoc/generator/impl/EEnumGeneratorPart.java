@@ -1,11 +1,11 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig;
-import com.altran.general.emf.ecoredoc.generator.config.EEnumConfigPair;
 import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig;
-import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfigPair;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
+import com.altran.general.emf.ecoredoc.generator.configbuilder.EEnumConfigPair;
+import com.altran.general.emf.ecoredoc.generator.configbuilder.EEnumLiteralConfigPair;
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorEDataTypePart;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.collect.Multimap;

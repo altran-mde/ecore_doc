@@ -4,17 +4,23 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.altran.general.emf.ecoredoc</groupId>
+	<groupId>com.altran.general.emf.ecoredoc.maven-test</groupId>
 	<artifactId>ecoredoc-maven-plugin-test</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.7.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Test EcoreDoc Maven</name>
+
+	<parent>
+		<groupId>com.altran.general.emf.ecoredoc.maven-test</groupId>
+		<artifactId>com.altran.general.emf.ecoredoc.maven-test.parent</artifactId>
+		<version>0.7.0-SNAPSHOT</version>
+	</parent>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.altran.general.emf.ecoredoc</groupId>
 			<artifactId>ecoredoc-maven-plugin</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
+			<version>${ecoredoc-version}</version>
 		</dependency>
 	</dependencies>
 
@@ -23,11 +29,11 @@
 			<plugin>
 				<groupId>com.altran.general.emf.ecoredoc</groupId>
 				<artifactId>ecoredoc-maven-plugin</artifactId>
-				<version>0.1.0-SNAPSHOT</version>
+				<version>${ecoredoc-version}</version>
 
 				<configuration>
 					<resolve>true</resolve>
-					
+
 					<config>
 						<renderDefaults>false</renderDefaults>
 						<ePackages>
@@ -56,8 +62,8 @@
 								</eEnums>
 							</ePackage>
 							<ePackage>
-							  <targetEPackage>EPackage2</targetEPackage>
-							  <renderDefaults>true</renderDefaults>
+								<targetEPackage>EPackage2</targetEPackage>
+								<renderDefaults>true</renderDefaults>
 							</ePackage>
 						</ePackages>
 					</config>

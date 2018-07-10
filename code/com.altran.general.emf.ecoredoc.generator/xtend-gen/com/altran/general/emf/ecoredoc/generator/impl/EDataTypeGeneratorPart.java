@@ -1,9 +1,9 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfig;
-import com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfigPair;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
+import com.altran.general.emf.ecoredoc.generator.configbuilder.EDataTypeConfigPair;
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorEDataTypePart;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.collect.Multimap;

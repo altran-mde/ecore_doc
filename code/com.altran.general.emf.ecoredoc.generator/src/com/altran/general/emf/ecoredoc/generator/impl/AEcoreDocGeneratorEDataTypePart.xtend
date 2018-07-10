@@ -1,7 +1,7 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
-import com.altran.general.emf.ecoredoc.generator.config.IEDataTypeConfigPair
+import com.altran.general.emf.ecoredoc.generator.configbuilder.IEDataTypeConfigPair
 import com.google.common.collect.Multimap
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EPackage

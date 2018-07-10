@@ -1,9 +1,9 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
-import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfigPair
-import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfigPair
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
-import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfigPair
+import com.altran.general.emf.ecoredoc.generator.configbuilder.EAttributeConfigPair
+import com.altran.general.emf.ecoredoc.generator.configbuilder.EReferenceConfigPair
+import com.altran.general.emf.ecoredoc.generator.configbuilder.IEStructuralFeatureConfigPair
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage

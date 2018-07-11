@@ -1,1 +1,1 @@
-Please refer to the <<doc/ecoredoc-usermanual.adoc#, EcoreDoc User Manual>>.
+Please refer to the <<doc/ecoredoc-userguide.adoc#, EcoreDoc User Guide>>.

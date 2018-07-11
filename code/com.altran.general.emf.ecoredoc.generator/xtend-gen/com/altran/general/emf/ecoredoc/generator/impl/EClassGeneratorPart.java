@@ -1,18 +1,18 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.altran.general.emf.ecoredoc.generator.config.AEReferenceConfig;
-import com.altran.general.emf.ecoredoc.generator.config.AEcoreDocConfigPair;
 import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig;
-import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfigPair;
 import com.altran.general.emf.ecoredoc.generator.config.EClassConfig;
-import com.altran.general.emf.ecoredoc.generator.config.EClassConfigPair;
 import com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig;
-import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfigPair;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
-import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfigPair;
+import com.altran.general.emf.ecoredoc.generator.configbuilder.AEcoreDocConfigPair;
+import com.altran.general.emf.ecoredoc.generator.configbuilder.EAttributeConfigPair;
+import com.altran.general.emf.ecoredoc.generator.configbuilder.EClassConfigPair;
+import com.altran.general.emf.ecoredoc.generator.configbuilder.EReferenceConfigPair;
+import com.altran.general.emf.ecoredoc.generator.configbuilder.IEStructuralFeatureConfigPair;
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorPart;
 import com.altran.general.emf.ecoredoc.generator.impl.EStructuralFeaturePropertyHelper;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;

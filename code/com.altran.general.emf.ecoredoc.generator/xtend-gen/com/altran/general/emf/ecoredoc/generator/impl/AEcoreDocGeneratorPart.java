@@ -1,7 +1,7 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
-import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfigPair;
+import com.altran.general.emf.ecoredoc.generator.configbuilder.IEClassifierConfigPair;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;

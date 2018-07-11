@@ -1,0 +1,36 @@
+ecoredoc-version=0.7.0-SNAPSHOT
+com.altran.general.emf.ecoredoc.generator.config-version=${range;[===,+);${ecoredoc-version}}
+
+emf-version=2.12.0
+org.eclipse.emf.ecore-version=${range;[===,+);${emf-version}}
+org.eclipse.emf.common-version=${range;[===,+);${emf-version}}
+org.eclipse.emf.ecore.xmi-version=${range;[===,+);${emf-version}}
+org.eclipse.emf.ecore.change-version=${range;[===,+);${emf-version}}
+
+org.eclipse.emf.codegen-version=${range;[===,+);2.11.0-v20150806-0404}
+org.eclipse.emf.codegen.ecore-version=${range;[===,+);2.12.0}
+org.eclipse.emf.codegen.ecore.xtext-version=${range;[===,+);1.2.0}
+
+org.eclipse.emf.mwe2.runtime-version=${range;[===,+);2.9.1.201705291010}
+
+xtext-version=2.12.0
+org.eclipse.xtext-version=${range;[===,+);${xtext-version}}
+org.eclipse.xtext.ecore-version=${range;[===,+);${xtext-version}}
+org.eclipse.xtext.common.types-version=${range;[===,+);${xtext-version}}
+org.eclipse.xtext.xbase-version=${range;[===,+);${xtext-version}}
+org.eclipse.xtext.xbase.lib-version=${range;[===,+);${xtext-version}}
+org.eclipse.xtend.lib-version=${range;[===,+);${xtext-version}}
+org.eclipse.xtend.lib.macro-version=${range;[===,+);${xtext-version}}
+
+org.eclipse.emf.ecore.xcore.lib-version=${range;[===,+);1.1.100}
+org.eclipse.emf.ecore.xcore-version=${range;[===,+);1.3.1}
+
+google-guava-version=19
+google-guice-version=${range;[===,+);3.0}
+
+org.eclipse.equinox.common-version=${range;[===,+);3.10.0}
+org.eclipse.equinox.registry-version=${range;[===,+);3.8.0}
+
+google-guava-imports= \
+ com.google.common.base;version="${google-guava-version}", \
+ com.google.common.collect;version="${google-guava-version}"

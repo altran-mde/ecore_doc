@@ -1,44 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.altran.general.emf.ecoredoc</groupId>
-  <artifactId>ecoredoc-maven-plugin-test</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
-  <name>Test EcoreDoc Maven</name>
+	<groupId>com.altran.general.emf.ecoredoc.maven-test</groupId>
+	<artifactId>ecoredoc-maven-plugin-test</artifactId>
+	<version>0.7.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>Test EcoreDoc Maven</name>
 
-  <dependencies>
-    <dependency>
-	  <groupId>com.altran.general.emf.ecoredoc</groupId>
-	  <artifactId>ecoredoc-maven-plugin</artifactId>
-	  <version>0.1.0-SNAPSHOT</version>
-    </dependency>
-  </dependencies>
-  
-  <build>
-    <plugins>
-      <plugin>
-	    <groupId>com.altran.general.emf.ecoredoc</groupId>
-        <artifactId>ecoredoc-maven-plugin</artifactId>
-	    <version>0.1.0-SNAPSHOT</version>
-        
-        <configuration>
-          <config>
-            <renderUseCases>false</renderUseCases>
-            <positionEClasses>1</positionEClasses>
-            <positionEEnums>2</positionEEnums>
-            <positionEDataTypes>3</positionEDataTypes>
-          </config>
-          <inputFiles>
-            <inputFile>../EPackage1.ecore</inputFile>
-            <inputFile>../EPackage2.ecore</inputFile>
-          </inputFiles>
-          <outputFile>target/test-harness/testBasic/output.adoc</outputFile>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+	<parent>
+		<groupId>com.altran.general.emf.ecoredoc.maven-test</groupId>
+		<artifactId>com.altran.general.emf.ecoredoc.maven-test.parent</artifactId>
+		<version>0.7.0-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.altran.general.emf.ecoredoc</groupId>
+			<artifactId>ecoredoc-maven-plugin</artifactId>
+			<version>${ecoredoc-version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.altran.general.emf.ecoredoc</groupId>
+				<artifactId>ecoredoc-maven-plugin</artifactId>
+				<version>${ecoredoc-version}</version>
+
+				<configuration>
+					<config>
+						<renderUseCases>false</renderUseCases>
+						<positionEClasses>1</positionEClasses>
+						<positionEEnums>2</positionEEnums>
+						<positionEDataTypes>3</positionEDataTypes>
+					</config>
+					<inputFiles>
+						<inputFile>../EPackage1.ecore</inputFile>
+						<inputFile>../EPackage2.ecore</inputFile>
+					</inputFiles>
+					<outputFile>target/test-harness/testBasic/output.adoc</outputFile>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

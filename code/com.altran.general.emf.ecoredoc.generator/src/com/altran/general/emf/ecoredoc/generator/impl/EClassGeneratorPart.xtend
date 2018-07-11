@@ -1,11 +1,11 @@
 package com.altran.general.emf.ecoredoc.generator.impl
 
-import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfigPair
 import com.altran.general.emf.ecoredoc.generator.config.EClassConfig
-import com.altran.general.emf.ecoredoc.generator.config.EClassConfigPair
-import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfigPair
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
-import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfigPair
+import com.altran.general.emf.ecoredoc.generator.configbuilder.EAttributeConfigPair
+import com.altran.general.emf.ecoredoc.generator.configbuilder.EClassConfigPair
+import com.altran.general.emf.ecoredoc.generator.configbuilder.EReferenceConfigPair
+import com.altran.general.emf.ecoredoc.generator.configbuilder.IEStructuralFeatureConfigPair
 import com.google.common.collect.Multimap
 import java.util.Collection
 import java.util.List

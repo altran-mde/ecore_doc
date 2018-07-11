@@ -52,7 +52,7 @@ Ns URI:: http://altran.com/general/emf/ecoredoc/generator/config/0.1
 |Description
 
 |`targetEAttribute`[[config-EAttributeConfig-targetEAttribute]]
-|`<<ecore-EAttribute, ecore.{zwsp}EAttribute>>`
+|`ecore.{zwsp}EAttribute`
 |`[0..1]`
 |
 |===
@@ -108,7 +108,7 @@ Ns URI:: http://altran.com/general/emf/ecoredoc/generator/config/0.1
 |Description
 
 |`targetEClass`[[config-EClassConfig-targetEClass]]
-|`<<ecore-EClass, ecore.{zwsp}EClass>>`
+|`ecore.{zwsp}EClass`
 |`[0..1]`
 |
 |===
@@ -138,7 +138,7 @@ Ns URI:: http://altran.com/general/emf/ecoredoc/generator/config/0.1
 |Description
 
 |`targetEContainment`[[config-EContainmentConfig-targetEContainment]]
-|`<<ecore-EReference, ecore.{zwsp}EReference>>`
+|`ecore.{zwsp}EReference`
 |`[0..1]`
 |
 |===
@@ -167,7 +167,7 @@ Ns URI:: http://altran.com/general/emf/ecoredoc/generator/config/0.1
 |Description
 
 |`targetEDataType`[[config-EDataTypeConfig-targetEDataType]]
-|`<<ecore-EDataType, ecore.{zwsp}EDataType>>`
+|`ecore.{zwsp}EDataType`
 |`[0..1]`
 |
 |===
@@ -212,7 +212,7 @@ Ns URI:: http://altran.com/general/emf/ecoredoc/generator/config/0.1
 |Description
 
 |`targetEEnum`[[config-EEnumConfig-targetEEnum]]
-|`<<ecore-EEnum, ecore.{zwsp}EEnum>>`
+|`ecore.{zwsp}EEnum`
 |`[0..1]`
 |
 |===
@@ -239,7 +239,7 @@ Ns URI:: http://altran.com/general/emf/ecoredoc/generator/config/0.1
 |Description
 
 |`targetEEnumLiteral`[[config-EEnumLiteralConfig-targetEEnumLiteral]]
-|`<<ecore-EEnumLiteral, ecore.{zwsp}EEnumLiteral>>`
+|`ecore.{zwsp}EEnumLiteral`
 |`[0..1]`
 |
 |===
@@ -299,7 +299,7 @@ Ns URI:: http://altran.com/general/emf/ecoredoc/generator/config/0.1
 |Description
 
 |`targetEPackage`[[config-EPackageConfig-targetEPackage]]
-|`<<ecore-EPackage, ecore.{zwsp}EPackage>>`
+|`ecore.{zwsp}EPackage`
 |`[0..1]`
 |
 |===
@@ -329,7 +329,7 @@ Ns URI:: http://altran.com/general/emf/ecoredoc/generator/config/0.1
 |Description
 
 |`targetEReference`[[config-EReferenceConfig-targetEReference]]
-|`<<ecore-EReference, ecore.{zwsp}EReference>>`
+|`ecore.{zwsp}EReference`
 |`[0..1]`
 |
 |===

@@ -57,7 +57,14 @@ abstract class AEcoreDocGeneratorPart {
 	}
 
 	protected def dispatch CharSequence concatLinkTo(ENamedElement eNamedElement) {
-		'''`<<«concatAnchor(eNamedElement)», «concatReferenceName(eNamedElement)»>>`'''
+		val cfg = getConfig().findConfig(eNamedElement)
+		
+		// prevent creating links to non-rendered targets
+		if (cfg?.shouldRender) {
+			'''`<<«concatAnchor(eNamedElement)», «concatReferenceName(eNamedElement)»>>`'''
+		} else {
+			'''`«concatReferenceName(eNamedElement)»`'''
+		}
 	}
 
 	// Special handling for default EDataTypes: Don't create anchor
@@ -68,8 +75,14 @@ abstract class AEcoreDocGeneratorPart {
 			'''`«eDataType.name»`'''
 
 		} else {
-			'''`<<«concatAnchor(eDataType)», «concatReferenceName(eDataType)»>>`'''
+			val cfg = getConfig().findConfig(eDataType)
 			
+			// prevent creating links to non-rendered targets
+			if (cfg?.shouldRender) {
+				'''`<<«concatAnchor(eDataType)», «concatReferenceName(eDataType)»>>`'''
+			} else {
+				'''`«concatReferenceName(eDataType)»`'''
+			}
 		}
 	}
 

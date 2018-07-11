@@ -283,7 +283,10 @@ These options will be used by default; any external options take precedence over
 EcoreDoc will throw an `IllegalArgumentException` if an EcoreDoc annotation contains an illegal value.
 
 === Ecore Annotation
-Create an `EAnnotation` on the annotated element with source `\http://altran.com/general/emf/ecoredoc/generator/config/0.1`.
+Create an `EAnnotation` on the annotated element with source 
+----
+http://altran.com/general/emf/ecoredoc/generator/config/0.1
+----
 Within this annotation, create one key/value pair for each option.
 
 CAUTION: The source identifier might change in the future!

@@ -2,6 +2,8 @@ Generates https://asciidoctor.org/[AsciiDoctor] files to document Ecore metamode
 AsciiDoctor can be rendered as HTML, PDF, or Eclipse Help.
 EcoreDoc can be used as https://maven.apache.org/[Maven] Plugin, standalone command-line tool, or as Java API.
 
+You might have a look at an <<code/com.altran.general.emf.ecoredoc.maven/src/test/resources/testGeneratorConfig/expected.adoc#, example rendering>>.
+
 For more details, please refer to the <<doc/ecoredoc-userguide.adoc#, EcoreDoc User Guide>>.
 
 However, the GitLab rendering misses important parts,

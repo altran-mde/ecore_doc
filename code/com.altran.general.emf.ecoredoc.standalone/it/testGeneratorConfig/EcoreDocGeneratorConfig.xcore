@@ -1,0 +1,661 @@
+@Ecore(
+	nsURI="http://altran.com/general/emf/ecoredoc/generator/config/0.1",
+	nsPrefix="EcoreDocConfigNs"
+)
+@GenModel(
+	prefix="EcoreDocConfig",
+	modelDirectory="/com.altran.general.emf.ecoredoc.generator.config/emf-gen",
+	bundleManifest="false",
+	modelPluginID="",
+	modelPluginVariables="",
+	updateClasspath="false"
+)
+package com.altran.general.emf.ecoredoc.generator.config
+
+import org.eclipse.emf.ecore.EAttribute
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EDataType
+import org.eclipse.emf.ecore.EEnum
+import org.eclipse.emf.ecore.EEnumLiteral
+import org.eclipse.emf.ecore.ENamedElement
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EReference
+
+annotation "http://www.eclipse.org/emf/2002/Ecore" as Ecore
+annotation "http://www.eclipse.org/emf/2002/GenModel" as GenModel
+
+annotation "http://altran.com/general/emf/ecoredoc/generator/config/0.1" as EcoreDoc
+
+interface IENamedElementConfig {
+	/*
+	 * Whether this element should be rendered at all.
+	 */
+	unsettable boolean render
+	
+	/*
+	 * Traverses the tree to find the most specific <tt>render</tt> setting.
+	 */
+	op boolean shouldRender() {
+		if (isSetRender) {
+			render
+		} else {
+			(eContainer as IENamedElementConfig).shouldRender()
+		}
+	}
+
+	/*
+	 * Link to the configured element.
+	 */
+	op ENamedElement getTarget()
+	
+	/*
+	 * Enables proper merging in {@link com.altran.general.emf.ecoredoc.util.EcoreMerger}.
+	 */
+	@EcoreDoc(
+		render="false"
+	)
+	readonly derived transient id String ^id get {
+		target?.name
+	}
+}
+
+interface IDefaultValueConfig {
+	/*
+	 * Whether properties should be rendered at their default values.
+	 * 
+	 * <p>
+	 * Example: If <tt>EReference.ordered = true</tt> (the default value),
+	 * the <i>ordered</i> property of that <tt>EReference</tt> will not be rendered
+	 * if <tt>renderDefaults = false</tt>.
+	 * </p> 
+	 */
+	unsettable boolean renderDefaults
+	
+	/*
+	 * Traverses the tree to find the most specific <tt>renderDefaults</tt> setting.
+	 */
+	op boolean shouldRenderDefaults() {
+		if (isSetRenderDefaults) {
+			renderDefaults
+		} else {
+			(eContainer as IDefaultValueConfig).shouldRenderDefaults()
+		}
+	}
+}
+
+interface IEClassifierConfig extends IENamedElementConfig, IDefaultValueConfig {
+	/*
+	 * Whether use cases (references to other usages of this element) should be rendered.
+	 */
+	unsettable boolean renderUseCases
+
+	/*
+	 * Traverses the tree to find the most specific <tt>renderUseCases</tt> setting.
+	 */
+	op boolean shouldRenderUseCases() {
+		if (isSetRenderUseCases) {
+			renderUseCases
+		} else {
+			(eContainer as IEClassifierConfig).shouldRenderUseCases()
+		}
+	}
+}
+
+interface IEDataTypeConfig extends IEClassifierConfig {
+	
+}
+
+interface IEEnumConfig extends IEDataTypeConfig {
+	
+}
+
+interface IEClassConfig extends IEClassifierConfig {
+	/*
+	 * Whether inherited features should be repeated.
+	 * 
+	 * <p>
+	 * Example: 
+	 * <tt>EClass1</tt> has an <tt>EAttribute name=attr1</tt>.
+	 * <tt>EClass2 extends EClass1</tt>.
+	 * If <tt>repeatInherited = true</tt> for <i>EClass2</i>,
+	 * <i>attr1</i> will be listed in the section of <i>EClass1</i> and <i>EClass2</i>.
+	 * Otherwise, <i>attr1</i> will only be listed in the section of <i>EClass1</i>.
+	 * </p>
+	 */
+	unsettable boolean repeatInherited
+	/*
+	 * Traverses the tree to find the most specific <tt>repeatInherited</tt> setting.
+	 */
+	op boolean shouldRepeatInherited() {
+		if (isSetRepeatInherited) {
+			repeatInherited
+		} else {
+			(eContainer as IEClassConfig).shouldRepeatInherited()
+		}
+	}
+	
+	/*
+	 * Whether the list of sub-types should be rendered.
+	 */
+	unsettable boolean renderSubTypes
+	/*
+	 * Traverses the tree to find the most specific <tt>renderSubTypes</tt> setting.
+	 */
+	op boolean shouldRenderSubTypes() {
+		if (isSetRenderSubTypes) {
+			renderSubTypes
+		} else {
+			(eContainer as IEClassConfig).shouldRenderSubTypes()
+		}
+	}
+	
+	/*
+	 * Whether the list of super-types should be rendered.
+	 */
+	unsettable boolean renderSuperTypes
+	/*
+	 * Traverses the tree to find the most specific <tt>renderSuperTypes</tt> setting.
+	 */
+	op boolean shouldRenderSuperTypes() {
+		if (isSetRenderSuperTypes) {
+			renderSuperTypes
+		} else {
+			(eContainer as IEClassConfig).shouldRenderSuperTypes()
+		}
+	}
+	
+}
+
+interface IEStructuralFeatureConfig extends IENamedElementConfig, IDefaultValueConfig {
+	/*
+	 * Whether multiplicity bounds should be rendered,
+	 * even if they are at their default values and <tt>renderDefaults = false</tt>.
+	 */
+	unsettable boolean renderBounds
+	
+	/*
+	 * Traverses the tree to find the most specific <tt>renderBounds</tt> setting.
+	 */
+	op boolean shouldRenderBounds() {
+		if (isSetRenderBounds) {
+			renderBounds
+		} else if(isSetRenderDefaults) {
+			renderDefaults
+		} else {
+			(eContainer as IEStructuralFeatureConfig).shouldRenderBounds()
+		}
+	}
+}
+
+interface IEAttributeConfig extends IEStructuralFeatureConfig {
+	
+}
+
+interface IEReferenceConfig extends IEStructuralFeatureConfig {
+	
+}
+
+interface IEPackageConfig extends IENamedElementConfig {
+	/*
+	 * Rendering position of all EDataTypes within an EPackage.
+	 */
+	unsettable int positionEDataTypes
+	/*
+	 * Traverses the tree to find the most specific <tt>positionEDataTypes</tt> setting.
+	 */
+	op int getEDataTypesPosition() {
+		if (isSetPositionEDataTypes) {
+			positionEDataTypes
+		} else {
+			(eContainer as IEPackageConfig).getEDataTypesPosition()
+		}
+	}
+	
+	/*
+	 * Rendering position of all EEnums within an EPackage.
+	 */
+	unsettable int positionEEnums
+	/*
+	 * Traverses the tree to find the most specific <tt>positionEEnums</tt> setting.
+	 */
+	op int getEEnumsPosition() {
+		if (isSetPositionEEnums) {
+			positionEEnums
+		} else {
+			(eContainer as IEPackageConfig).getEEnumsPosition()
+		}
+	}
+	
+	/*
+	 * Rendering position of all EClasses within an EPackage.
+	 */
+	unsettable int positionEClasses
+	/*
+	 * Traverses the tree to find the most specific <tt>positionEClasses</tt> setting.
+	 */
+	op int getEClassesPosition() {
+		if (isSetPositionEClasses) {
+			positionEClasses
+		} else {
+			(eContainer as IEPackageConfig).getEClassesPosition()
+		}
+	}
+}
+
+interface IEEnumLiteralConfig extends IENamedElementConfig {
+	
+}
+
+
+/*
+ * Root for the detailed EcoreDocGenerator configuration.
+ * 
+ * <p>
+ * The configuration allows to specify configuration options for each element and all its contained elements.
+ * It always chooses the most specific configuration setting.
+ * </p>
+ * 
+ * <p>Example:</p>
+ * 
+ * <pre>
+ * EcoreDocGeneratorConfig
+ * 	 * renderDefaults: {unset, defaults to true}
+ *   * repeatInherited: false
+ *   + EPackage1
+ *     * renderDefaults: false
+ *     + EClass1
+ *       + EAttribute1
+ *         * renderDefaults: true
+ *       + EAttribute2
+ *         {no custom config}
+ *     + EClass2 extends EClass1
+ *   + EPackage2
+ *     * repeatInherited: true
+ *     + EClass3 extends EClass1
+ *     + EClass4
+ *       + EAttribute3
+ *         * renderDefaults: true
+ *         * repeatInherited: false
+ * </pre>
+ * 
+ * <p>Result:</p>
+ * 
+ * <dl>
+ *   <dt>EPackage1</dt>
+ *   <dd>
+ *     <dl>
+ *       <dt>renderDefaults</dt><dd>false</dd>
+ *       <dt>repeatInherited</dt><dd>false</dd>
+ *     <dl>
+ *   </dd>
+ *   <dt>EClass1</dt>
+ *   <dd>
+ *     <dl>
+ *       <dt>renderDefaults</dt><dd>false</dd>
+ *       <dt>repeatInherited</dt><dd>false</dd>
+ *     <dl>
+ *   </dd>
+ *   <dt>EAttribute1</dt>
+ *   <dd>
+ *     <dl>
+ *       <dt>renderDefaults</dt><dd>true</dd>
+ *       <dt>repeatInherited</dt><dd>false</dd>
+ *     <dl>
+ *   </dd>
+ *   <dt>EAttribute2</dt>
+ *   <dd>
+ *     <dl>
+ *       <dt>renderDefaults</dt><dd>false</dd>
+ *       <dt>repeatInherited</dt><dd>false</dd>
+ *     <dl>
+ *   </dd>
+ *   <dt>EClass2</dt>
+ *   <dd>
+ *     <dl>
+ *       <dt>renderDefaults</dt><dd>false</dd>
+ *       <dt>repeatInherited</dt><dd>false</dd>
+ *     <dl>
+ *   </dd>
+ *   <dt>EPackage2</dt>
+ *   <dd>
+ *     <dl>
+ *       <dt>renderDefaults</dt><dd>true</dd>
+ *       <dt>repeatInherited</dt><dd>true</dd>
+ *     <dl>
+ *   </dd>
+ *   <dt>EClass3</dt>
+ *   <dd>
+ *     <dl>
+ *       <dt>renderDefaults</dt><dd>true</dd>
+ *       <dt>repeatInherited</dt><dd>true</dd>
+ *     <dl>
+ *   </dd>
+ *   <dt>EClass4</dt>
+ *   <dd>
+ *     <dl>
+ *       <dt>renderDefaults</dt><dd>true</dd>
+ *       <dt>repeatInherited</dt><dd>true</dd>
+ *     <dl>
+ *   </dd>
+ *   <dt>EAttribute3</dt>
+ *   <dd>
+ *     <dl>
+ *       <dt>renderDefaults</dt><dd>true</dd>
+ *       <dt>repeatInherited</dt><dd>false</dd>
+ *     <dl>
+ *   </dd>
+ * </dl>
+ */
+class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig, IEClassConfig, IEAttributeConfig, IEReferenceConfig {
+	/**
+	 * Title of the generated document.
+	 * 
+	 * <p>defaults to <b>Ecore Documentation</b>.</p>
+	 */
+	String documentTitle = "Ecore Documentation"
+	
+	/*
+	 * Sets default for <tt>render = true</tt>.
+	 */
+	op boolean shouldRender() {
+		if (isSetRender) {
+			render
+		} else {
+			true
+		}
+	}
+
+	/*
+	 * Sets default for <tt>renderDefaults = true</tt>.
+	 */
+	op boolean shouldRenderDefaults() {
+		if (isSetRenderDefaults) {
+			renderDefaults
+		} else {
+			true
+		}
+	}
+
+	/*
+	 * Sets default for <tt>renderUseCases = true</tt>.
+	 */
+	op boolean shouldRenderUseCases() {
+		if (isSetRenderUseCases) {
+			renderUseCases
+		} else {
+			true
+		}
+	}
+	
+	/*
+	 * Sets default for <tt>repeatInherited = true</tt>.
+	 */
+	op boolean shouldRepeatInherited() {
+		if (isSetRepeatInherited) {
+			repeatInherited
+		} else {
+			true
+		}
+	}
+	
+	/*
+	 * Sets default for <tt>renderSubTypes = true</tt>.
+	 */
+	op boolean shouldRenderSubTypes() {
+		if (isSetRenderSubTypes) {
+			renderSubTypes
+		} else {
+			true
+		}
+	}
+	
+	/*
+	 * Sets default for <tt>RenderSuperTypes = true</tt>.
+	 */
+	op boolean shouldRenderSuperTypes() {
+		if (isSetRenderSuperTypes) {
+			renderSuperTypes
+		} else {
+			true
+		}
+	}
+	
+	/*
+	 * Sets default for <tt>renderBounds = shouldRenderDefaults()</tt>.
+	 */
+	op boolean shouldRenderBounds() {
+		if (isSetRenderBounds) {
+			renderBounds
+		} else {
+			shouldRenderDefaults()
+		}
+	}
+	
+	/*
+	 * Sets default for <tt>positionEDataTypes = 1</tt>.
+	 */
+	op int getEDataTypesPosition() {
+		if (isSetPositionEDataTypes) {
+			positionEDataTypes
+		} else {
+			1
+		}
+	}
+	
+	/*
+	 * Sets default for <tt>positionEEnums = 2</tt>.
+	 */
+	op int getEEnumsPosition() {
+		if (isSetPositionEEnums) {
+			positionEEnums
+		} else {
+			2
+		}
+	}
+	
+	/*
+	 * Sets default for <tt>positionEClasses = 3</tt>.
+	 */
+	op int getEClassesPosition() {
+		if (isSetPositionEClasses) {
+			positionEClasses
+		} else {
+			3
+		}
+	}
+	
+	contains EPackageConfig[] ePackages
+	/*
+	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+	 */
+	op void addEPackages(List<EPackageConfig> ePackageConfig) {
+		EPackages += ePackageConfig
+	}
+	
+	/*
+	 * Convenience method to map ENamedElement -> config.
+	 */
+	op IENamedElementConfig findConfig(ENamedElement element) {
+		switch (element) {
+			EPackage:
+				EPackages
+			
+			EEnum:
+				EPackages
+				.map[EEnums]
+				.flatten
+				
+			EDataType:
+				EPackages
+					.map[EDataTypes]
+					.flatten
+					
+			EEnumLiteral:
+				EPackages
+					.map[EEnums]
+					.flatten
+					.map[EEnumLiterals]
+					.flatten
+							
+			EClass:
+				EPackages
+					.map[EClasses]
+					.flatten
+			
+			EAttribute:
+				EPackages
+				.map[EClasses]
+				.flatten
+				.map[EAttributes]
+				.flatten
+				
+			EReference case (element.isContainment):
+				EPackages
+					.map[EClasses]
+					.flatten
+					.map[EContainments]
+					.flatten
+					
+			EReference case (!element.isContainment):
+				EPackages
+					.map[EClasses]
+					.flatten
+					.map[EReferences]
+					.flatten
+		}.findFirst[target == element]
+	}
+	
+	op ENamedElement getTarget() {
+		null
+	}
+}
+
+class EPackageConfig extends  IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig, IEClassConfig, IEAttributeConfig, IEReferenceConfig {
+	refers EPackage targetEPackage
+	
+	op ENamedElement getTarget() {
+		targetEPackage
+	}
+	
+	contains EDataTypeConfig[] eDataTypes
+	/*
+	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+	 */
+	op void addEDataTypes(List<EDataTypeConfig> eDataTypeConfig) {
+		EDataTypes += eDataTypeConfig
+	}
+
+	contains EEnumConfig[] eEnums
+	/*
+	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+	 */
+	op void addEEnums(List<EEnumConfig> eEnumConfig) {
+		EEnums += eEnumConfig
+	}
+
+	contains EClassConfig[] eClasses
+	/*
+	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+	 */
+	op void addEClasses(List<EClassConfig> eClassConfig) {
+		EClasses += eClassConfig
+	}
+}
+
+class EDataTypeConfig extends  IEDataTypeConfig {
+	refers EDataType targetEDataType
+	
+	op ENamedElement getTarget() {
+		targetEDataType
+	}
+}
+
+class EEnumConfig extends IEEnumConfig, IEEnumLiteralConfig {
+	refers EEnum targetEEnum
+	
+	op ENamedElement getTarget() {
+		targetEEnum
+	}
+	
+	contains EEnumLiteralConfig[] eEnumLiterals
+	/*
+	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+	 */
+	op void addEEnumLiterals(List<EEnumLiteralConfig> eEnumLiteralConfig) {
+		EEnumLiterals += eEnumLiteralConfig
+	}
+}
+
+class EEnumLiteralConfig extends IEEnumLiteralConfig {
+	refers EEnumLiteral targetEEnumLiteral
+
+	op ENamedElement getTarget() {
+		targetEEnumLiteral
+	}
+}
+
+class EClassConfig extends IEClassConfig, IEAttributeConfig, IEReferenceConfig {
+	refers EClass targetEClass
+
+	op ENamedElement getTarget() {
+		targetEClass
+	}
+	
+	contains EAttributeConfig[] eAttributes
+	/*
+	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+	 */
+	op void addEAttributes(List<EAttributeConfig> eAttributeConfig) {
+		EAttributes += eAttributeConfig
+	}
+
+	contains EContainmentConfig[] eContainments
+	/*
+	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+	 */
+	op void addEContainments(List<EContainmentConfig> eContainmentConfig) {
+		EContainments += eContainmentConfig
+	}
+
+	contains EReferenceConfig[] eReferences	
+	/*
+	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+	 */
+	op void addEReferences(List<EReferenceConfig> eReferenceConfig) {
+		EReferences += eReferenceConfig
+	}
+}
+
+class EAttributeConfig extends IEAttributeConfig {
+	refers EAttribute targetEAttribute
+
+	op ENamedElement getTarget() {
+		targetEAttribute
+	}
+}
+
+abstract class AEReferenceConfig extends IEReferenceConfig {
+}
+
+class EContainmentConfig extends AEReferenceConfig {
+	refers EReference targetEContainment	
+
+	op ENamedElement getTarget() {
+		targetEContainment
+	}
+}
+
+class EReferenceConfig extends AEReferenceConfig {
+	refers EReference targetEReference	
+
+	op ENamedElement getTarget() {
+		targetEReference
+	}
+}
+
+@EcoreDoc(
+	render="false"
+)
+interface List<T> wraps java.util.List {
+	
+}

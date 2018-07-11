@@ -378,72 +378,167 @@ EcoreDocGeneratorConfig
 <dl>
   <dt>EPackage1</dt>
   <dd>
-    <dl>
+    <dl class="compact">
       <dt>renderDefaults</dt><dd>false</dd>
       <dt>repeatInherited</dt><dd>false</dd>
-    <dl>
+    </dl>
   </dd>
   <dt>EClass1</dt>
   <dd>
-    <dl>
+    <dl class="compact">
       <dt>renderDefaults</dt><dd>false</dd>
       <dt>repeatInherited</dt><dd>false</dd>
-    <dl>
+    </dl>
   </dd>
   <dt>EAttribute1</dt>
   <dd>
-    <dl>
+    <dl class="compact">
       <dt>renderDefaults</dt><dd>true</dd>
       <dt>repeatInherited</dt><dd>false</dd>
-    <dl>
+    </dl>
   </dd>
   <dt>EAttribute2</dt>
   <dd>
-    <dl>
+    <dl class="compact">
       <dt>renderDefaults</dt><dd>false</dd>
       <dt>repeatInherited</dt><dd>false</dd>
-    <dl>
+    </dl>
   </dd>
   <dt>EClass2</dt>
   <dd>
-    <dl>
+    <dl class="compact">
       <dt>renderDefaults</dt><dd>false</dd>
       <dt>repeatInherited</dt><dd>false</dd>
-    <dl>
+    </dl>
   </dd>
   <dt>EPackage2</dt>
   <dd>
-    <dl>
+    <dl class="compact">
       <dt>renderDefaults</dt><dd>true</dd>
       <dt>repeatInherited</dt><dd>true</dd>
-    <dl>
+    </dl>
   </dd>
   <dt>EClass3</dt>
   <dd>
-    <dl>
+    <dl class="compact">
       <dt>renderDefaults</dt><dd>true</dd>
       <dt>repeatInherited</dt><dd>true</dd>
-    <dl>
+    </dl>
   </dd>
   <dt>EClass4</dt>
   <dd>
-    <dl>
+    <dl class="compact">
       <dt>renderDefaults</dt><dd>true</dd>
       <dt>repeatInherited</dt><dd>true</dd>
-    <dl>
+    </dl>
   </dd>
   <dt>EAttribute3</dt>
   <dd>
-    <dl>
+    <dl class="compact">
       <dt>renderDefaults</dt><dd>true</dd>
       <dt>repeatInherited</dt><dd>false</dd>
-    <dl>
+    </dl>
   </dd>
 </dl>
 ++++
 endif::[]
 ifndef::backend-html5[]
+Root for the detailed EcoreDocGenerator configuration.
 
+
+The configuration allows to specify configuration options for each element and all its contained elements.
+It always chooses the most specific configuration setting.
+
+
+Example:
+
+
+EcoreDocGeneratorConfig
+	 * renderDefaults: {unset, defaults to true}
+  * repeatInherited: false
+  + EPackage1
+    * renderDefaults: false
+    + EClass1
+      + EAttribute1
+        * renderDefaults: true
+      + EAttribute2
+        {no custom config}
+    + EClass2 extends EClass1
+  + EPackage2
+    * repeatInherited: true
+    + EClass3 extends EClass1
+    + EClass4
+      + EAttribute3
+        * renderDefaults: true
+        * repeatInherited: false
+
+
+Result:
+
+
+  EPackage1
+  
+    
+      renderDefaults false
+      repeatInherited false
+    
+  
+  EClass1
+  
+    
+      renderDefaults false
+      repeatInherited false
+    
+  
+  EAttribute1
+  
+    
+      renderDefaults true
+      repeatInherited false
+    
+  
+  EAttribute2
+  
+    
+      renderDefaults false
+      repeatInherited false
+    
+  
+  EClass2
+  
+    
+      renderDefaults false
+      repeatInherited false
+    
+  
+  EPackage2
+  
+    
+      renderDefaults true
+      repeatInherited true
+    
+  
+  EClass3
+  
+    
+      renderDefaults true
+      repeatInherited true
+    
+  
+  EClass4
+  
+    
+      renderDefaults true
+      repeatInherited true
+    
+  
+  EAttribute3
+  
+    
+      renderDefaults true
+      repeatInherited false
+    
+  
 endif::[]
 
 
@@ -476,14 +571,15 @@ _Default:_ `Ecore Documentation`
 |
 ifdef::backend-html5[]
 ++++
-*
 Title of the generated document.
 
 <p>defaults to <b>Ecore Documentation</b>.</p>
 ++++
 endif::[]
 ifndef::backend-html5[]
+Title of the generated document.
 
+defaults to Ecore Documentation.
 endif::[]
 |===
 
@@ -532,7 +628,12 @@ if <tt>renderDefaults = false</tt>.
 ++++
 endif::[]
 ifndef::backend-html5[]
+Whether properties should be rendered at their default values.
 
+
+Example: If EReference.ordered = true (the default value),
+the ordered property of that EReference will not be rendered
+if renderDefaults = false.
 endif::[]
 |===
 
@@ -598,7 +699,15 @@ Otherwise, <i>attr1</i> will only be listed in the section of <i>EClass1</i>.
 ++++
 endif::[]
 ifndef::backend-html5[]
+Whether inherited features should be repeated.
 
+
+Example:
+EClass1 has an EAttribute name=attr1.
+EClass2 extends EClass1.
+If repeatInherited = true for EClass2,
+attr1 will be listed in the section of EClass1 and EClass2.
+Otherwise, attr1 will only be listed in the section of EClass1.
 endif::[]
 |===
 
@@ -757,6 +866,7 @@ even if they are at their default values and <tt>renderDefaults = false</tt>.
 ++++
 endif::[]
 ifndef::backend-html5[]
-
+Whether multiplicity bounds should be rendered,
+even if they are at their default values and renderDefaults = false.
 endif::[]
 |===

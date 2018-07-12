@@ -17,6 +17,7 @@
 
 	<modules>
 		<module>../../code/com.altran.general.emf.ecoredoc.generator.integration.ui</module>
+		<module>../com.altran.general.emf.ecoredoc.ui.feature</module>
 		<module>../com.altran.general.emf.ecoredoc.target</module>
 	</modules>
 

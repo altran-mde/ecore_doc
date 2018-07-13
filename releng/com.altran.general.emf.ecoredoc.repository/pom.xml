@@ -5,13 +5,13 @@
 
 	<groupId>com.altran.general.emf.ecoredoc.tycho</groupId>
 	<artifactId>com.altran.general.emf.ecoredoc.repository</artifactId>
-	<version>0.7.0-SNAPSHOT</version>
+	<version>0.8.0-SNAPSHOT</version>
 
 	<parent>
 		<groupId>com.altran.general.emf.ecoredoc.tycho</groupId>
 		<artifactId>com.altran.general.emf.ecoredoc.parent.tycho</artifactId>
-		<version>0.7.0-SNAPSHOT</version>
-		<relativePath>../com.altran.general.emf.ecoredoc.parent</relativePath>
+		<version>0.8.0-SNAPSHOT</version>
+		<relativePath>../com.altran.general.emf.ecoredoc.parent.tycho</relativePath>
 	</parent>
 
 	<packaging>eclipse-repository</packaging>

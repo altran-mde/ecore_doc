@@ -522,7 +522,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Niko Stotz</span><br>
 <span id="email" class="email"><a href="mailto:niko.stotz@altran.com">niko.stotz@altran.com</a></span><br>
-<span id="revnumber">version 0.7.0-SNAPSHOT</span>
+<span id="revnumber">version 0.8.0-SNAPSHOT</span>
 </div>
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
@@ -531,39 +531,40 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#java-api">2. Java API</a></li>
 <li><a href="#maven-tool">3. Maven Plugin</a></li>
 <li><a href="#standalone-tool">4. Standalone Command-Line Tool</a></li>
-<li><a href="#ecoredoc-annotation">5. EcoreDoc Metamodel Annotation</a>
+<li><a href="#eclipse-plugin">5. Eclipse Plug-in</a></li>
+<li><a href="#ecoredoc-annotation">6. EcoreDoc Metamodel Annotation</a>
 <ul class="sectlevel2">
-<li><a href="#_ecore_annotation">5.1. Ecore Annotation</a></li>
-<li><a href="#_xcore_annotation">5.2. Xcore Annotation</a></li>
+<li><a href="#_ecore_annotation">6.1. Ecore Annotation</a></li>
+<li><a href="#_xcore_annotation">6.2. Xcore Annotation</a></li>
 </ul>
 </li>
-<li><a href="#generator-config">6. Generator Configuration</a>
+<li><a href="#generator-config">7. Generator Configuration</a>
 <ul class="sectlevel2">
-<li><a href="#config-AEReferenceConfig">6.1. Abstract Class AEReferenceConfig</a></li>
-<li><a href="#config-EAttributeConfig">6.2. Class EAttributeConfig</a></li>
-<li><a href="#config-EClassConfig">6.3. Class EClassConfig</a></li>
-<li><a href="#config-EContainmentConfig">6.4. Class EContainmentConfig</a></li>
-<li><a href="#config-EDataTypeConfig">6.5. Class EDataTypeConfig</a></li>
-<li><a href="#config-EEnumConfig">6.6. Class EEnumConfig</a></li>
-<li><a href="#config-EEnumLiteralConfig">6.7. Class EEnumLiteralConfig</a></li>
-<li><a href="#config-EPackageConfig">6.8. Class EPackageConfig</a></li>
-<li><a href="#config-EReferenceConfig">6.9. Class EReferenceConfig</a></li>
-<li><a href="#config-EcoreDocGeneratorConfig">6.10. Class EcoreDocGeneratorConfig</a></li>
-<li><a href="#config-IDefaultValueConfig">6.11. Interface IDefaultValueConfig</a></li>
-<li><a href="#config-IEAttributeConfig">6.12. Interface IEAttributeConfig</a></li>
-<li><a href="#config-IEClassConfig">6.13. Interface IEClassConfig</a></li>
-<li><a href="#config-IEClassifierConfig">6.14. Interface IEClassifierConfig</a></li>
-<li><a href="#config-IEDataTypeConfig">6.15. Interface IEDataTypeConfig</a></li>
-<li><a href="#config-IEEnumConfig">6.16. Interface IEEnumConfig</a></li>
-<li><a href="#config-IEEnumLiteralConfig">6.17. Interface IEEnumLiteralConfig</a></li>
-<li><a href="#config-IENamedElementConfig">6.18. Interface IENamedElementConfig</a></li>
-<li><a href="#config-IEPackageConfig">6.19. Interface IEPackageConfig</a></li>
-<li><a href="#config-IEReferenceConfig">6.20. Interface IEReferenceConfig</a></li>
-<li><a href="#config-IEStructuralFeatureConfig">6.21. Interface IEStructuralFeatureConfig</a></li>
+<li><a href="#config-AEReferenceConfig">7.1. Abstract Class AEReferenceConfig</a></li>
+<li><a href="#config-EAttributeConfig">7.2. Class EAttributeConfig</a></li>
+<li><a href="#config-EClassConfig">7.3. Class EClassConfig</a></li>
+<li><a href="#config-EContainmentConfig">7.4. Class EContainmentConfig</a></li>
+<li><a href="#config-EDataTypeConfig">7.5. Class EDataTypeConfig</a></li>
+<li><a href="#config-EEnumConfig">7.6. Class EEnumConfig</a></li>
+<li><a href="#config-EEnumLiteralConfig">7.7. Class EEnumLiteralConfig</a></li>
+<li><a href="#config-EPackageConfig">7.8. Class EPackageConfig</a></li>
+<li><a href="#config-EReferenceConfig">7.9. Class EReferenceConfig</a></li>
+<li><a href="#config-EcoreDocGeneratorConfig">7.10. Class EcoreDocGeneratorConfig</a></li>
+<li><a href="#config-IDefaultValueConfig">7.11. Interface IDefaultValueConfig</a></li>
+<li><a href="#config-IEAttributeConfig">7.12. Interface IEAttributeConfig</a></li>
+<li><a href="#config-IEClassConfig">7.13. Interface IEClassConfig</a></li>
+<li><a href="#config-IEClassifierConfig">7.14. Interface IEClassifierConfig</a></li>
+<li><a href="#config-IEDataTypeConfig">7.15. Interface IEDataTypeConfig</a></li>
+<li><a href="#config-IEEnumConfig">7.16. Interface IEEnumConfig</a></li>
+<li><a href="#config-IEEnumLiteralConfig">7.17. Interface IEEnumLiteralConfig</a></li>
+<li><a href="#config-IENamedElementConfig">7.18. Interface IENamedElementConfig</a></li>
+<li><a href="#config-IEPackageConfig">7.19. Interface IEPackageConfig</a></li>
+<li><a href="#config-IEReferenceConfig">7.20. Interface IEReferenceConfig</a></li>
+<li><a href="#config-IEStructuralFeatureConfig">7.21. Interface IEStructuralFeatureConfig</a></li>
 </ul>
 </li>
-<li><a href="#_versions">7. Versions</a></li>
-<li><a href="#_known_issues">8. Known Issues</a></li>
+<li><a href="#_versions">8. Versions</a></li>
+<li><a href="#_known_issues">9. Known Issues</a></li>
 </ul>
 </div>
 </div>
@@ -573,7 +574,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Generates <a href="https://asciidoctor.org/">AsciiDoctor</a> files to document Ecore metamodels, similar to <a href="https://docs.oracle.com/javase/9/javadoc/javadoc.htm">JavaDoc</a>.
 AsciiDoctor can be rendered as HTML, PDF, or Eclipse Help.
-EcoreDoc can be used as <a href="https://maven.apache.org/">Maven</a> Plugin, standalone command-line tool, or as Java API.</p>
+EcoreDoc can be used as <a href="https://maven.apache.org/">Maven</a> Plugin, standalone command-line tool, Java API, or Eclipse Plug-in.</p>
 </div>
 </div>
 </div>
@@ -582,7 +583,7 @@ EcoreDoc can be used as <a href="https://maven.apache.org/">Maven</a> Plugin, st
 <div class="sectionbody">
 <div class="paragraph">
 <p>EcoreDoc&#8217;s <a href="#java-api">Java API</a> works on a list of <code>EClassifier</code>s.
-<a href="#maven-tool">Maven Plugin</a> and <a href="#standalone-tool">Standalone Command-Line Tool</a> take all <code>EClassifier</code>s from one or more <code>*.ecore</code> or <code>*.xcore</code> files.</p>
+<a href="#maven-tool">Maven Plugin</a>, <a href="#standalone-tool">Standalone Command-Line Tool</a> and <a href="#eclipse-plugin">Eclipse Plug-in</a> take all <code>EClassifier</code>s from one or more <code>*.ecore</code> or <code>*.xcore</code> files.</p>
 </div>
 <div class="paragraph">
 <p>EcoreDoc creates one output document containing all passed <code>EClassifier</code>s.
@@ -904,7 +905,35 @@ Examples:
 </div>
 </div>
 <div class="sect1">
-<h2 id="ecoredoc-annotation">5. EcoreDoc Metamodel Annotation</h2>
+<h2 id="eclipse-plugin">5. Eclipse Plug-in</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Eclipse Plug-in is available as Feature <code>com.altran.general.emf.ecoredoc.ui.feature</code>.</p>
+</div>
+<div class="paragraph">
+<p>It provides a context menu entry for one or more <code>*.ecore</code> / <code>*.xcore</code> files in the following views:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Project Explorer</p>
+</li>
+<li>
+<p>Package Explorer</p>
+</li>
+<li>
+<p>Model Explorer</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The command creates one output file next to the first selected input file, named <code>&lt;firstInputFile.ecore&gt;.adoc</code>.
+The output file contains the documentation of all selected metamodels.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ecoredoc-annotation">6. EcoreDoc Metamodel Annotation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Any of the <a href="#generator-config">Generator Configuration</a> options can be used as Ecore Annotation.
@@ -914,7 +943,7 @@ These options will be used by default; any external options take precedence over
 <p>EcoreDoc will throw an <code>IllegalArgumentException</code> if an EcoreDoc annotation contains an illegal value.</p>
 </div>
 <div class="sect2">
-<h3 id="_ecore_annotation">5.1. Ecore Annotation</h3>
+<h3 id="_ecore_annotation">6.1. Ecore Annotation</h3>
 <div class="paragraph">
 <p>Create an <code>EAnnotation</code> on the annotated element with source</p>
 </div>
@@ -947,7 +976,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xcore_annotation">5.2. Xcore Annotation</h3>
+<h3 id="_xcore_annotation">6.2. Xcore Annotation</h3>
 <div class="paragraph">
 <p>First, register the annotation.</p>
 </div>
@@ -973,7 +1002,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect1">
-<h2 id="generator-config">6. Generator Configuration</h2>
+<h2 id="generator-config">7. Generator Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The generator configuration is an Ecore metamodel, so we obviously use EcoreDoc to create the documentation listed below.</p>
@@ -1013,7 +1042,7 @@ However, it should be possible to maintain backwards compability.
 <div class="title">Generator Configuration Class Diagram</div>
 </div>
 <div class="sect2">
-<h3 id="config-AEReferenceConfig">6.1. Abstract Class AEReferenceConfig</h3>
+<h3 id="config-AEReferenceConfig">7.1. Abstract Class AEReferenceConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1033,7 +1062,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EAttributeConfig">6.2. Class EAttributeConfig</h3>
+<h3 id="config-EAttributeConfig">7.2. Class EAttributeConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1086,7 +1115,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EClassConfig">6.3. Class EClassConfig</h3>
+<h3 id="config-EClassConfig">7.3. Class EClassConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1185,7 +1214,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EContainmentConfig">6.4. Class EContainmentConfig</h3>
+<h3 id="config-EContainmentConfig">7.4. Class EContainmentConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1241,7 +1270,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EDataTypeConfig">6.5. Class EDataTypeConfig</h3>
+<h3 id="config-EDataTypeConfig">7.5. Class EDataTypeConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1294,7 +1323,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EEnumConfig">6.6. Class EEnumConfig</h3>
+<h3 id="config-EEnumConfig">7.6. Class EEnumConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1378,7 +1407,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EEnumLiteralConfig">6.7. Class EEnumLiteralConfig</h3>
+<h3 id="config-EEnumLiteralConfig">7.7. Class EEnumLiteralConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1425,7 +1454,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EPackageConfig">6.8. Class EPackageConfig</h3>
+<h3 id="config-EPackageConfig">7.8. Class EPackageConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1536,7 +1565,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EReferenceConfig">6.9. Class EReferenceConfig</h3>
+<h3 id="config-EReferenceConfig">7.9. Class EReferenceConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1592,7 +1621,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EcoreDocGeneratorConfig">6.10. Class EcoreDocGeneratorConfig</h3>
+<h3 id="config-EcoreDocGeneratorConfig">7.10. Class EcoreDocGeneratorConfig</h3>
 Root for the detailed EcoreDocGenerator configuration.
 
 <p>
@@ -1783,7 +1812,7 @@ EcoreDocGeneratorConfig
 </table>
 </div>
 <div class="sect2">
-<h3 id="config-IDefaultValueConfig">6.11. Interface IDefaultValueConfig</h3>
+<h3 id="config-IDefaultValueConfig">7.11. Interface IDefaultValueConfig</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Attributes</caption>
 <colgroup>
@@ -1818,7 +1847,7 @@ if <tt>renderDefaults = false</tt>.
 </table>
 </div>
 <div class="sect2">
-<h3 id="config-IEAttributeConfig">6.12. Interface IEAttributeConfig</h3>
+<h3 id="config-IEAttributeConfig">7.12. Interface IEAttributeConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1835,7 +1864,7 @@ if <tt>renderDefaults = false</tt>.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IEClassConfig">6.13. Interface IEClassConfig</h3>
+<h3 id="config-IEClassConfig">7.13. Interface IEClassConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1905,7 +1934,7 @@ Otherwise, <i>attr1</i> will only be listed in the section of <i>EClass1</i>.
 </table>
 </div>
 <div class="sect2">
-<h3 id="config-IEClassifierConfig">6.14. Interface IEClassifierConfig</h3>
+<h3 id="config-IEClassifierConfig">7.14. Interface IEClassifierConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1947,7 +1976,7 @@ unsettable</p></td>
 </table>
 </div>
 <div class="sect2">
-<h3 id="config-IEDataTypeConfig">6.15. Interface IEDataTypeConfig</h3>
+<h3 id="config-IEDataTypeConfig">7.15. Interface IEDataTypeConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1964,7 +1993,7 @@ unsettable</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IEEnumConfig">6.16. Interface IEEnumConfig</h3>
+<h3 id="config-IEEnumConfig">7.16. Interface IEEnumConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1984,7 +2013,7 @@ unsettable</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IEEnumLiteralConfig">6.17. Interface IEEnumLiteralConfig</h3>
+<h3 id="config-IEEnumLiteralConfig">7.17. Interface IEEnumLiteralConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1995,7 +2024,7 @@ unsettable</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IENamedElementConfig">6.18. Interface IENamedElementConfig</h3>
+<h3 id="config-IENamedElementConfig">7.18. Interface IENamedElementConfig</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Attributes</caption>
 <colgroup>
@@ -2026,7 +2055,7 @@ unsettable</p></td>
 </table>
 </div>
 <div class="sect2">
-<h3 id="config-IEPackageConfig">6.19. Interface IEPackageConfig</h3>
+<h3 id="config-IEPackageConfig">7.19. Interface IEPackageConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -2083,7 +2112,7 @@ unsettable</p></td>
 </table>
 </div>
 <div class="sect2">
-<h3 id="config-IEReferenceConfig">6.20. Interface IEReferenceConfig</h3>
+<h3 id="config-IEReferenceConfig">7.20. Interface IEReferenceConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -2100,7 +2129,7 @@ unsettable</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IEStructuralFeatureConfig">6.21. Interface IEStructuralFeatureConfig</h3>
+<h3 id="config-IEStructuralFeatureConfig">7.21. Interface IEStructuralFeatureConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -2143,10 +2172,10 @@ even if they are at their default values and <tt>renderDefaults = false</tt>.</d
 </div>
 </div>
 <div class="sect1">
-<h2 id="_versions">7. Versions</h2>
+<h2 id="_versions">8. Versions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This asset in version 0.7.0-SNAPSHOT was developed using the following components and versions.</p>
+<p>This asset in version 0.8.0-SNAPSHOT was developed using the following components and versions.</p>
 </div>
 <div class="hdlist">
 <table>
@@ -2219,7 +2248,7 @@ Eclipse Tycho
 </div>
 </div>
 <div class="sect1">
-<h2 id="_known_issues">8. Known Issues</h2>
+<h2 id="_known_issues">9. Known Issues</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -2236,8 +2265,8 @@ Eclipse Tycho
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.7.0-SNAPSHOT<br>
-Last updated 2018-07-11 17:24:23 DST
+Version 0.8.0-SNAPSHOT<br>
+Last updated 2018-07-13 11:26:27 DST
 </div>
 </div>
 </body>

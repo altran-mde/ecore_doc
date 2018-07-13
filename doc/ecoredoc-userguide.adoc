@@ -21,17 +21,17 @@
 
 = EcoreDoc User Guide
 Niko Stotz <niko.stotz@altran.com>
-v0.7.0-SNAPSHOT
+v0.8.0-SNAPSHOT
 
 Generates https://asciidoctor.org/[AsciiDoctor] files to document Ecore metamodels, similar to https://docs.oracle.com/javase/9/javadoc/javadoc.htm[JavaDoc].
 AsciiDoctor can be rendered as HTML, PDF, or Eclipse Help.
-EcoreDoc can be used as https://maven.apache.org/[Maven] Plugin, standalone command-line tool, or as Java API.
+EcoreDoc can be used as https://maven.apache.org/[Maven] Plugin, standalone command-line tool, Java API, or Eclipse Plug-in.
 
 
 == Overview
 
 EcoreDoc's <<java-api>> works on a list of ``EClassifier``s.
-<<maven-tool>> and <<standalone-tool>> take all ``EClassifier``s from one or more `{asterisk}.ecore` or `{asterisk}.xcore` files.
+<<maven-tool>>, <<standalone-tool>> and <<eclipse-plugin>> take all ``EClassifier``s from one or more `{asterisk}.ecore` or `{asterisk}.xcore` files.
 
 EcoreDoc creates one output document containing all passed ``EClassifier``s.
 They are grouped by containing `EPackage`.
@@ -273,6 +273,21 @@ Examples:
   EcoreDocGenerator -o output.adoc my.ecore other.ecore 
   Generates the documentation of my.ecore and other.ecore into output.adoc
 ----
+
+
+[[eclipse-plugin]]
+== Eclipse Plug-in
+
+The Eclipse Plug-in is available as Feature `com.altran.general.emf.ecoredoc.ui.feature`.
+
+It provides a context menu entry for one or more `{asterisk}.ecore` / `{asterisk}.xcore` files in the following views:
+
+* Project Explorer
+* Package Explorer
+* Model Explorer
+
+The command creates one output file next to the first selected input file, named `<firstInputFile.ecore>.adoc`.
+The output file contains the documentation of all selected metamodels.
 
 
 [[ecoredoc-annotation]]

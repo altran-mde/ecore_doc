@@ -16,7 +16,6 @@
 	</parent>
 
 	<modules>
-		<module>../com.altran.general.emf.ecoredoc.parent.ebr</module>
 		<module>../../code/com.altran.general.emf.ecoredoc.generator.integration.ui</module>
 		<module>../com.altran.general.emf.ecoredoc.ui.feature</module>
 		<module>../com.altran.general.emf.ecoredoc.repository</module>

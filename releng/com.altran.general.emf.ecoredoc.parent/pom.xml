@@ -73,7 +73,7 @@
 		<module>../../code/com.altran.general.emf.ecoredoc.standalone</module>
 		<module>../../code/com.altran.general.emf.ecoredoc.util</module>
 		<!-- <module>../../test/com.altran.general.emf.ecoredoc.test</module> -->
-		<!-- <module>../com.altran.general.emf.ecoredoc.parent.ebr</module> -->
+		<module>../com.altran.general.emf.ecoredoc.parent.ebr</module>
 		<!-- <module>../com.altran.general.emf.ecoredoc.parent.tycho</module> -->
 	</modules>
 

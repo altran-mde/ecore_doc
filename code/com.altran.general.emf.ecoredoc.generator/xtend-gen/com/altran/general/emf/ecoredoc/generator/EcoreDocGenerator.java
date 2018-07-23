@@ -11,6 +11,7 @@ import com.altran.general.emf.ecoredoc.generator.impl.EEnumGeneratorPart;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.TreeMultimap;
+import com.google.inject.Injector;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -35,11 +36,13 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 @SuppressWarnings("all")
 public class EcoreDocGenerator {
   @Extension
-  private EcoreDocExtension _ecoreDocExtension = new EcoreDocExtension();
+  private EcoreDocExtension ecoreDocExtension = new EcoreDocExtension();
   
   private final Collection<? extends EClassifier> input;
   
   private final StringBuilder output = new StringBuilder();
+  
+  private Injector xcoreInjector;
   
   private final Multimap<EPackage, EClassifier> ePackages = TreeMultimap.<EPackage, EClassifier>create(
     ((Comparator<EPackage>) (EPackage o1, EPackage o2) -> {
@@ -62,13 +65,16 @@ public class EcoreDocGenerator {
     this.writeIntro();
     EcoreDocGeneratorConfig _config = this.getConfig();
     Multimap<EPackage, EClassifier> _ePackages = this.getEPackages();
-    EDataTypeGeneratorPart _eDataTypeGeneratorPart = new EDataTypeGeneratorPart(_config, _ePackages);
+    Injector _xcoreInjector = this.getXcoreInjector();
+    EDataTypeGeneratorPart _eDataTypeGeneratorPart = new EDataTypeGeneratorPart(_config, _ePackages, _xcoreInjector);
     EcoreDocGeneratorConfig _config_1 = this.getConfig();
     Multimap<EPackage, EClassifier> _ePackages_1 = this.getEPackages();
-    EEnumGeneratorPart _eEnumGeneratorPart = new EEnumGeneratorPart(_config_1, _ePackages_1);
+    Injector _xcoreInjector_1 = this.getXcoreInjector();
+    EEnumGeneratorPart _eEnumGeneratorPart = new EEnumGeneratorPart(_config_1, _ePackages_1, _xcoreInjector_1);
     EcoreDocGeneratorConfig _config_2 = this.getConfig();
     Multimap<EPackage, EClassifier> _ePackages_2 = this.getEPackages();
-    EClassGeneratorPart _eClassGeneratorPart = new EClassGeneratorPart(_config_2, _ePackages_2);
+    Injector _xcoreInjector_2 = this.getXcoreInjector();
+    EClassGeneratorPart _eClassGeneratorPart = new EClassGeneratorPart(_config_2, _ePackages_2, _xcoreInjector_2);
     final List<? extends AEcoreDocGeneratorPart> parts = Collections.<AEcoreDocGeneratorPart>unmodifiableList(CollectionLiterals.<AEcoreDocGeneratorPart>newArrayList(_eDataTypeGeneratorPart, _eEnumGeneratorPart, _eClassGeneratorPart));
     Set<EPackage> _keySet = this.getEPackages().keySet();
     for (final EPackage ePackage : _keySet) {
@@ -117,25 +123,38 @@ public class EcoreDocGenerator {
     return this.config;
   }
   
+  public Injector getXcoreInjector() {
+    return this.xcoreInjector;
+  }
+  
+  public Injector setXcoreInjector(final Injector xcoreInjector) {
+    return this.xcoreInjector = xcoreInjector;
+  }
+  
   protected void writeIntro() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("// White Up-Pointing Triangle");
     _builder.newLine();
     _builder.append(":wupt: &#9651;");
     _builder.newLine();
-    String _newline = EcoreDocExtension.newline();
-    _builder.append(_newline);
-    _builder.newLineIfNotEmpty();
+    _builder.newLine();
     _builder.append(":inherited: {wupt}{nbsp}");
     _builder.newLine();
-    String _newline_1 = EcoreDocExtension.newline();
-    _builder.append(_newline_1);
-    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("// Black Up-Pointing Triangle");
+    _builder.newLine();
+    _builder.append(":bupt: &#9650;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append(":override: {bupt}{nbsp}");
+    _builder.newLine();
+    _builder.newLine();
     _builder.append(":table-caption!:");
     _builder.newLine();
-    String _newline_2 = EcoreDocExtension.newline();
-    _builder.append(_newline_2);
-    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append(":source-highlighter: pygments");
+    _builder.newLine();
+    _builder.newLine();
     _builder.append("= ");
     String _documentTitle = this.getConfig().getDocumentTitle();
     _builder.append(_documentTitle);
@@ -166,7 +185,7 @@ public class EcoreDocGenerator {
     String _newline_2 = EcoreDocExtension.newline();
     _builder.append(_newline_2);
     _builder.newLineIfNotEmpty();
-    CharSequence _documentation = this._ecoreDocExtension.getDocumentation(ePackage);
+    CharSequence _documentation = this.ecoreDocExtension.getDocumentation(ePackage);
     _builder.append(_documentation);
     _builder.newLineIfNotEmpty();
     String _newline_3 = EcoreDocExtension.newline();

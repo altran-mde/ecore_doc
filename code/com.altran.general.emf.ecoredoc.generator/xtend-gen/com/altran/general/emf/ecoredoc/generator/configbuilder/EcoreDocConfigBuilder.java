@@ -6,7 +6,9 @@ import com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EOperationConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EPackageConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EParameterConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigFactory;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
@@ -27,7 +29,9 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.ENamedElement;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -153,6 +157,12 @@ public class EcoreDocConfigBuilder {
         _eReferences.add(_createReferenceConfig);
       };
       IterableExtensions.<EReference>filter(eClass.getEAllReferences(), _function_3).forEach(_function_4);
+      final Consumer<EOperation> _function_5 = (EOperation eOperation) -> {
+        EList<EOperationConfig> _eOperations = it.getEOperations();
+        EOperationConfig _createConfig = this.createConfig(eOperation);
+        _eOperations.add(_createConfig);
+      };
+      eClass.getEAllOperations().forEach(_function_5);
     };
     EClassConfig _doubleArrow = ObjectExtensions.<EClassConfig>operator_doubleArrow(_createEClassConfig, _function);
     return this.<EClassConfig>parseAnnotations(_doubleArrow);
@@ -183,6 +193,30 @@ public class EcoreDocConfigBuilder {
     };
     EReferenceConfig _doubleArrow = ObjectExtensions.<EReferenceConfig>operator_doubleArrow(_createEReferenceConfig, _function);
     return this.<EReferenceConfig>parseAnnotations(_doubleArrow);
+  }
+  
+  public EOperationConfig createConfig(final EOperation eOperation) {
+    EOperationConfig _createEOperationConfig = this.config.createEOperationConfig();
+    final Procedure1<EOperationConfig> _function = (EOperationConfig it) -> {
+      it.setTargetEOperation(eOperation);
+      final Consumer<EParameter> _function_1 = (EParameter eParameter) -> {
+        EList<EParameterConfig> _eParameters = it.getEParameters();
+        EParameterConfig _createConfig = this.createConfig(eParameter);
+        _eParameters.add(_createConfig);
+      };
+      eOperation.getEParameters().forEach(_function_1);
+    };
+    EOperationConfig _doubleArrow = ObjectExtensions.<EOperationConfig>operator_doubleArrow(_createEOperationConfig, _function);
+    return this.<EOperationConfig>parseAnnotations(_doubleArrow);
+  }
+  
+  public EParameterConfig createConfig(final EParameter eParameter) {
+    EParameterConfig _createEParameterConfig = this.config.createEParameterConfig();
+    final Procedure1<EParameterConfig> _function = (EParameterConfig it) -> {
+      it.setTargetEParameter(eParameter);
+    };
+    EParameterConfig _doubleArrow = ObjectExtensions.<EParameterConfig>operator_doubleArrow(_createEParameterConfig, _function);
+    return this.<EParameterConfig>parseAnnotations(_doubleArrow);
   }
   
   public <T extends IENamedElementConfig> T parseAnnotations(final T config) {

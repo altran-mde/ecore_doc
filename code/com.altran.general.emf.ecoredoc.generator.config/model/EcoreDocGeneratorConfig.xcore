@@ -20,6 +20,9 @@ import org.eclipse.emf.ecore.EEnumLiteral
 import org.eclipse.emf.ecore.ENamedElement
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EReference
+import java.lang.NullPointerException
+import org.eclipse.emf.ecore.EOperation
+import org.eclipse.emf.ecore.EParameter
 
 annotation "http://www.eclipse.org/emf/2002/Ecore" as Ecore
 annotation "http://www.eclipse.org/emf/2002/GenModel" as GenModel
@@ -57,7 +60,31 @@ interface IENamedElementConfig {
 	readonly derived transient id String ^id get {
 		target?.name
 	}
+	
+	/*
+	 * Op Desc
+	 */
+	@GenModel(
+		body="return Objects::nonNull;"
+	)
+	op ENamedElement[2..5] doSomething(
+		/*
+		 * i desc
+		 */
+		int[] i, 
+		/*
+		 * something deschkriptschion
+		 */
+		IENamedElementConfig something
+	) throws 
+	/*
+	 * Enn Pee Eeee
+	 */
+	Npe, 
+	Npe
 }
+
+type Npe wraps NullPointerException
 
 interface IDefaultValueConfig {
 	/*
@@ -166,7 +193,7 @@ interface IEClassConfig extends IEClassifierConfig {
 	
 }
 
-interface IEStructuralFeatureConfig extends IENamedElementConfig, IDefaultValueConfig {
+interface IETypedElementConfig extends IENamedElementConfig, IDefaultValueConfig {
 	/*
 	 * Whether multiplicity bounds should be rendered,
 	 * even if they are at their default values and <tt>renderDefaults = false</tt>.
@@ -182,9 +209,13 @@ interface IEStructuralFeatureConfig extends IENamedElementConfig, IDefaultValueC
 		} else if(isSetRenderDefaults) {
 			renderDefaults
 		} else {
-			(eContainer as IEStructuralFeatureConfig).shouldRenderBounds()
+			(eContainer as IETypedElementConfig).shouldRenderBounds()
 		}
 	}
+}
+
+interface IEStructuralFeatureConfig extends IETypedElementConfig {
+	
 }
 
 interface IEAttributeConfig extends IEStructuralFeatureConfig {
@@ -192,6 +223,14 @@ interface IEAttributeConfig extends IEStructuralFeatureConfig {
 }
 
 interface IEReferenceConfig extends IEStructuralFeatureConfig {
+	
+}
+
+interface IEOperationConfig extends IETypedElementConfig {
+	
+}
+
+interface IEParameterConfig extends IETypedElementConfig {
 	
 }
 
@@ -346,7 +385,7 @@ interface IEEnumLiteralConfig extends IENamedElementConfig {
  *   </dd>
  * </dl>
  */
-class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig, IEClassConfig, IEAttributeConfig, IEReferenceConfig {
+class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig, IEClassConfig, IEAttributeConfig, IEReferenceConfig, IEOperationConfig, IEParameterConfig {
 	/*
 	 * Title of the generated document.
 	 * 
@@ -522,6 +561,22 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 					.flatten
 					.map[EReferences]
 					.flatten
+			
+			EOperation:
+				EPackages
+				.map[EClasses]
+				.flatten
+				.map[EOperations]
+				.flatten
+				
+			EParameter:
+				EPackages
+				.map[EClasses]
+				.flatten
+				.map[EOperations]
+				.flatten
+				.map[EParameters]
+				.flatten
 		}.findFirst[target == element]
 	}
 	
@@ -530,7 +585,7 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 	}
 }
 
-class EPackageConfig extends  IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig, IEClassConfig, IEAttributeConfig, IEReferenceConfig {
+class EPackageConfig extends  IEPackageConfig, IEEnumConfig, IEEnumLiteralConfig, IEClassConfig, IEAttributeConfig, IEReferenceConfig, IEOperationConfig, IEParameterConfig {
 	refers EPackage targetEPackage
 	
 	op ENamedElement getTarget() {
@@ -594,7 +649,7 @@ class EEnumLiteralConfig extends IEEnumLiteralConfig {
 	}
 }
 
-class EClassConfig extends IEClassConfig, IEAttributeConfig, IEReferenceConfig {
+class EClassConfig extends IEClassConfig, IEAttributeConfig, IEReferenceConfig, IEOperationConfig, IEParameterConfig {
 	refers EClass targetEClass
 
 	op ENamedElement getTarget() {
@@ -624,6 +679,14 @@ class EClassConfig extends IEClassConfig, IEAttributeConfig, IEReferenceConfig {
 	op void addEReferences(List<EReferenceConfig> eReferenceConfig) {
 		EReferences += eReferenceConfig
 	}
+
+	contains EOperationConfig[] eOperations	
+	/*
+	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+	 */
+	op void addEOperations(List<EOperationConfig> eOperationConfig) {
+		EOperations += eOperationConfig
+	}
 }
 
 class EAttributeConfig extends IEAttributeConfig {
@@ -650,6 +713,30 @@ class EReferenceConfig extends AEReferenceConfig {
 
 	op ENamedElement getTarget() {
 		targetEReference
+	}
+}
+
+class EOperationConfig extends AEReferenceConfig {
+	refers EOperation targetEOperation
+
+	op ENamedElement getTarget() {
+		targetEOperation
+	}
+
+	contains EParameterConfig[] eParameters	
+	/*
+	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+	 */
+	op void addEParameters(List<EParameterConfig> eParameterConfig) {
+		EParameters += eParameterConfig
+	}
+}
+
+class EParameterConfig extends AEReferenceConfig {
+	refers EParameter targetEParameter
+
+	op ENamedElement getTarget() {
+		targetEParameter
 	}
 }
 

@@ -6,6 +6,7 @@ import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.configbuilder.EEnumConfigPair
 import com.altran.general.emf.ecoredoc.generator.configbuilder.EEnumLiteralConfigPair
 import com.google.common.collect.Multimap
+import com.google.inject.Injector
 import java.util.Map
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EEnum
@@ -15,8 +16,8 @@ import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.n
 
 class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 
-	new(EcoreDocGeneratorConfig config, Multimap<EPackage, EClassifier> ePackages) {
-		super(config, ePackages)
+	new(EcoreDocGeneratorConfig config, Multimap<EPackage, EClassifier> ePackages, Injector xcoreInjector) {
+		super(config, ePackages, xcoreInjector)
 	}
 
 	override StringBuilder write(EPackage ePackage) {

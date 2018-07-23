@@ -5,6 +5,7 @@ package com.altran.general.emf.ecoredoc.generator.config.impl;
 import com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EClassConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EOperationConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig;
@@ -12,9 +13,12 @@ import com.altran.general.emf.ecoredoc.generator.config.IEAttributeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEClassConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IEOperationConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IEParameterConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
 
+import com.altran.general.emf.ecoredoc.generator.config.IETypedElementConfig;
 import com.google.common.collect.Iterables;
 import java.lang.reflect.InvocationTargetException;
 
@@ -57,6 +61,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EClassConfigImpl#getEAttributes <em>EAttributes</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EClassConfigImpl#getEContainments <em>EContainments</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EClassConfigImpl#getEReferences <em>EReferences</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EClassConfigImpl#getEOperations <em>EOperations</em>}</li>
  * </ul>
  *
  * @generated
@@ -314,6 +319,16 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 	 * @ordered
 	 */
 	protected EList<EReferenceConfig> eReferences;
+
+	/**
+	 * The cached value of the '{@link #getEOperations() <em>EOperations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEOperations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EOperationConfig> eOperations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -749,6 +764,18 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<EOperationConfig> getEOperations() {
+		if (eOperations == null) {
+			eOperations = new EObjectContainmentEList<EOperationConfig>(EOperationConfig.class, this, EcoreDocConfigPackage.ECLASS_CONFIG__EOPERATIONS);
+		}
+		return eOperations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ENamedElement getTarget() {
 		return this.getTargetEClass();
 	}
@@ -788,6 +815,16 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void addEOperations(final List<EOperationConfig> eOperationConfig) {
+		EList<EOperationConfig> _eOperations = this.getEOperations();
+		Iterables.<EOperationConfig>addAll(_eOperations, eOperationConfig);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean shouldRenderBounds() {
 		boolean _xifexpression = false;
 		boolean _isSetRenderBounds = this.isSetRenderBounds();
@@ -802,7 +839,7 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 			}
 			else {
 				EObject _eContainer = this.eContainer();
-				_xifexpression_1 = ((IEStructuralFeatureConfig) _eContainer).shouldRenderBounds();
+				_xifexpression_1 = ((IETypedElementConfig) _eContainer).shouldRenderBounds();
 			}
 			_xifexpression = _xifexpression_1;
 		}
@@ -922,6 +959,17 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ENamedElement> doSomething(EList<Integer> i, IENamedElementConfig something) throws NullPointerException, NullPointerException {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -931,6 +979,8 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 				return ((InternalEList<?>)getEContainments()).basicRemove(otherEnd, msgs);
 			case EcoreDocConfigPackage.ECLASS_CONFIG__EREFERENCES:
 				return ((InternalEList<?>)getEReferences()).basicRemove(otherEnd, msgs);
+			case EcoreDocConfigPackage.ECLASS_CONFIG__EOPERATIONS:
+				return ((InternalEList<?>)getEOperations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -968,6 +1018,8 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 				return getEContainments();
 			case EcoreDocConfigPackage.ECLASS_CONFIG__EREFERENCES:
 				return getEReferences();
+			case EcoreDocConfigPackage.ECLASS_CONFIG__EOPERATIONS:
+				return getEOperations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1017,6 +1069,10 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 				getEReferences().clear();
 				getEReferences().addAll((Collection<? extends EReferenceConfig>)newValue);
 				return;
+			case EcoreDocConfigPackage.ECLASS_CONFIG__EOPERATIONS:
+				getEOperations().clear();
+				getEOperations().addAll((Collection<? extends EOperationConfig>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1062,6 +1118,9 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 			case EcoreDocConfigPackage.ECLASS_CONFIG__EREFERENCES:
 				getEReferences().clear();
 				return;
+			case EcoreDocConfigPackage.ECLASS_CONFIG__EOPERATIONS:
+				getEOperations().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1098,6 +1157,8 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 				return eContainments != null && !eContainments.isEmpty();
 			case EcoreDocConfigPackage.ECLASS_CONFIG__EREFERENCES:
 				return eReferences != null && !eReferences.isEmpty();
+			case EcoreDocConfigPackage.ECLASS_CONFIG__EOPERATIONS:
+				return eOperations != null && !eOperations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1115,9 +1176,14 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 				default: return -1;
 			}
 		}
+		if (baseClass == IETypedElementConfig.class) {
+			switch (derivedFeatureID) {
+				case EcoreDocConfigPackage.ECLASS_CONFIG__RENDER_BOUNDS: return EcoreDocConfigPackage.IE_TYPED_ELEMENT_CONFIG__RENDER_BOUNDS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (derivedFeatureID) {
-				case EcoreDocConfigPackage.ECLASS_CONFIG__RENDER_BOUNDS: return EcoreDocConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -1127,6 +1193,16 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 			}
 		}
 		if (baseClass == IEReferenceConfig.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEOperationConfig.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEParameterConfig.class) {
 			switch (derivedFeatureID) {
 				default: return -1;
 			}
@@ -1147,9 +1223,14 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 				default: return -1;
 			}
 		}
+		if (baseClass == IETypedElementConfig.class) {
+			switch (baseFeatureID) {
+				case EcoreDocConfigPackage.IE_TYPED_ELEMENT_CONFIG__RENDER_BOUNDS: return EcoreDocConfigPackage.ECLASS_CONFIG__RENDER_BOUNDS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (baseFeatureID) {
-				case EcoreDocConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS: return EcoreDocConfigPackage.ECLASS_CONFIG__RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -1159,6 +1240,16 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 			}
 		}
 		if (baseClass == IEReferenceConfig.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEOperationConfig.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEParameterConfig.class) {
 			switch (baseFeatureID) {
 				default: return -1;
 			}
@@ -1179,9 +1270,14 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 				default: return -1;
 			}
 		}
+		if (baseClass == IETypedElementConfig.class) {
+			switch (baseOperationID) {
+				case EcoreDocConfigPackage.IE_TYPED_ELEMENT_CONFIG___SHOULD_RENDER_BOUNDS: return EcoreDocConfigPackage.ECLASS_CONFIG___SHOULD_RENDER_BOUNDS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (baseOperationID) {
-				case EcoreDocConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_BOUNDS: return EcoreDocConfigPackage.ECLASS_CONFIG___SHOULD_RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -1191,6 +1287,16 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 			}
 		}
 		if (baseClass == IEReferenceConfig.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEOperationConfig.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEParameterConfig.class) {
 			switch (baseOperationID) {
 				default: return -1;
 			}
@@ -1218,6 +1324,9 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 			case EcoreDocConfigPackage.ECLASS_CONFIG___ADD_EREFERENCES__LIST:
 				addEReferences((List<EReferenceConfig>)arguments.get(0));
 				return null;
+			case EcoreDocConfigPackage.ECLASS_CONFIG___ADD_EOPERATIONS__LIST:
+				addEOperations((List<EOperationConfig>)arguments.get(0));
+				return null;
 			case EcoreDocConfigPackage.ECLASS_CONFIG___SHOULD_RENDER_BOUNDS:
 				return shouldRenderBounds();
 			case EcoreDocConfigPackage.ECLASS_CONFIG___SHOULD_REPEAT_INHERITED:
@@ -1232,6 +1341,8 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 				return shouldRenderDefaults();
 			case EcoreDocConfigPackage.ECLASS_CONFIG___SHOULD_RENDER:
 				return shouldRender();
+			case EcoreDocConfigPackage.ECLASS_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG:
+				return doSomething((EList<Integer>)arguments.get(0), (IENamedElementConfig)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

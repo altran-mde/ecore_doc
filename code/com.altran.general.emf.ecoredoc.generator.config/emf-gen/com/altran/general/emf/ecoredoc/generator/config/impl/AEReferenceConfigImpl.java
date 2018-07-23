@@ -6,7 +6,7 @@ import com.altran.general.emf.ecoredoc.generator.config.AEReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
-import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IETypedElementConfig;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -323,7 +323,7 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 			}
 			else {
 				EObject _eContainer = this.eContainer();
-				_xifexpression_1 = ((IEStructuralFeatureConfig) _eContainer).shouldRenderBounds();
+				_xifexpression_1 = ((IETypedElementConfig) _eContainer).shouldRenderBounds();
 			}
 			_xifexpression = _xifexpression_1;
 		}
@@ -372,6 +372,17 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
 	public ENamedElement getTarget() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ENamedElement> doSomething(EList<Integer> i, IENamedElementConfig something) throws NullPointerException, NullPointerException {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -513,6 +524,7 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG___SHOULD_RENDER_BOUNDS:
@@ -523,6 +535,8 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 				return shouldRender();
 			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG___GET_TARGET:
 				return getTarget();
+			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG:
+				return doSomething((EList<Integer>)arguments.get(0), (IENamedElementConfig)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

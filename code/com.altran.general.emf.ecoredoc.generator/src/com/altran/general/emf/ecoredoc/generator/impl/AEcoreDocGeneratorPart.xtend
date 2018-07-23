@@ -3,6 +3,7 @@ package com.altran.general.emf.ecoredoc.generator.impl
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.configbuilder.IEClassifierConfigPair
 import com.google.common.collect.Multimap
+import com.google.inject.Injector
 import java.util.ArrayList
 import java.util.Collection
 import java.util.List
@@ -15,19 +16,22 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage
 
 import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
+import org.eclipse.emf.ecore.EOperation
 
 abstract class AEcoreDocGeneratorPart {
 
 	protected extension EcoreDocExtension = new EcoreDocExtension
-
+	
 	val EcoreDocGeneratorConfig config
 	val Multimap<EPackage, EClassifier> ePackages
+	val Injector xcoreInjector
 
 	var StringBuilder output
 
-	new(EcoreDocGeneratorConfig config, Multimap<EPackage, EClassifier> ePackages) {
+	new(EcoreDocGeneratorConfig config, Multimap<EPackage, EClassifier> ePackages, Injector xcoreInjector) {
 		this.config = config
 		this.ePackages = ePackages
+		this.xcoreInjector = xcoreInjector
 	}
 
 	def abstract StringBuilder write(EPackage ePackage)
@@ -43,6 +47,10 @@ abstract class AEcoreDocGeneratorPart {
 	protected def getConfig() {
 		this.config
 	}
+	
+	protected def getXcoreInjector() {
+		this.xcoreInjector
+	}
 
 	protected def StringBuilder getOutput() {
 		if (this.output === null) {
@@ -52,8 +60,12 @@ abstract class AEcoreDocGeneratorPart {
 		this.output
 	}
 
-	protected def CharSequence concatReferenceName(ENamedElement eNamedElement) {
+	protected def dispatch CharSequence concatReferenceName(ENamedElement eNamedElement) {
 		collectTypeSegments(eNamedElement).joinReference
+	}
+
+	protected def dispatch CharSequence concatReferenceName(EOperation eOperation) {
+		collectTypeSegments(eOperation).joinReference + "()"
 	}
 
 	protected def dispatch CharSequence concatLinkTo(ENamedElement eNamedElement) {
@@ -86,6 +98,10 @@ abstract class AEcoreDocGeneratorPart {
 		}
 	}
 
+	protected def dispatch CharSequence concatLinkTo(Void eDataType) {
+		"`void`"
+	}
+
 	protected def CharSequence concatUsedLink(EStructuralFeature eStructuralFeature, EClass eClassThatInherits) {
 		val String[] inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits)
 		val CharSequence anchor = '''«inheritedFeatureSegments.joinAnchor»'''
@@ -94,13 +110,22 @@ abstract class AEcoreDocGeneratorPart {
 		'''`<<«anchor», «reference»>>`'''
 	}
 
-	protected def String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature,
+	protected def dispatch String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature,
 		EClass eClassThatInherits) {
 		val String ePackageName = getEPackage(eClassThatInherits).name
 		val String eClassName = eClassThatInherits.name
 		val String eStructuralFeatureName = eStructuralFeature.name
 
 		#[ePackageName, eClassName, eStructuralFeatureName]
+	}
+
+	protected def dispatch String[] collectInheritedFeatureSegments(EOperation eOperation,
+		EClass eClassThatInherits) {
+		val String ePackageName = getEPackage(eClassThatInherits).name
+		val String eClassName = eClassThatInherits.name
+		val String eStructuralFeatureName = eOperation.name
+
+		#[ePackageName, eClassName, eStructuralFeatureName] + eOperation.EParameters.map[getEPackage(EType).name + "_" + EType.name]
 	}
 
 	protected def void writeUseCases(IEClassifierConfigPair<?, ?> pair) {

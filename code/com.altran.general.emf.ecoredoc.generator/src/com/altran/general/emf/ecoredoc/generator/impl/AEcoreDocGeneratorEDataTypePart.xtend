@@ -3,6 +3,7 @@ package com.altran.general.emf.ecoredoc.generator.impl
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.configbuilder.IEDataTypeConfigPair
 import com.google.common.collect.Multimap
+import com.google.inject.Injector
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EcorePackage
@@ -11,8 +12,8 @@ import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.n
 
 abstract class AEcoreDocGeneratorEDataTypePart extends AEcoreDocGeneratorPart {
 
-	new(EcoreDocGeneratorConfig config, Multimap<EPackage, EClassifier> ePackages) {
-		super(config, ePackages)
+	new(EcoreDocGeneratorConfig config, Multimap<EPackage, EClassifier> ePackages, Injector xcoreInjector) {
+		super(config, ePackages, xcoreInjector)
 	}
 	
 	protected def void writeProperties(IEDataTypeConfigPair<?,?> pair) {

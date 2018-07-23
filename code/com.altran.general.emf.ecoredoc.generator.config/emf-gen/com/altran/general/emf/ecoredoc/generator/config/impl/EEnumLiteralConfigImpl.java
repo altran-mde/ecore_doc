@@ -234,6 +234,17 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ENamedElement> doSomething(EList<Integer> i, IENamedElementConfig something) throws NullPointerException, NullPointerException {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -308,12 +319,15 @@ public class EEnumLiteralConfigImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG___GET_TARGET:
 				return getTarget();
 			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG___SHOULD_RENDER:
 				return shouldRender();
+			case EcoreDocConfigPackage.EENUM_LITERAL_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG:
+				return doSomething((EList<Integer>)arguments.get(0), (IENamedElementConfig)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

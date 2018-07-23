@@ -4,28 +4,40 @@ import com.altran.general.emf.ecoredoc.generator.config.EClassConfig
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.configbuilder.EAttributeConfigPair
 import com.altran.general.emf.ecoredoc.generator.configbuilder.EClassConfigPair
+import com.altran.general.emf.ecoredoc.generator.configbuilder.EOperationConfigPair
 import com.altran.general.emf.ecoredoc.generator.configbuilder.EReferenceConfigPair
 import com.altran.general.emf.ecoredoc.generator.configbuilder.IEStructuralFeatureConfigPair
 import com.google.common.collect.Multimap
+import com.google.inject.Injector
 import java.util.Collection
 import java.util.List
 import java.util.Map
 import java.util.Set
+import org.apache.commons.lang3.StringUtils
+import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.ENamedElement
+import org.eclipse.emf.ecore.EOperation
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.ecore.xcore.mappings.XcoreMapper
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
+import org.eclipse.xtext.xbase.XbasePackage
 
 import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
+import com.altran.general.emf.ecoredoc.generator.configbuilder.EParameterConfigPair
+import org.eclipse.emf.ecore.EParameter
+import com.altran.general.emf.ecoredoc.generator.config.EOperationConfig
+import com.altran.general.emf.ecoredoc.generator.config.EParameterConfig
 
 class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	extension EStructuralFeaturePropertyHelper structuralFeaturePropertyHelper
 	
-	new(EcoreDocGeneratorConfig config, Multimap<EPackage, EClassifier> ePackages) {
-		super(config, ePackages)
+	new(EcoreDocGeneratorConfig config, Multimap<EPackage, EClassifier> ePackages, Injector xcoreInjector) {
+		super(config, ePackages, xcoreInjector)
 		
 		this.structuralFeaturePropertyHelper = new EStructuralFeaturePropertyHelper(config)
 	}
@@ -78,6 +90,8 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		writeEContainments(pair)
 
 		writeECrossReferences(pair)
+		
+		writeEOperations(pair)
 
 		writeUseCases(pair)
 	}
@@ -121,6 +135,131 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		}
 	}
 	
+	protected def void writeEOperations(EClassConfigPair pair) {
+		val eClass = pair.element
+		
+		val eOperations = eClass.EOperations.combineOperationConfigPairs(pair.config)
+		val inheritedEOperations = collectInheritedEOperations(pair).combineOperationConfigPairs(pair.config)
+		
+		if(pair.config.hasRenderedOperations(eOperations, inheritedEOperations)) {
+			writeEOperationsHeader()
+			
+			for (op: eOperations.sortBy[EcoreDocExtension::eOperationSorter.apply(element)]) {
+				writeEOperation(op, eClass, false)
+			}
+	
+			for (op : inheritedEOperations.sortBy[EcoreDocExtension::eOperationSorter.apply(element)]) {
+				writeEOperation(op, eClass, true)
+			}
+	
+			output.append(tableFooter)
+		}
+	}
+
+	protected def void writeEOperation(EOperationConfigPair pair, EClass eClass, boolean inherited) {
+		if (!pair.config.shouldRender) {
+			return
+		}
+		
+		val eOperation = pair.element
+		
+		var String language = null
+		var String body = null
+		
+		if (xcoreInjector !== null) {
+			val mapper = xcoreInjector.getInstance(XcoreMapper)
+			val xOp = mapper.getXOperation(eOperation)
+			if (xOp.body !== null) {
+				language = "xtend"
+				val text = NodeModelUtils.findNodesForFeature(xOp.body, XbasePackage.Literals::XBLOCK_EXPRESSION__EXPRESSIONS)
+					.map[text]
+					.join
+				val lines = StringUtils.split(text, newline)
+				body = if (lines.size > 1) {
+					val prefix = StringUtils.getCommonPrefix(lines)
+					lines.map[StringUtils.removeStart(it, prefix)].join(newline)
+				} else {
+					lines.join.trim
+				}
+			}
+		}
+		
+		if (StringUtils.isBlank(body)) {
+			val genModelAnnotation = eOperation.getEAnnotation(GenModelPackage.eNS_URI)
+			val bodyAnnotation = genModelAnnotation?.details?.get("body")
+			language = "java"
+			body = StringUtils.defaultString(bodyAnnotation).trim
+		}
+		
+		val lineCount = 1 
+			+ eOperation.EParameters.size 
+			+ eOperation.EExceptions.size
+			+ if(body.isEmpty) 0 else 1 
+		
+		val overrides = eClass.EAllSuperTypes
+			.map[EOperations]
+			.flatten
+			.filter[it !== eOperation && eOperation.isOverrideOf(it)]
+		
+		val inheritedFeatureSegments = collectInheritedFeatureSegments(eOperation, eClass)
+		 
+		output.append(
+			'''
+			.«lineCount»+|«IF body.isEmpty»_abstract_ «ENDIF»`«eOperation.name»(«
+			FOR param : eOperation.EParameters BEFORE "{zwsp}" SEPARATOR ", " AFTER "{zwsp}"»«param.name»«ENDFOR
+			»)`[[«inheritedFeatureSegments.joinAnchor»]]«IF inherited» +
+				«concatInheritedElement(eOperation)»
+			«ENDIF»«IF !overrides.isEmpty» +
+				«FOR override : overrides SEPARATOR " +" + newline»
+					`<<«concatAnchor(override)», {override}«concatReferenceName(pair.element)»>>`
+				«ENDFOR»
+			«ENDIF»
+			|_returns_ +
+			«concatLinkTo(eOperation.EType)»
+			|«IF eOperation.EType !== null»`[«eOperation.lowerBound»..«eOperation.upperBound»]`«ENDIF»
+			|«getDocumentation(eOperation)»
+			«newline»
+			'''
+		)
+		
+		for(param : eOperation.EParameters) {
+			output.append(
+				'''
+				|`«param.name»` +
+				«concatLinkTo(param.EType)»
+				|`[«param.lowerBound»..«param.upperBound»]`
+				|«getDocumentation(param)»
+				«newline»
+				'''
+			)
+		}
+		
+		for (ex : eOperation.EExceptions) {
+			output.append(
+				'''
+				|_throws_ +
+				«concatLinkTo(ex)»
+				|
+				|
+				«newline»
+				'''
+			)
+		}
+		
+		if(!body.isEmpty) {
+			output.append(
+				'''
+				3+a|
+				[source,«language»]
+				----
+				«body»
+				----
+				«newline»
+				'''
+			)
+		}
+	}
+	
 	protected def hasRenderedEntries(EClassConfig classConfig, Collection<IEStructuralFeatureConfigPair<?,?>> eStructuralFeatures, Collection<IEStructuralFeatureConfigPair<?,?>> inheritedEStructuralFeatures) {
 		eStructuralFeatures.exists[it.config.shouldRender]
 		||
@@ -131,9 +270,31 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		)
 	}
 	
+	protected def hasRenderedOperations(EClassConfig classConfig, Collection<EOperationConfigPair> eOperations, Collection<EOperationConfigPair> inheritedEOperations) {
+		eOperations.exists[it.config.shouldRender]
+		||
+		(
+			classConfig.shouldRepeatInherited
+			&&
+			inheritedEOperations.exists[it.config.shouldRender]
+		)
+	}
+	
 	protected def List<IEStructuralFeatureConfigPair<?,?>> combineConfigPairs(Collection<? extends EStructuralFeature> eStructuralFeatures, EClassConfig classConfig) {
 		eStructuralFeatures
 			.map[combineConfigPair(classConfig) as IEStructuralFeatureConfigPair<?,?>]
+			.toList
+	}
+	
+	protected def List<EOperationConfigPair> combineOperationConfigPairs(Collection<? extends EOperation> eOperations, EClassConfig classConfig) {
+		eOperations
+			.map[op|new EOperationConfigPair(op, classConfig.EOperations.findFirst[id == op.name])]
+			.toList
+	}
+	
+	protected def List<EParameterConfigPair> combineParameterConfigPairs(Collection<? extends EParameter> eParameters, EOperationConfig operationConfig) {
+		eParameters
+			.map[param| new EParameterConfigPair(param, operationConfig.EParameters.findFirst[id == param.name])]
 			.toList
 	}
 	
@@ -298,6 +459,19 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	 	}
 	}
 
+	protected def Set<EOperation> collectInheritedEOperations(EClassConfigPair pair) {
+		if (pair.config.shouldRepeatInherited) {
+			val eClass = pair.element
+			
+			eClass.EAllOperations
+				.reject[eClass.EOperations.contains(it)]
+				.reject[op | eClass.EOperations.exists[it.isOverrideOf(op)]]
+				.toSet
+	 	} else {
+	 		emptySet
+	 	}
+	}
+
 	protected def void writeEStructuralFeatures(
 		Collection<IEStructuralFeatureConfigPair<?,?>> ownEStructuralFeatures, 
 		EClass eClass,
@@ -323,7 +497,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		
 		val eStructuralFeature = pair.element
 		val String eStructuralFeatureName = eStructuralFeature.name
-		val String[] inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClass) 
+		val inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClass) 
 
 		output.append(
 		'''
@@ -409,7 +583,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 	protected def CharSequence concatInheritedElement(ENamedElement eNamedElement) {
 		val eClass = eNamedElement.eContainer as EClass
 		
-		'''(`<<«concatAnchor(eNamedElement)», {inherited}«concatReferenceName(eClass)»>>`)'''
+		'''`<<«concatAnchor(eNamedElement)», {inherited}«concatReferenceName(eClass)»>>`'''
 	}
 
 	protected def void writeEReferencesHeader() {
@@ -426,6 +600,20 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		''')
 	}
 
+	protected def void writeEOperationsHeader() {
+		output.append(
+		'''
+			«newline»
+			.Operations
+			«tableHeader»
+			|===
+			|Name
+			|Aspect and Type
+			|Properties
+			|Description
+		''')
+	}
+	
 	protected def void writeEClassHeader(EClassConfigPair pair) {
 		val eClass = pair.element
 		

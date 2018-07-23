@@ -7,16 +7,21 @@ import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
+import com.google.inject.Injector;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.ENamedElement;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -24,6 +29,7 @@ import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public abstract class AEcoreDocGeneratorPart {
@@ -34,11 +40,14 @@ public abstract class AEcoreDocGeneratorPart {
   
   private final Multimap<EPackage, EClassifier> ePackages;
   
+  private final Injector xcoreInjector;
+  
   private StringBuilder output;
   
-  public AEcoreDocGeneratorPart(final EcoreDocGeneratorConfig config, final Multimap<EPackage, EClassifier> ePackages) {
+  public AEcoreDocGeneratorPart(final EcoreDocGeneratorConfig config, final Multimap<EPackage, EClassifier> ePackages, final Injector xcoreInjector) {
     this.config = config;
     this.ePackages = ePackages;
+    this.xcoreInjector = xcoreInjector;
   }
   
   public abstract StringBuilder write(final EPackage ePackage);
@@ -56,6 +65,10 @@ public abstract class AEcoreDocGeneratorPart {
     return this.config;
   }
   
+  protected Injector getXcoreInjector() {
+    return this.xcoreInjector;
+  }
+  
   protected StringBuilder getOutput() {
     StringBuilder _xblockexpression = null;
     {
@@ -67,8 +80,13 @@ public abstract class AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected CharSequence concatReferenceName(final ENamedElement eNamedElement) {
+  protected CharSequence _concatReferenceName(final ENamedElement eNamedElement) {
     return this._ecoreDocExtension.joinReference(((Collection<? extends CharSequence>)Conversions.doWrapArray(this._ecoreDocExtension.collectTypeSegments(eNamedElement))));
+  }
+  
+  protected CharSequence _concatReferenceName(final EOperation eOperation) {
+    CharSequence _joinReference = this._ecoreDocExtension.joinReference(((Collection<? extends CharSequence>)Conversions.doWrapArray(this._ecoreDocExtension.collectTypeSegments(eOperation))));
+    return (_joinReference + "()");
   }
   
   protected CharSequence _concatLinkTo(final ENamedElement eNamedElement) {
@@ -151,6 +169,10 @@ public abstract class AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
+  protected CharSequence _concatLinkTo(final Void eDataType) {
+    return "`void`";
+  }
+  
   protected CharSequence concatUsedLink(final EStructuralFeature eStructuralFeature, final EClass eClassThatInherits) {
     CharSequence _xblockexpression = null;
     {
@@ -174,7 +196,7 @@ public abstract class AEcoreDocGeneratorPart {
     return _xblockexpression;
   }
   
-  protected String[] collectInheritedFeatureSegments(final EStructuralFeature eStructuralFeature, final EClass eClassThatInherits) {
+  protected String[] _collectInheritedFeatureSegments(final EStructuralFeature eStructuralFeature, final EClass eClassThatInherits) {
     String[] _xblockexpression = null;
     {
       final String ePackageName = this._ecoreDocExtension.getEPackage(eClassThatInherits).getName();
@@ -183,6 +205,24 @@ public abstract class AEcoreDocGeneratorPart {
       _xblockexpression = new String[] { ePackageName, eClassName, eStructuralFeatureName };
     }
     return _xblockexpression;
+  }
+  
+  protected String[] _collectInheritedFeatureSegments(final EOperation eOperation, final EClass eClassThatInherits) {
+    Iterable<String> _xblockexpression = null;
+    {
+      final String ePackageName = this._ecoreDocExtension.getEPackage(eClassThatInherits).getName();
+      final String eClassName = eClassThatInherits.getName();
+      final String eStructuralFeatureName = eOperation.getName();
+      final Function1<EParameter, String> _function = (EParameter it) -> {
+        String _name = this._ecoreDocExtension.getEPackage(it.getEType()).getName();
+        String _plus = (_name + "_");
+        String _name_1 = it.getEType().getName();
+        return (_plus + _name_1);
+      };
+      List<String> _map = ListExtensions.<EParameter, String>map(eOperation.getEParameters(), _function);
+      _xblockexpression = Iterables.<String>concat(Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList(ePackageName, eClassName, eStructuralFeatureName)), _map);
+    }
+    return ((String[])Conversions.unwrapArray(_xblockexpression, String.class));
   }
   
   protected void writeUseCases(final IEClassifierConfigPair<?, ?> pair) {
@@ -311,14 +351,38 @@ public abstract class AEcoreDocGeneratorPart {
     return IterableExtensions.<EClass>toSet(IterableExtensions.<EClass>filter(Iterables.<EClass>filter(this.ePackages.values(), EClass.class), _function));
   }
   
+  protected CharSequence concatReferenceName(final ENamedElement eOperation) {
+    if (eOperation instanceof EOperation) {
+      return _concatReferenceName((EOperation)eOperation);
+    } else if (eOperation != null) {
+      return _concatReferenceName(eOperation);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(eOperation).toString());
+    }
+  }
+  
   protected CharSequence concatLinkTo(final ENamedElement eDataType) {
     if (eDataType instanceof EDataType) {
       return _concatLinkTo((EDataType)eDataType);
     } else if (eDataType != null) {
       return _concatLinkTo(eDataType);
+    } else if (eDataType == null) {
+      return _concatLinkTo((Void)null);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(eDataType).toString());
+    }
+  }
+  
+  protected String[] collectInheritedFeatureSegments(final ETypedElement eOperation, final EClass eClassThatInherits) {
+    if (eOperation instanceof EOperation) {
+      return _collectInheritedFeatureSegments((EOperation)eOperation, eClassThatInherits);
+    } else if (eOperation instanceof EStructuralFeature) {
+      return _collectInheritedFeatureSegments((EStructuralFeature)eOperation, eClassThatInherits);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(eOperation, eClassThatInherits).toString());
     }
   }
 }

@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -47,6 +48,17 @@ public class EcoreDocExtension {
   });
   
   public final static Function1<EStructuralFeature, String> eStructuralFeatureSorter = ((Function1<EStructuralFeature, String>) (EStructuralFeature it) -> {
+    String _elvis = null;
+    String _name = it.getName();
+    if (_name != null) {
+      _elvis = _name;
+    } else {
+      _elvis = "";
+    }
+    return _elvis;
+  });
+  
+  public final static Function1<EOperation, String> eOperationSorter = ((Function1<EOperation, String>) (EOperation it) -> {
     String _elvis = null;
     String _name = it.getName();
     if (_name != null) {
@@ -216,6 +228,13 @@ public class EcoreDocExtension {
     return _xblockexpression;
   }
   
+  protected String[] _collectTypeSegments(final EOperation eOperation) {
+    EObject _eContainer = eOperation.eContainer();
+    String[] _collectTypeSegments = this.collectTypeSegments(((EClass) _eContainer));
+    String _assuredName = this.getAssuredName(eOperation);
+    return ((String[])Conversions.unwrapArray(Iterables.<String>concat(((Iterable<? extends String>)Conversions.doWrapArray(_collectTypeSegments)), Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList(_assuredName))), String.class));
+  }
+  
   protected String getAssuredName(final ENamedElement eNamedElement) {
     String _xifexpression = null;
     if ((eNamedElement == null)) {
@@ -279,6 +298,8 @@ public class EcoreDocExtension {
       return _collectTypeSegments((EClass)eClass);
     } else if (eClass instanceof EDataType) {
       return _collectTypeSegments((EDataType)eClass);
+    } else if (eClass instanceof EOperation) {
+      return _collectTypeSegments((EOperation)eClass);
     } else if (eClass instanceof EStructuralFeature) {
       return _collectTypeSegments((EStructuralFeature)eClass);
     } else if (eClass instanceof EEnumLiteral) {

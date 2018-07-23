@@ -789,6 +789,134 @@ unsettable
 |Whether this element should be rendered at all.
 |===
 
+.Operations
+[cols="<20,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+
+.1+|`getTarget()`
+|_returns_ +
+`ecore.{zwsp}ENamedElement`
+|`[0..1]` +
+ordered +
+non-unique
+|Link to the configured element.
+
+.5+|`doSomething()`
+|_returns_ +
+`ecore.{zwsp}ENamedElement`
+|`[2..5]`
+|
+
+|`i` +
+`EInt`
+|`[0..*]`
+|
+
+|`something` +
+`<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+|`[0..1]`
+|
+
+|_throws_ +
+`<<config-Npe, config.{zwsp}Npe>>`
+|
+|
+
+|_throws_ +
+`<<config-Npe, config.{zwsp}Npe>>`
+|
+|
+
+.2+|`shouldRender()`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|Traverses the tree to find the most specific <tt>render</tt> setting.
+
+3+a|
+[source,java]
+----
+if (isSetRender) {
+	render
+} else {
+	(eContainer as IENamedElementConfig).shouldRender()
+}
+----
+|===
+
+
+.Operations
+**ecore.ENamedElement getTarget()**
+
+Link to the configured element.
+
+[cols="<20,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|_returns_
+|`ecore.ENamedElement`
+|`[0..1]` +
+ordered +
+non-unique
+|Link to the configured element.
+|===
+
+
+**`ecore.ENamedElement` doSomething(`EInt[]` i, `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>` something) throws `<<config-Npe, config.{zwsp}Npe>>`, `<<config-Npe, config.{zwsp}Npe>>`**
+
+Link to the configured element.
+
+[cols="<20,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|_returns_
+|`ecore.{zwsp}ENamedElement`
+|`[2..5]`
+|
+
+|`i`
+|`EInt`
+|`[0..*]`
+|
+
+|`something`
+|`<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+|`[0..1]`
+|
+
+|_throws_
+|`<<config-Npe, config.{zwsp}Npe>>`
+|
+|
+
+|_throws_
+|`<<config-Npe, config.{zwsp}Npe>>`
+|
+|
+|===
+
+[source,java]
+----
+if (isSetRender) {
+	render
+} else {
+	(eContainer as IENamedElementConfig).shouldRender()
+}
+----
+
+
 [[config-IEPackageConfig]]
 ==== Interface IEPackageConfig
 

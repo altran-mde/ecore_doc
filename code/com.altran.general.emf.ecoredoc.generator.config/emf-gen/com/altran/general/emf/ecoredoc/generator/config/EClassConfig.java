@@ -20,13 +20,14 @@ import org.eclipse.emf.ecore.ENamedElement;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EClassConfig#getEAttributes <em>EAttributes</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EClassConfig#getEContainments <em>EContainments</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EClassConfig#getEReferences <em>EReferences</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EClassConfig#getEOperations <em>EOperations</em>}</li>
  * </ul>
  *
  * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEClassConfig()
  * @model
  * @generated
  */
-public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IEReferenceConfig {
+public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IEReferenceConfig, IEOperationConfig, IEParameterConfig {
 	/**
 	 * Returns the value of the '<em><b>Target EClass</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -102,6 +103,22 @@ public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IERefere
 	EList<EReferenceConfig> getEReferences();
 
 	/**
+	 * Returns the value of the '<em><b>EOperations</b></em>' containment reference list.
+	 * The list contents are of type {@link com.altran.general.emf.ecoredoc.generator.config.EOperationConfig}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>EOperations</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>EOperations</em>' containment reference list.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEClassConfig_EOperations()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<EOperationConfig> getEOperations();
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" unique="false"
@@ -145,5 +162,17 @@ public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IERefere
 	 * @generated
 	 */
 	void addEReferences(List<EReferenceConfig> eReferenceConfig);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+	 * <!-- end-model-doc -->
+	 * @model eOperationConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EOperationConfig&gt;" eOperationConfigUnique="false" eOperationConfigMany="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EOperationConfig%&gt;&gt; _eOperations = this.getEOperations();\n&lt;%com.google.common.collect.Iterables%&gt;.&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EOperationConfig%&gt;&gt;addAll(_eOperations, eOperationConfig);'"
+	 * @generated
+	 */
+	void addEOperations(List<EOperationConfig> eOperationConfig);
 
 } // EClassConfig

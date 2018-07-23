@@ -5,6 +5,7 @@ import com.altran.general.emf.ecoredoc.generator.configbuilder.IEDataTypeConfigP
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorPart;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.collect.Multimap;
+import com.google.inject.Injector;
 import java.util.Collections;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
@@ -16,8 +17,8 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public abstract class AEcoreDocGeneratorEDataTypePart extends AEcoreDocGeneratorPart {
-  public AEcoreDocGeneratorEDataTypePart(final EcoreDocGeneratorConfig config, final Multimap<EPackage, EClassifier> ePackages) {
-    super(config, ePackages);
+  public AEcoreDocGeneratorEDataTypePart(final EcoreDocGeneratorConfig config, final Multimap<EPackage, EClassifier> ePackages, final Injector xcoreInjector) {
+    super(config, ePackages, xcoreInjector);
   }
   
   protected void writeProperties(final IEDataTypeConfigPair<?, ?> pair) {

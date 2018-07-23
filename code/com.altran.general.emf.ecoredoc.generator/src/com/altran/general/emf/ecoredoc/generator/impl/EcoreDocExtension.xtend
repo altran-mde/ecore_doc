@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.emf.ecore.EOperation
 
 class EcoreDocExtension {
 	public static val ANCHOR_SEPARATOR = '-'
@@ -23,6 +24,7 @@ class EcoreDocExtension {
 	
 	public static val eClassifierSorter = [EClassifier it | it.EPackage.name + it.name ?: ""]
 	public static val eStructuralFeatureSorter = [EStructuralFeature it | it.name ?: ""]
+	public static val eOperationSorter = [EOperation it | it.name ?: ""]
 
 	def static String newline() {
 		System.getProperty("line.separator")
@@ -98,7 +100,6 @@ class EcoreDocExtension {
 		val String eClassName = getAssuredName(eClass)
 
 		_collectTypeSegments(getEPackage(eClass)) + #[eClassName]
-
 	}
 
 	def dispatch String[] collectTypeSegments(EStructuralFeature eStructuralFeature) {
@@ -123,6 +124,10 @@ class EcoreDocExtension {
 		} else {
 			_collectTypeSegments(getEPackage(eDataType)) + #[eDataTypeName]	
 		}
+	}
+
+	def dispatch String[] collectTypeSegments(EOperation eOperation) {
+		collectTypeSegments(eOperation.eContainer as EClass) + #[getAssuredName(eOperation)]
 	}
 	
 	def protected String getAssuredName(ENamedElement eNamedElement) {

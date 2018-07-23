@@ -103,6 +103,24 @@ public interface EcoreDocConfigFactory extends EFactory {
 	EReferenceConfig createEReferenceConfig();
 
 	/**
+	 * Returns a new object of class '<em>EOperation Config</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EOperation Config</em>'.
+	 * @generated
+	 */
+	EOperationConfig createEOperationConfig();
+
+	/**
+	 * Returns a new object of class '<em>EParameter Config</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EParameter Config</em>'.
+	 * @generated
+	 */
+	EParameterConfig createEParameterConfig();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

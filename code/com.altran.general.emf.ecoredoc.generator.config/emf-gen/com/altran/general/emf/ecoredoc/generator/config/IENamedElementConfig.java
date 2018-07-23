@@ -2,6 +2,7 @@
  */
 package com.altran.general.emf.ecoredoc.generator.config;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 
@@ -121,5 +122,19 @@ public interface IENamedElementConfig extends EObject {
 	 * @generated
 	 */
 	ENamedElement getTarget();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Op Desc
+	 * @param i i desc
+	 * @param something something deschkriptschion
+	 * <!-- end-model-doc -->
+	 * @model unique="false" lower="2" upper="5" exceptions="com.altran.general.emf.ecoredoc.generator.config.Npe com.altran.general.emf.ecoredoc.generator.config.Npe" iUnique="false" iMany="true" somethingUnique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return Objects::nonNull;'"
+	 * @generated
+	 */
+	EList<ENamedElement> doSomething(EList<Integer> i, IENamedElementConfig something) throws NullPointerException, NullPointerException;
 
 } // IENamedElementConfig

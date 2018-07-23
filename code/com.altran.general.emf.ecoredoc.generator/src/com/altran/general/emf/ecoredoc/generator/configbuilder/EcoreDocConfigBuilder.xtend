@@ -11,7 +11,9 @@ import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EEnumLiteral
+import org.eclipse.emf.ecore.EOperation
 import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EParameter
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.util.EcoreUtil
 
@@ -91,6 +93,10 @@ class EcoreDocConfigBuilder {
 			eClass.EAllReferences.filter[!isContainment].forEach[eReference |
 				EReferences += eReference.createReferenceConfig
 			]
+			
+			eClass.EAllOperations.forEach[eOperation |
+				EOperations += eOperation.createConfig
+			]
 		])
 	}
 	
@@ -109,6 +115,22 @@ class EcoreDocConfigBuilder {
 	def createReferenceConfig(EReference eReference) {
 		parseAnnotations(createEReferenceConfig => [
 			targetEReference = eReference
+		])
+	}
+	
+	def createConfig(EOperation eOperation) {
+		parseAnnotations(createEOperationConfig => [
+			targetEOperation = eOperation
+			
+			eOperation.EParameters.forEach[eParameter |
+				EParameters += eParameter.createConfig
+			]
+		])
+	}
+	
+	def createConfig(EParameter eParameter) {
+		parseAnnotations(createEParameterConfig => [
+			targetEParameter = eParameter
 		])
 	}
 	

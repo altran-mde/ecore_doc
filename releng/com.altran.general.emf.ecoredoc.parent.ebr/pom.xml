@@ -5,13 +5,13 @@
 
 	<groupId>com.altran.general.emf.ecoredoc.ebr</groupId>
 	<artifactId>com.altran.general.emf.ecoredoc.parent.ebr</artifactId>
-	<version>0.7.0-SNAPSHOT</version>
+	<version>0.8.0-SNAPSHOT</version>
 	<name>EcoreDoc Maven Eclipse Build Recipe Parent</name>
 
 	<parent>
 		<groupId>com.altran.general.emf.ecoredoc</groupId>
 		<artifactId>com.altran.general.emf.ecoredoc.parent</artifactId>
-		<version>0.7.0-SNAPSHOT</version>
+		<version>0.8.0-SNAPSHOT</version>
 		<relativePath>../com.altran.general.emf.ecoredoc.parent</relativePath>
 	</parent>
 

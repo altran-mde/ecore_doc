@@ -6,10 +6,10 @@
 
 	<groupId>com.altran.general.emf.ecoredoc.standalone-test</groupId>
 	<artifactId>com.altran.general.emf.ecoredoc.standalone-test.parent</artifactId>
-	<version>0.7.0-SNAPSHOT</version>
+	<version>0.8.0-SNAPSHOT</version>
 
 	<properties>
-		<ecoredoc-version>0.7.0-SNAPSHOT</ecoredoc-version>
+		<ecoredoc-version>0.8.0-SNAPSHOT</ecoredoc-version>
 		<exec-plugin-version>1.6.0</exec-plugin-version>
 		<standalone.jar>${basedir}/../../com.altran.general.emf.ecoredoc.standalone-${ecoredoc-version}-jar-with-dependencies.jar</standalone.jar>
 	</properties>

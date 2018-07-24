@@ -29,13 +29,12 @@ import com.altran.general.emf.ecoredoc.generator.config.IEPackageConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEParameterConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
-
 import com.altran.general.emf.ecoredoc.generator.config.IETypedElementConfig;
+
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -241,13 +240,6 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	private EClass listEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType npeEDataType = null;
-
-	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -354,15 +346,6 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 */
 	public EOperation getIENamedElementConfig__GetTarget() {
 		return ieNamedElementConfigEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getIENamedElementConfig__DoSomething__EList_IENamedElementConfig() {
-		return ieNamedElementConfigEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -1207,6 +1190,24 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getEOperationConfig__GetId() {
+		return eOperationConfigEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEOperationConfig__JoinId__EOperation() {
+		return eOperationConfigEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEParameterConfig() {
 		return eParameterConfigEClass;
 	}
@@ -1243,15 +1244,6 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getNpe() {
-		return npeEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EcoreDocConfigFactory getEcoreDocConfigFactory() {
 		return (EcoreDocConfigFactory)getEFactoryInstance();
 	}
@@ -1280,7 +1272,6 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		createEAttribute(ieNamedElementConfigEClass, IE_NAMED_ELEMENT_CONFIG__ID);
 		createEOperation(ieNamedElementConfigEClass, IE_NAMED_ELEMENT_CONFIG___SHOULD_RENDER);
 		createEOperation(ieNamedElementConfigEClass, IE_NAMED_ELEMENT_CONFIG___GET_TARGET);
-		createEOperation(ieNamedElementConfigEClass, IE_NAMED_ELEMENT_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG);
 
 		iDefaultValueConfigEClass = createEClass(IDEFAULT_VALUE_CONFIG);
 		createEAttribute(iDefaultValueConfigEClass, IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS);
@@ -1398,15 +1389,14 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		createEReference(eOperationConfigEClass, EOPERATION_CONFIG__EPARAMETERS);
 		createEOperation(eOperationConfigEClass, EOPERATION_CONFIG___GET_TARGET);
 		createEOperation(eOperationConfigEClass, EOPERATION_CONFIG___ADD_EPARAMETERS__LIST);
+		createEOperation(eOperationConfigEClass, EOPERATION_CONFIG___GET_ID);
+		createEOperation(eOperationConfigEClass, EOPERATION_CONFIG___JOIN_ID__EOPERATION);
 
 		eParameterConfigEClass = createEClass(EPARAMETER_CONFIG);
 		createEReference(eParameterConfigEClass, EPARAMETER_CONFIG__TARGET_EPARAMETER);
 		createEOperation(eParameterConfigEClass, EPARAMETER_CONFIG___GET_TARGET);
 
 		listEClass = createEClass(LIST);
-
-		// Create data types
-		npeEDataType = createEDataType(NPE);
 	}
 
 	/**
@@ -1496,12 +1486,6 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 
 		initEOperation(getIENamedElementConfig__GetTarget(), theEcorePackage.getENamedElement(), "getTarget", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		EOperation op = initEOperation(getIENamedElementConfig__DoSomething__EList_IENamedElementConfig(), theEcorePackage.getENamedElement(), "doSomething", 2, 5, !IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theEcorePackage.getEInt(), "i", 0, -1, !IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIENamedElementConfig(), "something", 0, 1, !IS_UNIQUE, IS_ORDERED);
-		addEException(op, this.getNpe());
-		addEException(op, this.getNpe());
-
 		initEClass(iDefaultValueConfigEClass, IDefaultValueConfig.class, "IDefaultValueConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIDefaultValueConfig_RenderDefaults(), theEcorePackage.getEBoolean(), "renderDefaults", null, 0, 1, IDefaultValueConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1579,7 +1563,7 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 
 		initEOperation(getEcoreDocGeneratorConfig__GetEClassesPosition(), theEcorePackage.getEInt(), "getEClassesPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getEcoreDocGeneratorConfig__AddEPackages__List(), null, "addEPackages", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getEcoreDocGeneratorConfig__AddEPackages__List(), null, "addEPackages", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		EGenericType g1 = createEGenericType(this.getList());
 		EGenericType g2 = createEGenericType(this.getEPackageConfig());
 		g1.getETypeArguments().add(g2);
@@ -1700,15 +1684,17 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "eParameterConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
+		initEOperation(getEOperationConfig__GetId(), theEcorePackage.getEString(), "getId", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getEOperationConfig__JoinId__EOperation(), theEcorePackage.getEString(), "joinId", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEOperation(), "eOperation", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(eParameterConfigEClass, EParameterConfig.class, "EParameterConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEParameterConfig_TargetEParameter(), theEcorePackage.getEParameter(), null, "targetEParameter", null, 0, 1, EParameterConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getEParameterConfig__GetTarget(), theEcorePackage.getENamedElement(), "getTarget", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(listEClass, List.class, "List", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-
-		// Initialize data types
-		initEDataType(npeEDataType, NullPointerException.class, "Npe", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -23,10 +23,6 @@ public interface IEClassifierConfig extends IENamedElementConfig, IDefaultValueC
 	/**
 	 * Returns the value of the '<em><b>Render Use Cases</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Render Use Cases</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Whether use cases (references to other usages of this element) should be rendered.

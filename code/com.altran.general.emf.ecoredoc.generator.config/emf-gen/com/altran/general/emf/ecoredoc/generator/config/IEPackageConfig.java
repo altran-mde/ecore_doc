@@ -25,10 +25,6 @@ public interface IEPackageConfig extends IENamedElementConfig {
 	/**
 	 * Returns the value of the '<em><b>Position EData Types</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Position EData Types</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Rendering position of all EDataTypes within an EPackage.
@@ -81,10 +77,6 @@ public interface IEPackageConfig extends IENamedElementConfig {
 	/**
 	 * Returns the value of the '<em><b>Position EEnums</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Position EEnums</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Rendering position of all EEnums within an EPackage.
@@ -137,10 +129,6 @@ public interface IEPackageConfig extends IENamedElementConfig {
 	/**
 	 * Returns the value of the '<em><b>Position EClasses</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Position EClasses</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Rendering position of all EClasses within an EPackage.

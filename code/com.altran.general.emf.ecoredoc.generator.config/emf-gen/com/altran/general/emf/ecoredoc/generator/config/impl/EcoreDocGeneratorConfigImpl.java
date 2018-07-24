@@ -27,18 +27,23 @@ import com.altran.general.emf.ecoredoc.generator.config.IEParameterConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IETypedElementConfig;
+
 import com.google.common.base.Objects;
+
 import com.google.common.collect.Iterables;
+
 import java.lang.Iterable;
+
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
-
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -56,8 +61,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions;
+
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
@@ -1015,6 +1023,40 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean shouldRenderSubTypes() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderSubTypes = this.isSetRenderSubTypes();
+		if (_isSetRenderSubTypes) {
+			_xifexpression = this.isRenderSubTypes();
+		}
+		else {
+			_xifexpression = true;
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean shouldRenderSuperTypes() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderSuperTypes = this.isSetRenderSuperTypes();
+		if (_isSetRenderSuperTypes) {
+			_xifexpression = this.isRenderSuperTypes();
+		}
+		else {
+			_xifexpression = true;
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean shouldRenderBounds() {
 		boolean _xifexpression = false;
 		boolean _isSetRenderBounds = this.isSetRenderBounds();
@@ -1257,51 +1299,6 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 */
 	public ENamedElement getTarget() {
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<ENamedElement> doSomething(EList<Integer> i, IENamedElementConfig something) throws NullPointerException, NullPointerException {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean shouldRenderSubTypes() {
-		boolean _xifexpression = false;
-		boolean _isSetRenderSubTypes = this.isSetRenderSubTypes();
-		if (_isSetRenderSubTypes) {
-			_xifexpression = this.isRenderSubTypes();
-		}
-		else {
-			_xifexpression = true;
-		}
-		return _xifexpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean shouldRenderSuperTypes() {
-		boolean _xifexpression = false;
-		boolean _isSetRenderSuperTypes = this.isSetRenderSuperTypes();
-		if (_isSetRenderSuperTypes) {
-			_xifexpression = this.isRenderSuperTypes();
-		}
-		else {
-			_xifexpression = true;
-		}
-		return _xifexpression;
 	}
 
 	/**
@@ -1756,8 +1753,6 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 				return findConfig((ENamedElement)arguments.get(0));
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___GET_TARGET:
 				return getTarget();
-			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG:
-				return doSomething((EList<Integer>)arguments.get(0), (IENamedElementConfig)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

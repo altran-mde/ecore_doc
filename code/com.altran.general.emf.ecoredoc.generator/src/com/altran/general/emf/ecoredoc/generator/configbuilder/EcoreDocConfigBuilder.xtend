@@ -4,7 +4,7 @@ import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigFactory
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig
-import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension
+import com.altran.general.emf.ecoredoc.generator.impl.^extension.EcoreDocExtension
 import java.util.Collection
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EClass
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EParameter
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.emf.ecore.EcorePackage
 
 /**
  * Builds a fully populated config hierarchy for all input {@link EPackage}s.
@@ -94,7 +95,7 @@ class EcoreDocConfigBuilder {
 				EReferences += eReference.createReferenceConfig
 			]
 			
-			eClass.EAllOperations.forEach[eOperation |
+			eClass.EAllOperations.reject[EcorePackage::Literals::EOBJECT == eContainer].forEach[eOperation |
 				EOperations += eOperation.createConfig
 			]
 		])

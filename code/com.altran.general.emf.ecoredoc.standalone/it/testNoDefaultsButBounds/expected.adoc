@@ -3,11 +3,32 @@
 
 :inherited: {wupt}{nbsp}
 
+// Black Up-Pointing Triangle
+:bupt: &#9650;
+
+:override: {bupt}{nbsp}
+
+// White Down-Pointing Triangle
+:wdpt: &#9661;
+
+:inheritedBy: {wdpt}{nbsp}
+
+// Black Down-Pointing Triangle
+:bdpt: &#9660;
+
+:overriddenBy: {bdpt}{nbsp}
+
+:toc:
+:toclevels: 4
+:miscellaneous.tabsize: 2
+:tabsize: 2
+:icons: font
+:experimental:
+:source-highlighter: pygments
+:prewrap!:
 :table-caption!:
 
 = Ecore Documentation
-:toc:
-:toclevels: 4
 
 
 [[EPackage1]]
@@ -89,35 +110,40 @@ Description
 |`[0..6]`
 |Something.
 
-|`d`[[EPackage1-Class3-d]] +
-(`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`d`[[EPackage1-Class3-d]]
+
+`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1.{zwsp}d>>`
 |`EDouble`
 |`[0..1]` +
 _Default:_ `3.141592`
 |
 
-|`id`[[EPackage1-Class3-id]] +
-(`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`id`[[EPackage1-Class3-id]]
+
+`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1.{zwsp}id>>`
 |`EInt`
 |*is id* +
 `[1]`
 |Description of id.
 
-|`name`[[EPackage1-Class3-name]] +
-(`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`name`[[EPackage1-Class3-name]]
+
+`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1.{zwsp}name>>`
 |`EString`
 |`[3..5]`
 |Name desc.
 
-|`someStringAttr`[[EPackage1-Class3-someStringAttr]] +
-(`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`someStringAttr`[[EPackage1-Class3-someStringAttr]]
+
+`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1.{zwsp}someStringAttr>>`
 |`EString`
 |`[0..1]` +
 _Default:_ `Hello, World!`
 |
 
-|`specialNumber`[[EPackage1-Class3-specialNumber]] +
-(`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`specialNumber`[[EPackage1-Class3-specialNumber]]
+
+`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1.{zwsp}specialNumber>>`
 |`EInt`
 |`[0..1]` +
 _Default:_ `23`
@@ -140,8 +166,9 @@ _EOpposite:_ `<<EPackage1-MyEClass-clazzes, clazzes>>`
 `[0..1]`
 |Bla
 
-|`myRelation`[[EPackage1-Class3-myRelation]] +
-(`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`myRelation`[[EPackage1-Class3-myRelation]]
+
+`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1.{zwsp}myRelation>>`
 |`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
 
 _EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
@@ -268,35 +295,40 @@ Second sentence.
 _Default:_ `<<EPackage1-Enum1-Literal1, Literal1>>`
 |Deschkriptschion.
 
-|`d`[[EPackage1-MyEClass-d]] +
-(`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`d`[[EPackage1-MyEClass-d]]
+
+`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1.{zwsp}d>>`
 |`EDouble`
 |`[0..1]` +
 _Default:_ `3.141592`
 |
 
-|`id`[[EPackage1-MyEClass-id]] +
-(`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`id`[[EPackage1-MyEClass-id]]
+
+`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1.{zwsp}id>>`
 |`EInt`
 |*is id* +
 `[1]`
 |Description of id.
 
-|`name`[[EPackage1-MyEClass-name]] +
-(`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`name`[[EPackage1-MyEClass-name]]
+
+`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1.{zwsp}name>>`
 |`EString`
 |`[3..5]`
 |Name desc.
 
-|`someStringAttr`[[EPackage1-MyEClass-someStringAttr]] +
-(`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`someStringAttr`[[EPackage1-MyEClass-someStringAttr]]
+
+`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1.{zwsp}someStringAttr>>`
 |`EString`
 |`[0..1]` +
 _Default:_ `Hello, World!`
 |
 
-|`specialNumber`[[EPackage1-MyEClass-specialNumber]] +
-(`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`specialNumber`[[EPackage1-MyEClass-specialNumber]]
+
+`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1.{zwsp}specialNumber>>`
 |`EInt`
 |`[0..1]` +
 _Default:_ `23`
@@ -347,8 +379,9 @@ _EOpposite:_ `<<EPackage1-EClass1-myRelation, myRelation>>`
 |`[0..1]`
 |Whatever.
 
-|`myRelation`[[EPackage1-MyEClass-myRelation]] +
-(`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`myRelation`[[EPackage1-MyEClass-myRelation]]
+
+`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1.{zwsp}myRelation>>`
 |`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
 
 _EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
@@ -392,8 +425,7 @@ Ns URI:: http://altran.com/general/emf/ecoredoc/test/epackage2/1.0.0
 |`attr`[[EPackage2-Class3-attr]]
 |`EDouble`
 |`[0..1]` +
-_Default:_ `2.71` +
-unique
+_Default:_ `2.71`
 |
 |===
 
@@ -418,35 +450,40 @@ my doc
 |Properties
 |Description
 
-|`d`[[EPackage2-SomeClass-d]] +
-(`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`d`[[EPackage2-SomeClass-d]]
+
+`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1.{zwsp}d>>`
 |`EDouble`
 |`[0..1]` +
 _Default:_ `3.141592`
 |
 
-|`id`[[EPackage2-SomeClass-id]] +
-(`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`id`[[EPackage2-SomeClass-id]]
+
+`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1.{zwsp}id>>`
 |`EInt`
 |*is id* +
 `[1]`
 |Description of id.
 
-|`name`[[EPackage2-SomeClass-name]] +
-(`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`name`[[EPackage2-SomeClass-name]]
+
+`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1.{zwsp}name>>`
 |`EString`
 |`[3..5]`
 |Name desc.
 
-|`someStringAttr`[[EPackage2-SomeClass-someStringAttr]] +
-(`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`someStringAttr`[[EPackage2-SomeClass-someStringAttr]]
+
+`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1.{zwsp}someStringAttr>>`
 |`EString`
 |`[0..1]` +
 _Default:_ `Hello, World!`
 |
 
-|`specialNumber`[[EPackage2-SomeClass-specialNumber]] +
-(`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`specialNumber`[[EPackage2-SomeClass-specialNumber]]
+
+`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1.{zwsp}specialNumber>>`
 |`EInt`
 |`[0..1]` +
 _Default:_ `23`
@@ -461,8 +498,9 @@ _Default:_ `23`
 |Properties
 |Description
 
-|`myRelation`[[EPackage2-SomeClass-myRelation]] +
-(`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1>>`)
+|`myRelation`[[EPackage2-SomeClass-myRelation]]
+
+`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1.{zwsp}myRelation>>`
 |`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
 
 _EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`

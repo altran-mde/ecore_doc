@@ -2,25 +2,34 @@ package com.altran.general.emf.ecoredoc.generator.impl
 
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.configbuilder.IEClassifierConfigPair
+import com.altran.general.emf.ecoredoc.generator.impl.^extension.AnchorExtension
+import com.altran.general.emf.ecoredoc.generator.impl.^extension.EOperationEStructuralFeatureInteractionExtension
+import com.altran.general.emf.ecoredoc.generator.impl.^extension.EcoreDocExtension
+import com.altran.general.emf.ecoredoc.generator.impl.^extension.InheritedEClassMemberSegmentsCollector
+import com.altran.general.emf.ecoredoc.generator.impl.^extension.TypeSegmentsCollector
 import com.google.common.collect.Multimap
 import com.google.inject.Injector
-import java.util.ArrayList
 import java.util.Collection
-import java.util.List
+import java.util.Set
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.ENamedElement
+import org.eclipse.emf.ecore.EOperation
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.ecore.ETypedElement
 import org.eclipse.emf.ecore.EcorePackage
 
-import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
-import org.eclipse.emf.ecore.EOperation
+import static com.altran.general.emf.ecoredoc.generator.impl.^extension.EcoreDocExtension.newline
 
 abstract class AEcoreDocGeneratorPart {
 
 	protected extension EcoreDocExtension = new EcoreDocExtension
+	protected extension AnchorExtension = new AnchorExtension
+	protected extension InheritedEClassMemberSegmentsCollector = new InheritedEClassMemberSegmentsCollector
+	
+	extension EOperationEStructuralFeatureInteractionExtension = new EOperationEStructuralFeatureInteractionExtension
+	extension TypeSegmentsCollector = new TypeSegmentsCollector
 	
 	val EcoreDocGeneratorConfig config
 	val Multimap<EPackage, EClassifier> ePackages
@@ -36,51 +45,47 @@ abstract class AEcoreDocGeneratorPart {
 
 	def abstract StringBuilder write(EPackage ePackage)
 
-	protected def void clearOutput() {
+	def void clearOutput() {
 		this.output = new StringBuilder()
 	}
 
-	protected def Multimap<EPackage, EClassifier> getEPackages() {
+	def Multimap<EPackage, EClassifier> getEPackages() {
 		this.ePackages
 	}
 	
-	protected def getConfig() {
+	def getConfig() {
 		this.config
 	}
 	
-	protected def getXcoreInjector() {
+	def getXcoreInjector() {
 		this.xcoreInjector
 	}
 
-	protected def StringBuilder getOutput() {
+	def StringBuilder getOutput() {
 		if (this.output === null) {
 			throw new IllegalStateException("Tried to write to output before clearing it")
 		}
 
 		this.output
 	}
-
-	protected def dispatch CharSequence concatReferenceName(ENamedElement eNamedElement) {
-		collectTypeSegments(eNamedElement).joinReference
+	
+	def CharSequence concatLinkTo(ENamedElement eNamedElement) {
+		concatLinkTo(eNamedElement, "")
 	}
 
-	protected def dispatch CharSequence concatReferenceName(EOperation eOperation) {
-		collectTypeSegments(eOperation).joinReference + "()"
-	}
-
-	protected def dispatch CharSequence concatLinkTo(ENamedElement eNamedElement) {
+	def dispatch CharSequence concatLinkTo(ENamedElement eNamedElement, String prefix) {
 		val cfg = getConfig().findConfig(eNamedElement)
 		
 		// prevent creating links to non-rendered targets
 		if (cfg?.shouldRender) {
-			'''`<<«concatAnchor(eNamedElement)», «concatReferenceName(eNamedElement)»>>`'''
+			'''`<<«concatAnchor(eNamedElement)», «prefix»«concatReferenceName(eNamedElement)»>>`'''
 		} else {
-			'''`«concatReferenceName(eNamedElement)»`'''
+			'''`«prefix»«concatReferenceName(eNamedElement)»`'''
 		}
 	}
 
 	// Special handling for default EDataTypes: Don't create anchor
-	protected def dispatch CharSequence concatLinkTo(EDataType eDataType) {
+	def dispatch CharSequence concatLinkTo(EDataType eDataType, String prefix) {
 		val boolean defaultDataType = isDefaultEDataType(eDataType)
 		
 		if (defaultDataType) {
@@ -91,41 +96,31 @@ abstract class AEcoreDocGeneratorPart {
 			
 			// prevent creating links to non-rendered targets
 			if (cfg?.shouldRender) {
-				'''`<<«concatAnchor(eDataType)», «concatReferenceName(eDataType)»>>`'''
+				'''`<<«concatAnchor(eDataType)», «prefix»«concatReferenceName(eDataType)»>>`'''
 			} else {
-				'''`«concatReferenceName(eDataType)»`'''
+				'''`«prefix»«concatReferenceName(eDataType)»`'''
 			}
 		}
 	}
 
-	protected def dispatch CharSequence concatLinkTo(Void eDataType) {
-		"`void`"
+	def dispatch CharSequence concatLinkTo(Void eDataType, String prefix) {
+		'''«prefix»`void`'''
 	}
 
-	protected def CharSequence concatUsedLink(EStructuralFeature eStructuralFeature, EClass eClassThatInherits) {
-		val String[] inheritedFeatureSegments = collectInheritedFeatureSegments(eStructuralFeature, eClassThatInherits)
-		val CharSequence anchor = '''«inheritedFeatureSegments.joinAnchor»'''
-		val CharSequence reference = '''«inheritedFeatureSegments.joinReference»'''
+	protected def dispatch CharSequence concatUsedLink(ETypedElement eTypedElement, EClass eClassThatInherits) {
+		val String[] inheritedFeatureSegments = collectInheritedEClassMemberSegments(eTypedElement, eClassThatInherits)
 
-		'''`<<«anchor», «reference»>>`'''
+		'''`<<«inheritedFeatureSegments.joinAnchor», «inheritedFeatureSegments.joinReference»>>`'''
 	}
 
-	protected def dispatch String[] collectInheritedFeatureSegments(EStructuralFeature eStructuralFeature,
-		EClass eClassThatInherits) {
-		val String ePackageName = getEPackage(eClassThatInherits).name
-		val String eClassName = eClassThatInherits.name
-		val String eStructuralFeatureName = eStructuralFeature.name
+	protected def dispatch CharSequence concatUsedLink(EOperation eOperation, EClass eClassThatInherits) {
+		val String[] inheritedFeatureSegments = collectInheritedEClassMemberSegments(eOperation, eClassThatInherits)
 
-		#[ePackageName, eClassName, eStructuralFeatureName]
-	}
-
-	protected def dispatch String[] collectInheritedFeatureSegments(EOperation eOperation,
-		EClass eClassThatInherits) {
-		val String ePackageName = getEPackage(eClassThatInherits).name
-		val String eClassName = eClassThatInherits.name
-		val String eStructuralFeatureName = eOperation.name
-
-		#[ePackageName, eClassName, eStructuralFeatureName] + eOperation.EParameters.map[getEPackage(EType).name + "_" + EType.name]
+		'''
+			`<<«inheritedFeatureSegments.joinAnchor», «collectTypeSegments(eOperation).joinReference»(«
+			FOR param : eOperation.EParameters SEPARATOR ", "
+				»«param.name»«
+			ENDFOR»)>>`'''
 	}
 
 	protected def void writeUseCases(IEClassifierConfigPair<?, ?> pair) {
@@ -135,36 +130,52 @@ abstract class AEcoreDocGeneratorPart {
 
 		val target = pair.element
 		
-		var boolean anyMatch = false
-		val Collection<EClass> eClasses = collectAllEClasses()
-		val ArrayList<String> useCaseStrings = newArrayList()
-		val List<EClass> sortedEClasses = eClasses.sortBy(EcoreDocExtension::eClassifierSorter)
-
-		for (eClass : sortedEClasses) {
-			val List<EStructuralFeature> sortedEStructuralFeatures = eClass.EAllStructuralFeatures.sortBy(EcoreDocExtension::eStructuralFeatureSorter)
-			
-			for (feature : sortedEStructuralFeatures) {
-				if (feature.EType == target) {
-					anyMatch = true
-
-					useCaseStrings.add(
-					'''
-						* «concatUsedLink(feature, eClass)»
-					''')
+		val usages = collectAllEClasses
+			.sortBy(EcoreDocExtension::eClassifierSorter)
+			.map[ eClass |
+				val Set<ETypedElement> members = newLinkedHashSet()
+				
+				members += eClass.EAllStructuralFeatures
+					.reject[feat | eClass.EOperations.exists[it.overridesFeature(feat)]]
+					.sortBy(EcoreDocExtension::eStructuralFeatureSorter)
+				
+				val eOperations = eClass.EAllOperations
+					.reject[EcorePackage.Literals::EOBJECT == eContainer]
+					.reject[op | eClass.EStructuralFeatures.exists[it.implementsOperation(op)]]
+					.sortBy(EcoreDocExtension::eOperationSorter)
+				
+				members += eOperations
+				
+				members.map[eClass -> it]
+			]
+			.flatten
+			.filter[
+				val v = value
+				
+				switch(v) {
+					EOperation:
+						target == v.EType || v.EExceptions.contains(target) || v.EParameters.map[EType].contains(target)
+					
+					default:
+						target == v.EType
 				}
-			}
-		}
-
-		if (anyMatch) {
+			]
+			.map[
+				'''
+					* «concatUsedLink(value, key)»
+				'''
+			]
+			.toSet
+			.join()
+		
+		if (!usages.isEmpty) {
 			output.append(
 			'''
 				«newline»
 				.Used at
+				«usages»
 			''')
-
-			for (useCaseString : useCaseStrings.sort) {
-				output.append(useCaseString)
-			}
+			
 		}
 	}
 	
@@ -192,12 +203,6 @@ abstract class AEcoreDocGeneratorPart {
 		}
 	}
 	
-	protected def CharSequence tableFooter() {
-		'''
-			|===
-		'''
-	}
-
 	protected def Collection<EClass> collectAllEClasses() {
 		ePackages.values
 			.filter(EClass)

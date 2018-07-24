@@ -25,10 +25,6 @@ public interface IEClassConfig extends IEClassifierConfig {
 	/**
 	 * Returns the value of the '<em><b>Repeat Inherited</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Repeat Inherited</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Whether inherited features should be repeated.

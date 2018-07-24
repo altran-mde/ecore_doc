@@ -3,11 +3,32 @@
 
 :inherited: {wupt}{nbsp}
 
+// Black Up-Pointing Triangle
+:bupt: &#9650;
+
+:override: {bupt}{nbsp}
+
+// White Down-Pointing Triangle
+:wdpt: &#9661;
+
+:inheritedBy: {wdpt}{nbsp}
+
+// Black Down-Pointing Triangle
+:bdpt: &#9660;
+
+:overriddenBy: {bdpt}{nbsp}
+
+:toc:
+:toclevels: 4
+:miscellaneous.tabsize: 2
+:tabsize: 2
+:icons: font
+:experimental:
+:source-highlighter: pygments
+:prewrap!:
 :table-caption!:
 
 = Ecore Documentation
-:toc:
-:toclevels: 4
 
 
 [[EPackage1]]
@@ -123,7 +144,6 @@ _Default:_ `-` +
 changeable +
 underived +
 non-transient +
-unique +
 settable +
 non-volatile
 |Bla
@@ -162,7 +182,6 @@ _Default:_ `3.141592` +
 changeable +
 underived +
 non-transient +
-non-unique +
 settable +
 non-volatile
 |
@@ -175,7 +194,6 @@ _Default:_ `-` +
 changeable +
 underived +
 non-transient +
-non-unique +
 settable +
 non-volatile
 |Description of id.
@@ -200,7 +218,6 @@ _Default:_ `Hello, World!` +
 changeable +
 underived +
 non-transient +
-non-unique +
 settable +
 non-volatile
 |
@@ -212,7 +229,6 @@ _Default:_ `23` +
 changeable +
 underived +
 non-transient +
-non-unique +
 settable +
 non-volatile
 |
@@ -285,7 +301,6 @@ _Default:_ `-` +
 changeable +
 underived +
 non-transient +
-non-unique +
 settable +
 non-volatile
 |Description.
@@ -371,7 +386,6 @@ _Default:_ `-` +
 changeable +
 underived +
 non-transient +
-unique +
 settable +
 non-volatile
 |
@@ -386,7 +400,6 @@ _Default:_ `-` +
 changeable +
 underived +
 non-transient +
-unique +
 settable +
 non-volatile
 |Whatever.
@@ -432,7 +445,6 @@ _Default:_ `2.71` +
 changeable +
 underived +
 non-transient +
-**unique** +
 settable +
 non-volatile
 |

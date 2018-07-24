@@ -17,14 +17,15 @@ import com.altran.general.emf.ecoredoc.generator.config.IEOperationConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEParameterConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
-
 import com.altran.general.emf.ecoredoc.generator.config.IETypedElementConfig;
+
 import com.google.common.collect.Iterables;
+
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
-
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -959,17 +960,6 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ENamedElement> doSomething(EList<Integer> i, IENamedElementConfig something) throws NullPointerException, NullPointerException {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -1341,8 +1331,6 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 				return shouldRenderDefaults();
 			case EcoreDocConfigPackage.ECLASS_CONFIG___SHOULD_RENDER:
 				return shouldRender();
-			case EcoreDocConfigPackage.ECLASS_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG:
-				return doSomething((EList<Integer>)arguments.get(0), (IENamedElementConfig)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

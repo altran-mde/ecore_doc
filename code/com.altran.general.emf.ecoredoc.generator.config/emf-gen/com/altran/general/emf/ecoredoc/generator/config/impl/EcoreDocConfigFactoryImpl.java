@@ -5,7 +5,6 @@ package com.altran.general.emf.ecoredoc.generator.config.impl;
 import com.altran.general.emf.ecoredoc.generator.config.*;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -70,36 +69,6 @@ public class EcoreDocConfigFactoryImpl extends EFactoryImpl implements EcoreDocC
 			case EcoreDocConfigPackage.EPARAMETER_CONFIG: return createEParameterConfig();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case EcoreDocConfigPackage.NPE:
-				return createNpeFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case EcoreDocConfigPackage.NPE:
-				return convertNpeToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -211,24 +180,6 @@ public class EcoreDocConfigFactoryImpl extends EFactoryImpl implements EcoreDocC
 	public EParameterConfig createEParameterConfig() {
 		EParameterConfigImpl eParameterConfig = new EParameterConfigImpl();
 		return eParameterConfig;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NullPointerException createNpeFromString(EDataType eDataType, String initialValue) {
-		return (NullPointerException)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertNpeToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

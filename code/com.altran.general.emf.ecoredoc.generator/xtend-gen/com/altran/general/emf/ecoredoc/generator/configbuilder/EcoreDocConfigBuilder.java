@@ -14,7 +14,7 @@ import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigFactory;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
-import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
+import com.altran.general.emf.ecoredoc.generator.impl.extension.EcoreDocExtension;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.util.Collection;
@@ -29,11 +29,13 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.ENamedElement;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
@@ -157,12 +159,16 @@ public class EcoreDocConfigBuilder {
         _eReferences.add(_createReferenceConfig);
       };
       IterableExtensions.<EReference>filter(eClass.getEAllReferences(), _function_3).forEach(_function_4);
-      final Consumer<EOperation> _function_5 = (EOperation eOperation) -> {
+      final Function1<EOperation, Boolean> _function_5 = (EOperation it_1) -> {
+        EObject _eContainer = it_1.eContainer();
+        return Boolean.valueOf(Objects.equal(EcorePackage.Literals.EOBJECT, _eContainer));
+      };
+      final Consumer<EOperation> _function_6 = (EOperation eOperation) -> {
         EList<EOperationConfig> _eOperations = it.getEOperations();
         EOperationConfig _createConfig = this.createConfig(eOperation);
         _eOperations.add(_createConfig);
       };
-      eClass.getEAllOperations().forEach(_function_5);
+      IterableExtensions.<EOperation>reject(eClass.getEAllOperations(), _function_5).forEach(_function_6);
     };
     EClassConfig _doubleArrow = ObjectExtensions.<EClassConfig>operator_doubleArrow(_createEClassConfig, _function);
     return this.<EClassConfig>parseAnnotations(_doubleArrow);

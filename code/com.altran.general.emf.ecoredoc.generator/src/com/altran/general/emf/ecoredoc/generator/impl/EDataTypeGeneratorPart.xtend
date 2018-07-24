@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.EPackage
 
-import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
+import static com.altran.general.emf.ecoredoc.generator.impl.^extension.EcoreDocExtension.newline
 
 class EDataTypeGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 

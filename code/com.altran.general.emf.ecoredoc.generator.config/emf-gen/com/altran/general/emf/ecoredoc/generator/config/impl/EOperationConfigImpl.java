@@ -19,14 +19,20 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.ENamedElement;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * <!-- begin-user-doc -->
@@ -156,6 +162,51 @@ public class EOperationConfigImpl extends AEReferenceConfigImpl implements EOper
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getId() {
+		EOperation _targetEOperation = this.getTargetEOperation();
+		String _joinId = null;
+		if (_targetEOperation!=null) {
+			_joinId=this.joinId(_targetEOperation);
+		}
+		return _joinId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String joinId(final EOperation eOperation) {
+		String _name = eOperation.getName();
+		final Function1<EParameter, String> _function = new Function1<EParameter, String>() {
+			public String apply(final EParameter it) {
+				EClassifier _eType = it.getEType();
+				EObject _eContainer = null;
+				if (_eType!=null) {
+					_eContainer=_eType.eContainer();
+				}
+				String _name = null;
+				if (((ENamedElement) _eContainer)!=null) {
+					_name=((ENamedElement) _eContainer).getName();
+				}
+				String _plus = (_name + "_");
+				EClassifier _eType_1 = it.getEType();
+				String _name_1 = null;
+				if (_eType_1!=null) {
+					_name_1=_eType_1.getName();
+				}
+				return (_plus + _name_1);
+			}
+		};
+		String _join = IterableExtensions.join(XcoreEListExtensions.<EParameter, String>map(eOperation.getEParameters(), _function), ".");
+		return (_name + _join);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -250,6 +301,10 @@ public class EOperationConfigImpl extends AEReferenceConfigImpl implements EOper
 			case EcoreDocConfigPackage.EOPERATION_CONFIG___ADD_EPARAMETERS__LIST:
 				addEParameters((List<EParameterConfig>)arguments.get(0));
 				return null;
+			case EcoreDocConfigPackage.EOPERATION_CONFIG___GET_ID:
+				return getId();
+			case EcoreDocConfigPackage.EOPERATION_CONFIG___JOIN_ID__EOPERATION:
+				return joinId((EOperation)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

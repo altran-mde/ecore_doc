@@ -382,17 +382,6 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ENamedElement> doSomething(EList<Integer> i, IENamedElementConfig something) throws NullPointerException, NullPointerException {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -524,7 +513,6 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG___SHOULD_RENDER_BOUNDS:
@@ -535,8 +523,6 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 				return shouldRender();
 			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG___GET_TARGET:
 				return getTarget();
-			case EcoreDocConfigPackage.AE_REFERENCE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG:
-				return doSomething((EList<Integer>)arguments.get(0), (IENamedElementConfig)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

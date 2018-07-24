@@ -431,17 +431,6 @@ public class EAttributeConfigImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ENamedElement> doSomething(EList<Integer> i, IENamedElementConfig something) throws NullPointerException, NullPointerException {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -584,7 +573,6 @@ public class EAttributeConfigImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case EcoreDocConfigPackage.EATTRIBUTE_CONFIG___GET_TARGET:
@@ -595,8 +583,6 @@ public class EAttributeConfigImpl extends MinimalEObjectImpl.Container implement
 				return shouldRenderDefaults();
 			case EcoreDocConfigPackage.EATTRIBUTE_CONFIG___SHOULD_RENDER:
 				return shouldRender();
-			case EcoreDocConfigPackage.EATTRIBUTE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG:
-				return doSomething((EList<Integer>)arguments.get(0), (IENamedElementConfig)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

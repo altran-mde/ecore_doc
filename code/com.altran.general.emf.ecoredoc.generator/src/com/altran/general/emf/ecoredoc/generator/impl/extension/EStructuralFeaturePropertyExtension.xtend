@@ -1,74 +1,13 @@
-package com.altran.general.emf.ecoredoc.generator.impl
+package com.altran.general.emf.ecoredoc.generator.impl.^extension
 
-import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.configbuilder.EAttributeConfigPair
 import com.altran.general.emf.ecoredoc.generator.configbuilder.EReferenceConfigPair
 import com.altran.general.emf.ecoredoc.generator.configbuilder.IEStructuralFeatureConfigPair
-import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.impl.EEnumLiteralImpl
 
-class EStructuralFeaturePropertyHelper {
-	val static String BOLD = "**"
-	
-	extension EcoreDocExtension = new EcoreDocExtension
-	
-	val EcoreDocGeneratorConfig config
-	
-	new(EcoreDocGeneratorConfig config) {
-		this.config = config
-	}
-
-	def CharSequence concatBounds(IEStructuralFeatureConfigPair<?,?> pair) {
-		val eStructuralFeature = pair.element
-		
-		val lowerBound = eStructuralFeature.lowerBound
-		val upperBound = eStructuralFeature.upperBound
-		val lowerNotEqualUpperBound = lowerBound != upperBound
-		
-		val isSet = if (eStructuralFeature.isMany) {
-			lowerBound !== 0 || upperBound !== -1
-		} else {
-			lowerBound !== 0 || upperBound !== 1
-		}
-		
-		if (isSet || pair.config.shouldRenderBounds) {
-			'''`[«lowerBound»«IF lowerNotEqualUpperBound»..«defineUpperBound(upperBound)»«ENDIF»]`'''
-		}
-	}
-
-	def CharSequence boldifyString(String string) {
-		'''«BOLD»«string»«BOLD»'''
-	}
-
-	def CharSequence definePropertyString(
-		IEStructuralFeatureConfigPair<?,?> pair, 
-		String trueLiteral, 
-		String falseLiteral, 
-		boolean defaultValue,
-		boolean currentPropertyValue) { 
-			
-		val isSet = (defaultValue != currentPropertyValue)
-		val shouldRenderDefaults = pair.config.shouldRenderDefaults
-		
-		if(isSet || shouldRenderDefaults) {
-			if(currentPropertyValue) {
-				if(isSet && shouldRenderDefaults) {
-					return boldifyString(trueLiteral)
-				} else {
-					return trueLiteral
-				}
-			} else {
-				if(isSet && shouldRenderDefaults) {
-					return boldifyString(falseLiteral)
-				} else {
-					return falseLiteral
-				}
-			}
-		}
-	}
-
+class EStructuralFeaturePropertyExtension extends ETypedElementPropertyExtension {
 	def CharSequence defineChangeable(IEStructuralFeatureConfigPair<?,?> pair) {
 		pair.definePropertyString("changeable", "unchangeable", true, pair.element.changeable)
 	}
@@ -77,20 +16,8 @@ class EStructuralFeaturePropertyHelper {
 		pair.definePropertyString("derived", "underived", false, pair.element.derived)
 	}
 
-	def CharSequence defineOrdered(IEStructuralFeatureConfigPair<?,?> pair) {
-		if (pair.element.upperBound != 1) {
-			pair.definePropertyString("ordered", "unordered", true, pair.element.ordered)
-		} else {
-			null
-		}
-	}
-
 	def CharSequence defineTransient(IEStructuralFeatureConfigPair<?,?> pair) {
 		pair.definePropertyString("transient", "non-transient", false, pair.element.transient)
-	}
-
-	def CharSequence defineUnique(IEStructuralFeatureConfigPair<?,?> pair) {
-		pair.definePropertyString("unique", "non-unique", pair.element instanceof EReference, pair.element.unique)
 	}
 
 	def CharSequence defineUnsettable(IEStructuralFeatureConfigPair<?,?> pair) {
@@ -151,7 +78,7 @@ class EStructuralFeaturePropertyHelper {
 			
 			switch (defaultValue) {
 				EEnumLiteralImpl:
-					return '''_Default:_ `<<«concatAnchor(eAttribute.EAttributeType)»«EcoreDocExtension.ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>`'''
+					return '''_Default:_ `<<«concatAnchor(eAttribute.EAttributeType)»«AnchorExtension.ANCHOR_SEPARATOR»«defaultValue», «defaultValue»>>`'''
 						
 				default:
 					return '''_Default:_ `«defaultValue»`'''
@@ -180,22 +107,7 @@ class EStructuralFeaturePropertyHelper {
 		}
 	}
 
-	protected def CharSequence defineUpperBound(int upperBound) {
-		val boolean upperBoundExists = (upperBound != -1)
-
-		if (upperBoundExists) {
-			upperBound.toString
-
-		} else {
-			'''*'''
-		}
-	}
-	
 	protected def shouldRenderDefaults(IEStructuralFeatureConfigPair<?,?> pair) {
 		pair.config.shouldRenderDefaults
-	}
-	
-	protected def getConfig() {
-		this.config
 	}
 }

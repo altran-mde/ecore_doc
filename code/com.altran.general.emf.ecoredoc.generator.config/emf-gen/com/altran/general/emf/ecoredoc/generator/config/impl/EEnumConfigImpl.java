@@ -9,12 +9,14 @@ import com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEEnumLiteralConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
+
 import com.google.common.collect.Iterables;
+
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
-
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -467,17 +469,6 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ENamedElement> doSomething(EList<Integer> i, IENamedElementConfig something) throws NullPointerException, NullPointerException {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -675,8 +666,6 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 				return shouldRenderDefaults();
 			case EcoreDocConfigPackage.EENUM_CONFIG___SHOULD_RENDER:
 				return shouldRender();
-			case EcoreDocConfigPackage.EENUM_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG:
-				return doSomething((EList<Integer>)arguments.get(0), (IENamedElementConfig)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

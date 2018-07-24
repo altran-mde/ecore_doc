@@ -3,10 +3,10 @@ package com.altran.general.emf.ecoredoc.generator
 import com.altran.general.emf.ecoredoc.generator.config.EPackageConfig
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.configbuilder.EcoreDocConfigBuilder
-import com.altran.general.emf.ecoredoc.generator.impl.EClassGeneratorPart
 import com.altran.general.emf.ecoredoc.generator.impl.EDataTypeGeneratorPart
 import com.altran.general.emf.ecoredoc.generator.impl.EEnumGeneratorPart
-import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension
+import com.altran.general.emf.ecoredoc.generator.impl.eclass.EClassGeneratorPart
+import com.altran.general.emf.ecoredoc.generator.impl.^extension.EcoreDocExtension
 import com.google.common.collect.Multimap
 import com.google.common.collect.TreeMultimap
 import com.google.inject.Injector
@@ -14,7 +14,7 @@ import java.util.Collection
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EPackage
 
-import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
+import static com.altran.general.emf.ecoredoc.generator.impl.^extension.EcoreDocExtension.newline
 
 /**
  * Creates JavaDoc-like documents for Ecore metamodels in AsciiDoctor format.
@@ -109,21 +109,35 @@ class EcoreDocGenerator {
 		'''
 			// White Up-Pointing Triangle
 			:wupt: &#9651;
-
+			
 			:inherited: {wupt}{nbsp}
-
+			
 			// Black Up-Pointing Triangle
 			:bupt: &#9650;
-
-			:override: {bupt}{nbsp}
-
-			:table-caption!:
-
-			:source-highlighter: pygments
 			
-			= «getConfig().documentTitle»
+			:override: {bupt}{nbsp}
+			
+			// White Down-Pointing Triangle
+			:wdpt: &#9661;
+			
+			:inheritedBy: {wdpt}{nbsp}
+			
+			// Black Down-Pointing Triangle
+			:bdpt: &#9660;
+			
+			:overriddenBy: {bdpt}{nbsp}
+			
 			:toc:
 			:toclevels: 4
+			:miscellaneous.tabsize: 2
+			:tabsize: 2
+			:icons: font
+			:experimental:
+			:source-highlighter: pygments
+			:prewrap!:
+			:table-caption!:
+			
+			= «getConfig().documentTitle»
 		''')
 	}
 

@@ -4,7 +4,6 @@ package com.altran.general.emf.ecoredoc.generator.config;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -116,22 +115,13 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IE_NAMED_ELEMENT_CONFIG___GET_TARGET = 1;
 
 	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_NAMED_ELEMENT_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = 2;
-
-	/**
 	 * The number of operations of the '<em>IE Named Element Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT = 3;
+	int IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig <em>IDefault Value Config</em>}' class.
@@ -253,15 +243,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IE_CLASSIFIER_CONFIG___GET_TARGET = IE_NAMED_ELEMENT_CONFIG___GET_TARGET;
 
 	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_CLASSIFIER_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_NAMED_ELEMENT_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
-
-	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -362,15 +343,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IE_DATA_TYPE_CONFIG___GET_TARGET = IE_CLASSIFIER_CONFIG___GET_TARGET;
 
 	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_DATA_TYPE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_CLASSIFIER_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
-
-	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -469,15 +441,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int IE_ENUM_CONFIG___GET_TARGET = IE_DATA_TYPE_CONFIG___GET_TARGET;
-
-	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_ENUM_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_DATA_TYPE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
 
 	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
@@ -607,15 +570,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IE_CLASS_CONFIG___GET_TARGET = IE_CLASSIFIER_CONFIG___GET_TARGET;
 
 	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_CLASS_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_CLASSIFIER_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
-
-	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -743,15 +697,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IE_TYPED_ELEMENT_CONFIG___GET_TARGET = IE_NAMED_ELEMENT_CONFIG___GET_TARGET;
 
 	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_TYPED_ELEMENT_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_NAMED_ELEMENT_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
-
-	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -850,15 +795,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int IE_STRUCTURAL_FEATURE_CONFIG___GET_TARGET = IE_TYPED_ELEMENT_CONFIG___GET_TARGET;
-
-	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_STRUCTURAL_FEATURE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_TYPED_ELEMENT_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
 
 	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
@@ -961,15 +897,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IE_ATTRIBUTE_CONFIG___GET_TARGET = IE_STRUCTURAL_FEATURE_CONFIG___GET_TARGET;
 
 	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_ATTRIBUTE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_STRUCTURAL_FEATURE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
-
-	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1068,15 +995,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int IE_REFERENCE_CONFIG___GET_TARGET = IE_STRUCTURAL_FEATURE_CONFIG___GET_TARGET;
-
-	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_REFERENCE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_STRUCTURAL_FEATURE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
 
 	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
@@ -1179,15 +1097,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IE_OPERATION_CONFIG___GET_TARGET = IE_TYPED_ELEMENT_CONFIG___GET_TARGET;
 
 	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_OPERATION_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_TYPED_ELEMENT_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
-
-	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1286,15 +1195,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int IE_PARAMETER_CONFIG___GET_TARGET = IE_TYPED_ELEMENT_CONFIG___GET_TARGET;
-
-	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_PARAMETER_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_TYPED_ELEMENT_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
 
 	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
@@ -1406,15 +1306,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IE_PACKAGE_CONFIG___GET_TARGET = IE_NAMED_ELEMENT_CONFIG___GET_TARGET;
 
 	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_PACKAGE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_NAMED_ELEMENT_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
-
-	/**
 	 * The operation id for the '<em>Get EData Types Position</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1504,15 +1395,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int IE_ENUM_LITERAL_CONFIG___GET_TARGET = IE_NAMED_ELEMENT_CONFIG___GET_TARGET;
-
-	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IE_ENUM_LITERAL_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_NAMED_ELEMENT_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
 
 	/**
 	 * The number of operations of the '<em>IE Enum Literal Config</em>' class.
@@ -1658,15 +1540,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 8;
-
-	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECORE_DOC_GENERATOR_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_PACKAGE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -1958,15 +1831,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int EPACKAGE_CONFIG___SHOULD_RENDER = IE_PACKAGE_CONFIG___SHOULD_RENDER;
 
 	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EPACKAGE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_PACKAGE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
-
-	/**
 	 * The operation id for the '<em>Get EData Types Position</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2166,15 +2030,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int EDATA_TYPE_CONFIG___SHOULD_RENDER = IE_DATA_TYPE_CONFIG___SHOULD_RENDER;
 
 	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EDATA_TYPE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_DATA_TYPE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
-
-	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2293,15 +2148,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int EENUM_CONFIG___SHOULD_RENDER = IE_ENUM_CONFIG___SHOULD_RENDER;
 
 	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EENUM_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_ENUM_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
-
-	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2400,15 +2246,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int EENUM_LITERAL_CONFIG___SHOULD_RENDER = IE_ENUM_LITERAL_CONFIG___SHOULD_RENDER;
-
-	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EENUM_LITERAL_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_ENUM_LITERAL_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -2572,15 +2409,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECLASS_CONFIG___SHOULD_RENDER = IE_CLASS_CONFIG___SHOULD_RENDER;
-
-	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECLASS_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_CLASS_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
 
 	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
@@ -2764,15 +2592,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int EATTRIBUTE_CONFIG___SHOULD_RENDER = IE_ATTRIBUTE_CONFIG___SHOULD_RENDER;
 
 	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EATTRIBUTE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_ATTRIBUTE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
-
-	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2882,15 +2701,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int AE_REFERENCE_CONFIG___GET_TARGET = IE_REFERENCE_CONFIG___GET_TARGET;
 
 	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AE_REFERENCE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = IE_REFERENCE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
-
-	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2989,15 +2799,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECONTAINMENT_CONFIG___SHOULD_RENDER = AE_REFERENCE_CONFIG___SHOULD_RENDER;
-
-	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECONTAINMENT_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = AE_REFERENCE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
 
 	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
@@ -3107,15 +2908,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int EREFERENCE_CONFIG___SHOULD_RENDER = AE_REFERENCE_CONFIG___SHOULD_RENDER;
-
-	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EREFERENCE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = AE_REFERENCE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
 
 	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
@@ -3236,15 +3028,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int EOPERATION_CONFIG___SHOULD_RENDER = AE_REFERENCE_CONFIG___SHOULD_RENDER;
 
 	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EOPERATION_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = AE_REFERENCE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
-
-	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3281,13 +3064,31 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int EOPERATION_CONFIG___ADD_EPARAMETERS__LIST = AE_REFERENCE_CONFIG_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Get Id</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EOPERATION_CONFIG___GET_ID = AE_REFERENCE_CONFIG_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Join Id</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EOPERATION_CONFIG___JOIN_ID__EOPERATION = AE_REFERENCE_CONFIG_OPERATION_COUNT + 3;
+
+	/**
 	 * The number of operations of the '<em>EOperation Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EOPERATION_CONFIG_OPERATION_COUNT = AE_REFERENCE_CONFIG_OPERATION_COUNT + 2;
+	int EOPERATION_CONFIG_OPERATION_COUNT = AE_REFERENCE_CONFIG_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.impl.EParameterConfigImpl <em>EParameter Config</em>}' class.
@@ -3363,15 +3164,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int EPARAMETER_CONFIG___SHOULD_RENDER = AE_REFERENCE_CONFIG___SHOULD_RENDER;
 
 	/**
-	 * The operation id for the '<em>Do Something</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EPARAMETER_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = AE_REFERENCE_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG;
-
-	/**
 	 * The operation id for the '<em>Should Render Defaults</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3437,17 +3229,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 
 
 	/**
-	 * The meta object id for the '<em>Npe</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.NullPointerException
-	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getNpe()
-	 * @generated
-	 */
-	int NPE = 27;
-
-
-	/**
 	 * Returns the meta object for class '{@link com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig <em>IE Named Element Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3498,16 +3279,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getIENamedElementConfig__GetTarget();
-
-	/**
-	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig#doSomething(org.eclipse.emf.common.util.EList, com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig) <em>Do Something</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Do Something</em>' operation.
-	 * @see com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig#doSomething(org.eclipse.emf.common.util.EList, com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig)
-	 * @generated
-	 */
-	EOperation getIENamedElementConfig__DoSomething__EList_IENamedElementConfig();
 
 	/**
 	 * Returns the meta object for class '{@link com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig <em>IDefault Value Config</em>}'.
@@ -4469,6 +4240,26 @@ public interface EcoreDocConfigPackage extends EPackage {
 	EOperation getEOperationConfig__AddEParameters__List();
 
 	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EOperationConfig#getId() <em>Get Id</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Id</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EOperationConfig#getId()
+	 * @generated
+	 */
+	EOperation getEOperationConfig__GetId();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EOperationConfig#joinId(org.eclipse.emf.ecore.EOperation) <em>Join Id</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Join Id</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EOperationConfig#joinId(org.eclipse.emf.ecore.EOperation)
+	 * @generated
+	 */
+	EOperation getEOperationConfig__JoinId__EOperation();
+
+	/**
 	 * Returns the meta object for class '{@link com.altran.general.emf.ecoredoc.generator.config.EParameterConfig <em>EParameter Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4510,17 +4301,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getList();
-
-	/**
-	 * Returns the meta object for data type '{@link java.lang.NullPointerException <em>Npe</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Npe</em>'.
-	 * @see java.lang.NullPointerException
-	 * @model instanceClass="java.lang.NullPointerException"
-	 * @generated
-	 */
-	EDataType getNpe();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -4586,14 +4366,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation IE_NAMED_ELEMENT_CONFIG___GET_TARGET = eINSTANCE.getIENamedElementConfig__GetTarget();
-
-		/**
-		 * The meta object literal for the '<em><b>Do Something</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation IE_NAMED_ELEMENT_CONFIG___DO_SOMETHING__ELIST_IENAMEDELEMENTCONFIG = eINSTANCE.getIENamedElementConfig__DoSomething__EList_IENamedElementConfig();
 
 		/**
 		 * The meta object literal for the '{@link com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig <em>IDefault Value Config</em>}' class.
@@ -5388,6 +5160,22 @@ public interface EcoreDocConfigPackage extends EPackage {
 		EOperation EOPERATION_CONFIG___ADD_EPARAMETERS__LIST = eINSTANCE.getEOperationConfig__AddEParameters__List();
 
 		/**
+		 * The meta object literal for the '<em><b>Get Id</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EOPERATION_CONFIG___GET_ID = eINSTANCE.getEOperationConfig__GetId();
+
+		/**
+		 * The meta object literal for the '<em><b>Join Id</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EOPERATION_CONFIG___JOIN_ID__EOPERATION = eINSTANCE.getEOperationConfig__JoinId__EOperation();
+
+		/**
 		 * The meta object literal for the '{@link com.altran.general.emf.ecoredoc.generator.config.impl.EParameterConfigImpl <em>EParameter Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5422,16 +5210,6 @@ public interface EcoreDocConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EClass LIST = eINSTANCE.getList();
-
-		/**
-		 * The meta object literal for the '<em>Npe</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see java.lang.NullPointerException
-		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getNpe()
-		 * @generated
-		 */
-		EDataType NPE = eINSTANCE.getNpe();
 
 	}
 

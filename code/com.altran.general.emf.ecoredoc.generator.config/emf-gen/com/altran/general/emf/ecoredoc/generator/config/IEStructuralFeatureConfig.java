@@ -14,5 +14,4 @@ package com.altran.general.emf.ecoredoc.generator.config;
  * @generated
  */
 public interface IEStructuralFeatureConfig extends IETypedElementConfig {
-
 } // IEStructuralFeatureConfig

@@ -2,7 +2,6 @@
  */
 package com.altran.general.emf.ecoredoc.generator.config;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 
@@ -27,10 +26,6 @@ public interface IENamedElementConfig extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Render</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Render</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Whether this element should be rendered at all.
@@ -83,10 +78,6 @@ public interface IENamedElementConfig extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Enables proper merging in {@link com.altran.general.emf.ecoredoc.util.EcoreMerger}.
@@ -122,19 +113,5 @@ public interface IENamedElementConfig extends EObject {
 	 * @generated
 	 */
 	ENamedElement getTarget();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Op Desc
-	 * @param i i desc
-	 * @param something something deschkriptschion
-	 * <!-- end-model-doc -->
-	 * @model unique="false" lower="2" upper="5" exceptions="com.altran.general.emf.ecoredoc.generator.config.Npe com.altran.general.emf.ecoredoc.generator.config.Npe" iUnique="false" iMany="true" somethingUnique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return Objects::nonNull;'"
-	 * @generated
-	 */
-	EList<ENamedElement> doSomething(EList<Integer> i, IENamedElementConfig something) throws NullPointerException, NullPointerException;
 
 } // IENamedElementConfig

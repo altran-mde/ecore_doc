@@ -3,6 +3,21 @@
 
 :inherited: {wupt}{nbsp}
 
+// Black Up-Pointing Triangle
+:bupt: &#9650;
+
+:override: {bupt}{nbsp}
+
+// White Down-Pointing Triangle
+:wdpt: &#9661;
+
+:inheritedBy: {wdpt}{nbsp}
+
+// Black Down-Pointing Triangle
+:bdpt: &#9660;
+
+:overriddenBy: {bdpt}{nbsp}
+
 :toc:
 :toclevels: 5
 :miscellaneous.tabsize: 2
@@ -21,7 +36,7 @@
 
 = EcoreDoc User Guide
 Niko Stotz <niko.stotz@altran.com>
-v0.8.0-SNAPSHOT
+v0.9.0-SNAPSHOT
 
 Generates https://asciidoctor.org/[AsciiDoctor] files to document Ecore metamodels, similar to https://docs.oracle.com/javase/9/javadoc/javadoc.htm[JavaDoc].
 AsciiDoctor can be rendered as HTML, PDF, or Eclipse Help.
@@ -46,6 +61,8 @@ EcoreDoc currently supports the following elements:
 * `EClass`
 * `EAttribute`
 * `EReference`
+* `EOperation`
+* `EParameter`
 
 EcoreDoc is highly configurable via the <<generator-config>>.
 
@@ -349,7 +366,7 @@ The most important parts are:
 :generatorConfigImagePath: ../code/com.altran.general.emf.ecoredoc.generator.config/model/EcoreDoc Generator Config.svg
 image::{generatorConfigImagePath}[link="{generatorConfigImagePath}"]
 
-include::../code/com.altran.general.emf.ecoredoc.maven/src/test/resources/testGeneratorConfig/expected.adoc[leveloffset=-1,lines=22..-1]
+include::../code/com.altran.general.emf.ecoredoc.maven/src/test/resources/testGeneratorConfig/expected.adoc[leveloffset=-1,lines=42..-1]
 
 
 == Versions
@@ -359,7 +376,7 @@ This asset in version {revnumber} was developed using the following components a
 [horizontal]
 Eclipse:: 4.7.3a (Oxygen 3a)
 Google Guava:: 19.0
-Apache Commons Lang3:: 3.4
+Apache Commons Lang3:: 3.1
 Apache Commons IO:: 2.2
 Apache Maven:: 3.3.9
 Eclipse Ecore:: 2.12.0
@@ -370,4 +387,4 @@ Eclipse Tycho:: 1.2.0
 == Known Issues
 
 * If HTML is used in Ecore documentation, the PDF rendering can be faulty (https://gitlab.manatree.io/MDEAssets/EcoreDoc/issues/12[Issue #12])
-* ``EOperation``s, ``EParameter``s, ``EAnnotation``s are missing from the documentation (https://gitlab.manatree.io/MDEAssets/EcoreDoc/issues/13[Issue #13], https://gitlab.manatree.io/MDEAssets/EcoreDoc/issues/15[Issue #15])
+* ``EAnnotation``s are missing from the documentation (https://gitlab.manatree.io/MDEAssets/EcoreDoc/issues/15[Issue #15])

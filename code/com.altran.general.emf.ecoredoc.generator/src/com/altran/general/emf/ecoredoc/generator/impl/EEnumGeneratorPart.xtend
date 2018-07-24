@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EPackage
 
-import static com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension.newline
+import static com.altran.general.emf.ecoredoc.generator.impl.^extension.EcoreDocExtension.newline
 
 class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 

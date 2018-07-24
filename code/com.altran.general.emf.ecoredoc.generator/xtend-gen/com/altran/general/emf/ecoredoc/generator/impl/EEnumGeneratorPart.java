@@ -7,7 +7,7 @@ import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.configbuilder.EEnumConfigPair;
 import com.altran.general.emf.ecoredoc.generator.configbuilder.EEnumLiteralConfigPair;
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorEDataTypePart;
-import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
+import com.altran.general.emf.ecoredoc.generator.impl.extension.EcoreDocExtension;
 import com.google.common.collect.Multimap;
 import com.google.inject.Injector;
 import java.util.List;
@@ -112,7 +112,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
         EEnumLiteralConfigPair _eEnumLiteralConfigPair = new EEnumLiteralConfigPair(entry);
         this.writeELiteral(_eEnumLiteralConfigPair);
       }
-      this.getOutput().append(this.tableFooter());
+      this.getOutput().append(this._ecoreDocExtension.tableFooter());
     }
   }
   
@@ -127,7 +127,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
     String _name = eLiteral.getName();
     _builder.append(_name);
     _builder.append("[[");
-    CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eLiteral);
+    CharSequence _concatAnchor = this._anchorExtension.concatAnchor(eLiteral);
     _builder.append(_concatAnchor);
     _builder.append("]]");
     _builder.newLineIfNotEmpty();
@@ -150,7 +150,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append("[[");
-    CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eEnum);
+    CharSequence _concatAnchor = this._anchorExtension.concatAnchor(eEnum);
     _builder.append(_concatAnchor);
     _builder.append("]]");
     _builder.newLineIfNotEmpty();

@@ -522,7 +522,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Niko Stotz</span><br>
 <span id="email" class="email"><a href="mailto:niko.stotz@altran.com">niko.stotz@altran.com</a></span><br>
-<span id="revnumber">version 0.8.0-SNAPSHOT</span>
+<span id="revnumber">version 0.9.0-SNAPSHOT</span>
 </div>
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
@@ -547,20 +547,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#config-EDataTypeConfig">7.5. Class EDataTypeConfig</a></li>
 <li><a href="#config-EEnumConfig">7.6. Class EEnumConfig</a></li>
 <li><a href="#config-EEnumLiteralConfig">7.7. Class EEnumLiteralConfig</a></li>
-<li><a href="#config-EPackageConfig">7.8. Class EPackageConfig</a></li>
-<li><a href="#config-EReferenceConfig">7.9. Class EReferenceConfig</a></li>
-<li><a href="#config-EcoreDocGeneratorConfig">7.10. Class EcoreDocGeneratorConfig</a></li>
-<li><a href="#config-IDefaultValueConfig">7.11. Interface IDefaultValueConfig</a></li>
-<li><a href="#config-IEAttributeConfig">7.12. Interface IEAttributeConfig</a></li>
-<li><a href="#config-IEClassConfig">7.13. Interface IEClassConfig</a></li>
-<li><a href="#config-IEClassifierConfig">7.14. Interface IEClassifierConfig</a></li>
-<li><a href="#config-IEDataTypeConfig">7.15. Interface IEDataTypeConfig</a></li>
-<li><a href="#config-IEEnumConfig">7.16. Interface IEEnumConfig</a></li>
-<li><a href="#config-IEEnumLiteralConfig">7.17. Interface IEEnumLiteralConfig</a></li>
-<li><a href="#config-IENamedElementConfig">7.18. Interface IENamedElementConfig</a></li>
-<li><a href="#config-IEPackageConfig">7.19. Interface IEPackageConfig</a></li>
-<li><a href="#config-IEReferenceConfig">7.20. Interface IEReferenceConfig</a></li>
-<li><a href="#config-IEStructuralFeatureConfig">7.21. Interface IEStructuralFeatureConfig</a></li>
+<li><a href="#config-EOperationConfig">7.8. Class EOperationConfig</a></li>
+<li><a href="#config-EPackageConfig">7.9. Class EPackageConfig</a></li>
+<li><a href="#config-EParameterConfig">7.10. Class EParameterConfig</a></li>
+<li><a href="#config-EReferenceConfig">7.11. Class EReferenceConfig</a></li>
+<li><a href="#config-EcoreDocGeneratorConfig">7.12. Class EcoreDocGeneratorConfig</a></li>
+<li><a href="#config-IDefaultValueConfig">7.13. Interface IDefaultValueConfig</a></li>
+<li><a href="#config-IEAttributeConfig">7.14. Interface IEAttributeConfig</a></li>
+<li><a href="#config-IEClassConfig">7.15. Interface IEClassConfig</a></li>
+<li><a href="#config-IEClassifierConfig">7.16. Interface IEClassifierConfig</a></li>
+<li><a href="#config-IEDataTypeConfig">7.17. Interface IEDataTypeConfig</a></li>
+<li><a href="#config-IEEnumConfig">7.18. Interface IEEnumConfig</a></li>
+<li><a href="#config-IEEnumLiteralConfig">7.19. Interface IEEnumLiteralConfig</a></li>
+<li><a href="#config-IENamedElementConfig">7.20. Interface IENamedElementConfig</a></li>
+<li><a href="#config-IEOperationConfig">7.21. Interface IEOperationConfig</a></li>
+<li><a href="#config-IEPackageConfig">7.22. Interface IEPackageConfig</a></li>
+<li><a href="#config-IEParameterConfig">7.23. Interface IEParameterConfig</a></li>
+<li><a href="#config-IEReferenceConfig">7.24. Interface IEReferenceConfig</a></li>
+<li><a href="#config-IEStructuralFeatureConfig">7.25. Interface IEStructuralFeatureConfig</a></li>
+<li><a href="#config-IETypedElementConfig">7.26. Interface IETypedElementConfig</a></li>
 </ul>
 </li>
 <li><a href="#_versions">8. Versions</a></li>
@@ -615,6 +620,12 @@ The output document contains documentation, all properties of supported elements
 </li>
 <li>
 <p><code>EReference</code></p>
+</li>
+<li>
+<p><code>EOperation</code></p>
+</li>
+<li>
+<p><code>EParameter</code></p>
 </li>
 </ul>
 </div>
@@ -1058,6 +1069,9 @@ However, it should be possible to maintain backwards compability.
 <li>
 <p><code><a href="#config-IEStructuralFeatureConfig">config.&#8203;IEStructuralFeatureConfig</a></code></p>
 </li>
+<li>
+<p><code><a href="#config-IETypedElementConfig">config.&#8203;IETypedElementConfig</a></code></p>
+</li>
 </ul>
 </div>
 </div>
@@ -1077,6 +1091,9 @@ However, it should be possible to maintain backwards compability.
 </li>
 <li>
 <p><code><a href="#config-IEStructuralFeatureConfig">config.&#8203;IEStructuralFeatureConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IETypedElementConfig">config.&#8203;IETypedElementConfig</a></code></p>
 </li>
 </ul>
 </div>
@@ -1102,6 +1119,40 @@ However, it should be possible to maintain backwards compability.
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ecore.&#8203;EAttribute</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getTarget()</code><a id="config-EAttributeConfig-getTarget"></a></p>
+<p class="tableblock"><code><a href="#config-IENamedElementConfig-getTarget">&#9650;&#160;config.&#8203;IENamedElementConfig.&#8203;getTarget()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>ecore.&#8203;ENamedElement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">targetEAttribute</span></code></pre>
+</div>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -1135,10 +1186,19 @@ However, it should be possible to maintain backwards compability.
 <p><code><a href="#config-IENamedElementConfig">config.&#8203;IENamedElementConfig</a></code></p>
 </li>
 <li>
+<p><code><a href="#config-IEOperationConfig">config.&#8203;IEOperationConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IEParameterConfig">config.&#8203;IEParameterConfig</a></code></p>
+</li>
+<li>
 <p><code><a href="#config-IEReferenceConfig">config.&#8203;IEReferenceConfig</a></code></p>
 </li>
 <li>
 <p><code><a href="#config-IEStructuralFeatureConfig">config.&#8203;IEStructuralFeatureConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IETypedElementConfig">config.&#8203;IETypedElementConfig</a></code></p>
 </li>
 </ul>
 </div>
@@ -1168,6 +1228,12 @@ However, it should be possible to maintain backwards compability.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>eContainments</code><a id="config-EClassConfig-eContainments"></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#config-EContainmentConfig">config.&#8203;EContainmentConfig</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..*]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eOperations</code><a id="config-EClassConfig-eOperations"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#config-EOperationConfig">config.&#8203;EOperationConfig</a></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..*]</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
@@ -1204,6 +1270,128 @@ However, it should be possible to maintain backwards compability.
 </tr>
 </tbody>
 </table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>addEAttributes(&#8203;eAttributeConfig)</code><a id="config-EClassConfig-addEAttributes-config_List"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>void</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eAttributeConfig</code><br>
+<code>config.&#8203;List</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">EAttributes</span> <span class="tok-o">+=</span> <span class="tok-n">eAttributeConfig</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>addEContainments(&#8203;eContainmentConfig)</code><a id="config-EClassConfig-addEContainments-config_List"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>void</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eContainmentConfig</code><br>
+<code>config.&#8203;List</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">EContainments</span> <span class="tok-o">+=</span> <span class="tok-n">eContainmentConfig</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>addEOperations(&#8203;eOperationConfig)</code><a id="config-EClassConfig-addEOperations-config_List"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>void</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eOperationConfig</code><br>
+<code>config.&#8203;List</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">EOperations</span> <span class="tok-o">+=</span> <span class="tok-n">eOperationConfig</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>addEReferences(&#8203;eReferenceConfig)</code><a id="config-EClassConfig-addEReferences-config_List"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>void</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eReferenceConfig</code><br>
+<code>config.&#8203;List</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">EReferences</span> <span class="tok-o">+=</span> <span class="tok-n">eReferenceConfig</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getTarget()</code><a id="config-EClassConfig-getTarget"></a></p>
+<p class="tableblock"><code><a href="#config-IENamedElementConfig-getTarget">&#9650;&#160;config.&#8203;IENamedElementConfig.&#8203;getTarget()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>ecore.&#8203;ENamedElement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">targetEClass</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 <div class="ulist">
 <div class="title">Used at</div>
 <ul>
@@ -1233,6 +1421,9 @@ However, it should be possible to maintain backwards compability.
 <li>
 <p><code><a href="#config-IEStructuralFeatureConfig">config.&#8203;IEStructuralFeatureConfig</a></code></p>
 </li>
+<li>
+<p><code><a href="#config-IETypedElementConfig">config.&#8203;IETypedElementConfig</a></code></p>
+</li>
 </ul>
 </div>
 <table class="tableblock frame-all grid-all spread">
@@ -1257,6 +1448,40 @@ However, it should be possible to maintain backwards compability.
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ecore.&#8203;EReference</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getTarget()</code><a id="config-EContainmentConfig-getTarget"></a></p>
+<p class="tableblock"><code><a href="#config-IENamedElementConfig-getTarget">&#9650;&#160;config.&#8203;IENamedElementConfig.&#8203;getTarget()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>ecore.&#8203;ENamedElement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">targetEContainment</span></code></pre>
+</div>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -1310,6 +1535,40 @@ However, it should be possible to maintain backwards compability.
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ecore.&#8203;EDataType</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getTarget()</code><a id="config-EDataTypeConfig-getTarget"></a></p>
+<p class="tableblock"><code><a href="#config-IENamedElementConfig-getTarget">&#9650;&#160;config.&#8203;IENamedElementConfig.&#8203;getTarget()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>ecore.&#8203;ENamedElement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">targetEDataType</span></code></pre>
+</div>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -1397,6 +1656,62 @@ However, it should be possible to maintain backwards compability.
 </tr>
 </tbody>
 </table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>addEEnumLiterals(&#8203;eEnumLiteralConfig)</code><a id="config-EEnumConfig-addEEnumLiterals-config_List"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>void</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eEnumLiteralConfig</code><br>
+<code>config.&#8203;List</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">EEnumLiterals</span> <span class="tok-o">+=</span> <span class="tok-n">eEnumLiteralConfig</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getTarget()</code><a id="config-EEnumConfig-getTarget"></a></p>
+<p class="tableblock"><code><a href="#config-IENamedElementConfig-getTarget">&#9650;&#160;config.&#8203;IENamedElementConfig.&#8203;getTarget()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>ecore.&#8203;ENamedElement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">targetEEnum</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 <div class="ulist">
 <div class="title">Used at</div>
 <ul>
@@ -1444,6 +1759,40 @@ However, it should be possible to maintain backwards compability.
 </tr>
 </tbody>
 </table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getTarget()</code><a id="config-EEnumLiteralConfig-getTarget"></a></p>
+<p class="tableblock"><code><a href="#config-IENamedElementConfig-getTarget">&#9650;&#160;config.&#8203;IENamedElementConfig.&#8203;getTarget()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>ecore.&#8203;ENamedElement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">targetEEnumLiteral</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 <div class="ulist">
 <div class="title">Used at</div>
 <ul>
@@ -1454,7 +1803,182 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EPackageConfig">7.8. Class EPackageConfig</h3>
+<h3 id="config-EOperationConfig">7.8. Class EOperationConfig</h3>
+<div class="ulist">
+<div class="title">Super-types</div>
+<ul>
+<li>
+<p><code><a href="#config-AEReferenceConfig">config.&#8203;AEReferenceConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IDefaultValueConfig">config.&#8203;IDefaultValueConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IENamedElementConfig">config.&#8203;IENamedElementConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IEReferenceConfig">config.&#8203;IEReferenceConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IEStructuralFeatureConfig">config.&#8203;IEStructuralFeatureConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IETypedElementConfig">config.&#8203;IETypedElementConfig</a></code></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Containments</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eParameters</code><a id="config-EOperationConfig-eParameters"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#config-EParameterConfig">config.&#8203;EParameterConfig</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..*]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">References</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetEOperation</code><a id="config-EOperationConfig-targetEOperation"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ecore.&#8203;EOperation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>addEParameters(&#8203;eParameterConfig)</code><a id="config-EOperationConfig-addEParameters-config_List"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>void</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eParameterConfig</code><br>
+<code>config.&#8203;List</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">EParameters</span> <span class="tok-o">+=</span> <span class="tok-n">eParameterConfig</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getId()</code><a id="config-EOperationConfig-getId"></a></p>
+<p class="tableblock"><code>&#9650;&#160;config.&#8203;IENamedElementConfig.&#8203;id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">targetEOperation</span><span class="tok-o">?.</span><span class="tok-n">joinId</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getTarget()</code><a id="config-EOperationConfig-getTarget"></a></p>
+<p class="tableblock"><code><a href="#config-IENamedElementConfig-getTarget">&#9650;&#160;config.&#8203;IENamedElementConfig.&#8203;getTarget()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>ecore.&#8203;ENamedElement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">targetEOperation</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>joinId(&#8203;eOperation)</code><a id="config-EOperationConfig-joinId-ecore_EOperation"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EString</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eOperation</code><br>
+<code>ecore.&#8203;EOperation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">eOperation</span><span class="tok-o">.</span><span class="tok-n">name</span> <span class="tok-o">+</span> <span class="tok-n">eOperation</span><span class="tok-o">.</span><span class="tok-n">EParameters</span><span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[(</span><span class="tok-n">EType</span><span class="tok-o">?.</span><span class="tok-n">eContainer</span> <span class="tok-n">as</span> <span class="tok-n">ENamedElement</span><span class="tok-o">)?.</span><span class="tok-n">name</span> <span class="tok-o">+</span> <span class="tok-s">&quot;_&quot;</span> <span class="tok-o">+</span> <span class="tok-n">EType</span><span class="tok-o">?.</span><span class="tok-n">name</span><span class="tok-o">].</span><span class="tok-n">join</span><span class="tok-o">(</span><span class="tok-s">&quot;.&quot;</span><span class="tok-o">)</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<div class="title">Used at</div>
+<ul>
+<li>
+<p><code><a href="#config-EClassConfig-eOperations">config.&#8203;EClassConfig.&#8203;eOperations</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="config-EPackageConfig">7.9. Class EPackageConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1483,13 +2007,22 @@ However, it should be possible to maintain backwards compability.
 <p><code><a href="#config-IENamedElementConfig">config.&#8203;IENamedElementConfig</a></code></p>
 </li>
 <li>
+<p><code><a href="#config-IEOperationConfig">config.&#8203;IEOperationConfig</a></code></p>
+</li>
+<li>
 <p><code><a href="#config-IEPackageConfig">config.&#8203;IEPackageConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IEParameterConfig">config.&#8203;IEParameterConfig</a></code></p>
 </li>
 <li>
 <p><code><a href="#config-IEReferenceConfig">config.&#8203;IEReferenceConfig</a></code></p>
 </li>
 <li>
 <p><code><a href="#config-IEStructuralFeatureConfig">config.&#8203;IEStructuralFeatureConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IETypedElementConfig">config.&#8203;IETypedElementConfig</a></code></p>
 </li>
 </ul>
 </div>
@@ -1555,6 +2088,106 @@ However, it should be possible to maintain backwards compability.
 </tr>
 </tbody>
 </table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>addEClasses(&#8203;eClassConfig)</code><a id="config-EPackageConfig-addEClasses-config_List"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>void</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eClassConfig</code><br>
+<code>config.&#8203;List</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">EClasses</span> <span class="tok-o">+=</span> <span class="tok-n">eClassConfig</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>addEDataTypes(&#8203;eDataTypeConfig)</code><a id="config-EPackageConfig-addEDataTypes-config_List"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>void</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eDataTypeConfig</code><br>
+<code>config.&#8203;List</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">EDataTypes</span> <span class="tok-o">+=</span> <span class="tok-n">eDataTypeConfig</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>addEEnums(&#8203;eEnumConfig)</code><a id="config-EPackageConfig-addEEnums-config_List"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>void</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eEnumConfig</code><br>
+<code>config.&#8203;List</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">EEnums</span> <span class="tok-o">+=</span> <span class="tok-n">eEnumConfig</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getTarget()</code><a id="config-EPackageConfig-getTarget"></a></p>
+<p class="tableblock"><code><a href="#config-IENamedElementConfig-getTarget">&#9650;&#160;config.&#8203;IENamedElementConfig.&#8203;getTarget()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>ecore.&#8203;ENamedElement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">targetEPackage</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 <div class="ulist">
 <div class="title">Used at</div>
 <ul>
@@ -1565,7 +2198,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EReferenceConfig">7.9. Class EReferenceConfig</h3>
+<h3 id="config-EParameterConfig">7.10. Class EParameterConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1583,6 +2216,102 @@ However, it should be possible to maintain backwards compability.
 </li>
 <li>
 <p><code><a href="#config-IEStructuralFeatureConfig">config.&#8203;IEStructuralFeatureConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IETypedElementConfig">config.&#8203;IETypedElementConfig</a></code></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">References</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>targetEParameter</code><a id="config-EParameterConfig-targetEParameter"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ecore.&#8203;EParameter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getTarget()</code><a id="config-EParameterConfig-getTarget"></a></p>
+<p class="tableblock"><code><a href="#config-IENamedElementConfig-getTarget">&#9650;&#160;config.&#8203;IENamedElementConfig.&#8203;getTarget()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>ecore.&#8203;ENamedElement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">targetEParameter</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<div class="title">Used at</div>
+<ul>
+<li>
+<p><code><a href="#config-EOperationConfig-eParameters">config.&#8203;EOperationConfig.&#8203;eParameters</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="config-EReferenceConfig">7.11. Class EReferenceConfig</h3>
+<div class="ulist">
+<div class="title">Super-types</div>
+<ul>
+<li>
+<p><code><a href="#config-AEReferenceConfig">config.&#8203;AEReferenceConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IDefaultValueConfig">config.&#8203;IDefaultValueConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IENamedElementConfig">config.&#8203;IENamedElementConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IEReferenceConfig">config.&#8203;IEReferenceConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IEStructuralFeatureConfig">config.&#8203;IEStructuralFeatureConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IETypedElementConfig">config.&#8203;IETypedElementConfig</a></code></p>
 </li>
 </ul>
 </div>
@@ -1611,6 +2340,40 @@ However, it should be possible to maintain backwards compability.
 </tr>
 </tbody>
 </table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getTarget()</code><a id="config-EReferenceConfig-getTarget"></a></p>
+<p class="tableblock"><code><a href="#config-IENamedElementConfig-getTarget">&#9650;&#160;config.&#8203;IENamedElementConfig.&#8203;getTarget()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>ecore.&#8203;ENamedElement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">targetEReference</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 <div class="ulist">
 <div class="title">Used at</div>
 <ul>
@@ -1621,7 +2384,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EcoreDocGeneratorConfig">7.10. Class EcoreDocGeneratorConfig</h3>
+<h3 id="config-EcoreDocGeneratorConfig">7.12. Class EcoreDocGeneratorConfig</h3>
 Root for the detailed EcoreDocGenerator configuration.
 
 <p>
@@ -1747,13 +2510,22 @@ EcoreDocGeneratorConfig
 <p><code><a href="#config-IENamedElementConfig">config.&#8203;IENamedElementConfig</a></code></p>
 </li>
 <li>
+<p><code><a href="#config-IEOperationConfig">config.&#8203;IEOperationConfig</a></code></p>
+</li>
+<li>
 <p><code><a href="#config-IEPackageConfig">config.&#8203;IEPackageConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IEParameterConfig">config.&#8203;IEParameterConfig</a></code></p>
 </li>
 <li>
 <p><code><a href="#config-IEReferenceConfig">config.&#8203;IEReferenceConfig</a></code></p>
 </li>
 <li>
 <p><code><a href="#config-IEStructuralFeatureConfig">config.&#8203;IEStructuralFeatureConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IETypedElementConfig">config.&#8203;IETypedElementConfig</a></code></p>
 </li>
 </ul>
 </div>
@@ -1810,9 +2582,339 @@ EcoreDocGeneratorConfig
 </tr>
 </tbody>
 </table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>addEPackages(&#8203;ePackageConfig)</code><a id="config-EcoreDocGeneratorConfig-addEPackages-config_List"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>void</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ePackageConfig</code><br>
+<code>config.&#8203;List</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-n">EPackages</span> <span class="tok-o">+=</span> <span class="tok-n">ePackageConfig</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>findConfig(&#8203;element)</code><a id="config-EcoreDocGeneratorConfig-findConfig-ecore_ENamedElement"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code><a href="#config-IENamedElementConfig">config.&#8203;IENamedElementConfig</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Convenience method to map ENamedElement &#8594; config.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>element</code><br>
+<code>ecore.&#8203;ENamedElement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">switch</span> <span class="tok-o">(</span><span class="tok-n">element</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-nl">EPackage:</span>
+    <span class="tok-n">EPackages</span>
+
+  <span class="tok-nl">EEnum:</span>
+    <span class="tok-n">EPackages</span>
+    <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EEnums</span><span class="tok-o">]</span>
+    <span class="tok-o">.</span><span class="tok-n">flatten</span>
+
+  <span class="tok-nl">EDataType:</span>
+    <span class="tok-n">EPackages</span>
+      <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EDataTypes</span><span class="tok-o">]</span>
+      <span class="tok-o">.</span><span class="tok-n">flatten</span>
+
+  <span class="tok-nl">EEnumLiteral:</span>
+    <span class="tok-n">EPackages</span>
+      <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EEnums</span><span class="tok-o">]</span>
+      <span class="tok-o">.</span><span class="tok-n">flatten</span>
+      <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EEnumLiterals</span><span class="tok-o">]</span>
+      <span class="tok-o">.</span><span class="tok-n">flatten</span>
+
+  <span class="tok-nl">EClass:</span>
+    <span class="tok-n">EPackages</span>
+      <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EClasses</span><span class="tok-o">]</span>
+      <span class="tok-o">.</span><span class="tok-n">flatten</span>
+
+  <span class="tok-nl">EAttribute:</span>
+    <span class="tok-n">EPackages</span>
+    <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EClasses</span><span class="tok-o">]</span>
+    <span class="tok-o">.</span><span class="tok-n">flatten</span>
+    <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EAttributes</span><span class="tok-o">]</span>
+    <span class="tok-o">.</span><span class="tok-n">flatten</span>
+
+  <span class="tok-n">EReference</span> <span class="tok-nf">case</span> <span class="tok-o">(</span><span class="tok-n">element</span><span class="tok-o">.</span><span class="tok-n">isContainment</span><span class="tok-o">):</span>
+    <span class="tok-n">EPackages</span>
+      <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EClasses</span><span class="tok-o">]</span>
+      <span class="tok-o">.</span><span class="tok-n">flatten</span>
+      <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EContainments</span><span class="tok-o">]</span>
+      <span class="tok-o">.</span><span class="tok-n">flatten</span>
+
+  <span class="tok-n">EReference</span> <span class="tok-nf">case</span> <span class="tok-o">(!</span><span class="tok-n">element</span><span class="tok-o">.</span><span class="tok-n">isContainment</span><span class="tok-o">):</span>
+    <span class="tok-n">EPackages</span>
+      <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EClasses</span><span class="tok-o">]</span>
+      <span class="tok-o">.</span><span class="tok-n">flatten</span>
+      <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EReferences</span><span class="tok-o">]</span>
+      <span class="tok-o">.</span><span class="tok-n">flatten</span>
+
+  <span class="tok-nl">EOperation:</span>
+    <span class="tok-n">EPackages</span>
+    <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EClasses</span><span class="tok-o">]</span>
+    <span class="tok-o">.</span><span class="tok-n">flatten</span>
+    <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EOperations</span><span class="tok-o">]</span>
+    <span class="tok-o">.</span><span class="tok-n">flatten</span>
+
+  <span class="tok-nl">EParameter:</span>
+    <span class="tok-n">EPackages</span>
+    <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EClasses</span><span class="tok-o">]</span>
+    <span class="tok-o">.</span><span class="tok-n">flatten</span>
+    <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EOperations</span><span class="tok-o">]</span>
+    <span class="tok-o">.</span><span class="tok-n">flatten</span>
+    <span class="tok-o">.</span><span class="tok-n">map</span><span class="tok-o">[</span><span class="tok-n">EParameters</span><span class="tok-o">]</span>
+    <span class="tok-o">.</span><span class="tok-n">flatten</span>
+<span class="tok-o">}.</span><span class="tok-n">findFirst</span><span class="tok-o">[</span><span class="tok-n">target</span> <span class="tok-o">==</span> <span class="tok-n">element</span><span class="tok-o">]</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getEClassesPosition()</code><a id="config-EcoreDocGeneratorConfig-getEClassesPosition"></a></p>
+<p class="tableblock"><code><a href="#config-IEPackageConfig-getEClassesPosition">&#9650;&#160;config.&#8203;IEPackageConfig.&#8203;getEClassesPosition()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EInt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Sets default for <tt>positionEClasses = 3</tt>.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetPositionEClasses</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">positionEClasses</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-mi">3</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getEDataTypesPosition()</code><a id="config-EcoreDocGeneratorConfig-getEDataTypesPosition"></a></p>
+<p class="tableblock"><code><a href="#config-IEPackageConfig-getEDataTypesPosition">&#9650;&#160;config.&#8203;IEPackageConfig.&#8203;getEDataTypesPosition()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EInt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Sets default for <tt>positionEDataTypes = 1</tt>.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetPositionEDataTypes</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">positionEDataTypes</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-mi">1</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getEEnumsPosition()</code><a id="config-EcoreDocGeneratorConfig-getEEnumsPosition"></a></p>
+<p class="tableblock"><code><a href="#config-IEPackageConfig-getEEnumsPosition">&#9650;&#160;config.&#8203;IEPackageConfig.&#8203;getEEnumsPosition()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EInt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Sets default for <tt>positionEEnums = 2</tt>.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetPositionEEnums</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">positionEEnums</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-mi">2</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getTarget()</code><a id="config-EcoreDocGeneratorConfig-getTarget"></a></p>
+<p class="tableblock"><code><a href="#config-IENamedElementConfig-getTarget">&#9650;&#160;config.&#8203;IENamedElementConfig.&#8203;getTarget()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>ecore.&#8203;ENamedElement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-kc">null</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>shouldRender()</code><a id="config-EcoreDocGeneratorConfig-shouldRender"></a></p>
+<p class="tableblock"><code><a href="#config-IENamedElementConfig-shouldRender">&#9650;&#160;config.&#8203;IENamedElementConfig.&#8203;shouldRender()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EBoolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Sets default for <tt>render = true</tt>.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetRender</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">render</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-kc">true</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>shouldRenderBounds()</code><a id="config-EcoreDocGeneratorConfig-shouldRenderBounds"></a></p>
+<p class="tableblock"><code><a href="#config-IETypedElementConfig-shouldRenderBounds">&#9650;&#160;config.&#8203;IETypedElementConfig.&#8203;shouldRenderBounds()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EBoolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Sets default for <tt>renderBounds = shouldRenderDefaults()</tt>.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetRenderBounds</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">renderBounds</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-n">shouldRenderDefaults</span><span class="tok-o">()</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>shouldRenderDefaults()</code><a id="config-EcoreDocGeneratorConfig-shouldRenderDefaults"></a></p>
+<p class="tableblock"><code><a href="#config-IDefaultValueConfig-shouldRenderDefaults">&#9650;&#160;config.&#8203;IDefaultValueConfig.&#8203;shouldRenderDefaults()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EBoolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Sets default for <tt>renderDefaults = true</tt>.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetRenderDefaults</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">renderDefaults</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-kc">true</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>shouldRenderSubTypes()</code><a id="config-EcoreDocGeneratorConfig-shouldRenderSubTypes"></a></p>
+<p class="tableblock"><code><a href="#config-IEClassConfig-shouldRenderSubTypes">&#9650;&#160;config.&#8203;IEClassConfig.&#8203;shouldRenderSubTypes()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EBoolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Sets default for <tt>renderSubTypes = true</tt>.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetRenderSubTypes</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">renderSubTypes</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-kc">true</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>shouldRenderSuperTypes()</code><a id="config-EcoreDocGeneratorConfig-shouldRenderSuperTypes"></a></p>
+<p class="tableblock"><code><a href="#config-IEClassConfig-shouldRenderSuperTypes">&#9650;&#160;config.&#8203;IEClassConfig.&#8203;shouldRenderSuperTypes()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EBoolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Sets default for <tt>RenderSuperTypes = true</tt>.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetRenderSuperTypes</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">renderSuperTypes</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-kc">true</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>shouldRenderUseCases()</code><a id="config-EcoreDocGeneratorConfig-shouldRenderUseCases"></a></p>
+<p class="tableblock"><code><a href="#config-IEClassifierConfig-shouldRenderUseCases">&#9650;&#160;config.&#8203;IEClassifierConfig.&#8203;shouldRenderUseCases()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EBoolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Sets default for <tt>renderUseCases = true</tt>.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetRenderUseCases</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">renderUseCases</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-kc">true</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>shouldRepeatInherited()</code><a id="config-EcoreDocGeneratorConfig-shouldRepeatInherited"></a></p>
+<p class="tableblock"><code><a href="#config-IEClassConfig-shouldRepeatInherited">&#9650;&#160;config.&#8203;IEClassConfig.&#8203;shouldRepeatInherited()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EBoolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Sets default for <tt>repeatInherited = true</tt>.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetRepeatInherited</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">repeatInherited</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-kc">true</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
-<h3 id="config-IDefaultValueConfig">7.11. Interface IDefaultValueConfig</h3>
+<h3 id="config-IDefaultValueConfig">7.13. Interface IDefaultValueConfig</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Attributes</caption>
 <colgroup>
@@ -1845,9 +2947,47 @@ if <tt>renderDefaults = false</tt>.
 </tr>
 </tbody>
 </table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>shouldRenderDefaults()</code><a id="config-IDefaultValueConfig-shouldRenderDefaults"></a></p>
+<p class="tableblock"><code><a href="#config-EcoreDocGeneratorConfig-shouldRenderDefaults">&#9660;&#160;config.&#8203;EcoreDocGeneratorConfig.&#8203;shouldRenderDefaults()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EBoolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Traverses the tree to find the most specific <tt>renderDefaults</tt> setting.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetRenderDefaults</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">renderDefaults</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-o">(</span><span class="tok-n">eContainer</span> <span class="tok-n">as</span> <span class="tok-n">IDefaultValueConfig</span><span class="tok-o">).</span><span class="tok-n">shouldRenderDefaults</span><span class="tok-o">()</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
-<h3 id="config-IEAttributeConfig">7.12. Interface IEAttributeConfig</h3>
+<h3 id="config-IEAttributeConfig">7.14. Interface IEAttributeConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1860,11 +3000,14 @@ if <tt>renderDefaults = false</tt>.
 <li>
 <p><code><a href="#config-IEStructuralFeatureConfig">config.&#8203;IEStructuralFeatureConfig</a></code></p>
 </li>
+<li>
+<p><code><a href="#config-IETypedElementConfig">config.&#8203;IETypedElementConfig</a></code></p>
+</li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IEClassConfig">7.13. Interface IEClassConfig</h3>
+<h3 id="config-IEClassConfig">7.15. Interface IEClassConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1932,9 +3075,85 @@ Otherwise, <i>attr1</i> will only be listed in the section of <i>EClass1</i>.
 </tr>
 </tbody>
 </table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>shouldRenderSubTypes()</code><a id="config-IEClassConfig-shouldRenderSubTypes"></a></p>
+<p class="tableblock"><code><a href="#config-EcoreDocGeneratorConfig-shouldRenderSubTypes">&#9660;&#160;config.&#8203;EcoreDocGeneratorConfig.&#8203;shouldRenderSubTypes()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EBoolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Traverses the tree to find the most specific <tt>renderSubTypes</tt> setting.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetRenderSubTypes</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">renderSubTypes</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-o">(</span><span class="tok-n">eContainer</span> <span class="tok-n">as</span> <span class="tok-n">IEClassConfig</span><span class="tok-o">).</span><span class="tok-n">shouldRenderSubTypes</span><span class="tok-o">()</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>shouldRenderSuperTypes()</code><a id="config-IEClassConfig-shouldRenderSuperTypes"></a></p>
+<p class="tableblock"><code><a href="#config-EcoreDocGeneratorConfig-shouldRenderSuperTypes">&#9660;&#160;config.&#8203;EcoreDocGeneratorConfig.&#8203;shouldRenderSuperTypes()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EBoolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Traverses the tree to find the most specific <tt>renderSuperTypes</tt> setting.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetRenderSuperTypes</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">renderSuperTypes</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-o">(</span><span class="tok-n">eContainer</span> <span class="tok-n">as</span> <span class="tok-n">IEClassConfig</span><span class="tok-o">).</span><span class="tok-n">shouldRenderSuperTypes</span><span class="tok-o">()</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>shouldRepeatInherited()</code><a id="config-IEClassConfig-shouldRepeatInherited"></a></p>
+<p class="tableblock"><code><a href="#config-EcoreDocGeneratorConfig-shouldRepeatInherited">&#9660;&#160;config.&#8203;EcoreDocGeneratorConfig.&#8203;shouldRepeatInherited()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EBoolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Traverses the tree to find the most specific <tt>repeatInherited</tt> setting.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetRepeatInherited</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">repeatInherited</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-o">(</span><span class="tok-n">eContainer</span> <span class="tok-n">as</span> <span class="tok-n">IEClassConfig</span><span class="tok-o">).</span><span class="tok-n">shouldRepeatInherited</span><span class="tok-o">()</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
-<h3 id="config-IEClassifierConfig">7.14. Interface IEClassifierConfig</h3>
+<h3 id="config-IEClassifierConfig">7.16. Interface IEClassifierConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1974,9 +3193,47 @@ unsettable</p></td>
 </tr>
 </tbody>
 </table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>shouldRenderUseCases()</code><a id="config-IEClassifierConfig-shouldRenderUseCases"></a></p>
+<p class="tableblock"><code><a href="#config-EcoreDocGeneratorConfig-shouldRenderUseCases">&#9660;&#160;config.&#8203;EcoreDocGeneratorConfig.&#8203;shouldRenderUseCases()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EBoolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Traverses the tree to find the most specific <tt>renderUseCases</tt> setting.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetRenderUseCases</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">renderUseCases</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-o">(</span><span class="tok-n">eContainer</span> <span class="tok-n">as</span> <span class="tok-n">IEClassifierConfig</span><span class="tok-o">).</span><span class="tok-n">shouldRenderUseCases</span><span class="tok-o">()</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
-<h3 id="config-IEDataTypeConfig">7.15. Interface IEDataTypeConfig</h3>
+<h3 id="config-IEDataTypeConfig">7.17. Interface IEDataTypeConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1993,7 +3250,7 @@ unsettable</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IEEnumConfig">7.16. Interface IEEnumConfig</h3>
+<h3 id="config-IEEnumConfig">7.18. Interface IEEnumConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -2013,7 +3270,7 @@ unsettable</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IEEnumLiteralConfig">7.17. Interface IEEnumLiteralConfig</h3>
+<h3 id="config-IEEnumLiteralConfig">7.19. Interface IEEnumLiteralConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -2024,7 +3281,7 @@ unsettable</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IENamedElementConfig">7.18. Interface IENamedElementConfig</h3>
+<h3 id="config-IENamedElementConfig">7.20. Interface IENamedElementConfig</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Attributes</caption>
 <colgroup>
@@ -2053,9 +3310,92 @@ unsettable</p></td>
 </tr>
 </tbody>
 </table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>abstract</em> <code>getTarget()</code><a id="config-IENamedElementConfig-getTarget"></a></p>
+<p class="tableblock"><code><a href="#config-EAttributeConfig-getTarget">&#9660;&#160;config.&#8203;EAttributeConfig.&#8203;getTarget()</a></code></p>
+<p class="tableblock"><code><a href="#config-EClassConfig-getTarget">&#9660;&#160;config.&#8203;EClassConfig.&#8203;getTarget()</a></code></p>
+<p class="tableblock"><code><a href="#config-EContainmentConfig-getTarget">&#9660;&#160;config.&#8203;EContainmentConfig.&#8203;getTarget()</a></code></p>
+<p class="tableblock"><code><a href="#config-EDataTypeConfig-getTarget">&#9660;&#160;config.&#8203;EDataTypeConfig.&#8203;getTarget()</a></code></p>
+<p class="tableblock"><code><a href="#config-EEnumConfig-getTarget">&#9660;&#160;config.&#8203;EEnumConfig.&#8203;getTarget()</a></code></p>
+<p class="tableblock"><code><a href="#config-EEnumLiteralConfig-getTarget">&#9660;&#160;config.&#8203;EEnumLiteralConfig.&#8203;getTarget()</a></code></p>
+<p class="tableblock"><code><a href="#config-EOperationConfig-getTarget">&#9660;&#160;config.&#8203;EOperationConfig.&#8203;getTarget()</a></code></p>
+<p class="tableblock"><code><a href="#config-EPackageConfig-getTarget">&#9660;&#160;config.&#8203;EPackageConfig.&#8203;getTarget()</a></code></p>
+<p class="tableblock"><code><a href="#config-EParameterConfig-getTarget">&#9660;&#160;config.&#8203;EParameterConfig.&#8203;getTarget()</a></code></p>
+<p class="tableblock"><code><a href="#config-EReferenceConfig-getTarget">&#9660;&#160;config.&#8203;EReferenceConfig.&#8203;getTarget()</a></code></p>
+<p class="tableblock"><code><a href="#config-EcoreDocGeneratorConfig-getTarget">&#9660;&#160;config.&#8203;EcoreDocGeneratorConfig.&#8203;getTarget()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>ecore.&#8203;ENamedElement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Link to the configured element.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>shouldRender()</code><a id="config-IENamedElementConfig-shouldRender"></a></p>
+<p class="tableblock"><code><a href="#config-EcoreDocGeneratorConfig-shouldRender">&#9660;&#160;config.&#8203;EcoreDocGeneratorConfig.&#8203;shouldRender()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EBoolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Traverses the tree to find the most specific <tt>render</tt> setting.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetRender</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">render</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-o">(</span><span class="tok-n">eContainer</span> <span class="tok-n">as</span> <span class="tok-n">IENamedElementConfig</span><span class="tok-o">).</span><span class="tok-n">shouldRender</span><span class="tok-o">()</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<div class="title">Used at</div>
+<ul>
+<li>
+<p><code><a href="#config-EcoreDocGeneratorConfig-findConfig-ecore_ENamedElement">config.&#8203;EcoreDocGeneratorConfig.&#8203;findConfig(element)</a></code></p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
-<h3 id="config-IEPackageConfig">7.19. Interface IEPackageConfig</h3>
+<h3 id="config-IEOperationConfig">7.21. Interface IEOperationConfig</h3>
+<div class="ulist">
+<div class="title">Super-types</div>
+<ul>
+<li>
+<p><code><a href="#config-IDefaultValueConfig">config.&#8203;IDefaultValueConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IENamedElementConfig">config.&#8203;IENamedElementConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IETypedElementConfig">config.&#8203;IETypedElementConfig</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="config-IEPackageConfig">7.22. Interface IEPackageConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -2110,9 +3450,102 @@ unsettable</p></td>
 </tr>
 </tbody>
 </table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getEClassesPosition()</code><a id="config-IEPackageConfig-getEClassesPosition"></a></p>
+<p class="tableblock"><code><a href="#config-EcoreDocGeneratorConfig-getEClassesPosition">&#9660;&#160;config.&#8203;EcoreDocGeneratorConfig.&#8203;getEClassesPosition()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EInt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Traverses the tree to find the most specific <tt>positionEClasses</tt> setting.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetPositionEClasses</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">positionEClasses</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-o">(</span><span class="tok-n">eContainer</span> <span class="tok-n">as</span> <span class="tok-n">IEPackageConfig</span><span class="tok-o">).</span><span class="tok-n">getEClassesPosition</span><span class="tok-o">()</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getEDataTypesPosition()</code><a id="config-IEPackageConfig-getEDataTypesPosition"></a></p>
+<p class="tableblock"><code><a href="#config-EcoreDocGeneratorConfig-getEDataTypesPosition">&#9660;&#160;config.&#8203;EcoreDocGeneratorConfig.&#8203;getEDataTypesPosition()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EInt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Traverses the tree to find the most specific <tt>positionEDataTypes</tt> setting.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetPositionEDataTypes</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">positionEDataTypes</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-o">(</span><span class="tok-n">eContainer</span> <span class="tok-n">as</span> <span class="tok-n">IEPackageConfig</span><span class="tok-o">).</span><span class="tok-n">getEDataTypesPosition</span><span class="tok-o">()</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>getEEnumsPosition()</code><a id="config-IEPackageConfig-getEEnumsPosition"></a></p>
+<p class="tableblock"><code><a href="#config-EcoreDocGeneratorConfig-getEEnumsPosition">&#9660;&#160;config.&#8203;EcoreDocGeneratorConfig.&#8203;getEEnumsPosition()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EInt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Traverses the tree to find the most specific <tt>positionEEnums</tt> setting.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetPositionEEnums</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">positionEEnums</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-o">(</span><span class="tok-n">eContainer</span> <span class="tok-n">as</span> <span class="tok-n">IEPackageConfig</span><span class="tok-o">).</span><span class="tok-n">getEEnumsPosition</span><span class="tok-o">()</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
-<h3 id="config-IEReferenceConfig">7.20. Interface IEReferenceConfig</h3>
+<h3 id="config-IEParameterConfig">7.23. Interface IEParameterConfig</h3>
+<div class="ulist">
+<div class="title">Super-types</div>
+<ul>
+<li>
+<p><code><a href="#config-IDefaultValueConfig">config.&#8203;IDefaultValueConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IENamedElementConfig">config.&#8203;IENamedElementConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IETypedElementConfig">config.&#8203;IETypedElementConfig</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="config-IEReferenceConfig">7.24. Interface IEReferenceConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -2125,11 +3558,31 @@ unsettable</p></td>
 <li>
 <p><code><a href="#config-IEStructuralFeatureConfig">config.&#8203;IEStructuralFeatureConfig</a></code></p>
 </li>
+<li>
+<p><code><a href="#config-IETypedElementConfig">config.&#8203;IETypedElementConfig</a></code></p>
+</li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IEStructuralFeatureConfig">7.21. Interface IEStructuralFeatureConfig</h3>
+<h3 id="config-IEStructuralFeatureConfig">7.25. Interface IEStructuralFeatureConfig</h3>
+<div class="ulist">
+<div class="title">Super-types</div>
+<ul>
+<li>
+<p><code><a href="#config-IDefaultValueConfig">config.&#8203;IDefaultValueConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IENamedElementConfig">config.&#8203;IENamedElementConfig</a></code></p>
+</li>
+<li>
+<p><code><a href="#config-IETypedElementConfig">config.&#8203;IETypedElementConfig</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="config-IETypedElementConfig">7.26. Interface IETypedElementConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -2159,12 +3612,52 @@ unsettable</p></td>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>renderBounds</code><a id="config-IEStructuralFeatureConfig-renderBounds"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>renderBounds</code><a id="config-IETypedElementConfig-renderBounds"></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>EBoolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code><br>
 unsettable</p></td>
 <td class="tableblock halign-left valign-top"><div>Whether multiplicity bounds should be rendered,
 even if they are at their default values and <tt>renderDefaults = false</tt>.</div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Operations</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Aspect and Type</th>
+<th class="tableblock halign-left valign-top">Properties</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>shouldRenderBounds()</code><a id="config-IETypedElementConfig-shouldRenderBounds"></a></p>
+<p class="tableblock"><code><a href="#config-EcoreDocGeneratorConfig-shouldRenderBounds">&#9660;&#160;config.&#8203;EcoreDocGeneratorConfig.&#8203;shouldRenderBounds()</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>returns</em><br>
+<code>EBoolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0..1]</code></p></td>
+<td class="tableblock halign-left valign-top"><div>Traverses the tree to find the most specific <tt>renderBounds</tt> setting.</div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div><div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="xtend"><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">isSetRenderBounds</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">renderBounds</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-k">if</span><span class="tok-o">(</span><span class="tok-n">isSetRenderDefaults</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+  <span class="tok-n">renderDefaults</span>
+<span class="tok-o">}</span> <span class="tok-k">else</span> <span class="tok-o">{</span>
+  <span class="tok-o">(</span><span class="tok-n">eContainer</span> <span class="tok-n">as</span> <span class="tok-n">IETypedElementConfig</span><span class="tok-o">).</span><span class="tok-n">shouldRenderBounds</span><span class="tok-o">()</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -2175,7 +3668,7 @@ even if they are at their default values and <tt>renderDefaults = false</tt>.</d
 <h2 id="_versions">8. Versions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This asset in version 0.8.0-SNAPSHOT was developed using the following components and versions.</p>
+<p>This asset in version 0.9.0-SNAPSHOT was developed using the following components and versions.</p>
 </div>
 <div class="hdlist">
 <table>
@@ -2200,7 +3693,7 @@ Google Guava
 Apache Commons Lang3
 </td>
 <td class="hdlist2">
-<p>3.4</p>
+<p>3.1</p>
 </td>
 </tr>
 <tr>
@@ -2256,7 +3749,7 @@ Eclipse Tycho
 <p>If HTML is used in Ecore documentation, the PDF rendering can be faulty (<a href="https://gitlab.manatree.io/MDEAssets/EcoreDoc/issues/12">Issue #12</a>)</p>
 </li>
 <li>
-<p><code>EOperation</code>s, <code>EParameter</code>s, <code>EAnnotation</code>s are missing from the documentation (<a href="https://gitlab.manatree.io/MDEAssets/EcoreDoc/issues/13">Issue #13</a>, <a href="https://gitlab.manatree.io/MDEAssets/EcoreDoc/issues/15">Issue #15</a>)</p>
+<p><code>EAnnotation</code>s are missing from the documentation (<a href="https://gitlab.manatree.io/MDEAssets/EcoreDoc/issues/15">Issue #15</a>)</p>
 </li>
 </ul>
 </div>
@@ -2265,8 +3758,8 @@ Eclipse Tycho
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.8.0-SNAPSHOT<br>
-Last updated 2018-07-13 11:26:27 DST
+Version 0.9.0-SNAPSHOT<br>
+Last updated 2018-07-24 20:55:47 DST
 </div>
 </div>
 </body>

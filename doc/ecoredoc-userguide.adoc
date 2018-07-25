@@ -345,6 +345,126 @@ Afterwards, we can use the annotation as usual.
 	String name
 ----
 
+== EOperation Overrides
+
+EcoreDoc understands all possible kinds of inheritance and overrides and marks them accordingly.
+
+We use the following example throughout the section.
+
+[source,xcore]
+----
+
+class SomeClass {
+	String myName
+	contains SomeClass[0..*] others 
+}
+
+class Class3 extends SomeClass {}
+
+interface IFace1 {
+	op void doIt()
+	
+	op void doIt(int i)
+}
+
+interface IFace2 {
+	op void doIt()
+}
+
+abstract class AImplementer extends IFace1, IFace2 {
+	op void doIt() {
+		println("Hello, World!")
+	}
+}
+
+interface IFace3 extends IFace1, IFace2 {}
+
+class Implementer extends AImplementer, IFace3 {}
+
+interface If1 {
+	op Class3[1..8] getChildren()
+}
+
+interface If2 {
+	op SomeClass getSome()
+	op void setSome(SomeClass[1] someClass)
+}
+
+class Cls3 extends If1, If2 {
+	contains Class3[] children
+	
+	refers SomeClass[1] some
+}
+
+class Cl4 {
+	refers If1 iface
+}
+
+class Cl4b extends Cl4 {
+	op Cls3 getIface() {
+		super.iface as Cls3
+	}
+	
+	op void setIface(Cls3 iface) {
+		super.iface = iface
+	}
+}
+----
+
+.Show inherited Features
+If <<config-IEClassConfig-repeatInherited, repeatInherited>> is enabled, we repeat all inherited features (i.e. __EAttribute__s, containing __EReference__s, cross-referencing __EReference__s) from all super-types.
+
+We link them to their declaration with symbol `{inherited}`.
+
+We omit inherited features if they are overridden by an _EOperation_ (see below).
+
+In the example, we repeat `SomeClass.myName` and `SomeClass.others` in `Class3`.
+
+.Show inherited __EOperation__s
+If <<config-IEClassConfig-repeatInherited, repeatInherited>> is enabled, we repeat all inherited __EOperation__s from all super-types.
+
+If several super-types declare the same _EOperation_ (compared by signature), we repeat this _EOperation_ only once and link to all the declarations with symbol `{inherited}`.
+If one of the declarations defines a body, we repeat that body.
+
+We omit inherited __EOperation__s if they are overridden by a Feature (see below).
+
+In the example, we repeat both `Iface1.doIt()` and `Iface2.doIt()` once in `Iface3`, linking to both super-types.
+We also repeat `Iface1.doIt(i)` in `Iface3`.
+
+.Show overridden __EOperation__s
+If an _EOperation_ defines a body and one or more super-types declare the same _EOperation_ (compared by signature), we link to all the super-type declarations with symbol `{override}`.
+
+In the example, we mark `AImplementer.doIt()` as overriding `Iface1.doIt()` and `Iface2.doIt()`.
+
+.Show overriding __EOperation__s
+If an _EOperation_ is declared in one or more sub-types and they define a body, we link to all sub-types declarations with symbol `{overriddenBy}`.
+
+In the example, we mark both `Iface1.doIt()` and `Iface2.doIt()`  as being overridden by `AImplementer.doIt()`.
+
+.Show Features overriding _EOperation_
+If the generated code for a feature effectively overrides one or more inherited __EOperation__s, we link from the feature to all overridden __EOperation__s with symbol `{override}`.
+
+In this case, we omit the inherited and overridden __EOperation__s.
+
+We also link to all features of all sub-types overriding an _EOperation_ with symbol `{overriddenBy}`.
+
+In the example, we mark `Cls3.children` as overriding `If1.getChildren()`,
+and `Cls3.some` as overriding both `If2.getSome()` and `If2.setSome()`. +
+Accordingly, we mark `If1.getChildren()` as being overridden by `Cls3.children`,
+and both `If2.getSome()` and `If2.setSome()` as being overridden by `Cls3.some`. +
+We also omit all the __EOperation__s from `Cls3`, as they are effectively overridden by features. 
+
+.Show __EOperation__s overriding Features
+If an _EOperation_ effectively overrides the generated code of an inherited feature, we link from the _EOperation_ to the overridden feature with symbol `{override}`.
+
+In this case, we omit the inherited and overridden feature.
+
+We also link to all __EOperation__s of all sub-types overridden a feature with symbol `{overriddenBy}`.
+
+In the example, we mark both `Cl4b.getIface()` and `Cl4b.setIface()` as overriding `Cl4.iface`. +
+Accordingly, we mark `Cl4.iface` as being overridden by both `Cl4b.getIface()` and `Cl4b.setIface()`. +
+We also omit `iface` from `Cl4b` as it is effectively overridden by __EOperation__s. 
+
 [[generator-config]]
 == Generator Configuration
 

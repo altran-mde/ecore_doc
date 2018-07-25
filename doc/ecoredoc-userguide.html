@@ -538,38 +538,39 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_xcore_annotation">6.2. Xcore Annotation</a></li>
 </ul>
 </li>
-<li><a href="#generator-config">7. Generator Configuration</a>
+<li><a href="#_eoperation_overrides">7. EOperation Overrides</a></li>
+<li><a href="#generator-config">8. Generator Configuration</a>
 <ul class="sectlevel2">
-<li><a href="#config-AEReferenceConfig">7.1. Abstract Class AEReferenceConfig</a></li>
-<li><a href="#config-EAttributeConfig">7.2. Class EAttributeConfig</a></li>
-<li><a href="#config-EClassConfig">7.3. Class EClassConfig</a></li>
-<li><a href="#config-EContainmentConfig">7.4. Class EContainmentConfig</a></li>
-<li><a href="#config-EDataTypeConfig">7.5. Class EDataTypeConfig</a></li>
-<li><a href="#config-EEnumConfig">7.6. Class EEnumConfig</a></li>
-<li><a href="#config-EEnumLiteralConfig">7.7. Class EEnumLiteralConfig</a></li>
-<li><a href="#config-EOperationConfig">7.8. Class EOperationConfig</a></li>
-<li><a href="#config-EPackageConfig">7.9. Class EPackageConfig</a></li>
-<li><a href="#config-EParameterConfig">7.10. Class EParameterConfig</a></li>
-<li><a href="#config-EReferenceConfig">7.11. Class EReferenceConfig</a></li>
-<li><a href="#config-EcoreDocGeneratorConfig">7.12. Class EcoreDocGeneratorConfig</a></li>
-<li><a href="#config-IDefaultValueConfig">7.13. Interface IDefaultValueConfig</a></li>
-<li><a href="#config-IEAttributeConfig">7.14. Interface IEAttributeConfig</a></li>
-<li><a href="#config-IEClassConfig">7.15. Interface IEClassConfig</a></li>
-<li><a href="#config-IEClassifierConfig">7.16. Interface IEClassifierConfig</a></li>
-<li><a href="#config-IEDataTypeConfig">7.17. Interface IEDataTypeConfig</a></li>
-<li><a href="#config-IEEnumConfig">7.18. Interface IEEnumConfig</a></li>
-<li><a href="#config-IEEnumLiteralConfig">7.19. Interface IEEnumLiteralConfig</a></li>
-<li><a href="#config-IENamedElementConfig">7.20. Interface IENamedElementConfig</a></li>
-<li><a href="#config-IEOperationConfig">7.21. Interface IEOperationConfig</a></li>
-<li><a href="#config-IEPackageConfig">7.22. Interface IEPackageConfig</a></li>
-<li><a href="#config-IEParameterConfig">7.23. Interface IEParameterConfig</a></li>
-<li><a href="#config-IEReferenceConfig">7.24. Interface IEReferenceConfig</a></li>
-<li><a href="#config-IEStructuralFeatureConfig">7.25. Interface IEStructuralFeatureConfig</a></li>
-<li><a href="#config-IETypedElementConfig">7.26. Interface IETypedElementConfig</a></li>
+<li><a href="#config-AEReferenceConfig">8.1. Abstract Class AEReferenceConfig</a></li>
+<li><a href="#config-EAttributeConfig">8.2. Class EAttributeConfig</a></li>
+<li><a href="#config-EClassConfig">8.3. Class EClassConfig</a></li>
+<li><a href="#config-EContainmentConfig">8.4. Class EContainmentConfig</a></li>
+<li><a href="#config-EDataTypeConfig">8.5. Class EDataTypeConfig</a></li>
+<li><a href="#config-EEnumConfig">8.6. Class EEnumConfig</a></li>
+<li><a href="#config-EEnumLiteralConfig">8.7. Class EEnumLiteralConfig</a></li>
+<li><a href="#config-EOperationConfig">8.8. Class EOperationConfig</a></li>
+<li><a href="#config-EPackageConfig">8.9. Class EPackageConfig</a></li>
+<li><a href="#config-EParameterConfig">8.10. Class EParameterConfig</a></li>
+<li><a href="#config-EReferenceConfig">8.11. Class EReferenceConfig</a></li>
+<li><a href="#config-EcoreDocGeneratorConfig">8.12. Class EcoreDocGeneratorConfig</a></li>
+<li><a href="#config-IDefaultValueConfig">8.13. Interface IDefaultValueConfig</a></li>
+<li><a href="#config-IEAttributeConfig">8.14. Interface IEAttributeConfig</a></li>
+<li><a href="#config-IEClassConfig">8.15. Interface IEClassConfig</a></li>
+<li><a href="#config-IEClassifierConfig">8.16. Interface IEClassifierConfig</a></li>
+<li><a href="#config-IEDataTypeConfig">8.17. Interface IEDataTypeConfig</a></li>
+<li><a href="#config-IEEnumConfig">8.18. Interface IEEnumConfig</a></li>
+<li><a href="#config-IEEnumLiteralConfig">8.19. Interface IEEnumLiteralConfig</a></li>
+<li><a href="#config-IENamedElementConfig">8.20. Interface IENamedElementConfig</a></li>
+<li><a href="#config-IEOperationConfig">8.21. Interface IEOperationConfig</a></li>
+<li><a href="#config-IEPackageConfig">8.22. Interface IEPackageConfig</a></li>
+<li><a href="#config-IEParameterConfig">8.23. Interface IEParameterConfig</a></li>
+<li><a href="#config-IEReferenceConfig">8.24. Interface IEReferenceConfig</a></li>
+<li><a href="#config-IEStructuralFeatureConfig">8.25. Interface IEStructuralFeatureConfig</a></li>
+<li><a href="#config-IETypedElementConfig">8.26. Interface IETypedElementConfig</a></li>
 </ul>
 </li>
-<li><a href="#_versions">8. Versions</a></li>
-<li><a href="#_known_issues">9. Known Issues</a></li>
+<li><a href="#_versions">9. Versions</a></li>
+<li><a href="#_known_issues">10. Known Issues</a></li>
 </ul>
 </div>
 </div>
@@ -1013,7 +1014,151 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect1">
-<h2 id="generator-config">7. Generator Configuration</h2>
+<h2 id="_eoperation_overrides">7. EOperation Overrides</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>EcoreDoc understands all possible kinds of inheritance and overrides and marks them accordingly.</p>
+</div>
+<div class="paragraph">
+<p>We use the following example throughout the section.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight nowrap"><code data-lang="xcore">class SomeClass {
+  String myName
+  contains SomeClass[0..*] others
+}
+
+class Class3 extends SomeClass {}
+
+interface IFace1 {
+  op void doIt()
+
+  op void doIt(int i)
+}
+
+interface IFace2 {
+  op void doIt()
+}
+
+abstract class AImplementer extends IFace1, IFace2 {
+  op void doIt() {
+    println(&quot;Hello, World!&quot;)
+  }
+}
+
+interface IFace3 extends IFace1, IFace2 {}
+
+class Implementer extends AImplementer, IFace3 {}
+
+interface If1 {
+  op Class3[1..8] getChildren()
+}
+
+interface If2 {
+  op SomeClass getSome()
+  op void setSome(SomeClass[1] someClass)
+}
+
+class Cls3 extends If1, If2 {
+  contains Class3[] children
+
+  refers SomeClass[1] some
+}
+
+class Cl4 {
+  refers If1 iface
+}
+
+class Cl4b extends Cl4 {
+  op Cls3 getIface() {
+    super.iface as Cls3
+  }
+
+  op void setIface(Cls3 iface) {
+    super.iface = iface
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Show inherited Features</div>
+<p>If <a href="#config-IEClassConfig-repeatInherited">repeatInherited</a> is enabled, we repeat all inherited features (i.e. <em>EAttribute</em>s, containing <em>EReference</em>s, cross-referencing <em>EReference</em>s) from all super-types.</p>
+</div>
+<div class="paragraph">
+<p>We link them to their declaration with symbol <code>&#9651;&#160;</code>.</p>
+</div>
+<div class="paragraph">
+<p>We omit inherited features if they are overridden by an <em>EOperation</em> (see below).</p>
+</div>
+<div class="paragraph">
+<p>In the example, we repeat <code>SomeClass.myName</code> and <code>SomeClass.others</code> in <code>Class3</code>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Show inherited <em>EOperation</em>s</div>
+<p>If <a href="#config-IEClassConfig-repeatInherited">repeatInherited</a> is enabled, we repeat all inherited <em>EOperation</em>s from all super-types.</p>
+</div>
+<div class="paragraph">
+<p>If several super-types declare the same <em>EOperation</em> (compared by signature), we repeat this <em>EOperation</em> only once and link to all the declarations with symbol <code>&#9651;&#160;</code>.
+If one of the declarations defines a body, we repeat that body.</p>
+</div>
+<div class="paragraph">
+<p>We omit inherited <em>EOperation</em>s if they are overridden by a Feature (see below).</p>
+</div>
+<div class="paragraph">
+<p>In the example, we repeat both <code>Iface1.doIt()</code> and <code>Iface2.doIt()</code> once in <code>Iface3</code>, linking to both super-types.
+We also repeat <code>Iface1.doIt(i)</code> in <code>Iface3</code>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Show overridden <em>EOperation</em>s</div>
+<p>If an <em>EOperation</em> defines a body and one or more super-types declare the same <em>EOperation</em> (compared by signature), we link to all the super-type declarations with symbol <code>&#9650;&#160;</code>.</p>
+</div>
+<div class="paragraph">
+<p>In the example, we mark <code>AImplementer.doIt()</code> as overriding <code>Iface1.doIt()</code> and <code>Iface2.doIt()</code>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Show overriding <em>EOperation</em>s</div>
+<p>If an <em>EOperation</em> is declared in one or more sub-types and they define a body, we link to all sub-types declarations with symbol <code>&#9660;&#160;</code>.</p>
+</div>
+<div class="paragraph">
+<p>In the example, we mark both <code>Iface1.doIt()</code> and <code>Iface2.doIt()</code>  as being overridden by <code>AImplementer.doIt()</code>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Show Features overriding <em>EOperation</em></div>
+<p>If the generated code for a feature effectively overrides one or more inherited <em>EOperation</em>s, we link from the feature to all overridden <em>EOperation</em>s with symbol <code>&#9650;&#160;</code>.</p>
+</div>
+<div class="paragraph">
+<p>In this case, we omit the inherited and overridden <em>EOperation</em>s.</p>
+</div>
+<div class="paragraph">
+<p>We also link to all features of all sub-types overriding an <em>EOperation</em> with symbol <code>&#9660;&#160;</code>.</p>
+</div>
+<div class="paragraph">
+<p>In the example, we mark <code>Cls3.children</code> as overriding <code>If1.getChildren()</code>,
+and <code>Cls3.some</code> as overriding both <code>If2.getSome()</code> and <code>If2.setSome()</code>.<br>
+Accordingly, we mark <code>If1.getChildren()</code> as being overridden by <code>Cls3.children</code>,
+and both <code>If2.getSome()</code> and <code>If2.setSome()</code> as being overridden by <code>Cls3.some</code>.<br>
+We also omit all the <em>EOperation</em>s from <code>Cls3</code>, as they are effectively overridden by features.</p>
+</div>
+<div class="paragraph">
+<div class="title">Show <em>EOperation</em>s overriding Features</div>
+<p>If an <em>EOperation</em> effectively overrides the generated code of an inherited feature, we link from the <em>EOperation</em> to the overridden feature with symbol <code>&#9650;&#160;</code>.</p>
+</div>
+<div class="paragraph">
+<p>In this case, we omit the inherited and overridden feature.</p>
+</div>
+<div class="paragraph">
+<p>We also link to all <em>EOperation</em>s of all sub-types overridden a feature with symbol <code>&#9660;&#160;</code>.</p>
+</div>
+<div class="paragraph">
+<p>In the example, we mark both <code>Cl4b.getIface()</code> and <code>Cl4b.setIface()</code> as overriding <code>Cl4.iface</code>.<br>
+Accordingly, we mark <code>Cl4.iface</code> as being overridden by both <code>Cl4b.getIface()</code> and <code>Cl4b.setIface()</code>.<br>
+We also omit <code>iface</code> from <code>Cl4b</code> as it is effectively overridden by <em>EOperation</em>s.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="generator-config">8. Generator Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The generator configuration is an Ecore metamodel, so we obviously use EcoreDoc to create the documentation listed below.</p>
@@ -1053,7 +1198,7 @@ However, it should be possible to maintain backwards compability.
 <div class="title">Generator Configuration Class Diagram</div>
 </div>
 <div class="sect2">
-<h3 id="config-AEReferenceConfig">7.1. Abstract Class AEReferenceConfig</h3>
+<h3 id="config-AEReferenceConfig">8.1. Abstract Class AEReferenceConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1076,7 +1221,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EAttributeConfig">7.2. Class EAttributeConfig</h3>
+<h3 id="config-EAttributeConfig">8.2. Class EAttributeConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1166,7 +1311,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EClassConfig">7.3. Class EClassConfig</h3>
+<h3 id="config-EClassConfig">8.3. Class EClassConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1402,7 +1547,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EContainmentConfig">7.4. Class EContainmentConfig</h3>
+<h3 id="config-EContainmentConfig">8.4. Class EContainmentConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1495,7 +1640,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EDataTypeConfig">7.5. Class EDataTypeConfig</h3>
+<h3 id="config-EDataTypeConfig">8.5. Class EDataTypeConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1582,7 +1727,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EEnumConfig">7.6. Class EEnumConfig</h3>
+<h3 id="config-EEnumConfig">8.6. Class EEnumConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1722,7 +1867,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EEnumLiteralConfig">7.7. Class EEnumLiteralConfig</h3>
+<h3 id="config-EEnumLiteralConfig">8.7. Class EEnumLiteralConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1803,7 +1948,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EOperationConfig">7.8. Class EOperationConfig</h3>
+<h3 id="config-EOperationConfig">8.8. Class EOperationConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -1978,7 +2123,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EPackageConfig">7.9. Class EPackageConfig</h3>
+<h3 id="config-EPackageConfig">8.9. Class EPackageConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -2198,7 +2343,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EParameterConfig">7.10. Class EParameterConfig</h3>
+<h3 id="config-EParameterConfig">8.10. Class EParameterConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -2291,7 +2436,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EReferenceConfig">7.11. Class EReferenceConfig</h3>
+<h3 id="config-EReferenceConfig">8.11. Class EReferenceConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -2384,7 +2529,7 @@ However, it should be possible to maintain backwards compability.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-EcoreDocGeneratorConfig">7.12. Class EcoreDocGeneratorConfig</h3>
+<h3 id="config-EcoreDocGeneratorConfig">8.12. Class EcoreDocGeneratorConfig</h3>
 Root for the detailed EcoreDocGenerator configuration.
 
 <p>
@@ -2914,7 +3059,7 @@ EcoreDocGeneratorConfig
 </table>
 </div>
 <div class="sect2">
-<h3 id="config-IDefaultValueConfig">7.13. Interface IDefaultValueConfig</h3>
+<h3 id="config-IDefaultValueConfig">8.13. Interface IDefaultValueConfig</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Attributes</caption>
 <colgroup>
@@ -2987,7 +3132,7 @@ if <tt>renderDefaults = false</tt>.
 </table>
 </div>
 <div class="sect2">
-<h3 id="config-IEAttributeConfig">7.14. Interface IEAttributeConfig</h3>
+<h3 id="config-IEAttributeConfig">8.14. Interface IEAttributeConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -3007,7 +3152,7 @@ if <tt>renderDefaults = false</tt>.
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IEClassConfig">7.15. Interface IEClassConfig</h3>
+<h3 id="config-IEClassConfig">8.15. Interface IEClassConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -3153,7 +3298,7 @@ Otherwise, <i>attr1</i> will only be listed in the section of <i>EClass1</i>.
 </table>
 </div>
 <div class="sect2">
-<h3 id="config-IEClassifierConfig">7.16. Interface IEClassifierConfig</h3>
+<h3 id="config-IEClassifierConfig">8.16. Interface IEClassifierConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -3233,7 +3378,7 @@ unsettable</p></td>
 </table>
 </div>
 <div class="sect2">
-<h3 id="config-IEDataTypeConfig">7.17. Interface IEDataTypeConfig</h3>
+<h3 id="config-IEDataTypeConfig">8.17. Interface IEDataTypeConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -3250,7 +3395,7 @@ unsettable</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IEEnumConfig">7.18. Interface IEEnumConfig</h3>
+<h3 id="config-IEEnumConfig">8.18. Interface IEEnumConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -3270,7 +3415,7 @@ unsettable</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IEEnumLiteralConfig">7.19. Interface IEEnumLiteralConfig</h3>
+<h3 id="config-IEEnumLiteralConfig">8.19. Interface IEEnumLiteralConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -3281,7 +3426,7 @@ unsettable</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IENamedElementConfig">7.20. Interface IENamedElementConfig</h3>
+<h3 id="config-IENamedElementConfig">8.20. Interface IENamedElementConfig</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Attributes</caption>
 <colgroup>
@@ -3378,7 +3523,7 @@ unsettable</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IEOperationConfig">7.21. Interface IEOperationConfig</h3>
+<h3 id="config-IEOperationConfig">8.21. Interface IEOperationConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -3395,7 +3540,7 @@ unsettable</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IEPackageConfig">7.22. Interface IEPackageConfig</h3>
+<h3 id="config-IEPackageConfig">8.22. Interface IEPackageConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -3528,7 +3673,7 @@ unsettable</p></td>
 </table>
 </div>
 <div class="sect2">
-<h3 id="config-IEParameterConfig">7.23. Interface IEParameterConfig</h3>
+<h3 id="config-IEParameterConfig">8.23. Interface IEParameterConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -3545,7 +3690,7 @@ unsettable</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IEReferenceConfig">7.24. Interface IEReferenceConfig</h3>
+<h3 id="config-IEReferenceConfig">8.24. Interface IEReferenceConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -3565,7 +3710,7 @@ unsettable</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IEStructuralFeatureConfig">7.25. Interface IEStructuralFeatureConfig</h3>
+<h3 id="config-IEStructuralFeatureConfig">8.25. Interface IEStructuralFeatureConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -3582,7 +3727,7 @@ unsettable</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="config-IETypedElementConfig">7.26. Interface IETypedElementConfig</h3>
+<h3 id="config-IETypedElementConfig">8.26. Interface IETypedElementConfig</h3>
 <div class="ulist">
 <div class="title">Super-types</div>
 <ul>
@@ -3665,7 +3810,7 @@ even if they are at their default values and <tt>renderDefaults = false</tt>.</d
 </div>
 </div>
 <div class="sect1">
-<h2 id="_versions">8. Versions</h2>
+<h2 id="_versions">9. Versions</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This asset in version 0.9.0-SNAPSHOT was developed using the following components and versions.</p>
@@ -3741,7 +3886,7 @@ Eclipse Tycho
 </div>
 </div>
 <div class="sect1">
-<h2 id="_known_issues">9. Known Issues</h2>
+<h2 id="_known_issues">10. Known Issues</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -3759,7 +3904,7 @@ Eclipse Tycho
 <div id="footer">
 <div id="footer-text">
 Version 0.9.0-SNAPSHOT<br>
-Last updated 2018-07-24 20:55:47 DST
+Last updated 2018-07-25 09:33:00 DST
 </div>
 </div>
 </body>

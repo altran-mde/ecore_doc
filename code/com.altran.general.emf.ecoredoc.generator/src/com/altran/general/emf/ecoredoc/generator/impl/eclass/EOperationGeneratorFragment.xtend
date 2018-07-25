@@ -365,6 +365,7 @@ class EOperationGeneratorFragment extends AEClassMemberGeneratorFragment {
 				.reject[op | eClass.EStructuralFeatures.exists[it.implementsOperation(op)]]
 			)
 			
+			// make sure to pick an inherited EOperation with a body, if it exists
 			return result
 				.groupBy[name + EParameters.map[EType.name].join]
 				.values

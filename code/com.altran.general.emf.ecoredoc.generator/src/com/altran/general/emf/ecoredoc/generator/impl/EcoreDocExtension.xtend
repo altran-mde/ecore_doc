@@ -29,10 +29,10 @@ class EcoreDocExtension {
 	}
 	
 	def CharSequence getDocumentation(EModelElement modelElement) {
-		val CharSequence documentation = EcoreUtil.getDocumentation(modelElement)
+		val documentation = EcoreUtil.getDocumentation(modelElement)
 
 		if (documentation !== null) {
-			val stripped = documentation.toString.replaceAll("<[^>]+>", "")
+			val stripped = documentation.replaceAll("(<[^>]+>)(<[^>]+>)", " ").replaceAll("<[^>]+>", "")
 			if (stripped == documentation) {
 				documentation + newline
 			} else {
@@ -44,7 +44,7 @@ class EcoreDocExtension {
 					++++
 					endif::[]
 					ifndef::backend-html5[]
-					«»
+					«stripped»
 					endif::[]
 				'''
 			}

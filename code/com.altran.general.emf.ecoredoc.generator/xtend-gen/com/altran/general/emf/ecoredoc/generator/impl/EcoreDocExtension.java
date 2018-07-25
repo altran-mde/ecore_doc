@@ -64,12 +64,12 @@ public class EcoreDocExtension {
   public CharSequence getDocumentation(final EModelElement modelElement) {
     CharSequence _xblockexpression = null;
     {
-      final CharSequence documentation = EcoreUtil.getDocumentation(modelElement);
+      final String documentation = EcoreUtil.getDocumentation(modelElement);
       CharSequence _xifexpression = null;
       if ((documentation != null)) {
         CharSequence _xblockexpression_1 = null;
         {
-          final String stripped = documentation.toString().replaceAll("<[^>]+>", "");
+          final String stripped = documentation.replaceAll("(<[^>]+>)(<[^>]+>)", " ").replaceAll("<[^>]+>", "");
           CharSequence _xifexpression_1 = null;
           boolean _equals = Objects.equal(stripped, documentation);
           if (_equals) {
@@ -92,7 +92,8 @@ public class EcoreDocExtension {
             _builder.newLine();
             _builder.append("ifndef::backend-html5[]");
             _builder.newLine();
-            _builder.newLine();
+            _builder.append(stripped);
+            _builder.newLineIfNotEmpty();
             _builder.append("endif::[]");
             _builder.newLine();
             _xifexpression_1 = _builder;

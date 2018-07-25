@@ -47,66 +47,66 @@ import org.eclipse.emf.ecore.ENamedElement;
  * <dl>
  *   <dt>EPackage1</dt>
  *   <dd>
- *     <dl>
+ *     <dl class="compact">
  *       <dt>renderDefaults</dt><dd>false</dd>
  *       <dt>repeatInherited</dt><dd>false</dd>
- *     <dl>
+ *     </dl>
  *   </dd>
  *   <dt>EClass1</dt>
  *   <dd>
- *     <dl>
+ *     <dl class="compact">
  *       <dt>renderDefaults</dt><dd>false</dd>
  *       <dt>repeatInherited</dt><dd>false</dd>
- *     <dl>
+ *     </dl>
  *   </dd>
  *   <dt>EAttribute1</dt>
  *   <dd>
- *     <dl>
+ *     <dl class="compact">
  *       <dt>renderDefaults</dt><dd>true</dd>
  *       <dt>repeatInherited</dt><dd>false</dd>
- *     <dl>
+ *     </dl>
  *   </dd>
  *   <dt>EAttribute2</dt>
  *   <dd>
- *     <dl>
+ *     <dl class="compact">
  *       <dt>renderDefaults</dt><dd>false</dd>
  *       <dt>repeatInherited</dt><dd>false</dd>
- *     <dl>
+ *     </dl>
  *   </dd>
  *   <dt>EClass2</dt>
  *   <dd>
- *     <dl>
+ *     <dl class="compact">
  *       <dt>renderDefaults</dt><dd>false</dd>
  *       <dt>repeatInherited</dt><dd>false</dd>
- *     <dl>
+ *     </dl>
  *   </dd>
  *   <dt>EPackage2</dt>
  *   <dd>
- *     <dl>
+ *     <dl class="compact">
  *       <dt>renderDefaults</dt><dd>true</dd>
  *       <dt>repeatInherited</dt><dd>true</dd>
- *     <dl>
+ *     </dl>
  *   </dd>
  *   <dt>EClass3</dt>
  *   <dd>
- *     <dl>
+ *     <dl class="compact">
  *       <dt>renderDefaults</dt><dd>true</dd>
  *       <dt>repeatInherited</dt><dd>true</dd>
- *     <dl>
+ *     </dl>
  *   </dd>
  *   <dt>EClass4</dt>
  *   <dd>
- *     <dl>
+ *     <dl class="compact">
  *       <dt>renderDefaults</dt><dd>true</dd>
  *       <dt>repeatInherited</dt><dd>true</dd>
- *     <dl>
+ *     </dl>
  *   </dd>
  *   <dt>EAttribute3</dt>
  *   <dd>
- *     <dl>
+ *     <dl class="compact">
  *       <dt>renderDefaults</dt><dd>true</dd>
  *       <dt>repeatInherited</dt><dd>false</dd>
- *     <dl>
+ *     </dl>
  *   </dd>
  * </dl>
  * <!-- end-model-doc -->
@@ -130,7 +130,6 @@ public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * *
 	 * Title of the generated document.
 	 * 
 	 * <p>defaults to <b>Ecore Documentation</b>.</p>

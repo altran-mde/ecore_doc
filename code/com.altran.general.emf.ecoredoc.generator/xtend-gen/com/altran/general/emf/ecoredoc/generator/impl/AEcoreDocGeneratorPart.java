@@ -1,6 +1,7 @@
 package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.configbuilder.IEClassifierConfigPair;
 import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
 import com.google.common.base.Objects;
@@ -71,15 +72,35 @@ public abstract class AEcoreDocGeneratorPart {
   }
   
   protected CharSequence _concatLinkTo(final ENamedElement eNamedElement) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("`<<");
-    CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eNamedElement);
-    _builder.append(_concatAnchor);
-    _builder.append(", ");
-    CharSequence _concatReferenceName = this.concatReferenceName(eNamedElement);
-    _builder.append(_concatReferenceName);
-    _builder.append(">>`");
-    return _builder;
+    CharSequence _xblockexpression = null;
+    {
+      final IENamedElementConfig cfg = this.getConfig().findConfig(eNamedElement);
+      CharSequence _xifexpression = null;
+      boolean _shouldRender = false;
+      if (cfg!=null) {
+        _shouldRender=cfg.shouldRender();
+      }
+      if (_shouldRender) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("`<<");
+        CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eNamedElement);
+        _builder.append(_concatAnchor);
+        _builder.append(", ");
+        CharSequence _concatReferenceName = this.concatReferenceName(eNamedElement);
+        _builder.append(_concatReferenceName);
+        _builder.append(">>`");
+        _xifexpression = _builder;
+      } else {
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("`");
+        CharSequence _concatReferenceName_1 = this.concatReferenceName(eNamedElement);
+        _builder_1.append(_concatReferenceName_1);
+        _builder_1.append("`");
+        _xifexpression = _builder_1;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
   
   protected CharSequence _concatLinkTo(final EDataType eDataType) {
@@ -95,15 +116,35 @@ public abstract class AEcoreDocGeneratorPart {
         _builder.append("`");
         _xifexpression = _builder;
       } else {
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append("`<<");
-        CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eDataType);
-        _builder_1.append(_concatAnchor);
-        _builder_1.append(", ");
-        CharSequence _concatReferenceName = this.concatReferenceName(eDataType);
-        _builder_1.append(_concatReferenceName);
-        _builder_1.append(">>`");
-        _xifexpression = _builder_1;
+        CharSequence _xblockexpression_1 = null;
+        {
+          final IENamedElementConfig cfg = this.getConfig().findConfig(eDataType);
+          CharSequence _xifexpression_1 = null;
+          boolean _shouldRender = false;
+          if (cfg!=null) {
+            _shouldRender=cfg.shouldRender();
+          }
+          if (_shouldRender) {
+            StringConcatenation _builder_1 = new StringConcatenation();
+            _builder_1.append("`<<");
+            CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eDataType);
+            _builder_1.append(_concatAnchor);
+            _builder_1.append(", ");
+            CharSequence _concatReferenceName = this.concatReferenceName(eDataType);
+            _builder_1.append(_concatReferenceName);
+            _builder_1.append(">>`");
+            _xifexpression_1 = _builder_1;
+          } else {
+            StringConcatenation _builder_2 = new StringConcatenation();
+            _builder_2.append("`");
+            CharSequence _concatReferenceName_1 = this.concatReferenceName(eDataType);
+            _builder_2.append(_concatReferenceName_1);
+            _builder_2.append("`");
+            _xifexpression_1 = _builder_2;
+          }
+          _xblockexpression_1 = _xifexpression_1;
+        }
+        _xifexpression = _xblockexpression_1;
       }
       _xblockexpression = _xifexpression;
     }

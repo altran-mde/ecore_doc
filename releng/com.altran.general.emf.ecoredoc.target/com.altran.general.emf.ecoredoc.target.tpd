@@ -11,6 +11,7 @@ location "http://download.eclipse.org/releases/oxygen" {
 	org.eclipse.emf.ecore.xcore.ui
 	
 	org.apache.commons.io
+	org.apache.commons.lang3
 	org.eclipse.emf.codegen.ecore
 	
 	org.junit [4,5)

@@ -65,6 +65,8 @@ public class EcoreDocConfigFactoryImpl extends EFactoryImpl implements EcoreDocC
 			case EcoreDocConfigPackage.EATTRIBUTE_CONFIG: return createEAttributeConfig();
 			case EcoreDocConfigPackage.ECONTAINMENT_CONFIG: return createEContainmentConfig();
 			case EcoreDocConfigPackage.EREFERENCE_CONFIG: return createEReferenceConfig();
+			case EcoreDocConfigPackage.EOPERATION_CONFIG: return createEOperationConfig();
+			case EcoreDocConfigPackage.EPARAMETER_CONFIG: return createEParameterConfig();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -158,6 +160,26 @@ public class EcoreDocConfigFactoryImpl extends EFactoryImpl implements EcoreDocC
 	public EReferenceConfig createEReferenceConfig() {
 		EReferenceConfigImpl eReferenceConfig = new EReferenceConfigImpl();
 		return eReferenceConfig;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperationConfig createEOperationConfig() {
+		EOperationConfigImpl eOperationConfig = new EOperationConfigImpl();
+		return eOperationConfig;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EParameterConfig createEParameterConfig() {
+		EParameterConfigImpl eParameterConfig = new EParameterConfigImpl();
+		return eParameterConfig;
 	}
 
 	/**

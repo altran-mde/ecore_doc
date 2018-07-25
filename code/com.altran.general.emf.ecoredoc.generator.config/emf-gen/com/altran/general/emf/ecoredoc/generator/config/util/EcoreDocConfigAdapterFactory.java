@@ -94,6 +94,10 @@ public class EcoreDocConfigAdapterFactory extends AdapterFactoryImpl {
 				return createIEClassConfigAdapter();
 			}
 			@Override
+			public Adapter caseIETypedElementConfig(IETypedElementConfig object) {
+				return createIETypedElementConfigAdapter();
+			}
+			@Override
 			public Adapter caseIEStructuralFeatureConfig(IEStructuralFeatureConfig object) {
 				return createIEStructuralFeatureConfigAdapter();
 			}
@@ -104,6 +108,14 @@ public class EcoreDocConfigAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseIEReferenceConfig(IEReferenceConfig object) {
 				return createIEReferenceConfigAdapter();
+			}
+			@Override
+			public Adapter caseIEOperationConfig(IEOperationConfig object) {
+				return createIEOperationConfigAdapter();
+			}
+			@Override
+			public Adapter caseIEParameterConfig(IEParameterConfig object) {
+				return createIEParameterConfigAdapter();
 			}
 			@Override
 			public Adapter caseIEPackageConfig(IEPackageConfig object) {
@@ -152,6 +164,14 @@ public class EcoreDocConfigAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEReferenceConfig(EReferenceConfig object) {
 				return createEReferenceConfigAdapter();
+			}
+			@Override
+			public Adapter caseEOperationConfig(EOperationConfig object) {
+				return createEOperationConfigAdapter();
+			}
+			@Override
+			public Adapter caseEParameterConfig(EParameterConfig object) {
+				return createEParameterConfigAdapter();
 			}
 			@Override
 			public <T> Adapter caseList(List<T> object) {
@@ -262,6 +282,20 @@ public class EcoreDocConfigAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.emf.ecoredoc.generator.config.IETypedElementConfig <em>IE Typed Element Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.IETypedElementConfig
+	 * @generated
+	 */
+	public Adapter createIETypedElementConfigAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig <em>IE Structural Feature Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -300,6 +334,34 @@ public class EcoreDocConfigAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIEReferenceConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.emf.ecoredoc.generator.config.IEOperationConfig <em>IE Operation Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.IEOperationConfig
+	 * @generated
+	 */
+	public Adapter createIEOperationConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.emf.ecoredoc.generator.config.IEParameterConfig <em>IE Parameter Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.IEParameterConfig
+	 * @generated
+	 */
+	public Adapter createIEParameterConfigAdapter() {
 		return null;
 	}
 
@@ -468,6 +530,34 @@ public class EcoreDocConfigAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEReferenceConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.emf.ecoredoc.generator.config.EOperationConfig <em>EOperation Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EOperationConfig
+	 * @generated
+	 */
+	public Adapter createEOperationConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.emf.ecoredoc.generator.config.EParameterConfig <em>EParameter Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EParameterConfig
+	 * @generated
+	 */
+	public Adapter createEParameterConfigAdapter() {
 		return null;
 	}
 

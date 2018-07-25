@@ -26,10 +26,6 @@ public interface IENamedElementConfig extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Render</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Render</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Whether this element should be rendered at all.
@@ -82,10 +78,6 @@ public interface IENamedElementConfig extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Enables proper merging in {@link com.altran.general.emf.ecoredoc.util.EcoreMerger}.

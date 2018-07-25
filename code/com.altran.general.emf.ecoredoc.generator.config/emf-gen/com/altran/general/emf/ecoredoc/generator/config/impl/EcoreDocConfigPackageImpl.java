@@ -9,7 +9,9 @@ import com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EOperationConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EPackageConfig;
+import com.altran.general.emf.ecoredoc.generator.config.EParameterConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigFactory;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
@@ -22,9 +24,12 @@ import com.altran.general.emf.ecoredoc.generator.config.IEDataTypeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEEnumConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEEnumLiteralConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IEOperationConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEPackageConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IEParameterConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IETypedElementConfig;
 
 import java.util.List;
 
@@ -92,6 +97,13 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass ieTypedElementConfigEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass ieStructuralFeatureConfigEClass = null;
 
 	/**
@@ -107,6 +119,20 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	private EClass ieReferenceConfigEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ieOperationConfigEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ieParameterConfigEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -191,6 +217,20 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	private EClass eReferenceConfigEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eOperationConfigEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eParameterConfigEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -448,26 +488,35 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getIETypedElementConfig() {
+		return ieTypedElementConfigEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIETypedElementConfig_RenderBounds() {
+		return (EAttribute)ieTypedElementConfigEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getIETypedElementConfig__ShouldRenderBounds() {
+		return ieTypedElementConfigEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getIEStructuralFeatureConfig() {
 		return ieStructuralFeatureConfigEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getIEStructuralFeatureConfig_RenderBounds() {
-		return (EAttribute)ieStructuralFeatureConfigEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getIEStructuralFeatureConfig__ShouldRenderBounds() {
-		return ieStructuralFeatureConfigEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -486,6 +535,24 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 */
 	public EClass getIEReferenceConfig() {
 		return ieReferenceConfigEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getIEOperationConfig() {
+		return ieOperationConfigEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getIEParameterConfig() {
+		return ieParameterConfigEClass;
 	}
 
 	/**
@@ -934,6 +1001,15 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getEClassConfig_EOperations() {
+		return (EReference)eClassConfigEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getEClassConfig__GetTarget() {
 		return eClassConfigEClass.getEOperations().get(0);
 	}
@@ -963,6 +1039,15 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 */
 	public EOperation getEClassConfig__AddEReferences__List() {
 		return eClassConfigEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEClassConfig__AddEOperations__List() {
+		return eClassConfigEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -1060,6 +1145,96 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getEOperationConfig() {
+		return eOperationConfigEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEOperationConfig_TargetEOperation() {
+		return (EReference)eOperationConfigEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEOperationConfig_EParameters() {
+		return (EReference)eOperationConfigEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEOperationConfig__GetTarget() {
+		return eOperationConfigEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEOperationConfig__AddEParameters__List() {
+		return eOperationConfigEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEOperationConfig__GetId() {
+		return eOperationConfigEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEOperationConfig__JoinId__EOperation() {
+		return eOperationConfigEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEParameterConfig() {
+		return eParameterConfigEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEParameterConfig_TargetEParameter() {
+		return (EReference)eParameterConfigEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEParameterConfig__GetTarget() {
+		return eParameterConfigEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getList() {
 		return listEClass;
 	}
@@ -1118,13 +1293,19 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		createEOperation(ieClassConfigEClass, IE_CLASS_CONFIG___SHOULD_RENDER_SUB_TYPES);
 		createEOperation(ieClassConfigEClass, IE_CLASS_CONFIG___SHOULD_RENDER_SUPER_TYPES);
 
+		ieTypedElementConfigEClass = createEClass(IE_TYPED_ELEMENT_CONFIG);
+		createEAttribute(ieTypedElementConfigEClass, IE_TYPED_ELEMENT_CONFIG__RENDER_BOUNDS);
+		createEOperation(ieTypedElementConfigEClass, IE_TYPED_ELEMENT_CONFIG___SHOULD_RENDER_BOUNDS);
+
 		ieStructuralFeatureConfigEClass = createEClass(IE_STRUCTURAL_FEATURE_CONFIG);
-		createEAttribute(ieStructuralFeatureConfigEClass, IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS);
-		createEOperation(ieStructuralFeatureConfigEClass, IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_BOUNDS);
 
 		ieAttributeConfigEClass = createEClass(IE_ATTRIBUTE_CONFIG);
 
 		ieReferenceConfigEClass = createEClass(IE_REFERENCE_CONFIG);
+
+		ieOperationConfigEClass = createEClass(IE_OPERATION_CONFIG);
+
+		ieParameterConfigEClass = createEClass(IE_PARAMETER_CONFIG);
 
 		iePackageConfigEClass = createEClass(IE_PACKAGE_CONFIG);
 		createEAttribute(iePackageConfigEClass, IE_PACKAGE_CONFIG__POSITION_EDATA_TYPES);
@@ -1182,10 +1363,12 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		createEReference(eClassConfigEClass, ECLASS_CONFIG__EATTRIBUTES);
 		createEReference(eClassConfigEClass, ECLASS_CONFIG__ECONTAINMENTS);
 		createEReference(eClassConfigEClass, ECLASS_CONFIG__EREFERENCES);
+		createEReference(eClassConfigEClass, ECLASS_CONFIG__EOPERATIONS);
 		createEOperation(eClassConfigEClass, ECLASS_CONFIG___GET_TARGET);
 		createEOperation(eClassConfigEClass, ECLASS_CONFIG___ADD_EATTRIBUTES__LIST);
 		createEOperation(eClassConfigEClass, ECLASS_CONFIG___ADD_ECONTAINMENTS__LIST);
 		createEOperation(eClassConfigEClass, ECLASS_CONFIG___ADD_EREFERENCES__LIST);
+		createEOperation(eClassConfigEClass, ECLASS_CONFIG___ADD_EOPERATIONS__LIST);
 
 		eAttributeConfigEClass = createEClass(EATTRIBUTE_CONFIG);
 		createEReference(eAttributeConfigEClass, EATTRIBUTE_CONFIG__TARGET_EATTRIBUTE);
@@ -1200,6 +1383,18 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		eReferenceConfigEClass = createEClass(EREFERENCE_CONFIG);
 		createEReference(eReferenceConfigEClass, EREFERENCE_CONFIG__TARGET_EREFERENCE);
 		createEOperation(eReferenceConfigEClass, EREFERENCE_CONFIG___GET_TARGET);
+
+		eOperationConfigEClass = createEClass(EOPERATION_CONFIG);
+		createEReference(eOperationConfigEClass, EOPERATION_CONFIG__TARGET_EOPERATION);
+		createEReference(eOperationConfigEClass, EOPERATION_CONFIG__EPARAMETERS);
+		createEOperation(eOperationConfigEClass, EOPERATION_CONFIG___GET_TARGET);
+		createEOperation(eOperationConfigEClass, EOPERATION_CONFIG___ADD_EPARAMETERS__LIST);
+		createEOperation(eOperationConfigEClass, EOPERATION_CONFIG___GET_ID);
+		createEOperation(eOperationConfigEClass, EOPERATION_CONFIG___JOIN_ID__EOPERATION);
+
+		eParameterConfigEClass = createEClass(EPARAMETER_CONFIG);
+		createEReference(eParameterConfigEClass, EPARAMETER_CONFIG__TARGET_EPARAMETER);
+		createEOperation(eParameterConfigEClass, EPARAMETER_CONFIG___GET_TARGET);
 
 		listEClass = createEClass(LIST);
 	}
@@ -1241,10 +1436,13 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		ieDataTypeConfigEClass.getESuperTypes().add(this.getIEClassifierConfig());
 		ieEnumConfigEClass.getESuperTypes().add(this.getIEDataTypeConfig());
 		ieClassConfigEClass.getESuperTypes().add(this.getIEClassifierConfig());
-		ieStructuralFeatureConfigEClass.getESuperTypes().add(this.getIENamedElementConfig());
-		ieStructuralFeatureConfigEClass.getESuperTypes().add(this.getIDefaultValueConfig());
+		ieTypedElementConfigEClass.getESuperTypes().add(this.getIENamedElementConfig());
+		ieTypedElementConfigEClass.getESuperTypes().add(this.getIDefaultValueConfig());
+		ieStructuralFeatureConfigEClass.getESuperTypes().add(this.getIETypedElementConfig());
 		ieAttributeConfigEClass.getESuperTypes().add(this.getIEStructuralFeatureConfig());
 		ieReferenceConfigEClass.getESuperTypes().add(this.getIEStructuralFeatureConfig());
+		ieOperationConfigEClass.getESuperTypes().add(this.getIETypedElementConfig());
+		ieParameterConfigEClass.getESuperTypes().add(this.getIETypedElementConfig());
 		iePackageConfigEClass.getESuperTypes().add(this.getIENamedElementConfig());
 		ieEnumLiteralConfigEClass.getESuperTypes().add(this.getIENamedElementConfig());
 		ecoreDocGeneratorConfigEClass.getESuperTypes().add(this.getIEPackageConfig());
@@ -1253,12 +1451,16 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		ecoreDocGeneratorConfigEClass.getESuperTypes().add(this.getIEClassConfig());
 		ecoreDocGeneratorConfigEClass.getESuperTypes().add(this.getIEAttributeConfig());
 		ecoreDocGeneratorConfigEClass.getESuperTypes().add(this.getIEReferenceConfig());
+		ecoreDocGeneratorConfigEClass.getESuperTypes().add(this.getIEOperationConfig());
+		ecoreDocGeneratorConfigEClass.getESuperTypes().add(this.getIEParameterConfig());
 		ePackageConfigEClass.getESuperTypes().add(this.getIEPackageConfig());
 		ePackageConfigEClass.getESuperTypes().add(this.getIEEnumConfig());
 		ePackageConfigEClass.getESuperTypes().add(this.getIEEnumLiteralConfig());
 		ePackageConfigEClass.getESuperTypes().add(this.getIEClassConfig());
 		ePackageConfigEClass.getESuperTypes().add(this.getIEAttributeConfig());
 		ePackageConfigEClass.getESuperTypes().add(this.getIEReferenceConfig());
+		ePackageConfigEClass.getESuperTypes().add(this.getIEOperationConfig());
+		ePackageConfigEClass.getESuperTypes().add(this.getIEParameterConfig());
 		eDataTypeConfigEClass.getESuperTypes().add(this.getIEDataTypeConfig());
 		eEnumConfigEClass.getESuperTypes().add(this.getIEEnumConfig());
 		eEnumConfigEClass.getESuperTypes().add(this.getIEEnumLiteralConfig());
@@ -1266,10 +1468,14 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		eClassConfigEClass.getESuperTypes().add(this.getIEClassConfig());
 		eClassConfigEClass.getESuperTypes().add(this.getIEAttributeConfig());
 		eClassConfigEClass.getESuperTypes().add(this.getIEReferenceConfig());
+		eClassConfigEClass.getESuperTypes().add(this.getIEOperationConfig());
+		eClassConfigEClass.getESuperTypes().add(this.getIEParameterConfig());
 		eAttributeConfigEClass.getESuperTypes().add(this.getIEAttributeConfig());
 		aeReferenceConfigEClass.getESuperTypes().add(this.getIEReferenceConfig());
 		eContainmentConfigEClass.getESuperTypes().add(this.getAEReferenceConfig());
 		eReferenceConfigEClass.getESuperTypes().add(this.getAEReferenceConfig());
+		eOperationConfigEClass.getESuperTypes().add(this.getAEReferenceConfig());
+		eParameterConfigEClass.getESuperTypes().add(this.getAEReferenceConfig());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(ieNamedElementConfigEClass, IENamedElementConfig.class, "IENamedElementConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1305,14 +1511,20 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 
 		initEOperation(getIEClassConfig__ShouldRenderSuperTypes(), theEcorePackage.getEBoolean(), "shouldRenderSuperTypes", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(ieStructuralFeatureConfigEClass, IEStructuralFeatureConfig.class, "IEStructuralFeatureConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIEStructuralFeatureConfig_RenderBounds(), theEcorePackage.getEBoolean(), "renderBounds", null, 0, 1, IEStructuralFeatureConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(ieTypedElementConfigEClass, IETypedElementConfig.class, "IETypedElementConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIETypedElementConfig_RenderBounds(), theEcorePackage.getEBoolean(), "renderBounds", null, 0, 1, IETypedElementConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getIEStructuralFeatureConfig__ShouldRenderBounds(), theEcorePackage.getEBoolean(), "shouldRenderBounds", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIETypedElementConfig__ShouldRenderBounds(), theEcorePackage.getEBoolean(), "shouldRenderBounds", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(ieStructuralFeatureConfigEClass, IEStructuralFeatureConfig.class, "IEStructuralFeatureConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(ieAttributeConfigEClass, IEAttributeConfig.class, "IEAttributeConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(ieReferenceConfigEClass, IEReferenceConfig.class, "IEReferenceConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(ieOperationConfigEClass, IEOperationConfig.class, "IEOperationConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(ieParameterConfigEClass, IEParameterConfig.class, "IEParameterConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(iePackageConfigEClass, IEPackageConfig.class, "IEPackageConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIEPackageConfig_PositionEDataTypes(), theEcorePackage.getEInt(), "positionEDataTypes", null, 0, 1, IEPackageConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1415,6 +1627,7 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		initEReference(getEClassConfig_EAttributes(), this.getEAttributeConfig(), null, "eAttributes", null, 0, -1, EClassConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEClassConfig_EContainments(), this.getEContainmentConfig(), null, "eContainments", null, 0, -1, EClassConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEClassConfig_EReferences(), this.getEReferenceConfig(), null, "eReferences", null, 0, -1, EClassConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEClassConfig_EOperations(), this.getEOperationConfig(), null, "eOperations", null, 0, -1, EClassConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getEClassConfig__GetTarget(), theEcorePackage.getENamedElement(), "getTarget", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -1436,6 +1649,12 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "eReferenceConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
+		op = initEOperation(getEClassConfig__AddEOperations__List(), null, "addEOperations", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getList());
+		g2 = createEGenericType(this.getEOperationConfig());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "eOperationConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(eAttributeConfigEClass, EAttributeConfig.class, "EAttributeConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEAttributeConfig_TargetEAttribute(), theEcorePackage.getEAttribute(), null, "targetEAttribute", null, 0, 1, EAttributeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1452,6 +1671,28 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		initEReference(getEReferenceConfig_TargetEReference(), theEcorePackage.getEReference(), null, "targetEReference", null, 0, 1, EReferenceConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getEReferenceConfig__GetTarget(), theEcorePackage.getENamedElement(), "getTarget", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(eOperationConfigEClass, EOperationConfig.class, "EOperationConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEOperationConfig_TargetEOperation(), theEcorePackage.getEOperation(), null, "targetEOperation", null, 0, 1, EOperationConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEOperationConfig_EParameters(), this.getEParameterConfig(), null, "eParameters", null, 0, -1, EOperationConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getEOperationConfig__GetTarget(), theEcorePackage.getENamedElement(), "getTarget", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getEOperationConfig__AddEParameters__List(), null, "addEParameters", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getList());
+		g2 = createEGenericType(this.getEParameterConfig());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "eParameterConfig", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getEOperationConfig__GetId(), theEcorePackage.getEString(), "getId", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getEOperationConfig__JoinId__EOperation(), theEcorePackage.getEString(), "joinId", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEOperation(), "eOperation", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(eParameterConfigEClass, EParameterConfig.class, "EParameterConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEParameterConfig_TargetEParameter(), theEcorePackage.getEParameter(), null, "targetEParameter", null, 0, 1, EParameterConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getEParameterConfig__GetTarget(), theEcorePackage.getENamedElement(), "getTarget", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(listEClass, List.class, "List", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 

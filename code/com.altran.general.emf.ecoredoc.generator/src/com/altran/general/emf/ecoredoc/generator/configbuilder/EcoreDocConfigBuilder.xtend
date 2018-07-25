@@ -4,16 +4,19 @@ import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigFactory
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig
-import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension
+import com.altran.general.emf.ecoredoc.generator.impl.^extension.EcoreDocExtension
 import java.util.Collection
 import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.ecore.EEnum
 import org.eclipse.emf.ecore.EEnumLiteral
+import org.eclipse.emf.ecore.EOperation
 import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EParameter
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.emf.ecore.EcorePackage
 
 /**
  * Builds a fully populated config hierarchy for all input {@link EPackage}s.
@@ -91,6 +94,10 @@ class EcoreDocConfigBuilder {
 			eClass.EAllReferences.filter[!isContainment].forEach[eReference |
 				EReferences += eReference.createReferenceConfig
 			]
+			
+			eClass.EAllOperations.reject[EcorePackage::Literals::EOBJECT == eContainer].forEach[eOperation |
+				EOperations += eOperation.createConfig
+			]
 		])
 	}
 	
@@ -109,6 +116,22 @@ class EcoreDocConfigBuilder {
 	def createReferenceConfig(EReference eReference) {
 		parseAnnotations(createEReferenceConfig => [
 			targetEReference = eReference
+		])
+	}
+	
+	def createConfig(EOperation eOperation) {
+		parseAnnotations(createEOperationConfig => [
+			targetEOperation = eOperation
+			
+			eOperation.EParameters.forEach[eParameter |
+				EParameters += eParameter.createConfig
+			]
+		])
+	}
+	
+	def createConfig(EParameter eParameter) {
+		parseAnnotations(createEParameterConfig => [
+			targetEParameter = eParameter
 		])
 	}
 	

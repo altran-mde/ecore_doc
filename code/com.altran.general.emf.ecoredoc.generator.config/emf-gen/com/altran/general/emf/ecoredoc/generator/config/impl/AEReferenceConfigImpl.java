@@ -6,7 +6,7 @@ import com.altran.general.emf.ecoredoc.generator.config.AEReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
-import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IETypedElementConfig;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -323,7 +323,7 @@ public abstract class AEReferenceConfigImpl extends MinimalEObjectImpl.Container
 			}
 			else {
 				EObject _eContainer = this.eContainer();
-				_xifexpression_1 = ((IEStructuralFeatureConfig) _eContainer).shouldRenderBounds();
+				_xifexpression_1 = ((IETypedElementConfig) _eContainer).shouldRenderBounds();
 			}
 			_xifexpression = _xifexpression_1;
 		}

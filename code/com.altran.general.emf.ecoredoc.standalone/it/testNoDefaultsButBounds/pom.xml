@@ -6,14 +6,14 @@
 
 	<groupId>com.altran.general.emf.ecoredoc.standalone-test</groupId>
 	<artifactId>ecoredoc-standalone-test</artifactId>
-	<version>0.7.0-SNAPSHOT</version>
+	<version>0.8.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Test EcoreDoc Standalone</name>
 
 	<parent>
 		<groupId>com.altran.general.emf.ecoredoc.standalone-test</groupId>
 		<artifactId>com.altran.general.emf.ecoredoc.standalone-test.parent</artifactId>
-		<version>0.7.0-SNAPSHOT</version>
+		<version>0.8.0-SNAPSHOT</version>
 	</parent>
 
 	<build>

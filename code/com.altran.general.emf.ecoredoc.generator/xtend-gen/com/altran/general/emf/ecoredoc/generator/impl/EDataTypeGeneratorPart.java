@@ -5,8 +5,9 @@ import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.configbuilder.EDataTypeConfigPair;
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorEDataTypePart;
-import com.altran.general.emf.ecoredoc.generator.impl.EcoreDocExtension;
+import com.altran.general.emf.ecoredoc.generator.impl.extension.EcoreDocExtension;
 import com.google.common.collect.Multimap;
+import com.google.inject.Injector;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -21,8 +22,8 @@ import org.eclipse.xtext.xbase.lib.MapExtensions;
 
 @SuppressWarnings("all")
 public class EDataTypeGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
-  public EDataTypeGeneratorPart(final EcoreDocGeneratorConfig config, final Multimap<EPackage, EClassifier> ePackages) {
-    super(config, ePackages);
+  public EDataTypeGeneratorPart(final EcoreDocGeneratorConfig config, final Multimap<EPackage, EClassifier> ePackages, final Injector xcoreInjector) {
+    super(config, ePackages, xcoreInjector);
   }
   
   @Override
@@ -77,7 +78,7 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
     _builder.append(_newline);
     _builder.newLineIfNotEmpty();
     _builder.append("[[");
-    CharSequence _concatAnchor = this._ecoreDocExtension.concatAnchor(eDataType);
+    CharSequence _concatAnchor = this._anchorExtension.concatAnchor(eDataType);
     _builder.append(_concatAnchor);
     _builder.append("]]");
     _builder.newLineIfNotEmpty();

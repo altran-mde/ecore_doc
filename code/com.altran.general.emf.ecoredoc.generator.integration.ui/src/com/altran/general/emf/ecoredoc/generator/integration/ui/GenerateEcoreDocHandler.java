@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xcore.ui.internal.XcoreActivator;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -30,20 +31,20 @@ import com.google.common.collect.Sets;
 public class GenerateEcoreDocHandler extends AbstractHandler {
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
-		
+
 		final ISelection selection = HandlerUtil.getCurrentSelection(event);
-		
+
 		if (selection instanceof IStructuredSelection) {
 			final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 			@SuppressWarnings("unchecked")
 			final Iterator<Object> elements = structuredSelection.iterator();
-			
+
 			final ResourceSet resourceSet = new ResourceSetImpl();
 			resourceSet.getURIConverter().getURIMap().putAll(EcorePlugin.computePlatformURIMap(true));
-
+			
 			IFile firstFile = null;
 			final Set<EClassifier> eClassifiers = Sets.newLinkedHashSet();
-			
+
 			while (elements.hasNext()) {
 				final Object element = elements.next();
 				if (element instanceof IFile) {
@@ -53,18 +54,21 @@ public class GenerateEcoreDocHandler extends AbstractHandler {
 					}
 					final String fileName = file.getFullPath().toPortableString();
 					final URI uri = URI.createURI(fileName);
-					
+
 					final Resource resource = resourceSet.getResource(uri, true);
 					eClassifiers.addAll(Sets.newHashSet(
 							Iterators.filter(EcoreUtil.getAllContents(resource, false), EClassifier.class)));
 				}
 			}
-			
+
 			if (firstFile != null && !eClassifiers.isEmpty()) {
 				final EcoreDocGenerator generator = new EcoreDocGenerator(eClassifiers);
-				
+
+				generator.setXcoreInjector(
+						XcoreActivator.getInstance().getInjector(XcoreActivator.ORG_ECLIPSE_EMF_ECORE_XCORE_XCORE));
+
 				final CharSequence text = generator.generate();
-				
+
 				final IFile outputFile = firstFile.getParent().getFile(new Path(firstFile.getName() + ".adoc"));
 				try {
 					outputFile.create(new CharSequenceInputStream(text, "utf-8"), true, null);
@@ -75,7 +79,7 @@ public class GenerateEcoreDocHandler extends AbstractHandler {
 				}
 			}
 		}
-		
+
 		return null;
 	}
 }

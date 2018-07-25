@@ -3,8 +3,8 @@
 package com.altran.general.emf.ecoredoc.generator.config.impl;
 
 import com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig;
-
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
+
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.emf.common.notify.Notification;

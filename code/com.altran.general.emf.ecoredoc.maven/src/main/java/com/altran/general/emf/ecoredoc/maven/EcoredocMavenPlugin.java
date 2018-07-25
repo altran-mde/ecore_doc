@@ -22,6 +22,7 @@ import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigFactory;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.util.EcoreDocUtils;
 import com.altran.general.emf.ecoredoc.util.EcoreMerger;
+import com.google.inject.Injector;
 
 /**
  * Creates JavaDoc-like documents for Ecore metamodels in AsciiDoctor format.
@@ -40,7 +41,7 @@ public class EcoredocMavenPlugin extends AbstractMojo {
 	 */
 	@Parameter(property = "inputFiles", required = true)
 	private Set<File> inputFiles;
-
+	
 	/**
 	 * The output file to write the documentation to.
 	 *
@@ -55,45 +56,47 @@ public class EcoredocMavenPlugin extends AbstractMojo {
 	 */
 	@Parameter(property = "outputFile", required = true)
 	private File outputFile;
-
+	
 	/**
 	 * Whether we should explicitly resolve all EMF proxies.
 	 */
 	@Parameter
 	private boolean resolve = false;
-
+	
 	/**
 	 * Detailed configuration of the generated documentation.
 	 */
 	@Parameter(property = "config")
 	private EcoreDocGeneratorConfig config = EcoreDocConfigFactory.eINSTANCE.createEcoreDocGeneratorConfig();
-
+	
+	private Injector xcoreInjector;
+	
 	@Override
 	public void execute() throws MojoExecutionException {
 		if (!checkParameters()) {
 			return;
 		}
-
+		
 		EcoreDocUtils.getInstance().setupEcoreStandalone();
-		EcoreDocUtils.getInstance().setupXcoreStandalone();
-
+		this.xcoreInjector = EcoreDocUtils.getInstance().setupXcoreStandalone();
+		
 		final ResourceSetImpl resourceSet = EcoreDocUtils.getInstance().createResourceSet();
-
+		
 		try {
 			EcoreDocUtils.getInstance().loadInputModels(resourceSet, this.inputFiles);
 		} catch (final IOException e) {
 			throw new MojoExecutionException("Exception while loading input models", e);
 		}
-
+		
 		EcoreDocUtils.getInstance().resolve(resourceSet, this.resolve);
-
+		
 		final Set<EClassifier> classifiers = EcoreDocUtils.getInstance().collectInput(resourceSet, this.inputFiles);
-
+		
 		final CharSequence result = generate(classifiers);
-
+		
 		writeOutput(result);
 	}
-
+	
 	private boolean checkParameters() throws MojoExecutionException {
 		if (this.outputFile == null) {
 			throw new MojoExecutionException("outputFile not set.");
@@ -108,7 +111,7 @@ public class EcoredocMavenPlugin extends AbstractMojo {
 				}
 			}
 		}
-
+		
 		if (this.inputFiles == null || this.inputFiles.isEmpty()) {
 			getLog().warn("inputFiles is empty, will not create any output.");
 			return false;
@@ -130,10 +133,10 @@ public class EcoredocMavenPlugin extends AbstractMojo {
 				}
 			}
 		}
-
+		
 		return true;
 	}
-
+	
 	private void writeOutput(final CharSequence result) throws MojoExecutionException {
 		try (final FileWriter outputWriter = new FileWriter(this.outputFile)) {
 			outputWriter.append(result);
@@ -141,24 +144,25 @@ public class EcoredocMavenPlugin extends AbstractMojo {
 			throw new MojoExecutionException("Error creating output file '" + this.outputFile + "'", e);
 		}
 	}
-
+	
 	private CharSequence generate(final Set<EClassifier> classifiers) {
 		final EcoreDocGenerator generator = new EcoreDocGenerator(classifiers);
-
+		generator.setXcoreInjector(this.xcoreInjector);
+		
 		new EcoreMerger<EcoreDocGeneratorConfig>(generator.getConfig())
 		.merge(resolveConfig(classifiers.stream().map(c -> c.getEPackage()).collect(Collectors.toSet())));
-
+		
 		final CharSequence result = generator.generate();
 		return result;
 	}
-
+	
 	private EcoreDocGeneratorConfig resolveConfig(final Collection<EPackage> ePackages) {
-
+		
 		final EcoreLookupHelper lookupHelper = EcoreLookupHelper.createDefault().addPackages(ePackages);
 		final EcoreLazyResolver lazyResolver = new EcoreLazyResolver(lookupHelper);
 		lazyResolver.resolveAll(this.config);
-
+		
 		return this.config;
 	}
-
+	
 }

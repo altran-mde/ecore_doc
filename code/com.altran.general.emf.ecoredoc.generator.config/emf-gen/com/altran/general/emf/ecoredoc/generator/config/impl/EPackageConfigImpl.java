@@ -15,16 +15,20 @@ import com.altran.general.emf.ecoredoc.generator.config.IEDataTypeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEEnumConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEEnumLiteralConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IEOperationConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEPackageConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IEParameterConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEStructuralFeatureConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IETypedElementConfig;
 
 import com.google.common.collect.Iterables;
+
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
-
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -1035,7 +1039,7 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 			}
 			else {
 				EObject _eContainer = this.eContainer();
-				_xifexpression_1 = ((IEStructuralFeatureConfig) _eContainer).shouldRenderBounds();
+				_xifexpression_1 = ((IETypedElementConfig) _eContainer).shouldRenderBounds();
 			}
 			_xifexpression = _xifexpression_1;
 		}
@@ -1461,9 +1465,14 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				default: return -1;
 			}
 		}
+		if (baseClass == IETypedElementConfig.class) {
+			switch (derivedFeatureID) {
+				case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS: return EcoreDocConfigPackage.IE_TYPED_ELEMENT_CONFIG__RENDER_BOUNDS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (derivedFeatureID) {
-				case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS: return EcoreDocConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -1473,6 +1482,16 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 			}
 		}
 		if (baseClass == IEReferenceConfig.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEOperationConfig.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEParameterConfig.class) {
 			switch (derivedFeatureID) {
 				default: return -1;
 			}
@@ -1522,9 +1541,14 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				default: return -1;
 			}
 		}
+		if (baseClass == IETypedElementConfig.class) {
+			switch (baseFeatureID) {
+				case EcoreDocConfigPackage.IE_TYPED_ELEMENT_CONFIG__RENDER_BOUNDS: return EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (baseFeatureID) {
-				case EcoreDocConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG__RENDER_BOUNDS: return EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -1534,6 +1558,16 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 			}
 		}
 		if (baseClass == IEReferenceConfig.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEOperationConfig.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEParameterConfig.class) {
 			switch (baseFeatureID) {
 				default: return -1;
 			}
@@ -1583,9 +1617,14 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				default: return -1;
 			}
 		}
+		if (baseClass == IETypedElementConfig.class) {
+			switch (baseOperationID) {
+				case EcoreDocConfigPackage.IE_TYPED_ELEMENT_CONFIG___SHOULD_RENDER_BOUNDS: return EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_BOUNDS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IEStructuralFeatureConfig.class) {
 			switch (baseOperationID) {
-				case EcoreDocConfigPackage.IE_STRUCTURAL_FEATURE_CONFIG___SHOULD_RENDER_BOUNDS: return EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_BOUNDS;
 				default: return -1;
 			}
 		}
@@ -1595,6 +1634,16 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 			}
 		}
 		if (baseClass == IEReferenceConfig.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEOperationConfig.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IEParameterConfig.class) {
 			switch (baseOperationID) {
 				default: return -1;
 			}

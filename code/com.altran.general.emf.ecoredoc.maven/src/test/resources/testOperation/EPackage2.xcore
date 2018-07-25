@@ -1,0 +1,108 @@
+/*
+ * Package2 documentation 
+ */
+@GenModel(
+	updateClasspath="false",
+	bundleManifest="false"
+)
+package EPackage2
+
+import org.eclipse.emf.ecore.ENamedElement
+
+import EPackage1.EClass1
+import EPackage1.IFace
+
+annotation "http://www.eclipse.org/emf/2002/GenModel" as GenModel
+
+/*
+ * This is
+ * 
+ * my doc
+ */
+class SomeClass extends EPackage1.EClass1, EPackage1.Iface {
+}
+
+class Class3 {
+	double attr = "2.71"
+	
+		
+	/*
+	 * Op Desc
+	 */
+	@GenModel(
+		body="return Objects::nonNull;"
+	)
+	op ENamedElement[2..5] doSomething(
+		/*
+		 * i desc
+		 */
+		int[] i, 
+		/*
+		 * something deschkriptschion
+		 */
+		SomeClass something
+	) throws 
+	/*
+	 * Enn Pee Eeee
+	 */
+	Npe, 
+	Npe,
+	Re
+	
+}
+
+type Npe wraps NullPointerException
+type Re wraps RuntimeException
+
+interface IFace1 {
+	op void doIt()
+	
+	op void doIt(int i)
+}
+
+interface IFace2 {
+	op void doIt()
+}
+
+abstract class AImplementer extends IFace1, IFace2 {
+	op void doIt() {
+		println("Hello, World!")
+	}
+}
+
+interface IFace3 extends IFace1, IFace2 {
+	
+}
+
+class Implementer extends AImplementer, IFace3 {
+	
+}
+
+interface If1 {
+	op Class3[1..8] getChildren()
+}
+
+interface If2 {
+	op SomeClass getSome()
+	op void setSome(SomeClass[1] someClass)
+}
+
+class Cls3 extends If1, If2 {
+	contains Class3[] children
+	
+	refers SomeClass[1] some
+}
+
+class Cl4 {
+	refers If1 iface
+}
+
+class Cl4b extends Cl4 {
+	op Cls3 getIface() {
+		super.iface as Cls3
+	}
+	
+	op void setIface(Cls3 iface) {
+		super.iface = iface
+	}
+}

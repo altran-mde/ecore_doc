@@ -739,6 +739,16 @@ The latter one contains, among others, the <code>EAttribute</code> named <code>s
         <span class="tok-nt">&lt;groupId&gt;</span>com.altran.general.emf.ecoredoc<span class="tok-nt">&lt;/groupId&gt;</span>
         <span class="tok-nt">&lt;artifactId&gt;</span>ecoredoc-maven-plugin<span class="tok-nt">&lt;/artifactId&gt;</span>
 
+        <span class="tok-c">&lt;!-- make sure EcoreDoc is actually executed --&gt;</span>
+        <span class="tok-nt">&lt;executions&gt;</span>
+          <span class="tok-nt">&lt;execution&gt;</span>
+            <span class="tok-nt">&lt;phase&gt;</span>test<span class="tok-nt">&lt;/phase&gt;</span>
+            <span class="tok-nt">&lt;goals&gt;</span>
+              <span class="tok-nt">&lt;goal&gt;</span>ecoredoc<span class="tok-nt">&lt;/goal&gt;</span>
+            <span class="tok-nt">&lt;/goals&gt;</span>
+          <span class="tok-nt">&lt;/execution&gt;</span>
+        <span class="tok-nt">&lt;/executions&gt;</span>
+
         <span class="tok-nt">&lt;configuration&gt;</span>
           <span class="tok-nt">&lt;resolve&gt;</span>true<span class="tok-nt">&lt;/resolve&gt;</span>
 
@@ -794,7 +804,7 @@ The latter one contains, among others, the <code>EAttribute</code> named <code>s
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#config-IDefaultValueConfig-renderDefaults">renderDefaults</a> for all contents: <code>true</code></p>
+<p><a href="#config-IDefaultValueConfig-renderDefaults">renderDefaults</a> for all contents: <code>false</code></p>
 </li>
 <li>
 <p><a href="#config-EcoreDocGeneratorConfig-documentTitle">documentTitle</a>: <code>This is the title of my document</code></p>
@@ -3904,7 +3914,7 @@ Eclipse Tycho
 <div id="footer">
 <div id="footer-text">
 Version 0.9.0-SNAPSHOT<br>
-Last updated 2018-07-25 09:33:00 DST
+Last updated 2018-08-03 16:31:40 DST
 </div>
 </div>
 </body>

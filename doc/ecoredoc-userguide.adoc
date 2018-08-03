@@ -139,6 +139,16 @@ The latter one contains, among others, the `EAttribute` named `specialNumber`. +
 				<groupId>com.altran.general.emf.ecoredoc</groupId>
 				<artifactId>ecoredoc-maven-plugin</artifactId>
 
+				<!-- make sure EcoreDoc is actually executed -->
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>ecoredoc</goal>
+						</goals>
+					</execution>
+				</executions>
+
 				<configuration>
 					<resolve>true</resolve>
 
@@ -190,7 +200,7 @@ The latter one contains, among others, the `EAttribute` named `specialNumber`. +
 +
 This example sets the following configuration:
 +
-* <<config-IDefaultValueConfig-renderDefaults, renderDefaults>> for all contents: `true`
+* <<config-IDefaultValueConfig-renderDefaults, renderDefaults>> for all contents: `false`
 * <<config-EcoreDocGeneratorConfig-documentTitle, documentTitle>>: `This is the title of my document`
 * <<config-IEClassConfig-repeatInherited, repeatInherited>> for _MyEClass_: `false`
 * <<config-IENamedElementConfig-render, render>> for _specialNumber_: `false`

@@ -139,6 +139,16 @@ The latter one contains, among others, the `EAttribute` named `specialNumber`. +
 				<groupId>com.altran.general.emf.ecoredoc</groupId>
 				<artifactId>ecoredoc-maven-plugin</artifactId>
 
+				<!-- make sure EcoreDoc is actually executed -->
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>ecoredoc</goal>
+						</goals>
+					</execution>
+				</executions>
+
 				<configuration>
 					<resolve>true</resolve>
 

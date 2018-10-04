@@ -1,0 +1,18 @@
+image: registry.manatree.io/rvanduijnhoven/maven-python-dockerimage
+
+before_script:
+  - chmod -R +x ./scripts
+
+stages:
+  - build
+
+Build maven projects:
+  stage: build
+  tags:
+    - linux_docker
+  script:
+    - ./scripts/build.py
+  artifacts:
+    when: always
+    paths:
+      - "code/**/target/*.jar"

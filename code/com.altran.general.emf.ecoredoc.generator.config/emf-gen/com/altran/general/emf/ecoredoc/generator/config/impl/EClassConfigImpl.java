@@ -1344,7 +1344,7 @@ public class EClassConfigImpl extends MinimalEObjectImpl.Container implements EC
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (render: ");
 		if (renderESet) result.append(render); else result.append("<unset>");
 		result.append(", renderDefaults: ");

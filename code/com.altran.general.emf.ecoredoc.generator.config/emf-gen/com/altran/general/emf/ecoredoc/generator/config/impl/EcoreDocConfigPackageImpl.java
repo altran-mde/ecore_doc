@@ -267,7 +267,7 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link EcoreDocConfigPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -281,7 +281,8 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		if (isInited) return (EcoreDocConfigPackage)EPackage.Registry.INSTANCE.getEPackage(EcoreDocConfigPackage.eNS_URI);
 
 		// Obtain or create and register package
-		EcoreDocConfigPackageImpl theEcoreDocConfigPackage = (EcoreDocConfigPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof EcoreDocConfigPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new EcoreDocConfigPackageImpl());
+		Object registeredEcoreDocConfigPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		EcoreDocConfigPackageImpl theEcoreDocConfigPackage = registeredEcoreDocConfigPackage instanceof EcoreDocConfigPackageImpl ? (EcoreDocConfigPackageImpl)registeredEcoreDocConfigPackage : new EcoreDocConfigPackageImpl();
 
 		isInited = true;
 
@@ -297,7 +298,6 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		// Mark meta-data to indicate it can't be changed
 		theEcoreDocConfigPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(EcoreDocConfigPackage.eNS_URI, theEcoreDocConfigPackage);
 		return theEcoreDocConfigPackage;
@@ -1713,14 +1713,14 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	protected void createXcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2011/Xcore";	
+		String source = "http://www.eclipse.org/emf/2011/Xcore";
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "Ecore", "http://www.eclipse.org/emf/2002/Ecore",
-			 "GenModel", "http://www.eclipse.org/emf/2002/GenModel",
-			 "EcoreDoc", "http://altran.com/general/emf/ecoredoc/generator/config/0.1"
+			   "Ecore", "http://www.eclipse.org/emf/2002/Ecore",
+			   "GenModel", "http://www.eclipse.org/emf/2002/GenModel",
+			   "EcoreDoc", "http://altran.com/general/emf/ecoredoc/generator/config/0.1"
 		   });
 	}
 
@@ -1731,18 +1731,18 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	protected void create_0Annotations() {
-		String source = "http://altran.com/general/emf/ecoredoc/generator/config/0.1";	
+		String source = "http://altran.com/general/emf/ecoredoc/generator/config/0.1";
 		addAnnotation
-		  (getIENamedElementConfig_Id(), 
-		   source, 
+		  (getIENamedElementConfig_Id(),
+		   source,
 		   new String[] {
-			 "render", "false"
-		   });	
+			   "render", "false"
+		   });
 		addAnnotation
-		  (listEClass, 
-		   source, 
+		  (listEClass,
+		   source,
 		   new String[] {
-			 "render", "false"
+			   "render", "false"
 		   });
 	}
 

@@ -123,7 +123,6 @@ public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IERefere
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getTargetEClass();'"
 	 * @generated
 	 */
 	ENamedElement getTarget();
@@ -135,7 +134,6 @@ public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IERefere
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 * <!-- end-model-doc -->
 	 * @model eAttributeConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig&gt;" eAttributeConfigUnique="false" eAttributeConfigMany="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig%&gt;&gt; _eAttributes = this.getEAttributes();\n&lt;%com.google.common.collect.Iterables%&gt;.&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EAttributeConfig%&gt;&gt;addAll(_eAttributes, eAttributeConfig);'"
 	 * @generated
 	 */
 	void addEAttributes(List<EAttributeConfig> eAttributeConfig);
@@ -147,7 +145,6 @@ public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IERefere
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 * <!-- end-model-doc -->
 	 * @model eContainmentConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig&gt;" eContainmentConfigUnique="false" eContainmentConfigMany="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig%&gt;&gt; _eContainments = this.getEContainments();\n&lt;%com.google.common.collect.Iterables%&gt;.&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EContainmentConfig%&gt;&gt;addAll(_eContainments, eContainmentConfig);'"
 	 * @generated
 	 */
 	void addEContainments(List<EContainmentConfig> eContainmentConfig);
@@ -159,7 +156,6 @@ public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IERefere
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 * <!-- end-model-doc -->
 	 * @model eReferenceConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig&gt;" eReferenceConfigUnique="false" eReferenceConfigMany="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig%&gt;&gt; _eReferences = this.getEReferences();\n&lt;%com.google.common.collect.Iterables%&gt;.&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig%&gt;&gt;addAll(_eReferences, eReferenceConfig);'"
 	 * @generated
 	 */
 	void addEReferences(List<EReferenceConfig> eReferenceConfig);
@@ -171,7 +167,6 @@ public interface EClassConfig extends IEClassConfig, IEAttributeConfig, IERefere
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 * <!-- end-model-doc -->
 	 * @model eOperationConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EOperationConfig&gt;" eOperationConfigUnique="false" eOperationConfigMany="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EOperationConfig%&gt;&gt; _eOperations = this.getEOperations();\n&lt;%com.google.common.collect.Iterables%&gt;.&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EOperationConfig%&gt;&gt;addAll(_eOperations, eOperationConfig);'"
 	 * @generated
 	 */
 	void addEOperations(List<EOperationConfig> eOperationConfig);

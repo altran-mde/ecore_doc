@@ -72,7 +72,6 @@ public interface EOperationConfig extends AEReferenceConfig {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getTargetEOperation();'"
 	 * @generated
 	 */
 	ENamedElement getTarget();
@@ -84,7 +83,6 @@ public interface EOperationConfig extends AEReferenceConfig {
 	 * Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
 	 * <!-- end-model-doc -->
 	 * @model eParameterConfigType="com.altran.general.emf.ecoredoc.generator.config.List&lt;com.altran.general.emf.ecoredoc.generator.config.EParameterConfig&gt;" eParameterConfigUnique="false" eParameterConfigMany="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EParameterConfig%&gt;&gt; _eParameters = this.getEParameters();\n&lt;%com.google.common.collect.Iterables%&gt;.&lt;&lt;%com.altran.general.emf.ecoredoc.generator.config.EParameterConfig%&gt;&gt;addAll(_eParameters, eParameterConfig);'"
 	 * @generated
 	 */
 	void addEParameters(List<EParameterConfig> eParameterConfig);
@@ -93,7 +91,6 @@ public interface EOperationConfig extends AEReferenceConfig {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.ecore.EOperation%&gt; _targetEOperation = this.getTargetEOperation();\n&lt;%java.lang.String%&gt; _joinId = null;\nif (_targetEOperation!=null)\n{\n\t_joinId=this.joinId(_targetEOperation);\n}\nreturn _joinId;'"
 	 * @generated
 	 */
 	String getId();
@@ -102,7 +99,6 @@ public interface EOperationConfig extends AEReferenceConfig {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false" eOperationUnique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _name = eOperation.getName();\nfinal &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%org.eclipse.emf.ecore.EParameter%&gt;, &lt;%java.lang.String%&gt;&gt; _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%&gt;&lt;&lt;%org.eclipse.emf.ecore.EParameter%&gt;, &lt;%java.lang.String%&gt;&gt;()\n{\n\tpublic &lt;%java.lang.String%&gt; apply(final &lt;%org.eclipse.emf.ecore.EParameter%&gt; it)\n\t{\n\t\t&lt;%org.eclipse.emf.ecore.EClassifier%&gt; _eType = it.getEType();\n\t\t&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = null;\n\t\tif (_eType!=null)\n\t\t{\n\t\t\t_eContainer=_eType.eContainer();\n\t\t}\n\t\t&lt;%java.lang.String%&gt; _name = null;\n\t\tif (((&lt;%org.eclipse.emf.ecore.ENamedElement%&gt;) _eContainer)!=null)\n\t\t{\n\t\t\t_name=((&lt;%org.eclipse.emf.ecore.ENamedElement%&gt;) _eContainer).getName();\n\t\t}\n\t\t&lt;%java.lang.String%&gt; _plus = (_name + \"_\");\n\t\t&lt;%org.eclipse.emf.ecore.EClassifier%&gt; _eType_1 = it.getEType();\n\t\t&lt;%java.lang.String%&gt; _name_1 = null;\n\t\tif (_eType_1!=null)\n\t\t{\n\t\t\t_name_1=_eType_1.getName();\n\t\t}\n\t\treturn (_plus + _name_1);\n\t}\n};\n&lt;%java.lang.String%&gt; _join = &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.join(&lt;%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%&gt;.&lt;&lt;%org.eclipse.emf.ecore.EParameter%&gt;, &lt;%java.lang.String%&gt;&gt;map(eOperation.getEParameters(), _function), \".\");\nreturn (_name + _join);'"
 	 * @generated
 	 */
 	String joinId(EOperation eOperation);

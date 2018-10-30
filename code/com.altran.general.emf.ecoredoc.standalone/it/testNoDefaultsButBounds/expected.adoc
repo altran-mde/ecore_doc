@@ -507,4 +507,4 @@ _EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
 |`[0..*]` +
 unordered
 |Description.
-|===
+|===]

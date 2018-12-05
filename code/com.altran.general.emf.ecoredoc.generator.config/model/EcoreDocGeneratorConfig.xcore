@@ -8,7 +8,9 @@
 	bundleManifest="false",
 	modelPluginID="",
 	modelPluginVariables="",
-	updateClasspath="false"
+	updateClasspath="false",
+	runtimeVersion="2.12",
+	complianceLevel="8.0"
 )
 package com.altran.general.emf.ecoredoc.generator.config
 

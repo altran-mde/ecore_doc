@@ -489,4 +489,4 @@ my doc
 _EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
 |unordered
 |Description.
-|===]
+|===

@@ -79,6 +79,7 @@ public interface IEClassifierConfig extends IENamedElementConfig, IDefaultValueC
 	 * Traverses the tree to find the most specific <tt>renderUseCases</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _xifexpression = false;\nboolean _isSetRenderUseCases = this.isSetRenderUseCases();\nif (_isSetRenderUseCases)\n{\n\t_xifexpression = this.isRenderUseCases();\n}\nelse\n{\n\t&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n\t_xifexpression = ((&lt;%com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig%&gt;) _eContainer).shouldRenderUseCases();\n}\nreturn _xifexpression;'"
 	 * @generated
 	 */
 	boolean shouldRenderUseCases();

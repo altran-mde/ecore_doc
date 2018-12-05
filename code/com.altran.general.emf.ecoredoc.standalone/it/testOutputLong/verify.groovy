@@ -1,16 +1,38 @@
-import org.apache.commons.io.FileUtils;
-import static org.junit.Assert.*;
+import org.apache.commons.io.FileUtils
+import org.apache.commons.lang3.StringUtils
+import static org.junit.Assert.*
 
-File notActualFile = new File(basedir, "EPackage1.ecore.adoc")
-assertFalse(notActualFile.exists());
+assertDoesntExist(new File(basedir, "EPackage1.ecore.adoc"))
 
-File actualFile = new File(basedir, "output.adoc");
-assertTrue(actualFile.isFile());
+assertContentEquals(
+	new File(basedir, "expected.adoc"),
+	new File(basedir, "output.adoc")
+)
 
-File expectedFile = new File(basedir, "expected.adoc");
-assertTrue(actualFile.isFile());
+// Utilities
 
-String actual = FileUtils.readFileToString(actualFile);
-String expected = FileUtils.readFileToString(expectedFile);
+def assertDoesntExist(File file) {
+	assertFalse("exists: " + file, file.exists())
+}
 
-assertEquals(expected, actual);
+def assertIsFile(File file) {
+	assertTrue("isFile: " + file, file.isFile())
+}
+
+def assertContentEquals(File expectedFile, File actualFile) {
+	assertIsFile(actualFile)
+	assertIsFile(expectedFile)
+
+	String expected = FileUtils.readFileToString(expectedFile)
+	String actual = FileUtils.readFileToString(actualFile)
+
+	assertEquals(normalizeNewline(expected), normalizeNewline(actual))
+}
+
+def normalizeNewline(String text) {
+	return StringUtils.replaceEach(
+		text, 
+		(String[]) ["\r\n", "\n\r", "\r"], 
+		(String[]) ["\n", "\n", "\n"]
+	)
+}

@@ -85,6 +85,7 @@ public interface IENamedElementConfig extends EObject {
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getIENamedElementConfig_Id()
 	 * @model unique="false" id="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='&lt;%org.eclipse.emf.ecore.ENamedElement%&gt; _target = this.getTarget();\n&lt;%java.lang.String%&gt; _name = null;\nif (_target!=null)\n{\n\t_name=_target.getName();\n}\nreturn _name;'"
 	 *        annotation="http://altran.com/general/emf/ecoredoc/generator/config/0.1 render='false'"
 	 * @generated
 	 */
@@ -97,6 +98,7 @@ public interface IENamedElementConfig extends EObject {
 	 * Traverses the tree to find the most specific <tt>render</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _xifexpression = false;\nboolean _isSetRender = this.isSetRender();\nif (_isSetRender)\n{\n\t_xifexpression = this.isRender();\n}\nelse\n{\n\t&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n\t_xifexpression = ((&lt;%com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig%&gt;) _eContainer).shouldRender();\n}\nreturn _xifexpression;'"
 	 * @generated
 	 */
 	boolean shouldRender();

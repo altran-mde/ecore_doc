@@ -86,7 +86,6 @@ public interface IDefaultValueConfig extends EObject {
 	 * Traverses the tree to find the most specific <tt>renderDefaults</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _xifexpression = false;\nboolean _isSetRenderDefaults = this.isSetRenderDefaults();\nif (_isSetRenderDefaults)\n{\n\t_xifexpression = this.isRenderDefaults();\n}\nelse\n{\n\t&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n\t_xifexpression = ((&lt;%com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig%&gt;) _eContainer).shouldRenderDefaults();\n}\nreturn _xifexpression;'"
 	 * @generated
 	 */
 	boolean shouldRenderDefaults();

@@ -458,8 +458,8 @@ public class EOperationGeneratorFragment extends AEClassMemberGeneratorFragment 
         final Function1<INode, String> _function = (INode it) -> {
           return it.getText();
         };
-        final String text = IterableExtensions.join(ListExtensions.<INode, String>map(NodeModelUtils.findNodesForFeature(xOp.getBody(), XbasePackage.Literals.XBLOCK_EXPRESSION__EXPRESSIONS), _function));
-        final String[] lines = StringUtils.split(text, EcoreDocExtension.newline());
+        final String text = this.normalizeNewline(IterableExtensions.join(ListExtensions.<INode, String>map(NodeModelUtils.findNodesForFeature(xOp.getBody(), XbasePackage.Literals.XBLOCK_EXPRESSION__EXPRESSIONS), _function)));
+        final String[] lines = StringUtils.split(text, "\n");
         int _size = ((List<String>)Conversions.doWrapArray(lines)).size();
         boolean _greaterThan = (_size > 1);
         if (_greaterThan) {
@@ -479,6 +479,12 @@ public class EOperationGeneratorFragment extends AEClassMemberGeneratorFragment 
       body.append(StringUtils.defaultString(EOperationGeneratorFragment.getBodyFromAnnotation(eOperation)).trim());
     }
     return language;
+  }
+  
+  private String normalizeNewline(final String text) {
+    return StringUtils.replaceEach(text, 
+      new String[] { "\r\n", "\n\r", "\r" }, 
+      new String[] { "\n", "\n", "\n" });
   }
   
   protected boolean hasRenderedOperations(final EClassConfig classConfig, final Collection<EOperationConfigPair> eOperations, final Collection<EOperationConfigPair> inheritedEOperations) {

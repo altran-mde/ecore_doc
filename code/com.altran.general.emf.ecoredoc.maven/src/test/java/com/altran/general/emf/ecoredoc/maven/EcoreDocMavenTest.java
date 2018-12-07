@@ -1,6 +1,5 @@
 package com.altran.general.emf.ecoredoc.maven;
 
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -10,6 +9,7 @@ import java.io.File;
 import java.lang.reflect.Field;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.plugin.testing.MojoRule;
 import org.eclipse.emf.common.util.EList;
 import org.junit.Ignore;
@@ -136,7 +136,7 @@ public class EcoreDocMavenTest {
 		final String expected = FileUtils.readFileToString(new File(expectedOutputPath));
 		final String actual = FileUtils.readFileToString(outputFile);
 
-		assertEquals(expected, actual);
+		assertEquals(normalizeNewline(expected), normalizeNewline(actual));
 	}
 
 	protected <T extends IENamedElementConfig> T findFirst(final EList<T> list, final String name) {
@@ -145,5 +145,12 @@ public class EcoreDocMavenTest {
 				.findAny()
 				.orElse(null);
 	}
-}
 
+	// FIXME: Move to Espilce Commons
+	private String normalizeNewline(final String text) {
+		return StringUtils.replaceEach(
+				text,
+				new String[] { "\r\n", "\n\r", "\r" },
+				new String[] { "\n", "\n", "\n" });
+	}
+}

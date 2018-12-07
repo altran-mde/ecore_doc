@@ -185,7 +185,6 @@ public interface IEPackageConfig extends IENamedElementConfig {
 	 * Traverses the tree to find the most specific <tt>positionEDataTypes</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='int _xifexpression = (int) 0;\nboolean _isSetPositionEDataTypes = this.isSetPositionEDataTypes();\nif (_isSetPositionEDataTypes)\n{\n\t_xifexpression = this.getPositionEDataTypes();\n}\nelse\n{\n\t&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n\t_xifexpression = ((&lt;%com.altran.general.emf.ecoredoc.generator.config.IEPackageConfig%&gt;) _eContainer).getEDataTypesPosition();\n}\nreturn _xifexpression;'"
 	 * @generated
 	 */
 	int getEDataTypesPosition();
@@ -197,7 +196,6 @@ public interface IEPackageConfig extends IENamedElementConfig {
 	 * Traverses the tree to find the most specific <tt>positionEEnums</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='int _xifexpression = (int) 0;\nboolean _isSetPositionEEnums = this.isSetPositionEEnums();\nif (_isSetPositionEEnums)\n{\n\t_xifexpression = this.getPositionEEnums();\n}\nelse\n{\n\t&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n\t_xifexpression = ((&lt;%com.altran.general.emf.ecoredoc.generator.config.IEPackageConfig%&gt;) _eContainer).getEEnumsPosition();\n}\nreturn _xifexpression;'"
 	 * @generated
 	 */
 	int getEEnumsPosition();
@@ -209,7 +207,6 @@ public interface IEPackageConfig extends IENamedElementConfig {
 	 * Traverses the tree to find the most specific <tt>positionEClasses</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='int _xifexpression = (int) 0;\nboolean _isSetPositionEClasses = this.isSetPositionEClasses();\nif (_isSetPositionEClasses)\n{\n\t_xifexpression = this.getPositionEClasses();\n}\nelse\n{\n\t&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n\t_xifexpression = ((&lt;%com.altran.general.emf.ecoredoc.generator.config.IEPackageConfig%&gt;) _eContainer).getEClassesPosition();\n}\nreturn _xifexpression;'"
 	 * @generated
 	 */
 	int getEClassesPosition();

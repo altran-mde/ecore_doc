@@ -194,7 +194,6 @@ public interface IEClassConfig extends IEClassifierConfig {
 	 * Traverses the tree to find the most specific <tt>repeatInherited</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _xifexpression = false;\nboolean _isSetRepeatInherited = this.isSetRepeatInherited();\nif (_isSetRepeatInherited)\n{\n\t_xifexpression = this.isRepeatInherited();\n}\nelse\n{\n\t&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n\t_xifexpression = ((&lt;%com.altran.general.emf.ecoredoc.generator.config.IEClassConfig%&gt;) _eContainer).shouldRepeatInherited();\n}\nreturn _xifexpression;'"
 	 * @generated
 	 */
 	boolean shouldRepeatInherited();
@@ -206,7 +205,6 @@ public interface IEClassConfig extends IEClassifierConfig {
 	 * Traverses the tree to find the most specific <tt>renderSubTypes</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _xifexpression = false;\nboolean _isSetRenderSubTypes = this.isSetRenderSubTypes();\nif (_isSetRenderSubTypes)\n{\n\t_xifexpression = this.isRenderSubTypes();\n}\nelse\n{\n\t&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n\t_xifexpression = ((&lt;%com.altran.general.emf.ecoredoc.generator.config.IEClassConfig%&gt;) _eContainer).shouldRenderSubTypes();\n}\nreturn _xifexpression;'"
 	 * @generated
 	 */
 	boolean shouldRenderSubTypes();
@@ -218,7 +216,6 @@ public interface IEClassConfig extends IEClassifierConfig {
 	 * Traverses the tree to find the most specific <tt>renderSuperTypes</tt> setting.
 	 * <!-- end-model-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _xifexpression = false;\nboolean _isSetRenderSuperTypes = this.isSetRenderSuperTypes();\nif (_isSetRenderSuperTypes)\n{\n\t_xifexpression = this.isRenderSuperTypes();\n}\nelse\n{\n\t&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n\t_xifexpression = ((&lt;%com.altran.general.emf.ecoredoc.generator.config.IEClassConfig%&gt;) _eContainer).shouldRenderSuperTypes();\n}\nreturn _xifexpression;'"
 	 * @generated
 	 */
 	boolean shouldRenderSuperTypes();

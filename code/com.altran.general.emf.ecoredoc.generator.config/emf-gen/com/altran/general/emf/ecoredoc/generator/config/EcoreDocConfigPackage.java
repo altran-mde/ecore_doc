@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel prefix='EcoreDocConfig' modelDirectory='/com.altran.general.emf.ecoredoc.generator.config/emf-gen' bundleManifest='false' modelPluginID='' modelPluginVariables='' updateClasspath='false' basePackage='com.altran.general.emf.ecoredoc.generator'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel prefix='EcoreDocConfig' modelDirectory='/com.altran.general.emf.ecoredoc.generator.config/emf-gen' bundleManifest='false' modelPluginID='' modelPluginVariables='' updateClasspath='false' runtimeVersion='2.12' complianceLevel='8.0' basePackage='com.altran.general.emf.ecoredoc.generator'"
  *        annotation="http://www.eclipse.org/emf/2011/Xcore Ecore='http://www.eclipse.org/emf/2002/Ecore' GenModel='http://www.eclipse.org/emf/2002/GenModel' EcoreDoc='http://altran.com/general/emf/ecoredoc/generator/config/0.1'"
  * @generated
  */

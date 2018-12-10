@@ -298,7 +298,8 @@ class EOperationGeneratorFragment extends AEClassMemberGeneratorFragment {
 				val text = NodeModelUtils.findNodesForFeature(xOp.body, XbasePackage.Literals::XBLOCK_EXPRESSION__EXPRESSIONS)
 					.map[text]
 					.join
-				val lines = StringUtils.split(text, newline)
+					.normalizeNewline
+				val lines = StringUtils.split(text, "\n")
 				if (lines.size > 1) {
 					val prefix = StringUtils.getCommonPrefix(lines)
 					body.append(lines.map[StringUtils.removeStart(it, prefix)].join(newline))
@@ -314,6 +315,14 @@ class EOperationGeneratorFragment extends AEClassMemberGeneratorFragment {
 		}
 		
 		return language
+	}
+	
+	// FIXME: Move to Espilce Commons
+	private def String normalizeNewline(String text) {
+		return StringUtils.replaceEach(
+				text,
+				#["\r\n", "\n\r", "\r" ],
+				#["\n", "\n", "\n" ]);
 	}
 	
 	protected def hasRenderedOperations(EClassConfig classConfig, Collection<EOperationConfigPair> eOperations, Collection<EOperationConfigPair> inheritedEOperations) {

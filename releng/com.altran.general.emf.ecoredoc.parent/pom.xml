@@ -19,7 +19,7 @@
 		<ecoredoc-target-version>${ecoredoc-integration-ui-version}</ecoredoc-target-version>
 		<ecoredoc-ui-feature-version>${ecoredoc-integration-ui-version}</ecoredoc-ui-feature-version>
 
-		<emf-version>2.12.0</emf-version><!-- FIXME: 2.13 -->
+		<emf-version>[2.12.0,2.13.0)</emf-version><!-- FIXME: 2.13 -->
 		<emf-ecore-version>${emf-version}</emf-ecore-version>
 		<emf-common-version>${emf-version}</emf-common-version>
 		<emf-xmi-version>${emf-version}</emf-xmi-version>

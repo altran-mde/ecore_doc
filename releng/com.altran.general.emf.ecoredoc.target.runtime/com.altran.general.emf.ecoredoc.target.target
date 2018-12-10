@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="EcoreDoc Oxygen" sequenceNumber="1532457549">
+<target name="EcoreDoc Oxygen" sequenceNumber="1544004286">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform" version="4.7.3.v20180330-0640"/>
@@ -30,15 +30,15 @@
       <repository location="http://download.eclipse.org/releases/oxygen"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="com.altran.general.emf.ecoredoc.generator.config.ebr" version="0.7.0.v20180724-1834"/>
+      <unit id="com.altran.general.emf.ecoredoc.generator.config.ebr" version="0.8.0.v20180827-1439"/>
       <repository location="platform:/resource/com.altran.general.emf.ecoredoc.generator.config.ebr/target/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="com.altran.general.emf.ecoredoc.generator.ebr" version="0.7.0.v20180724-1834"/>
+      <unit id="com.altran.general.emf.ecoredoc.generator.ebr" version="0.8.0.v20180827-1439"/>
       <repository location="platform:/resource/com.altran.general.emf.ecoredoc.generator.ebr/target/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="com.altran.general.emf.ecoredoc.util.ebr" version="0.7.0.v20180724-1834"/>
+      <unit id="com.altran.general.emf.ecoredoc.util.ebr" version="0.8.0.v20180827-1439"/>
       <repository location="platform:/resource/com.altran.general.emf.ecoredoc.util.ebr/target/repository/"/>
     </location>
   </locations>

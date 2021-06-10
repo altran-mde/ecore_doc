@@ -493,7 +493,7 @@ The most important parts are:
 
 
 .Generator Configuration Class Diagram
-:generatorConfigImagePath: ../code/com.altran.general.emf.ecoredoc.generator.config/model/EcoreDoc Generator Config.svg
+:generatorConfigImagePath: ../bundles/com.altran.general.emf.ecoredoc.generator.config/model/EcoreDoc Generator Config.svg
 image::{generatorConfigImagePath}[link="{generatorConfigImagePath}"]
 
 include::../code/com.altran.general.emf.ecoredoc.maven/src/test/resources/testGeneratorConfig/expected.adoc[leveloffset=-1,lines=42..-1]

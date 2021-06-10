@@ -1,50 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.altran.general.emf.ecoredoc.maven-test</groupId>
-	<artifactId>ecoredoc-maven-plugin-test</artifactId>
-	<version>0.8.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
-	<name>Test EcoreDoc Maven</name>
+  <artifactId>ecoredoc-maven-plugin-test</artifactId>
+  <packaging>pom</packaging>
 
-	<parent>
-		<groupId>com.altran.general.emf.ecoredoc.maven-test</groupId>
-		<artifactId>com.altran.general.emf.ecoredoc.maven-test.parent</artifactId>
-		<version>0.8.0-SNAPSHOT</version>
-	</parent>
+  <parent>
+    <groupId>com.altran.general.emf.ecoredoc.maven-test</groupId>
+    <artifactId>com.altran.general.emf.ecoredoc.maven-test.parent</artifactId>
+    <version>0.10.0-SNAPSHOT</version>
+  </parent>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.altran.general.emf.ecoredoc</groupId>
-			<artifactId>ecoredoc-maven-plugin</artifactId>
-			<version>${ecoredoc-version}</version>
-		</dependency>
-	</dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>com.altran.general.emf.ecoredoc</groupId>
+      <artifactId>ecoredoc-maven-plugin</artifactId>
+      <version>${ecoredoc-version}</version>
+    </dependency>
+  </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>com.altran.general.emf.ecoredoc</groupId>
-				<artifactId>ecoredoc-maven-plugin</artifactId>
-				<version>${ecoredoc-version}</version>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.altran.general.emf.ecoredoc</groupId>
+        <artifactId>ecoredoc-maven-plugin</artifactId>
+        <version>${ecoredoc-version}</version>
 
-				<configuration>
-					<config>
-						<renderDefaults>false</renderDefaults>
-						<renderBounds>true</renderBounds>
-						<repeatInherited>false</repeatInherited>
-						<renderSubTypes>false</renderSubTypes>
-						<documentTitle>EcoreDoc Config Model</documentTitle>
-					</config>
-					<inputFiles>
-						<inputFile>../../../../com.altran.general.emf.ecoredoc.generator.config/model/EcoreDocGeneratorConfig.xcore</inputFile>
-					</inputFiles>
-					<outputFile>target/test-harness/testGeneratorConfig/output.adoc</outputFile>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+        <configuration>
+          <config>
+            <renderDefaults>false</renderDefaults>
+            <renderBounds>true</renderBounds>
+            <repeatInherited>false</repeatInherited>
+            <renderSubTypes>false</renderSubTypes>
+            <documentTitle>EcoreDoc Config Model</documentTitle>
+          </config>
+          <inputFiles>
+            <inputFile>../../../../../bundles/com.altran.general.emf.ecoredoc.generator.config/model/EcoreDocGeneratorConfig.xcore
+            </inputFile>
+          </inputFiles>
+          <outputFile>target/test-harness/testGeneratorConfig/output.adoc</outputFile>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

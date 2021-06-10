@@ -1,10 +1,9 @@
 # Compiled class file
 *.class
 
-# Compiled xtend files
-*.java._trace
+# Compiled xtend file
 *.xtendbin
-**/bin/**/*.xtend
+*._trace
 
 # Log file
 *.log
@@ -26,5 +25,19 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-# Maven targets
-target
+# Eclipse bin directories
+bin/
+bin-test/
+
+# Maven build directories
+build/
+target/
+
+# Maven Pomless generated files
+.polyglot.*
+.META-INF_MANIFEST.MF
+feature.xml.takari_issue_192
+pom.tycho
+
+# Git merge files
+*.orig

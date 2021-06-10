@@ -1,31 +1,131 @@
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
-  <localRepository/>
-  <interactiveMode/>
-  <usePluginRegistry/>
-  <offline/>
-  <pluginGroups/>
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0
+                      http://maven.apache.org/xsd/settings-1.1.0.xsd">
   <servers>
+    <!-- Deployment credentials -->
     <server>
-      <id>nexus-p2</id>
+      <id>acidspace-repository-manager</id>
       <configuration>
         <timeout>10000</timeout>
       </configuration>
-      <username>${env.ArtifactStoreUserName}</username>
-      <password>${env.ArtifactStorePassword}</password>
+      <username>${env.TECHNICAL_USER}</username>
+      <password>${env.TECHNICAL_PASSWORD}</password>
     </server>
-   </servers>
+
+    <server>
+      <id>mde-assets-maven-releases</id>
+      <configuration>
+        <timeout>10000</timeout>
+      </configuration>
+      <username>${env.TECHNICAL_USER}</username>
+      <password>${env.TECHNICAL_PASSWORD}</password>
+    </server>
+
+    <server>
+      <id>mde-assets-maven-snapshots</id>
+      <configuration>
+        <timeout>10000</timeout>
+      </configuration>
+      <username>${env.TECHNICAL_USER}</username>
+      <password>${env.TECHNICAL_PASSWORD}</password>
+    </server>
+
+    <!-- Maven mirrors -->
+    <server>
+      <id>mde-assets-maven-central</id>
+      <configuration>
+        <timeout>10000</timeout>
+      </configuration>
+      <username>${env.TECHNICAL_USER}</username>
+      <password>${env.TECHNICAL_PASSWORD}</password>
+    </server>
+
+    <!-- P2 target platform mirrors -->
+    <server>
+      <id>eclipse.org-releases-2020-03-202003181000</id>
+      <configuration>
+        <timeout>10000</timeout>
+      </configuration>
+      <username>${env.TECHNICAL_USER}</username>
+      <password>${env.TECHNICAL_PASSWORD}</password>
+    </server>
+    <server>
+      <id>itemis.com-releases-2.1.1</id>
+      <configuration>
+        <timeout>10000</timeout>
+      </configuration>
+      <username>${env.TECHNICAL_USER}</username>
+      <password>${env.TECHNICAL_PASSWORD}</password>
+    </server>
+    <server>
+      <id>eclipse.org-org.eclipse.e4.tools-latest</id>
+      <configuration>
+        <timeout>10000</timeout>
+      </configuration>
+      <username>${env.TECHNICAL_USER}</username>
+      <password>${env.TECHNICAL_PASSWORD}</password>
+    </server>
+  </servers>
+
   <mirrors>
+    <!-- Maven mirrors -->
     <mirror>
-      <id>nexus-p2</id>
-      <name>nexus-p2</name>
-      <url>https://nexus-p2.manatree.io/nexus/content/groups/nexus-p2-group/</url>
-      <mirrorOf>*</mirrorOf>
+      <id>mde-assets-maven-central</id>
+      <name>ACIDSpace Maven Central</name>
+      <url>https://nexus.acidspace.nl/repository/mde-assets/</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+
+    <!-- P2 target platform mirrors -->
+    <mirror>
+      <id>eclipse.org-releases-2020-03-202003181000</id>
+      <url>https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-03-202003181000</url>
+      <mirrorOf>https://download.eclipse.org/releases/2020-03/202003181000</mirrorOf>
+      <mirrorOfLayouts>p2</mirrorOfLayouts>
+      <layout>p2</layout>
+    </mirror>
+    <mirror>
+      <id>itemis.com-releases-2.1.1</id>
+      <url>https://nexus.acidspace.nl/repository/itemis.com-releases-2.1.1</url>
+      <mirrorOf>http://download.itemis.com/updates/releases/2.1.1</mirrorOf>
+      <mirrorOfLayouts>p2</mirrorOfLayouts>
+      <layout>p2</layout>
+    </mirror>
+    <mirror>
+      <id>eclipse.org-org.eclipse.e4.tools-latest</id>
+      <url>https://nexus.acidspace.nl/repository/eclipse.org-org.eclipse.e4.tools-latest</url>
+      <mirrorOf>https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest</mirrorOf>
+      <mirrorOfLayouts>p2</mirrorOfLayouts>
+      <layout>p2</layout>
     </mirror>
   </mirrors>
-  <proxies/>
-  <profiles/>
-  <activeProfiles/>
+
+  <profiles>
+    <profile>
+      <id>mde-assets-maven-central-snapshots</id>
+      <properties>
+        <tycho.disableP2Mirrors>true</tycho.disableP2Mirrors>
+        <tycho.localArtifacts>ignore</tycho.localArtifacts>
+      </properties>
+      <repositories>
+        <repository>
+          <id>mde-assets-maven-central</id>
+          <url>https://nexus.acidspace.nl/repository/mde-assets/</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>mde-assets-maven-central</id>
+          <url>https://nexus.acidspace.nl/repository/mde-assets/</url>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>mde-assets-maven-central-snapshots</activeProfile>
+    <!-- Apply the Altran theme on generated documentation -->
+    <activeProfile>asciidoc-altran-theme</activeProfile>
+  </activeProfiles>
 </settings>

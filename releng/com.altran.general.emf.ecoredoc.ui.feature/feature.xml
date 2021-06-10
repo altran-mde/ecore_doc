@@ -2,7 +2,7 @@
 <feature
       id="com.altran.general.emf.ecoredoc.ui.feature"
       label="EcoreDoc UI Feature"
-      version="0.9.0.qualifier"
+      version="0.10.0.qualifier"
       provider-name="Altran Netherlands B.V.">
 
    <description url="https://gitlab.manatree.io/MDEAssets/EcoreDoc">
@@ -37,14 +37,14 @@ Help.
    </requires>
 
    <plugin
-         id="com.altran.general.emf.ecoredoc.generator.config.ebr"
+         id="com.altran.general.emf.ecoredoc.generator"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="com.altran.general.emf.ecoredoc.util.ebr"
+         id="com.altran.general.emf.ecoredoc.generator.config"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -52,13 +52,6 @@ Help.
 
    <plugin
          id="com.altran.general.emf.ecoredoc.generator.integration.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="com.altran.general.emf.ecoredoc.generator.ebr"
          download-size="0"
          install-size="0"
          version="0.0.0"

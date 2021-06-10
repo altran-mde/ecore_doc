@@ -3,16 +3,16 @@
    <feature id="com.altran.general.emf.ecoredoc.ui.feature" version="0.0.0">
       <category name="com.altran.general.emf.ecoredoc.repository.category"/>
    </feature>
-   <bundle id="com.altran.general.emf.ecoredoc.generator.config.ebr" version="0.0.0">
+   <feature id="com.altran.general.emf.ecoredoc.ui.feature.source" version="0.0.0">
+      <category name="com.altran.general.emf.ecoredoc.repository.category"/>
+   </feature>
+   <bundle id="com.altran.general.emf.ecoredoc.generator.config" version="0.0.0">
       <category name="com.altran.general.emf.ecoredoc.repository.category"/>
    </bundle>
-   <bundle id="com.altran.general.emf.ecoredoc.generator.ebr" version="0.0.0">
+   <bundle id="com.altran.general.emf.ecoredoc.generator" version="0.0.0">
       <category name="com.altran.general.emf.ecoredoc.repository.category"/>
    </bundle>
    <bundle id="com.altran.general.emf.ecoredoc.generator.integration.ui" version="0.0.0">
-      <category name="com.altran.general.emf.ecoredoc.repository.category"/>
-   </bundle>
-   <bundle id="com.altran.general.emf.ecoredoc.util.ebr" version="0.0.0">
       <category name="com.altran.general.emf.ecoredoc.repository.category"/>
    </bundle>
    <category-def name="com.altran.general.emf.ecoredoc.repository.category" label="EcoreDoc">

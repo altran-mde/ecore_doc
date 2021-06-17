@@ -18,7 +18,6 @@
 
   <properties>
     <java.version>1.8</java.version>
-    <xtext.version>2.21.0</xtext.version> <!-- Eclipse 2020-03 -->
     <tycho.p2-repository.name>EcoreDoc - Repository</tycho.p2-repository.name>
     <!-- EcoreDoc also provides a Maven Plugin, hence all bundles should be installed/deployed -->
     <maven.install.skip>false</maven.install.skip>

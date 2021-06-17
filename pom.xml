@@ -17,10 +17,7 @@
     <module>releng</module>
     <module>bundles</module>
     <module>plugins</module>
-
-    <module>code/com.altran.general.emf.ecoredoc.util</module>
-    <module>code/com.altran.general.emf.ecoredoc.maven</module>
-    <module>code/com.altran.general.emf.ecoredoc.standalone</module>
+    <module>code</module>
   </modules>
   
   <build>

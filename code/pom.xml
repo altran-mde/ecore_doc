@@ -17,11 +17,7 @@
     <module>com.altran.general.emf.ecoredoc.standalone</module>
   </modules>
 
-  <properties>
-    <!-- All versions of all dependencies are bound to Eclipse 2020-03 -->
-    <xtext.version>2.21.0</xtext.version>
-  </properties>
-
+  <!-- All versions of all dependencies are locked to Eclipse 2020-03 -->
   <dependencyManagement>
     <dependencies>
       <dependency>

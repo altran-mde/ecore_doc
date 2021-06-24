@@ -10,11 +10,6 @@
     <version>0.10.0-SNAPSHOT</version>
   </parent>
 
-  <properties>
-    <!-- All versions of all dependencies are bound to Eclipse 2020-03 -->
-    <xtext.version>2.21.0</xtext.version>
-  </properties>
-
   <dependencies>
     <!-- Requirements from (this module) com.altran.general.emf.ecoredoc.util -->
     <dependency>

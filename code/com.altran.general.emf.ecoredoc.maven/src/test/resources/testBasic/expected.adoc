@@ -103,7 +103,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
 
 .Attributes
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -193,7 +193,7 @@ non-volatile
 |===
 
 .References
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -256,7 +256,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage2-SomeClass, EPackage2.{zwsp}SomeClass>>`
 
 .Attributes
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -323,7 +323,7 @@ non-volatile
 |===
 
 .References
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -375,7 +375,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
 
 .Attributes
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -478,7 +478,7 @@ non-volatile
 |===
 
 .Containments
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -523,7 +523,7 @@ Containments could also be inherited.
 |===
 
 .References
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -607,7 +607,7 @@ Default Value:: _undefined_
 Instance Type Name:: _undefined_
 
 .Attributes
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -641,7 +641,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage1-Iface, EPackage1.{zwsp}Iface>>`
 
 .Attributes
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -718,7 +718,7 @@ non-volatile
 |===
 
 .References
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type

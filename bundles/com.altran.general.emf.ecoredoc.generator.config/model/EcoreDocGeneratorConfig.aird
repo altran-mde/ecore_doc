@@ -817,7 +817,7 @@
     <semanticResources>java:/Objects/org.eclipse.emf.common.util.BasicEMap</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_2m-90ITqEeixVttu4KnRnQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_599gsITqEeixVttu4KnRnQ" name="EcoreDoc Generator Config" repPath="#_58b2sITqEeixVttu4KnRnQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_599gsITqEeixVttu4KnRnQ" name="EcoreDocGeneratorConfig" repPath="#_58b2sITqEeixVttu4KnRnQ">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="EcoreDocGeneratorConfig.xcore#/EPackage"/>
       </ownedRepresentationDescriptors>
@@ -832,7 +832,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Generation']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_592zAITqEeixVttu4KnRnQ" name="EcoreDoc Generator Config" uid="_58b2sITqEeixVttu4KnRnQ">
+  <diagram:DSemanticDiagram xmi:id="_592zAITqEeixVttu4KnRnQ" name="EcoreDocGeneratorConfig" uid="_58b2sITqEeixVttu4KnRnQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_592zAYTqEeixVttu4KnRnQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_592zAoTqEeixVttu4KnRnQ">
         <computedStyleDescriptions xmi:type="style:BundledImageDescription" xmi:id="_7iM6oITqEeixVttu4KnRnQ" labelExpression="service:render" labelAlignment="LEFT" tooltipExpression="service:renderTooltip" sizeComputationExpression="1">

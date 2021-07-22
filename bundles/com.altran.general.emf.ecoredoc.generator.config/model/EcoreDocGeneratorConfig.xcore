@@ -495,65 +495,25 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 		switch (element) {
 			EPackage:
 				EPackages
-			
 			EEnum:
-				EPackages
-				.map[EEnums]
-				.flatten
-				
+				EPackages.flatMap[EEnums]
 			EDataType:
-				EPackages
-					.map[EDataTypes]
-					.flatten
-					
+				EPackages.flatMap[EDataTypes]
 			EEnumLiteral:
-				EPackages
-					.map[EEnums]
-					.flatten
-					.map[EEnumLiterals]
-					.flatten
-							
+				EPackages.flatMap[EEnums].flatMap[EEnumLiterals]
 			EClass:
-				EPackages
-					.map[EClasses]
-					.flatten
-			
+				EPackages.flatMap[EClasses]
 			EAttribute:
-				EPackages
-				.map[EClasses]
-				.flatten
-				.map[EAttributes]
-				.flatten
-				
+				EPackages.flatMap[EClasses].flatMap[EAttributes]
 			EReference case (element.isContainment):
-				EPackages
-					.map[EClasses]
-					.flatten
-					.map[EContainments]
-					.flatten
-					
+				EPackages.flatMap[EClasses].flatMap[EContainments]
 			EReference case (!element.isContainment):
-				EPackages
-					.map[EClasses]
-					.flatten
-					.map[EReferences]
-					.flatten
-			
+				EPackages.flatMap[EClasses].flatMap[EReferences]
 			EOperation:
-				EPackages
-				.map[EClasses]
-				.flatten
-				.map[EOperations]
-				.flatten
-				
+				EPackages.flatMap[EClasses].flatMap[EOperations]
 			EParameter:
-				EPackages
-				.map[EClasses]
-				.flatten
-				.map[EOperations]
-				.flatten
-				.map[EParameters]
-				.flatten
+				EPackages.flatMap[EClasses].flatMap[EOperations]
+					.flatMap[EParameters]
 		}.findFirst[target == element]
 	}
 	

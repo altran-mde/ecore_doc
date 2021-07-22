@@ -20,11 +20,7 @@ EcoreDoc can be used as Maven Plugin, standalone command-line tool, Java API, or
 You might have a look at an <<code/com.altran.general.emf.ecoredoc.maven/src/test/resources/testGeneratorConfig/expected.adoc#, example rendering>>
 (suffering from GitLab rendering issues, full-fledged AsciiDoctor output looks better).
 
-For more details, please refer to the <<doc/ecoredoc-userguide.adoc#, EcoreDoc User Guide>>.
-
-However, the GitLab rendering misses important parts,
-so you might want to look at the link:doc/ecoredoc-userguide.pdf[PDF version] with different rendering issues,
-or clone the repository and use the link:doc/ecoredoc-userguide.html[official rendering].
+For more details, please refer to the https://ec-mde.pages.acidspace.nl/ecore-doc[EcoreDoc User Guide].
 
 The latest stand-alone version can be downloaded from https://nexus.acidspace.nl/service/rest/v1/search/assets/download?repository=mde-assets&group=com.altran.general.emf.ecoredoc&name=com.altran.general.emf.ecoredoc.standalone&maven.classifier=jar-with-dependencies&sort=version[Nexus]
 

@@ -1,11 +1,13 @@
 # Copyright Altran Netherlands B.V
 
-project: mde-skeleton
+project: ecore-doc
 language: Java
 default_branch: "develop"
 code_location:
   source:
+    - ./bundles/
     - ./code/
+    - ./plugins/
 artifact_repository_url: "https://nexus.acidspace.nl/repository/{}/{}{}"
 
 build:

@@ -112,7 +112,7 @@ public class EcoreDocExtension {
   
   public CharSequence tableHeader() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("[cols=\"<20,<20,<20,<40a\",options=\"header\"]");
+    _builder.append("[cols=\"<30,<20,<20,<40a\",options=\"header\"]");
     return _builder;
   }
   

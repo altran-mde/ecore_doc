@@ -39,6 +39,8 @@ mde-build:
       - 'releng/*/target/repository/*'
       # Built jars
       - 'code/com.altran.general.emf.ecoredoc.standalone/target/*.jar'
+      # Documentation
+      - 'plugins/com.altran.general.emf.ecoredoc.guide.user/target/pages'
     expire_in: 1 week
 
 mde-unit-test:
@@ -48,7 +50,7 @@ mde-unit-test:
   # so start asap, hence empty needs
   needs: []
   tags:
-    - linux_docker
+    - linux_docker_medium
   variables:
     DISPLAY: ':99'
   before_script:
@@ -95,3 +97,18 @@ mde-release:
     paths:
       - reports/release/binaries
     expire_in: 4 weeks
+    
+pages:
+  stage: publish
+  # Pages needs the artifacts from mvn-build
+  dependencies: [mde-build]
+  tags:
+    - linux_docker
+  only:
+    - develop
+  script:
+    - cp -R plugins/com.altran.general.emf.ecoredoc.guide.user/target/pages/ public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 week

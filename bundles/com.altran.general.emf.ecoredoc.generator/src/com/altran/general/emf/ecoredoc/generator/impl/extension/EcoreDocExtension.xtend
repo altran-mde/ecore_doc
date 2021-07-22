@@ -50,7 +50,7 @@ class EcoreDocExtension {
 	}
 
 	def CharSequence tableHeader() {
-		'''[cols="<20,<20,<20,<40a",options="header"]'''
+		'''[cols="<30,<20,<20,<40a",options="header"]'''
 	}
 
 	def CharSequence tableFooter() {

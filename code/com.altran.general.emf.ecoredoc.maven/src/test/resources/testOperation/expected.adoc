@@ -103,7 +103,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
 
 .Attributes
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -193,7 +193,7 @@ non-volatile
 |===
 
 .References
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -238,7 +238,7 @@ non-volatile
 |===
 
 .Operations
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Aspect and Type
@@ -285,7 +285,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
 
 .Attributes
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -352,7 +352,7 @@ non-volatile
 |===
 
 .References
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -379,7 +379,7 @@ non-volatile
 |===
 
 .Operations
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Aspect and Type
@@ -429,7 +429,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
 
 .Attributes
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -532,7 +532,7 @@ non-volatile
 |===
 
 .Containments
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -577,7 +577,7 @@ Containments could also be inherited.
 |===
 
 .References
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -636,7 +636,7 @@ non-volatile
 |===
 
 .Operations
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Aspect and Type
@@ -720,7 +720,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage2-Implementer, EPackage2.{zwsp}Implementer>>`
 
 .Operations
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Aspect and Type
@@ -768,7 +768,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage2-Cl4b, EPackage2.{zwsp}Cl4b>>`
 
 .References
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -805,7 +805,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage2-Cl4, EPackage2.{zwsp}Cl4>>`
 
 .Operations
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Aspect and Type
@@ -854,7 +854,7 @@ Default Value:: _undefined_
 Instance Type Name:: _undefined_
 
 .Attributes
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -874,7 +874,7 @@ non-volatile
 |===
 
 .Operations
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Aspect and Type
@@ -939,7 +939,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage2-If2, EPackage2.{zwsp}If2>>`
 
 .Containments
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -966,7 +966,7 @@ non-volatile
 |===
 
 .References
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -1008,7 +1008,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage2-Implementer, EPackage2.{zwsp}Implementer>>`
 
 .Operations
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Aspect and Type
@@ -1047,7 +1047,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage2-Implementer, EPackage2.{zwsp}Implementer>>`
 
 .Operations
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Aspect and Type
@@ -1077,7 +1077,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage2-Implementer, EPackage2.{zwsp}Implementer>>`
 
 .Operations
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Aspect and Type
@@ -1118,7 +1118,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage2-Cls3, EPackage2.{zwsp}Cls3>>`
 
 .Operations
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Aspect and Type
@@ -1149,7 +1149,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage2-Cls3, EPackage2.{zwsp}Cls3>>`
 
 .Operations
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Aspect and Type
@@ -1192,7 +1192,7 @@ Instance Type Name:: _undefined_
 * `<<EPackage2-IFace3, EPackage2.{zwsp}IFace3>>`
 
 .Operations
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Aspect and Type

@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EcoreDoc User Guide
+Bundle-SymbolicName: com.altran.general.emf.ecoredoc.guide.user;singleton:=true
+Bundle-Version: 0.10.0.qualifier
+Bundle-Vendor: ALTRAN
+Automatic-Module-Name: com.altran.general.emf.ecoredoc.guide.user
+Require-Bundle: org.eclipse.help

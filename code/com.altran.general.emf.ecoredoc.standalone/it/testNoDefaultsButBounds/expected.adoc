@@ -98,7 +98,7 @@ Description
 * `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
 
 .Attributes
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -151,7 +151,7 @@ _Default:_ `23`
 |===
 
 .References
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -196,7 +196,7 @@ Description of EClass1
 * `<<EPackage2-SomeClass, EPackage2.{zwsp}SomeClass>>`
 
 .Attributes
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -234,7 +234,7 @@ _Default:_ `23`
 |===
 
 .References
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -275,7 +275,7 @@ Description
 * `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
 
 .Attributes
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -336,7 +336,7 @@ _Default:_ `23`
 |===
 
 .Containments
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -360,7 +360,7 @@ Containments could also be inherited.
 |===
 
 .References
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -415,7 +415,7 @@ Ns URI:: http://altran.com/general/emf/ecoredoc/test/epackage2/1.0.0
 
 
 .Attributes
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -443,7 +443,7 @@ my doc
 * `<<EPackage1-Iface, EPackage1.{zwsp}Iface>>`
 
 .Attributes
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type
@@ -491,7 +491,7 @@ _Default:_ `23`
 |===
 
 .References
-[cols="<20,<20,<20,<40a",options="header"]
+[cols="<30,<20,<20,<40a",options="header"]
 |===
 |Name
 |Type

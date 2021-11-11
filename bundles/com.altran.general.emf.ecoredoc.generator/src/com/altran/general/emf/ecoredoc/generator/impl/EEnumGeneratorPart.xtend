@@ -74,10 +74,11 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 				'''
 					«newline»
 					.Literals
-					[cols="<20m,>10m,<70a",options="header"]
+					[cols="<20,>10,<20,<50a",options="header"]
 					|===
-					|Symbol
+					|Name
 					|Value
+					|Literal
 					|Description
 				'''
 			)
@@ -97,8 +98,9 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 		output.append(
 		'''
 			«newline»
-			|«eLiteral.name»[[«concatAnchor(eLiteral)»]]
-			|«eLiteral.value»
+			|`«eLiteral.name»`[[«concatAnchor(eLiteral)»]]
+			|`«eLiteral.value»`
+			|`«eLiteral.literal»`
 			|«getDocumentation(eLiteral)»
 		''')
 	}

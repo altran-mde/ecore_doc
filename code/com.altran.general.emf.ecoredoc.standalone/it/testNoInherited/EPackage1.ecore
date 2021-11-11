@@ -19,7 +19,7 @@
         <details key="documentation" value="Literal1 Description&#xA;&#xA;Second sentence of Literal1 Description."/>
       </eAnnotations>
     </eLiterals>
-    <eLiterals name="Literal2" value="1"/>
+    <eLiterals name="Literal2" value="1" literal=">="/>
     <eLiterals name="Literal3" value="5">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Literal3 Description"/>

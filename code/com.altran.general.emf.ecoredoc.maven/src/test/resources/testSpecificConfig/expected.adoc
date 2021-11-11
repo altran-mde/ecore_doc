@@ -41,25 +41,27 @@ Instance Type Name:: _undefined_
 Serializable:: true
 
 .Literals
-[cols="<20m,>10m,<70a",options="header"]
+[cols="<20,<20,<20,<40a",options="header"]
 |===
-|Symbol
+|Name
 |Value
+|Literal
 |Description
 
-|Literal1[[EPackage1-Enum1-Literal1]]
-|0
-|Literal1 Description
-
-Second sentence of Literal1 Description.
-
-|Literal2[[EPackage1-Enum1-Literal2]]
+|Literal1[[query-CompareOperator-Literal1]]
 |1
+|Literal1
+| Documentation	Literal1 Description
+
+|Literal2[[query-CompareOperator-Literal2]]
+|2
+|>=
 |
 
-|Literal3[[EPackage1-Enum1-Literal3]]
+|Literal3[[query-CompareOperator-Literal3]]
 |5
-|Literal3 Description
+|Literal3
+| Documentation	Literal3 Description
 |===
 
 .Used at

@@ -2,7 +2,8 @@ target "CBI Target Platform"
 
 with requirements source
 
-location "https://download.eclipse.org/releases/2020-03/202003181000" {
+location "https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-03-202003181000/" {
+//location "https://download.eclipse.org/releases/2020-03/202003181000" {
 	org.eclipse.platform
 	org.eclipse.ui.ide.application
 	org.eclipse.xtend.lib
@@ -14,5 +15,12 @@ location "https://download.eclipse.org/releases/2020-03/202003181000" {
 	org.apache.commons.lang3
 	org.eclipse.emf.codegen.ecore
 	
+	// For testing purposes
+	org.eclipse.emf.sdk.feature.group
+	org.eclipse.egf.sdk.feature.feature.group
 	org.junit [4,5)
+}
+location "https://de-jcup.github.io/update-site-eclipse-asciidoctor-editor/update-site/" {
+	// For testing purposes
+	de.jcup.asciidoctoreditor.feature.group
 }

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:domain="http://www.eclipse.org/egf/1.0.0/domain"
+    xmlns:fcore="http://www.eclipse.org/egf/1.0.0/fcore" xmlns:fprod="http://www.eclipse.org/egf/1.0.0/fprod"
+    xmlns:ftask="http://www.eclipse.org/egf/1.0.0/ftask" xmlns:javapattern="http://www.eclipse.org/egf/1.0.0/javapattern"
+    xmlns:pattern="http://www.eclipse.org/egf/1.0.0/pattern" xmlns:types="http://www.eclipse.org/egf/1.0.0/types">
+  <fcore:FactoryComponent xmi:id="_IHAmUBukEey30riYJtK3gQ" name="EcoreDocGenerator">
+    <contractContainer xmi:id="_TeNIEBukEey30riYJtK3gQ">
+      <contracts xmi:type="fcore:FactoryComponentContract" xmi:id="_cWiasBukEey30riYJtK3gQ"
+          name="domain" mandatory="true" invocationContracts="#_o-KpkBukEey30riYJtK3gQ">
+        <type xmi:type="domain:TypeDomain" xmi:id="_j4ZCkBukEey30riYJtK3gQ"/>
+      </contracts>
+      <contracts xmi:type="fcore:FactoryComponentContract" xmi:id="_cuu4QBukEey30riYJtK3gQ"
+          name="projectName" mandatory="true" invocationContracts="#_pRGzsBukEey30riYJtK3gQ #_8LrnUBukEey30riYJtK3gQ">
+        <type xmi:type="types:TypeString" xmi:id="_jFUm4BukEey30riYJtK3gQ"/>
+      </contracts>
+      <contracts xmi:type="fcore:FactoryComponentContract" xmi:id="_dBCwQBukEey30riYJtK3gQ"
+          name="outputFolder" mandatory="true" invocationContracts="#_pk0Z4BukEey30riYJtK3gQ">
+        <type xmi:type="types:TypeString" xmi:id="_imEfEBukEey30riYJtK3gQ"/>
+      </contracts>
+      <contracts xmi:type="fcore:FactoryComponentContract" xmi:id="_MHSdQDI_EeyiAMw7ZNdSCw"
+          name="resolve" invocationContracts="#_aTuGwDI_EeyiAMw7ZNdSCw">
+        <type xmi:type="types:TypeBoolean" xmi:id="_PjF1wDI_EeyiAMw7ZNdSCw"/>
+      </contracts>
+    </contractContainer>
+    <viewpointContainer xmi:id="_8iXEUBvYEeyUtojcEsGn2w">
+      <viewpoints xmi:type="pattern:PatternViewpoint" xmi:id="_99zuoBvYEeyUtojcEsGn2w">
+        <libraries xmi:id="__OxnQBvYEeyUtojcEsGn2w" name="com.altran.general.emf.ecoredoc.generator.egf.lib">
+          <elements xmi:id="_SV4bABvZEeyUtojcEsGn2w" name="EcoreDocGenerationPattern"
+              headerMethod="#_SV4bAhvZEeyUtojcEsGn2w" conditionMethod="#_SV4bBBvZEeyUtojcEsGn2w"
+              initMethod="#_SV4bAxvZEeyUtojcEsGn2w" footerMethod="#_SV4bBhvZEeyUtojcEsGn2w">
+            <nature xmi:type="javapattern:JavaNature" xmi:id="_SV4bARvZEeyUtojcEsGn2w"
+                name="Java"/>
+            <methods xmi:id="_SV4bAhvZEeyUtojcEsGn2w" name="header" patternFilePath="templates/pattern._SV4bABvZEeyUtojcEsGn2w/method._SV4bAhvZEeyUtojcEsGn2w.pt"/>
+            <methods xmi:id="_SV4bAxvZEeyUtojcEsGn2w" name="init" patternFilePath="templates/pattern._SV4bABvZEeyUtojcEsGn2w/method._SV4bAxvZEeyUtojcEsGn2w.pt"/>
+            <methods xmi:id="_SV4bBBvZEeyUtojcEsGn2w" name="preCondition" patternFilePath="templates/pattern._SV4bABvZEeyUtojcEsGn2w/method._SV4bBBvZEeyUtojcEsGn2w.pt"/>
+            <methods xmi:id="_SV4bBRvZEeyUtojcEsGn2w" name="body" patternFilePath="templates/pattern._SV4bABvZEeyUtojcEsGn2w/method._SV4bBRvZEeyUtojcEsGn2w.pt"/>
+            <methods xmi:id="_SV4bBhvZEeyUtojcEsGn2w" name="footer" patternFilePath="templates/pattern._SV4bABvZEeyUtojcEsGn2w/method._SV4bBhvZEeyUtojcEsGn2w.pt"/>
+            <parameters xmi:id="_wLc8kBvZEeyUtojcEsGn2w" name="parameter" type="http://www.altran.com/egf/ecoredocExtension#//EcoreDocGeneration"/>
+            <orchestration xmi:type="pattern:MethodCall" xmi:id="_QeiM8BvbEeyUtojcEsGn2w"
+                called="#_SV4bBRvZEeyUtojcEsGn2w"/>
+          </elements>
+        </libraries>
+      </viewpoints>
+    </viewpointContainer>
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_VZiMUBukEey30riYJtK3gQ">
+      <invocations xmi:id="_xGCIkBukEey30riYJtK3gQ" description="This step ensures that the target project is created or open."
+          name="Ensure project existence" invokedActivity="ftask:Task platform:/plugin/org.eclipse.egf.eclipse.resources.mgt/fcs/Resources.fcore#_d5v1IAqCEd-JA8Js2pdQ0g">
+        <invocationContractContainer xmi:id="_60qxEBukEey30riYJtK3gQ">
+          <invocationContracts xmi:id="_8LrnUBukEey30riYJtK3gQ" factoryComponentContract="#_cuu4QBukEey30riYJtK3gQ"
+              invokedContract="platform:/plugin/org.eclipse.egf.eclipse.resources.mgt/fcs/Resources.fcore#_1_fQoAqDEd-JA8Js2pdQ0g"/>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_maoV0BukEey30riYJtK3gQ" name="Generate the document" invokedActivity="#_Nkt-cBufEey30riYJtK3gQ">
+        <invocationContractContainer xmi:id="_opQwkBukEey30riYJtK3gQ">
+          <invocationContracts xmi:id="_o-KpkBukEey30riYJtK3gQ" factoryComponentContract="#_cWiasBukEey30riYJtK3gQ"
+              invokedContract="#_7aFkkBufEey30riYJtK3gQ"/>
+          <invocationContracts xmi:id="_pRGzsBukEey30riYJtK3gQ" factoryComponentContract="#_cuu4QBukEey30riYJtK3gQ"
+              invokedContract="#_F_F0YBugEey30riYJtK3gQ"/>
+          <invocationContracts xmi:id="_pk0Z4BukEey30riYJtK3gQ" factoryComponentContract="#_dBCwQBukEey30riYJtK3gQ"
+              invokedContract="#_VyusQBugEey30riYJtK3gQ"/>
+          <invocationContracts xmi:id="_aTuGwDI_EeyiAMw7ZNdSCw" factoryComponentContract="#_MHSdQDI_EeyiAMw7ZNdSCw"
+              invokedContract="#_51vYgDI-EeyiAMw7ZNdSCw"/>
+        </invocationContractContainer>
+      </invocations>
+    </orchestration>
+  </fcore:FactoryComponent>
+  <ftask:Task xmi:id="_Nkt-cBufEey30riYJtK3gQ" name="EcoreDocGeneratorTask" kind="java"
+      implementation="com.altran.general.emf.ecoredoc.generator.egf.EcoreDocGeneratorTask">
+    <contractContainer xmi:id="_OtyfUBufEey30riYJtK3gQ">
+      <contracts xmi:id="_7aFkkBufEey30riYJtK3gQ" description="Ecore domain model"
+          name="domain" mandatory="true">
+        <type xmi:type="domain:TypeDomain" xmi:id="_A4Al0BugEey30riYJtK3gQ"/>
+      </contracts>
+      <contracts xmi:id="_F_F0YBugEey30riYJtK3gQ" description="Project where the result of the emf document generation is located"
+          name="projectName" mandatory="true">
+        <type xmi:type="types:TypeString" xmi:id="_GU2zkBuhEey30riYJtK3gQ"/>
+      </contracts>
+      <contracts xmi:id="_VyusQBugEey30riYJtK3gQ" description="Project folder where the result of the emf document generation is located"
+          name="outputFolder" mandatory="true">
+        <type xmi:type="types:TypeString" xmi:id="_FJmhYBuhEey30riYJtK3gQ"/>
+      </contracts>
+      <contracts xmi:id="_51vYgDI-EeyiAMw7ZNdSCw" description="Resolve external references"
+          name="resolve">
+        <type xmi:type="types:TypeBoolean" xmi:id="_8l-rgDI-EeyiAMw7ZNdSCw" value="false"/>
+      </contracts>
+    </contractContainer>
+  </ftask:Task>
+</xmi:XMI>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.altran.general.emf.ecoredoc.egf.feature"
+      label="EcoreDoc EGF Feature"
+      version="0.10.0.qualifier"
+      provider-name="Altran Netherlands B.V.">
+
+   <description url="https://gitlab.acidspace.nl/ec-mde/ecore-doc">
+      Generates AsciiDoctor files to document Ecore metamodels, similar
+to JavaDoc. AsciiDoctor can be rendered as HTML, PDF, or Eclipse
+Help.
+   </description>
+
+   <copyright>
+      not decided yet
+   </copyright>
+
+   <license url="">
+      not decided yet
+   </license>
+
+   <includes
+         id="com.altran.general.emf.ecoredoc.feature"
+         version="0.0.0"/>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="com.google.guava"/>
+      <import plugin="org.eclipse.xtext.xbase.lib"/>
+      <import plugin="org.eclipse.xtend.lib"/>
+      <import plugin="org.eclipse.xtend.lib.macro"/>
+      <import plugin="org.eclipse.emf.ecore.xcore.ui"/>
+      <import plugin="org.apache.commons.io"/>
+      <import plugin="org.eclipse.egf.portfolio.genchain"/>
+      <import plugin="org.eclipse.egf.portfolio.genchain.tools"/>
+      <import plugin="org.eclipse.egf.model.ftask"/>
+      <import plugin="org.eclipse.egf.pattern"/>
+      <import plugin="org.eclipse.egf.pattern.ftask"/>
+      <import plugin="org.eclipse.egf.model.fprod"/>
+      <import plugin="com.google.inject"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.egf.portfolio.genchain.edit"/>
+   </requires>
+
+   <plugin
+         id="com.altran.general.emf.ecoredoc.generator.egf"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.altran.general.emf.ecoredoc.generator.egf.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

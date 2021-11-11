@@ -49,8 +49,8 @@ Please use the issue tracker at this site for any feature requests or bugs.
 [[java-api]]
 == Java API
 
-The Java API is available as Maven artifact `com.altran.general.emf.ecoredoc:com.altran.general.emf.ecoredoc.generator` or OSGi bundle `com.altran.general.emf.ecoredoc.generator.ebr`. +
-The <<generator-config>> is contained in Maven artifact `com.altran.general.emf.ecoredoc:com.altran.general.emf.ecoredoc.generator.config` or OSGi bundle `com.altran.general.emf.ecoredoc.generator.config.ebr`.
+The Java API is available as Maven artifact and OSGi bundle `com.altran.general.emf.ecoredoc:com.altran.general.emf.ecoredoc.generator`. +
+The <<generator-config>> is contained in Maven artifact  and OSGi bundle `com.altran.general.emf.ecoredoc:com.altran.general.emf.ecoredoc.generator.config`.
 
 The main interface is `com.altran.general.emf.ecoredoc.generator.EcoreDocGenerator`.
 The constructor takes the list of ``EClassifier``s to generate documentation for.
@@ -293,6 +293,38 @@ It provides a context menu entry for one or more `{asterisk}.ecore` / `{asterisk
 The command creates one output file next to the first selected input file, named `<firstInputFile.ecore>.adoc`.
 The output file contains the documentation of all selected metamodels.
 
+
+[[egf-plugin]]
+== Eclipse Generation Factories Plug-in
+
+The https://wiki.eclipse.org/EGF[EGF (Eclipse Generation Factories)^] Plug-in is available as Feature `com.altran.general.emf.ecoredoc.egf.feature`.
+
+EGF is a software factory tool with the purpose to generate software artifacts, such as code or application, in order to automate software development.
+The EcoreDoc EGF plug-in provides a _factory component_ to generate EcoreDoc for one `{asterisk}.ecore` file.
+This EcoreDoc _factory component_ is also integrated in the _generation chain_ for `{asterisk}.ecore` files.
+More information on using _generation chains_ can be found in the https://wiki.eclipse.org/EGF_Tutorial_and_Use_Cases#Generation_Chain[EGF documentation^]
+
+Both the factory component as the generation chain support the following configuration settings:
+
+[[egf-plugin-domain, domain]]
+domain (*required*)::
+The Ecore metamodel file to create documentation for.
+
+[[egf-plugin-projectname, projectName]]
+projectName (*required*)::
+The Eclipse project name to use for generation.
+Combined with <<egf-plugin-outputfolder>> this denotes the location to write the generated AsciiDoctor document to. + 
+
+[[egf-plugin-outputfolder, outputFolder]]
+outputFolder (*required*)::
+The output folder to write the generated AsciiDoctor document to. +
+By convention, the generated file is `_<<<egf-plugin-projectname>>>_/_<<<egf-plugin-outputfolder>>>_/_<<<egf-plugin-domain>>_file_name>_.adoc`.
++
+CAUTION: If the file exists, it will be overwritten and a warning is emitted.
+
+resolve (default: false)::
+Whether EcoreDoc should explicitly try to resolve all references in the <<egf-plugin-domain>>.
+Might be necessary for highly interconnected metamodels.
 
 [[ecoredoc-annotation]]
 == EcoreDoc Metamodel Annotation

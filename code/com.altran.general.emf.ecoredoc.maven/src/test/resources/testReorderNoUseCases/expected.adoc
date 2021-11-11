@@ -534,24 +534,28 @@ Instance Type Name:: _undefined_
 Serializable:: true
 
 .Literals
-[cols="<20m,>10m,<70a",options="header"]
+[cols="<20,>10,<20,<50a",options="header"]
 |===
-|Symbol
+|Name
 |Value
+|Literal
 |Description
 
-|Literal1[[EPackage1-Enum1-Literal1]]
-|0
+|`Literal1`[[EPackage1-Enum1-Literal1]]
+|`0`
+|`Literal1`
 |Literal1 Description
 
 Second sentence of Literal1 Description.
 
-|Literal2[[EPackage1-Enum1-Literal2]]
-|1
+|`Literal2`[[EPackage1-Enum1-Literal2]]
+|`1`
+|`>=`
 |
 
-|Literal3[[EPackage1-Enum1-Literal3]]
-|5
+|`Literal3`[[EPackage1-Enum1-Literal3]]
+|`5`
+|`Literal3`
 |Literal3 Description
 |===
 

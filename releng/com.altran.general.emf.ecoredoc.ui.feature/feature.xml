@@ -5,7 +5,7 @@
       version="0.10.0.qualifier"
       provider-name="Altran Netherlands B.V.">
 
-   <description url="https://gitlab.manatree.io/MDEAssets/EcoreDoc">
+   <description url="https://gitlab.acidspace.nl/ec-mde/ecore-doc">
       Generates AsciiDoctor files to document Ecore metamodels, similar
 to JavaDoc. AsciiDoctor can be rendered as HTML, PDF, or Eclipse
 Help.
@@ -18,6 +18,10 @@ Help.
    <license url="">
       not decided yet
    </license>
+
+   <includes
+         id="com.altran.general.emf.ecoredoc.feature"
+         version="0.0.0"/>
 
    <requires>
       <import plugin="org.eclipse.core.resources"/>
@@ -35,20 +39,6 @@ Help.
       <import plugin="org.eclipse.xtext.xbase.lib"/>
       <import plugin="org.eclipse.emf.ecore.xcore.ui"/>
    </requires>
-
-   <plugin
-         id="com.altran.general.emf.ecoredoc.generator"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="com.altran.general.emf.ecoredoc.generator.config"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
    <plugin
          id="com.altran.general.emf.ecoredoc.generator.integration.ui"

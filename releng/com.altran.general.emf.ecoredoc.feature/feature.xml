@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.altran.general.emf.ecoredoc.feature"
+      label="EcoreDoc Feature"
+      version="0.10.0.qualifier"
+      provider-name="Altran Netherlands B.V.">
+
+   <description url="https://gitlab.acidspace.nl/ec-mde/ecore-doc">
+      Generates AsciiDoctor files to document Ecore metamodels, similar
+to JavaDoc. AsciiDoctor can be rendered as HTML, PDF, or Eclipse
+Help.
+   </description>
+
+   <copyright>
+      not decided yet
+   </copyright>
+
+   <license url="">
+      not decided yet
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.commands"/>
+      <import plugin="org.eclipse.jface"/>
+      <import plugin="org.eclipse.ui.workbench"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.codegen.ecore"/>
+      <import plugin="org.apache.commons.io"/>
+      <import plugin="com.google.guava"/>
+      <import plugin="org.eclipse.xtend.lib"/>
+      <import plugin="org.eclipse.xtend.lib.macro"/>
+      <import plugin="org.eclipse.emf.ecore.xcore.lib"/>
+      <import plugin="org.eclipse.xtext.xbase.lib"/>
+      <import plugin="org.eclipse.emf.ecore.xcore.ui"/>
+   </requires>
+
+   <plugin
+         id="com.altran.general.emf.ecoredoc.generator"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.altran.general.emf.ecoredoc.generator.config"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

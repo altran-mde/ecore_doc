@@ -6,15 +6,18 @@
    <feature id="com.altran.general.emf.ecoredoc.ui.feature.source" version="0.0.0">
       <category name="com.altran.general.emf.ecoredoc.repository.category"/>
    </feature>
-   <bundle id="com.altran.general.emf.ecoredoc.generator.config" version="0.0.0">
+   <feature id="com.altran.general.emf.ecoredoc.egf.feature" version="0.0.0">
       <category name="com.altran.general.emf.ecoredoc.repository.category"/>
-   </bundle>
-   <bundle id="com.altran.general.emf.ecoredoc.generator" version="0.0.0">
+   </feature>
+   <feature id="com.altran.general.emf.ecoredoc.egf.feature.source" version="0.0.0">
       <category name="com.altran.general.emf.ecoredoc.repository.category"/>
-   </bundle>
-   <bundle id="com.altran.general.emf.ecoredoc.generator.integration.ui" version="0.0.0">
+   </feature>
+   <feature id="com.altran.general.emf.ecoredoc.feature" version="0.0.0">
       <category name="com.altran.general.emf.ecoredoc.repository.category"/>
-   </bundle>
+   </feature>
+   <feature id="com.altran.general.emf.ecoredoc.feature.source" version="0.0.0">
+      <category name="com.altran.general.emf.ecoredoc.repository.category"/>
+   </feature>
    <category-def name="com.altran.general.emf.ecoredoc.repository.category" label="EcoreDoc">
       <description>
          Altran EcoreDoc Features and Plug-ins

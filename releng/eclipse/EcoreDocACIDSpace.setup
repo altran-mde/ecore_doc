@@ -37,6 +37,8 @@
     <requirement
         name="org.eclipse.emf.ecore.xcore.sdk.feature.group"/>
     <requirement
+        name="org.eclipse.egf.sdk.feature.feature.group"/>
+    <requirement
         name="org.eclipse.oomph.setup.workingsets.feature.group"/>
   </setupTask>
   <setupTask

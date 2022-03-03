@@ -114,6 +114,7 @@ targetEAttribute
 
 .Super-types
 * `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
 * `<<config-IEAttributeConfig, config.{zwsp}IEAttributeConfig>>`
 * `<<config-IEClassConfig, config.{zwsp}IEClassConfig>>`
 * `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
@@ -323,6 +324,7 @@ targetEContainment
 
 .Super-types
 * `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
 * `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
 * `<<config-IEDataTypeConfig, config.{zwsp}IEDataTypeConfig>>`
 * `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
@@ -375,6 +377,7 @@ targetEDataType
 
 .Super-types
 * `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
 * `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
 * `<<config-IEDataTypeConfig, config.{zwsp}IEDataTypeConfig>>`
 * `<<config-IEEnumConfig, config.{zwsp}IEEnumConfig>>`
@@ -626,6 +629,7 @@ eOperation.name + eOperation.EParameters.map[(EType?.eContainer as ENamedElement
 
 .Super-types
 * `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
 * `<<config-IEAttributeConfig, config.{zwsp}IEAttributeConfig>>`
 * `<<config-IEClassConfig, config.{zwsp}IEClassConfig>>`
 * `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
@@ -1071,6 +1075,7 @@ endif::[]
 
 .Super-types
 * `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
 * `<<config-IEAttributeConfig, config.{zwsp}IEAttributeConfig>>`
 * `<<config-IEClassConfig, config.{zwsp}IEClassConfig>>`
 * `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
@@ -1092,6 +1097,44 @@ endif::[]
 |Type
 |Properties
 |Description
+
+|`diagramsOutputFormat`[[config-EcoreDocGeneratorConfig-diagramsOutputFormat]]
+|`EString`
+|`[0..1]` +
+_Default:_ `svg`
+|
+ifdef::backend-html5[]
+++++
+The output-format of diagrams in the generated document.
+For supported outputs, see <a href="https://docs.asciidoctor.org/diagram-extension/latest/#creating-a-diagram">Asciidoctor Documentation</a>.
+
+<p>defaults to <b>svg</b>.</p>
+++++
+endif::[]
+ifndef::backend-html5[]
+The output-format of diagrams in the generated document.
+For supported outputs, see Asciidoctor Documentation.
+
+defaults to svg.
+endif::[]
+
+|`diagramsOutputPath`[[config-EcoreDocGeneratorConfig-diagramsOutputPath]]
+|`EString`
+|`[0..1]` +
+_Default:_ `.`
+|
+ifdef::backend-html5[]
+++++
+The output path of diagrams in the generated document.
+
+<p>defaults to the current directory.</p>
+++++
+endif::[]
+ifndef::backend-html5[]
+The output path of diagrams in the generated document.
+
+defaults to the current directory.
+endif::[]
 
 |`documentTitle`[[config-EcoreDocGeneratorConfig-documentTitle]]
 |`EString`
@@ -1359,6 +1402,24 @@ if (isSetRenderDefaults) {
 }
 ----
 
+.2+|`shouldRenderDiagrams()`[[config-EcoreDocGeneratorConfig-shouldRenderDiagrams]]
+
+`<<config-IDiagramConfig-shouldRenderDiagrams, {override}config.{zwsp}IDiagramConfig.{zwsp}shouldRenderDiagrams()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+if (isSetRenderDiagrams) {
+	renderDiagrams
+} else {
+	false
+}
+----
+
 .2+|`shouldRenderSubTypes()`[[config-EcoreDocGeneratorConfig-shouldRenderSubTypes]]
 
 `<<config-IEClassConfig-shouldRenderSubTypes, {override}config.{zwsp}IEClassConfig.{zwsp}shouldRenderSubTypes()>>`
@@ -1540,6 +1601,62 @@ if (isSetRenderDefaults) {
 
 |===
 
+[[config-IDiagramConfig]]
+==== Interface IDiagramConfig
+
+
+
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`renderDiagrams`[[config-IDiagramConfig-renderDiagrams]]
+|`EBoolean`
+|`[0..1]` +
+unsettable
+|Whether diagrams should be rendered.
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`shouldRenderDiagrams()`[[config-IDiagramConfig-shouldRenderDiagrams]]
+
+`<<config-EcoreDocGeneratorConfig-shouldRenderDiagrams, {overriddenBy}config.{zwsp}EcoreDocGeneratorConfig.{zwsp}shouldRenderDiagrams()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Traverses the tree to find the most specific <tt>renderDiagrams</tt> setting.
+++++
+endif::[]
+ifndef::backend-html5[]
+Traverses the tree to find the most specific renderDiagrams setting.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRenderDiagrams) {
+	renderDiagrams
+} else {
+	(eContainer as IDiagramConfig).shouldRenderDiagrams()
+}
+----
+
+|===
+
 [[config-IEAttributeConfig]]
 ==== Interface IEAttributeConfig
 
@@ -1560,6 +1677,7 @@ if (isSetRenderDefaults) {
 
 .Super-types
 * `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
 * `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
 * `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
 
@@ -1710,6 +1828,7 @@ if (isSetRepeatInherited) {
 
 .Super-types
 * `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
 * `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
 
 .Attributes
@@ -1770,6 +1889,7 @@ if (isSetRenderUseCases) {
 
 .Super-types
 * `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
 * `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
 * `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
 
@@ -1781,6 +1901,7 @@ if (isSetRenderUseCases) {
 
 .Super-types
 * `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
 * `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
 * `<<config-IEDataTypeConfig, config.{zwsp}IEDataTypeConfig>>`
 * `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
@@ -1899,6 +2020,7 @@ if (isSetRender) {
 
 
 .Super-types
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
 * `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
 
 .Attributes

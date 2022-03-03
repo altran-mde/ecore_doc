@@ -87,7 +87,25 @@ interface IDefaultValueConfig {
 	}
 }
 
-interface IEClassifierConfig extends IENamedElementConfig, IDefaultValueConfig {
+interface IDiagramConfig {
+	/*
+	 * Whether diagrams should be rendered.
+	 */
+	unsettable boolean renderDiagrams
+
+	/*
+	 * Traverses the tree to find the most specific <tt>renderDiagrams</tt> setting.
+	 */
+	op boolean shouldRenderDiagrams() {
+		if (isSetRenderDiagrams) {
+			renderDiagrams
+		} else {
+			(eContainer as IDiagramConfig).shouldRenderDiagrams()
+		}
+	}
+}
+
+interface IEClassifierConfig extends IENamedElementConfig, IDefaultValueConfig, IDiagramConfig {
 	/*
 	 * Whether use cases (references to other usages of this element) should be rendered.
 	 */
@@ -211,7 +229,7 @@ interface IEParameterConfig extends IETypedElementConfig {
 	
 }
 
-interface IEPackageConfig extends IENamedElementConfig {
+interface IEPackageConfig extends IENamedElementConfig, IDiagramConfig {
 	/*
 	 * Rendering position of all EDataTypes within an EPackage.
 	 */
@@ -371,6 +389,21 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 	String documentTitle = "Ecore Documentation"
 	
 	/*
+	 * The output path of diagrams in the generated document.
+	 * 
+	 * <p>defaults to the current directory.</p>
+	 */
+	String diagramsOutputPath = "."
+
+	/*
+	 * The output-format of diagrams in the generated document.
+	 * For supported outputs, see <a href="https://docs.asciidoctor.org/diagram-extension/latest/#creating-a-diagram">Asciidoctor Documentation</a>.
+	 * 
+	 * <p>defaults to <b>svg</b>.</p>
+	 */
+	String diagramsOutputFormat = "svg"
+	
+	/*
 	 * Sets default for <tt>render = true</tt>.
 	 */
 	op boolean shouldRender() {
@@ -392,6 +425,13 @@ class EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, IEEnumLiter
 		}
 	}
 
+	op boolean shouldRenderDiagrams() {
+		if (isSetRenderDiagrams) {
+			renderDiagrams
+		} else {
+			false
+		}
+	}
 	/*
 	 * Sets default for <tt>renderUseCases = true</tt>.
 	 */

@@ -4,7 +4,7 @@ import com.altran.general.emf.ecoredoc.generator.config.EClassConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.configbuilder.EClassConfigPair;
-import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorEClassifierPart;
 import com.altran.general.emf.ecoredoc.generator.impl.eclass.EAttributeGeneratorFragment;
 import com.altran.general.emf.ecoredoc.generator.impl.eclass.EContainmentReferenceGeneratorFragment;
 import com.altran.general.emf.ecoredoc.generator.impl.eclass.ECrossReferenceReferenceGeneratorFragment;
@@ -29,7 +29,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.MapExtensions;
 
 @SuppressWarnings("all")
-public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
+public class EClassGeneratorPart extends AEcoreDocGeneratorEClassifierPart {
   private final EAttributeGeneratorFragment eAttributeGeneratorFragment;
   
   private final EContainmentReferenceGeneratorFragment eContainmentReferenceGeneratorFragment;
@@ -103,6 +103,7 @@ public class EClassGeneratorPart extends AEcoreDocGeneratorPart {
   
   protected void writeEClass(final EClassConfigPair pair) {
     this.writeEClassHeader(pair);
+    this.writeDiagram(pair);
     this.writeProperties(pair);
     this.writeSuperTypes(pair);
     this.writeSubTypes(pair);

@@ -6,6 +6,7 @@ import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EEnumLiteralConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEEnumLiteralConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
@@ -45,6 +46,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumConfigImpl#isRender <em>Render</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumConfigImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumConfigImpl#isRenderDiagrams <em>Render Diagrams</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumConfigImpl#isRenderUseCases <em>Render Use Cases</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumConfigImpl#getTargetEEnum <em>Target EEnum</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EEnumConfigImpl#getEEnumLiterals <em>EEnum Literals</em>}</li>
@@ -120,6 +122,35 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	 * @ordered
 	 */
 	protected boolean renderDefaultsESet;
+
+	/**
+	 * The default value of the '{@link #isRenderDiagrams() <em>Render Diagrams</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderDiagrams()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RENDER_DIAGRAMS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRenderDiagrams() <em>Render Diagrams</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderDiagrams()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderDiagrams = RENDER_DIAGRAMS_EDEFAULT;
+
+	/**
+	 * This is true if the Render Diagrams attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderDiagramsESet;
 
 	/**
 	 * The default value of the '{@link #isRenderUseCases() <em>Render Use Cases</em>}' attribute.
@@ -310,6 +341,56 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	 * @generated
 	 */
 	@Override
+	public boolean isRenderDiagrams() {
+		return renderDiagrams;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setRenderDiagrams(boolean newRenderDiagrams) {
+		boolean oldRenderDiagrams = renderDiagrams;
+		renderDiagrams = newRenderDiagrams;
+		boolean oldRenderDiagramsESet = renderDiagramsESet;
+		renderDiagramsESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DIAGRAMS, oldRenderDiagrams, renderDiagrams, !oldRenderDiagramsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void unsetRenderDiagrams() {
+		boolean oldRenderDiagrams = renderDiagrams;
+		boolean oldRenderDiagramsESet = renderDiagramsESet;
+		renderDiagrams = RENDER_DIAGRAMS_EDEFAULT;
+		renderDiagramsESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DIAGRAMS, oldRenderDiagrams, RENDER_DIAGRAMS_EDEFAULT, oldRenderDiagramsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isSetRenderDiagrams() {
+		return renderDiagramsESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean isRenderUseCases() {
 		return renderUseCases;
 	}
@@ -453,6 +534,25 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 	 * @generated
 	 */
 	@Override
+	public boolean shouldRenderDiagrams() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderDiagrams = this.isSetRenderDiagrams();
+		if (_isSetRenderDiagrams) {
+			_xifexpression = this.isRenderDiagrams();
+		}
+		else {
+			EObject _eContainer = this.eContainer();
+			_xifexpression = ((IDiagramConfig) _eContainer).shouldRenderDiagrams();
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean shouldRenderDefaults() {
 		boolean _xifexpression = false;
 		boolean _isSetRenderDefaults = this.isSetRenderDefaults();
@@ -513,6 +613,8 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 				return getId();
 			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS:
 				return isRenderDefaults();
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DIAGRAMS:
+				return isRenderDiagrams();
 			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_USE_CASES:
 				return isRenderUseCases();
 			case EcoreDocConfigPackage.EENUM_CONFIG__TARGET_EENUM:
@@ -538,6 +640,9 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 				return;
 			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS:
 				setRenderDefaults((Boolean)newValue);
+				return;
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DIAGRAMS:
+				setRenderDiagrams((Boolean)newValue);
 				return;
 			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_USE_CASES:
 				setRenderUseCases((Boolean)newValue);
@@ -567,6 +672,9 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS:
 				unsetRenderDefaults();
 				return;
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DIAGRAMS:
+				unsetRenderDiagrams();
+				return;
 			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_USE_CASES:
 				unsetRenderUseCases();
 				return;
@@ -594,6 +702,8 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
 			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS:
 				return isSetRenderDefaults();
+			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DIAGRAMS:
+				return isSetRenderDiagrams();
 			case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_USE_CASES:
 				return isSetRenderUseCases();
 			case EcoreDocConfigPackage.EENUM_CONFIG__TARGET_EENUM:
@@ -614,6 +724,12 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (derivedFeatureID) {
 				case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DEFAULTS: return EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == IDiagramConfig.class) {
+			switch (derivedFeatureID) {
+				case EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DIAGRAMS: return EcoreDocConfigPackage.IDIAGRAM_CONFIG__RENDER_DIAGRAMS;
 				default: return -1;
 			}
 		}
@@ -638,6 +754,12 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 				default: return -1;
 			}
 		}
+		if (baseClass == IDiagramConfig.class) {
+			switch (baseFeatureID) {
+				case EcoreDocConfigPackage.IDIAGRAM_CONFIG__RENDER_DIAGRAMS: return EcoreDocConfigPackage.EENUM_CONFIG__RENDER_DIAGRAMS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IEEnumLiteralConfig.class) {
 			switch (baseFeatureID) {
 				default: return -1;
@@ -656,6 +778,12 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (baseOperationID) {
 				case EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS: return EcoreDocConfigPackage.EENUM_CONFIG___SHOULD_RENDER_DEFAULTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == IDiagramConfig.class) {
+			switch (baseOperationID) {
+				case EcoreDocConfigPackage.IDIAGRAM_CONFIG___SHOULD_RENDER_DIAGRAMS: return EcoreDocConfigPackage.EENUM_CONFIG___SHOULD_RENDER_DIAGRAMS;
 				default: return -1;
 			}
 		}
@@ -683,6 +811,8 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 				return null;
 			case EcoreDocConfigPackage.EENUM_CONFIG___SHOULD_RENDER_USE_CASES:
 				return shouldRenderUseCases();
+			case EcoreDocConfigPackage.EENUM_CONFIG___SHOULD_RENDER_DIAGRAMS:
+				return shouldRenderDiagrams();
 			case EcoreDocConfigPackage.EENUM_CONFIG___SHOULD_RENDER_DEFAULTS:
 				return shouldRenderDefaults();
 			case EcoreDocConfigPackage.EENUM_CONFIG___SHOULD_RENDER:
@@ -705,6 +835,8 @@ public class EEnumConfigImpl extends MinimalEObjectImpl.Container implements EEn
 		if (renderESet) result.append(render); else result.append("<unset>");
 		result.append(", renderDefaults: ");
 		if (renderDefaultsESet) result.append(renderDefaults); else result.append("<unset>");
+		result.append(", renderDiagrams: ");
+		if (renderDiagramsESet) result.append(renderDiagrams); else result.append("<unset>");
 		result.append(", renderUseCases: ");
 		if (renderUseCasesESet) result.append(renderUseCases); else result.append("<unset>");
 		result.append(')');

@@ -5,6 +5,7 @@ package com.altran.general.emf.ecoredoc.generator.config.impl;
 import com.altran.general.emf.ecoredoc.generator.config.EDataTypeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import java.lang.reflect.InvocationTargetException;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl#isRender <em>Render</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl#isRenderDefaults <em>Render Defaults</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl#isRenderDiagrams <em>Render Diagrams</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl#isRenderUseCases <em>Render Use Cases</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EDataTypeConfigImpl#getTargetEDataType <em>Target EData Type</em>}</li>
  * </ul>
@@ -107,6 +109,35 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected boolean renderDefaultsESet;
+
+	/**
+	 * The default value of the '{@link #isRenderDiagrams() <em>Render Diagrams</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderDiagrams()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RENDER_DIAGRAMS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRenderDiagrams() <em>Render Diagrams</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderDiagrams()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderDiagrams = RENDER_DIAGRAMS_EDEFAULT;
+
+	/**
+	 * This is true if the Render Diagrams attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderDiagramsESet;
 
 	/**
 	 * The default value of the '{@link #isRenderUseCases() <em>Render Use Cases</em>}' attribute.
@@ -287,6 +318,56 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 */
 	@Override
+	public boolean isRenderDiagrams() {
+		return renderDiagrams;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setRenderDiagrams(boolean newRenderDiagrams) {
+		boolean oldRenderDiagrams = renderDiagrams;
+		renderDiagrams = newRenderDiagrams;
+		boolean oldRenderDiagramsESet = renderDiagramsESet;
+		renderDiagramsESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_DIAGRAMS, oldRenderDiagrams, renderDiagrams, !oldRenderDiagramsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void unsetRenderDiagrams() {
+		boolean oldRenderDiagrams = renderDiagrams;
+		boolean oldRenderDiagramsESet = renderDiagramsESet;
+		renderDiagrams = RENDER_DIAGRAMS_EDEFAULT;
+		renderDiagramsESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_DIAGRAMS, oldRenderDiagrams, RENDER_DIAGRAMS_EDEFAULT, oldRenderDiagramsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isSetRenderDiagrams() {
+		return renderDiagramsESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean isRenderUseCases() {
 		return renderUseCases;
 	}
@@ -406,6 +487,25 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 */
 	@Override
+	public boolean shouldRenderDiagrams() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderDiagrams = this.isSetRenderDiagrams();
+		if (_isSetRenderDiagrams) {
+			_xifexpression = this.isRenderDiagrams();
+		}
+		else {
+			EObject _eContainer = this.eContainer();
+			_xifexpression = ((IDiagramConfig) _eContainer).shouldRenderDiagrams();
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean shouldRenderDefaults() {
 		boolean _xifexpression = false;
 		boolean _isSetRenderDefaults = this.isSetRenderDefaults();
@@ -452,6 +552,8 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 				return getId();
 			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS:
 				return isRenderDefaults();
+			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_DIAGRAMS:
+				return isRenderDiagrams();
 			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_USE_CASES:
 				return isRenderUseCases();
 			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG__TARGET_EDATA_TYPE:
@@ -474,6 +576,9 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 				return;
 			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS:
 				setRenderDefaults((Boolean)newValue);
+				return;
+			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_DIAGRAMS:
+				setRenderDiagrams((Boolean)newValue);
 				return;
 			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_USE_CASES:
 				setRenderUseCases((Boolean)newValue);
@@ -499,6 +604,9 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS:
 				unsetRenderDefaults();
 				return;
+			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_DIAGRAMS:
+				unsetRenderDiagrams();
+				return;
 			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_USE_CASES:
 				unsetRenderUseCases();
 				return;
@@ -523,6 +631,8 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
 			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS:
 				return isSetRenderDefaults();
+			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_DIAGRAMS:
+				return isSetRenderDiagrams();
 			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_USE_CASES:
 				return isSetRenderUseCases();
 			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG__TARGET_EDATA_TYPE:
@@ -544,6 +654,12 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 				default: return -1;
 			}
 		}
+		if (baseClass == IDiagramConfig.class) {
+			switch (derivedFeatureID) {
+				case EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_DIAGRAMS: return EcoreDocConfigPackage.IDIAGRAM_CONFIG__RENDER_DIAGRAMS;
+				default: return -1;
+			}
+		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
@@ -557,6 +673,12 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (baseFeatureID) {
 				case EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS: return EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_DEFAULTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == IDiagramConfig.class) {
+			switch (baseFeatureID) {
+				case EcoreDocConfigPackage.IDIAGRAM_CONFIG__RENDER_DIAGRAMS: return EcoreDocConfigPackage.EDATA_TYPE_CONFIG__RENDER_DIAGRAMS;
 				default: return -1;
 			}
 		}
@@ -576,6 +698,12 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 				default: return -1;
 			}
 		}
+		if (baseClass == IDiagramConfig.class) {
+			switch (baseOperationID) {
+				case EcoreDocConfigPackage.IDIAGRAM_CONFIG___SHOULD_RENDER_DIAGRAMS: return EcoreDocConfigPackage.EDATA_TYPE_CONFIG___SHOULD_RENDER_DIAGRAMS;
+				default: return -1;
+			}
+		}
 		return super.eDerivedOperationID(baseOperationID, baseClass);
 	}
 
@@ -591,6 +719,8 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 				return getTarget();
 			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG___SHOULD_RENDER_USE_CASES:
 				return shouldRenderUseCases();
+			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG___SHOULD_RENDER_DIAGRAMS:
+				return shouldRenderDiagrams();
 			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG___SHOULD_RENDER_DEFAULTS:
 				return shouldRenderDefaults();
 			case EcoreDocConfigPackage.EDATA_TYPE_CONFIG___SHOULD_RENDER:
@@ -613,6 +743,8 @@ public class EDataTypeConfigImpl extends MinimalEObjectImpl.Container implements
 		if (renderESet) result.append(render); else result.append("<unset>");
 		result.append(", renderDefaults: ");
 		if (renderDefaultsESet) result.append(renderDefaults); else result.append("<unset>");
+		result.append(", renderDiagrams: ");
+		if (renderDiagramsESet) result.append(renderDiagrams); else result.append("<unset>");
 		result.append(", renderUseCases: ");
 		if (renderUseCasesESet) result.append(renderUseCases); else result.append("<unset>");
 		result.append(')');

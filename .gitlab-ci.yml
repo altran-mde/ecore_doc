@@ -27,7 +27,12 @@ mde-build:
   image: ${REGISTRY_URL}/${MAVEN_CONTAINER}
   stage: build
   tags:
-    - linux_docker
+    - linux_docker_medium
+  variables:
+    DISPLAY: ':99'
+  before_script:
+    # You can start a virtual display (XVFB frame buffer) if required
+    - Xvfb ${DISPLAY} -screen 0 1280x1024x16 -nolisten tcp &
   script:
     - acidcli build binaries
   artifacts:

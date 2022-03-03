@@ -2,7 +2,7 @@ package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.configbuilder.IEDataTypeConfigPair;
-import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorEClassifierPart;
 import com.altran.general.emf.ecoredoc.generator.impl.extension.EcoreDocExtension;
 import com.google.common.collect.Multimap;
 import com.google.inject.Injector;
@@ -16,7 +16,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
-public abstract class AEcoreDocGeneratorEDataTypePart extends AEcoreDocGeneratorPart {
+public abstract class AEcoreDocGeneratorEDataTypePart extends AEcoreDocGeneratorEClassifierPart {
   public AEcoreDocGeneratorEDataTypePart(final EcoreDocGeneratorConfig config, final Multimap<EPackage, EClassifier> ePackages, final Injector xcoreInjector) {
     super(config, ePackages, xcoreInjector);
   }

@@ -56,6 +56,7 @@ public class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
         {
           final EEnumConfigPair pair = new EEnumConfigPair(entry);
           this.writeEEnumHeader(pair);
+          this.writeDiagram(pair);
           this.writeProperties(pair);
           this.writeEEnumLiterals(pair);
           this.writeUseCases(pair);

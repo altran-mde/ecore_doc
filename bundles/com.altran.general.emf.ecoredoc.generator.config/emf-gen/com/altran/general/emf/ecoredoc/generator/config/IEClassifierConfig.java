@@ -19,7 +19,7 @@ package com.altran.general.emf.ecoredoc.generator.config;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface IEClassifierConfig extends IENamedElementConfig, IDefaultValueConfig {
+public interface IEClassifierConfig extends IENamedElementConfig, IDefaultValueConfig, IDiagramConfig {
 	/**
 	 * Returns the value of the '<em><b>Render Use Cases</b></em>' attribute.
 	 * <!-- begin-user-doc -->

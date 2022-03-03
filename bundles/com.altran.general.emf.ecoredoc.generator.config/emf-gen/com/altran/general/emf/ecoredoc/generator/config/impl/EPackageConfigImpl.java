@@ -8,6 +8,7 @@ import com.altran.general.emf.ecoredoc.generator.config.EEnumConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EPackageConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEAttributeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEClassConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig;
@@ -56,6 +57,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#isRender <em>Render</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#getId <em>Id</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#isRenderDiagrams <em>Render Diagrams</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEDataTypes <em>Position EData Types</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEEnums <em>Position EEnums</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl#getPositionEClasses <em>Position EClasses</em>}</li>
@@ -112,6 +114,35 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected static final String ID_EDEFAULT = null;
+
+	/**
+	 * The default value of the '{@link #isRenderDiagrams() <em>Render Diagrams</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderDiagrams()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RENDER_DIAGRAMS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRenderDiagrams() <em>Render Diagrams</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderDiagrams()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderDiagrams = RENDER_DIAGRAMS_EDEFAULT;
+
+	/**
+	 * This is true if the Render Diagrams attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderDiagramsESet;
 
 	/**
 	 * The default value of the '{@link #getPositionEDataTypes() <em>Position EData Types</em>}' attribute.
@@ -496,6 +527,56 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 			_name=_target.getName();
 		}
 		return _name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isRenderDiagrams() {
+		return renderDiagrams;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setRenderDiagrams(boolean newRenderDiagrams) {
+		boolean oldRenderDiagrams = renderDiagrams;
+		renderDiagrams = newRenderDiagrams;
+		boolean oldRenderDiagramsESet = renderDiagramsESet;
+		renderDiagramsESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DIAGRAMS, oldRenderDiagrams, renderDiagrams, !oldRenderDiagramsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void unsetRenderDiagrams() {
+		boolean oldRenderDiagrams = renderDiagrams;
+		boolean oldRenderDiagramsESet = renderDiagramsESet;
+		renderDiagrams = RENDER_DIAGRAMS_EDEFAULT;
+		renderDiagramsESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DIAGRAMS, oldRenderDiagrams, RENDER_DIAGRAMS_EDEFAULT, oldRenderDiagramsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isSetRenderDiagrams() {
+		return renderDiagramsESet;
 	}
 
 	/**
@@ -1255,6 +1336,25 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
+	public boolean shouldRenderDiagrams() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderDiagrams = this.isSetRenderDiagrams();
+		if (_isSetRenderDiagrams) {
+			_xifexpression = this.isRenderDiagrams();
+		}
+		else {
+			EObject _eContainer = this.eContainer();
+			_xifexpression = ((IDiagramConfig) _eContainer).shouldRenderDiagrams();
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean shouldRender() {
 		boolean _xifexpression = false;
 		boolean _isSetRender = this.isSetRender();
@@ -1298,6 +1398,8 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				return isRender();
 			case EcoreDocConfigPackage.EPACKAGE_CONFIG__ID:
 				return getId();
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DIAGRAMS:
+				return isRenderDiagrams();
 			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
 				return getPositionEDataTypes();
 			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
@@ -1340,6 +1442,9 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER:
 				setRender((Boolean)newValue);
+				return;
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DIAGRAMS:
+				setRenderDiagrams((Boolean)newValue);
 				return;
 			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
 				setPositionEDataTypes((Integer)newValue);
@@ -1398,6 +1503,9 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER:
 				unsetRender();
 				return;
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DIAGRAMS:
+				unsetRenderDiagrams();
+				return;
 			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
 				unsetPositionEDataTypes();
 				return;
@@ -1453,6 +1561,8 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				return isSetRender();
 			case EcoreDocConfigPackage.EPACKAGE_CONFIG__ID:
 				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DIAGRAMS:
+				return isSetRenderDiagrams();
 			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EDATA_TYPES:
 				return isSetPositionEDataTypes();
 			case EcoreDocConfigPackage.EPACKAGE_CONFIG__POSITION_EENUMS:
@@ -1490,6 +1600,12 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == IDiagramConfig.class) {
+			switch (derivedFeatureID) {
+				case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DIAGRAMS: return EcoreDocConfigPackage.IDIAGRAM_CONFIG__RENDER_DIAGRAMS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (derivedFeatureID) {
 				case EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS: return EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS;
@@ -1566,6 +1682,12 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == IDiagramConfig.class) {
+			switch (baseFeatureID) {
+				case EcoreDocConfigPackage.IDIAGRAM_CONFIG__RENDER_DIAGRAMS: return EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DIAGRAMS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (baseFeatureID) {
 				case EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS: return EcoreDocConfigPackage.EPACKAGE_CONFIG__RENDER_DEFAULTS;
@@ -1642,6 +1764,12 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == IDiagramConfig.class) {
+			switch (baseOperationID) {
+				case EcoreDocConfigPackage.IDIAGRAM_CONFIG___SHOULD_RENDER_DIAGRAMS: return EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_DIAGRAMS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (baseOperationID) {
 				case EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS: return EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_DEFAULTS;
@@ -1749,6 +1877,8 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 				return getEEnumsPosition();
 			case EcoreDocConfigPackage.EPACKAGE_CONFIG___GET_ECLASSES_POSITION:
 				return getEClassesPosition();
+			case EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER_DIAGRAMS:
+				return shouldRenderDiagrams();
 			case EcoreDocConfigPackage.EPACKAGE_CONFIG___SHOULD_RENDER:
 				return shouldRender();
 		}
@@ -1767,6 +1897,8 @@ public class EPackageConfigImpl extends MinimalEObjectImpl.Container implements 
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (render: ");
 		if (renderESet) result.append(render); else result.append("<unset>");
+		result.append(", renderDiagrams: ");
+		if (renderDiagramsESet) result.append(renderDiagrams); else result.append("<unset>");
 		result.append(", positionEDataTypes: ");
 		if (positionEDataTypesESet) result.append(positionEDataTypes); else result.append("<unset>");
 		result.append(", positionEEnums: ");

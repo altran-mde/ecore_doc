@@ -15,6 +15,7 @@ import com.altran.general.emf.ecoredoc.generator.config.EReferenceConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEAttributeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEClassConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig;
@@ -75,6 +76,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  * <ul>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRender <em>Render</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getId <em>Id</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRenderDiagrams <em>Render Diagrams</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getPositionEDataTypes <em>Position EData Types</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getPositionEEnums <em>Position EEnums</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getPositionEClasses <em>Position EClasses</em>}</li>
@@ -85,6 +87,8 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRenderSuperTypes <em>Render Super Types</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#isRenderBounds <em>Render Bounds</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getDocumentTitle <em>Document Title</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getDiagramsOutputPath <em>Diagrams Output Path</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getDiagramsOutputFormat <em>Diagrams Output Format</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocGeneratorConfigImpl#getEPackages <em>EPackages</em>}</li>
  * </ul>
  *
@@ -129,6 +133,35 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 * @ordered
 	 */
 	protected static final String ID_EDEFAULT = null;
+
+	/**
+	 * The default value of the '{@link #isRenderDiagrams() <em>Render Diagrams</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderDiagrams()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RENDER_DIAGRAMS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRenderDiagrams() <em>Render Diagrams</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRenderDiagrams()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderDiagrams = RENDER_DIAGRAMS_EDEFAULT;
+
+	/**
+	 * This is true if the Render Diagrams attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean renderDiagramsESet;
 
 	/**
 	 * The default value of the '{@link #getPositionEDataTypes() <em>Position EData Types</em>}' attribute.
@@ -412,6 +445,46 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	protected String documentTitle = DOCUMENT_TITLE_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getDiagramsOutputPath() <em>Diagrams Output Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDiagramsOutputPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DIAGRAMS_OUTPUT_PATH_EDEFAULT = ".";
+
+	/**
+	 * The cached value of the '{@link #getDiagramsOutputPath() <em>Diagrams Output Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDiagramsOutputPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected String diagramsOutputPath = DIAGRAMS_OUTPUT_PATH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDiagramsOutputFormat() <em>Diagrams Output Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDiagramsOutputFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DIAGRAMS_OUTPUT_FORMAT_EDEFAULT = "svg";
+
+	/**
+	 * The cached value of the '{@link #getDiagramsOutputFormat() <em>Diagrams Output Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDiagramsOutputFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected String diagramsOutputFormat = DIAGRAMS_OUTPUT_FORMAT_EDEFAULT;
+
+	/**
 	 * The cached value of the '{@link #getEPackages() <em>EPackages</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -503,6 +576,56 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 			_name=_target.getName();
 		}
 		return _name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isRenderDiagrams() {
+		return renderDiagrams;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setRenderDiagrams(boolean newRenderDiagrams) {
+		boolean oldRenderDiagrams = renderDiagrams;
+		renderDiagrams = newRenderDiagrams;
+		boolean oldRenderDiagramsESet = renderDiagramsESet;
+		renderDiagramsESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DIAGRAMS, oldRenderDiagrams, renderDiagrams, !oldRenderDiagramsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void unsetRenderDiagrams() {
+		boolean oldRenderDiagrams = renderDiagrams;
+		boolean oldRenderDiagramsESet = renderDiagramsESet;
+		renderDiagrams = RENDER_DIAGRAMS_EDEFAULT;
+		renderDiagramsESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DIAGRAMS, oldRenderDiagrams, RENDER_DIAGRAMS_EDEFAULT, oldRenderDiagramsESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isSetRenderDiagrams() {
+		return renderDiagramsESet;
 	}
 
 	/**
@@ -984,6 +1107,52 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 * @generated
 	 */
 	@Override
+	public String getDiagramsOutputPath() {
+		return diagramsOutputPath;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDiagramsOutputPath(String newDiagramsOutputPath) {
+		String oldDiagramsOutputPath = diagramsOutputPath;
+		diagramsOutputPath = newDiagramsOutputPath;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_PATH, oldDiagramsOutputPath, diagramsOutputPath));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getDiagramsOutputFormat() {
+		return diagramsOutputFormat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDiagramsOutputFormat(String newDiagramsOutputFormat) {
+		String oldDiagramsOutputFormat = diagramsOutputFormat;
+		diagramsOutputFormat = newDiagramsOutputFormat;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_FORMAT, oldDiagramsOutputFormat, diagramsOutputFormat));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EList<EPackageConfig> getEPackages() {
 		if (ePackages == null) {
 			ePackages = new EObjectContainmentEList<EPackageConfig>(EPackageConfig.class, this, EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES);
@@ -1361,6 +1530,24 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 * @generated
 	 */
 	@Override
+	public boolean shouldRenderDiagrams() {
+		boolean _xifexpression = false;
+		boolean _isSetRenderDiagrams = this.isSetRenderDiagrams();
+		if (_isSetRenderDiagrams) {
+			_xifexpression = this.isRenderDiagrams();
+		}
+		else {
+			_xifexpression = false;
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
@@ -1381,6 +1568,8 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 				return isRender();
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__ID:
 				return getId();
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DIAGRAMS:
+				return isRenderDiagrams();
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
 				return getPositionEDataTypes();
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
@@ -1401,6 +1590,10 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 				return isRenderBounds();
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
 				return getDocumentTitle();
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_PATH:
+				return getDiagramsOutputPath();
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_FORMAT:
+				return getDiagramsOutputFormat();
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				return getEPackages();
 		}
@@ -1418,6 +1611,9 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
 				setRender((Boolean)newValue);
+				return;
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DIAGRAMS:
+				setRenderDiagrams((Boolean)newValue);
 				return;
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
 				setPositionEDataTypes((Integer)newValue);
@@ -1449,6 +1645,12 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
 				setDocumentTitle((String)newValue);
 				return;
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_PATH:
+				setDiagramsOutputPath((String)newValue);
+				return;
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_FORMAT:
+				setDiagramsOutputFormat((String)newValue);
+				return;
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				getEPackages().clear();
 				getEPackages().addAll((Collection<? extends EPackageConfig>)newValue);
@@ -1467,6 +1669,9 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER:
 				unsetRender();
+				return;
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DIAGRAMS:
+				unsetRenderDiagrams();
 				return;
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
 				unsetPositionEDataTypes();
@@ -1498,6 +1703,12 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
 				setDocumentTitle(DOCUMENT_TITLE_EDEFAULT);
 				return;
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_PATH:
+				setDiagramsOutputPath(DIAGRAMS_OUTPUT_PATH_EDEFAULT);
+				return;
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_FORMAT:
+				setDiagramsOutputFormat(DIAGRAMS_OUTPUT_FORMAT_EDEFAULT);
+				return;
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				getEPackages().clear();
 				return;
@@ -1517,6 +1728,8 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 				return isSetRender();
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__ID:
 				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DIAGRAMS:
+				return isSetRenderDiagrams();
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EDATA_TYPES:
 				return isSetPositionEDataTypes();
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__POSITION_EENUMS:
@@ -1537,6 +1750,10 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 				return isSetRenderBounds();
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE:
 				return DOCUMENT_TITLE_EDEFAULT == null ? documentTitle != null : !DOCUMENT_TITLE_EDEFAULT.equals(documentTitle);
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_PATH:
+				return DIAGRAMS_OUTPUT_PATH_EDEFAULT == null ? diagramsOutputPath != null : !DIAGRAMS_OUTPUT_PATH_EDEFAULT.equals(diagramsOutputPath);
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_FORMAT:
+				return DIAGRAMS_OUTPUT_FORMAT_EDEFAULT == null ? diagramsOutputFormat != null : !DIAGRAMS_OUTPUT_FORMAT_EDEFAULT.equals(diagramsOutputFormat);
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__EPACKAGES:
 				return ePackages != null && !ePackages.isEmpty();
 		}
@@ -1550,6 +1767,12 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == IDiagramConfig.class) {
+			switch (derivedFeatureID) {
+				case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DIAGRAMS: return EcoreDocConfigPackage.IDIAGRAM_CONFIG__RENDER_DIAGRAMS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (derivedFeatureID) {
 				case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS: return EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS;
@@ -1626,6 +1849,12 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == IDiagramConfig.class) {
+			switch (baseFeatureID) {
+				case EcoreDocConfigPackage.IDIAGRAM_CONFIG__RENDER_DIAGRAMS: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DIAGRAMS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (baseFeatureID) {
 				case EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG__RENDER_DEFAULTS;
@@ -1702,6 +1931,12 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == IDiagramConfig.class) {
+			switch (baseOperationID) {
+				case EcoreDocConfigPackage.IDIAGRAM_CONFIG___SHOULD_RENDER_DIAGRAMS: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DIAGRAMS;
+				default: return -1;
+			}
+		}
 		if (baseClass == IDefaultValueConfig.class) {
 			switch (baseOperationID) {
 				case EcoreDocConfigPackage.IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS: return EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS;
@@ -1784,6 +2019,8 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 				return shouldRender();
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS:
 				return shouldRenderDefaults();
+			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DIAGRAMS:
+				return shouldRenderDiagrams();
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES:
 				return shouldRenderUseCases();
 			case EcoreDocConfigPackage.ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED:
@@ -1823,6 +2060,8 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (render: ");
 		if (renderESet) result.append(render); else result.append("<unset>");
+		result.append(", renderDiagrams: ");
+		if (renderDiagramsESet) result.append(renderDiagrams); else result.append("<unset>");
 		result.append(", positionEDataTypes: ");
 		if (positionEDataTypesESet) result.append(positionEDataTypes); else result.append("<unset>");
 		result.append(", positionEEnums: ");
@@ -1843,6 +2082,10 @@ public class EcoreDocGeneratorConfigImpl extends MinimalEObjectImpl.Container im
 		if (renderBoundsESet) result.append(renderBounds); else result.append("<unset>");
 		result.append(", documentTitle: ");
 		result.append(documentTitle);
+		result.append(", diagramsOutputPath: ");
+		result.append(diagramsOutputPath);
+		result.append(", diagramsOutputFormat: ");
+		result.append(diagramsOutputFormat);
 		result.append(')');
 		return result.toString();
 	}

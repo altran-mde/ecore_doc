@@ -52,6 +52,7 @@ public class EDataTypeGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
         {
           final EDataTypeConfigPair pair = new EDataTypeConfigPair(entry);
           this.writeEDataTypeHeader(pair);
+          this.writeDiagram(pair);
           this.writeProperties(pair);
           this.writeUseCases(pair);
         }

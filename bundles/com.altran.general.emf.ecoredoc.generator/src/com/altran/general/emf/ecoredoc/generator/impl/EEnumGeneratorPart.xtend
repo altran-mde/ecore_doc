@@ -43,6 +43,7 @@ class EEnumGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 			for (entry : eEnumMap.entrySet) {
 				val pair = new EEnumConfigPair(entry)
 				writeEEnumHeader(pair)
+				writeDiagram(pair)
 				writeProperties(pair)
 				writeEEnumLiterals(pair)
 				writeUseCases(pair)

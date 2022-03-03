@@ -169,6 +169,52 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IDEFAULT_VALUE_CONFIG_OPERATION_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig <em>IDiagram Config</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig
+	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIDiagramConfig()
+	 * @generated
+	 */
+	int IDIAGRAM_CONFIG = 2;
+
+	/**
+	 * The feature id for the '<em><b>Render Diagrams</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDIAGRAM_CONFIG__RENDER_DIAGRAMS = 0;
+
+	/**
+	 * The number of structural features of the '<em>IDiagram Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDIAGRAM_CONFIG_FEATURE_COUNT = 1;
+
+	/**
+	 * The operation id for the '<em>Should Render Diagrams</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDIAGRAM_CONFIG___SHOULD_RENDER_DIAGRAMS = 0;
+
+	/**
+	 * The number of operations of the '<em>IDiagram Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDIAGRAM_CONFIG_OPERATION_COUNT = 1;
+
+	/**
 	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig <em>IE Classifier Config</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -176,7 +222,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEClassifierConfig()
 	 * @generated
 	 */
-	int IE_CLASSIFIER_CONFIG = 2;
+	int IE_CLASSIFIER_CONFIG = 3;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -206,13 +252,22 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IE_CLASSIFIER_CONFIG__RENDER_DEFAULTS = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Render Diagrams</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASSIFIER_CONFIG__RENDER_DIAGRAMS = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IE_CLASSIFIER_CONFIG__RENDER_USE_CASES = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 1;
+	int IE_CLASSIFIER_CONFIG__RENDER_USE_CASES = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>IE Classifier Config</em>' class.
@@ -221,7 +276,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IE_CLASSIFIER_CONFIG_FEATURE_COUNT = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 2;
+	int IE_CLASSIFIER_CONFIG_FEATURE_COUNT = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -251,13 +306,22 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IE_CLASSIFIER_CONFIG___SHOULD_RENDER_DEFAULTS = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Should Render Diagrams</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASSIFIER_CONFIG___SHOULD_RENDER_DIAGRAMS = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 1;
+
+	/**
 	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IE_CLASSIFIER_CONFIG___SHOULD_RENDER_USE_CASES = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 1;
+	int IE_CLASSIFIER_CONFIG___SHOULD_RENDER_USE_CASES = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>IE Classifier Config</em>' class.
@@ -266,7 +330,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IE_CLASSIFIER_CONFIG_OPERATION_COUNT = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 2;
+	int IE_CLASSIFIER_CONFIG_OPERATION_COUNT = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.IEDataTypeConfig <em>IE Data Type Config</em>}' class.
@@ -276,7 +340,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEDataTypeConfig()
 	 * @generated
 	 */
-	int IE_DATA_TYPE_CONFIG = 3;
+	int IE_DATA_TYPE_CONFIG = 4;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -304,6 +368,15 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int IE_DATA_TYPE_CONFIG__RENDER_DEFAULTS = IE_CLASSIFIER_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Render Diagrams</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_DATA_TYPE_CONFIG__RENDER_DIAGRAMS = IE_CLASSIFIER_CONFIG__RENDER_DIAGRAMS;
 
 	/**
 	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
@@ -351,6 +424,15 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IE_DATA_TYPE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_CLASSIFIER_CONFIG___SHOULD_RENDER_DEFAULTS;
 
 	/**
+	 * The operation id for the '<em>Should Render Diagrams</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_DATA_TYPE_CONFIG___SHOULD_RENDER_DIAGRAMS = IE_CLASSIFIER_CONFIG___SHOULD_RENDER_DIAGRAMS;
+
+	/**
 	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -376,7 +458,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEEnumConfig()
 	 * @generated
 	 */
-	int IE_ENUM_CONFIG = 4;
+	int IE_ENUM_CONFIG = 5;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -404,6 +486,15 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int IE_ENUM_CONFIG__RENDER_DEFAULTS = IE_DATA_TYPE_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Render Diagrams</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_CONFIG__RENDER_DIAGRAMS = IE_DATA_TYPE_CONFIG__RENDER_DIAGRAMS;
 
 	/**
 	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
@@ -451,6 +542,15 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IE_ENUM_CONFIG___SHOULD_RENDER_DEFAULTS = IE_DATA_TYPE_CONFIG___SHOULD_RENDER_DEFAULTS;
 
 	/**
+	 * The operation id for the '<em>Should Render Diagrams</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_ENUM_CONFIG___SHOULD_RENDER_DIAGRAMS = IE_DATA_TYPE_CONFIG___SHOULD_RENDER_DIAGRAMS;
+
+	/**
 	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -476,7 +576,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEClassConfig()
 	 * @generated
 	 */
-	int IE_CLASS_CONFIG = 5;
+	int IE_CLASS_CONFIG = 6;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -504,6 +604,15 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int IE_CLASS_CONFIG__RENDER_DEFAULTS = IE_CLASSIFIER_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Render Diagrams</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG__RENDER_DIAGRAMS = IE_CLASSIFIER_CONFIG__RENDER_DIAGRAMS;
 
 	/**
 	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
@@ -578,6 +687,15 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IE_CLASS_CONFIG___SHOULD_RENDER_DEFAULTS = IE_CLASSIFIER_CONFIG___SHOULD_RENDER_DEFAULTS;
 
 	/**
+	 * The operation id for the '<em>Should Render Diagrams</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_CLASS_CONFIG___SHOULD_RENDER_DIAGRAMS = IE_CLASSIFIER_CONFIG___SHOULD_RENDER_DIAGRAMS;
+
+	/**
 	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -630,7 +748,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIETypedElementConfig()
 	 * @generated
 	 */
-	int IE_TYPED_ELEMENT_CONFIG = 6;
+	int IE_TYPED_ELEMENT_CONFIG = 7;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -730,7 +848,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEStructuralFeatureConfig()
 	 * @generated
 	 */
-	int IE_STRUCTURAL_FEATURE_CONFIG = 7;
+	int IE_STRUCTURAL_FEATURE_CONFIG = 8;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -830,7 +948,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEAttributeConfig()
 	 * @generated
 	 */
-	int IE_ATTRIBUTE_CONFIG = 8;
+	int IE_ATTRIBUTE_CONFIG = 9;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -930,7 +1048,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEReferenceConfig()
 	 * @generated
 	 */
-	int IE_REFERENCE_CONFIG = 9;
+	int IE_REFERENCE_CONFIG = 10;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -1030,7 +1148,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEOperationConfig()
 	 * @generated
 	 */
-	int IE_OPERATION_CONFIG = 10;
+	int IE_OPERATION_CONFIG = 11;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -1130,7 +1248,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEParameterConfig()
 	 * @generated
 	 */
-	int IE_PARAMETER_CONFIG = 11;
+	int IE_PARAMETER_CONFIG = 12;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -1230,7 +1348,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEPackageConfig()
 	 * @generated
 	 */
-	int IE_PACKAGE_CONFIG = 12;
+	int IE_PACKAGE_CONFIG = 13;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -1251,13 +1369,22 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IE_PACKAGE_CONFIG__ID = IE_NAMED_ELEMENT_CONFIG__ID;
 
 	/**
+	 * The feature id for the '<em><b>Render Diagrams</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_PACKAGE_CONFIG__RENDER_DIAGRAMS = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Position EData Types</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IE_PACKAGE_CONFIG__POSITION_EDATA_TYPES = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 0;
+	int IE_PACKAGE_CONFIG__POSITION_EDATA_TYPES = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Position EEnums</b></em>' attribute.
@@ -1266,7 +1393,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IE_PACKAGE_CONFIG__POSITION_EENUMS = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 1;
+	int IE_PACKAGE_CONFIG__POSITION_EENUMS = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Position EClasses</b></em>' attribute.
@@ -1275,7 +1402,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IE_PACKAGE_CONFIG__POSITION_ECLASSES = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 2;
+	int IE_PACKAGE_CONFIG__POSITION_ECLASSES = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>IE Package Config</em>' class.
@@ -1284,7 +1411,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IE_PACKAGE_CONFIG_FEATURE_COUNT = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 3;
+	int IE_PACKAGE_CONFIG_FEATURE_COUNT = IE_NAMED_ELEMENT_CONFIG_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -1305,13 +1432,22 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int IE_PACKAGE_CONFIG___GET_TARGET = IE_NAMED_ELEMENT_CONFIG___GET_TARGET;
 
 	/**
+	 * The operation id for the '<em>Should Render Diagrams</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IE_PACKAGE_CONFIG___SHOULD_RENDER_DIAGRAMS = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 0;
+
+	/**
 	 * The operation id for the '<em>Get EData Types Position</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IE_PACKAGE_CONFIG___GET_EDATA_TYPES_POSITION = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 0;
+	int IE_PACKAGE_CONFIG___GET_EDATA_TYPES_POSITION = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get EEnums Position</em>' operation.
@@ -1320,7 +1456,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IE_PACKAGE_CONFIG___GET_EENUMS_POSITION = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 1;
+	int IE_PACKAGE_CONFIG___GET_EENUMS_POSITION = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Get EClasses Position</em>' operation.
@@ -1329,7 +1465,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IE_PACKAGE_CONFIG___GET_ECLASSES_POSITION = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 2;
+	int IE_PACKAGE_CONFIG___GET_ECLASSES_POSITION = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>IE Package Config</em>' class.
@@ -1338,7 +1474,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IE_PACKAGE_CONFIG_OPERATION_COUNT = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 3;
+	int IE_PACKAGE_CONFIG_OPERATION_COUNT = IE_NAMED_ELEMENT_CONFIG_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.IEEnumLiteralConfig <em>IE Enum Literal Config</em>}' class.
@@ -1348,7 +1484,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIEEnumLiteralConfig()
 	 * @generated
 	 */
-	int IE_ENUM_LITERAL_CONFIG = 13;
+	int IE_ENUM_LITERAL_CONFIG = 14;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -1412,7 +1548,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEcoreDocGeneratorConfig()
 	 * @generated
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG = 14;
+	int ECORE_DOC_GENERATOR_CONFIG = 15;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -1431,6 +1567,15 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECORE_DOC_GENERATOR_CONFIG__ID = IE_PACKAGE_CONFIG__ID;
+
+	/**
+	 * The feature id for the '<em><b>Render Diagrams</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__RENDER_DIAGRAMS = IE_PACKAGE_CONFIG__RENDER_DIAGRAMS;
 
 	/**
 	 * The feature id for the '<em><b>Position EData Types</b></em>' attribute.
@@ -1523,13 +1668,31 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE = IE_PACKAGE_CONFIG_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Diagrams Output Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_PATH = IE_PACKAGE_CONFIG_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Diagrams Output Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_FORMAT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 8;
+
+	/**
 	 * The feature id for the '<em><b>EPackages</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG__EPACKAGES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 7;
+	int ECORE_DOC_GENERATOR_CONFIG__EPACKAGES = IE_PACKAGE_CONFIG_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Ecore Doc Generator Config</em>' class.
@@ -1538,7 +1701,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 8;
+	int ECORE_DOC_GENERATOR_CONFIG_FEATURE_COUNT = IE_PACKAGE_CONFIG_FEATURE_COUNT + 10;
 
 	/**
 	 * The operation id for the '<em>Should Render</em>' operation.
@@ -1559,13 +1722,22 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 7;
 
 	/**
+	 * The operation id for the '<em>Should Render Diagrams</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DIAGRAMS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 8;
+
+	/**
 	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 8;
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 9;
 
 	/**
 	 * The operation id for the '<em>Should Repeat Inherited</em>' operation.
@@ -1574,7 +1746,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED = IE_PACKAGE_CONFIG_OPERATION_COUNT + 9;
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED = IE_PACKAGE_CONFIG_OPERATION_COUNT + 10;
 
 	/**
 	 * The operation id for the '<em>Should Render Sub Types</em>' operation.
@@ -1583,7 +1755,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUB_TYPES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 10;
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUB_TYPES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 11;
 
 	/**
 	 * The operation id for the '<em>Should Render Super Types</em>' operation.
@@ -1592,7 +1764,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUPER_TYPES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 11;
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUPER_TYPES = IE_PACKAGE_CONFIG_OPERATION_COUNT + 12;
 
 	/**
 	 * The operation id for the '<em>Should Render Bounds</em>' operation.
@@ -1601,7 +1773,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 12;
+	int ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_BOUNDS = IE_PACKAGE_CONFIG_OPERATION_COUNT + 13;
 
 	/**
 	 * The operation id for the '<em>Get EData Types Position</em>' operation.
@@ -1610,7 +1782,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___GET_EDATA_TYPES_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 13;
+	int ECORE_DOC_GENERATOR_CONFIG___GET_EDATA_TYPES_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 14;
 
 	/**
 	 * The operation id for the '<em>Get EEnums Position</em>' operation.
@@ -1619,7 +1791,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___GET_EENUMS_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 14;
+	int ECORE_DOC_GENERATOR_CONFIG___GET_EENUMS_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 15;
 
 	/**
 	 * The operation id for the '<em>Get EClasses Position</em>' operation.
@@ -1628,7 +1800,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___GET_ECLASSES_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 15;
+	int ECORE_DOC_GENERATOR_CONFIG___GET_ECLASSES_POSITION = IE_PACKAGE_CONFIG_OPERATION_COUNT + 16;
 
 	/**
 	 * The operation id for the '<em>Add EPackages</em>' operation.
@@ -1637,7 +1809,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___ADD_EPACKAGES__LIST = IE_PACKAGE_CONFIG_OPERATION_COUNT + 16;
+	int ECORE_DOC_GENERATOR_CONFIG___ADD_EPACKAGES__LIST = IE_PACKAGE_CONFIG_OPERATION_COUNT + 17;
 
 	/**
 	 * The operation id for the '<em>Find Config</em>' operation.
@@ -1646,7 +1818,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 17;
+	int ECORE_DOC_GENERATOR_CONFIG___FIND_CONFIG__ENAMEDELEMENT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 18;
 
 	/**
 	 * The operation id for the '<em>Get Target</em>' operation.
@@ -1655,7 +1827,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 18;
+	int ECORE_DOC_GENERATOR_CONFIG___GET_TARGET = IE_PACKAGE_CONFIG_OPERATION_COUNT + 19;
 
 	/**
 	 * The number of operations of the '<em>Ecore Doc Generator Config</em>' class.
@@ -1664,7 +1836,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 19;
+	int ECORE_DOC_GENERATOR_CONFIG_OPERATION_COUNT = IE_PACKAGE_CONFIG_OPERATION_COUNT + 20;
 
 	/**
 	 * The meta object id for the '{@link com.altran.general.emf.ecoredoc.generator.config.impl.EPackageConfigImpl <em>EPackage Config</em>}' class.
@@ -1674,7 +1846,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEPackageConfig()
 	 * @generated
 	 */
-	int EPACKAGE_CONFIG = 15;
+	int EPACKAGE_CONFIG = 16;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -1693,6 +1865,15 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int EPACKAGE_CONFIG__ID = IE_PACKAGE_CONFIG__ID;
+
+	/**
+	 * The feature id for the '<em><b>Render Diagrams</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG__RENDER_DIAGRAMS = IE_PACKAGE_CONFIG__RENDER_DIAGRAMS;
 
 	/**
 	 * The feature id for the '<em><b>Position EData Types</b></em>' attribute.
@@ -1830,6 +2011,15 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int EPACKAGE_CONFIG___SHOULD_RENDER = IE_PACKAGE_CONFIG___SHOULD_RENDER;
 
 	/**
+	 * The operation id for the '<em>Should Render Diagrams</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EPACKAGE_CONFIG___SHOULD_RENDER_DIAGRAMS = IE_PACKAGE_CONFIG___SHOULD_RENDER_DIAGRAMS;
+
+	/**
 	 * The operation id for the '<em>Get EData Types Position</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1963,7 +2153,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEDataTypeConfig()
 	 * @generated
 	 */
-	int EDATA_TYPE_CONFIG = 16;
+	int EDATA_TYPE_CONFIG = 17;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -1991,6 +2181,15 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int EDATA_TYPE_CONFIG__RENDER_DEFAULTS = IE_DATA_TYPE_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Render Diagrams</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDATA_TYPE_CONFIG__RENDER_DIAGRAMS = IE_DATA_TYPE_CONFIG__RENDER_DIAGRAMS;
 
 	/**
 	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
@@ -2038,6 +2237,15 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int EDATA_TYPE_CONFIG___SHOULD_RENDER_DEFAULTS = IE_DATA_TYPE_CONFIG___SHOULD_RENDER_DEFAULTS;
 
 	/**
+	 * The operation id for the '<em>Should Render Diagrams</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDATA_TYPE_CONFIG___SHOULD_RENDER_DIAGRAMS = IE_DATA_TYPE_CONFIG___SHOULD_RENDER_DIAGRAMS;
+
+	/**
 	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2072,7 +2280,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEEnumConfig()
 	 * @generated
 	 */
-	int EENUM_CONFIG = 17;
+	int EENUM_CONFIG = 18;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -2100,6 +2308,15 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int EENUM_CONFIG__RENDER_DEFAULTS = IE_ENUM_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Render Diagrams</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EENUM_CONFIG__RENDER_DIAGRAMS = IE_ENUM_CONFIG__RENDER_DIAGRAMS;
 
 	/**
 	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
@@ -2156,6 +2373,15 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int EENUM_CONFIG___SHOULD_RENDER_DEFAULTS = IE_ENUM_CONFIG___SHOULD_RENDER_DEFAULTS;
 
 	/**
+	 * The operation id for the '<em>Should Render Diagrams</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EENUM_CONFIG___SHOULD_RENDER_DIAGRAMS = IE_ENUM_CONFIG___SHOULD_RENDER_DIAGRAMS;
+
+	/**
 	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2199,7 +2425,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEEnumLiteralConfig()
 	 * @generated
 	 */
-	int EENUM_LITERAL_CONFIG = 18;
+	int EENUM_LITERAL_CONFIG = 19;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -2272,7 +2498,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEClassConfig()
 	 * @generated
 	 */
-	int ECLASS_CONFIG = 19;
+	int ECLASS_CONFIG = 20;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -2300,6 +2526,15 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECLASS_CONFIG__RENDER_DEFAULTS = IE_CLASS_CONFIG__RENDER_DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Render Diagrams</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS_CONFIG__RENDER_DIAGRAMS = IE_CLASS_CONFIG__RENDER_DIAGRAMS;
 
 	/**
 	 * The feature id for the '<em><b>Render Use Cases</b></em>' attribute.
@@ -2419,6 +2654,15 @@ public interface EcoreDocConfigPackage extends EPackage {
 	int ECLASS_CONFIG___SHOULD_RENDER_DEFAULTS = IE_CLASS_CONFIG___SHOULD_RENDER_DEFAULTS;
 
 	/**
+	 * The operation id for the '<em>Should Render Diagrams</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECLASS_CONFIG___SHOULD_RENDER_DIAGRAMS = IE_CLASS_CONFIG___SHOULD_RENDER_DIAGRAMS;
+
+	/**
 	 * The operation id for the '<em>Should Render Use Cases</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2525,7 +2769,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEAttributeConfig()
 	 * @generated
 	 */
-	int EATTRIBUTE_CONFIG = 20;
+	int EATTRIBUTE_CONFIG = 21;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -2634,7 +2878,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getAEReferenceConfig()
 	 * @generated
 	 */
-	int AE_REFERENCE_CONFIG = 21;
+	int AE_REFERENCE_CONFIG = 22;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -2734,7 +2978,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEContainmentConfig()
 	 * @generated
 	 */
-	int ECONTAINMENT_CONFIG = 22;
+	int ECONTAINMENT_CONFIG = 23;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -2843,7 +3087,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEReferenceConfig()
 	 * @generated
 	 */
-	int EREFERENCE_CONFIG = 23;
+	int EREFERENCE_CONFIG = 24;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -2952,7 +3196,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEOperationConfig()
 	 * @generated
 	 */
-	int EOPERATION_CONFIG = 24;
+	int EOPERATION_CONFIG = 25;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -3097,7 +3341,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getEParameterConfig()
 	 * @generated
 	 */
-	int EPARAMETER_CONFIG = 25;
+	int EPARAMETER_CONFIG = 26;
 
 	/**
 	 * The feature id for the '<em><b>Render</b></em>' attribute.
@@ -3206,7 +3450,7 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getList()
 	 * @generated
 	 */
-	int LIST = 26;
+	int LIST = 27;
 
 	/**
 	 * The number of structural features of the '<em>List</em>' class.
@@ -3309,6 +3553,37 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getIDefaultValueConfig__ShouldRenderDefaults();
+
+	/**
+	 * Returns the meta object for class '{@link com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig <em>IDiagram Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IDiagram Config</em>'.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig
+	 * @generated
+	 */
+	EClass getIDiagramConfig();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig#isRenderDiagrams <em>Render Diagrams</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Render Diagrams</em>'.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig#isRenderDiagrams()
+	 * @see #getIDiagramConfig()
+	 * @generated
+	 */
+	EAttribute getIDiagramConfig_RenderDiagrams();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig#shouldRenderDiagrams() <em>Should Render Diagrams</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Should Render Diagrams</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig#shouldRenderDiagrams()
+	 * @generated
+	 */
+	EOperation getIDiagramConfig__ShouldRenderDiagrams();
 
 	/**
 	 * Returns the meta object for class '{@link com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig <em>IE Classifier Config</em>}'.
@@ -3620,6 +3895,28 @@ public interface EcoreDocConfigPackage extends EPackage {
 	EAttribute getEcoreDocGeneratorConfig_DocumentTitle();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getDiagramsOutputPath <em>Diagrams Output Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Diagrams Output Path</em>'.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getDiagramsOutputPath()
+	 * @see #getEcoreDocGeneratorConfig()
+	 * @generated
+	 */
+	EAttribute getEcoreDocGeneratorConfig_DiagramsOutputPath();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getDiagramsOutputFormat <em>Diagrams Output Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Diagrams Output Format</em>'.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getDiagramsOutputFormat()
+	 * @see #getEcoreDocGeneratorConfig()
+	 * @generated
+	 */
+	EAttribute getEcoreDocGeneratorConfig_DiagramsOutputFormat();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEPackages <em>EPackages</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3649,6 +3946,16 @@ public interface EcoreDocConfigPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getEcoreDocGeneratorConfig__ShouldRenderDefaults();
+
+	/**
+	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRenderDiagrams() <em>Should Render Diagrams</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Should Render Diagrams</em>' operation.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRenderDiagrams()
+	 * @generated
+	 */
+	EOperation getEcoreDocGeneratorConfig__ShouldRenderDiagrams();
 
 	/**
 	 * Returns the meta object for the '{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#shouldRenderUseCases() <em>Should Render Use Cases</em>}' operation.
@@ -4393,6 +4700,32 @@ public interface EcoreDocConfigPackage extends EPackage {
 		EOperation IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS = eINSTANCE.getIDefaultValueConfig__ShouldRenderDefaults();
 
 		/**
+		 * The meta object literal for the '{@link com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig <em>IDiagram Config</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig
+		 * @see com.altran.general.emf.ecoredoc.generator.config.impl.EcoreDocConfigPackageImpl#getIDiagramConfig()
+		 * @generated
+		 */
+		EClass IDIAGRAM_CONFIG = eINSTANCE.getIDiagramConfig();
+
+		/**
+		 * The meta object literal for the '<em><b>Render Diagrams</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDIAGRAM_CONFIG__RENDER_DIAGRAMS = eINSTANCE.getIDiagramConfig_RenderDiagrams();
+
+		/**
+		 * The meta object literal for the '<em><b>Should Render Diagrams</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation IDIAGRAM_CONFIG___SHOULD_RENDER_DIAGRAMS = eINSTANCE.getIDiagramConfig__ShouldRenderDiagrams();
+
+		/**
 		 * The meta object literal for the '{@link com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig <em>IE Classifier Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4659,6 +4992,22 @@ public interface EcoreDocConfigPackage extends EPackage {
 		EAttribute ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE = eINSTANCE.getEcoreDocGeneratorConfig_DocumentTitle();
 
 		/**
+		 * The meta object literal for the '<em><b>Diagrams Output Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_PATH = eINSTANCE.getEcoreDocGeneratorConfig_DiagramsOutputPath();
+
+		/**
+		 * The meta object literal for the '<em><b>Diagrams Output Format</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_FORMAT = eINSTANCE.getEcoreDocGeneratorConfig_DiagramsOutputFormat();
+
+		/**
 		 * The meta object literal for the '<em><b>EPackages</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4681,6 +5030,14 @@ public interface EcoreDocConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS = eINSTANCE.getEcoreDocGeneratorConfig__ShouldRenderDefaults();
+
+		/**
+		 * The meta object literal for the '<em><b>Should Render Diagrams</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DIAGRAMS = eINSTANCE.getEcoreDocGeneratorConfig__ShouldRenderDiagrams();
 
 		/**
 		 * The meta object literal for the '<em><b>Should Render Use Cases</b></em>' operation.

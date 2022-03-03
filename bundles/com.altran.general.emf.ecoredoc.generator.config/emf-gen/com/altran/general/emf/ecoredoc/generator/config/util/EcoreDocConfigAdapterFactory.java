@@ -78,6 +78,10 @@ public class EcoreDocConfigAdapterFactory extends AdapterFactoryImpl {
 				return createIDefaultValueConfigAdapter();
 			}
 			@Override
+			public Adapter caseIDiagramConfig(IDiagramConfig object) {
+				return createIDiagramConfigAdapter();
+			}
+			@Override
 			public Adapter caseIEClassifierConfig(IEClassifierConfig object) {
 				return createIEClassifierConfigAdapter();
 			}
@@ -222,6 +226,20 @@ public class EcoreDocConfigAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIDefaultValueConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig <em>IDiagram Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig
+	 * @generated
+	 */
+	public Adapter createIDiagramConfigAdapter() {
 		return null;
 	}
 

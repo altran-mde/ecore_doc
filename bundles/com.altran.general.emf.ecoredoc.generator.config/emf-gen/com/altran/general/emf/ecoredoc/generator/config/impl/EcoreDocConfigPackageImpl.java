@@ -17,6 +17,7 @@ import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigFactory;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IDefaultValueConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IDiagramConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEAttributeConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEClassConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig;
@@ -63,6 +64,13 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	private EClass iDefaultValueConfigEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iDiagramConfigEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -389,6 +397,36 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	@Override
+	public EClass getIDiagramConfig() {
+		return iDiagramConfigEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIDiagramConfig_RenderDiagrams() {
+		return (EAttribute)iDiagramConfigEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getIDiagramConfig__ShouldRenderDiagrams() {
+		return iDiagramConfigEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getIEClassifierConfig() {
 		return ieClassifierConfigEClass;
 	}
@@ -689,8 +727,28 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	@Override
+	public EAttribute getEcoreDocGeneratorConfig_DiagramsOutputPath() {
+		return (EAttribute)ecoreDocGeneratorConfigEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEcoreDocGeneratorConfig_DiagramsOutputFormat() {
+		return (EAttribute)ecoreDocGeneratorConfigEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getEcoreDocGeneratorConfig_EPackages() {
-		return (EReference)ecoreDocGeneratorConfigEClass.getEStructuralFeatures().get(1);
+		return (EReference)ecoreDocGeneratorConfigEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -719,7 +777,7 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	@Override
-	public EOperation getEcoreDocGeneratorConfig__ShouldRenderUseCases() {
+	public EOperation getEcoreDocGeneratorConfig__ShouldRenderDiagrams() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(2);
 	}
 
@@ -729,7 +787,7 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	@Override
-	public EOperation getEcoreDocGeneratorConfig__ShouldRepeatInherited() {
+	public EOperation getEcoreDocGeneratorConfig__ShouldRenderUseCases() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(3);
 	}
 
@@ -739,7 +797,7 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	@Override
-	public EOperation getEcoreDocGeneratorConfig__ShouldRenderSubTypes() {
+	public EOperation getEcoreDocGeneratorConfig__ShouldRepeatInherited() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(4);
 	}
 
@@ -749,7 +807,7 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	@Override
-	public EOperation getEcoreDocGeneratorConfig__ShouldRenderSuperTypes() {
+	public EOperation getEcoreDocGeneratorConfig__ShouldRenderSubTypes() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(5);
 	}
 
@@ -759,7 +817,7 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	@Override
-	public EOperation getEcoreDocGeneratorConfig__ShouldRenderBounds() {
+	public EOperation getEcoreDocGeneratorConfig__ShouldRenderSuperTypes() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(6);
 	}
 
@@ -769,7 +827,7 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	@Override
-	public EOperation getEcoreDocGeneratorConfig__GetEDataTypesPosition() {
+	public EOperation getEcoreDocGeneratorConfig__ShouldRenderBounds() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(7);
 	}
 
@@ -779,7 +837,7 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	@Override
-	public EOperation getEcoreDocGeneratorConfig__GetEEnumsPosition() {
+	public EOperation getEcoreDocGeneratorConfig__GetEDataTypesPosition() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(8);
 	}
 
@@ -789,7 +847,7 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	@Override
-	public EOperation getEcoreDocGeneratorConfig__GetEClassesPosition() {
+	public EOperation getEcoreDocGeneratorConfig__GetEEnumsPosition() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(9);
 	}
 
@@ -799,7 +857,7 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	@Override
-	public EOperation getEcoreDocGeneratorConfig__AddEPackages__List() {
+	public EOperation getEcoreDocGeneratorConfig__GetEClassesPosition() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(10);
 	}
 
@@ -809,7 +867,7 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	@Override
-	public EOperation getEcoreDocGeneratorConfig__FindConfig__ENamedElement() {
+	public EOperation getEcoreDocGeneratorConfig__AddEPackages__List() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(11);
 	}
 
@@ -819,8 +877,18 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 	 * @generated
 	 */
 	@Override
-	public EOperation getEcoreDocGeneratorConfig__GetTarget() {
+	public EOperation getEcoreDocGeneratorConfig__FindConfig__ENamedElement() {
 		return ecoreDocGeneratorConfigEClass.getEOperations().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getEcoreDocGeneratorConfig__GetTarget() {
+		return ecoreDocGeneratorConfigEClass.getEOperations().get(13);
 	}
 
 	/**
@@ -1382,6 +1450,10 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		createEAttribute(iDefaultValueConfigEClass, IDEFAULT_VALUE_CONFIG__RENDER_DEFAULTS);
 		createEOperation(iDefaultValueConfigEClass, IDEFAULT_VALUE_CONFIG___SHOULD_RENDER_DEFAULTS);
 
+		iDiagramConfigEClass = createEClass(IDIAGRAM_CONFIG);
+		createEAttribute(iDiagramConfigEClass, IDIAGRAM_CONFIG__RENDER_DIAGRAMS);
+		createEOperation(iDiagramConfigEClass, IDIAGRAM_CONFIG___SHOULD_RENDER_DIAGRAMS);
+
 		ieClassifierConfigEClass = createEClass(IE_CLASSIFIER_CONFIG);
 		createEAttribute(ieClassifierConfigEClass, IE_CLASSIFIER_CONFIG__RENDER_USE_CASES);
 		createEOperation(ieClassifierConfigEClass, IE_CLASSIFIER_CONFIG___SHOULD_RENDER_USE_CASES);
@@ -1424,9 +1496,12 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 
 		ecoreDocGeneratorConfigEClass = createEClass(ECORE_DOC_GENERATOR_CONFIG);
 		createEAttribute(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG__DOCUMENT_TITLE);
+		createEAttribute(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_PATH);
+		createEAttribute(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG__DIAGRAMS_OUTPUT_FORMAT);
 		createEReference(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG__EPACKAGES);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DEFAULTS);
+		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_DIAGRAMS);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_USE_CASES);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___SHOULD_REPEAT_INHERITED);
 		createEOperation(ecoreDocGeneratorConfigEClass, ECORE_DOC_GENERATOR_CONFIG___SHOULD_RENDER_SUB_TYPES);
@@ -1538,6 +1613,7 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		// Add supertypes to classes
 		ieClassifierConfigEClass.getESuperTypes().add(this.getIENamedElementConfig());
 		ieClassifierConfigEClass.getESuperTypes().add(this.getIDefaultValueConfig());
+		ieClassifierConfigEClass.getESuperTypes().add(this.getIDiagramConfig());
 		ieDataTypeConfigEClass.getESuperTypes().add(this.getIEClassifierConfig());
 		ieEnumConfigEClass.getESuperTypes().add(this.getIEDataTypeConfig());
 		ieClassConfigEClass.getESuperTypes().add(this.getIEClassifierConfig());
@@ -1549,6 +1625,7 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		ieOperationConfigEClass.getESuperTypes().add(this.getIETypedElementConfig());
 		ieParameterConfigEClass.getESuperTypes().add(this.getIETypedElementConfig());
 		iePackageConfigEClass.getESuperTypes().add(this.getIENamedElementConfig());
+		iePackageConfigEClass.getESuperTypes().add(this.getIDiagramConfig());
 		ieEnumLiteralConfigEClass.getESuperTypes().add(this.getIENamedElementConfig());
 		ecoreDocGeneratorConfigEClass.getESuperTypes().add(this.getIEPackageConfig());
 		ecoreDocGeneratorConfigEClass.getESuperTypes().add(this.getIEEnumConfig());
@@ -1595,6 +1672,11 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 		initEAttribute(getIDefaultValueConfig_RenderDefaults(), theEcorePackage.getEBoolean(), "renderDefaults", null, 0, 1, IDefaultValueConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getIDefaultValueConfig__ShouldRenderDefaults(), theEcorePackage.getEBoolean(), "shouldRenderDefaults", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(iDiagramConfigEClass, IDiagramConfig.class, "IDiagramConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIDiagramConfig_RenderDiagrams(), theEcorePackage.getEBoolean(), "renderDiagrams", null, 0, 1, IDiagramConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getIDiagramConfig__ShouldRenderDiagrams(), theEcorePackage.getEBoolean(), "shouldRenderDiagrams", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(ieClassifierConfigEClass, IEClassifierConfig.class, "IEClassifierConfig", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIEClassifierConfig_RenderUseCases(), theEcorePackage.getEBoolean(), "renderUseCases", null, 0, 1, IEClassifierConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1646,11 +1728,15 @@ public class EcoreDocConfigPackageImpl extends EPackageImpl implements EcoreDocC
 
 		initEClass(ecoreDocGeneratorConfigEClass, EcoreDocGeneratorConfig.class, "EcoreDocGeneratorConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEcoreDocGeneratorConfig_DocumentTitle(), theEcorePackage.getEString(), "documentTitle", "Ecore Documentation", 0, 1, EcoreDocGeneratorConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEcoreDocGeneratorConfig_DiagramsOutputPath(), theEcorePackage.getEString(), "diagramsOutputPath", ".", 0, 1, EcoreDocGeneratorConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEcoreDocGeneratorConfig_DiagramsOutputFormat(), theEcorePackage.getEString(), "diagramsOutputFormat", "svg", 0, 1, EcoreDocGeneratorConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEcoreDocGeneratorConfig_EPackages(), this.getEPackageConfig(), null, "ePackages", null, 0, -1, EcoreDocGeneratorConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getEcoreDocGeneratorConfig__ShouldRender(), theEcorePackage.getEBoolean(), "shouldRender", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getEcoreDocGeneratorConfig__ShouldRenderDefaults(), theEcorePackage.getEBoolean(), "shouldRenderDefaults", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getEcoreDocGeneratorConfig__ShouldRenderDiagrams(), theEcorePackage.getEBoolean(), "shouldRenderDiagrams", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getEcoreDocGeneratorConfig__ShouldRenderUseCases(), theEcorePackage.getEBoolean(), "shouldRenderUseCases", 0, 1, !IS_UNIQUE, IS_ORDERED);
 

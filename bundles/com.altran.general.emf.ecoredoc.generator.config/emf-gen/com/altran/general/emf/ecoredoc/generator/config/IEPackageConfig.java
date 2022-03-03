@@ -21,7 +21,7 @@ package com.altran.general.emf.ecoredoc.generator.config;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface IEPackageConfig extends IENamedElementConfig {
+public interface IEPackageConfig extends IENamedElementConfig, IDiagramConfig {
 	/**
 	 * Returns the value of the '<em><b>Position EData Types</b></em>' attribute.
 	 * <!-- begin-user-doc -->

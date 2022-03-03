@@ -247,6 +247,7 @@ Parameters:
    
   [+|-]<<config-IEClassConfig-renderSuperTypes, superTypes>>: [Enable|disable] rendering of super-types 
  
+  [+|-]<<config-IDiagramConfig-renderDiagrams, diagrams>>:   [Enable|disable] rendering of diagrams 
  
 Examples: 
  

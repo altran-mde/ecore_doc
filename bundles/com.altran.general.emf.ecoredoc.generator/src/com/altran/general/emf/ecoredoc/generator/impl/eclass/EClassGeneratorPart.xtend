@@ -3,7 +3,7 @@ package com.altran.general.emf.ecoredoc.generator.impl.eclass
 import com.altran.general.emf.ecoredoc.generator.config.EClassConfig
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.configbuilder.EClassConfigPair
-import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorPart
+import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorEClassifierPart
 import com.altran.general.emf.ecoredoc.generator.impl.^extension.EcoreDocExtension
 import com.google.common.collect.Multimap
 import com.google.inject.Injector
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EPackage
 
 import static com.altran.general.emf.ecoredoc.generator.impl.^extension.EcoreDocExtension.newline
 
-class EClassGeneratorPart extends AEcoreDocGeneratorPart {
+class EClassGeneratorPart extends AEcoreDocGeneratorEClassifierPart {
 	val EAttributeGeneratorFragment eAttributeGeneratorFragment
 	val EContainmentReferenceGeneratorFragment eContainmentReferenceGeneratorFragment
 	val ECrossReferenceReferenceGeneratorFragment eCrossReferenceReferenceGeneratorFragment
@@ -26,7 +26,7 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 		super(config, ePackages, xcoreInjector)
 		
 		this.eAttributeGeneratorFragment = new EAttributeGeneratorFragment(this)
-		this. eContainmentReferenceGeneratorFragment = new EContainmentReferenceGeneratorFragment(this)
+		this.eContainmentReferenceGeneratorFragment = new EContainmentReferenceGeneratorFragment(this)
 		this.eCrossReferenceReferenceGeneratorFragment = new ECrossReferenceReferenceGeneratorFragment(this)
 		this.eOperationGeneratorFragment = new EOperationGeneratorFragment(this)
 	}
@@ -74,6 +74,8 @@ class EClassGeneratorPart extends AEcoreDocGeneratorPart {
 
 	protected def void writeEClass(EClassConfigPair pair) {
 		writeEClassHeader(pair)
+		
+		writeDiagram(pair)
 		
 		writeProperties(pair)
 

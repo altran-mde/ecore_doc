@@ -4,9 +4,10 @@ import com.altran.general.emf.ecoredoc.generator.config.EPackageConfig;
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.configbuilder.EcoreDocConfigBuilder;
-import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorEClassifierPart;
 import com.altran.general.emf.ecoredoc.generator.impl.EDataTypeGeneratorPart;
 import com.altran.general.emf.ecoredoc.generator.impl.EEnumGeneratorPart;
+import com.altran.general.emf.ecoredoc.generator.impl.diagram.PlantUMLEcoreDiagramGenerator;
 import com.altran.general.emf.ecoredoc.generator.impl.eclass.EClassGeneratorPart;
 import com.altran.general.emf.ecoredoc.generator.impl.extension.EcoreDocExtension;
 import com.google.common.collect.Multimap;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -75,7 +77,7 @@ public class EcoreDocGenerator {
     Multimap<EPackage, EClassifier> _ePackages_2 = this.getEPackages();
     Injector _xcoreInjector_2 = this.getXcoreInjector();
     EClassGeneratorPart _eClassGeneratorPart = new EClassGeneratorPart(_config_2, _ePackages_2, _xcoreInjector_2);
-    final List<? extends AEcoreDocGeneratorPart> parts = Collections.<AEcoreDocGeneratorPart>unmodifiableList(CollectionLiterals.<AEcoreDocGeneratorPart>newArrayList(_eDataTypeGeneratorPart, _eEnumGeneratorPart, _eClassGeneratorPart));
+    final List<? extends AEcoreDocGeneratorEClassifierPart> parts = Collections.<AEcoreDocGeneratorEClassifierPart>unmodifiableList(CollectionLiterals.<AEcoreDocGeneratorEClassifierPart>newArrayList(_eDataTypeGeneratorPart, _eEnumGeneratorPart, _eClassGeneratorPart));
     Set<EPackage> _keySet = this.getEPackages().keySet();
     for (final EPackage ePackage : _keySet) {
       {
@@ -84,7 +86,11 @@ public class EcoreDocGenerator {
         boolean _shouldRender = config.shouldRender();
         if (_shouldRender) {
           this.writeEPackageIntro(ePackage);
-          final Function1<AEcoreDocGeneratorPart, Integer> _function = (AEcoreDocGeneratorPart it) -> {
+          boolean _shouldRenderDiagrams = config.shouldRenderDiagrams();
+          if (_shouldRenderDiagrams) {
+            this.writeEPackageDiagram(ePackage);
+          }
+          final Function1<AEcoreDocGeneratorEClassifierPart, Integer> _function = (AEcoreDocGeneratorEClassifierPart it) -> {
             int _switchResult = (int) 0;
             boolean _matched = false;
             if (it instanceof EDataTypeGeneratorPart) {
@@ -105,7 +111,7 @@ public class EcoreDocGenerator {
             }
             return ((Integer) Integer.valueOf(_switchResult));
           };
-          final Consumer<AEcoreDocGeneratorPart> _function_1 = (AEcoreDocGeneratorPart it) -> {
+          final Consumer<AEcoreDocGeneratorEClassifierPart> _function_1 = (AEcoreDocGeneratorEClassifierPart it) -> {
             this.output.append(it.write(ePackage));
           };
           IterableExtensions.sortBy(parts, _function).forEach(_function_1);
@@ -233,6 +239,48 @@ public class EcoreDocGenerator {
     _builder.append(_nsURI);
     _builder.newLineIfNotEmpty();
     return _builder;
+  }
+  
+  protected void writeEPackageDiagram(final EPackage ePackage) {
+    final Function1<ENamedElement, Boolean> _function = (ENamedElement e) -> {
+      IENamedElementConfig _findConfig = this.getConfig().findConfig(e);
+      boolean _shouldRender = false;
+      if (_findConfig!=null) {
+        _shouldRender=_findConfig.shouldRender();
+      }
+      return Boolean.valueOf(_shouldRender);
+    };
+    final PlantUMLEcoreDiagramGenerator diagramGenerator = new PlantUMLEcoreDiagramGenerator(ePackage, _function);
+    StringConcatenation _builder = new StringConcatenation();
+    String _newline = EcoreDocExtension.newline();
+    _builder.append(_newline);
+    _builder.newLineIfNotEmpty();
+    _builder.append(".Class diagram of ");
+    String _name = ePackage.getName();
+    _builder.append(_name);
+    _builder.newLineIfNotEmpty();
+    _builder.append("[plantuml, ");
+    String _diagramsOutputPath = this.getConfig().getDiagramsOutputPath();
+    _builder.append(_diagramsOutputPath);
+    _builder.append("/");
+    String _name_1 = ePackage.getName();
+    _builder.append(_name_1);
+    _builder.append(", ");
+    String _diagramsOutputFormat = this.getConfig().getDiagramsOutputFormat();
+    _builder.append(_diagramsOutputFormat);
+    _builder.append("]");
+    _builder.newLineIfNotEmpty();
+    _builder.append("----");
+    _builder.newLine();
+    this.output.append(_builder);
+    this.output.append(diagramGenerator.generateDiagram());
+    StringConcatenation _builder_1 = new StringConcatenation();
+    _builder_1.append("----");
+    _builder_1.newLine();
+    String _newline_1 = EcoreDocExtension.newline();
+    _builder_1.append(_newline_1);
+    _builder_1.newLineIfNotEmpty();
+    this.output.append(_builder_1);
   }
   
   protected Multimap<EPackage, EClassifier> getEPackages() {

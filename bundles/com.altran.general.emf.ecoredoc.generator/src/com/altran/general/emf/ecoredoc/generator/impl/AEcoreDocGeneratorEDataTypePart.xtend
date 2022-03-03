@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EcorePackage
 
 import static com.altran.general.emf.ecoredoc.generator.impl.^extension.EcoreDocExtension.newline
 
-abstract class AEcoreDocGeneratorEDataTypePart extends AEcoreDocGeneratorPart {
+abstract class AEcoreDocGeneratorEDataTypePart extends AEcoreDocGeneratorEClassifierPart {
 
 	new(EcoreDocGeneratorConfig config, Multimap<EPackage, EClassifier> ePackages, Injector xcoreInjector) {
 		super(config, ePackages, xcoreInjector)

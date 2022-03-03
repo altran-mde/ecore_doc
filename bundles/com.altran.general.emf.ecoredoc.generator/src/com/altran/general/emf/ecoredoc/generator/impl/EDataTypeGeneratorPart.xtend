@@ -41,6 +41,7 @@ class EDataTypeGeneratorPart extends AEcoreDocGeneratorEDataTypePart {
 			for (entry : eDataTypeMap.entrySet) {
 				val pair = new EDataTypeConfigPair(entry)
 				writeEDataTypeHeader(pair)
+				writeDiagram(pair)
 				writeProperties(pair)
 				writeUseCases(pair)
 			}

@@ -5,6 +5,7 @@ import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 import com.altran.general.emf.ecoredoc.generator.configbuilder.EcoreDocConfigBuilder
 import com.altran.general.emf.ecoredoc.generator.impl.EDataTypeGeneratorPart
 import com.altran.general.emf.ecoredoc.generator.impl.EEnumGeneratorPart
+import com.altran.general.emf.ecoredoc.generator.impl.diagram.PlantUMLEcoreDiagramGenerator
 import com.altran.general.emf.ecoredoc.generator.impl.eclass.EClassGeneratorPart
 import com.altran.general.emf.ecoredoc.generator.impl.^extension.EcoreDocExtension
 import com.google.common.collect.Multimap
@@ -71,6 +72,9 @@ class EcoreDocGenerator {
 			
 			if (config.shouldRender) {
 				writeEPackageIntro(ePackage)
+				if (config.shouldRenderDiagrams) {
+					writeEPackageDiagram(ePackage)
+				}
 				
 				parts.sortBy[
 					switch(it) {
@@ -163,6 +167,23 @@ class EcoreDocGenerator {
 		'''
 	}
 	
+	protected def void writeEPackageDiagram(EPackage ePackage) {
+		val diagramGenerator = new PlantUMLEcoreDiagramGenerator(ePackage)[e|getConfig().findConfig(e)?.shouldRender]
+		output.append(
+		'''
+			«newline»
+			.Class diagram of «ePackage.name»
+			[plantuml, «getConfig().diagramsOutputPath»/«ePackage.name», «getConfig().diagramsOutputFormat»]
+			----
+		''')
+		output.append(diagramGenerator.generateDiagram)
+		output.append(
+		'''
+			----
+			«newline»
+		''')
+	}
+
 	protected def getEPackages() {
 		if (this.ePackages.isEmpty) {
 			collectEPackages()

@@ -117,6 +117,8 @@ import org.eclipse.emf.ecore.ENamedElement;
  * </p>
  * <ul>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getDocumentTitle <em>Document Title</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getDiagramsOutputPath <em>Diagrams Output Path</em>}</li>
+ *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getDiagramsOutputFormat <em>Diagrams Output Format</em>}</li>
  *   <li>{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getEPackages <em>EPackages</em>}</li>
  * </ul>
  *
@@ -152,6 +154,63 @@ public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, 
 	 * @generated
 	 */
 	void setDocumentTitle(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Diagrams Output Path</b></em>' attribute.
+	 * The default value is <code>"."</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The output path of diagrams in the generated document.
+	 * 
+	 * <p>defaults to the current directory.</p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Diagrams Output Path</em>' attribute.
+	 * @see #setDiagramsOutputPath(String)
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEcoreDocGeneratorConfig_DiagramsOutputPath()
+	 * @model default="." unique="false"
+	 * @generated
+	 */
+	String getDiagramsOutputPath();
+
+	/**
+	 * Sets the value of the '{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getDiagramsOutputPath <em>Diagrams Output Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Diagrams Output Path</em>' attribute.
+	 * @see #getDiagramsOutputPath()
+	 * @generated
+	 */
+	void setDiagramsOutputPath(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Diagrams Output Format</b></em>' attribute.
+	 * The default value is <code>"svg"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The output-format of diagrams in the generated document.
+	 * For supported outputs, see <a href="https://docs.asciidoctor.org/diagram-extension/latest/#creating-a-diagram">Asciidoctor Documentation</a>.
+	 * 
+	 * <p>defaults to <b>svg</b>.</p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Diagrams Output Format</em>' attribute.
+	 * @see #setDiagramsOutputFormat(String)
+	 * @see com.altran.general.emf.ecoredoc.generator.config.EcoreDocConfigPackage#getEcoreDocGeneratorConfig_DiagramsOutputFormat()
+	 * @model default="svg" unique="false"
+	 * @generated
+	 */
+	String getDiagramsOutputFormat();
+
+	/**
+	 * Sets the value of the '{@link com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig#getDiagramsOutputFormat <em>Diagrams Output Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Diagrams Output Format</em>' attribute.
+	 * @see #getDiagramsOutputFormat()
+	 * @generated
+	 */
+	void setDiagramsOutputFormat(String value);
 
 	/**
 	 * Returns the value of the '<em><b>EPackages</b></em>' containment reference list.
@@ -190,6 +249,14 @@ public interface EcoreDocGeneratorConfig extends IEPackageConfig, IEEnumConfig, 
 	 * @generated
 	 */
 	boolean shouldRenderDefaults();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 * @generated
+	 */
+	boolean shouldRenderDiagrams();
 
 	/**
 	 * <!-- begin-user-doc -->

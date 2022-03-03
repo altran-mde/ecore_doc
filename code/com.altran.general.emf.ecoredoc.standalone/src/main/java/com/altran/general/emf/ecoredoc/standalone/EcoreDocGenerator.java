@@ -20,24 +20,24 @@ import com.altran.general.emf.ecoredoc.util.EcoreMerger;
 import com.google.inject.Injector;
 
 public class EcoreDocGenerator {
-	
+
 	private final Collection<File> inputFiles;
-	
+
 	private boolean resolve = false;
-	
+
 	private File outputFile;
-	
+
 	private EcoreDocGeneratorConfig config;
-	
+
 	public static void main(final String[] args) {
 		if (args.length > 0) {
 			final List<File> files = new ArrayList<>();
-			
+
 			Boolean resolve = null;
 			File output = null;
-			
+
 			final EcoreDocGeneratorConfig cfg = EcoreDocConfigFactory.eINSTANCE.createEcoreDocGeneratorConfig();
-			
+
 			for (int i = 0; i < args.length; i++) {
 				final String arg = args[i];
 				switch (arg.toLowerCase()) {
@@ -45,7 +45,7 @@ public class EcoreDocGenerator {
 					case "--resolve":
 						resolve = true;
 						break;
-						
+
 					case "-o":
 					case "--output":
 						if (args.length > i) {
@@ -57,68 +57,75 @@ public class EcoreDocGenerator {
 							}
 						}
 						break;
-						
+
 					case "-defaults":
 						cfg.setRenderDefaults(false);
 						break;
 					case "+defaults":
 						cfg.setRenderDefaults(true);
 						break;
-						
+
 					case "-bounds":
 						cfg.setRenderBounds(false);
 						break;
 					case "+bounds":
 						cfg.setRenderBounds(true);
 						break;
-						
+
 					case "-inherited":
 						cfg.setRepeatInherited(false);
 						break;
 					case "+inherited":
 						cfg.setRepeatInherited(true);
 						break;
-						
+
 					case "-usecases":
 						cfg.setRenderUseCases(false);
 						break;
 					case "+usecases":
 						cfg.setRenderUseCases(true);
 						break;
-						
+
 					case "-subtypes":
 						cfg.setRenderSubTypes(false);
 						break;
 					case "+subtypes":
 						cfg.setRenderSubTypes(true);
 						break;
-						
+
 					case "-supertypes":
 						cfg.setRenderSuperTypes(false);
 						break;
 					case "+supertypes":
 						cfg.setRenderSuperTypes(true);
 						break;
+
+					case "-diagrams":
+						cfg.setRenderDiagrams(false);
+						break;
+					case "+diagrams":
+						cfg.setRenderDiagrams(true);
+						break;
 						
 					case "--positionedatatypes":
 						i = setInt(args, i, pos -> cfg.setPositionEDataTypes(pos));
 						break;
-						
+
 					case "--positioneenums":
 						i = setInt(args, i, pos -> cfg.setPositionEEnums(pos));
 						break;
-						
+
 					case "--positioneclasses":
 						i = setInt(args, i, pos -> cfg.setPositionEClasses(pos));
 						break;
-						
+
 					case "--documenttitle":
 						if (args.length > i) {
 							i++;
 							cfg.setDocumentTitle(args[i]);
 						}
 						break;
-						
+
 					default:
 						final File file = new File(arg);
 						if (file.canRead() && file.isFile()) {
@@ -129,23 +136,23 @@ public class EcoreDocGenerator {
 						break;
 				}
 			}
-			
+
 			if (!files.isEmpty()) {
 				try {
 					final EcoreDocGenerator ecoreDocGenerator = new EcoreDocGenerator(files);
-					
+
 					if (resolve != null) {
 						ecoreDocGenerator.setResolve(resolve);
 					}
-					
+
 					if (output != null) {
 						ecoreDocGenerator.setOutputFile(output);
 					}
-					
+
 					if (cfg != null) {
 						ecoreDocGenerator.setConfig(cfg);
 					}
-					
+
 					final File result = ecoreDocGenerator.generate();
 					System.out.println("Generated " + result);
 				} catch (final IOException e) {
@@ -159,10 +166,10 @@ public class EcoreDocGenerator {
 			printUsage();
 		}
 	}
-	
+
 	protected static int setInt(final String[] args, final int i, final Consumer<Integer> setter) {
 		int result = i;
-		
+
 		if (args.length > result) {
 			result++;
 			try {
@@ -172,10 +179,10 @@ public class EcoreDocGenerator {
 				// do nothing
 			}
 		}
-		
+
 		return result;
 	}
-	
+
 	private static void printUsage() {
 		System.out.println("Generates reference documentation for ecore models.\n" +
 				"\n" +
@@ -219,6 +226,9 @@ public class EcoreDocGenerator {
 				"  [+|-]subTypes:   [Enable|disable] rendering of sub-types\n" +
 				"  \n" +
 				"  [+|-]superTypes: [Enable|disable] rendering of super-types\n" +
+				"  \n" +
+				"  [+|-]diagrams:   [Enable|disable] rendering of diagrams\n"
+				+
 				"\n" +
 				"\n" +
 				"Examples:\n" +
@@ -245,35 +255,35 @@ public class EcoreDocGenerator {
 				"  EcoreDocGenerator -o output.adoc my.ecore other.ecore\n" +
 				"  Generates the documentation of my.ecore and other.ecore into output.adoc\n");
 	}
-	
+
 	public EcoreDocGenerator(final File... inputFiles) {
 		this(Arrays.asList(inputFiles));
 	}
-	
+
 	public EcoreDocGenerator(final Collection<File> inputFiles) {
 		this.inputFiles = inputFiles;
 	}
-	
+
 	public File generate() throws IOException {
-		
+
 		EcoreDocUtils.getInstance().setupEcoreStandalone();
 		final Injector xcoreInjector = EcoreDocUtils.getInstance().setupXcoreStandalone();
-		
+
 		final ResourceSetImpl resourceSet = EcoreDocUtils.getInstance().createResourceSet();
-		
+
 		EcoreDocUtils.getInstance().loadInputModels(resourceSet, this.inputFiles);
-		
+
 		EcoreDocUtils.getInstance().resolve(resourceSet, shouldResolve());
-		
+
 		final Set<EClassifier> classifiers = EcoreDocUtils.getInstance().collectInput(resourceSet, this.inputFiles);
-		
+
 		final CharSequence result = generate(classifiers, xcoreInjector);
-		
+
 		final File output = writeOutput(result);
-		
+
 		return output;
 	}
-	
+
 	private File writeOutput(final CharSequence result) throws IOException {
 		final File output = getOutputFile();
 		try (final FileWriter outputWriter = new FileWriter(output)) {
@@ -281,29 +291,29 @@ public class EcoreDocGenerator {
 		}
 		return output;
 	}
-	
+
 	private CharSequence generate(final Set<EClassifier> classifiers, final Injector xcoreInjector) {
 		final com.altran.general.emf.ecoredoc.generator.EcoreDocGenerator generator = new com.altran.general.emf.ecoredoc.generator.EcoreDocGenerator(
 				classifiers);
-
-		generator.setXcoreInjector(xcoreInjector);
 		
+		generator.setXcoreInjector(xcoreInjector);
+
 		if (getConfig() != null) {
 			new EcoreMerger<>(generator.getConfig()).merge(getConfig());
 		}
-		
+
 		final CharSequence result = generator.generate();
 		return result;
 	}
-	
+
 	public boolean shouldResolve() {
 		return this.resolve;
 	}
-	
+
 	public void setResolve(final boolean resolve) {
 		this.resolve = resolve;
 	}
-	
+
 	public File getOutputFile() {
 		if (this.outputFile != null) {
 			return this.outputFile;
@@ -312,15 +322,15 @@ public class EcoreDocGenerator {
 			return new File(firstInputFile.getParentFile(), firstInputFile.getName() + ".adoc");
 		}
 	}
-	
+
 	public void setOutputFile(final File outputFile) {
 		this.outputFile = outputFile;
 	}
-	
+
 	public EcoreDocGeneratorConfig getConfig() {
 		return this.config;
 	}
-	
+
 	public void setConfig(final EcoreDocGeneratorConfig config) {
 		this.config = config;
 	}

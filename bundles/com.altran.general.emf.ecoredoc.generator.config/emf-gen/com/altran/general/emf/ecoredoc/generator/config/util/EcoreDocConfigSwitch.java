@@ -80,11 +80,18 @@ public class EcoreDocConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EcoreDocConfigPackage.IDIAGRAM_CONFIG: {
+				IDiagramConfig iDiagramConfig = (IDiagramConfig)theEObject;
+				T1 result = caseIDiagramConfig(iDiagramConfig);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EcoreDocConfigPackage.IE_CLASSIFIER_CONFIG: {
 				IEClassifierConfig ieClassifierConfig = (IEClassifierConfig)theEObject;
 				T1 result = caseIEClassifierConfig(ieClassifierConfig);
 				if (result == null) result = caseIENamedElementConfig(ieClassifierConfig);
 				if (result == null) result = caseIDefaultValueConfig(ieClassifierConfig);
+				if (result == null) result = caseIDiagramConfig(ieClassifierConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -94,6 +101,7 @@ public class EcoreDocConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseIEClassifierConfig(ieDataTypeConfig);
 				if (result == null) result = caseIENamedElementConfig(ieDataTypeConfig);
 				if (result == null) result = caseIDefaultValueConfig(ieDataTypeConfig);
+				if (result == null) result = caseIDiagramConfig(ieDataTypeConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -104,6 +112,7 @@ public class EcoreDocConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseIEClassifierConfig(ieEnumConfig);
 				if (result == null) result = caseIENamedElementConfig(ieEnumConfig);
 				if (result == null) result = caseIDefaultValueConfig(ieEnumConfig);
+				if (result == null) result = caseIDiagramConfig(ieEnumConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -113,6 +122,7 @@ public class EcoreDocConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseIEClassifierConfig(ieClassConfig);
 				if (result == null) result = caseIENamedElementConfig(ieClassConfig);
 				if (result == null) result = caseIDefaultValueConfig(ieClassConfig);
+				if (result == null) result = caseIDiagramConfig(ieClassConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -175,6 +185,7 @@ public class EcoreDocConfigSwitch<T1> extends Switch<T1> {
 				IEPackageConfig iePackageConfig = (IEPackageConfig)theEObject;
 				T1 result = caseIEPackageConfig(iePackageConfig);
 				if (result == null) result = caseIENamedElementConfig(iePackageConfig);
+				if (result == null) result = caseIDiagramConfig(iePackageConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -201,6 +212,7 @@ public class EcoreDocConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseIEClassifierConfig(ecoreDocGeneratorConfig);
 				if (result == null) result = caseIETypedElementConfig(ecoreDocGeneratorConfig);
 				if (result == null) result = caseIENamedElementConfig(ecoreDocGeneratorConfig);
+				if (result == null) result = caseIDiagramConfig(ecoreDocGeneratorConfig);
 				if (result == null) result = caseIDefaultValueConfig(ecoreDocGeneratorConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -221,6 +233,7 @@ public class EcoreDocConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseIEClassifierConfig(ePackageConfig);
 				if (result == null) result = caseIETypedElementConfig(ePackageConfig);
 				if (result == null) result = caseIENamedElementConfig(ePackageConfig);
+				if (result == null) result = caseIDiagramConfig(ePackageConfig);
 				if (result == null) result = caseIDefaultValueConfig(ePackageConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -232,6 +245,7 @@ public class EcoreDocConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseIEClassifierConfig(eDataTypeConfig);
 				if (result == null) result = caseIENamedElementConfig(eDataTypeConfig);
 				if (result == null) result = caseIDefaultValueConfig(eDataTypeConfig);
+				if (result == null) result = caseIDiagramConfig(eDataTypeConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -244,6 +258,7 @@ public class EcoreDocConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseIEClassifierConfig(eEnumConfig);
 				if (result == null) result = caseIENamedElementConfig(eEnumConfig);
 				if (result == null) result = caseIDefaultValueConfig(eEnumConfig);
+				if (result == null) result = caseIDiagramConfig(eEnumConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -265,6 +280,7 @@ public class EcoreDocConfigSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseIEParameterConfig(eClassConfig);
 				if (result == null) result = caseIEClassifierConfig(eClassConfig);
 				if (result == null) result = caseIEStructuralFeatureConfig(eClassConfig);
+				if (result == null) result = caseIDiagramConfig(eClassConfig);
 				if (result == null) result = caseIETypedElementConfig(eClassConfig);
 				if (result == null) result = caseIENamedElementConfig(eClassConfig);
 				if (result == null) result = caseIDefaultValueConfig(eClassConfig);
@@ -378,6 +394,21 @@ public class EcoreDocConfigSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseIDefaultValueConfig(IDefaultValueConfig object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IDiagram Config</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IDiagram Config</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseIDiagramConfig(IDiagramConfig object) {
 		return null;
 	}
 

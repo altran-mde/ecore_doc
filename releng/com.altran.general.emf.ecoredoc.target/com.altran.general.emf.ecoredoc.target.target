@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="CBI Target Platform" sequenceNumber="1650522303">
+<target name="CBI Target Platform" sequenceNumber="1650523138">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform" version="4.16.0.v20200604-0540"/>
@@ -17,6 +17,10 @@
       <unit id="org.eclipse.egf.sdk.feature.feature.group" version="1.6.2.201911290829"/>
       <unit id="org.junit" version="4.13.0.v20200204-1500"/>
       <repository location="https://download.eclipse.org/releases/2020-06/202006171000"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="net.sourceforge.plantuml.eclipse" version="1.1.26"/>
+      <repository location="http://hallvard.github.io/plantuml/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="de.jcup.asciidoctoreditor.feature.group" version="2.4.1"/>

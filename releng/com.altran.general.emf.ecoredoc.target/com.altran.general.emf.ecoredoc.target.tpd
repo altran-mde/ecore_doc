@@ -19,6 +19,9 @@ location "https://download.eclipse.org/releases/2020-06/202006171000" {
 	org.eclipse.egf.sdk.feature.feature.group
 	org.junit [4,5)
 }
+location "http://hallvard.github.io/plantuml/" {
+	net.sourceforge.plantuml.eclipse
+}
 location "https://de-jcup.github.io/update-site-eclipse-asciidoctor-editor/update-site/" {
 	// For testing purposes
 	de.jcup.asciidoctoreditor.feature.group

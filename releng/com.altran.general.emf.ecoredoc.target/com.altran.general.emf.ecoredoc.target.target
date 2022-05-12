@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="CBI Target Platform" sequenceNumber="1650523138">
+<target name="CBI Target Platform" sequenceNumber="1652348752">
   <locations>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.platform" version="4.16.0.v20200604-0540"/>
-      <unit id="org.eclipse.ui.ide.application" version="1.3.700.v20200525-1456"/>
-      <unit id="org.eclipse.xtend.lib" version="2.22.0.v20200602-0713"/>
-      <unit id="org.eclipse.xtend.lib.macro" version="2.22.0.v20200602-0713"/>
-      <unit id="org.eclipse.emf.ecore.xcore.lib" version="1.4.0.v20190401-0856"/>
-      <unit id="org.eclipse.emf.ecore.xcore.ui" version="1.13.0.v20200424-0456"/>
-      <unit id="org.apache.commons.io" version="2.6.0.v20190123-2029"/>
-      <unit id="org.apache.commons.lang3" version="3.1.0.v201403281430"/>
-      <unit id="org.eclipse.emf.codegen.ecore" version="2.22.0.v20200324-0947"/>
-      <unit id="org.eclipse.emf.sdk.feature.group" version="2.22.0.v20200519-1135"/>
-      <unit id="org.eclipse.egf.sdk.feature.feature.group" version="1.6.2.201911290829"/>
-      <unit id="org.junit" version="4.13.0.v20200204-1500"/>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.eclipse.platform" version="0.0.0"/>
+      <unit id="org.eclipse.ui.ide.application" version="0.0.0"/>
+      <unit id="org.eclipse.xtend.lib" version="0.0.0"/>
+      <unit id="org.eclipse.xtend.lib.macro" version="0.0.0"/>
+      <unit id="org.eclipse.emf.ecore.xcore.lib" version="0.0.0"/>
+      <unit id="org.eclipse.emf.ecore.xcore.ui" version="0.0.0"/>
+      <unit id="org.apache.commons.io" version="0.0.0"/>
+      <unit id="org.apache.commons.lang3" version="0.0.0"/>
+      <unit id="org.eclipse.emf.codegen.ecore" version="0.0.0"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.egf.sdk.feature.feature.group" version="0.0.0"/>
+      <unit id="org.junit" version="0.0.0"/>
       <repository location="https://download.eclipse.org/releases/2020-06/202006171000"/>
     </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="net.sourceforge.plantuml.eclipse" version="1.1.26"/>
-      <repository location="http://hallvard.github.io/plantuml/"/>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="net.sourceforge.plantuml.eclipse" version="0.0.0"/>
+      <repository location="http://hallvard.github.io/plantuml"/>
     </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="de.jcup.asciidoctoreditor.feature.group" version="2.4.1"/>
-      <repository location="https://de-jcup.github.io/update-site-eclipse-asciidoctor-editor/update-site/"/>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="de.jcup.asciidoctoreditor.feature.group" version="0.0.0"/>
+      <repository location="https://de-jcup.github.io/update-site-eclipse-asciidoctor-editor/update-site"/>
     </location>
   </locations>
 </target>

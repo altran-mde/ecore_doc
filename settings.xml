@@ -8,25 +8,19 @@
       <id>mde-assets-maven-central</id>
       <name>ACIDSpace Maven Central</name>
       <url>https://nexus.acidspace.nl/repository/mde-assets/</url>
-      <mirrorOf>central</mirrorOf> <!--1-->
+      <mirrorOf>central</mirrorOf>
     </mirror>
 
     <!-- P2 target platform mirrors -->
     <mirror>
       <url>https://nexus.acidspace.nl/repository/eclipse.org-releases-2020-06-202006171000</url>
-      <mirrorOf>https://download.eclipse.org/releases/2020-06/202006171000</mirrorOf> <!--2-->
+      <mirrorOf>https://download.eclipse.org/releases/2020-06/202006171000</mirrorOf>
       <mirrorOfLayouts>p2</mirrorOfLayouts>
       <layout>p2</layout>
     </mirror>
     <mirror>
-      <url>https://nexus.acidspace.nl/repository/itemis.com-releases-2.1.1</url>
-      <mirrorOf>http://download.itemis.com/updates/releases/2.1.1</mirrorOf>
-      <mirrorOfLayouts>p2</mirrorOfLayouts>
-      <layout>p2</layout>
-    </mirror>
-    <mirror>
-      <url>https://nexus.acidspace.nl/repository/eclipse.org-org.eclipse.e4.tools-latest</url>
-      <mirrorOf>https://download.eclipse.org/e4/snapshots/org.eclipse.e4.tools/latest</mirrorOf>
+      <url>https://nexus.acidspace.nl/repository/github.io-update-site-eclipse-asciidoctor-editor-update-site</url>
+      <mirrorOf>https://de-jcup.github.io/update-site-eclipse-asciidoctor-editor/update-site/</mirrorOf>
       <mirrorOfLayouts>p2</mirrorOfLayouts>
       <layout>p2</layout>
     </mirror>

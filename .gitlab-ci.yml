@@ -77,11 +77,13 @@ mde-unit-test:
 mvn-deploy:
   image: ${REGISTRY_URL}/${MAVEN_CONTAINER}
   stage: release
-  tags:
-    - linux_docker
   only:
     - develop
     - tags
+  except:
+    - schedules
+  tags:
+    - linux_docker
   script:
     - mvn deploy -Dmaven.test.skip=true -s settings.xml
 
@@ -93,6 +95,8 @@ mde-release:
   only:
     - develop
     - tags
+  except:
+    - schedules
   tags:
     - linux_docker
   script:
@@ -111,6 +115,8 @@ pages:
     - linux_docker
   only:
     - develop
+  except:
+    - schedules
   script:
     - cp -R plugins/com.altran.general.emf.ecoredoc.guide.user/target/pages/ public/
   artifacts:

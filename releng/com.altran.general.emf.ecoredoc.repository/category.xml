@@ -18,9 +18,13 @@
    <feature id="com.altran.general.emf.ecoredoc.feature.source" version="0.0.0">
       <category name="com.altran.general.emf.ecoredoc.repository.category"/>
    </feature>
+   <bundle id="com.altran.general.emf.ecoredoc.plantuml.eclipse">
+      <category name="com.altran.general.emf.ecoredoc.repository.category"/>
+   </bundle>
    <category-def name="com.altran.general.emf.ecoredoc.repository.category" label="EcoreDoc">
       <description>
          Altran EcoreDoc Features and Plug-ins
       </description>
    </category-def>
+   <repository-reference location="http://hallvard.github.io/plantuml/" enabled="true" />
 </site>

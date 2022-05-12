@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="net.sourceforge.plantuml.eclipse.diagramTextProvider">
+      <diagramTextProvider
+            id="com.altran.general.emf.ecoredoc.plantuml.eclipse.EcoreDocDiagramTextProvider"
+            label="Class diagrams generated from ecore models by EcoreDoc"
+            providerClass="com.altran.general.emf.ecoredoc.plantuml.eclipse.EcoreDocDiagramTextProvider">
+      </diagramTextProvider>
+   </extension>
+
+</plugin>

@@ -83,7 +83,12 @@ mvn-deploy:
   except:
     - schedules
   tags:
-    - linux_docker
+    - linux_docker_medium
+  variables:
+    DISPLAY: ':99'
+  before_script:
+    # You can start a virtual display (XVFB frame buffer) if required
+    - Xvfb ${DISPLAY} -screen 0 1280x1024x16 -nolisten tcp &
   script:
     - mvn deploy -Dmaven.test.skip=true -s settings.xml
 

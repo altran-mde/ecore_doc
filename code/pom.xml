@@ -24,6 +24,11 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.10</version>
+      </dependency>
+      <dependency>
         <!-- Bumped to version 5.0.1, see https://github.com/google/guice/issues/1133 -->
         <groupId>com.google.inject</groupId>
         <artifactId>guice</artifactId>

@@ -61,6 +61,11 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <!-- version defined in parent.dependencyManagement to lock transitive dependency version -->
+    </dependency>
   </dependencies>
 
   <build>

@@ -32,6 +32,12 @@
       <groupId>org.eclipse.emf</groupId>
       <artifactId>org.eclipse.emf.ecore.xcore</artifactId>
       <!-- version defined in parent.dependencyManagement to lock transitive dependency version -->
+      <exclusions>
+        <exclusion>
+          <artifactId>stringtemplate</artifactId>
+          <groupId>org.antlr</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <!-- Requirements from com.altran.general.emf.ecoredoc.generator -->
@@ -44,11 +50,40 @@
       <groupId>org.eclipse.emf</groupId>
       <artifactId>org.eclipse.emf.codegen.ecore</artifactId>
       <!-- version defined in parent.dependencyManagement to lock transitive dependency version -->
-    </dependency>
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
-      <!-- version defined in parent.dependencyManagement to lock transitive dependency version -->
+      <exclusions>
+        <exclusion>
+          <groupId>org.eclipse.jdt</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.eclipse.platform</groupId>
+          <artifactId>org.eclipse.debug.core</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <!-- This plug-in is only used to validate the transitive dependency versions, -->
+        <!-- please inspect the target/dependency folder after a build. -->
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <!-- Exclude our own artifacts -->
+              <excludeGroupIds>${project.groupId}</excludeGroupIds>
+              <includeScope>runtime</includeScope>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

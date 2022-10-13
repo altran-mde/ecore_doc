@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="net.sourceforge.plantuml.eclipse.diagramIntentProvider">
+      <diagramIntentProvider
+            id="com.altran.general.emf.ecoredoc.plantuml.xcore.XcoreDiagramIntentProvider"
+            providerClass="com.altran.general.emf.ecoredoc.plantuml.xcore.XcoreDiagramIntentProvider">
+      </diagramIntentProvider>
+   </extension>
+
+</plugin>

@@ -18,7 +18,10 @@
    <feature id="com.altran.general.emf.ecoredoc.feature.source" version="0.0.0">
       <category name="com.altran.general.emf.ecoredoc.repository.category"/>
    </feature>
-   <bundle id="com.altran.general.emf.ecoredoc.plantuml.eclipse">
+   <bundle id="com.altran.general.emf.ecoredoc.plantuml.ecore">
+      <category name="com.altran.general.emf.ecoredoc.repository.category"/>
+   </bundle>
+   <bundle id="com.altran.general.emf.ecoredoc.plantuml.xcore">
       <category name="com.altran.general.emf.ecoredoc.repository.category"/>
    </bundle>
    <category-def name="com.altran.general.emf.ecoredoc.repository.category" label="EcoreDoc">

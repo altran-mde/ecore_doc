@@ -2,18 +2,17 @@ package com.altran.general.emf.ecoredoc.generator.impl;
 
 import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
 import com.altran.general.emf.ecoredoc.generator.config.IEClassifierConfig;
-import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.altran.general.emf.ecoredoc.generator.configbuilder.AEcoreDocConfigPair;
 import com.altran.general.emf.ecoredoc.generator.impl.AEcoreDocGeneratorPart;
 import com.altran.general.emf.ecoredoc.generator.impl.diagram.PlantUMLEcoreDiagramGenerator;
 import com.altran.general.emf.ecoredoc.generator.impl.extension.EcoreDocExtension;
+import com.google.common.collect.Iterators;
 import com.google.common.collect.Multimap;
+import com.google.common.collect.UnmodifiableIterator;
 import com.google.inject.Injector;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
 
 @SuppressWarnings("all")
 public abstract class AEcoreDocGeneratorEClassifierPart extends AEcoreDocGeneratorPart {
@@ -28,15 +27,9 @@ public abstract class AEcoreDocGeneratorEClassifierPart extends AEcoreDocGenerat
       return;
     }
     final EClassifier eClassifier = pair.getElement();
-    final Function1<ENamedElement, Boolean> _function = (ENamedElement e) -> {
-      IENamedElementConfig _findConfig = this.getConfig().findConfig(e);
-      boolean _shouldRender = false;
-      if (_findConfig!=null) {
-        _shouldRender=_findConfig.shouldRender();
-      }
-      return Boolean.valueOf(_shouldRender);
-    };
-    final PlantUMLEcoreDiagramGenerator diagramGenerator = new PlantUMLEcoreDiagramGenerator(eClassifier, _function);
+    UnmodifiableIterator<EClassifier> _singletonIterator = Iterators.<EClassifier>singletonIterator(eClassifier);
+    EcoreDocGeneratorConfig _config = this.getConfig();
+    final PlantUMLEcoreDiagramGenerator diagramGenerator = new PlantUMLEcoreDiagramGenerator(_singletonIterator, true, false, _config);
     StringBuilder _output = this.getOutput();
     StringConcatenation _builder = new StringConcatenation();
     String _newline = EcoreDocExtension.newline();

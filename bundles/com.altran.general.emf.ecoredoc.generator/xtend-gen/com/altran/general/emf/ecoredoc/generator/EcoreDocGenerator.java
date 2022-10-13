@@ -16,11 +16,11 @@ import com.google.inject.Injector;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -242,15 +242,8 @@ public class EcoreDocGenerator {
   }
   
   protected void writeEPackageDiagram(final EPackage ePackage) {
-    final Function1<ENamedElement, Boolean> _function = (ENamedElement e) -> {
-      IENamedElementConfig _findConfig = this.getConfig().findConfig(e);
-      boolean _shouldRender = false;
-      if (_findConfig!=null) {
-        _shouldRender=_findConfig.shouldRender();
-      }
-      return Boolean.valueOf(_shouldRender);
-    };
-    final PlantUMLEcoreDiagramGenerator diagramGenerator = new PlantUMLEcoreDiagramGenerator(ePackage, _function);
+    Iterator<EClassifier> _iterator = ePackage.getEClassifiers().iterator();
+    final PlantUMLEcoreDiagramGenerator diagramGenerator = new PlantUMLEcoreDiagramGenerator(_iterator, false, true, this.config);
     StringConcatenation _builder = new StringConcatenation();
     String _newline = EcoreDocExtension.newline();
     _builder.append(_newline);

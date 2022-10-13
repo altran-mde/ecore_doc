@@ -168,7 +168,7 @@ class EcoreDocGenerator {
 	}
 	
 	protected def void writeEPackageDiagram(EPackage ePackage) {
-		val diagramGenerator = new PlantUMLEcoreDiagramGenerator(ePackage)[e|getConfig().findConfig(e)?.shouldRender]
+		val diagramGenerator = new PlantUMLEcoreDiagramGenerator(ePackage.EClassifiers.iterator, false, true, config)
 		output.append(
 		'''
 			«newline»

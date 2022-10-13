@@ -1,12 +1,15 @@
 package com.altran.general.emf.ecoredoc.generator.impl.diagram;
 
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig;
+import com.altran.general.emf.ecoredoc.generator.config.IENamedElementConfig;
 import com.google.common.collect.Iterables;
-import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
@@ -24,6 +27,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
 
 @SuppressWarnings("all")
@@ -36,37 +40,64 @@ public class PlantUMLEcoreDiagramGenerator {
   
   private final Set<EPackage> ePackages;
   
-  public PlantUMLEcoreDiagramGenerator(final EPackage ePackage, final Function1<? super ENamedElement, ? extends Boolean> predicate) {
-    this(ePackage.getEClassifiers(), predicate);
+  public PlantUMLEcoreDiagramGenerator(final Iterator<? extends EClassifier> input, final boolean focusInput, final boolean typeHierarchy) {
+    this(input, focusInput, typeHierarchy, ((Function1<ENamedElement, Boolean>) (ENamedElement it) -> {
+      return Boolean.valueOf(true);
+    }));
   }
   
-  public PlantUMLEcoreDiagramGenerator(final EClassifier eClassifier, final Function1<? super ENamedElement, ? extends Boolean> predicate) {
-    this(Collections.<EClassifier>singleton(eClassifier), predicate);
-    this.eClassifiersWithFocus.add(eClassifier);
+  public PlantUMLEcoreDiagramGenerator(final Iterator<? extends EClassifier> input, final boolean focusInput, final boolean typeHierarchy, final EcoreDocGeneratorConfig config) {
+    this(input, focusInput, typeHierarchy, ((Function1<ENamedElement, Boolean>) (ENamedElement element) -> {
+      final IENamedElementConfig elementConfig = config.findConfig(element);
+      return ((elementConfig == null) || elementConfig.shouldRender());
+    }));
   }
   
-  private PlantUMLEcoreDiagramGenerator(final Iterable<? extends EClassifier> input, final Function1<? super ENamedElement, ? extends Boolean> predicate) {
+  public PlantUMLEcoreDiagramGenerator(final Iterator<? extends EClassifier> input, final boolean focusInput, final boolean typeHierarchy, final Function1<? super ENamedElement, ? extends Boolean> predicate) {
     this.predicate = predicate;
-    final Set<? extends EClassifier> filteredInput = IterableExtensions.toSet(IterableExtensions.filter(input, ((Function1<? super EClassifier, Boolean>)predicate)));
+    final Set<EClassifier> filteredInput = IteratorExtensions.<EClassifier>toSet(IteratorExtensions.filter(input, ((Function1<? super EClassifier, Boolean>)predicate)));
     LinkedHashSet<EClassifier> _linkedHashSet = new LinkedHashSet<EClassifier>(filteredInput);
     this.eClassifiers = _linkedHashSet;
-    final Function1<EClass, EList<EClass>> _function = (EClass it) -> {
-      return it.getESuperTypes();
-    };
-    Iterable<EClass> _filter = IterableExtensions.<EClass>filter(IterableExtensions.<EClass, EClass>flatMap(Iterables.<EClass>filter(filteredInput, EClass.class), _function), ((Function1<? super EClass, Boolean>)predicate));
-    Iterables.<EClassifier>addAll(this.eClassifiers, _filter);
-    final Function1<EClass, EList<EReference>> _function_1 = (EClass it) -> {
+    if (focusInput) {
+      Iterables.<EClassifier>addAll(this.eClassifiersWithFocus, filteredInput);
+    }
+    if (typeHierarchy) {
+      final Function1<EClass, EList<EClass>> _function = (EClass it) -> {
+        return it.getEAllSuperTypes();
+      };
+      Iterable<EClass> _filter = IterableExtensions.<EClass>filter(IterableExtensions.<EClass, EClass>flatMap(Iterables.<EClass>filter(filteredInput, EClass.class), _function), ((Function1<? super EClass, Boolean>)predicate));
+      Iterables.<EClassifier>addAll(this.eClassifiers, _filter);
+    } else {
+      final Function1<EClass, EList<EClass>> _function_1 = (EClass it) -> {
+        return it.getESuperTypes();
+      };
+      Iterable<EClass> _filter_1 = IterableExtensions.<EClass>filter(IterableExtensions.<EClass, EClass>flatMap(Iterables.<EClass>filter(filteredInput, EClass.class), _function_1), ((Function1<? super EClass, Boolean>)predicate));
+      Iterables.<EClassifier>addAll(this.eClassifiers, _filter_1);
+    }
+    final Function1<EClass, EList<EReference>> _function_2 = (EClass it) -> {
       return it.getEReferences();
     };
-    final Function1<EReference, EClassifier> _function_2 = (EReference it) -> {
+    final Function1<EReference, EClassifier> _function_3 = (EReference it) -> {
       return it.getEType();
     };
-    Iterable<EClassifier> _filter_1 = IterableExtensions.<EClassifier>filter(IterableExtensions.<EReference, EClassifier>map(IterableExtensions.<EReference>filter(IterableExtensions.<EClass, EReference>flatMap(Iterables.<EClass>filter(filteredInput, EClass.class), _function_1), ((Function1<? super EReference, Boolean>)predicate)), _function_2), ((Function1<? super EClassifier, Boolean>)predicate));
-    Iterables.<EClassifier>addAll(this.eClassifiers, _filter_1);
-    final Function1<EClassifier, EPackage> _function_3 = (EClassifier it) -> {
+    Iterable<EClassifier> _filter_2 = IterableExtensions.<EClassifier>filter(IterableExtensions.<EReference, EClassifier>map(IterableExtensions.<EReference>filter(IterableExtensions.<EClass, EReference>flatMap(Iterables.<EClass>filter(filteredInput, EClass.class), _function_2), ((Function1<? super EReference, Boolean>)predicate)), _function_3), ((Function1<? super EClassifier, Boolean>)predicate));
+    Iterables.<EClassifier>addAll(this.eClassifiers, _filter_2);
+    final Function1<EClass, EList<EAttribute>> _function_4 = (EClass it) -> {
+      return it.getEAttributes();
+    };
+    final Function1<EAttribute, EClassifier> _function_5 = (EAttribute it) -> {
+      return it.getEType();
+    };
+    Iterable<EEnum> _filter_3 = IterableExtensions.<EEnum>filter(Iterables.<EEnum>filter(IterableExtensions.<EAttribute, EClassifier>map(IterableExtensions.<EAttribute>filter(IterableExtensions.<EClass, EAttribute>flatMap(Iterables.<EClass>filter(filteredInput, EClass.class), _function_4), ((Function1<? super EAttribute, Boolean>)predicate)), _function_5), EEnum.class), ((Function1<? super EEnum, Boolean>)predicate));
+    Iterables.<EClassifier>addAll(this.eClassifiers, _filter_3);
+    final Function1<EClassifier, EPackage> _function_6 = (EClassifier it) -> {
       return it.getEPackage();
     };
-    this.ePackages = IterableExtensions.<EPackage>toSet(IterableExtensions.<EClassifier, EPackage>map(this.eClassifiers, _function_3));
+    this.ePackages = IterableExtensions.<EPackage>toSet(IterableExtensions.<EClassifier, EPackage>map(this.eClassifiers, _function_6));
+  }
+  
+  public void setFocus(final Iterable<? extends EClassifier> focus) {
+    Iterables.<EClassifier>addAll(this.eClassifiersWithFocus, focus);
   }
   
   public CharSequence generateDiagram() {
@@ -190,7 +221,7 @@ public class PlantUMLEcoreDiagramGenerator {
             if (_contains) {
               String _fqn_2 = this.getFqn(eAttribute.getEContainingClass());
               _builder.append(_fqn_2);
-              _builder.append(" -[hidden]> ");
+              _builder.append(" -[hidden] ");
               String _fqn_3 = this.getFqn(eAttribute.getEType());
               _builder.append(_fqn_3);
             }
@@ -212,7 +243,7 @@ public class PlantUMLEcoreDiagramGenerator {
             if (_contains_1) {
               String _fqn_5 = this.getFqn(eOperation.getEContainingClass());
               _builder.append(_fqn_5);
-              _builder.append(" -[hidden]> ");
+              _builder.append(" -[hidden] ");
               String _fqn_6 = this.getFqn(eOperation.getEType());
               _builder.append(_fqn_6);
             }
@@ -424,24 +455,87 @@ public class PlantUMLEcoreDiagramGenerator {
   private CharSequence generateEReference(final EReference eReference) {
     CharSequence _xblockexpression = null;
     {
+      final boolean superType = eReference.getEContainingClass().getEAllSuperTypes().contains(eReference.getEType());
       String _switchResult = null;
       final EReference it = eReference;
       boolean _matched = false;
       if ((it.isContainment() && (it.getEOpposite() == null))) {
         _matched=true;
-        _switchResult = "*-down->";
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("*-");
+        {
+          if (superType) {
+            _builder.append("up");
+          } else {
+            _builder.append("down");
+          }
+        }
+        _builder.append("->");
+        _switchResult = _builder.toString();
       }
       if (!_matched) {
         if ((it.isContainment() && (it.getEOpposite() != null))) {
           _matched=true;
-          _switchResult = "*-down-";
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("*-");
+          {
+            if (superType) {
+              _builder_1.append("up");
+            } else {
+              _builder_1.append("down");
+            }
+          }
+          _builder_1.append("-");
+          _switchResult = _builder_1.toString();
+        }
+      }
+      if (!_matched) {
+        if ((it.isContainment() && (it.getEOpposite() == null))) {
+          _matched=true;
+          StringConcatenation _builder_2 = new StringConcatenation();
+          _builder_2.append("*-");
+          {
+            if (superType) {
+              _builder_2.append("up");
+            } else {
+              _builder_2.append("down");
+            }
+          }
+          _builder_2.append("->");
+          _switchResult = _builder_2.toString();
+        }
+      }
+      if (!_matched) {
+        if ((it.isContainment() && (it.getEOpposite() != null))) {
+          _matched=true;
+          StringConcatenation _builder_3 = new StringConcatenation();
+          _builder_3.append("*-");
+          {
+            if (superType) {
+              _builder_3.append("up");
+            } else {
+              _builder_3.append("down");
+            }
+          }
+          _builder_3.append("-");
+          _switchResult = _builder_3.toString();
         }
       }
       if (!_matched) {
         boolean _isContainer = it.isContainer();
         if (_isContainer) {
           _matched=true;
-          _switchResult = "-up-*";
+          StringConcatenation _builder_4 = new StringConcatenation();
+          _builder_4.append("-");
+          {
+            if (superType) {
+              _builder_4.append("down");
+            } else {
+              _builder_4.append("up");
+            }
+          }
+          _builder_4.append("-*");
+          _switchResult = _builder_4.toString();
         }
       }
       if (!_matched) {
@@ -449,11 +543,31 @@ public class PlantUMLEcoreDiagramGenerator {
         boolean _tripleEquals = (_eOpposite == null);
         if (_tripleEquals) {
           _matched=true;
-          _switchResult = "-down->";
+          StringConcatenation _builder_5 = new StringConcatenation();
+          _builder_5.append("-");
+          {
+            if (superType) {
+              _builder_5.append("up");
+            } else {
+              _builder_5.append("down");
+            }
+          }
+          _builder_5.append("->");
+          _switchResult = _builder_5.toString();
         }
       }
       if (!_matched) {
-        _switchResult = "-down-";
+        StringConcatenation _builder_6 = new StringConcatenation();
+        _builder_6.append("-");
+        {
+          if (superType) {
+            _builder_6.append("up");
+          } else {
+            _builder_6.append("down");
+          }
+        }
+        _builder_6.append("-");
+        _switchResult = _builder_6.toString();
       }
       final String relation = _switchResult;
       final CharSequence eReferenceName = this.wrapWithMultiplicity(eReference.getName(), eReference);
@@ -463,21 +577,21 @@ public class PlantUMLEcoreDiagramGenerator {
         _name=_eOpposite_1.getName();
       }
       final CharSequence eOppositeName = this.wrapWithMultiplicity(_name, eReference.getEOpposite());
-      StringConcatenation _builder = new StringConcatenation();
+      StringConcatenation _builder_7 = new StringConcatenation();
       String _fqn = this.getFqn(eReference.getEContainingClass());
-      _builder.append(_fqn);
-      _builder.append(" ");
+      _builder_7.append(_fqn);
+      _builder_7.append(" ");
       String _quote = this.quote(eOppositeName);
-      _builder.append(_quote);
-      _builder.append(" ");
-      _builder.append(relation);
-      _builder.append(" ");
+      _builder_7.append(_quote);
+      _builder_7.append(" ");
+      _builder_7.append(relation);
+      _builder_7.append(" ");
       String _quote_1 = this.quote(eReferenceName);
-      _builder.append(_quote_1);
-      _builder.append(" ");
+      _builder_7.append(_quote_1);
+      _builder_7.append(" ");
       String _fqn_1 = this.getFqn(eReference.getEType());
-      _builder.append(_fqn_1);
-      _xblockexpression = _builder;
+      _builder_7.append(_fqn_1);
+      _xblockexpression = _builder_7;
     }
     return _xblockexpression;
   }

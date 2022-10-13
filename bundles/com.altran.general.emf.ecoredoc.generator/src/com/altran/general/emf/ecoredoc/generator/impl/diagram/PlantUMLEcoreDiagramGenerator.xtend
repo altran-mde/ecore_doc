@@ -1,6 +1,6 @@
 package com.altran.general.emf.ecoredoc.generator.impl.diagram
 
-import java.util.Collections
+import java.util.Iterator
 import java.util.LinkedHashSet
 import java.util.List
 import java.util.Set
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.ETypedElement
 import org.eclipse.emf.ecore.util.EcoreUtil
+import com.altran.general.emf.ecoredoc.generator.config.EcoreDocGeneratorConfig
 
 class PlantUMLEcoreDiagramGenerator {
 	val Set<EClassifier> eClassifiersWithFocus = newHashSet
@@ -23,25 +24,39 @@ class PlantUMLEcoreDiagramGenerator {
 	val Set<EClassifier> eClassifiers
 	val Set<EPackage> ePackages
 	
-	new(EPackage ePackage, (ENamedElement)=>boolean predicate) {
-		this(ePackage.EClassifiers, predicate)
-	}
-	
-	new(EClassifier eClassifier, (ENamedElement)=>boolean predicate) {
-		this(Collections::singleton(eClassifier), predicate)
-		eClassifiersWithFocus += eClassifier
-	}
-	
-	private new(Iterable<? extends EClassifier> input, (ENamedElement)=>boolean predicate) {
+    new(Iterator<? extends EClassifier> input, boolean focusInput, boolean typeHierarchy) {
+        this(input, focusInput, typeHierarchy)[true]
+    }
+
+    new(Iterator<? extends EClassifier> input, boolean focusInput, boolean typeHierarchy, EcoreDocGeneratorConfig config) {
+        this(input, focusInput, typeHierarchy) [ element |
+            val elementConfig = config.findConfig(element)
+            return elementConfig === null || elementConfig.shouldRender
+        ]
+    }
+    
+	new(Iterator<? extends EClassifier> input, boolean focusInput, boolean typeHierarchy, (ENamedElement)=>boolean predicate) {
 		this.predicate = predicate
 		
 		val filteredInput = input.filter(predicate).toSet
-		eClassifiers = new LinkedHashSet(filteredInput)
+        eClassifiers = new LinkedHashSet(filteredInput)
+        if (focusInput) {
+            eClassifiersWithFocus += filteredInput
+        }
 		// Add the context that is required to render the classifiers
-		eClassifiers += filteredInput.filter(EClass).flatMap[ESuperTypes].filter(predicate)
-		eClassifiers += filteredInput.filter(EClass).flatMap[EReferences].filter(predicate).map[EType].filter(predicate)
+		if (typeHierarchy) {
+		    eClassifiers += filteredInput.filter(EClass).flatMap[EAllSuperTypes].filter(predicate)
+		} else {
+            eClassifiers += filteredInput.filter(EClass).flatMap[ESuperTypes].filter(predicate)
+		}
+        eClassifiers += filteredInput.filter(EClass).flatMap[EReferences].filter(predicate).map[EType].filter(predicate)
+        eClassifiers += filteredInput.filter(EClass).flatMap[EAttributes].filter(predicate).map[EType].filter(EEnum).filter(predicate)
 		
 		ePackages = eClassifiers.map[EPackage].toSet
+	}
+	
+	def void setFocus(Iterable<? extends EClassifier> focus) {
+	    eClassifiersWithFocus += focus
 	}
 	
 	def generateDiagram() {
@@ -89,12 +104,12 @@ class PlantUMLEcoreDiagramGenerator {
 
 		«FOR eAttribute : eAttributes»
 			«eAttribute.EContainingClass.fqn» : «eAttribute.generateEAttribute»
-			«IF eClassifiers.contains(eAttribute.EType)»«eAttribute.EContainingClass.fqn» -[hidden]> «eAttribute.EType.fqn»«ENDIF»
+			«IF eClassifiers.contains(eAttribute.EType)»«eAttribute.EContainingClass.fqn» -[hidden] «eAttribute.EType.fqn»«ENDIF»
 		«ENDFOR»
 
 		«FOR eOperation : eOperations»
 			«eOperation.EContainingClass.fqn» : «eOperation.generateEOperation»
-			«IF eClassifiers.contains(eOperation.EType)»«eOperation.EContainingClass.fqn» -[hidden]> «eOperation.EType.fqn»«ENDIF»
+			«IF eClassifiers.contains(eOperation.EType)»«eOperation.EContainingClass.fqn» -[hidden] «eOperation.EType.fqn»«ENDIF»
 		«ENDFOR»
 		
 		«FOR eSuperType : eSuperTypes»
@@ -149,12 +164,15 @@ class PlantUMLEcoreDiagramGenerator {
 	} 
 
 	private def generateEReference(EReference eReference) {
+	    val superType = eReference.EContainingClass.EAllSuperTypes.contains(eReference.EType)
 		val relation = switch it: eReference {
-			case containment && EOpposite === null: '*-down->'
-			case containment && EOpposite !== null: '*-down-'
-			case container: '-up-*'
-			case EOpposite === null: '-down->'
-			default: '-down-'
+            case containment && EOpposite === null: '''*-«IF superType»up«ELSE»down«ENDIF»->'''
+            case containment && EOpposite !== null: '''*-«IF superType»up«ELSE»down«ENDIF»-'''
+			case containment && EOpposite === null: '''*-«IF superType»up«ELSE»down«ENDIF»->'''
+			case containment && EOpposite !== null: '''*-«IF superType»up«ELSE»down«ENDIF»-'''
+			case container: '''-«IF superType»down«ELSE»up«ENDIF»-*'''
+			case EOpposite === null: '''-«IF superType»up«ELSE»down«ENDIF»->'''
+			default: '''-«IF superType»up«ELSE»down«ENDIF»-'''
 		}
 		val eReferenceName = eReference.name.wrapWithMultiplicity(eReference)
 		val eOppositeName = eReference.EOpposite?.name.wrapWithMultiplicity(eReference.EOpposite)

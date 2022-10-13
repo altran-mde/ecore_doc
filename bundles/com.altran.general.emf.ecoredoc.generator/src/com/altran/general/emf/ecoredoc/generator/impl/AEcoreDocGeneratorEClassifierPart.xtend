@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EPackage
 
 import static com.altran.general.emf.ecoredoc.generator.impl.^extension.EcoreDocExtension.newline
+import static com.google.common.collect.Iterators.singletonIterator
 
 abstract class AEcoreDocGeneratorEClassifierPart extends AEcoreDocGeneratorPart {
 
@@ -23,7 +24,7 @@ abstract class AEcoreDocGeneratorEClassifierPart extends AEcoreDocGeneratorPart 
 		}
 		
 		val eClassifier = pair.element
-		val diagramGenerator = new PlantUMLEcoreDiagramGenerator(eClassifier)[e|getConfig().findConfig(e)?.shouldRender]
+		val diagramGenerator = new PlantUMLEcoreDiagramGenerator(singletonIterator(eClassifier), true, false, config)
 		
 		output.append(
 		'''

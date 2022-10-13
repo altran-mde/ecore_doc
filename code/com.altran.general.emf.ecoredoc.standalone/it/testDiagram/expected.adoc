@@ -79,18 +79,18 @@ EClass1 : <font:monospaced>[0..1]</font> specialNumber : EInt = 23
 EClass1 : <font:monospaced>[0..1]</font> someStringAttr : EString = Hello, World!
 EClass1 : <font:monospaced>[0..1]</font> d : EDouble = 3.141592
 MyEClass : <font:monospaced>[0..1]</font> attr : SpecialDataType
-MyEClass -[hidden]> SpecialDataType
+MyEClass -[hidden] SpecialDataType
 MyEClass : <font:monospaced>[0..6]</font> eeeenum : Enum1 = Literal1
-MyEClass -[hidden]> Enum1
+MyEClass -[hidden] Enum1
 Class3 : <font:monospaced>[0..6]</font> something : Enum1
-Class3 -[hidden]> Enum1
+Class3 -[hidden] Enum1
 
 
 MyEClass -up-|> EClass1
 Class3 -up-|> EClass1
 
 EClass1 "**<font:monospaced>[1..1]</font> backwards**" -down- "<font:monospaced>[0..*]</font> myRelation" MyEClass
-MyEClass  -down-> "<font:monospaced>[0..1]</font> ref" EClass1
+MyEClass  -up-> "<font:monospaced>[0..1]</font> ref" EClass1
 MyEClass "<font:monospaced>[0..1]</font> specialParent" *-down- "**<font:monospaced>[1..*]</font> clazzes**" Class3
 MyEClass  *-down-> "<font:monospaced>[0..*]</font> otherClasses" Class3
 ----
@@ -247,9 +247,15 @@ skinparam RoundCorner 8
 class Class3 #white/business ##[bold]black
 abstract EClass1 #white/motivation
 class MyEClass #white/business
+enum Enum1 #white/technology
+hide Enum1 methods
 
+Enum1 : Literal1
+Enum1 : Literal2
+Enum1 : Literal3
 
 Class3 : <font:monospaced>[0..6]</font> something : Enum1
+Class3 -[hidden] Enum1
 EClass1 : **<font:monospaced>[3..5]</font> name : EString**
 EClass1 : **<font:monospaced>[1..1]</font> id : EInt = 0**
 EClass1 : <font:monospaced>[0..1]</font> specialNumber : EInt = 23
@@ -257,6 +263,7 @@ EClass1 : <font:monospaced>[0..1]</font> someStringAttr : EString = Hello, World
 EClass1 : <font:monospaced>[0..1]</font> d : EDouble = 3.141592
 MyEClass : <font:monospaced>[0..1]</font> attr : SpecialDataType
 MyEClass : <font:monospaced>[0..6]</font> eeeenum : Enum1 = Literal1
+MyEClass -[hidden] Enum1
 
 
 Class3 -up-|> EClass1
@@ -264,7 +271,7 @@ MyEClass -up-|> EClass1
 
 Class3 "**<font:monospaced>[1..*]</font> clazzes**" -up-* "<font:monospaced>[0..1]</font> specialParent" MyEClass
 EClass1 "**<font:monospaced>[1..1]</font> backwards**" -down- "<font:monospaced>[0..*]</font> myRelation" MyEClass
-MyEClass  -down-> "<font:monospaced>[0..1]</font> ref" EClass1
+MyEClass  -up-> "<font:monospaced>[0..1]</font> ref" EClass1
 MyEClass  *-down-> "<font:monospaced>[0..*]</font> otherClasses" Class3
 ----
 
@@ -459,7 +466,7 @@ MyEClass : <font:monospaced>[0..*]</font> otherClasses : Class3
 MyEClass -up-|> EClass1
 
 EClass1 "**<font:monospaced>[1..1]</font> backwards**" -down- "<font:monospaced>[0..*]</font> myRelation" MyEClass
-MyEClass  -down-> "<font:monospaced>[0..1]</font> ref" EClass1
+MyEClass  -up-> "<font:monospaced>[0..1]</font> ref" EClass1
 ----
 
 Instance Type Name:: _undefined_
@@ -635,25 +642,32 @@ skinparam RoundCorner 8
 class MyEClass #white/business ##[bold]black
 abstract EClass1 #white/motivation
 class Class3 #white/business
+enum Enum1 #white/technology
+hide Enum1 methods
 
+Enum1 : Literal1
+Enum1 : Literal2
+Enum1 : Literal3
 
 MyEClass : <font:monospaced>[0..1]</font> attr : SpecialDataType
 MyEClass : <font:monospaced>[0..6]</font> eeeenum : Enum1 = Literal1
+MyEClass -[hidden] Enum1
 EClass1 : **<font:monospaced>[3..5]</font> name : EString**
 EClass1 : **<font:monospaced>[1..1]</font> id : EInt = 0**
 EClass1 : <font:monospaced>[0..1]</font> specialNumber : EInt = 23
 EClass1 : <font:monospaced>[0..1]</font> someStringAttr : EString = Hello, World!
 EClass1 : <font:monospaced>[0..1]</font> d : EDouble = 3.141592
 Class3 : <font:monospaced>[0..6]</font> something : Enum1
+Class3 -[hidden] Enum1
 
 
 MyEClass -up-|> EClass1
 Class3 -up-|> EClass1
 
-MyEClass  -down-> "<font:monospaced>[0..1]</font> ref" EClass1
+MyEClass  -up-> "<font:monospaced>[0..1]</font> ref" EClass1
 MyEClass "<font:monospaced>[0..1]</font> specialParent" *-down- "**<font:monospaced>[1..*]</font> clazzes**" Class3
 MyEClass  *-down-> "<font:monospaced>[0..*]</font> otherClasses" Class3
-MyEClass "<font:monospaced>[0..*]</font> myRelation" -down- "**<font:monospaced>[1..1]</font> backwards**" EClass1
+MyEClass "<font:monospaced>[0..*]</font> myRelation" -up- "**<font:monospaced>[1..1]</font> backwards**" EClass1
 ----
 
 Default Value:: _undefined_

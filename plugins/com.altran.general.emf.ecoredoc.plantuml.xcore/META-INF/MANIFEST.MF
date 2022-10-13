@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EcoreDoc - PlantUML Xcore Integration
+Bundle-SymbolicName: com.altran.general.emf.ecoredoc.plantuml.xcore;singleton:=true
+Bundle-Version: 0.10.0.qualifier
+Bundle-Vendor: Capgemini Engineering
+Automatic-Module-Name: com.altran.general.emf.ecoredoc.plantuml.xcore
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.core.runtime,
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtend.lib,
+ org.eclipse.xtend.lib.macro,
+ org.eclipse.jface,
+ org.eclipse.ui.ide,
+ net.sourceforge.plantuml.eclipse,
+ com.altran.general.emf.ecoredoc.generator,
+ org.eclipse.emf.ecore.xcore.ui,
+ org.eclipse.emf.ecore.xcore,
+ org.eclipse.xtext.ui

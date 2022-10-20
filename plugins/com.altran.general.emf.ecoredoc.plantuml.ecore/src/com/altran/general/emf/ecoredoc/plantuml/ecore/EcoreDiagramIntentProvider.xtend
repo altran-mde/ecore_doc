@@ -21,12 +21,12 @@ class EcoreDiagramIntentProvider implements DiagramIntentProvider {
                 getDiagramText(context.workbenchPart as IEditingDomainProvider, context.selection as IStructuredSelection)
             }
         }
-        if (diagramText !== null && !diagramText.isEmpty()) {
-            return Collections::singleton(new SimpleDiagramIntent(diagramText))
+        if (diagramText !== null && diagramText.length > 0) {
+            return Collections::singleton(new SimpleDiagramIntent(diagramText.toString))
         }
     }
     
-    def private String getDiagramText(IEditingDomainProvider editingDomainProvider, IStructuredSelection selection) {
+    def private getDiagramText(IEditingDomainProvider editingDomainProvider, IStructuredSelection selection) {
         var PlantUMLEcoreDiagramGenerator generator = switch it: selection {
         	case size == 1 && head instanceof EPackage: {
         	    new PlantUMLEcoreDiagramGenerator((selection.head as EPackage).EClassifiers.iterator, false, true)
@@ -43,6 +43,6 @@ class EcoreDiagramIntentProvider implements DiagramIntentProvider {
                 new PlantUMLEcoreDiagramGenerator(eClassifiers, false, true)
     	    }
         }
-        return generator?.generateDiagram()?.toString()
+        return generator?.generateDiagram()
     }
 }

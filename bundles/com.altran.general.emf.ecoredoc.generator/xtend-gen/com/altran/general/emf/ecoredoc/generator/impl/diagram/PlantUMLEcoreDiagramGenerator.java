@@ -55,7 +55,7 @@ public class PlantUMLEcoreDiagramGenerator {
   
   public PlantUMLEcoreDiagramGenerator(final Iterator<? extends EClassifier> input, final boolean focusInput, final boolean typeHierarchy, final Function1<? super ENamedElement, ? extends Boolean> predicate) {
     this.predicate = predicate;
-    final Set<EClassifier> filteredInput = IteratorExtensions.<EClassifier>toSet(IteratorExtensions.filter(input, ((Function1<? super EClassifier, Boolean>)predicate)));
+    final Set<EClassifier> filteredInput = IteratorExtensions.<EClassifier>toSet(IteratorExtensions.filter(IteratorExtensions.filterNull(input), ((Function1<? super EClassifier, Boolean>)predicate)));
     LinkedHashSet<EClassifier> _linkedHashSet = new LinkedHashSet<EClassifier>(filteredInput);
     this.eClassifiers = _linkedHashSet;
     if (focusInput) {

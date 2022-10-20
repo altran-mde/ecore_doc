@@ -38,7 +38,7 @@ class PlantUMLEcoreDiagramGenerator {
 	new(Iterator<? extends EClassifier> input, boolean focusInput, boolean typeHierarchy, (ENamedElement)=>boolean predicate) {
 		this.predicate = predicate
 		
-		val filteredInput = input.filter(predicate).toSet
+		val filteredInput = input.filterNull.filter(predicate).toSet
         eClassifiers = new LinkedHashSet(filteredInput)
         if (focusInput) {
             eClassifiersWithFocus += filteredInput

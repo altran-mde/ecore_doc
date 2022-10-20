@@ -29,20 +29,20 @@ class XcoreDiagramIntentProvider implements DiagramIntentProvider {
                 getDiagramText(context.workbenchPart as XcoreEditor, context.selection as ITextSelection)
             }
         }
-        if (diagramText !== null && !diagramText.isEmpty()) {
-            return Collections::singleton(new SimpleDiagramIntent(diagramText))
+        if (diagramText !== null && diagramText.length > 0) {
+            return Collections::singleton(new SimpleDiagramIntent(diagramText.toString))
         }
     }
     
-    def private String getDiagramText(XcoreEditor xcoreEditor, ITextSelection selection) {
+    def private getDiagramText(XcoreEditor xcoreEditor, ITextSelection selection) {
         xcoreEditor.document.readOnly[
-            val xClassifier = resolveContainedElementAt(selection.offset)?.getContainerOfType(XClassifier)
-            if (xClassifier !== null) {
-                return new PlantUMLEcoreDiagramGenerator(singletonIterator(xClassifier.ecore as EClassifier), true, true).generateDiagram.toString
+            val eClassifier = resolveContainedElementAt(selection.offset)?.getContainerOfType(XClassifier)?.ecore as EClassifier
+            if (eClassifier !== null) {
+                return new PlantUMLEcoreDiagramGenerator(singletonIterator(eClassifier), true, true).generateDiagram
             }
             val eClassifiers = allContents.filter(EClassifier)
             if (eClassifiers.hasNext) {
-                return new PlantUMLEcoreDiagramGenerator(eClassifiers, false, true).generateDiagram.toString
+                return new PlantUMLEcoreDiagramGenerator(eClassifiers, false, true).generateDiagram
             }
         ]
     }

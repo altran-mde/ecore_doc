@@ -26,9 +26,9 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 public class EcoreDiagramIntentProvider implements DiagramIntentProvider {
   @Override
   public Collection<? extends DiagramIntent> getDiagramInfos(final DiagramIntentContext context) {
-    String _xifexpression = null;
+    CharSequence _xifexpression = null;
     if ((context instanceof WorkbenchPartDiagramIntentProviderContext)) {
-      String _xifexpression_1 = null;
+      CharSequence _xifexpression_1 = null;
       if (((((WorkbenchPartDiagramIntentProviderContext)context).getWorkbenchPart() instanceof IEditingDomainProvider) && (((WorkbenchPartDiagramIntentProviderContext)context).getSelection() instanceof IStructuredSelection))) {
         IWorkbenchPart _workbenchPart = ((WorkbenchPartDiagramIntentProviderContext)context).getWorkbenchPart();
         ISelection _selection = ((WorkbenchPartDiagramIntentProviderContext)context).getSelection();
@@ -36,15 +36,16 @@ public class EcoreDiagramIntentProvider implements DiagramIntentProvider {
       }
       _xifexpression = _xifexpression_1;
     }
-    final String diagramText = _xifexpression;
-    if (((diagramText != null) && (!diagramText.isEmpty()))) {
-      SimpleDiagramIntent _simpleDiagramIntent = new SimpleDiagramIntent(diagramText);
+    final CharSequence diagramText = _xifexpression;
+    if (((diagramText != null) && (diagramText.length() > 0))) {
+      String _string = diagramText.toString();
+      SimpleDiagramIntent _simpleDiagramIntent = new SimpleDiagramIntent(_string);
       return Collections.<SimpleDiagramIntent>singleton(_simpleDiagramIntent);
     }
     return null;
   }
   
-  private String getDiagramText(final IEditingDomainProvider editingDomainProvider, final IStructuredSelection selection) {
+  private CharSequence getDiagramText(final IEditingDomainProvider editingDomainProvider, final IStructuredSelection selection) {
     PlantUMLEcoreDiagramGenerator _switchResult = null;
     final IStructuredSelection it = selection;
     boolean _matched = false;
@@ -92,10 +93,6 @@ public class EcoreDiagramIntentProvider implements DiagramIntentProvider {
     if (generator!=null) {
       _generateDiagram=generator.generateDiagram();
     }
-    String _string = null;
-    if (_generateDiagram!=null) {
-      _string=_generateDiagram.toString();
-    }
-    return _string;
+    return _generateDiagram;
   }
 }

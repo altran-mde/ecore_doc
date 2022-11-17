@@ -152,12 +152,14 @@
         xsi:type="setup.p2:P2Task">
       <requirement
           name="de.jcup.basheditor.feature.group"
+          versionRange="[0.0.0,2.9.0)"
           optional="true"/>
       <requirement
           name="de.jcup.yamleditor.feature.group"
           optional="true"/>
       <requirement
           name="de.jcup.asciidoctoreditor.feature.group"
+          versionRange="[0.0.0,3.0.0)"
           optional="true"/>
       <repository
           url="https://nexus.acidspace.nl/repository/github.io-update-site-eclipse-bash-editor-update-site/"/>

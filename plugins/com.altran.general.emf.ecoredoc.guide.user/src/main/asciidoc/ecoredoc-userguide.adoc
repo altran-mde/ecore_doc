@@ -513,13 +513,13 @@ include::{ecoredoc-root}/code/com.altran.general.emf.ecoredoc.maven/src/test/res
 This asset in version {revnumber} was developed using the following components and versions.
 
 [horizontal]
-Eclipse:: 4.15 (2020-03)
+Eclipse:: 4.16 (2020-06)
 Google Guava:: 27.1
-Apache Commons Lang3:: 3.1
+Apache Commons Lang3:: 3.10
 Apache Commons IO:: 2.2
 Apache Maven:: 3.3.9
-Eclipse Ecore:: 2.21.0
-Eclipse Xcore:: 1.13.0
+Eclipse Ecore:: 2.22.0
+Eclipse Xcore:: 1.14.0
 Eclipse Tycho:: 1.7.0
 
 

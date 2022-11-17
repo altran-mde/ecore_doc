@@ -6,7 +6,7 @@
 :linkattrs: true
 
 :project-name: EcoreDoc
-:eclipse-version: 2020-03
+:eclipse-version: 2020-06
 :gitlab-acidspace-nl-project: ec-mde/ecore-doc
 :oomph-setup-file-path: releng/eclipse/EcoreDocACIDSpace.setup
 :oomph-setup-stream: develop

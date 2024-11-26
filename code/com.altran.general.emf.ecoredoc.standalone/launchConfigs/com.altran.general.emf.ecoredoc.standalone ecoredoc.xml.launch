@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.ant.AntLaunchConfigurationType">
+<booleanAttribute key="org.eclipse.ant.ui.DEFAULT_VM_INSTALL" value="true"/>
+<stringAttribute key="org.eclipse.debug.core.ATTR_REFRESH_SCOPE" value="${container}"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/com.altran.general.emf.ecoredoc.standalone/ant/ecoredoc.xml"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
+<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_162"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.ant.internal.launching.remote.InternalAntRunner"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="com.altran.general.emf.ecoredoc.standalone"/>
+<stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
+<mapAttribute key="org.eclipse.ui.externaltools.ATTR_ANT_PROPERTIES">
+<mapEntry key="dir.plugins" value="${eclipse_home}/plugins"/>
+<mapEntry key="eclipse.pdebuild.home" value="C:\Users\nstotz\eclipse-distros\oxygen-dsl_64\eclipse\plugins\org.eclipse.pde.build_3.9.300.v20170515-0912\."/>
+<mapEntry key="eclipse.pdebuild.scripts" value="C:\Users\nstotz\eclipse-distros\oxygen-dsl_64\eclipse\plugins\org.eclipse.pde.build_3.9.300.v20170515-0912\scripts"/>
+<mapEntry key="eclipse.pdebuild.templates" value="C:\Users\nstotz\eclipse-distros\oxygen-dsl_64\eclipse\plugins\org.eclipse.pde.build_3.9.300.v20170515-0912\templates"/>
+</mapAttribute>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc:/com.altran.general.emf.ecoredoc.standalone/ant/ecoredoc.xml}"/>
+<stringAttribute key="process_factory_id" value="org.eclipse.ant.ui.remoteAntProcessFactory"/>
+</launchConfiguration>

@@ -1,0 +1,1173 @@
+// White Up-Pointing Triangle
+:wupt: &#9651;
+
+:inherited: {wupt}{nbsp}
+
+// Black Up-Pointing Triangle
+:bupt: &#9650;
+
+:override: {bupt}{nbsp}
+
+// White Down-Pointing Triangle
+:wdpt: &#9661;
+
+:inheritedBy: {wdpt}{nbsp}
+
+// Black Down-Pointing Triangle
+:bdpt: &#9660;
+
+:overriddenBy: {bdpt}{nbsp}
+
+:toc:
+:toclevels: 4
+:miscellaneous.tabsize: 2
+:tabsize: 2
+:icons: font
+:experimental:
+:source-highlighter: pygments
+:prewrap!:
+:table-caption!:
+
+= Ecore Documentation
+
+
+[[EPackage1]]
+== Contents of EPackage1
+
+
+Ns Prefix:: EPackage1
+Ns URI:: EPackage1
+
+.Class diagram of EPackage1
+[plantuml, ./EPackage1, svg]
+----
+skinparam Arrow {
+	Color Black
+	Thickness 0.6
+}
+skinparam Class {
+	BackgroundColor <<E>> #white/technology
+	BorderColor Black
+	BorderThickness 1
+}
+skinparam Stereotype {
+	ABackgroundColor motivation
+	CBackgroundColor business
+	EBackgroundColor technology
+	IBackgroundColor motivation
+}
+skinparam RoundCorner 8
+
+class SpecialDataType << (D, business) >> #white/business {
+	//java.lang.Number//
+}
+hide SpecialDataType methods
+enum Enum1 #white/technology
+hide Enum1 methods
+abstract EClass1 #white/motivation
+class MyEClass #white/business
+class Class3 #white/business
+interface Iface #white/motivation
+
+Enum1 : Literal1
+Enum1 : Literal2
+Enum1 : Literal3
+
+EClass1 : **<font:monospaced>[3..5]</font> name : EString**
+EClass1 : **<font:monospaced>[1..1]</font> id : EInt = 0**
+EClass1 : <font:monospaced>[0..1]</font> specialNumber : EInt = 23
+EClass1 : <font:monospaced>[0..1]</font> someStringAttr : EString = Hello, World!
+EClass1 : <font:monospaced>[0..1]</font> d : EDouble = 3.141592
+MyEClass : <font:monospaced>[0..1]</font> attr : SpecialDataType
+MyEClass -[hidden] SpecialDataType
+MyEClass : <font:monospaced>[0..6]</font> eeeenum : Enum1 = Literal1
+MyEClass -[hidden] Enum1
+Class3 : <font:monospaced>[0..6]</font> something : Enum1
+Class3 -[hidden] Enum1
+
+
+MyEClass -up-|> EClass1
+Class3 -up-|> EClass1
+
+EClass1 "**<font:monospaced>[1..1]</font> backwards**" -down- "<font:monospaced>[0..*]</font> myRelation" MyEClass
+MyEClass  -up-> "<font:monospaced>[0..1]</font> ref" EClass1
+MyEClass "<font:monospaced>[0..1]</font> specialParent" *-down- "**<font:monospaced>[1..*]</font> clazzes**" Class3
+MyEClass  *-down-> "<font:monospaced>[0..*]</font> otherClasses" Class3
+----
+
+
+=== Data Types
+
+[[EPackage1-SpecialDataType]]
+==== SpecialDataType
+
+Special documentation for special data type
+
+
+.Class diagram of SpecialDataType
+[plantuml, ./EPackage1_SpecialDataType, svg]
+----
+skinparam Arrow {
+	Color Black
+	Thickness 0.6
+}
+skinparam Class {
+	BackgroundColor <<E>> #white/technology
+	BorderColor Black
+	BorderThickness 1
+}
+skinparam Stereotype {
+	ABackgroundColor motivation
+	CBackgroundColor business
+	EBackgroundColor technology
+	IBackgroundColor motivation
+}
+skinparam RoundCorner 8
+
+class SpecialDataType << (D, business) >> #white/business ##[bold]black {
+	//java.lang.Number//
+}
+hide SpecialDataType methods
+
+
+
+
+
+----
+
+Default Value:: _undefined_
+Instance Type Name:: `java.lang.Number`
+Serializable:: true
+
+.Used at
+* `<<EPackage1-MyEClass-attr, EPackage1.{zwsp}MyEClass.{zwsp}attr>>`
+
+=== Enumerations
+
+[[EPackage1-Enum1]]
+==== Enum1
+
+Enum1 Description
+
+
+.Class diagram of Enum1
+[plantuml, ./EPackage1_Enum1, svg]
+----
+skinparam Arrow {
+	Color Black
+	Thickness 0.6
+}
+skinparam Class {
+	BackgroundColor <<E>> #white/technology
+	BorderColor Black
+	BorderThickness 1
+}
+skinparam Stereotype {
+	ABackgroundColor motivation
+	CBackgroundColor business
+	EBackgroundColor technology
+	IBackgroundColor motivation
+}
+skinparam RoundCorner 8
+
+enum Enum1 #white/technology ##[bold]black
+hide Enum1 methods
+
+Enum1 : Literal1
+Enum1 : Literal2
+Enum1 : Literal3
+
+
+
+
+----
+
+Default Value:: `Literal1`
+Instance Type Name:: _undefined_
+Serializable:: true
+
+.Literals
+[cols="<20,>10,<20,<50a",options="header"]
+|===
+|Name
+|Value
+|Literal
+|Description
+
+|`Literal1`[[EPackage1-Enum1-Literal1]]
+|`0`
+|`Literal1`
+|Literal1 Description
+
+Second sentence of Literal1 Description.
+
+|`Literal2`[[EPackage1-Enum1-Literal2]]
+|`1`
+|`>=`
+|
+
+|`Literal3`[[EPackage1-Enum1-Literal3]]
+|`5`
+|`Literal3`
+|Literal3 Description
+|===
+
+.Used at
+* `<<EPackage1-Class3-something, EPackage1.{zwsp}Class3.{zwsp}something>>`
+* `<<EPackage1-MyEClass-eeeenum, EPackage1.{zwsp}MyEClass.{zwsp}eeeenum>>`
+
+=== Types
+
+[[EPackage1-Class3]]
+==== Class Class3
+
+Description
+
+
+.Class diagram of Class3
+[plantuml, ./EPackage1_Class3, svg]
+----
+skinparam Arrow {
+	Color Black
+	Thickness 0.6
+}
+skinparam Class {
+	BackgroundColor <<E>> #white/technology
+	BorderColor Black
+	BorderThickness 1
+}
+skinparam Stereotype {
+	ABackgroundColor motivation
+	CBackgroundColor business
+	EBackgroundColor technology
+	IBackgroundColor motivation
+}
+skinparam RoundCorner 8
+
+class Class3 #white/business ##[bold]black
+abstract EClass1 #white/motivation
+class MyEClass #white/business
+enum Enum1 #white/technology
+hide Enum1 methods
+
+Enum1 : Literal1
+Enum1 : Literal2
+Enum1 : Literal3
+
+Class3 : <font:monospaced>[0..6]</font> something : Enum1
+Class3 -[hidden] Enum1
+EClass1 : **<font:monospaced>[3..5]</font> name : EString**
+EClass1 : **<font:monospaced>[1..1]</font> id : EInt = 0**
+EClass1 : <font:monospaced>[0..1]</font> specialNumber : EInt = 23
+EClass1 : <font:monospaced>[0..1]</font> someStringAttr : EString = Hello, World!
+EClass1 : <font:monospaced>[0..1]</font> d : EDouble = 3.141592
+MyEClass : <font:monospaced>[0..1]</font> attr : SpecialDataType
+MyEClass : <font:monospaced>[0..6]</font> eeeenum : Enum1 = Literal1
+MyEClass -[hidden] Enum1
+
+
+Class3 -up-|> EClass1
+MyEClass -up-|> EClass1
+
+Class3 "**<font:monospaced>[1..*]</font> clazzes**" -up-* "<font:monospaced>[0..1]</font> specialParent" MyEClass
+EClass1 "**<font:monospaced>[1..1]</font> backwards**" -down- "<font:monospaced>[0..*]</font> myRelation" MyEClass
+MyEClass  -up-> "<font:monospaced>[0..1]</font> ref" EClass1
+MyEClass  *-down-> "<font:monospaced>[0..*]</font> otherClasses" Class3
+----
+
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
+
+.Super-types
+* `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`something`[[EPackage1-Class3-something]]
+|`<<EPackage1-Enum1, EPackage1.{zwsp}Enum1>>`
+|`[0..6]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
+|Something.
+
+|`d`[[EPackage1-Class3-d]]
+
+`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1.{zwsp}d>>`
+|`EDouble`
+|`[0..1]` +
+_Default:_ `3.141592` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`id`[[EPackage1-Class3-id]]
+
+`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1.{zwsp}id>>`
+|`EInt`
+|*is id* +
+`[1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|Description of id.
+
+|`name`[[EPackage1-Class3-name]]
+
+`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1.{zwsp}name>>`
+|`EString`
+|`[3..5]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
+|Name desc.
+
+|`someStringAttr`[[EPackage1-Class3-someStringAttr]]
+
+`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1.{zwsp}someStringAttr>>`
+|`EString`
+|`[0..1]` +
+_Default:_ `Hello, World!` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`specialNumber`[[EPackage1-Class3-specialNumber]]
+
+`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1.{zwsp}specialNumber>>`
+|`EInt`
+|`[0..1]` +
+_Default:_ `23` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+|===
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`specialParent`[[EPackage1-Class3-specialParent]]
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-clazzes, clazzes>>`
+|_EKeys:_ `-` +
+resolveProxies +
+*container* +
+`[0..1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|Bla
+
+|`myRelation`[[EPackage1-Class3-myRelation]]
+
+`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1.{zwsp}myRelation>>`
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+`[0..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
+|Description.
+|===
+
+.Used at
+* `<<EPackage1-MyEClass-clazzes, EPackage1.{zwsp}MyEClass.{zwsp}clazzes>>`
+* `<<EPackage1-MyEClass-otherClasses, EPackage1.{zwsp}MyEClass.{zwsp}otherClasses>>`
+
+[[EPackage1-EClass1]]
+==== Abstract Class EClass1
+
+TODO: Find a good way to show class attributes like abstract.
+
+Description of EClass1
+
+
+.Class diagram of EClass1
+[plantuml, ./EPackage1_EClass1, svg]
+----
+skinparam Arrow {
+	Color Black
+	Thickness 0.6
+}
+skinparam Class {
+	BackgroundColor <<E>> #white/technology
+	BorderColor Black
+	BorderThickness 1
+}
+skinparam Stereotype {
+	ABackgroundColor motivation
+	CBackgroundColor business
+	EBackgroundColor technology
+	IBackgroundColor motivation
+}
+skinparam RoundCorner 8
+
+abstract EClass1 #white/motivation ##[bold]black
+class MyEClass #white/business
+
+
+EClass1 : **<font:monospaced>[3..5]</font> name : EString**
+EClass1 : **<font:monospaced>[1..1]</font> id : EInt = 0**
+EClass1 : <font:monospaced>[0..1]</font> specialNumber : EInt = 23
+EClass1 : <font:monospaced>[0..1]</font> someStringAttr : EString = Hello, World!
+EClass1 : <font:monospaced>[0..1]</font> d : EDouble = 3.141592
+MyEClass : <font:monospaced>[0..1]</font> attr : SpecialDataType
+MyEClass : **<font:monospaced>[1..*]</font> clazzes : Class3**
+MyEClass : <font:monospaced>[0..6]</font> eeeenum : Enum1 = Literal1
+MyEClass : <font:monospaced>[0..*]</font> otherClasses : Class3
+
+
+MyEClass -up-|> EClass1
+
+EClass1 "**<font:monospaced>[1..1]</font> backwards**" -down- "<font:monospaced>[0..*]</font> myRelation" MyEClass
+MyEClass  -up-> "<font:monospaced>[0..1]</font> ref" EClass1
+----
+
+Instance Type Name:: _undefined_
+
+.Sub-types
+* `<<EPackage1-Class3, EPackage1.{zwsp}Class3>>`
+* `<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+* `<<EPackage2-SomeClass, EPackage2.{zwsp}SomeClass>>`
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`d`[[EPackage1-EClass1-d]]
+|`EDouble`
+|`[0..1]` +
+_Default:_ `3.141592` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`id`[[EPackage1-EClass1-id]]
+|`EInt`
+|*is id* +
+`[1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|Description of id.
+
+|`name`[[EPackage1-EClass1-name]]
+|`EString`
+|`[3..5]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
+|Name desc.
+
+|`someStringAttr`[[EPackage1-EClass1-someStringAttr]]
+|`EString`
+|`[0..1]` +
+_Default:_ `Hello, World!` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`specialNumber`[[EPackage1-EClass1-specialNumber]]
+|`EInt`
+|`[0..1]` +
+_Default:_ `23` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+|===
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`myRelation`[[EPackage1-EClass1-myRelation]]
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+`[0..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
+|Description.
+|===
+
+.Used at
+* `<<EPackage1-MyEClass-backwards, EPackage1.{zwsp}MyEClass.{zwsp}backwards>>`
+* `<<EPackage1-MyEClass-ref, EPackage1.{zwsp}MyEClass.{zwsp}ref>>`
+
+[[EPackage1-Iface]]
+==== Interface Iface
+
+Description
+
+
+.Class diagram of Iface
+[plantuml, ./EPackage1_Iface, svg]
+----
+skinparam Arrow {
+	Color Black
+	Thickness 0.6
+}
+skinparam Class {
+	BackgroundColor <<E>> #white/technology
+	BorderColor Black
+	BorderThickness 1
+}
+skinparam Stereotype {
+	ABackgroundColor motivation
+	CBackgroundColor business
+	EBackgroundColor technology
+	IBackgroundColor motivation
+}
+skinparam RoundCorner 8
+
+interface Iface #white/motivation ##[bold]black
+
+
+
+
+
+----
+
+Instance Type Name:: _undefined_
+
+.Sub-types
+* `<<EPackage2-SomeClass, EPackage2.{zwsp}SomeClass>>`
+
+[[EPackage1-MyEClass]]
+==== Class MyEClass
+
+Description
+
+
+.Class diagram of MyEClass
+[plantuml, ./EPackage1_MyEClass, svg]
+----
+skinparam Arrow {
+	Color Black
+	Thickness 0.6
+}
+skinparam Class {
+	BackgroundColor <<E>> #white/technology
+	BorderColor Black
+	BorderThickness 1
+}
+skinparam Stereotype {
+	ABackgroundColor motivation
+	CBackgroundColor business
+	EBackgroundColor technology
+	IBackgroundColor motivation
+}
+skinparam RoundCorner 8
+
+class MyEClass #white/business ##[bold]black
+abstract EClass1 #white/motivation
+class Class3 #white/business
+enum Enum1 #white/technology
+hide Enum1 methods
+
+Enum1 : Literal1
+Enum1 : Literal2
+Enum1 : Literal3
+
+MyEClass : <font:monospaced>[0..1]</font> attr : SpecialDataType
+MyEClass : <font:monospaced>[0..6]</font> eeeenum : Enum1 = Literal1
+MyEClass -[hidden] Enum1
+EClass1 : **<font:monospaced>[3..5]</font> name : EString**
+EClass1 : **<font:monospaced>[1..1]</font> id : EInt = 0**
+EClass1 : <font:monospaced>[0..1]</font> specialNumber : EInt = 23
+EClass1 : <font:monospaced>[0..1]</font> someStringAttr : EString = Hello, World!
+EClass1 : <font:monospaced>[0..1]</font> d : EDouble = 3.141592
+Class3 : <font:monospaced>[0..6]</font> something : Enum1
+Class3 -[hidden] Enum1
+
+
+MyEClass -up-|> EClass1
+Class3 -up-|> EClass1
+
+MyEClass  -up-> "<font:monospaced>[0..1]</font> ref" EClass1
+MyEClass "<font:monospaced>[0..1]</font> specialParent" *-down- "**<font:monospaced>[1..*]</font> clazzes**" Class3
+MyEClass  *-down-> "<font:monospaced>[0..*]</font> otherClasses" Class3
+MyEClass "<font:monospaced>[0..*]</font> myRelation" -up- "**<font:monospaced>[1..1]</font> backwards**" EClass1
+----
+
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
+
+.Super-types
+* `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`attr`[[EPackage1-MyEClass-attr]]
+|`<<EPackage1-SpecialDataType, EPackage1.{zwsp}SpecialDataType>>`
+|`[0..1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|Description.
+
+Second sentence.
+
+|`eeeenum`[[EPackage1-MyEClass-eeeenum]]
+|`<<EPackage1-Enum1, EPackage1.{zwsp}Enum1>>`
+|`[0..6]` +
+_Default:_ `<<EPackage1-Enum1-Literal1, Literal1>>` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
+|Deschkriptschion.
+
+|`d`[[EPackage1-MyEClass-d]]
+
+`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1.{zwsp}d>>`
+|`EDouble`
+|`[0..1]` +
+_Default:_ `3.141592` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`id`[[EPackage1-MyEClass-id]]
+
+`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1.{zwsp}id>>`
+|`EInt`
+|*is id* +
+`[1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|Description of id.
+
+|`name`[[EPackage1-MyEClass-name]]
+
+`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1.{zwsp}name>>`
+|`EString`
+|`[3..5]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
+|Name desc.
+
+|`someStringAttr`[[EPackage1-MyEClass-someStringAttr]]
+
+`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1.{zwsp}someStringAttr>>`
+|`EString`
+|`[0..1]` +
+_Default:_ `Hello, World!` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`specialNumber`[[EPackage1-MyEClass-specialNumber]]
+
+`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1.{zwsp}specialNumber>>`
+|`EInt`
+|`[0..1]` +
+_Default:_ `23` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+|===
+
+.Containments
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`clazzes`[[EPackage1-MyEClass-clazzes]]
+|`<<EPackage1-Class3, EPackage1.{zwsp}Class3>>`
+
+_EOpposite:_ `<<EPackage1-Class3-specialParent, specialParent>>`
+|_EKeys:_ `-` +
+non-resolveProxies +
+non-container +
+`[1..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
+|Desc.
+
+|`otherClasses`[[EPackage1-MyEClass-otherClasses]]
+|`<<EPackage1-Class3, EPackage1.{zwsp}Class3>>`
+|_EKeys:_ `-` +
+non-resolveProxies +
+non-container +
+`[0..*]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
+|Desc.
+
+Containments could also be inherited.
+|===
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`backwards`[[EPackage1-MyEClass-backwards]]
+|`<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
+
+_EOpposite:_ `<<EPackage1-EClass1-myRelation, myRelation>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+`[1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`ref`[[EPackage1-MyEClass-ref]]
+|`<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+`[0..1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|Whatever.
+
+|`myRelation`[[EPackage1-MyEClass-myRelation]]
+
+`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1.{zwsp}myRelation>>`
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+`[0..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
+|Description.
+|===
+
+.Used at
+* `<<EPackage1-Class3-myRelation, EPackage1.{zwsp}Class3.{zwsp}myRelation>>`
+* `<<EPackage1-Class3-specialParent, EPackage1.{zwsp}Class3.{zwsp}specialParent>>`
+* `<<EPackage1-EClass1-myRelation, EPackage1.{zwsp}EClass1.{zwsp}myRelation>>`
+* `<<EPackage1-MyEClass-myRelation, EPackage1.{zwsp}MyEClass.{zwsp}myRelation>>`
+* `<<EPackage2-SomeClass-myRelation, EPackage2.{zwsp}SomeClass.{zwsp}myRelation>>`
+
+
+[[EPackage2]]
+== Contents of EPackage2
+
+Package2 documentation
+
+Ns Prefix:: ep2
+Ns URI:: http://altran.com/general/emf/ecoredoc/test/epackage2/1.0.0
+
+.Class diagram of EPackage2
+[plantuml, ./EPackage2, svg]
+----
+skinparam Arrow {
+	Color Black
+	Thickness 0.6
+}
+skinparam Class {
+	BackgroundColor <<E>> #white/technology
+	BorderColor Black
+	BorderThickness 1
+}
+skinparam Stereotype {
+	ABackgroundColor motivation
+	CBackgroundColor business
+	EBackgroundColor technology
+	IBackgroundColor motivation
+}
+skinparam RoundCorner 8
+skinparam Package {
+	FontStyle Plain
+	BorderColor LightSlateGray
+	BorderThickness 1
+}
+
+set namespaceSeparator .
+
+class EPackage2.SomeClass #white/business
+class EPackage2.Class3 #white/business
+abstract EPackage1.EClass1 #white/motivation
+interface EPackage1.Iface #white/motivation
+
+
+EPackage2.Class3 : <font:monospaced>[0..1]</font> attr : EDouble = 2.71
+EPackage1.EClass1 : **<font:monospaced>[3..5]</font> name : EString**
+EPackage1.EClass1 : **<font:monospaced>[1..1]</font> id : EInt = 0**
+EPackage1.EClass1 : <font:monospaced>[0..1]</font> specialNumber : EInt = 23
+EPackage1.EClass1 : <font:monospaced>[0..1]</font> someStringAttr : EString = Hello, World!
+EPackage1.EClass1 : <font:monospaced>[0..1]</font> d : EDouble = 3.141592
+EPackage1.EClass1 : <font:monospaced>[0..*]</font> myRelation : MyEClass
+
+
+EPackage2.SomeClass -up-|> EPackage1.EClass1
+EPackage2.SomeClass .up.|> EPackage1.Iface
+
+----
+
+
+=== Types
+
+[[EPackage2-Class3]]
+==== Class Class3
+
+
+
+.Class diagram of Class3
+[plantuml, ./EPackage2_Class3, svg]
+----
+skinparam Arrow {
+	Color Black
+	Thickness 0.6
+}
+skinparam Class {
+	BackgroundColor <<E>> #white/technology
+	BorderColor Black
+	BorderThickness 1
+}
+skinparam Stereotype {
+	ABackgroundColor motivation
+	CBackgroundColor business
+	EBackgroundColor technology
+	IBackgroundColor motivation
+}
+skinparam RoundCorner 8
+
+class Class3 #white/business ##[bold]black
+
+
+Class3 : <font:monospaced>[0..1]</font> attr : EDouble = 2.71
+
+
+
+----
+
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`attr`[[EPackage2-Class3-attr]]
+|`EDouble`
+|`[0..1]` +
+_Default:_ `2.71` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+|===
+
+[[EPackage2-SomeClass]]
+==== Class SomeClass
+
+This is
+
+my doc
+
+
+.Class diagram of SomeClass
+[plantuml, ./EPackage2_SomeClass, svg]
+----
+skinparam Arrow {
+	Color Black
+	Thickness 0.6
+}
+skinparam Class {
+	BackgroundColor <<E>> #white/technology
+	BorderColor Black
+	BorderThickness 1
+}
+skinparam Stereotype {
+	ABackgroundColor motivation
+	CBackgroundColor business
+	EBackgroundColor technology
+	IBackgroundColor motivation
+}
+skinparam RoundCorner 8
+skinparam Package {
+	FontStyle Plain
+	BorderColor LightSlateGray
+	BorderThickness 1
+}
+
+set namespaceSeparator .
+
+class EPackage2.SomeClass #white/business ##[bold]black
+abstract EPackage1.EClass1 #white/motivation
+interface EPackage1.Iface #white/motivation
+
+
+EPackage1.EClass1 : **<font:monospaced>[3..5]</font> name : EString**
+EPackage1.EClass1 : **<font:monospaced>[1..1]</font> id : EInt = 0**
+EPackage1.EClass1 : <font:monospaced>[0..1]</font> specialNumber : EInt = 23
+EPackage1.EClass1 : <font:monospaced>[0..1]</font> someStringAttr : EString = Hello, World!
+EPackage1.EClass1 : <font:monospaced>[0..1]</font> d : EDouble = 3.141592
+EPackage1.EClass1 : <font:monospaced>[0..*]</font> myRelation : MyEClass
+
+
+EPackage2.SomeClass -up-|> EPackage1.EClass1
+EPackage2.SomeClass .up.|> EPackage1.Iface
+
+----
+
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
+
+.Super-types
+* `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
+* `<<EPackage1-Iface, EPackage1.{zwsp}Iface>>`
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`d`[[EPackage2-SomeClass-d]]
+
+`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1.{zwsp}d>>`
+|`EDouble`
+|`[0..1]` +
+_Default:_ `3.141592` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`id`[[EPackage2-SomeClass-id]]
+
+`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1.{zwsp}id>>`
+|`EInt`
+|*is id* +
+`[1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|Description of id.
+
+|`name`[[EPackage2-SomeClass-name]]
+
+`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1.{zwsp}name>>`
+|`EString`
+|`[3..5]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
+|Name desc.
+
+|`someStringAttr`[[EPackage2-SomeClass-someStringAttr]]
+
+`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1.{zwsp}someStringAttr>>`
+|`EString`
+|`[0..1]` +
+_Default:_ `Hello, World!` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`specialNumber`[[EPackage2-SomeClass-specialNumber]]
+
+`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1.{zwsp}specialNumber>>`
+|`EInt`
+|`[0..1]` +
+_Default:_ `23` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+|===
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`myRelation`[[EPackage2-SomeClass-myRelation]]
+
+`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1.{zwsp}myRelation>>`
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+`[0..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
+|Description.
+|===

@@ -1,0 +1,3 @@
+Map<?, ?> fcs = (Map<?, ?>) ctx.getValue(FcoreBuilderConstants.CURRENT_FCORE);
+FactoryComponent fc = (FactoryComponent) fcs.get(parameter.eContainer());
+EcoreDocGeneratorHelper.addEcoreDocInvocation(fc, parameter);

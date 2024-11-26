@@ -1,0 +1,108 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>com.altran.general.emf.ecoredoc.code</artifactId>
+  <name>EcoreDoc Code</name>
+  <packaging>pom</packaging>
+
+  <parent>
+    <groupId>com.altran.general.emf.ecoredoc</groupId>
+    <artifactId>com.altran.general.emf.ecoredoc.root</artifactId>
+    <version>0.10.0-SNAPSHOT</version>
+  </parent>
+
+  <properties>
+    <xtext.version>2.22.0</xtext.version> <!-- Eclipse 2020-06 -->
+  </properties>
+
+  <modules>
+    <module>com.altran.general.emf.ecoredoc.util</module>
+    <module>com.altran.general.emf.ecoredoc.maven</module>
+    <module>com.altran.general.emf.ecoredoc.standalone</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.10</version>
+      </dependency>
+      <dependency>
+        <!-- Bumped to version 5.0.1, see https://github.com/google/guice/issues/1133 -->
+        <groupId>com.google.inject</groupId>
+        <artifactId>guice</artifactId>
+        <version>5.0.1</version>
+      </dependency>
+
+      <!-- BOM for EMF Xcore Runtime 2020-06 (1.14.0) -->
+      <dependency>
+        <groupId>org.eclipse.emf</groupId>
+        <artifactId>org.eclipse.emf.ecore.xcore</artifactId>
+        <version>1.14.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.emf</groupId>
+        <artifactId>org.eclipse.emf.codegen.ecore</artifactId>
+        <version>2.22.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.emf</groupId>
+        <artifactId>org.eclipse.emf.ecore.xcore.lib</artifactId>
+        <version>1.4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.emf</groupId>
+        <artifactId>org.eclipse.emf.codegen.ecore.xtext</artifactId>
+        <version>1.4.0</version>
+      </dependency>
+
+      <!-- BOM for EMF Xtext Runtime 2020-06 (2.22.0) -->
+      <dependency>
+        <groupId>org.eclipse.xtext</groupId>
+        <artifactId>org.eclipse.xtext</artifactId>
+        <version>${xtext.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.xtext</groupId>
+        <artifactId>org.eclipse.xtext.util</artifactId>
+        <version>${xtext.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.xtext</groupId>
+        <artifactId>org.eclipse.xtext.xbase</artifactId>
+        <version>${xtext.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.xtext</groupId>
+        <artifactId>org.eclipse.xtext.common.types</artifactId>
+        <version>${xtext.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.xtext</groupId>
+        <artifactId>org.eclipse.xtext.xbase.lib</artifactId>
+        <version>${xtext.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.xtext</groupId>
+        <artifactId>org.eclipse.xtext.ecore</artifactId>
+        <version>${xtext.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.eclipse.xtext</groupId>
+        <artifactId>xtext-dev-bom</artifactId>
+        <version>${xtext.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <!-- Patched to the version as available on -->
+        <!-- https://download.eclipse.org/releases/2020-06/202006171000 -->
+        <groupId>org.eclipse.emf</groupId>
+        <artifactId>org.eclipse.emf.codegen</artifactId>
+        <version>2.20.0</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>

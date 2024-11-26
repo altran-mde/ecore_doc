@@ -1,0 +1,58 @@
+// enable kbd: / menu: / btn: UI macros
+:experimental: true
+// show icons as awesome-font characters
+:icons: font
+// enable attributes in link:
+:linkattrs: true
+
+:project-name: EcoreDoc
+:eclipse-version: 2020-06
+:github-project: ec-mde/ecore-doc
+:oomph-setup-file-path: releng/eclipse/EcoreDocGitHub.setup
+:oomph-setup-stream: main
+
+= pass:normal[{project-name}]
+
+Generates https://asciidoctor.org/[AsciiDoctor] files to document Ecore metamodels, similar to https://docs.oracle.com/javase/9/javadoc/javadoc.htm[JavaDoc].
+AsciiDoctor can be rendered as HTML, PDF, or Eclipse Help.
+EcoreDoc can be used as Maven Plugin, standalone command-line tool, Java API, or Eclipse Plug-in.
+
+You might have a look at an <<code/com.altran.general.emf.ecoredoc.maven/src/test/resources/testGeneratorConfig/expected.adoc#, example rendering>>
+(suffering from GitLab rendering issues, full-fledged AsciiDoctor output looks better).
+
+For more details, please refer to the link:plugins/com.altran.general.emf.ecoredoc.guide.user/src/main/asciidoc/ecoredoc-userguide.adoc[EcoreDoc User Guide].
+
+== Development Environment
+
+To start developing for {project-name}, please perform the following steps:
+
+. Start with downloading the `Eclipse Installer` from: +
+  https://www.eclipse.org/downloads/packages/installer
+. Start the `Eclipse Installer`
+. Select the `advanced mode` +
++
+image::https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.egit.doc/help/EGit/Contributor_Guide/images/Oomph-01-advanced-mode.png[]
+. On the https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocProductPage.html[Product Page] 
+.. Select `Eclipse Platform`
+.. Product Version: `{eclipse-version}`
+.. Click btn:[Next >]
+. On the https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocProjectPage.html[Projects Page]
+.. (_One time only_) Click the image:https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/images/trees/DULKrP4IGs7HGSVqoXcwRFgPxZQ=.png[] icon to add the {project-name} project.
+... Catalog: `Eclipse Projects`
+... Resource URIs: `link:https://raw.githubusercontent.com/{github-project}/refs/heads/{oomph-setup-stream}/{oomph-setup-file-path}?oomph_form=b%27users/sign_in%27#/[]`
+... Click btn:[OK] +
++
+NOTE: Though using the Resource URI above is preferred, it is known that for some users the URI didn't work and they got an error: _The URI ... does not contain a valid product_.
+In this case the setup file can also be link:https://raw.githubusercontent.com/{github-project}/refs/heads/{oomph-setup-stream}/{oomph-setup-file-path}?inline=false[downloaded] and added by clicking btn:[Browse File System...].
+... Enter your GitLab credentials when asked for
+.. Select `{project-name}` in the tree
+.. Select stream `{oomph-setup-stream}` in the table
+.. Click btn:[Next >]
+. On the https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocVariablePage.html[Variables Page]
+.. Review all variables values, especially the `Installation folder name` and `Root install folder`
+.. Click btn:[Next >]
+. On the https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocConfirmationPage.html[Confirmation Page]
+.. Click btn:[Finish]
+
+Your development environment will now be prepared.
+Please accept all licenses and certificates and provide your GitLab credentials when asked for.

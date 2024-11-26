@@ -1,0 +1,2244 @@
+// White Up-Pointing Triangle
+:wupt: &#9651;
+
+:inherited: {wupt}{nbsp}
+
+// Black Up-Pointing Triangle
+:bupt: &#9650;
+
+:override: {bupt}{nbsp}
+
+// White Down-Pointing Triangle
+:wdpt: &#9661;
+
+:inheritedBy: {wdpt}{nbsp}
+
+// Black Down-Pointing Triangle
+:bdpt: &#9660;
+
+:overriddenBy: {bdpt}{nbsp}
+
+:toc:
+:toclevels: 4
+:miscellaneous.tabsize: 2
+:tabsize: 2
+:icons: font
+:experimental:
+:source-highlighter: pygments
+:prewrap!:
+:table-caption!:
+
+= EcoreDoc Config Model
+
+
+[[config]]
+== Contents of config
+
+
+Ns Prefix:: EcoreDocConfigNs
+Ns URI:: http://altran.com/general/emf/ecoredoc/generator/config/0.1
+
+=== Types
+
+[[config-AEReferenceConfig]]
+==== Abstract Class AEReferenceConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+* `<<config-IEReferenceConfig, config.{zwsp}IEReferenceConfig>>`
+* `<<config-IEStructuralFeatureConfig, config.{zwsp}IEStructuralFeatureConfig>>`
+* `<<config-IETypedElementConfig, config.{zwsp}IETypedElementConfig>>`
+
+[[config-EAttributeConfig]]
+==== Class EAttributeConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IEAttributeConfig, config.{zwsp}IEAttributeConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+* `<<config-IEStructuralFeatureConfig, config.{zwsp}IEStructuralFeatureConfig>>`
+* `<<config-IETypedElementConfig, config.{zwsp}IETypedElementConfig>>`
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`targetEAttribute`[[config-EAttributeConfig-targetEAttribute]]
+|`ecore.{zwsp}EAttribute`
+|`[0..1]`
+|
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`getTarget()`[[config-EAttributeConfig-getTarget]]
+
+`<<config-IENamedElementConfig-getTarget, {override}config.{zwsp}IENamedElementConfig.{zwsp}getTarget()>>`
+|_returns_ +
+`ecore.{zwsp}ENamedElement`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+targetEAttribute
+----
+
+|===
+
+.Used at
+* `<<config-EClassConfig-eAttributes, config.{zwsp}EClassConfig.{zwsp}eAttributes>>`
+
+[[config-EClassConfig]]
+==== Class EClassConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
+* `<<config-IEAttributeConfig, config.{zwsp}IEAttributeConfig>>`
+* `<<config-IEClassConfig, config.{zwsp}IEClassConfig>>`
+* `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+* `<<config-IEOperationConfig, config.{zwsp}IEOperationConfig>>`
+* `<<config-IEParameterConfig, config.{zwsp}IEParameterConfig>>`
+* `<<config-IEReferenceConfig, config.{zwsp}IEReferenceConfig>>`
+* `<<config-IEStructuralFeatureConfig, config.{zwsp}IEStructuralFeatureConfig>>`
+* `<<config-IETypedElementConfig, config.{zwsp}IETypedElementConfig>>`
+
+.Containments
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`eAttributes`[[config-EClassConfig-eAttributes]]
+|`<<config-EAttributeConfig, config.{zwsp}EAttributeConfig>>`
+|`[0..*]`
+|
+
+|`eContainments`[[config-EClassConfig-eContainments]]
+|`<<config-EContainmentConfig, config.{zwsp}EContainmentConfig>>`
+|`[0..*]`
+|
+
+|`eOperations`[[config-EClassConfig-eOperations]]
+|`<<config-EOperationConfig, config.{zwsp}EOperationConfig>>`
+|`[0..*]`
+|
+
+|`eReferences`[[config-EClassConfig-eReferences]]
+|`<<config-EReferenceConfig, config.{zwsp}EReferenceConfig>>`
+|`[0..*]`
+|
+|===
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`targetEClass`[[config-EClassConfig-targetEClass]]
+|`ecore.{zwsp}EClass`
+|`[0..1]`
+|
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.3+|`addEAttributes({zwsp}eAttributeConfig)`[[config-EClassConfig-addEAttributes-config_List]]
+|_returns_ +
+`void`
+|`[0..1]`
+|Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+
+|`eAttributeConfig` +
+`config.{zwsp}List`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+EAttributes += eAttributeConfig
+----
+
+.3+|`addEContainments({zwsp}eContainmentConfig)`[[config-EClassConfig-addEContainments-config_List]]
+|_returns_ +
+`void`
+|`[0..1]`
+|Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+
+|`eContainmentConfig` +
+`config.{zwsp}List`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+EContainments += eContainmentConfig
+----
+
+.3+|`addEOperations({zwsp}eOperationConfig)`[[config-EClassConfig-addEOperations-config_List]]
+|_returns_ +
+`void`
+|`[0..1]`
+|Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+
+|`eOperationConfig` +
+`config.{zwsp}List`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+EOperations += eOperationConfig
+----
+
+.3+|`addEReferences({zwsp}eReferenceConfig)`[[config-EClassConfig-addEReferences-config_List]]
+|_returns_ +
+`void`
+|`[0..1]`
+|Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+
+|`eReferenceConfig` +
+`config.{zwsp}List`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+EReferences += eReferenceConfig
+----
+
+.2+|`getTarget()`[[config-EClassConfig-getTarget]]
+
+`<<config-IENamedElementConfig-getTarget, {override}config.{zwsp}IENamedElementConfig.{zwsp}getTarget()>>`
+|_returns_ +
+`ecore.{zwsp}ENamedElement`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+targetEClass
+----
+
+|===
+
+.Used at
+* `<<config-EPackageConfig-eClasses, config.{zwsp}EPackageConfig.{zwsp}eClasses>>`
+
+[[config-EContainmentConfig]]
+==== Class EContainmentConfig
+
+
+
+
+.Super-types
+* `<<config-AEReferenceConfig, config.{zwsp}AEReferenceConfig>>`
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+* `<<config-IEReferenceConfig, config.{zwsp}IEReferenceConfig>>`
+* `<<config-IEStructuralFeatureConfig, config.{zwsp}IEStructuralFeatureConfig>>`
+* `<<config-IETypedElementConfig, config.{zwsp}IETypedElementConfig>>`
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`targetEContainment`[[config-EContainmentConfig-targetEContainment]]
+|`ecore.{zwsp}EReference`
+|`[0..1]`
+|
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`getTarget()`[[config-EContainmentConfig-getTarget]]
+
+`<<config-IENamedElementConfig-getTarget, {override}config.{zwsp}IENamedElementConfig.{zwsp}getTarget()>>`
+|_returns_ +
+`ecore.{zwsp}ENamedElement`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+targetEContainment
+----
+
+|===
+
+.Used at
+* `<<config-EClassConfig-eContainments, config.{zwsp}EClassConfig.{zwsp}eContainments>>`
+
+[[config-EDataTypeConfig]]
+==== Class EDataTypeConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
+* `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
+* `<<config-IEDataTypeConfig, config.{zwsp}IEDataTypeConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`targetEDataType`[[config-EDataTypeConfig-targetEDataType]]
+|`ecore.{zwsp}EDataType`
+|`[0..1]`
+|
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`getTarget()`[[config-EDataTypeConfig-getTarget]]
+
+`<<config-IENamedElementConfig-getTarget, {override}config.{zwsp}IENamedElementConfig.{zwsp}getTarget()>>`
+|_returns_ +
+`ecore.{zwsp}ENamedElement`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+targetEDataType
+----
+
+|===
+
+.Used at
+* `<<config-EPackageConfig-eDataTypes, config.{zwsp}EPackageConfig.{zwsp}eDataTypes>>`
+
+[[config-EEnumConfig]]
+==== Class EEnumConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
+* `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
+* `<<config-IEDataTypeConfig, config.{zwsp}IEDataTypeConfig>>`
+* `<<config-IEEnumConfig, config.{zwsp}IEEnumConfig>>`
+* `<<config-IEEnumLiteralConfig, config.{zwsp}IEEnumLiteralConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+
+.Containments
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`eEnumLiterals`[[config-EEnumConfig-eEnumLiterals]]
+|`<<config-EEnumLiteralConfig, config.{zwsp}EEnumLiteralConfig>>`
+|`[0..*]`
+|
+|===
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`targetEEnum`[[config-EEnumConfig-targetEEnum]]
+|`ecore.{zwsp}EEnum`
+|`[0..1]`
+|
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.3+|`addEEnumLiterals({zwsp}eEnumLiteralConfig)`[[config-EEnumConfig-addEEnumLiterals-config_List]]
+|_returns_ +
+`void`
+|`[0..1]`
+|Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+
+|`eEnumLiteralConfig` +
+`config.{zwsp}List`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+EEnumLiterals += eEnumLiteralConfig
+----
+
+.2+|`getTarget()`[[config-EEnumConfig-getTarget]]
+
+`<<config-IENamedElementConfig-getTarget, {override}config.{zwsp}IENamedElementConfig.{zwsp}getTarget()>>`
+|_returns_ +
+`ecore.{zwsp}ENamedElement`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+targetEEnum
+----
+
+|===
+
+.Used at
+* `<<config-EPackageConfig-eEnums, config.{zwsp}EPackageConfig.{zwsp}eEnums>>`
+
+[[config-EEnumLiteralConfig]]
+==== Class EEnumLiteralConfig
+
+
+
+
+.Super-types
+* `<<config-IEEnumLiteralConfig, config.{zwsp}IEEnumLiteralConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`targetEEnumLiteral`[[config-EEnumLiteralConfig-targetEEnumLiteral]]
+|`ecore.{zwsp}EEnumLiteral`
+|`[0..1]`
+|
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`getTarget()`[[config-EEnumLiteralConfig-getTarget]]
+
+`<<config-IENamedElementConfig-getTarget, {override}config.{zwsp}IENamedElementConfig.{zwsp}getTarget()>>`
+|_returns_ +
+`ecore.{zwsp}ENamedElement`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+targetEEnumLiteral
+----
+
+|===
+
+.Used at
+* `<<config-EEnumConfig-eEnumLiterals, config.{zwsp}EEnumConfig.{zwsp}eEnumLiterals>>`
+
+[[config-EOperationConfig]]
+==== Class EOperationConfig
+
+
+
+
+.Super-types
+* `<<config-AEReferenceConfig, config.{zwsp}AEReferenceConfig>>`
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+* `<<config-IEReferenceConfig, config.{zwsp}IEReferenceConfig>>`
+* `<<config-IEStructuralFeatureConfig, config.{zwsp}IEStructuralFeatureConfig>>`
+* `<<config-IETypedElementConfig, config.{zwsp}IETypedElementConfig>>`
+
+.Containments
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`eParameters`[[config-EOperationConfig-eParameters]]
+|`<<config-EParameterConfig, config.{zwsp}EParameterConfig>>`
+|`[0..*]`
+|
+|===
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`targetEOperation`[[config-EOperationConfig-targetEOperation]]
+|`ecore.{zwsp}EOperation`
+|`[0..1]`
+|
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.3+|`addEParameters({zwsp}eParameterConfig)`[[config-EOperationConfig-addEParameters-config_List]]
+|_returns_ +
+`void`
+|`[0..1]`
+|Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+
+|`eParameterConfig` +
+`config.{zwsp}List`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+EParameters += eParameterConfig
+----
+
+.2+|`getId()`[[config-EOperationConfig-getId]]
+
+`{override}config.{zwsp}IENamedElementConfig.{zwsp}id`
+|_returns_ +
+`EString`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+targetEOperation?.joinId
+----
+
+.2+|`getTarget()`[[config-EOperationConfig-getTarget]]
+
+`<<config-IENamedElementConfig-getTarget, {override}config.{zwsp}IENamedElementConfig.{zwsp}getTarget()>>`
+|_returns_ +
+`ecore.{zwsp}ENamedElement`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+targetEOperation
+----
+
+.3+|`joinId({zwsp}eOperation)`[[config-EOperationConfig-joinId-ecore_EOperation]]
+|_returns_ +
+`EString`
+|`[0..1]`
+|
+
+|`eOperation` +
+`ecore.{zwsp}EOperation`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+eOperation.name + eOperation.EParameters.map[(EType?.eContainer as ENamedElement)?.name + "_" + EType?.name].join(".")
+----
+
+|===
+
+.Used at
+* `<<config-EClassConfig-eOperations, config.{zwsp}EClassConfig.{zwsp}eOperations>>`
+
+[[config-EPackageConfig]]
+==== Class EPackageConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
+* `<<config-IEAttributeConfig, config.{zwsp}IEAttributeConfig>>`
+* `<<config-IEClassConfig, config.{zwsp}IEClassConfig>>`
+* `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
+* `<<config-IEDataTypeConfig, config.{zwsp}IEDataTypeConfig>>`
+* `<<config-IEEnumConfig, config.{zwsp}IEEnumConfig>>`
+* `<<config-IEEnumLiteralConfig, config.{zwsp}IEEnumLiteralConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+* `<<config-IEOperationConfig, config.{zwsp}IEOperationConfig>>`
+* `<<config-IEPackageConfig, config.{zwsp}IEPackageConfig>>`
+* `<<config-IEParameterConfig, config.{zwsp}IEParameterConfig>>`
+* `<<config-IEReferenceConfig, config.{zwsp}IEReferenceConfig>>`
+* `<<config-IEStructuralFeatureConfig, config.{zwsp}IEStructuralFeatureConfig>>`
+* `<<config-IETypedElementConfig, config.{zwsp}IETypedElementConfig>>`
+
+.Containments
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`eClasses`[[config-EPackageConfig-eClasses]]
+|`<<config-EClassConfig, config.{zwsp}EClassConfig>>`
+|`[0..*]`
+|
+
+|`eDataTypes`[[config-EPackageConfig-eDataTypes]]
+|`<<config-EDataTypeConfig, config.{zwsp}EDataTypeConfig>>`
+|`[0..*]`
+|
+
+|`eEnums`[[config-EPackageConfig-eEnums]]
+|`<<config-EEnumConfig, config.{zwsp}EEnumConfig>>`
+|`[0..*]`
+|
+|===
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`targetEPackage`[[config-EPackageConfig-targetEPackage]]
+|`ecore.{zwsp}EPackage`
+|`[0..1]`
+|
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.3+|`addEClasses({zwsp}eClassConfig)`[[config-EPackageConfig-addEClasses-config_List]]
+|_returns_ +
+`void`
+|`[0..1]`
+|Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+
+|`eClassConfig` +
+`config.{zwsp}List`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+EClasses += eClassConfig
+----
+
+.3+|`addEDataTypes({zwsp}eDataTypeConfig)`[[config-EPackageConfig-addEDataTypes-config_List]]
+|_returns_ +
+`void`
+|`[0..1]`
+|Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+
+|`eDataTypeConfig` +
+`config.{zwsp}List`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+EDataTypes += eDataTypeConfig
+----
+
+.3+|`addEEnums({zwsp}eEnumConfig)`[[config-EPackageConfig-addEEnums-config_List]]
+|_returns_ +
+`void`
+|`[0..1]`
+|Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+
+|`eEnumConfig` +
+`config.{zwsp}List`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+EEnums += eEnumConfig
+----
+
+.2+|`getTarget()`[[config-EPackageConfig-getTarget]]
+
+`<<config-IENamedElementConfig-getTarget, {override}config.{zwsp}IENamedElementConfig.{zwsp}getTarget()>>`
+|_returns_ +
+`ecore.{zwsp}ENamedElement`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+targetEPackage
+----
+
+|===
+
+.Used at
+* `<<config-EcoreDocGeneratorConfig-ePackages, config.{zwsp}EcoreDocGeneratorConfig.{zwsp}ePackages>>`
+
+[[config-EParameterConfig]]
+==== Class EParameterConfig
+
+
+
+
+.Super-types
+* `<<config-AEReferenceConfig, config.{zwsp}AEReferenceConfig>>`
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+* `<<config-IEReferenceConfig, config.{zwsp}IEReferenceConfig>>`
+* `<<config-IEStructuralFeatureConfig, config.{zwsp}IEStructuralFeatureConfig>>`
+* `<<config-IETypedElementConfig, config.{zwsp}IETypedElementConfig>>`
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`targetEParameter`[[config-EParameterConfig-targetEParameter]]
+|`ecore.{zwsp}EParameter`
+|`[0..1]`
+|
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`getTarget()`[[config-EParameterConfig-getTarget]]
+
+`<<config-IENamedElementConfig-getTarget, {override}config.{zwsp}IENamedElementConfig.{zwsp}getTarget()>>`
+|_returns_ +
+`ecore.{zwsp}ENamedElement`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+targetEParameter
+----
+
+|===
+
+.Used at
+* `<<config-EOperationConfig-eParameters, config.{zwsp}EOperationConfig.{zwsp}eParameters>>`
+
+[[config-EReferenceConfig]]
+==== Class EReferenceConfig
+
+
+
+
+.Super-types
+* `<<config-AEReferenceConfig, config.{zwsp}AEReferenceConfig>>`
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+* `<<config-IEReferenceConfig, config.{zwsp}IEReferenceConfig>>`
+* `<<config-IEStructuralFeatureConfig, config.{zwsp}IEStructuralFeatureConfig>>`
+* `<<config-IETypedElementConfig, config.{zwsp}IETypedElementConfig>>`
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`targetEReference`[[config-EReferenceConfig-targetEReference]]
+|`ecore.{zwsp}EReference`
+|`[0..1]`
+|
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`getTarget()`[[config-EReferenceConfig-getTarget]]
+
+`<<config-IENamedElementConfig-getTarget, {override}config.{zwsp}IENamedElementConfig.{zwsp}getTarget()>>`
+|_returns_ +
+`ecore.{zwsp}ENamedElement`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+targetEReference
+----
+
+|===
+
+.Used at
+* `<<config-EClassConfig-eReferences, config.{zwsp}EClassConfig.{zwsp}eReferences>>`
+
+[[config-EcoreDocGeneratorConfig]]
+==== Class EcoreDocGeneratorConfig
+
+
+ifdef::backend-html5[]
+++++
+Root for the detailed EcoreDocGenerator configuration.
+
+<p>
+The configuration allows to specify configuration options for each element and all its contained elements.
+It always chooses the most specific configuration setting.
+</p>
+
+<p>Example:</p>
+
+<pre>
+EcoreDocGeneratorConfig
+	 * renderDefaults: {unset, defaults to true}
+  * repeatInherited: false
+  + EPackage1
+    * renderDefaults: false
+    + EClass1
+      + EAttribute1
+        * renderDefaults: true
+      + EAttribute2
+        {no custom config}
+    + EClass2 extends EClass1
+  + EPackage2
+    * repeatInherited: true
+    + EClass3 extends EClass1
+    + EClass4
+      + EAttribute3
+        * renderDefaults: true
+        * repeatInherited: false
+</pre>
+
+<p>Result:</p>
+
+<dl>
+  <dt>EPackage1</dt>
+  <dd>
+    <dl class="compact">
+      <dt>renderDefaults</dt><dd>false</dd>
+      <dt>repeatInherited</dt><dd>false</dd>
+    </dl>
+  </dd>
+  <dt>EClass1</dt>
+  <dd>
+    <dl class="compact">
+      <dt>renderDefaults</dt><dd>false</dd>
+      <dt>repeatInherited</dt><dd>false</dd>
+    </dl>
+  </dd>
+  <dt>EAttribute1</dt>
+  <dd>
+    <dl class="compact">
+      <dt>renderDefaults</dt><dd>true</dd>
+      <dt>repeatInherited</dt><dd>false</dd>
+    </dl>
+  </dd>
+  <dt>EAttribute2</dt>
+  <dd>
+    <dl class="compact">
+      <dt>renderDefaults</dt><dd>false</dd>
+      <dt>repeatInherited</dt><dd>false</dd>
+    </dl>
+  </dd>
+  <dt>EClass2</dt>
+  <dd>
+    <dl class="compact">
+      <dt>renderDefaults</dt><dd>false</dd>
+      <dt>repeatInherited</dt><dd>false</dd>
+    </dl>
+  </dd>
+  <dt>EPackage2</dt>
+  <dd>
+    <dl class="compact">
+      <dt>renderDefaults</dt><dd>true</dd>
+      <dt>repeatInherited</dt><dd>true</dd>
+    </dl>
+  </dd>
+  <dt>EClass3</dt>
+  <dd>
+    <dl class="compact">
+      <dt>renderDefaults</dt><dd>true</dd>
+      <dt>repeatInherited</dt><dd>true</dd>
+    </dl>
+  </dd>
+  <dt>EClass4</dt>
+  <dd>
+    <dl class="compact">
+      <dt>renderDefaults</dt><dd>true</dd>
+      <dt>repeatInherited</dt><dd>true</dd>
+    </dl>
+  </dd>
+  <dt>EAttribute3</dt>
+  <dd>
+    <dl class="compact">
+      <dt>renderDefaults</dt><dd>true</dd>
+      <dt>repeatInherited</dt><dd>false</dd>
+    </dl>
+  </dd>
+</dl>
+++++
+endif::[]
+ifndef::backend-html5[]
+Root for the detailed EcoreDocGenerator configuration.
+
+
+The configuration allows to specify configuration options for each element and all its contained elements.
+It always chooses the most specific configuration setting.
+
+
+Example:
+
+
+EcoreDocGeneratorConfig
+	 * renderDefaults: {unset, defaults to true}
+  * repeatInherited: false
+  + EPackage1
+    * renderDefaults: false
+    + EClass1
+      + EAttribute1
+        * renderDefaults: true
+      + EAttribute2
+        {no custom config}
+    + EClass2 extends EClass1
+  + EPackage2
+    * repeatInherited: true
+    + EClass3 extends EClass1
+    + EClass4
+      + EAttribute3
+        * renderDefaults: true
+        * repeatInherited: false
+
+
+Result:
+
+
+  EPackage1
+  
+    
+      renderDefaults false
+      repeatInherited false
+    
+  
+  EClass1
+  
+    
+      renderDefaults false
+      repeatInherited false
+    
+  
+  EAttribute1
+  
+    
+      renderDefaults true
+      repeatInherited false
+    
+  
+  EAttribute2
+  
+    
+      renderDefaults false
+      repeatInherited false
+    
+  
+  EClass2
+  
+    
+      renderDefaults false
+      repeatInherited false
+    
+  
+  EPackage2
+  
+    
+      renderDefaults true
+      repeatInherited true
+    
+  
+  EClass3
+  
+    
+      renderDefaults true
+      repeatInherited true
+    
+  
+  EClass4
+  
+    
+      renderDefaults true
+      repeatInherited true
+    
+  
+  EAttribute3
+  
+    
+      renderDefaults true
+      repeatInherited false
+    
+  
+endif::[]
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
+* `<<config-IEAttributeConfig, config.{zwsp}IEAttributeConfig>>`
+* `<<config-IEClassConfig, config.{zwsp}IEClassConfig>>`
+* `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
+* `<<config-IEDataTypeConfig, config.{zwsp}IEDataTypeConfig>>`
+* `<<config-IEEnumConfig, config.{zwsp}IEEnumConfig>>`
+* `<<config-IEEnumLiteralConfig, config.{zwsp}IEEnumLiteralConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+* `<<config-IEOperationConfig, config.{zwsp}IEOperationConfig>>`
+* `<<config-IEPackageConfig, config.{zwsp}IEPackageConfig>>`
+* `<<config-IEParameterConfig, config.{zwsp}IEParameterConfig>>`
+* `<<config-IEReferenceConfig, config.{zwsp}IEReferenceConfig>>`
+* `<<config-IEStructuralFeatureConfig, config.{zwsp}IEStructuralFeatureConfig>>`
+* `<<config-IETypedElementConfig, config.{zwsp}IETypedElementConfig>>`
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`diagramsOutputFormat`[[config-EcoreDocGeneratorConfig-diagramsOutputFormat]]
+|`EString`
+|`[0..1]` +
+_Default:_ `svg`
+|
+ifdef::backend-html5[]
+++++
+The output-format of diagrams in the generated document.
+For supported outputs, see <a href="https://docs.asciidoctor.org/diagram-extension/latest/#creating-a-diagram">Asciidoctor Documentation</a>.
+
+<p>defaults to <b>svg</b>.</p>
+++++
+endif::[]
+ifndef::backend-html5[]
+The output-format of diagrams in the generated document.
+For supported outputs, see Asciidoctor Documentation.
+
+defaults to svg.
+endif::[]
+
+|`diagramsOutputPath`[[config-EcoreDocGeneratorConfig-diagramsOutputPath]]
+|`EString`
+|`[0..1]` +
+_Default:_ `.`
+|
+ifdef::backend-html5[]
+++++
+The output path of diagrams in the generated document.
+
+<p>defaults to the current directory.</p>
+++++
+endif::[]
+ifndef::backend-html5[]
+The output path of diagrams in the generated document.
+
+defaults to the current directory.
+endif::[]
+
+|`documentTitle`[[config-EcoreDocGeneratorConfig-documentTitle]]
+|`EString`
+|`[0..1]` +
+_Default:_ `Ecore Documentation`
+|
+ifdef::backend-html5[]
+++++
+Title of the generated document.
+
+<p>defaults to <b>Ecore Documentation</b>.</p>
+++++
+endif::[]
+ifndef::backend-html5[]
+Title of the generated document.
+
+defaults to Ecore Documentation.
+endif::[]
+|===
+
+.Containments
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`ePackages`[[config-EcoreDocGeneratorConfig-ePackages]]
+|`<<config-EPackageConfig, config.{zwsp}EPackageConfig>>`
+|`[0..*]`
+|
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.3+|`addEPackages({zwsp}ePackageConfig)`[[config-EcoreDocGeneratorConfig-addEPackages-config_List]]
+|_returns_ +
+`void`
+|`[0..1]`
+|Helper method for {@linkplain org.eclipse.sisu.plexus.CompositeBeanHelper#setProperty()} to handle ELists correctly.
+
+|`ePackageConfig` +
+`config.{zwsp}List`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+EPackages += ePackageConfig
+----
+
+.3+|`findConfig({zwsp}element)`[[config-EcoreDocGeneratorConfig-findConfig-ecore_ENamedElement]]
+|_returns_ +
+`<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+|`[0..1]`
+|Convenience method to map ENamedElement -> config.
+
+|`element` +
+`ecore.{zwsp}ENamedElement`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+switch (element) {
+	EPackage:
+		EPackages
+	EEnum:
+		EPackages.flatMap[EEnums]
+	EDataType:
+		EPackages.flatMap[EDataTypes]
+	EEnumLiteral:
+		EPackages.flatMap[EEnums].flatMap[EEnumLiterals]
+	EClass:
+		EPackages.flatMap[EClasses]
+	EAttribute:
+		EPackages.flatMap[EClasses].flatMap[EAttributes]
+	EReference case (element.isContainment):
+		EPackages.flatMap[EClasses].flatMap[EContainments]
+	EReference case (!element.isContainment):
+		EPackages.flatMap[EClasses].flatMap[EReferences]
+	EOperation:
+		EPackages.flatMap[EClasses].flatMap[EOperations]
+	EParameter:
+		EPackages.flatMap[EClasses].flatMap[EOperations]
+			.flatMap[EParameters]
+}.findFirst[target == element]
+----
+
+.2+|`getEClassesPosition()`[[config-EcoreDocGeneratorConfig-getEClassesPosition]]
+
+`<<config-IEPackageConfig-getEClassesPosition, {override}config.{zwsp}IEPackageConfig.{zwsp}getEClassesPosition()>>`
+|_returns_ +
+`EInt`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Sets default for <tt>positionEClasses = 3</tt>.
+++++
+endif::[]
+ifndef::backend-html5[]
+Sets default for positionEClasses = 3.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetPositionEClasses) {
+	positionEClasses
+} else {
+	3
+}
+----
+
+.2+|`getEDataTypesPosition()`[[config-EcoreDocGeneratorConfig-getEDataTypesPosition]]
+
+`<<config-IEPackageConfig-getEDataTypesPosition, {override}config.{zwsp}IEPackageConfig.{zwsp}getEDataTypesPosition()>>`
+|_returns_ +
+`EInt`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Sets default for <tt>positionEDataTypes = 1</tt>.
+++++
+endif::[]
+ifndef::backend-html5[]
+Sets default for positionEDataTypes = 1.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetPositionEDataTypes) {
+	positionEDataTypes
+} else {
+	1
+}
+----
+
+.2+|`getEEnumsPosition()`[[config-EcoreDocGeneratorConfig-getEEnumsPosition]]
+
+`<<config-IEPackageConfig-getEEnumsPosition, {override}config.{zwsp}IEPackageConfig.{zwsp}getEEnumsPosition()>>`
+|_returns_ +
+`EInt`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Sets default for <tt>positionEEnums = 2</tt>.
+++++
+endif::[]
+ifndef::backend-html5[]
+Sets default for positionEEnums = 2.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetPositionEEnums) {
+	positionEEnums
+} else {
+	2
+}
+----
+
+.2+|`getTarget()`[[config-EcoreDocGeneratorConfig-getTarget]]
+
+`<<config-IENamedElementConfig-getTarget, {override}config.{zwsp}IENamedElementConfig.{zwsp}getTarget()>>`
+|_returns_ +
+`ecore.{zwsp}ENamedElement`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+null
+----
+
+.2+|`shouldRender()`[[config-EcoreDocGeneratorConfig-shouldRender]]
+
+`<<config-IENamedElementConfig-shouldRender, {override}config.{zwsp}IENamedElementConfig.{zwsp}shouldRender()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Sets default for <tt>render = true</tt>.
+++++
+endif::[]
+ifndef::backend-html5[]
+Sets default for render = true.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRender) {
+	render
+} else {
+	true
+}
+----
+
+.2+|`shouldRenderBounds()`[[config-EcoreDocGeneratorConfig-shouldRenderBounds]]
+
+`<<config-IETypedElementConfig-shouldRenderBounds, {override}config.{zwsp}IETypedElementConfig.{zwsp}shouldRenderBounds()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Sets default for <tt>renderBounds = shouldRenderDefaults()</tt>.
+++++
+endif::[]
+ifndef::backend-html5[]
+Sets default for renderBounds = shouldRenderDefaults().
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRenderBounds) {
+	renderBounds
+} else {
+	shouldRenderDefaults()
+}
+----
+
+.2+|`shouldRenderDefaults()`[[config-EcoreDocGeneratorConfig-shouldRenderDefaults]]
+
+`<<config-IDefaultValueConfig-shouldRenderDefaults, {override}config.{zwsp}IDefaultValueConfig.{zwsp}shouldRenderDefaults()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Sets default for <tt>renderDefaults = true</tt>.
+++++
+endif::[]
+ifndef::backend-html5[]
+Sets default for renderDefaults = true.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRenderDefaults) {
+	renderDefaults
+} else {
+	true
+}
+----
+
+.2+|`shouldRenderDiagrams()`[[config-EcoreDocGeneratorConfig-shouldRenderDiagrams]]
+
+`<<config-IDiagramConfig-shouldRenderDiagrams, {override}config.{zwsp}IDiagramConfig.{zwsp}shouldRenderDiagrams()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+if (isSetRenderDiagrams) {
+	renderDiagrams
+} else {
+	false
+}
+----
+
+.2+|`shouldRenderSubTypes()`[[config-EcoreDocGeneratorConfig-shouldRenderSubTypes]]
+
+`<<config-IEClassConfig-shouldRenderSubTypes, {override}config.{zwsp}IEClassConfig.{zwsp}shouldRenderSubTypes()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Sets default for <tt>renderSubTypes = true</tt>.
+++++
+endif::[]
+ifndef::backend-html5[]
+Sets default for renderSubTypes = true.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRenderSubTypes) {
+	renderSubTypes
+} else {
+	true
+}
+----
+
+.2+|`shouldRenderSuperTypes()`[[config-EcoreDocGeneratorConfig-shouldRenderSuperTypes]]
+
+`<<config-IEClassConfig-shouldRenderSuperTypes, {override}config.{zwsp}IEClassConfig.{zwsp}shouldRenderSuperTypes()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Sets default for <tt>RenderSuperTypes = true</tt>.
+++++
+endif::[]
+ifndef::backend-html5[]
+Sets default for RenderSuperTypes = true.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRenderSuperTypes) {
+	renderSuperTypes
+} else {
+	true
+}
+----
+
+.2+|`shouldRenderUseCases()`[[config-EcoreDocGeneratorConfig-shouldRenderUseCases]]
+
+`<<config-IEClassifierConfig-shouldRenderUseCases, {override}config.{zwsp}IEClassifierConfig.{zwsp}shouldRenderUseCases()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Sets default for <tt>renderUseCases = true</tt>.
+++++
+endif::[]
+ifndef::backend-html5[]
+Sets default for renderUseCases = true.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRenderUseCases) {
+	renderUseCases
+} else {
+	true
+}
+----
+
+.2+|`shouldRepeatInherited()`[[config-EcoreDocGeneratorConfig-shouldRepeatInherited]]
+
+`<<config-IEClassConfig-shouldRepeatInherited, {override}config.{zwsp}IEClassConfig.{zwsp}shouldRepeatInherited()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Sets default for <tt>repeatInherited = true</tt>.
+++++
+endif::[]
+ifndef::backend-html5[]
+Sets default for repeatInherited = true.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRepeatInherited) {
+	repeatInherited
+} else {
+	true
+}
+----
+
+|===
+
+[[config-IDefaultValueConfig]]
+==== Interface IDefaultValueConfig
+
+
+
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`renderDefaults`[[config-IDefaultValueConfig-renderDefaults]]
+|`EBoolean`
+|`[0..1]` +
+unsettable
+|
+ifdef::backend-html5[]
+++++
+Whether properties should be rendered at their default values.
+
+<p>
+Example: If <tt>EReference.ordered = true</tt> (the default value),
+the <i>ordered</i> property of that <tt>EReference</tt> will not be rendered
+if <tt>renderDefaults = false</tt>.
+</p>
+++++
+endif::[]
+ifndef::backend-html5[]
+Whether properties should be rendered at their default values.
+
+
+Example: If EReference.ordered = true (the default value),
+the ordered property of that EReference will not be rendered
+if renderDefaults = false.
+endif::[]
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`shouldRenderDefaults()`[[config-IDefaultValueConfig-shouldRenderDefaults]]
+
+`<<config-EcoreDocGeneratorConfig-shouldRenderDefaults, {overriddenBy}config.{zwsp}EcoreDocGeneratorConfig.{zwsp}shouldRenderDefaults()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Traverses the tree to find the most specific <tt>renderDefaults</tt> setting.
+++++
+endif::[]
+ifndef::backend-html5[]
+Traverses the tree to find the most specific renderDefaults setting.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRenderDefaults) {
+	renderDefaults
+} else {
+	(eContainer as IDefaultValueConfig).shouldRenderDefaults()
+}
+----
+
+|===
+
+[[config-IDiagramConfig]]
+==== Interface IDiagramConfig
+
+
+
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`renderDiagrams`[[config-IDiagramConfig-renderDiagrams]]
+|`EBoolean`
+|`[0..1]` +
+unsettable
+|Whether diagrams should be rendered.
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`shouldRenderDiagrams()`[[config-IDiagramConfig-shouldRenderDiagrams]]
+
+`<<config-EcoreDocGeneratorConfig-shouldRenderDiagrams, {overriddenBy}config.{zwsp}EcoreDocGeneratorConfig.{zwsp}shouldRenderDiagrams()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Traverses the tree to find the most specific <tt>renderDiagrams</tt> setting.
+++++
+endif::[]
+ifndef::backend-html5[]
+Traverses the tree to find the most specific renderDiagrams setting.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRenderDiagrams) {
+	renderDiagrams
+} else {
+	(eContainer as IDiagramConfig).shouldRenderDiagrams()
+}
+----
+
+|===
+
+[[config-IEAttributeConfig]]
+==== Interface IEAttributeConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+* `<<config-IEStructuralFeatureConfig, config.{zwsp}IEStructuralFeatureConfig>>`
+* `<<config-IETypedElementConfig, config.{zwsp}IETypedElementConfig>>`
+
+[[config-IEClassConfig]]
+==== Interface IEClassConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
+* `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`renderSubTypes`[[config-IEClassConfig-renderSubTypes]]
+|`EBoolean`
+|`[0..1]` +
+unsettable
+|Whether the list of sub-types should be rendered.
+
+|`renderSuperTypes`[[config-IEClassConfig-renderSuperTypes]]
+|`EBoolean`
+|`[0..1]` +
+unsettable
+|Whether the list of super-types should be rendered.
+
+|`repeatInherited`[[config-IEClassConfig-repeatInherited]]
+|`EBoolean`
+|`[0..1]` +
+unsettable
+|
+ifdef::backend-html5[]
+++++
+Whether inherited features should be repeated.
+
+<p>
+Example:
+<tt>EClass1</tt> has an <tt>EAttribute name=attr1</tt>.
+<tt>EClass2 extends EClass1</tt>.
+If <tt>repeatInherited = true</tt> for <i>EClass2</i>,
+<i>attr1</i> will be listed in the section of <i>EClass1</i> and <i>EClass2</i>.
+Otherwise, <i>attr1</i> will only be listed in the section of <i>EClass1</i>.
+</p>
+++++
+endif::[]
+ifndef::backend-html5[]
+Whether inherited features should be repeated.
+
+
+Example:
+EClass1 has an EAttribute name=attr1.
+EClass2 extends EClass1.
+If repeatInherited = true for EClass2,
+attr1 will be listed in the section of EClass1 and EClass2.
+Otherwise, attr1 will only be listed in the section of EClass1.
+endif::[]
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`shouldRenderSubTypes()`[[config-IEClassConfig-shouldRenderSubTypes]]
+
+`<<config-EcoreDocGeneratorConfig-shouldRenderSubTypes, {overriddenBy}config.{zwsp}EcoreDocGeneratorConfig.{zwsp}shouldRenderSubTypes()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Traverses the tree to find the most specific <tt>renderSubTypes</tt> setting.
+++++
+endif::[]
+ifndef::backend-html5[]
+Traverses the tree to find the most specific renderSubTypes setting.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRenderSubTypes) {
+	renderSubTypes
+} else {
+	(eContainer as IEClassConfig).shouldRenderSubTypes()
+}
+----
+
+.2+|`shouldRenderSuperTypes()`[[config-IEClassConfig-shouldRenderSuperTypes]]
+
+`<<config-EcoreDocGeneratorConfig-shouldRenderSuperTypes, {overriddenBy}config.{zwsp}EcoreDocGeneratorConfig.{zwsp}shouldRenderSuperTypes()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Traverses the tree to find the most specific <tt>renderSuperTypes</tt> setting.
+++++
+endif::[]
+ifndef::backend-html5[]
+Traverses the tree to find the most specific renderSuperTypes setting.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRenderSuperTypes) {
+	renderSuperTypes
+} else {
+	(eContainer as IEClassConfig).shouldRenderSuperTypes()
+}
+----
+
+.2+|`shouldRepeatInherited()`[[config-IEClassConfig-shouldRepeatInherited]]
+
+`<<config-EcoreDocGeneratorConfig-shouldRepeatInherited, {overriddenBy}config.{zwsp}EcoreDocGeneratorConfig.{zwsp}shouldRepeatInherited()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Traverses the tree to find the most specific <tt>repeatInherited</tt> setting.
+++++
+endif::[]
+ifndef::backend-html5[]
+Traverses the tree to find the most specific repeatInherited setting.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRepeatInherited) {
+	repeatInherited
+} else {
+	(eContainer as IEClassConfig).shouldRepeatInherited()
+}
+----
+
+|===
+
+[[config-IEClassifierConfig]]
+==== Interface IEClassifierConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`renderUseCases`[[config-IEClassifierConfig-renderUseCases]]
+|`EBoolean`
+|`[0..1]` +
+unsettable
+|Whether use cases (references to other usages of this element) should be rendered.
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`shouldRenderUseCases()`[[config-IEClassifierConfig-shouldRenderUseCases]]
+
+`<<config-EcoreDocGeneratorConfig-shouldRenderUseCases, {overriddenBy}config.{zwsp}EcoreDocGeneratorConfig.{zwsp}shouldRenderUseCases()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Traverses the tree to find the most specific <tt>renderUseCases</tt> setting.
+++++
+endif::[]
+ifndef::backend-html5[]
+Traverses the tree to find the most specific renderUseCases setting.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRenderUseCases) {
+	renderUseCases
+} else {
+	(eContainer as IEClassifierConfig).shouldRenderUseCases()
+}
+----
+
+|===
+
+[[config-IEDataTypeConfig]]
+==== Interface IEDataTypeConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
+* `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+
+[[config-IEEnumConfig]]
+==== Interface IEEnumConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
+* `<<config-IEClassifierConfig, config.{zwsp}IEClassifierConfig>>`
+* `<<config-IEDataTypeConfig, config.{zwsp}IEDataTypeConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+
+[[config-IEEnumLiteralConfig]]
+==== Interface IEEnumLiteralConfig
+
+
+
+
+.Super-types
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+
+[[config-IENamedElementConfig]]
+==== Interface IENamedElementConfig
+
+
+
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`render`[[config-IENamedElementConfig-render]]
+|`EBoolean`
+|`[0..1]` +
+unsettable
+|Whether this element should be rendered at all.
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.1+|_abstract_ `getTarget()`[[config-IENamedElementConfig-getTarget]]
+
+`<<config-EAttributeConfig-getTarget, {overriddenBy}config.{zwsp}EAttributeConfig.{zwsp}getTarget()>>`
+
+`<<config-EClassConfig-getTarget, {overriddenBy}config.{zwsp}EClassConfig.{zwsp}getTarget()>>`
+
+`<<config-EContainmentConfig-getTarget, {overriddenBy}config.{zwsp}EContainmentConfig.{zwsp}getTarget()>>`
+
+`<<config-EDataTypeConfig-getTarget, {overriddenBy}config.{zwsp}EDataTypeConfig.{zwsp}getTarget()>>`
+
+`<<config-EEnumConfig-getTarget, {overriddenBy}config.{zwsp}EEnumConfig.{zwsp}getTarget()>>`
+
+`<<config-EEnumLiteralConfig-getTarget, {overriddenBy}config.{zwsp}EEnumLiteralConfig.{zwsp}getTarget()>>`
+
+`<<config-EOperationConfig-getTarget, {overriddenBy}config.{zwsp}EOperationConfig.{zwsp}getTarget()>>`
+
+`<<config-EPackageConfig-getTarget, {overriddenBy}config.{zwsp}EPackageConfig.{zwsp}getTarget()>>`
+
+`<<config-EParameterConfig-getTarget, {overriddenBy}config.{zwsp}EParameterConfig.{zwsp}getTarget()>>`
+
+`<<config-EReferenceConfig-getTarget, {overriddenBy}config.{zwsp}EReferenceConfig.{zwsp}getTarget()>>`
+
+`<<config-EcoreDocGeneratorConfig-getTarget, {overriddenBy}config.{zwsp}EcoreDocGeneratorConfig.{zwsp}getTarget()>>`
+|_returns_ +
+`ecore.{zwsp}ENamedElement`
+|`[0..1]`
+|Link to the configured element.
+
+.2+|`shouldRender()`[[config-IENamedElementConfig-shouldRender]]
+
+`<<config-EcoreDocGeneratorConfig-shouldRender, {overriddenBy}config.{zwsp}EcoreDocGeneratorConfig.{zwsp}shouldRender()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Traverses the tree to find the most specific <tt>render</tt> setting.
+++++
+endif::[]
+ifndef::backend-html5[]
+Traverses the tree to find the most specific render setting.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRender) {
+	render
+} else {
+	(eContainer as IENamedElementConfig).shouldRender()
+}
+----
+
+|===
+
+.Used at
+* `<<config-EcoreDocGeneratorConfig-findConfig-ecore_ENamedElement, config.{zwsp}EcoreDocGeneratorConfig.{zwsp}findConfig(element)>>`
+
+[[config-IEOperationConfig]]
+==== Interface IEOperationConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+* `<<config-IETypedElementConfig, config.{zwsp}IETypedElementConfig>>`
+
+[[config-IEPackageConfig]]
+==== Interface IEPackageConfig
+
+
+
+
+.Super-types
+* `<<config-IDiagramConfig, config.{zwsp}IDiagramConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`positionEClasses`[[config-IEPackageConfig-positionEClasses]]
+|`EInt`
+|`[0..1]` +
+unsettable
+|Rendering position of all EClasses within an EPackage.
+
+|`positionEDataTypes`[[config-IEPackageConfig-positionEDataTypes]]
+|`EInt`
+|`[0..1]` +
+unsettable
+|Rendering position of all EDataTypes within an EPackage.
+
+|`positionEEnums`[[config-IEPackageConfig-positionEEnums]]
+|`EInt`
+|`[0..1]` +
+unsettable
+|Rendering position of all EEnums within an EPackage.
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`getEClassesPosition()`[[config-IEPackageConfig-getEClassesPosition]]
+
+`<<config-EcoreDocGeneratorConfig-getEClassesPosition, {overriddenBy}config.{zwsp}EcoreDocGeneratorConfig.{zwsp}getEClassesPosition()>>`
+|_returns_ +
+`EInt`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Traverses the tree to find the most specific <tt>positionEClasses</tt> setting.
+++++
+endif::[]
+ifndef::backend-html5[]
+Traverses the tree to find the most specific positionEClasses setting.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetPositionEClasses) {
+	positionEClasses
+} else {
+	(eContainer as IEPackageConfig).getEClassesPosition()
+}
+----
+
+.2+|`getEDataTypesPosition()`[[config-IEPackageConfig-getEDataTypesPosition]]
+
+`<<config-EcoreDocGeneratorConfig-getEDataTypesPosition, {overriddenBy}config.{zwsp}EcoreDocGeneratorConfig.{zwsp}getEDataTypesPosition()>>`
+|_returns_ +
+`EInt`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Traverses the tree to find the most specific <tt>positionEDataTypes</tt> setting.
+++++
+endif::[]
+ifndef::backend-html5[]
+Traverses the tree to find the most specific positionEDataTypes setting.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetPositionEDataTypes) {
+	positionEDataTypes
+} else {
+	(eContainer as IEPackageConfig).getEDataTypesPosition()
+}
+----
+
+.2+|`getEEnumsPosition()`[[config-IEPackageConfig-getEEnumsPosition]]
+
+`<<config-EcoreDocGeneratorConfig-getEEnumsPosition, {overriddenBy}config.{zwsp}EcoreDocGeneratorConfig.{zwsp}getEEnumsPosition()>>`
+|_returns_ +
+`EInt`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Traverses the tree to find the most specific <tt>positionEEnums</tt> setting.
+++++
+endif::[]
+ifndef::backend-html5[]
+Traverses the tree to find the most specific positionEEnums setting.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetPositionEEnums) {
+	positionEEnums
+} else {
+	(eContainer as IEPackageConfig).getEEnumsPosition()
+}
+----
+
+|===
+
+[[config-IEParameterConfig]]
+==== Interface IEParameterConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+* `<<config-IETypedElementConfig, config.{zwsp}IETypedElementConfig>>`
+
+[[config-IEReferenceConfig]]
+==== Interface IEReferenceConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+* `<<config-IEStructuralFeatureConfig, config.{zwsp}IEStructuralFeatureConfig>>`
+* `<<config-IETypedElementConfig, config.{zwsp}IETypedElementConfig>>`
+
+[[config-IEStructuralFeatureConfig]]
+==== Interface IEStructuralFeatureConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+* `<<config-IETypedElementConfig, config.{zwsp}IETypedElementConfig>>`
+
+[[config-IETypedElementConfig]]
+==== Interface IETypedElementConfig
+
+
+
+
+.Super-types
+* `<<config-IDefaultValueConfig, config.{zwsp}IDefaultValueConfig>>`
+* `<<config-IENamedElementConfig, config.{zwsp}IENamedElementConfig>>`
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`renderBounds`[[config-IETypedElementConfig-renderBounds]]
+|`EBoolean`
+|`[0..1]` +
+unsettable
+|
+ifdef::backend-html5[]
+++++
+Whether multiplicity bounds should be rendered,
+even if they are at their default values and <tt>renderDefaults = false</tt>.
+++++
+endif::[]
+ifndef::backend-html5[]
+Whether multiplicity bounds should be rendered,
+even if they are at their default values and renderDefaults = false.
+endif::[]
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`shouldRenderBounds()`[[config-IETypedElementConfig-shouldRenderBounds]]
+
+`<<config-EcoreDocGeneratorConfig-shouldRenderBounds, {overriddenBy}config.{zwsp}EcoreDocGeneratorConfig.{zwsp}shouldRenderBounds()>>`
+|_returns_ +
+`EBoolean`
+|`[0..1]`
+|
+ifdef::backend-html5[]
+++++
+Traverses the tree to find the most specific <tt>renderBounds</tt> setting.
+++++
+endif::[]
+ifndef::backend-html5[]
+Traverses the tree to find the most specific renderBounds setting.
+endif::[]
+
+3+a|
+[source,xtend]
+----
+if (isSetRenderBounds) {
+	renderBounds
+} else if(isSetRenderDefaults) {
+	renderDefaults
+} else {
+	(eContainer as IETypedElementConfig).shouldRenderBounds()
+}
+----
+
+|===

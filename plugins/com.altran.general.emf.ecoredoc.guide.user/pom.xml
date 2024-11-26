@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This pom is required by the Eclipse M2E integration -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>com.altran.general.emf.ecoredoc.guide.user</artifactId>
+  <name>EcoreDoc User Guide</name>
+  <packaging>eclipse-plugin</packaging>
+
+  <parent>
+    <groupId>com.altran.general.emf.ecoredoc</groupId>
+    <artifactId>com.altran.general.emf.ecoredoc.root</artifactId>
+    <version>0.10.0-SNAPSHOT</version>
+    <relativePath>../../</relativePath>
+  </parent>
+
+  <properties>
+    <maven.build.timestamp.format>yyyy-MM-dd HH:mm z</maven.build.timestamp.format>
+    <ecoredoc-cfg-dir>${project.basedir}/../../bundles/com.altran.general.emf.ecoredoc.generator.config/model</ecoredoc-cfg-dir>
+    <eclipse-help-dir>target/help</eclipse-help-dir>
+    <gitlab-pages-dir>target/pages</gitlab-pages-dir>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctor-maven-plugin</artifactId>
+        <configuration>
+          <sourceDirectory>${project.basedir}/src/main/asciidoc</sourceDirectory>
+          <attributes>
+            <!-- Typical attributes for all output types -->
+            <last-update-label>false</last-update-label>
+            <revnumber>${maven.build.timestamp}</revnumber>
+            <source-highlighter>rouge</source-highlighter>
+            <idseparator>-</idseparator>
+            <idprefix />
+            <icons>font</icons>
+            <!-- Attributes for all documents in this project -->
+            <imagesdir />
+          </attributes>
+        </configuration>
+
+        <executions>
+          <execution>
+            <id>generate-eclipse-help</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>process-asciidoc</goal>
+            </goals>
+            <configuration>
+              <backend>html5</backend>
+              <outputDirectory>${eclipse-help-dir}</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/src/main/resources</directory>
+                </resource>
+                <resource>
+                  <directory>${ecoredoc-cfg-dir}</directory>
+                  <targetPath>images</targetPath>
+                  <includes>
+                    <include>*.svg</include>
+                  </includes>
+                </resource>
+              </resources>
+              <attributes>
+                <!-- Typical attributes for HTML -->
+                <sectanchors>true</sectanchors>
+                <!-- Attributes for all HTML in this project -->
+                <imgsdir>./images</imgsdir>
+                <imgsdir-gen>./images</imgsdir-gen>
+                <ecoredoc-cfg-dir>./images</ecoredoc-cfg-dir>
+              </attributes>
+            </configuration>
+          </execution>
+          
+          <execution>
+            <id>generate-gitlab-pages</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>process-asciidoc</goal>
+            </goals>
+            <configuration>
+              <backend>html5</backend>
+              <outputDirectory>${gitlab-pages-dir}</outputDirectory>
+              <outputFile>index.html</outputFile>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/src/main/resources</directory>
+                </resource>
+                <resource>
+                  <directory>${ecoredoc-cfg-dir}</directory>
+                  <targetPath>images</targetPath>
+                  <includes>
+                    <include>*.svg</include>
+                  </includes>
+                </resource>
+              </resources>
+              <attributes>
+                <!-- Typical attributes for HTML -->
+                <sectanchors>true</sectanchors>
+                <toc>left</toc>
+                <!-- Attributes for all HTML in this project -->
+                <imgsdir>./images</imgsdir>
+                <imgsdir-gen>./images</imgsdir-gen>
+                <ecoredoc-cfg-dir>./images</ecoredoc-cfg-dir>
+                <webpage />
+              </attributes>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>generate-pdf-user-guide</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>process-asciidoc</goal>
+            </goals>
+            <configuration>
+              <backend>pdf</backend>
+              <outputDirectory>${gitlab-pages-dir}</outputDirectory>
+              <attributes>
+                <!-- Typical attributes for PDFs -->
+                <doctype>book</doctype>
+                <pagenums />
+                <sectnums />
+                <toc />
+                <!-- Attributes for all PDFs in this project -->
+                <imgsdir>${project.basedir}/src/main/resources/images</imgsdir>
+                <imgsdir-gen>${project.build.docDirectory}/images</imgsdir-gen>
+              </attributes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>com.bsiag.geneclipsetoc</groupId>
+        <artifactId>geneclipsetoc-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>geneclipsetoc</goal>
+            </goals>
+            <configuration>
+              <sourceFolder>${eclipse-help-dir}</sourceFolder>
+              <!-- Putting it in the same dir within the jar ensures us that doc will work in runtime instance and RCP -->
+              <helpPrefix>${eclipse-help-dir}</helpPrefix>
+              <outputTocFile>${eclipse-help-dir}/toc.xml</outputTocFile>
+              <pages>
+                <page>ecoredoc-userguide.html</page>
+              </pages>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-packaging-plugin</artifactId>
+        <configuration>
+          <additionalFileSets>
+            <fileSet>
+              <directory>${eclipse-help-dir}</directory>
+              <!-- Putting it in the same dir within the jar ensures us that doc will work in runtime instance and RCP -->
+              <prefix>${eclipse-help-dir}/</prefix>
+              <excludes>
+                <exclude>**/*.pdf</exclude>
+              </excludes>
+            </fileSet>
+          </additionalFileSets>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,1252 @@
+// White Up-Pointing Triangle
+:wupt: &#9651;
+
+:inherited: {wupt}{nbsp}
+
+// Black Up-Pointing Triangle
+:bupt: &#9650;
+
+:override: {bupt}{nbsp}
+
+// White Down-Pointing Triangle
+:wdpt: &#9661;
+
+:inheritedBy: {wdpt}{nbsp}
+
+// Black Down-Pointing Triangle
+:bdpt: &#9660;
+
+:overriddenBy: {bdpt}{nbsp}
+
+:toc:
+:toclevels: 4
+:miscellaneous.tabsize: 2
+:tabsize: 2
+:icons: font
+:experimental:
+:source-highlighter: pygments
+:prewrap!:
+:table-caption!:
+
+= Ecore Documentation
+
+
+[[EPackage1]]
+== Contents of EPackage1
+
+
+Ns Prefix:: EPackage1
+Ns URI:: EPackage1
+
+=== Data Types
+
+[[EPackage1-SpecialDataType]]
+==== SpecialDataType
+
+Special documentation for special data type
+
+Default Value:: _undefined_
+Instance Type Name:: `java.lang.Number`
+Serializable:: true
+
+.Used at
+* `<<EPackage1-MyEClass-attr, EPackage1.{zwsp}MyEClass.{zwsp}attr>>`
+
+=== Enumerations
+
+[[EPackage1-Enum1]]
+==== Enum1
+
+Enum1 Description
+
+Default Value:: `Literal1`
+Instance Type Name:: _undefined_
+Serializable:: true
+
+.Literals
+[cols="<20,>10,<20,<50a",options="header"]
+|===
+|Name
+|Value
+|Literal
+|Description
+
+|`Literal1`[[EPackage1-Enum1-Literal1]]
+|`0`
+|`Literal1`
+|Literal1 Description
+
+Second sentence of Literal1 Description.
+
+|`Literal2`[[EPackage1-Enum1-Literal2]]
+|`1`
+|`>=`
+|
+
+|`Literal3`[[EPackage1-Enum1-Literal3]]
+|`5`
+|`Literal3`
+|Literal3 Description
+|===
+
+.Used at
+* `<<EPackage1-Class3-something, EPackage1.{zwsp}Class3.{zwsp}something>>`
+* `<<EPackage1-MyEClass-eeeenum, EPackage1.{zwsp}MyEClass.{zwsp}eeeenum>>`
+
+=== Types
+
+[[EPackage1-Class3]]
+==== Class Class3
+
+Description
+
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
+
+.Super-types
+* `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`something`[[EPackage1-Class3-something]]
+|`<<EPackage1-Enum1, EPackage1.{zwsp}Enum1>>`
+|`[0..6]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
+|Something.
+
+|`d`[[EPackage1-Class3-d]]
+
+`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1.{zwsp}d>>`
+|`EDouble`
+|`[0..1]` +
+_Default:_ `3.141592` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`id`[[EPackage1-Class3-id]]
+
+`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1.{zwsp}id>>`
+|`EInt`
+|*is id* +
+`[1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|Description of id.
+
+|`name`[[EPackage1-Class3-name]]
+
+`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1.{zwsp}name>>`
+|`EString`
+|`[3..5]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
+|Name desc.
+
+|`someStringAttr`[[EPackage1-Class3-someStringAttr]]
+
+`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1.{zwsp}someStringAttr>>`
+|`EString`
+|`[0..1]` +
+_Default:_ `Hello, World!` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`specialNumber`[[EPackage1-Class3-specialNumber]]
+
+`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1.{zwsp}specialNumber>>`
+|`EInt`
+|`[0..1]` +
+_Default:_ `23` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+|===
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`specialParent`[[EPackage1-Class3-specialParent]]
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-clazzes, clazzes>>`
+|_EKeys:_ `-` +
+resolveProxies +
+*container* +
+`[0..1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|Bla
+
+|`myRelation`[[EPackage1-Class3-myRelation]]
+
+`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1.{zwsp}myRelation>>`
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+`[0..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
+|Description.
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.3+|`toBinary({zwsp}converter)`[[EPackage1-Class3-toBinary-ecore_EJavaObject]]
+
+`<<EPackage1-EClass1-toBinary-ecore_EJavaObject, {inherited}EPackage1.{zwsp}EClass1.{zwsp}toBinary(converter)>>`
+|_returns_ +
+`EByteArray`
+|`[1]`
+|
+
+|`converter` +
+`EJavaObject`
+|`[0..1]`
+|
+
+3+a|
+[source,java]
+----
+<%java.lang.Integer%> i = 0;
+
+return null;
+----
+
+|===
+
+.Used at
+* `<<EPackage1-MyEClass-clazzes, EPackage1.{zwsp}MyEClass.{zwsp}clazzes>>`
+* `<<EPackage1-MyEClass-otherClasses, EPackage1.{zwsp}MyEClass.{zwsp}otherClasses>>`
+
+[[EPackage1-EClass1]]
+==== Abstract Class EClass1
+
+TODO: Find a good way to show class attributes like abstract.
+
+Description of EClass1
+
+Instance Type Name:: _undefined_
+
+.Sub-types
+* `<<EPackage1-Class3, EPackage1.{zwsp}Class3>>`
+* `<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`d`[[EPackage1-EClass1-d]]
+|`EDouble`
+|`[0..1]` +
+_Default:_ `3.141592` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`id`[[EPackage1-EClass1-id]]
+|`EInt`
+|*is id* +
+`[1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|Description of id.
+
+|`name`[[EPackage1-EClass1-name]]
+|`EString`
+|`[3..5]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
+|Name desc.
+
+|`someStringAttr`[[EPackage1-EClass1-someStringAttr]]
+|`EString`
+|`[0..1]` +
+_Default:_ `Hello, World!` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`specialNumber`[[EPackage1-EClass1-specialNumber]]
+|`EInt`
+|`[0..1]` +
+_Default:_ `23` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+|===
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`myRelation`[[EPackage1-EClass1-myRelation]]
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+`[0..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
+|Description.
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.3+|`toBinary({zwsp}converter)`[[EPackage1-EClass1-toBinary-ecore_EJavaObject]]
+|_returns_ +
+`EByteArray`
+|`[1]`
+|
+
+|`converter` +
+`EJavaObject`
+|`[0..1]`
+|
+
+3+a|
+[source,java]
+----
+<%java.lang.Integer%> i = 0;
+
+return null;
+----
+
+|===
+
+.Used at
+* `<<EPackage1-MyEClass-backwards, EPackage1.{zwsp}MyEClass.{zwsp}backwards>>`
+* `<<EPackage1-MyEClass-ref, EPackage1.{zwsp}MyEClass.{zwsp}ref>>`
+
+[[EPackage1-Iface]]
+==== Interface Iface
+
+Description
+
+Instance Type Name:: _undefined_
+
+[[EPackage1-MyEClass]]
+==== Class MyEClass
+
+Description
+
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
+
+.Super-types
+* `<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`attr`[[EPackage1-MyEClass-attr]]
+|`<<EPackage1-SpecialDataType, EPackage1.{zwsp}SpecialDataType>>`
+|`[0..1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|Description.
+
+Second sentence.
+
+|`eeeenum`[[EPackage1-MyEClass-eeeenum]]
+|`<<EPackage1-Enum1, EPackage1.{zwsp}Enum1>>`
+|`[0..6]` +
+_Default:_ `<<EPackage1-Enum1-Literal1, Literal1>>` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
+|Deschkriptschion.
+
+|`d`[[EPackage1-MyEClass-d]]
+
+`<<EPackage1-EClass1-d, {inherited}EPackage1.{zwsp}EClass1.{zwsp}d>>`
+|`EDouble`
+|`[0..1]` +
+_Default:_ `3.141592` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`id`[[EPackage1-MyEClass-id]]
+
+`<<EPackage1-EClass1-id, {inherited}EPackage1.{zwsp}EClass1.{zwsp}id>>`
+|`EInt`
+|*is id* +
+`[1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|Description of id.
+
+|`name`[[EPackage1-MyEClass-name]]
+
+`<<EPackage1-EClass1-name, {inherited}EPackage1.{zwsp}EClass1.{zwsp}name>>`
+|`EString`
+|`[3..5]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+non-unique +
+settable +
+non-volatile
+|Name desc.
+
+|`someStringAttr`[[EPackage1-MyEClass-someStringAttr]]
+
+`<<EPackage1-EClass1-someStringAttr, {inherited}EPackage1.{zwsp}EClass1.{zwsp}someStringAttr>>`
+|`EString`
+|`[0..1]` +
+_Default:_ `Hello, World!` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`specialNumber`[[EPackage1-MyEClass-specialNumber]]
+
+`<<EPackage1-EClass1-specialNumber, {inherited}EPackage1.{zwsp}EClass1.{zwsp}specialNumber>>`
+|`EInt`
+|`[0..1]` +
+_Default:_ `23` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+|===
+
+.Containments
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`clazzes`[[EPackage1-MyEClass-clazzes]]
+|`<<EPackage1-Class3, EPackage1.{zwsp}Class3>>`
+
+_EOpposite:_ `<<EPackage1-Class3-specialParent, specialParent>>`
+|_EKeys:_ `-` +
+non-resolveProxies +
+non-container +
+`[1..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
+|Desc.
+
+|`otherClasses`[[EPackage1-MyEClass-otherClasses]]
+|`<<EPackage1-Class3, EPackage1.{zwsp}Class3>>`
+|_EKeys:_ `-` +
+non-resolveProxies +
+non-container +
+`[0..*]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
+|Desc.
+
+Containments could also be inherited.
+|===
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`backwards`[[EPackage1-MyEClass-backwards]]
+|`<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
+
+_EOpposite:_ `<<EPackage1-EClass1-myRelation, myRelation>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+`[1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+
+|`ref`[[EPackage1-MyEClass-ref]]
+|`<<EPackage1-EClass1, EPackage1.{zwsp}EClass1>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+`[0..1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|Whatever.
+
+|`myRelation`[[EPackage1-MyEClass-myRelation]]
+
+`<<EPackage1-EClass1-myRelation, {inherited}EPackage1.{zwsp}EClass1.{zwsp}myRelation>>`
+|`<<EPackage1-MyEClass, EPackage1.{zwsp}MyEClass>>`
+
+_EOpposite:_ `<<EPackage1-MyEClass-backwards, backwards>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+`[0..*]` +
+_Default:_ `-` +
+**unordered** +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
+|Description.
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.3+|`toBinary({zwsp}converter)`[[EPackage1-MyEClass-toBinary-ecore_EJavaObject]]
+
+`<<EPackage1-EClass1-toBinary-ecore_EJavaObject, {inherited}EPackage1.{zwsp}EClass1.{zwsp}toBinary(converter)>>`
+|_returns_ +
+`EByteArray`
+|`[1]`
+|
+
+|`converter` +
+`EJavaObject`
+|`[0..1]`
+|
+
+3+a|
+[source,java]
+----
+<%java.lang.Integer%> i = 0;
+
+return null;
+----
+
+|===
+
+.Used at
+* `<<EPackage1-Class3-myRelation, EPackage1.{zwsp}Class3.{zwsp}myRelation>>`
+* `<<EPackage1-Class3-specialParent, EPackage1.{zwsp}Class3.{zwsp}specialParent>>`
+* `<<EPackage1-EClass1-myRelation, EPackage1.{zwsp}EClass1.{zwsp}myRelation>>`
+* `<<EPackage1-MyEClass-myRelation, EPackage1.{zwsp}MyEClass.{zwsp}myRelation>>`
+
+
+[[EPackage2]]
+== Contents of EPackage2
+
+Package2 documentation
+
+Ns Prefix:: EPackage2
+Ns URI:: EPackage2
+
+=== Data Types
+
+[[EPackage2-Npe]]
+==== Npe
+
+
+Default Value:: _undefined_
+Instance Type Name:: `java.lang.NullPointerException`
+Serializable:: true
+
+.Used at
+* `<<EPackage2-Class3-doSomething-ecore_EInt-EPackage2_SomeClass, EPackage2.{zwsp}Class3.{zwsp}doSomething(i, something)>>`
+
+[[EPackage2-Re]]
+==== Re
+
+
+Default Value:: _undefined_
+Instance Type Name:: `java.lang.RuntimeException`
+Serializable:: true
+
+.Used at
+* `<<EPackage2-Class3-doSomething-ecore_EInt-EPackage2_SomeClass, EPackage2.{zwsp}Class3.{zwsp}doSomething(i, something)>>`
+
+=== Types
+
+[[EPackage2-AImplementer]]
+==== Abstract Class AImplementer
+
+
+Instance Type Name:: _undefined_
+
+.Super-types
+* `<<EPackage2-IFace1, EPackage2.{zwsp}IFace1>>`
+* `<<EPackage2-IFace2, EPackage2.{zwsp}IFace2>>`
+
+.Sub-types
+* `<<EPackage2-Implementer, EPackage2.{zwsp}Implementer>>`
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`doIt()`[[EPackage2-AImplementer-doIt]]
+
+`<<EPackage2-IFace1-doIt, {override}EPackage2.{zwsp}IFace1.{zwsp}doIt()>>`
+
+`<<EPackage2-IFace2-doIt, {override}EPackage2.{zwsp}IFace2.{zwsp}doIt()>>`
+|_returns_ +
+`void`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+println("Hello, World!")
+----
+
+.2+|_abstract_ `doIt({zwsp}i)`[[EPackage2-AImplementer-doIt-ecore_EInt]]
+
+`<<EPackage2-IFace1-doIt-ecore_EInt, {inherited}EPackage2.{zwsp}IFace1.{zwsp}doIt(i)>>`
+|_returns_ +
+`void`
+|`[0..1]`
+|
+
+|`i` +
+`EInt`
+|`[0..1]`
+|
+
+|===
+
+[[EPackage2-Cl4]]
+==== Class Cl4
+
+
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
+
+.Sub-types
+* `<<EPackage2-Cl4b, EPackage2.{zwsp}Cl4b>>`
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`iface`[[EPackage2-Cl4-iface]]
+
+`<<EPackage2-Cl4b-getIface, {overriddenBy}EPackage2.{zwsp}Cl4b.{zwsp}getIface()>>`
+
+`<<EPackage2-Cl4b-setIface-EPackage2_Cls3, {overriddenBy}EPackage2.{zwsp}Cl4b.{zwsp}setIface(iface)>>`
+|`<<EPackage2-If1, EPackage2.{zwsp}If1>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+`[0..1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+|===
+
+[[EPackage2-Cl4b]]
+==== Class Cl4b
+
+
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
+
+.Super-types
+* `<<EPackage2-Cl4, EPackage2.{zwsp}Cl4>>`
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`getIface()`[[EPackage2-Cl4b-getIface]]
+
+`<<EPackage2-Cl4-iface, {override}EPackage2.{zwsp}Cl4.{zwsp}iface>>`
+|_returns_ +
+`<<EPackage2-Cls3, EPackage2.{zwsp}Cls3>>`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+super.iface as Cls3
+----
+
+.3+|`setIface({zwsp}iface)`[[EPackage2-Cl4b-setIface-EPackage2_Cls3]]
+
+`<<EPackage2-Cl4-iface, {override}EPackage2.{zwsp}Cl4.{zwsp}iface>>`
+|_returns_ +
+`void`
+|`[0..1]`
+|
+
+|`iface` +
+`<<EPackage2-Cls3, EPackage2.{zwsp}Cls3>>`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+super.iface = iface
+----
+
+|===
+
+[[EPackage2-Class3]]
+==== Class Class3
+
+
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
+
+.Attributes
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`attr`[[EPackage2-Class3-attr]]
+|`EDouble`
+|`[0..1]` +
+_Default:_ `2.71` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+|===
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.7+|`doSomething({zwsp}i, something)`[[EPackage2-Class3-doSomething-ecore_EInt-EPackage2_SomeClass]]
+|_returns_ +
+`ecore.{zwsp}ENamedElement`
+|`[2..5]` +
+ordered +
+non-unique
+|Op Desc
+
+|`i` +
+`EInt`
+|`[0..*]` +
+ordered +
+non-unique
+|i desc
+
+|`something` +
+`<<EPackage2-SomeClass, EPackage2.{zwsp}SomeClass>>`
+|`[0..1]`
+|something deschkriptschion
+
+|_throws_ +
+`<<EPackage2-Npe, EPackage2.{zwsp}Npe>>`
+|
+|
+
+|_throws_ +
+`<<EPackage2-Npe, EPackage2.{zwsp}Npe>>`
+|
+|
+
+|_throws_ +
+`<<EPackage2-Re, EPackage2.{zwsp}Re>>`
+|
+|
+
+3+a|
+[source,java]
+----
+return Objects::nonNull;
+----
+
+|===
+
+.Used at
+* `<<EPackage2-Cls3-children, EPackage2.{zwsp}Cls3.{zwsp}children>>`
+* `<<EPackage2-If1-getChildren, EPackage2.{zwsp}If1.{zwsp}getChildren()>>`
+
+[[EPackage2-Cls3]]
+==== Class Cls3
+
+
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
+
+.Super-types
+* `<<EPackage2-If1, EPackage2.{zwsp}If1>>`
+* `<<EPackage2-If2, EPackage2.{zwsp}If2>>`
+
+.Containments
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`children`[[EPackage2-Cls3-children]]
+
+`<<EPackage2-If1-getChildren, {override}EPackage2.{zwsp}If1.{zwsp}getChildren()>>`
+|`<<EPackage2-Class3, EPackage2.{zwsp}Class3>>`
+|_EKeys:_ `-` +
+non-resolveProxies +
+non-container +
+`[0..*]` +
+_Default:_ `-` +
+ordered +
+changeable +
+underived +
+non-transient +
+unique +
+settable +
+non-volatile
+|
+|===
+
+.References
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Type
+|Properties
+|Description
+
+|`some`[[EPackage2-Cls3-some]]
+
+`<<EPackage2-If2-getSome, {override}EPackage2.{zwsp}If2.{zwsp}getSome()>>`
+
+`<<EPackage2-If2-setSome-EPackage2_SomeClass, {override}EPackage2.{zwsp}If2.{zwsp}setSome(someClass)>>`
+|`<<EPackage2-SomeClass, EPackage2.{zwsp}SomeClass>>`
+|_EKeys:_ `-` +
+resolveProxies +
+non-container +
+`[1]` +
+_Default:_ `-` +
+changeable +
+underived +
+non-transient +
+settable +
+non-volatile
+|
+|===
+
+.Used at
+* `<<EPackage2-Cl4b-getIface, EPackage2.{zwsp}Cl4b.{zwsp}getIface()>>`
+* `<<EPackage2-Cl4b-setIface-EPackage2_Cls3, EPackage2.{zwsp}Cl4b.{zwsp}setIface(iface)>>`
+
+[[EPackage2-IFace1]]
+==== Interface IFace1
+
+
+Instance Type Name:: _undefined_
+
+.Sub-types
+* `<<EPackage2-AImplementer, EPackage2.{zwsp}AImplementer>>`
+* `<<EPackage2-IFace3, EPackage2.{zwsp}IFace3>>`
+* `<<EPackage2-Implementer, EPackage2.{zwsp}Implementer>>`
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.1+|_abstract_ `doIt()`[[EPackage2-IFace1-doIt]]
+
+`<<EPackage2-AImplementer-doIt, {overriddenBy}EPackage2.{zwsp}AImplementer.{zwsp}doIt()>>`
+|_returns_ +
+`void`
+|`[0..1]`
+|
+
+.2+|_abstract_ `doIt({zwsp}i)`[[EPackage2-IFace1-doIt-ecore_EInt]]
+|_returns_ +
+`void`
+|`[0..1]`
+|
+
+|`i` +
+`EInt`
+|`[0..1]`
+|
+
+|===
+
+[[EPackage2-IFace2]]
+==== Interface IFace2
+
+
+Instance Type Name:: _undefined_
+
+.Sub-types
+* `<<EPackage2-AImplementer, EPackage2.{zwsp}AImplementer>>`
+* `<<EPackage2-IFace3, EPackage2.{zwsp}IFace3>>`
+* `<<EPackage2-Implementer, EPackage2.{zwsp}Implementer>>`
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.1+|_abstract_ `doIt()`[[EPackage2-IFace2-doIt]]
+
+`<<EPackage2-AImplementer-doIt, {overriddenBy}EPackage2.{zwsp}AImplementer.{zwsp}doIt()>>`
+|_returns_ +
+`void`
+|`[0..1]`
+|
+
+|===
+
+[[EPackage2-IFace3]]
+==== Interface IFace3
+
+
+Instance Type Name:: _undefined_
+
+.Super-types
+* `<<EPackage2-IFace1, EPackage2.{zwsp}IFace1>>`
+* `<<EPackage2-IFace2, EPackage2.{zwsp}IFace2>>`
+
+.Sub-types
+* `<<EPackage2-Implementer, EPackage2.{zwsp}Implementer>>`
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.1+|_abstract_ `doIt()`[[EPackage2-IFace3-doIt]]
+
+`<<EPackage2-IFace1-doIt, {inherited}EPackage2.{zwsp}IFace1.{zwsp}doIt()>>`
+
+`<<EPackage2-IFace2-doIt, {inherited}EPackage2.{zwsp}IFace2.{zwsp}doIt()>>`
+|_returns_ +
+`void`
+|`[0..1]`
+|
+
+.2+|_abstract_ `doIt({zwsp}i)`[[EPackage2-IFace3-doIt-ecore_EInt]]
+
+`<<EPackage2-IFace1-doIt-ecore_EInt, {inherited}EPackage2.{zwsp}IFace1.{zwsp}doIt(i)>>`
+|_returns_ +
+`void`
+|`[0..1]`
+|
+
+|`i` +
+`EInt`
+|`[0..1]`
+|
+
+|===
+
+[[EPackage2-If1]]
+==== Interface If1
+
+
+Instance Type Name:: _undefined_
+
+.Sub-types
+* `<<EPackage2-Cls3, EPackage2.{zwsp}Cls3>>`
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.1+|_abstract_ `getChildren()`[[EPackage2-If1-getChildren]]
+
+`<<EPackage2-Cls3-children, {overriddenBy}EPackage2.{zwsp}Cls3.{zwsp}children>>`
+|_returns_ +
+`<<EPackage2-Class3, EPackage2.{zwsp}Class3>>`
+|`[1..8]` +
+ordered +
+non-unique
+|
+
+|===
+
+.Used at
+* `<<EPackage2-Cl4-iface, EPackage2.{zwsp}Cl4.{zwsp}iface>>`
+
+[[EPackage2-If2]]
+==== Interface If2
+
+
+Instance Type Name:: _undefined_
+
+.Sub-types
+* `<<EPackage2-Cls3, EPackage2.{zwsp}Cls3>>`
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.1+|_abstract_ `getSome()`[[EPackage2-If2-getSome]]
+
+`<<EPackage2-Cls3-some, {overriddenBy}EPackage2.{zwsp}Cls3.{zwsp}some>>`
+|_returns_ +
+`<<EPackage2-SomeClass, EPackage2.{zwsp}SomeClass>>`
+|`[0..1]`
+|
+
+.2+|_abstract_ `setSome({zwsp}someClass)`[[EPackage2-If2-setSome-EPackage2_SomeClass]]
+
+`<<EPackage2-Cls3-some, {overriddenBy}EPackage2.{zwsp}Cls3.{zwsp}some>>`
+|_returns_ +
+`void`
+|`[0..1]`
+|
+
+|`someClass` +
+`<<EPackage2-SomeClass, EPackage2.{zwsp}SomeClass>>`
+|`[1]`
+|
+
+|===
+
+[[EPackage2-Implementer]]
+==== Class Implementer
+
+
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
+
+.Super-types
+* `<<EPackage2-AImplementer, EPackage2.{zwsp}AImplementer>>`
+* `<<EPackage2-IFace1, EPackage2.{zwsp}IFace1>>`
+* `<<EPackage2-IFace2, EPackage2.{zwsp}IFace2>>`
+* `<<EPackage2-IFace3, EPackage2.{zwsp}IFace3>>`
+
+.Operations
+[cols="<30,<20,<20,<40a",options="header"]
+|===
+|Name
+|Aspect and Type
+|Properties
+|Description
+.2+|`doIt()`[[EPackage2-Implementer-doIt]]
+
+`<<EPackage2-IFace1-doIt, {inherited}EPackage2.{zwsp}IFace1.{zwsp}doIt()>>`
+
+`<<EPackage2-IFace2-doIt, {inherited}EPackage2.{zwsp}IFace2.{zwsp}doIt()>>`
+
+`<<EPackage2-AImplementer-doIt, {inherited}EPackage2.{zwsp}AImplementer.{zwsp}doIt()>>`
+|_returns_ +
+`void`
+|`[0..1]`
+|
+
+3+a|
+[source,xtend]
+----
+println("Hello, World!")
+----
+
+.2+|_abstract_ `doIt({zwsp}i)`[[EPackage2-Implementer-doIt-ecore_EInt]]
+
+`<<EPackage2-IFace1-doIt-ecore_EInt, {inherited}EPackage2.{zwsp}IFace1.{zwsp}doIt(i)>>`
+|_returns_ +
+`void`
+|`[0..1]`
+|
+
+|`i` +
+`EInt`
+|`[0..1]`
+|
+
+|===
+
+[[EPackage2-SomeClass]]
+==== Class SomeClass
+
+This is
+
+my doc
+
+Default Value:: _undefined_
+Instance Type Name:: _undefined_
+
+.Used at
+* `<<EPackage2-Class3-doSomething-ecore_EInt-EPackage2_SomeClass, EPackage2.{zwsp}Class3.{zwsp}doSomething(i, something)>>`
+* `<<EPackage2-Cls3-some, EPackage2.{zwsp}Cls3.{zwsp}some>>`
+* `<<EPackage2-If2-getSome, EPackage2.{zwsp}If2.{zwsp}getSome()>>`
+* `<<EPackage2-If2-setSome-EPackage2_SomeClass, EPackage2.{zwsp}If2.{zwsp}setSome(someClass)>>`

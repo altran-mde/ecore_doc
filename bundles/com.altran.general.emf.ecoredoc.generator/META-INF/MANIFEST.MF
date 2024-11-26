@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EcoreDoc Generator
+Bundle-SymbolicName: com.altran.general.emf.ecoredoc.generator
+Bundle-Vendor: Altran
+Bundle-Version: 0.10.0.qualifier
+Export-Package: com.altran.general.emf.ecoredoc.generator,
+ com.altran.general.emf.ecoredoc.generator.impl,
+ com.altran.general.emf.ecoredoc.generator.impl.diagram,
+ com.altran.general.emf.ecoredoc.generator.impl.eclass,
+ com.altran.general.emf.ecoredoc.generator.impl.extension
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: com.altran.general.emf.ecoredoc.generator.config,
+ org.eclipse.emf.codegen.ecore
+Automatic-Module-Name: com.altran.general.emf.ecoredoc.generator
+Import-Package: org.apache.commons.lang3;version="[3.1.0,4.0.0)"

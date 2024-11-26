@@ -1,0 +1,28 @@
+target "CBI Target Platform"
+
+with configurePhase requirements source
+
+location "https://download.eclipse.org/releases/2020-06/202006171000" {
+	org.eclipse.platform lazy
+	org.eclipse.ui.ide.application lazy
+	org.eclipse.xtend.lib lazy
+	org.eclipse.xtend.lib.macro lazy
+	org.eclipse.emf.ecore.xcore.lib lazy
+	org.eclipse.emf.ecore.xcore.ui lazy
+	
+	org.apache.commons.io lazy
+	org.apache.commons.lang3 lazy
+	org.eclipse.emf.codegen.ecore lazy
+	
+	// For testing purposes
+	org.eclipse.emf.sdk.feature.group lazy
+	org.eclipse.egf.sdk.feature.feature.group lazy
+	org.junit lazy
+}
+location "http://hallvard.github.io/plantuml" {
+	net.sourceforge.plantuml.eclipse [0.0.0,1.1.28)
+}
+location "https://de-jcup.github.io/update-site-eclipse-asciidoctor-editor/update-site" {
+    // For testing purposes
+    de.jcup.asciidoctoreditor.feature.group lazy
+}

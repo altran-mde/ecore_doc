@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ecoredocExtension -->
+      <package
+            uri="http://www.altran.com/egf/ecoredocExtension"
+            class="com.altran.general.emf.ecoredoc.generator.egf.ecoredocExtension.EcoredocExtensionPackage"
+            genModel="model/ecoredocExtension.genmodel"/>
+   </extension>
+   <extension
+         point="org.eclipse.egf.core.fcore">
+      <fcore
+            id="egf/ecoredoc.fcore">
+      </fcore>
+   </extension>
+   <extension
+         point="org.eclipse.egf.portfolio.genchain.elements">
+    	<helper id="ecoredoc.generator.extension" class="com.altran.general.emf.ecoredoc.generator.egf.EcoreDocGeneratorExtension"/>
+   </extension>
+
+</plugin>

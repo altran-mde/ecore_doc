@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="com.altran.general.emf.ecoredoc.ui.feature" version="0.0.0">
+      <category name="com.altran.general.emf.ecoredoc.repository.category"/>
+   </feature>
+   <feature id="com.altran.general.emf.ecoredoc.ui.feature.source" version="0.0.0">
+      <category name="com.altran.general.emf.ecoredoc.repository.category"/>
+   </feature>
+   <feature id="com.altran.general.emf.ecoredoc.egf.feature" version="0.0.0">
+      <category name="com.altran.general.emf.ecoredoc.repository.category"/>
+   </feature>
+   <feature id="com.altran.general.emf.ecoredoc.egf.feature.source" version="0.0.0">
+      <category name="com.altran.general.emf.ecoredoc.repository.category"/>
+   </feature>
+   <feature id="com.altran.general.emf.ecoredoc.feature" version="0.0.0">
+      <category name="com.altran.general.emf.ecoredoc.repository.category"/>
+   </feature>
+   <feature id="com.altran.general.emf.ecoredoc.feature.source" version="0.0.0">
+      <category name="com.altran.general.emf.ecoredoc.repository.category"/>
+   </feature>
+   <bundle id="com.altran.general.emf.ecoredoc.plantuml.ecore">
+      <category name="com.altran.general.emf.ecoredoc.repository.category"/>
+   </bundle>
+   <bundle id="com.altran.general.emf.ecoredoc.plantuml.xcore">
+      <category name="com.altran.general.emf.ecoredoc.repository.category"/>
+   </bundle>
+   <category-def name="com.altran.general.emf.ecoredoc.repository.category" label="EcoreDoc">
+      <description>
+         Altran EcoreDoc Features and Plug-ins
+      </description>
+   </category-def>
+   <repository-reference location="http://hallvard.github.io/plantuml/" enabled="true" />
+</site>

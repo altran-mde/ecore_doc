@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.altran.general.emf.ecoredoc.maven/src" modelPluginID="com.altran.general.emf.ecoredoc.maven"
+    modelName="EPackage1" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>EPackage1.ecore</foreignModel>
+  <genPackages prefix="EPackage1" disposableProviderFactory="true" ecorePackage="EPackage1.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="EPackage1.ecore#//Enum1">
+      <genEnumLiterals ecoreEnumLiteral="EPackage1.ecore#//Enum1/Literal1"/>
+      <genEnumLiterals ecoreEnumLiteral="EPackage1.ecore#//Enum1/Literal2"/>
+      <genEnumLiterals ecoreEnumLiteral="EPackage1.ecore#//Enum1/Literal3"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="EPackage1.ecore#//SpecialDataType"/>
+    <genClasses image="false" ecoreClass="EPackage1.ecore#//EClass1">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EPackage1.ecore#//EClass1/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EPackage1.ecore#//EClass1/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EPackage1.ecore#//EClass1/specialNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EPackage1.ecore#//EClass1/someStringAttr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EPackage1.ecore#//EClass1/d"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference EPackage1.ecore#//EClass1/myRelation"/>
+    </genClasses>
+    <genClasses ecoreClass="EPackage1.ecore#//MyEClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EPackage1.ecore#//MyEClass/attr"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference EPackage1.ecore#//MyEClass/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPackage1.ecore#//MyEClass/clazzes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EPackage1.ecore#//MyEClass/eeeenum"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPackage1.ecore#//MyEClass/otherClasses"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference EPackage1.ecore#//MyEClass/backwards"/>
+    </genClasses>
+    <genClasses ecoreClass="EPackage1.ecore#//Class3">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EPackage1.ecore#//Class3/something"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference EPackage1.ecore#//Class3/specialParent"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="EPackage1.ecore#//Iface"/>
+  </genPackages>
+</genmodel:GenModel>

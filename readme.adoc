@@ -7,7 +7,7 @@
 
 :project-name: EcoreDoc
 :eclipse-version: 2020-06
-:github-project: ec-mde/ecore-doc
+:github-project: altran-mde/ecore_doc
 :oomph-setup-file-path: releng/eclipse/EcoreDocGitHub.setup
 :oomph-setup-stream: main
 
@@ -18,7 +18,7 @@ AsciiDoctor can be rendered as HTML, PDF, or Eclipse Help.
 EcoreDoc can be used as Maven Plugin, standalone command-line tool, Java API, or Eclipse Plug-in.
 
 You might have a look at an <<code/com.altran.general.emf.ecoredoc.maven/src/test/resources/testGeneratorConfig/expected.adoc#, example rendering>>
-(suffering from GitLab rendering issues, full-fledged AsciiDoctor output looks better).
+(suffering from GitHub rendering issues, full-fledged AsciiDoctor output looks better).
 
 For more details, please refer to the link:plugins/com.altran.general.emf.ecoredoc.guide.user/src/main/asciidoc/ecoredoc-userguide.adoc[EcoreDoc User Guide].
 
@@ -39,12 +39,9 @@ image::https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.egit.doc/hel
 . On the https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/html/user/wizard/DocProjectPage.html[Projects Page]
 .. (_One time only_) Click the image:https://help.eclipse.org/{eclipse-version}/topic/org.eclipse.oomph.setup.doc/images/trees/DULKrP4IGs7HGSVqoXcwRFgPxZQ=.png[] icon to add the {project-name} project.
 ... Catalog: `Eclipse Projects`
-... Resource URIs: `link:https://raw.githubusercontent.com/{github-project}/refs/heads/{oomph-setup-stream}/{oomph-setup-file-path}?oomph_form=b%27users/sign_in%27#/[]`
-... Click btn:[OK] +
-+
-NOTE: Though using the Resource URI above is preferred, it is known that for some users the URI didn't work and they got an error: _The URI ... does not contain a valid product_.
-In this case the setup file can also be link:https://raw.githubusercontent.com/{github-project}/refs/heads/{oomph-setup-stream}/{oomph-setup-file-path}?inline=false[downloaded] and added by clicking btn:[Browse File System...].
-... Enter your GitLab credentials when asked for
+... Resource URIs: `link:https://raw.githubusercontent.com/{github-project}/refs/heads/{oomph-setup-stream}/{oomph-setup-file-path}[]`
+... Click btn:[OK]
+... Enter your git credentials when asked for
 .. Select `{project-name}` in the tree
 .. Select stream `{oomph-setup-stream}` in the table
 .. Click btn:[Next >]
@@ -55,4 +52,4 @@ In this case the setup file can also be link:https://raw.githubusercontent.com/{
 .. Click btn:[Finish]
 
 Your development environment will now be prepared.
-Please accept all licenses and certificates and provide your GitLab credentials when asked for.
+Please accept all licenses and certificates and provide your git credentials when asked for.

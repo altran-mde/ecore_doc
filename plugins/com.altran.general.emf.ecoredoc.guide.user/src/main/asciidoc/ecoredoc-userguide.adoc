@@ -43,7 +43,7 @@ EcoreDoc currently supports the following elements:
 
 EcoreDoc is highly configurable via the <<generator-config>>.
 
-The homepage and repository of EcoreDoc can be found at https://gitlab.manatree.io/MDEAssets/EcoreDoc.
+The homepage and repository of EcoreDoc can be found at https://github.com/altran-mde/ecore_doc.
 Please use the issue tracker at this site for any feature requests or bugs.
 
 [[java-api]]

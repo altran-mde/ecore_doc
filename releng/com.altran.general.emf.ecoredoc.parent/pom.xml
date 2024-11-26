@@ -5,7 +5,7 @@
   <artifactId>com.altran.general.emf.ecoredoc.parent</artifactId>
   <name>EcoreDoc Maven Parent</name>
   <packaging>pom</packaging>
-  <url>https://github.com/altran-mde/ecore-doc/</url>
+  <url>https://github.com/altran-mde/ecore_doc</url>
 
   <parent>
     <groupId>com.altran.general.emf.ecoredoc</groupId>
@@ -29,27 +29,16 @@
   </licenses>
 
   <organization>
-    <name>Altran Netherlands B.V.</name>
-    <url>https://altran.nl/</url>
+    <name>Capgemini</name>
+    <url>https://www.capgemini.com/</url>
   </organization>
 
   <scm>
-    <connection>scm:git:ssh://git@gitlab.acidspace.nl:ec-mde/ecore-doc.git</connection>
-    <developerConnection>scm:git:ssh://git@gitlab.acidspace.nl:ec-mde/ecore-doc.git</developerConnection>
-    <url>https://gitlab.acidspace.nl/ec-mde/ecore-doc/</url>
+    <connection>scm:git:ssh://git@github.com:altran-mde/ecore_doc.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:altran-mde/ecore_doc.git</developerConnection>
+    <url>https://github.com/altran-mde/ecore_doc</url>
     <tag>HEAD</tag>
   </scm>
-
-  <distributionManagement>
-    <snapshotRepository>
-      <id>mde-assets-maven-snapshots</id>
-      <url>https://nexus.acidspace.nl/repository/mde-assets-snapshot/</url>
-    </snapshotRepository>
-    <repository>
-      <id>mde-assets-maven-releases</id>
-      <url>https://nexus.acidspace.nl/repository/mde-assets-release/</url>
-    </repository>
-  </distributionManagement>
 
   <build>
     <pluginManagement>

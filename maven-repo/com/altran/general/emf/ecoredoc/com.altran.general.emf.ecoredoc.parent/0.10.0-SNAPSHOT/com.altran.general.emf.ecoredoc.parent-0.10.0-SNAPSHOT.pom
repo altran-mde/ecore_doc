@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>com.altran.general.emf.ecoredoc.parent</artifactId>
+  <name>EcoreDoc Maven Parent</name>
+  <packaging>pom</packaging>
+  <url>https://github.com/altran-mde/ecore_doc</url>
+
+  <parent>
+    <groupId>com.altran.general.emf.ecoredoc</groupId>
+    <artifactId>com.altran.general.emf.ecoredoc.configuration</artifactId>
+    <version>0.10.0-SNAPSHOT</version>
+    <relativePath>../com.altran.general.emf.ecoredoc.configuration/</relativePath>
+  </parent>
+
+  <properties>
+    <java.version>1.8</java.version>
+    <tycho.p2-repository.name>EcoreDoc - Repository</tycho.p2-repository.name>
+    <!-- EcoreDoc also provides a Maven Plugin, hence all bundles should be installed/deployed -->
+    <maven.install.skip>false</maven.install.skip>
+    <maven.deploy.skip>false</maven.deploy.skip>
+  </properties>
+
+  <licenses>
+    <license>
+      <name>EPL2.0</name>
+    </license>
+  </licenses>
+
+  <organization>
+    <name>Capgemini</name>
+    <url>https://www.capgemini.com/</url>
+  </organization>
+
+  <scm>
+    <connection>scm:git:ssh://git@github.com:altran-mde/ecore_doc.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:altran-mde/ecore_doc.git</developerConnection>
+    <url>https://github.com/altran-mde/ecore_doc</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <configuration>
+            <useSystemClassLoader>false</useSystemClassLoader>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-versions-plugin</artifactId>
+          <configuration>
+            <artifacts>com.altran.general.emf.ecoredoc.parent</artifacts>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <configuration>
+          <target>
+            <artifact>
+              <groupId>com.altran.general.emf.ecoredoc</groupId>
+              <artifactId>com.altran.general.emf.ecoredoc.target</artifactId>
+              <version>0.10.0-SNAPSHOT</version>
+            </artifact>
+          </target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

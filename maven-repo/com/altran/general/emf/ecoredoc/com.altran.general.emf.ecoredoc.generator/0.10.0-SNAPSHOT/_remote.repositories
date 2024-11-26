@@ -1,0 +1,7 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Nov 26 15:13:29 UTC 2024
+com.altran.general.emf.ecoredoc.generator-0.10.0-SNAPSHOT.jar>=
+com.altran.general.emf.ecoredoc.generator-0.10.0-SNAPSHOT-sources.jar>=
+com.altran.general.emf.ecoredoc.generator-0.10.0-SNAPSHOT-p2metadata.xml>=
+com.altran.general.emf.ecoredoc.generator-0.10.0-SNAPSHOT.pom>=
+com.altran.general.emf.ecoredoc.generator-0.10.0-SNAPSHOT-p2artifacts.xml>=

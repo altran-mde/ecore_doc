@@ -669,7 +669,7 @@
     <setupTask
         xsi:type="setup:EclipseIniTask"
         option="-Doomph.redirection.ecore_doc.git"
-        value="=https://raw.githubusercontent.com/altran-mde/ecore_doc/main/releng/eclipse/EcoreDocGitHub.setup->${git.clone.ecore_doc.git.location|uri}/releng/eclipse/EcoreDocGitHub.setup"
+        value="=https://raw.githubusercontent.com/altran-mde/ecore_doc/refs/heads/main/releng/eclipse/EcoreDocGitHub.setup->${git.clone.ecore_doc.git.location|uri}/releng/eclipse/EcoreDocGitHub.setup"
         vm="true">
       <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
     </setupTask>

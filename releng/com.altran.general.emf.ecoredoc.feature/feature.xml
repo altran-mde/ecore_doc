@@ -5,7 +5,7 @@
       version="0.10.0.qualifier"
       provider-name="Altran Netherlands B.V.">
 
-   <description url="https://gitlab.acidspace.nl/ec-mde/ecore-doc">
+   <description url="https://github.com/altran-mde/ecore_doc">
       Generates AsciiDoctor files to document Ecore metamodels, similar
 to JavaDoc. AsciiDoctor can be rendered as HTML, PDF, or Eclipse
 Help.

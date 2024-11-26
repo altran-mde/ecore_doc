@@ -43,7 +43,7 @@ EcoreDoc currently supports the following elements:
 
 EcoreDoc is highly configurable via the <<generator-config>>.
 
-The homepage and repository of EcoreDoc can be found at https://gitlab.manatree.io/MDEAssets/EcoreDoc.
+The homepage and repository of EcoreDoc can be found at https://github.com/altran-mde/ecore_doc.
 Please use the issue tracker at this site for any feature requests or bugs.
 
 [[java-api]]
@@ -525,5 +525,5 @@ Eclipse Tycho:: 1.7.0
 
 == Known Issues
 
-* If HTML is used in Ecore documentation, the PDF rendering can be faulty (https://gitlab.acidspace.nl/ec-mde/ecore-doc/-/issues/13[Issue #13])
-* ``EAnnotation``s are missing from the documentation (https://gitlab.acidspace.nl/ec-mde/ecore-doc/-/issues/16[Issue #16])
+* If HTML is used in Ecore documentation, the PDF rendering can be faulty (https://github.com/altran-mde/ecore_doc/issues/2[Issue #2])
+* ``EAnnotation``s are missing from the documentation (https://github.com/altran-mde/ecore_doc/issues/3[Issue #3])

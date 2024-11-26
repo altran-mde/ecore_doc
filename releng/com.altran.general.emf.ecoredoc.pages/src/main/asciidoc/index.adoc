@@ -1,0 +1,52 @@
+:idprefix:
+:idseparator: -
+
+// Enable custom style in index-docinfo.html
+:docinfo:
+
+:!table-caption:
+
+
+= EcoreDoc
+
+Generates https://asciidoctor.org/[AsciiDoctor] files to document Ecore metamodels, similar to https://docs.oracle.com/javase/9/javadoc/javadoc.htm[JavaDoc].
+AsciiDoctor can be rendered as HTML, PDF, or Eclipse Help.
+EcoreDoc can be used as Maven Plugin, standalone command-line tool, Java API, or Eclipse Plug-in.
+
+For more details, please refer to the link:userguide/index.html[EcoreDoc User Guide].
+
+== Downloads
+
+EcoreDoc is available as Maven Plugin, standalone command-line tool and also as a feature for the Eclipse IDE through the P2 update site repository.
+
+.Maven plugin
+
+The EcoreDoc Maven repository contains all bundles and plugins, for easy integration into Maven builds.
+
+EcoreDoc is available as a Maven repository:
+
+`\https://altran-mde.github.io/ecore_doc/maven-repo/`
+
+.Standalone jar
+
+The standalone command-line tool can be downloaded here: link:com.altran.general.emf.ecoredoc.standalone-0.10.0-SNAPSHOT-jar-with-dependencies.jar[]
+
+.P2 update site
+
+The EcoreDoc P2 update site contains all plugins and features, for easy integration into OSGi-based applications.
+
+EcoreDoc is available as an Eclipse P2 update site:
+
+`\https://altran-mde.github.io/ecore_doc/update-site/`
+
+== Learn more
+
+For more information about EcoreDoc, please read the link:userguide/index.html[EcoreDoc User Guide].
+
+== Legal
+
+The material in this documentation is Copyright (c) 2018-2024 Capgemini and Contributors to the GitHub community.
+
+*License*
+
+Eclipse Public License - v 2.0
